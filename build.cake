@@ -15,8 +15,8 @@ var nupkgPath = "./artifacts/";
 var nupkgRegex = $"{nupkgPath}**/*.nupkg";
 var nugetApiKey = "33b30e22-01aa-4b75-80e9-3e73cfa4c1b8";
 
-var nugetQueryUrl="https://www.myget.org/F/scorpio/api/v3/index.json";
-var nugetPushUrl = "https://www.myget.org/F/scorpio/api/v2/package";
+var nugetQueryUrl="https://www.myget.org/F/project-scorpio/api/v3/index.json";
+var nugetPushUrl = "https://www.myget.org/F/project-scorpio/api/v2/package";
 var DOT_NET_CORE_MSBUILD_SETTINGS=new DotNetCoreMSBuildSettings().SetFileVersion(version).SetConfiguration(configuration).WithProperty("SourceLinkCreate","true");
 var NUGET_PUSH_SETTINGS = new DotNetCoreNuGetPushSettings
                          {
