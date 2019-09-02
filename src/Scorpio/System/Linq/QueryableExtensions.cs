@@ -1,4 +1,4 @@
-﻿using JetBrains.Annotations;
+﻿
 using Scorpio;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace System.Linq
         /// <summary>
         /// Used for paging. Can be used as an alternative to Skip(...).Take(...) chaining.
         /// </summary>
-        public static IQueryable<T> PageBy<T>([NotNull] this IQueryable<T> query, int skipCount, int maxResultCount)
+        public static IQueryable<T> PageBy<T>( this IQueryable<T> query, int skipCount, int maxResultCount)
         {
             Check.NotNull(query, nameof(query));
 
@@ -25,7 +25,7 @@ namespace System.Linq
         /// <summary>
         /// Used for paging. Can be used as an alternative to Skip(...).Take(...) chaining.
         /// </summary>
-        public static TQueryable PageBy<T, TQueryable>([NotNull] this TQueryable query, int skipCount, int maxResultCount)
+        public static TQueryable PageBy<T, TQueryable>( this TQueryable query, int skipCount, int maxResultCount)
             where TQueryable : IQueryable<T>
         {
             Check.NotNull(query, nameof(query));
@@ -40,7 +40,7 @@ namespace System.Linq
         /// <param name="condition">A boolean value</param>
         /// <param name="predicate">Predicate to filter the query</param>
         /// <returns>Filtered or not filtered query based on <paramref name="condition"/></returns>
-        public static IQueryable<T> WhereIf<T>([NotNull] this IQueryable<T> query, bool condition, Expression<Func<T, bool>> predicate)
+        public static IQueryable<T> WhereIf<T>( this IQueryable<T> query, bool condition, Expression<Func<T, bool>> predicate)
         {
             Check.NotNull(query, nameof(query));
 
@@ -56,7 +56,7 @@ namespace System.Linq
         /// <param name="condition">A boolean value</param>
         /// <param name="predicate">Predicate to filter the query</param>
         /// <returns>Filtered or not filtered query based on <paramref name="condition"/></returns>
-        public static TQueryable WhereIf<T, TQueryable>([NotNull] this TQueryable query, bool condition, Expression<Func<T, bool>> predicate)
+        public static TQueryable WhereIf<T, TQueryable>( this TQueryable query, bool condition, Expression<Func<T, bool>> predicate)
             where TQueryable : IQueryable<T>
         {
             Check.NotNull(query, nameof(query));
@@ -73,7 +73,7 @@ namespace System.Linq
         /// <param name="condition">A boolean value</param>
         /// <param name="predicate">Predicate to filter the query</param>
         /// <returns>Filtered or not filtered query based on <paramref name="condition"/></returns>
-        public static IQueryable<T> WhereIf<T>([NotNull] this IQueryable<T> query, bool condition, Expression<Func<T, int, bool>> predicate)
+        public static IQueryable<T> WhereIf<T>( this IQueryable<T> query, bool condition, Expression<Func<T, int, bool>> predicate)
         {
             Check.NotNull(query, nameof(query));
 
@@ -89,7 +89,7 @@ namespace System.Linq
         /// <param name="condition">A boolean value</param>
         /// <param name="predicate">Predicate to filter the query</param>
         /// <returns>Filtered or not filtered query based on <paramref name="condition"/></returns>
-        public static TQueryable WhereIf<T, TQueryable>([NotNull] this TQueryable query, bool condition, Expression<Func<T, int, bool>> predicate)
+        public static TQueryable WhereIf<T, TQueryable>( this TQueryable query, bool condition, Expression<Func<T, int, bool>> predicate)
             where TQueryable : IQueryable<T>
         {
             Check.NotNull(query, nameof(query));

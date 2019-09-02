@@ -1,4 +1,4 @@
-﻿using JetBrains.Annotations;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,7 @@ namespace System.Collections.Generic
         /// <summary>
         /// Checks whatever given collection object is null or has no item.
         /// </summary>
-        public static bool IsNullOrEmpty<T>([CanBeNull] this IEnumerable<T> source)
+        public static bool IsNullOrEmpty<T>(this IEnumerable<T> source)
         {
             return source == null || !source.Any();
         }

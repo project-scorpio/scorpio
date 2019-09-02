@@ -1,4 +1,4 @@
-﻿using JetBrains.Annotations;
+﻿
 using Scorpio;
 using System;
 using System.Collections.Generic;
@@ -479,7 +479,7 @@ namespace System
         /// <summary>
         /// Converts given string to a byte array using the given <paramref name="encoding"/>
         /// </summary>
-        public static byte[] GetBytes([NotNull] this string str, [NotNull] Encoding encoding)
+        public static byte[] GetBytes( this string str,  Encoding encoding)
         {
             Check.NotNull(str, nameof(str));
             Check.NotNull(encoding, nameof(encoding));

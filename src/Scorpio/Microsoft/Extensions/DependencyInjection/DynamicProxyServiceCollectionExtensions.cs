@@ -20,7 +20,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns></returns>
         public static IServiceCollection AddConventionalRegistrar(this IServiceCollection services, IConventionaInterceptorRegistrar registrar)
         {
-            InterceptorHelper.AddConventionalRegistrar(registrar);
+            InterceptorHelper.AddConventionalRegistrar(services,registrar);
             return services;
         }
         /// <summary>

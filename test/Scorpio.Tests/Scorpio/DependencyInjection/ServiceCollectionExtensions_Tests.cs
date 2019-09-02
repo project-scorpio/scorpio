@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using System.Linq;
 using Scorpio.Conventional;
+using Scorpio.DependencyInjection.Conventional;
 
 namespace Scorpio.DependencyInjection
 {
@@ -17,7 +18,7 @@ namespace Scorpio.DependencyInjection
         {
             var services= new ServiceCollection();
             services.AddConventionalRegistrar<EmptyConventionalDependencyRegistrar>();
-            ConventionalRegistrarList.Registrars.Any(c=>c.GetType()==typeof(EmptyConventionalDependencyRegistrar)).ShouldBeTrue();
+            services.GetSingletonInstanceOrNull<ConventionalRegistrarList>().Any(c=>c.GetType()==typeof(EmptyConventionalDependencyRegistrar)).ShouldBeTrue();
         }
 
         [Fact]
@@ -26,7 +27,7 @@ namespace Scorpio.DependencyInjection
             var services = new ServiceCollection();
             var registrar = new EmptyConventionalDependencyRegistrar();
             services.AddConventionalRegistrar(registrar);
-            ConventionalRegistrarList.Registrars.Contains(registrar).ShouldBeTrue();
+            services.GetSingletonInstanceOrNull<ConventionalRegistrarList>().Contains(registrar).ShouldBeTrue();
             var assembly = typeof(ServiceCollectionExtensions_Tests).Assembly;
             services.RegisterAssemblyByConvention(assembly);
             registrar.RegisterAssemblyInvoked.ShouldBeTrue();
@@ -38,7 +39,7 @@ namespace Scorpio.DependencyInjection
             var services = new ServiceCollection();
             var registrar = new EmptyConventionalDependencyRegistrar();
             services.AddConventionalRegistrar(registrar);
-            ConventionalRegistrarList.Registrars.Contains(registrar).ShouldBeTrue();
+            services.GetSingletonInstanceOrNull<ConventionalRegistrarList>().Contains(registrar).ShouldBeTrue();
             var assembly = typeof(ServiceCollectionExtensions_Tests).Assembly;
             services.RegisterAssemblyByConvention();
             registrar.RegisterAssemblyInvoked.ShouldBeTrue();

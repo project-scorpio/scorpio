@@ -1,4 +1,4 @@
-﻿using JetBrains.Annotations;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,7 +14,7 @@ namespace Scorpio.Modularity
         /// <summary>
         /// 
         /// </summary>
-        [NotNull]
+        
         public Type[] DependedTypes { get; }
 
         /// <summary>

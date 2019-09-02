@@ -61,6 +61,42 @@ namespace Microsoft.Extensions.DependencyInjection
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="services"></param>
+        /// <param name="func"></param>
+        /// <returns></returns>
+        public static T GetSingletonInstanceOrAdd<T>(this IServiceCollection services,Func<IServiceCollection, T> func) where T:class
+        {
+            var service = services.GetSingletonInstanceOrNull<T>();
+            if (service == null)
+            {
+                service = func(services);
+                services.AddSingleton(service);
+            }
+            return service;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="services"></param>
+        /// <param name="instance"></param>
+        /// <returns></returns>
+        public static T GetSingletonInstanceOrAdd<T>(this IServiceCollection services, T instance) where T : class
+        {
+            var service = services.GetSingletonInstanceOrNull<T>();
+            if (service == null)
+            {
+                service = instance;
+                services.AddSingleton(service);
+            }
+            return service;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="services"></param>
         /// <returns></returns>
         public static T GetSingletonInstance<T>(this IServiceCollection services)
         {
@@ -163,6 +199,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// </summary>
         /// <param name="services"></param>
         /// <param name="serviceDescriptor"></param>
+        /// <param name="replaceAll"></param>
         /// <returns></returns>
         public static IServiceCollection ReplaceOrAdd(this IServiceCollection services, ServiceDescriptor serviceDescriptor,bool replaceAll=false)
         {

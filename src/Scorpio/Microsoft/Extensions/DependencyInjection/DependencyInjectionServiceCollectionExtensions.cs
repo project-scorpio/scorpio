@@ -15,14 +15,14 @@ namespace Microsoft.Extensions.DependencyInjection
     public static class DependencyInjectionServiceCollectionExtensions
     {
         /// <summary>
-        /// 
+        /// 向 <see cref="IServiceCollection"/> 集合添加 <see cref="IConventionalRegistrar"/> 对象实例，用于为 <see cref="RegisterAssemblyByConvention(IServiceCollection, Assembly)"/> 方法提供通用注册者。
         /// </summary>
         /// <param name="services"></param>
         /// <param name="registrar"></param>
         /// <returns></returns>
         public static IServiceCollection AddConventionalRegistrar(this IServiceCollection services, IConventionalRegistrar registrar)
         {
-            GetOrCreateRegistrarList().Add(registrar);
+            GetOrCreateRegistrarList(services).Add(registrar);
             return services;
         }
 
@@ -46,7 +46,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection RegisterAssemblyByConvention(this IServiceCollection services, Assembly assembly)
         {
             var context = new ConventionalRegistrationContext(assembly, services);
-            GetOrCreateRegistrarList().ToImmutableList().ForEach(registrar => registrar.Register(context));
+            GetOrCreateRegistrarList(services).ToImmutableList().ForEach(registrar => registrar.Register(context));
             return services;
         }
 
@@ -76,9 +76,9 @@ namespace Microsoft.Extensions.DependencyInjection
         /// 
         /// </summary>
         /// <returns></returns>
-        private static ConventionalRegistrarList GetOrCreateRegistrarList()
+        private static ConventionalRegistrarList GetOrCreateRegistrarList(IServiceCollection services)
         {
-            return ConventionalRegistrarList.Registrars;
+            return services.GetSingletonInstanceOrAdd(s=>new ConventionalRegistrarList());
         }
     }
 }

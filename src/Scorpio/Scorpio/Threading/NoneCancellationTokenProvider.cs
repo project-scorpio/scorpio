@@ -8,19 +8,19 @@ namespace Scorpio.Threading
     /// <summary>
     /// 
     /// </summary>
-    public class NullCancellationTokenProvider : ICancellationTokenProvider
+    public class NoneCancellationTokenProvider : ICancellationTokenProvider
     {
         /// <summary>
         /// 
         /// </summary>
-        public static NullCancellationTokenProvider Instance { get; } = new NullCancellationTokenProvider();
+        public static NoneCancellationTokenProvider Instance { get; } = new NoneCancellationTokenProvider();
 
         /// <summary>
         /// 
         /// </summary>
-        public CancellationToken Token { get; } = default;
+        public CancellationToken Token { get; } = CancellationToken.None;
 
-        private NullCancellationTokenProvider()
+        private NoneCancellationTokenProvider()
         {
 
         }

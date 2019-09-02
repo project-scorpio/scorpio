@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Text;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Scorpio.Conventional
+namespace Scorpio.DependencyInjection.Conventional
 {
     class ConventionalRegistrationContext : IConventionalRegistrationContext
     {

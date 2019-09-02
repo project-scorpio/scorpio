@@ -19,16 +19,14 @@ namespace Scorpio
     /// </summary>
     public abstract class Bootstrapper : IBootstrapper, IModuleContainer
     {
+        private bool _isShutdown = false;
+        private readonly BootstrapperCreationOptions _options;
 
         /// <summary>
         /// 
         /// </summary>
-        /// <localize>
-        /// 
-        /// </localize>
         public Type StartupModuleType { get; }
 
-        private readonly BootstrapperCreationOptions _options;
 
         /// <summary>
         /// 
@@ -115,7 +113,7 @@ namespace Scorpio
         /// 
         /// </summary>
         /// <param name="serviceProvider"></param>
-        internal void SetServiceProvider(IServiceProvider serviceProvider)
+        protected internal void SetServiceProvider(IServiceProvider serviceProvider)
         {
             ServiceProvider = serviceProvider;
         }
@@ -148,6 +146,11 @@ namespace Scorpio
         /// </summary>
         public virtual void Shutdown()
         {
+            if (_isShutdown)
+            {
+                return;
+            }
+            _isShutdown = true;
             using (var scope = ServiceProvider.CreateScope())
             {
                 scope.ServiceProvider
@@ -194,7 +197,7 @@ namespace Scorpio
         /// <returns></returns>
         public static IBootstrapper Create(Type startupModuleType)
         {
-            return Create(startupModuleType, o => {});
+            return Create(startupModuleType, o => { });
         }
 
         /// <summary>

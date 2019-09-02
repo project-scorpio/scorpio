@@ -111,7 +111,7 @@ namespace System.Reflection
         /// <param name="object"> The member to inspect.</param>
         /// <param name="inherit">true to inspect the ancestors of element; otherwise, false.</param>
         /// <returns>A custom attribute that matches attributeType, or null if no such attribute is found.</returns>
-        public static TAttribute GetAttribute<TAttribute>(this object @object, bool inherit = false) where TAttribute : System.Attribute
+        public static TAttribute GetAttribute<TAttribute>(this object @object, bool inherit = false) 
         {
             return @object.GetAttributes<TAttribute>(inherit).FirstOrDefault();
         }
@@ -123,10 +123,23 @@ namespace System.Reflection
         /// <param name="object"> The member to inspect.</param>
         /// <param name="inherit">true to inspect the ancestors of element; otherwise, false.</param>
         /// <returns>A collection of the custom attributes that are applied to element and that match T, or an empty collection if no such attributes exist.</returns>
-        public static IEnumerable<TAttribute> GetAttributes<TAttribute>(this object @object, bool inherit = false) where TAttribute : System.Attribute
+        public static IEnumerable<TAttribute> GetAttributes<TAttribute>(this object @object, bool inherit = false)
         {
             Check.NotNull(@object,nameof(@object));
             return @object.GetType().GetAttributes<TAttribute>(inherit);
+        }
+
+        /// <summary>
+        /// Checks if a custom attribute of the specified object's type applied to the specified member exists, and optionally inspects the ancestors of that member.
+        /// </summary>
+        /// <typeparam name="TAttribute">The type of attribute to search for.</typeparam>
+        /// <param name="object"> The member to inspect.</param>
+        /// <param name="inherit">true to inspect the ancestors of element; otherwise, false.</param>
+        /// <returns>A custom attribute that matches attributeType, or null if no such attribute is found.</returns>
+        public static bool AttributeExists<TAttribute>(this object @object, bool inherit = false)
+        {
+            Check.NotNull(@object, nameof(@object));
+            return @object.GetType().AttributeExists<TAttribute>(inherit);
         }
 
 
@@ -137,23 +150,11 @@ namespace System.Reflection
         /// <param name="memberInfo"> The member to inspect.</param>
         /// <param name="inherit">true to inspect the ancestors of element; otherwise, false.</param>
         /// <returns>A custom attribute that matches attributeType, or null if no such attribute is found.</returns>
-        public static bool AttributeExists<TAttribute>(this MemberInfo memberInfo, bool inherit = false) where TAttribute : System.Attribute
+        public static bool AttributeExists<TAttribute>(this MemberInfo memberInfo, bool inherit = false)
         {
             return memberInfo.GetAttribute<TAttribute>(inherit) != null;
         }
 
-        /// <summary>
-        /// Checks if a custom attribute of the specified object's type applied to the specified member exists, and optionally inspects the ancestors of that member.
-        /// </summary>
-        /// <typeparam name="TAttribute">The type of attribute to search for.</typeparam>
-        /// <param name="object"> The member to inspect.</param>
-        /// <param name="inherit">true to inspect the ancestors of element; otherwise, false.</param>
-        /// <returns>A custom attribute that matches attributeType, or null if no such attribute is found.</returns>
-        public static bool AttributeExists<TAttribute>(this object @object, bool inherit = false) where TAttribute : System.Attribute
-        {
-            Check.NotNull(@object, nameof(@object));
-            return @object.GetType().AttributeExists<TAttribute>(inherit);
-        }
 
         /// <summary>
         /// Retrieves a custom attribute of a specified type that is applied to a specified member, and optionally inspects the ancestors of that member.
@@ -162,7 +163,7 @@ namespace System.Reflection
         /// <param name="memberInfo"> The member to inspect.</param>
         /// <param name="inherit">true to inspect the ancestors of element; otherwise, false.</param>
         /// <returns>A custom attribute that matches attributeType, or null if no such attribute is found.</returns>
-        public static TAttribute GetAttribute<TAttribute>(this MemberInfo memberInfo, bool inherit = false) where TAttribute : System.Attribute
+        public static TAttribute GetAttribute<TAttribute>(this MemberInfo memberInfo, bool inherit = false) 
         {
             return memberInfo.GetAttributes<TAttribute>(inherit).FirstOrDefault();
         }
@@ -174,11 +175,23 @@ namespace System.Reflection
         /// <param name="memberInfo"> The member to inspect.</param>
         /// <param name="inherit">true to inspect the ancestors of element; otherwise, false.</param>
         /// <returns>A collection of the custom attributes that are applied to element and that match T, or an empty collection if no such attributes exist.</returns>
-        public static IEnumerable<TAttribute> GetAttributes<TAttribute>(this MemberInfo memberInfo, bool inherit = false) where TAttribute : System.Attribute
+        public static IEnumerable<TAttribute> GetAttributes<TAttribute>(this MemberInfo memberInfo, bool inherit = false) 
         {
-            return memberInfo.GetCustomAttributes<TAttribute>(inherit);
+            Check.NotNull(memberInfo, nameof(memberInfo));
+            return memberInfo.GetCustomAttributes(inherit).OfType<TAttribute>();
         }
 
+        /// <summary>
+        ///  Searches for the public members with the specified name.
+        /// </summary>
+        /// <param name="object"></param>
+        /// <param name="propertyExpression"></param>
+        /// <returns></returns>
+        public static MemberInfo Member<TModel, TProperty>(this TModel @object, Expression<Func<TModel, TProperty>> propertyExpression)
+        {
+            MemberInfo member = ((dynamic)propertyExpression.Body).Member;
+            return member;
+        }
 
     }
 }

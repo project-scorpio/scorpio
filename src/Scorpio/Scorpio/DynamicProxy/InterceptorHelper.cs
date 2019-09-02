@@ -16,21 +16,23 @@ namespace Scorpio.DynamicProxy
     /// </summary>
     internal static class InterceptorHelper
     {
-        public static List<IConventionaInterceptorRegistrar> Registrars { get; } = new List<IConventionaInterceptorRegistrar>();
+        public static List<IConventionaInterceptorRegistrar> GetInterceptorRegistrars(IServiceCollection services) 
+            => services.GetSingletonInstanceOrAdd(s => new List<IConventionaInterceptorRegistrar>());
         /// <summary>
         /// 添加注册
         /// </summary>
+        /// <param name="services"></param>
         /// <param name="registrar"></param>
-        public static void AddConventionalRegistrar(IConventionaInterceptorRegistrar registrar)
+        public static void AddConventionalRegistrar(IServiceCollection services, IConventionaInterceptorRegistrar registrar)
         {
-            Registrars.Add(registrar);
+            GetInterceptorRegistrars(services).Add(registrar);
         }
 
         public static void RegisterConventionalInterceptor(IServiceCollection services)
         {
             var maps = new Dictionary<Type, TypeInterceptorMap>();
             var context = new ConventionaInterceptorContext(maps);
-            Registrars.ForEach(r => r.Register(context));
+            GetInterceptorRegistrars(services).ForEach(r => r.Register(context));
             services.ConfigureDynamicProxy(c =>
             {
                 maps.Values.ForEach(m =>

@@ -1,4 +1,4 @@
-﻿using JetBrains.Annotations;
+﻿
 using Scorpio;
 using System;
 using System.Collections.Generic;
@@ -221,8 +221,8 @@ namespace System.Collections.Generic
         /// <param name="selector"></param>
         /// <param name="factory"></param>
         /// <returns></returns>
-        [NotNull]
-        public static T GetOrAdd<T>([NotNull] this IList<T> source, Func<T, bool> selector, Func<T> factory)
+        
+        public static T GetOrAdd<T>( this IList<T> source, Func<T, bool> selector, Func<T> factory)
         {
             Check.NotNull(source, nameof(source));
 

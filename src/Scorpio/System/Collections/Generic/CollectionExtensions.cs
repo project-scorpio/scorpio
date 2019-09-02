@@ -1,4 +1,4 @@
-﻿using JetBrains.Annotations;
+﻿
 using Scorpio;
 using System.Linq;
 
@@ -12,7 +12,7 @@ namespace System.Collections.Generic
         /// <summary>
         /// Checks whatever given collection object is null or has no item.
         /// </summary>
-        public static bool IsNullOrEmpty<T>([CanBeNull] this ICollection<T> source)
+        public static bool IsNullOrEmpty<T>( this ICollection<T> source)
         {
             return source == null || source.Count <= 0;
         }
@@ -24,7 +24,7 @@ namespace System.Collections.Generic
         /// <param name="item">Item to check and add</param>
         /// <typeparam name="T">Type of the items in the collection</typeparam>
         /// <returns>Returns True if added, returns False if not.</returns>
-        public static bool AddIfNotContains<T>([NotNull] this ICollection<T> source, T item)
+        public static bool AddIfNotContains<T>( this ICollection<T> source, T item)
         {
             Check.NotNull(source, nameof(source));
 
@@ -45,7 +45,7 @@ namespace System.Collections.Generic
         /// <param name="itemFactory">A factory that returns the item</param>
         /// <typeparam name="T">Type of the items in the collection</typeparam>
         /// <returns>Returns True if added, returns False if not.</returns>
-        public static bool AddIfNotContains<T>([NotNull] this ICollection<T> source, [NotNull] Func<T, bool> predicate, [NotNull] Func<T> itemFactory)
+        public static bool AddIfNotContains<T>( this ICollection<T> source,  Func<T, bool> predicate,  Func<T> itemFactory)
         {
             Check.NotNull(source, nameof(source));
             Check.NotNull(source, nameof(predicate));
@@ -67,7 +67,7 @@ namespace System.Collections.Generic
         /// <param name="source">The collection</param>
         /// <param name="predicate">The condition to remove the items</param>
         /// <returns>List of removed items</returns>
-        public static ICollection<T> RemoveAll<T>([NotNull] this ICollection<T> source, Func<T, bool> predicate)
+        public static ICollection<T> RemoveAll<T>( this ICollection<T> source, Func<T, bool> predicate)
         {
             var items = source.Where(predicate).ToList();
 

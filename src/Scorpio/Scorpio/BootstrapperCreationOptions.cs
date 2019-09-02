@@ -23,7 +23,7 @@ namespace Scorpio
         /// </summary>
         public PlugInSourceList PlugInSources { get; }
 
-        internal ICollection< Action<IConfigurationBuilder>> ConfigurationActions { get;  set; }
+        internal ICollection<Action<IConfigurationBuilder>> ConfigurationActions { get;  set; }
 
         internal BootstrapperCreationOptions(IServiceCollection services)
         {

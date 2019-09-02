@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Scorpio.Conventional;
+using System;
 using System.Collections.Generic;
 using System.Text;
-namespace Scorpio.Conventional
+namespace Scorpio.DependencyInjection.Conventional
 {
     /// <summary>
     /// 

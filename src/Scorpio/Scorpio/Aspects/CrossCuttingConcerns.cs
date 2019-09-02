@@ -1,4 +1,4 @@
-﻿using JetBrains.Annotations;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,7 +23,7 @@ namespace Scorpio.Aspects
                 throw new ArgumentNullException(nameof(concerns), $"{nameof(concerns)} should be provided!");
             }
 
-            (obj as IAvoidDuplicateCrossCuttingConcerns)?.AppliedCrossCuttingConcerns.AddRange(concerns);
+            (obj as IAvoidDuplicateCrossCuttingConcerns)?.AppliedCrossCuttingConcerns?.AddRange(concerns);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Scorpio.Aspects
         /// <param name="obj"></param>
         /// <param name="concern"></param>
         /// <returns></returns>
-        public static bool IsApplied([NotNull] object obj, [NotNull] string concern)
+        public static bool IsApplied( object obj,  string concern)
         {
             if (obj == null)
             {
@@ -67,7 +67,7 @@ namespace Scorpio.Aspects
                 throw new ArgumentNullException(nameof(concern));
             }
 
-            return (obj as IAvoidDuplicateCrossCuttingConcerns)?.AppliedCrossCuttingConcerns.Contains(concern) ?? false;
+            return (obj as IAvoidDuplicateCrossCuttingConcerns)?.AppliedCrossCuttingConcerns?.Contains(concern) ?? false;
         }
 
         /// <summary>

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace Scorpio.Conventional
+namespace Scorpio.DependencyInjection.Conventional
 {
     /// <summary>
     /// Used to pass needed objects on conventional registration process.

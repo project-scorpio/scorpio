@@ -207,6 +207,10 @@ namespace System.Linq.Expressions
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
         public sealed class MemberInitTranslation<TSource>
         {
             private readonly Expression<Func<TSource, TSource>> _predicate;

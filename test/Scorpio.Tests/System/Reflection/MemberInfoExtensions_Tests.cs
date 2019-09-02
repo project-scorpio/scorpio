@@ -48,6 +48,7 @@ namespace System.Reflection
             new AttributeTestClass().GetAttribute<DisplayNameAttribute>().ShouldBeNull();
             Should.Throw<ArgumentNullException>(() => (null as Type).GetAttribute<DisplayNameAttribute>());
             Should.Throw<ArgumentNullException>(() => (null as object).GetAttribute<DisplayNameAttribute>());
+            new AttributeTestClassWithDisplayAttirbute().Member(m=>m.Name).GetAttribute<DisplayNameAttribute>().ShouldNotBeNull();
         }
 
         [Fact]
