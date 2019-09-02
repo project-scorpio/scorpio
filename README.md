@@ -1,20 +1,20 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Scorpio 
+## Introduction
+[![Build status](https://ci.appveyor.com/api/projects/status/um73r8w85qjt0w4v?svg=true)](https://ci.appveyor.com/project/wzd24/scorpio)
+[![AppVeyor tests](https://img.shields.io/appveyor/tests/wzd24/scorpio)](https://ci.appveyor.com/project/wzd24/scorpio)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://img.shields.io/github/license/project-scorpio/Scorpio)
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+Scorpio is a modular-based cross-platform framework for the .NET Core and .NET frameworks, with project include AOP, modularity, plug-ins, dependency injection, and some common extension methods.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+## Packages
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+### Core library
+| Package Name |  NuGet | MyGet | Downloads  |
+|--------------|  ------- |  ------- |  ----  |
+| Scorpio | [![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/scorpio)](https://www.nuget.org/packages/Scorpio) | [![MyGet (with prereleases)](https://img.shields.io/myget/project-scorpio/vpre/scorpio)](https://www.myget.org/feed/project-scorpio/package/nuget/Scorpio) | [![Nuget](https://img.shields.io/nuget/dt/Scorpio)](https://www.nuget.org/packages/Scorpio) |
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://www.visualstudio.com/en-us/docs/git/create-a-readme). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+## Docs
+* [Scorpio](https://github.com/project-scorpio/Scorpio/blob/master/docs/index.md)
+
+## Contribute
+One of the easiest ways to contribute is to participate in discussions and discuss issues. You can also contribute by submitting pull requests with code changes.
