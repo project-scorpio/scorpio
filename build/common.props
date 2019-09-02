@@ -1,26 +1,23 @@
 ﻿<Project>
+<Import Project="versions.props" />
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <RootNamespace />
-    <Build>$([System.DateTime]::op_Subtraction($([System.DateTime]::get_Now().get_Date()),$([System.DateTime]::new(2019,4,9))).get_TotalDays())</Build>
-    <AssemblyVersion>0.1.0.$(Build)</AssemblyVersion>
-    <Version>0.1.0-alpha.1</Version>
     <Authors>Zidan.Wang</Authors>
     <Company>Pluto Studio</Company>
     <Copyright>Copyright ©  2015-2019 Pluto Studio</Copyright>
     <Product>Scorpio</Product>
     <Description>Scorpio 是由 Pluto Studio 所开发的一系列Api及框架。</Description>
-    <PackageLicenseUrl>https://github.com/wzd24/Scorpio/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/wzd24/Scorpio/wiki</PackageProjectUrl>
     <RepositoryUrl>https://github.com/wzd24/Scorpio</RepositoryUrl>
     <PackageIconUrl>https://wzd24.github.io/Scorpio/scorpio.png</PackageIconUrl>
     <RepositoryType>git</RepositoryType>
-    <SolutionDir>$(MSBuildThisFileDirectory)</SolutionDir>
   </PropertyGroup>
   <PropertyGroup >
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   
 </Project>

@@ -1,0 +1,7 @@
+﻿<Project>
+  <PropertyGroup>
+    <Build>$([System.DateTime]::op_Subtraction($([System.DateTime]::get_Now().get_Date()),$([System.DateTime]::new(2019,4,9))).get_TotalDays())</Build>
+    <AssemblyVersion>0.1.0.$(Build)</AssemblyVersion>
+    <Version>0.1.0-alpha.1</Version>
+  </PropertyGroup>  
+</Project>
