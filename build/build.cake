@@ -36,7 +36,7 @@ public class BuildService
         _cakeContext.CleanDirectories("./*/src/**/bin");
         _cakeContext.CleanDirectories("./*/test/**/obj");
         _cakeContext.CleanDirectory(_context.ArtifactsPath);
-        _cakeContext.Information(_context.Version.GetVersion());
+        _cakeContext.Information(_nugetApiKey);
     }
 
     public void Restore(){
