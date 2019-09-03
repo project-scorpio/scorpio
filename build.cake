@@ -10,38 +10,32 @@ var service = new BuildService(Context);
 // TASKS
 ///////////////////////////////////////////////////////////////////////////////
 Task("Clean")
-	.Does(() =>
-{
+	.Does(() =>{
 	service.Clean();
 });
 Task("Build").IsDependentOn("Clean")
-	.Does(() =>
-{
+	.Does(() =>{
 	service.Build();
-	
 });
 Task("Test")
 	.IsDependentOn("Build")
-	.Does(() =>
-{
-		service.Test();
+	.Does(() =>{
+	service.Test();
 });
 
 Task("Package")
     .IsDependentOn("Test")
     .WithCriteria(() =>service.Context.Environment.IsPublish)
-    .Does(()=>
-    {
-			service.Package();
-    });
+    .Does(()=>{
+	service.Package();
+});
 
 	Task("Publish")
     .IsDependentOn("Package")
     .WithCriteria(() =>service.Context.Environment.IsPublish)
-    .Does(()=>
-    {
-    	service.Publish();
-    });
+    .Does(()=>{
+    service.Publish();
+});
 
 Task("Default").IsDependentOn("Build").IsDependentOn("Package").IsDependentOn("Publish");
 
