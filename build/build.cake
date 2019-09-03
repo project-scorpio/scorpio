@@ -31,10 +31,10 @@ public class BuildService
     public  void Clean()
     {
         _cakeContext.Information("Begin clean solution");
-        _cakeContext.CleanDirectories("./*/src/**/bin");
-        _cakeContext.CleanDirectories("./*/test/**/obj");
-        _cakeContext.CleanDirectories("./*/src/**/bin");
-        _cakeContext.CleanDirectories("./*/test/**/obj");
+        _cakeContext.CleanDirectories("./**/src/**/bin");
+        _cakeContext.CleanDirectories("./**/test/**/obj");
+        _cakeContext.CleanDirectories("./**/src/**/bin");
+        _cakeContext.CleanDirectories("./**/test/**/obj");
         _cakeContext.CleanDirectory(_context.ArtifactsPath);
     }
 
