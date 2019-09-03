@@ -50,7 +50,6 @@ public class BuildEnvironment
     public string Configuration=>_context.Argument("configuration","Release");
 
     public bool IsPublish=>_buildSystem.IsRunningOnAppVeyor 
-                            && _appVeyor.Environment.Repository.Branch=="master" 
                             && _appVeyor.Environment.Repository.Tag.IsTag;
 
     public IAppVeyorProvider AppVeyor => _appVeyor;
