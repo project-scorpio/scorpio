@@ -8,6 +8,7 @@ namespace Scorpio.Authorization
     /// 
     /// </summary>
    public sealed class AllowAnonymousAttribute:Attribute
-    {
-    }
+   {
+       
+   }
 }
