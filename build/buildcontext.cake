@@ -6,10 +6,10 @@ public class BuildContext
         Context = context;
         Version=new BuildVersion(context);
         Environment=new BuildEnvironment(context);
-        Projects = Context.GetDirectories("./*/src/*");
-		TestProjects = Context.GetDirectories("./*/test/*");
-		ProjectFiles = Context.GetFiles("./*/src/*/*.csproj");
-		TestProjectFiles = Context.GetFiles("./*/test/*/*.csproj");
+        Projects = Context.GetDirectories("./**/src/*");
+		TestProjects = Context.GetDirectories("./**/test/*");
+		ProjectFiles = Context.GetFiles("./**/src/*/*.csproj");
+		TestProjectFiles = Context.GetFiles("./**/test/*/*.csproj");
         ArtifactsPath=context.Directory("./artifacts");
     }
 
@@ -47,7 +47,7 @@ public class BuildEnvironment
 
     public bool IsRunningOnAppVeyor=>_buildSystem.IsRunningOnAppVeyor;
 
-    public string Configuration=>_context.Argument("configuration","Release");
+    public string Configuration=>_context.Argument("configuration",_buildSystem.IsLocalBuild?"Debug":"Release");
 
     public bool IsPublish=>_buildSystem.IsRunningOnAppVeyor 
                             && _appVeyor.Environment.Repository.Tag.IsTag;

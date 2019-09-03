@@ -11,7 +11,12 @@ Scorpio is a modular-based cross-platform framework for the .NET Core and .NET f
 ### Core library
 | Package Name |  NuGet | MyGet | Downloads  |
 |--------------|  ------- |  ------- |  ----  |
-| Scorpio | [![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/scorpio)](https://www.nuget.org/packages/Scorpio) | [![MyGet (with prereleases)](https://img.shields.io/myget/project-scorpio/vpre/scorpio)](https://www.myget.org/feed/project-scorpio/package/nuget/Scorpio) | [![Nuget](https://img.shields.io/nuget/dt/Scorpio)](https://www.nuget.org/packages/Scorpio) |
+| Scorpio | [![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Scorpio)](https://www.nuget.org/packages/Scorpio) | [![MyGet (with prereleases)](https://img.shields.io/myget/project-scorpio/vpre/scorpio)](https://www.myget.org/feed/project-scorpio/package/nuget/Scorpio) | [![Nuget](https://img.shields.io/nuget/dt/Scorpio)](https://www.nuget.org/packages/Scorpio) |
+
+### Extras library
+| Package Name |  NuGet | MyGet | Downloads  |
+|--------------|  ------- |  ------- |  ----  |
+| Scorpio.Data | [![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Scorpio.Data)](https://www.nuget.org/packages/Scorpio.Data) | [![MyGet (with prereleases)](https://img.shields.io/myget/project-scorpio/vpre/scorpio.data)](https://www.myget.org/feed/project-scorpio/package/nuget/Scorpio.Data) | [![Nuget](https://img.shields.io/nuget/dt/Scorpio.Data)](https://www.nuget.org/packages/Scorpio.Data) |
 
 ## Docs
 * [Scorpio](https://github.com/project-scorpio/Scorpio/blob/master/docs/index.md)
