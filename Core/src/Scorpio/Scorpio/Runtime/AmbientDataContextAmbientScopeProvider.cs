@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Scorpio.Runtime
 {
-    internal class AmbientDataContextAmbientScopeProvider<T> : IAmbientScopeProvider<T>,ISingletonDependency
+    internal class AmbientDataContextAmbientScopeProvider<T> : IAmbientScopeProvider<T>
     {
 
         private static readonly ConcurrentDictionary<string, ScopeItem> _scopeDictionary = new ConcurrentDictionary<string, ScopeItem>();
