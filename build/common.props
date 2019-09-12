@@ -11,8 +11,8 @@
     <Product>Scorpio</Product>
     <Description>Scorpio 是由 Pluto Studio 所开发的一系列Api及框架。</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/wzd24/Scorpio/wiki</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/wzd24/Scorpio</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/project-scorpio/Scorpio/wiki</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/project-scorpio/Scorpio</RepositoryUrl>
     <PackageIconUrl>https://wzd24.github.io/Scorpio/scorpio.png</PackageIconUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
