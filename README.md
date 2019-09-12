@@ -22,7 +22,7 @@ Scorpio is a modular-based cross-platform framework for the .NET Core and .NET f
 | Scorpio.Setting | [![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Scorpio.Setting)](https://www.nuget.org/packages/Scorpio.Setting) | [![MyGet (with prereleases)](https://img.shields.io/myget/project-scorpio/vpre/scorpio.setting)](https://www.myget.org/feed/project-scorpio/package/nuget/Scorpio.Setting) | [![Nuget](https://img.shields.io/nuget/dt/Scorpio.Setting)](https://www.nuget.org/packages/Scorpio.Setting) |
 
 ## Docs
-* [Scorpio](https://github.com/project-scorpio/Scorpio/blob/master/docs/index.md)
+* [Scorpio](https://project-scorpio.github.io/Scorpio/)
 
 ## Contribute
 One of the easiest ways to contribute is to participate in discussions and discuss issues. You can also contribute by submitting pull requests with code changes.

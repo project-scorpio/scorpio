@@ -4,6 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyTitle>Scorpio core library</AssemblyTitle>
     <RootNamespace />
+    <PackageTags>Scorpio;Aspect;dependencyinjection;Modularity</PackageTags>
   </PropertyGroup>
   
   <ItemGroup>
