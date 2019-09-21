@@ -331,3 +331,7 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
 
+vendor/
+_site/
+Gemfile.lock
+.DS_Store
