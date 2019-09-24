@@ -9,11 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E97F3DF6-2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.TestBase", "test\Scorpio.TestBase\Scorpio.TestBase.csproj", "{F072E484-3602-44EB-B4A3-1B698E6FA463}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.AspNet.Hosting", "src\Scorpio.AspNet.Hosting\Scorpio.AspNet.Hosting.csproj", "{6F22F56D-010F-4708-A048-9D12B4A5558E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.AspNetCore.Hosting", "src\Scorpio.AspNetCore.Hosting\Scorpio.AspNetCore.Hosting.csproj", "{6F22F56D-010F-4708-A048-9D12B4A5558E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Hosting", "src\Scorpio.Hosting\Scorpio.Hosting.csproj", "{BE666301-6D20-44CD-AB09-5831445E2656}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.AspNet.Hosting.Tests", "test\Scorpio.AspNet.Hosting.Tests\Scorpio.AspNet.Hosting.Tests.csproj", "{F991B7E2-0DEC-458B-BF42-D75E9C5AFB36}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.AspNetCore.Hosting.Tests", "test\Scorpio.AspNetCore.Hosting.Tests\Scorpio.AspNetCore.Hosting.Tests.csproj", "{F991B7E2-0DEC-458B-BF42-D75E9C5AFB36}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Hosting.Tests", "test\Scorpio.Hosting.Tests\Scorpio.Hosting.Tests.csproj", "{355366A7-EE20-45D3-9AA7-2CFDE114DE1E}"
 EndProject
