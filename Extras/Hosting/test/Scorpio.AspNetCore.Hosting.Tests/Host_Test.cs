@@ -1,16 +1,12 @@
-using Microsoft.Extensions.Hosting;
 using System;
 using Xunit;
 using Shouldly;
 using Moq;
 using Microsoft.Extensions.DependencyInjection;
-using System.Collections.Generic;
-using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Hosting;
-using Scorpio.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Builder;
 
-namespace Scorpio.AspNet.Hosting.Tests
+namespace Scorpio.AspNetCore.Hosting.Tests
 {
     public class Host_Test
     {
