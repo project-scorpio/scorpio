@@ -7,12 +7,12 @@
     <RootNamespace />
     <Authors>Zidan.Wang</Authors>
     <Company>Pluto Studio</Company>
-    <Copyright>Copyright ©  2015-2019 Pluto Studio</Copyright>
+    <Copyright>Copyright © Pluto Studio 2015-2019</Copyright>
     <Product>Scorpio</Product>
-    <Description>Scorpio 是由 Pluto Studio 所开发的一系列Api及框架。</Description>
+    <Description>Scorpio is a modular-based cross-platform framework for the .NET Core and .NET frameworks, with project include AOP, modularity, plug-ins, dependency injection, and some common extension methods.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/wzd24/Scorpio/wiki</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/wzd24/Scorpio</RepositoryUrl>
+    <PackageProjectUrl>https://project-scorpio.github.io/Scorpio/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/project-scorpio/Scorpio</RepositoryUrl>
     <PackageIconUrl>https://wzd24.github.io/Scorpio/scorpio.png</PackageIconUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
