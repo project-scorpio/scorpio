@@ -22,6 +22,21 @@ namespace Scorpio.DependencyInjection.Conventional
         }
     }
 
+    class AllInterfaceSelector : IRegisterAssemblyServiceSelector
+    {
+        public AllInterfaceSelector()
+        {
+        }
+
+        public IEnumerable<Type> Select(Type componentType)
+        {
+            var services = componentType.GetInterfaces().Where(s =>s.IsPublic).ToList();
+            services.Add(componentType);
+            return services;
+        }
+    }
+
+
     class SelfSelector : IRegisterAssemblyServiceSelector
     {
         public IEnumerable<Type> Select(Type componentType)
