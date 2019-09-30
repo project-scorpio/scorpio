@@ -3,7 +3,7 @@
 		<VersionMajor>0</VersionMajor>
 		<VersionMinor>1</VersionMinor>
 		<VersionPatch>0</VersionPatch>
-    	<VersionBuild>$([System.DateTime]::op_Subtraction($([System.DateTime]::get_Now().get_Date()),$([System.DateTime]::new(2019,4,9))).get_TotalDays())</VersionBuild>
+    <VersionBuild>$([System.DateTime]::op_Subtraction($([System.DateTime]::get_Now().get_Date()),$([System.DateTime]::new(2019,4,9))).get_TotalDays())</VersionBuild>
 		<VersionSuffix>alpha.4</VersionSuffix>
 		<VersionPrefix>$(VersionMajor).$(VersionMinor).$(VersionPatch)</VersionPrefix>
 		<AssemblyVersion>$(VersionPrefix).$(VersionBuild)</AssemblyVersion>
