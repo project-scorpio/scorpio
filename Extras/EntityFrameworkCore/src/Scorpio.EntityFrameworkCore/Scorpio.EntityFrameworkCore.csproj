@@ -7,6 +7,16 @@
     <RootNamespace />
 
   </PropertyGroup>
+
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <CodeAnalysisRuleSet>Scorpio.EntityFrameworkCore.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <CodeAnalysisRuleSet>Scorpio.EntityFrameworkCore.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../../../Data/src/Scorpio.Data/Scorpio.Data.csproj" />
   </ItemGroup>
