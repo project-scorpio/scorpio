@@ -39,8 +39,8 @@ namespace Scorpio.EntityFrameworkCore.DependencyInjection
         /// <param name="serviceProvider"></param>
         /// <param name="existingConnection"></param>
         public DbContextConfigurationContext(
-             string connectionString,
-             IServiceProvider serviceProvider,
+            string connectionString,
+            IServiceProvider serviceProvider,
             DbConnection existingConnection)
         {
             ConnectionString = connectionString;
@@ -72,8 +72,8 @@ namespace Scorpio.EntityFrameworkCore.DependencyInjection
         /// <param name="existingConnection"></param>
         public DbContextConfigurationContext(
             string connectionString,
-             IServiceProvider serviceProvider,
-             DbConnection existingConnection)
+            IServiceProvider serviceProvider,
+            DbConnection existingConnection)
             : base(
                   connectionString,
                   serviceProvider,

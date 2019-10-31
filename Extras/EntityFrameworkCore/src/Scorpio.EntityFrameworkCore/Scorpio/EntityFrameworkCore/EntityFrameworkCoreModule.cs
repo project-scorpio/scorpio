@@ -33,7 +33,6 @@ namespace Scorpio.EntityFrameworkCore
             });
             context.Services.Configure<DbConnectionOptions>(context.Configuration);
         }
-
         /// <summary>
         /// 
         /// </summary>
@@ -45,6 +44,7 @@ namespace Scorpio.EntityFrameworkCore
                 builder.AddSaveChangeHandler<SoftDeleteSaveChangeHandler>();
             });
             context.Services.AddTransient<IOnSaveChangeHandlersFactory, OnSaveChangeHandlersFactory>();
+            context.Services.AddTransient(typeof(IDbContextProvider<>), typeof(DefaultDbContextProvider<>));
             context.Services.ReplaceSingleton<IAsyncQueryableExecuter, EntityFrameworkCoreAsyncQueryableExecuter>();
             context.Services.RegisterAssemblyByConvention();
             base.ConfigureServices(context);

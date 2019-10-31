@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
+using Scorpio.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Caching.Memory;
@@ -15,7 +16,25 @@ namespace Scorpio.EntityFrameworkCore.DependencyInjection
     /// </summary>
     public static class ScorpioDbContextOptionsBuilderExtensions
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TDbContext"></typeparam>
+        /// <param name="optionsBuilder"></param>
+        /// <param name="defaultRepositoryType"></param>
+        public static IScorpioDbContextOptionsBuilder<TDbContext> SetDefaultRepository<TDbContext>(this IScorpioDbContextOptionsBuilder<TDbContext> optionsBuilder, Type defaultRepositoryType)
+            where TDbContext : ScorpioDbContext<TDbContext>
+        {
+            if (!defaultRepositoryType.IsAssignableTo(typeof(IRepository<>)))
+            {
+                throw new ScorpioException($"Given repositoryType is not a repository. It must implement {typeof(IRepository<>).AssemblyQualifiedName}.");
+            }
+            if (optionsBuilder is ScorpioDbContextOptionsBuilder<TDbContext> builder)
+            {
+                builder.DefaultRepositoryType = defaultRepositoryType;
+            }
+            return optionsBuilder;
+        }
 
         /// <summary>
         /// 

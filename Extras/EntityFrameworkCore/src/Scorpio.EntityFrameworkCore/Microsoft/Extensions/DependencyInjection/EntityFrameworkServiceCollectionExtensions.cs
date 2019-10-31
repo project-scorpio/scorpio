@@ -40,6 +40,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.TryAddTransient(serviceProvider => DbContextOptionsFactory.Create(serviceProvider, options));
             services.AddTransient<DbContextOptions>(p => p.GetRequiredService<DbContextOptions<TDbContext>>());
             services.AddTransient<TDbContext>();
+            new EfCoreRepositoryRegistrar<TDbContext>(options).RegisterRepositories();
             return services;
         }
 
