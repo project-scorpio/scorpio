@@ -33,6 +33,7 @@ namespace Scorpio.EntityFrameworkCore
             });
             context.Services.Configure<DbConnectionOptions>(context.Configuration);
         }
+
         /// <summary>
         /// 
         /// </summary>
