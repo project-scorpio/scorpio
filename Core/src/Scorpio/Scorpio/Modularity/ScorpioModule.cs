@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
@@ -30,7 +31,7 @@ namespace Scorpio.Modularity
         /// <param name="context"></param>
         public virtual void ConfigureServices(ConfigureServicesContext context)
         {
-            
+
         }
 
 

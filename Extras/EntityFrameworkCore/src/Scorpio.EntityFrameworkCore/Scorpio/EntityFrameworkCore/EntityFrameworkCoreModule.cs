@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Scorpio.Linq;
 using Scorpio.EntityFrameworkCore.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+
 namespace Scorpio.EntityFrameworkCore
 {
     /// <summary>
@@ -43,8 +45,8 @@ namespace Scorpio.EntityFrameworkCore
             {
                 builder.AddSaveChangeHandler<SoftDeleteSaveChangeHandler>();
             });
-            context.Services.AddTransient<IOnSaveChangeHandlersFactory, OnSaveChangeHandlersFactory>();
-            context.Services.AddTransient(typeof(IDbContextProvider<>), typeof(DefaultDbContextProvider<>));
+            context.Services.TryAddTransient<IOnSaveChangeHandlersFactory, OnSaveChangeHandlersFactory>();
+            context.Services.TryAddTransient(typeof(IDbContextProvider<>), typeof(DefaultDbContextProvider<>));
             context.Services.ReplaceSingleton<IAsyncQueryableExecuter, EntityFrameworkCoreAsyncQueryableExecuter>();
             context.Services.RegisterAssemblyByConvention();
             base.ConfigureServices(context);

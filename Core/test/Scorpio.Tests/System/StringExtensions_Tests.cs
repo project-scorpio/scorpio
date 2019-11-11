@@ -12,12 +12,16 @@ namespace System
         {
             "hello word".EnsureEndsWith('d').ShouldBe("hello word");
             "hello word".EnsureEndsWith('!').ShouldBe("hello word!");
+            "hello word".EnsureEndsWith("d").ShouldBe("hello word");
+            "hello word".EnsureEndsWith("!").ShouldBe("hello word!");
         }
         [Fact]
         public void EnsureStartsWith()
         {
             "hello word".EnsureStartsWith('h').ShouldBe("hello word");
             "hello word".EnsureStartsWith('i').ShouldBe("ihello word");
+            "hello word".EnsureStartsWith("h").ShouldBe("hello word");
+            "hello word".EnsureStartsWith("i").ShouldBe("ihello word");
         }
         [Fact]
         public void IsNullOrEmpty()

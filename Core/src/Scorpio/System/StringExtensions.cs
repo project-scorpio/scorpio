@@ -44,6 +44,37 @@ namespace System
         }
 
         /// <summary>
+        /// Adds a char to end of given string if it does not ends with the char.
+        /// </summary>
+        public static string EnsureEndsWith(this string str, string c, StringComparison comparisonType = StringComparison.Ordinal)
+        {
+            Check.NotNull(str, nameof(str));
+
+            if (str.EndsWith(c, comparisonType))
+            {
+                return str;
+            }
+
+            return str + c;
+        }
+
+        /// <summary>
+        /// Adds a char to beginning of given string if it does not starts with the char.
+        /// </summary>
+        public static string EnsureStartsWith(this string str, string c, StringComparison comparisonType = StringComparison.Ordinal)
+        {
+            Check.NotNull(str, nameof(str));
+
+            if (str.StartsWith(c, comparisonType))
+            {
+                return str;
+            }
+
+            return c + str;
+        }
+
+
+        /// <summary>
         /// Indicates whether this string is null or an System.String.Empty string.
         /// </summary>
         public static bool IsNullOrEmpty(this string str)

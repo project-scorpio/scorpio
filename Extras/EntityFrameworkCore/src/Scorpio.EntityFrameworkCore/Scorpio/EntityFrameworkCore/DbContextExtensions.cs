@@ -7,7 +7,10 @@ using System.Text;
 
 namespace Scorpio.EntityFrameworkCore
 {
-    internal static class DbContextExtensions
+    /// <summary>
+    /// 
+    /// </summary>
+    public static class DbContextExtensions
     {
 
         public static bool HasRelationalTransactionManager(this DbContext dbContext)
