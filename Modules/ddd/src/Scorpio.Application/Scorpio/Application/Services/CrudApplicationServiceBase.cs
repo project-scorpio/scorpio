@@ -76,9 +76,9 @@ namespace Scorpio.Application.Services
             expression.CreateMap<TUpdateInput, TEntity>();
         }
 
-        protected virtual IQueryable<TEntityDto> GetQuery(IQueryable<TEntity> sources)
+        protected virtual IQueryable<TEntity> GetQuery(IQueryable<TEntity> sources)
         {
-            return sources.ProjectTo<TEntityDto>(Configuration);
+            return sources;
         }
     }
 }

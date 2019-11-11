@@ -138,7 +138,7 @@ namespace Scorpio.Application.Services
         /// <returns></returns>
         public virtual async Task<IPagedResult<TEntityDto>> GetListAsync(TGetListInput input, CancellationToken cancellationToken = default)
         {
-            var query = Repository.AsQueryable();
+            var query = GetQuery(Repository);
             query = ApplyFilter(query, input);
             var totalCount = await AsyncQueryableExecuter.CountAsync(query, cancellationToken);
             query = ApplySorting(query, input);

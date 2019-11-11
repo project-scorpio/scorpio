@@ -90,7 +90,7 @@ namespace Scorpio.Application.Services
 
         public virtual IPagedResult<TEntityDto> GetList(TGetListInput input)
         {
-            var query = Repository.AsQueryable();
+            var query = GetQuery(Repository);
             query = ApplyFilter(query, input);
             var totalCount = query.Count();
             query = ApplySorting(query, input);
