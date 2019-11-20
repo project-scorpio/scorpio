@@ -64,7 +64,7 @@ public class BuildService
 
     public void Test()
     {
-        var testSettings=new DotNetCoreTestSettings{ Configuration=_context.Environment.Configuration};
+        var testSettings=new DotNetCoreTestSettings{ Configuration=_context.Environment.Configuration,NoBuild= true};
         foreach (var item in _context.TestProjectFiles)
         {
             _cakeContext.DotNetCoreTest(item.FullPath,testSettings);
@@ -78,6 +78,7 @@ public class BuildService
 						   OutputDirectory = _context.ArtifactsPath,
 						   MSBuildSettings=_msbuildSettings,
                            IncludeSymbols =true,
+                           NoBuild= true
 						};
         foreach (var item in _context.ProjectFiles)
         {

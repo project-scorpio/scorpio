@@ -5,6 +5,7 @@ using System.Text;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using System.Collections.Immutable;
 
 namespace Scorpio.Data
 {
@@ -27,6 +28,7 @@ namespace Scorpio.Data
                         s => JsonConvert.DeserializeObject<Dictionary<string, object>>(s)
                         ).HasColumnName(nameof(IHasExtraProperties.ExtraProperties));
                 });
+                
             }
         }
 
