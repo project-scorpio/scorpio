@@ -44,6 +44,7 @@ namespace Scorpio.EntityFrameworkCore
             context.Services.ScorpioDbContext(builder =>
             {
                 builder.AddSaveChangeHandler<SoftDeleteSaveChangeHandler>();
+                builder.AddSaveChangeHandler<HasExtraPropertiesSaveChangeHandler>();
             });
             context.Services.TryAddTransient<IOnSaveChangeHandlersFactory, OnSaveChangeHandlersFactory>();
             context.Services.TryAddTransient(typeof(IDbContextProvider<>), typeof(DefaultDbContextProvider<>));
