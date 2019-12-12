@@ -17,7 +17,7 @@ namespace Microsoft.Extensions.Hosting
         /// <typeparam name="TStartupModule"></typeparam>
         /// <param name="hostBuilder"></param>
         /// <returns></returns>
-        public static IBootstrapper AddBootstrapper<TStartupModule>(this IHostBuilder hostBuilder)
+        public static IHostBuilder AddBootstrapper<TStartupModule>(this IHostBuilder hostBuilder)
                  where TStartupModule : Scorpio.Modularity.IScorpioModule
         {
             return AddBootstrapper<TStartupModule>(hostBuilder, o => { });
@@ -29,7 +29,7 @@ namespace Microsoft.Extensions.Hosting
         /// <param name="hostBuilder"></param>
         /// <param name="optionsAction"></param>
         /// <returns></returns>
-        public static IBootstrapper AddBootstrapper<TStartupModule>(this IHostBuilder hostBuilder, Action<BootstrapperCreationOptions> optionsAction)
+        public static IHostBuilder AddBootstrapper<TStartupModule>(this IHostBuilder hostBuilder, Action<BootstrapperCreationOptions> optionsAction)
             where TStartupModule : Scorpio.Modularity.IScorpioModule
         {
             return AddBootstrapper(hostBuilder, typeof(TStartupModule), optionsAction);
@@ -41,7 +41,7 @@ namespace Microsoft.Extensions.Hosting
         /// <param name="builder"></param>
         /// <param name="startupModuleType"></param>
         /// <returns></returns>
-        public static IBootstrapper AddBootstrapper(this IHostBuilder builder, Type startupModuleType)
+        public static IHostBuilder AddBootstrapper(this IHostBuilder builder, Type startupModuleType)
         {
             return AddBootstrapper(builder, startupModuleType, o => { });
         }
@@ -52,17 +52,10 @@ namespace Microsoft.Extensions.Hosting
         /// <param name="startupModuleType"></param>
         /// <param name="optionsAction"></param>
         /// <returns></returns>
-        public static IBootstrapper AddBootstrapper(this IHostBuilder builder, Type startupModuleType, Action<BootstrapperCreationOptions> optionsAction)
+        public static IHostBuilder AddBootstrapper(this IHostBuilder builder, Type startupModuleType, Action<BootstrapperCreationOptions> optionsAction)
         {
-            InternalBootstrapper bootstrapper = null;
-            builder.ConfigureServices((context, services) =>
-            {
-                bootstrapper = new InternalBootstrapper(startupModuleType, services,context.Configuration, optionsAction);
-                bootstrapper.Properties["HostingEnvironment"] = context.HostingEnvironment;
-                services.AddSingleton(bootstrapper);
-            });
-            builder.UseServiceProviderFactory(new DynamicProxyServiceProviderFactory());
-            return bootstrapper;
+            builder.UseServiceProviderFactory(context=>new ServiceProviderFactory(context,startupModuleType,optionsAction));
+            return builder;
         }
     }
 }

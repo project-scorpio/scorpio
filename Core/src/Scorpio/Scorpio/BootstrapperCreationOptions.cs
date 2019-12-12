@@ -23,6 +23,9 @@ namespace Scorpio
         /// </summary>
         public PlugInSourceList PlugInSources { get; }
 
+
+        internal Func<IServiceFactoryAdapter> ServiceFactory { get; set; } = () => new ServiceFactoryAdapter<IServiceCollection>(new DefaultServiceProviderFactory());
+
         internal ICollection<Action<IConfigurationBuilder>> ConfigurationActions { get;  set; }
 
         internal BootstrapperCreationOptions(IServiceCollection services)

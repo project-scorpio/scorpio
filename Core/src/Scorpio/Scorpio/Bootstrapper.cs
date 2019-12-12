@@ -4,12 +4,7 @@ using System.Text;
 using Microsoft.Extensions.DependencyInjection;
 using Scorpio.Modularity;
 using Scorpio.DependencyInjection;
-using AspectCore.Extensions;
-using AspectCore.Injector;
-using AspectCore.Extensions.DependencyInjection;
 using System.Reflection;
-using AspectCore.DynamicProxy;
-using AspectCore.Configuration;
 using Microsoft.Extensions.Configuration;
 
 namespace Scorpio
@@ -20,6 +15,8 @@ namespace Scorpio
     public abstract class Bootstrapper : IBootstrapper, IModuleContainer
     {
         private bool _isShutdown = false;
+        private Lazy<IServiceFactoryAdapter> _serviceFactory;
+
         private readonly BootstrapperCreationOptions _options;
 
         /// <summary>
@@ -62,6 +59,23 @@ namespace Scorpio
         /// <summary>
         /// 
         /// </summary>
+        internal IServiceFactoryAdapter ServiceFactoryAdapter => _serviceFactory.Value;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
+        protected IServiceProvider CreateServiceProvider(IServiceCollection services)
+        {
+            var containerBuilder = ServiceFactoryAdapter.CreateBuilder(services);
+
+            return ServiceFactoryAdapter.CreateServiceProvider(containerBuilder);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="startupModuleType"></param>
         /// <param name="services"></param>
         /// <param name="configuration"></param>
@@ -74,6 +88,7 @@ namespace Scorpio
             _options = new BootstrapperCreationOptions(services);
             ModuleLoader = new ModuleLoader();
             optionsAction(_options);
+            _serviceFactory = new Lazy<IServiceFactoryAdapter>(() => _options.ServiceFactory());
             var configBuilder = new ConfigurationBuilder();
             if (configuration != null)
             {
@@ -186,7 +201,7 @@ namespace Scorpio
             var configBuilder = new ConfigurationBuilder();
             var config = configBuilder.Build();
             var bootstrapper = new InternalBootstrapper(startupModuleType, services, config, optionsAction);
-            bootstrapper.SetServiceProvider(services.BuildAspectInjectorProvider());
+            bootstrapper.SetServiceProvider(bootstrapper.CreateServiceProvider(services));
             return bootstrapper;
         }
 

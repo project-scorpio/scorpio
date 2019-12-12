@@ -45,7 +45,7 @@ namespace Scorpio.AspNetCore.Hosting
 
         public override IServiceProvider CreateServiceProvider(IServiceCollection services)
         {
-            return services.BuildAspectInjectorProvider();
+            return services.BuildServiceContextProvider();
         }
 
         private static ConfigureBuilder FindConfigureDelegate(Type startupModuleType, string environmentName)

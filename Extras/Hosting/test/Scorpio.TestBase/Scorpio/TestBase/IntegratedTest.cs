@@ -1,5 +1,4 @@
-﻿using AspectCore.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Scorpio.Modularity;
 using System;
 using System.Collections.Generic;
@@ -57,7 +56,7 @@ namespace Scorpio.TestBase
 
         protected virtual IServiceProvider CreateServiceProvider(IServiceCollection services)
         {
-            return services.BuildDynamicProxyServiceProvider();
+            return services.BuildServiceProvider();
         }
 
         public virtual void Dispose()

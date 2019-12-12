@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using Scorpio.Modularity;
 using Scorpio.DependencyInjection;
-using Scorpio.DynamicProxy;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using Scorpio.Conventional;
@@ -40,7 +39,7 @@ namespace Scorpio
 
         public override void PostConfigureServices(ConfigureServicesContext context)
         {
-            context.Services.RegisterConventionalInterceptor();
+            
         }
     }
 }

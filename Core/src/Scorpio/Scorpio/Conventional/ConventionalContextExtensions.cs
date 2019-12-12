@@ -16,7 +16,7 @@ namespace Scorpio.Conventional
         /// <param name="context"></param>
         /// <param name="name"></param>
         /// <param name="value"></param>
-        public static void Set(this IConventionalContext context,string name,object value)
+        public static void Set(this IConventionalContext context, string name, object value)
         {
             (context as ConventionalContext).SetItem(name, value);
         }
@@ -39,10 +39,10 @@ namespace Scorpio.Conventional
                  /// <param name="name"></param>
                  /// <param name="value"></param>
                  /// <returns></returns>
-        public static T GetOrAdd<T>(this IConventionalContext context, string name,T value)
+        public static T GetOrAdd<T>(this IConventionalContext context, string name, T value)
         {
-            var result= (context as ConventionalContext).GetItem<T>(name);
-            if (result==default)
+            var result = (context as ConventionalContext).GetItem<T>(name);
+            if (Equals(result, default(T)))
             {
                 context.Set(name, value);
                 result = value;
