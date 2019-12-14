@@ -4,11 +4,10 @@ using AutoMapper.QueryableExtensions;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
-using Scorpio.Linq;
-using AspectCore.Injector;
 using Scorpio.Repositories;
 using Scorpio.Entities;
-
+using Scorpio.Linq;
+using Microsoft.Extensions.DependencyInjection;
 namespace Scorpio.Application.Services
 {
     /// <summary>
@@ -73,8 +72,7 @@ namespace Scorpio.Application.Services
         /// <summary>
         /// 
         /// </summary>
-        [FromContainer]
-        public IAsyncQueryableExecuter AsyncQueryableExecuter { get; set; }
+        public IAsyncQueryableExecuter AsyncQueryableExecuter { get;  }
 
         /// <summary>
         /// 
@@ -83,6 +81,7 @@ namespace Scorpio.Application.Services
         /// <param name="repository"></param>
         protected AsyncCrudApplicationService(IServiceProvider serviceProvider, IRepository<TEntity, TKey> repository) : base(serviceProvider, repository)
         {
+            AsyncQueryableExecuter = serviceProvider.GetService<IAsyncQueryableExecuter>();
         }
 
         /// <summary>

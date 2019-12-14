@@ -1,5 +1,4 @@
-﻿using AspectCore.Injector;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -15,16 +14,18 @@ namespace Scorpio.AspNetCore.Auditing
     /// </summary>
     internal class AspNetCoreAuditContributor : IAuditContributor
     {
+        private readonly IServiceProvider _serviceProvider;
+
         /// <summary>
         /// 
         /// </summary>
-        [FromContainer]
         public ILogger<AspNetCoreAuditContributor> Logger { get; set; }
 
 
-        public AspNetCoreAuditContributor()
+        public AspNetCoreAuditContributor(IServiceProvider serviceProvider)
         {
-            Logger = NullLogger<AspNetCoreAuditContributor>.Instance;
+            Logger = serviceProvider.GetService<ILoggerFactory>().CreateLogger<AspNetCoreAuditContributor>();
+            _serviceProvider = serviceProvider;
         }
         public void PreContribute(AuditContributionContext context)
         {
