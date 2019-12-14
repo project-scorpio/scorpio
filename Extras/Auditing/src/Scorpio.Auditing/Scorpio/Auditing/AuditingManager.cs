@@ -1,4 +1,4 @@
-﻿using AspectCore.Injector;
+﻿using AspectCore.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -23,7 +23,7 @@ namespace Scorpio.Auditing
         private readonly IAuditingStore _auditingStore;
         private readonly IServiceProvider _serviceProvider;
         private readonly AuditingOptions _options;
-        [FromContainer]
+        [FromServiceContext]
         protected ILogger<AuditingManager> Logger { get; set; }
 
         public IAuditScope Current => _ambientScopeProvider.GetValue(_ambientContextKey);

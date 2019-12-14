@@ -112,10 +112,13 @@ namespace Scorpio
 
         private void ConfigureServices()
         {
-            var context = new ConfigureServicesContext(this, Services) { Configuration = Configuration };
+            var context = new ConfigureServicesContext(this, Services,Configuration);
             Services.AddSingleton(context);
+            _options.PreConfigureServices(context);
             Modules.ForEach(m => m.Instance.PreConfigureServices(context));
+            _options.ConfigureServices(context);
             Modules.ForEach(m => m.Instance.ConfigureServices(context));
+            _options.PostConfigureServices(context);
             Modules.ForEach(m => m.Instance.PostConfigureServices(context));
         }
 

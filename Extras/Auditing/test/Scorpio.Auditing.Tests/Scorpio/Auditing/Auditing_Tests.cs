@@ -45,6 +45,11 @@ namespace Scorpio.Auditing
             store.Info.ShouldBeNull();
         }
 
+        protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options)
+        {
+            options.UseAspect();
+        }
+
     }
 
     [Audited]
@@ -56,7 +61,7 @@ namespace Scorpio.Auditing
         void Test2(string value, int num);
     }
 
-    class AttributedAuditingInterface : IAttributedAuditingInterface,DependencyInjection.ITransientDependency
+    class AttributedAuditingInterface : IAttributedAuditingInterface, DependencyInjection.ITransientDependency
     {
         public void Test(string value, int num)
         {

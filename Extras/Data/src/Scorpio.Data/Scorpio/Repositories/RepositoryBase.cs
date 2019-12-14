@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections;
+using Scorpio.Threading;
+
 namespace Scorpio.Repositories
 {
     /// <summary>
@@ -16,6 +18,15 @@ namespace Scorpio.Repositories
     public abstract class RepositoryBase<TEntity> : BasicRepositoryBase<TEntity>, IRepository<TEntity>
         where TEntity : class, IEntity
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="serviceProvider"></param>
+        /// <param name="cancellationTokenProvider"></param>
+        protected RepositoryBase(IServiceProvider serviceProvider, ICancellationTokenProvider cancellationTokenProvider) : base(serviceProvider, cancellationTokenProvider)
+        {
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -96,6 +107,12 @@ namespace Scorpio.Repositories
             return Task.CompletedTask;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <param name="updateExpression"></param>
+        /// <param name="autoSave"></param>
         public virtual void Update(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TEntity>> updateExpression, bool autoSave = false)
         {
             foreach (var entity in GetQueryable().Where(predicate).ToList())
@@ -120,6 +137,14 @@ namespace Scorpio.Repositories
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <param name="updateExpression"></param>
+        /// <param name="autoSave"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public virtual Task UpdateAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TEntity>> updateExpression, bool autoSave = false, CancellationToken cancellationToken = default)
         {
             Update(predicate, updateExpression);
@@ -135,6 +160,15 @@ namespace Scorpio.Repositories
     public abstract class RepositoryBase<TEntity, TKey> : RepositoryBase<TEntity>, IRepository<TEntity, TKey>
         where TEntity : class, IEntity<TKey>
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="serviceProvider"></param>
+        /// <param name="cancellationTokenProvider"></param>
+        protected RepositoryBase(IServiceProvider serviceProvider, ICancellationTokenProvider cancellationTokenProvider) : base(serviceProvider, cancellationTokenProvider)
+        {
+        }
+
         /// <summary>
         /// 
         /// </summary>

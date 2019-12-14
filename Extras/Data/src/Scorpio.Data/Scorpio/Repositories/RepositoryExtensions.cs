@@ -1,5 +1,4 @@
 ﻿using Scorpio.Entities;
-using Scorpio.DynamicProxy;
 using Scorpio.Threading;
 using System;
 using System.Collections.Generic;
@@ -36,7 +35,7 @@ namespace Scorpio.Repositories
             where TProperty : class
         {
 
-            if (repository.UnProxy() is ISupportsExplicitLoading<TEntity, TKey> repo)
+            if (repository is ISupportsExplicitLoading<TEntity, TKey> repo)
             {
                 await repo.EnsureCollectionLoadedAsync(entity, propertyExpression, cancellationToken);
             }
@@ -82,7 +81,7 @@ namespace Scorpio.Repositories
             where TEntity : class, IEntity<TKey>
             where TProperty : class
         {
-            if (repository.UnProxy() is ISupportsExplicitLoading<TEntity, TKey> repo)
+            if (repository is ISupportsExplicitLoading<TEntity, TKey> repo)
             {
                 await repo.EnsurePropertyLoadedAsync(entity, propertyExpression, cancellationToken);
             }

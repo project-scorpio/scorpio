@@ -1,5 +1,4 @@
-﻿using AspectCore.Injector;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -48,8 +47,7 @@ namespace Scorpio.EntityFrameworkCore
         /// <summary>
         /// 
         /// </summary>
-        [FromContainer]
-        public IOnSaveChangeHandlersFactory OnSaveChangeHandlersFactory { get; set; }
+        public IOnSaveChangeHandlersFactory OnSaveChangeHandlersFactory { get; }
         /// <summary>
         /// 
         /// </summary>
@@ -63,8 +61,7 @@ namespace Scorpio.EntityFrameworkCore
         /// <summary>
         /// 
         /// </summary>
-        [FromContainer]
-        public ILogger<ScorpioDbContext> Logger { get; set; }
+        public ILogger Logger { get; set; }
 
         /// <summary>
         /// 
@@ -90,6 +87,8 @@ namespace Scorpio.EntityFrameworkCore
 
             _filterOptions = filterOptions.Value;
             ServiceProvider = serviceProvider;
+            OnSaveChangeHandlersFactory = ServiceProvider.GetService<IOnSaveChangeHandlersFactory>();
+            Logger = ServiceProvider.GetService<ILoggerFactory>()?.CreateLogger(this.GetType());
             DataFilter = ServiceProvider.GetService<IDataFilter>();
             ScorpioDbContextOptions = ServiceProvider.GetRequiredService<IOptions<ScorpioDbContextOptions>>().Value;
         }

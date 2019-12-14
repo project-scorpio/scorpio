@@ -14,9 +14,9 @@ namespace Scorpio.DependencyInjection.Conventional
         private readonly List<Type> _types;
 
         
-        public ConventionalDependencyAction(IConventionalConfiguration configuration, Assembly assembly) : base(configuration)
+        public ConventionalDependencyAction(IConventionalConfiguration configuration, IEnumerable<Type> types) : base(configuration)
         {
-            _types = assembly.GetTypes().Where(t => t.IsClass && !t.IsAbstract && !t.IsGenericTypeDefinition).ToList();
+            _types = types.Where(t => t.IsClass && !t.IsAbstract && !t.IsGenericTypeDefinition).ToList();
         }
 
         protected override void Action(IConventionalContext context)

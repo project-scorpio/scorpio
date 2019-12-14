@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Scorpio.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
-using Scorpio.Linq;
 using Scorpio.EntityFrameworkCore.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
@@ -48,7 +47,6 @@ namespace Scorpio.EntityFrameworkCore
             });
             context.Services.TryAddTransient<IOnSaveChangeHandlersFactory, OnSaveChangeHandlersFactory>();
             context.Services.TryAddTransient(typeof(IDbContextProvider<>), typeof(DefaultDbContextProvider<>));
-            context.Services.ReplaceSingleton<IAsyncQueryableExecuter, EntityFrameworkCoreAsyncQueryableExecuter>();
             context.Services.RegisterAssemblyByConvention();
             base.ConfigureServices(context);
         }

@@ -13,6 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Z.EntityFramework.Plus;
 using System.Linq.Expressions;
+using Scorpio.Threading;
 
 namespace Scorpio.Repositories.EntityFrameworkCore
 {
@@ -47,14 +48,19 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         DbContext IEfCoreRepository<TEntity>.DbContext => DbContext;
 
 
+       
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="serviceProvider"></param>
         /// <param name="contextProvider"></param>
-        public EfCoreRepository(IDbContextProvider<TDbContext> contextProvider)
+        /// <param name="cancellationTokenProvider"></param>
+        public EfCoreRepository(IServiceProvider serviceProvider, IDbContextProvider<TDbContext> contextProvider,ICancellationTokenProvider cancellationTokenProvider) : base(serviceProvider, cancellationTokenProvider)
         {
             _contextProvider = contextProvider;
         }
+
+
 
         /// <summary>
         /// 
@@ -314,14 +320,15 @@ namespace Scorpio.Repositories.EntityFrameworkCore
     where TDbContext : DbContext
     where TEntity : class, IEntity<TKey>
     {
+
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="dbContextProvider"></param>
-        public EfCoreRepository(IDbContextProvider<TDbContext> dbContextProvider)
-            : base(dbContextProvider)
+        /// <param name="serviceProvider"></param>
+        /// <param name="contextProvider"></param>
+        /// <param name="cancellationTokenProvider"></param>
+        public EfCoreRepository(IServiceProvider serviceProvider, IDbContextProvider<TDbContext> contextProvider, ICancellationTokenProvider cancellationTokenProvider) : base(serviceProvider, contextProvider, cancellationTokenProvider)
         {
-
         }
 
         /// <summary>

@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyTitle>Scorpio core library</AssemblyTitle>
+    <RootNamespace />
+    <PackageTags>Scorpio;Aspect;dependencyinjection;Modularity</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspectCore.Core" Version="2.0.0" />
+    <PackageReference Include="AspectCore.Extensions.DependencyInjection" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Scorpio\Scorpio.csproj" />
+  </ItemGroup>
+
+</Project>

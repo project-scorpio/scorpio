@@ -12,5 +12,8 @@
   <PropertyGroup >
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Core\test\Scorpio.TestBase\Scorpio.TestBase.csproj" />
+  </ItemGroup>
 
 </Project>

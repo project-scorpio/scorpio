@@ -1,5 +1,4 @@
-﻿using AspectCore.Injector;
-using Scorpio.DependencyInjection;
+﻿using Scorpio.DependencyInjection;
 using Scorpio.Entities;
 using Scorpio.Threading;
 using System;
@@ -22,21 +21,20 @@ namespace Scorpio.Repositories
         /// <summary>
         /// 
         /// </summary>
-        [FromContainer]
         public IServiceProvider ServiceProvider { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [FromContainer]
         public ICancellationTokenProvider CancellationTokenProvider { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        protected BasicRepositoryBase()
+        protected BasicRepositoryBase(IServiceProvider serviceProvider,ICancellationTokenProvider cancellationTokenProvider)
         {
-            CancellationTokenProvider = NoneCancellationTokenProvider.Instance;
+            ServiceProvider = serviceProvider;
+            CancellationTokenProvider = cancellationTokenProvider;
         }
 
         /// <summary>
@@ -152,6 +150,15 @@ namespace Scorpio.Repositories
     public abstract class BasicRepositoryBase<TEntity, TKey> : BasicRepositoryBase<TEntity>, IBasicRepository<TEntity, TKey>
         where TEntity : class, IEntity<TKey>
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="serviceProvider"></param>
+        /// <param name="cancellationTokenProvider"></param>
+        protected BasicRepositoryBase(IServiceProvider serviceProvider, ICancellationTokenProvider cancellationTokenProvider) : base(serviceProvider, cancellationTokenProvider)
+        {
+        }
+
         /// <summary>
         /// 
         /// </summary>

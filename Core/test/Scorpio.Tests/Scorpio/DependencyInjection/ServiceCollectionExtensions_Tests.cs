@@ -31,7 +31,7 @@ namespace Scorpio.DependencyInjection
             var assembly = typeof(ServiceCollectionExtensions_Tests).Assembly;
             services.RegisterAssemblyByConvention(assembly);
             registrar.RegisterAssemblyInvoked.ShouldBeTrue();
-            registrar.Assembly.ShouldBe(assembly);
+            registrar.Types.ShouldBe(assembly.GetTypes());
         }
         [Fact]
         public void RegisterAssemblyByConvention2()
@@ -40,10 +40,10 @@ namespace Scorpio.DependencyInjection
             var registrar = new EmptyConventionalDependencyRegistrar();
             services.AddConventionalRegistrar(registrar);
             services.GetSingletonInstanceOrNull<ConventionalRegistrarList>().Contains(registrar).ShouldBeTrue();
-            var assembly = typeof(ServiceCollectionExtensions_Tests).Assembly;
+            var assembly = typeof(ServiceCollectionExtensions_Tests).Assembly.GetTypes();
             services.RegisterAssemblyByConvention();
             registrar.RegisterAssemblyInvoked.ShouldBeTrue();
-            registrar.Assembly.ShouldBe(assembly);
+            registrar.Types.ShouldBe(assembly);
         }
     }
 
@@ -51,11 +51,11 @@ namespace Scorpio.DependencyInjection
     {
         public bool RegisterAssemblyInvoked { get; set; }
 
-        public Assembly Assembly { get; set; }
+        public IEnumerable<Type> Types { get; set; }
 
         public void Register(IConventionalRegistrationContext context)
         {
-            Assembly = context.Assembly;
+            Types = context.Types;
             RegisterAssemblyInvoked = true;
         }
 

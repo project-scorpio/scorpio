@@ -11,10 +11,11 @@ namespace Scorpio.Modularity
     /// </summary>
     public class ConfigureServicesContext
     {
-        internal ConfigureServicesContext(IBootstrapper bootstrapper, IServiceCollection services)
+        internal ConfigureServicesContext(IBootstrapper bootstrapper, IServiceCollection services,IConfiguration configuration)
         {
             Bootstrapper = bootstrapper;
             Services = services;
+            Configuration = configuration;
         }
 
         /// <summary>
@@ -30,7 +31,7 @@ namespace Scorpio.Modularity
         /// <summary>
         /// The <see cref="IConfiguration" /> containing the merged configuration of the application.
         /// </summary>
-        public IConfiguration Configuration { get; set; }
+        public IConfiguration Configuration { get;  }
 
         /// <summary>
         /// A central location for sharing state between components during the host building process.
