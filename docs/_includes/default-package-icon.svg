@@ -2,18 +2,8 @@
 <svg viewBox="0 0 50 50" width="40" height="40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 44 (41411) - http://www.bohemiancoding.com/sketch -->
     <title>ImageDefault</title>
-    <desc>Created with Sketch.</desc>
-    <defs>
-      <style>
-        @media screen and (-ms-high-contrast: active) {
-          .high-contrast-visible {
-            stroke: windowText;
-          }
-        }
-      </style>
-    </defs>
     <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Component/Row" transform="translate(-20.000000, -21.000000)" class="high-contrast-visible" stroke="#004880">
+        <g id="Component/Row" transform="translate(-20.000000, -21.000000)" class="text-primary" stroke="currentcolor">
             <g id="_asset/LogoOutline" transform="translate(20.000000, 21.000000)">
                 <g id="Group-2">
                     <rect id="Rectangle" stroke-width="2" x="9.65384615" y="9.65384615" width="39.3461538" height="39.3461538" rx="10"></rect>

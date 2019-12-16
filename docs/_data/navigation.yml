@@ -1,8 +1,8 @@
-- title: Documentation
-  url: /docs
-- title: Reference
-  url: /dsl
+- title: 文档
+  url: docs
+- title: 参考
+  url: dsl
 - title: API
-  url: /api
-- title: Module
-  url: /mod
+  url: api
+- title: 模块
+  url: mod
