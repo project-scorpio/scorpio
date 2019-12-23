@@ -36,7 +36,7 @@ github_repo: "Scorpio"
 # Optional
 
 # Should there be feedback buttons at the bottom of pages?
-feedback: false
+feedback: true
 
 # Link to a privacy policy in footer, uncomment and define if wanted
 # privacy: https://domain.com/privacy
@@ -55,7 +55,7 @@ markdown: kramdown
 highlighter: rouge
 
 lastupdate: 2019-12-15
-currently: 0.1.0-alpha.3
+currently: 0.1.0-alpha.4
 # If you add tags to pages, you can link them to some external search
 # If you want to disable this, comment the URL.
 tag_search_endpoint: https://ask.cyberinfrastructure.org/search?q=
@@ -74,12 +74,36 @@ collections:
   docs:
     output: true
     permalink: /:collection/:path
+  getting-started:
+    output: true
+    permalink: /docs/:collection/:path
+  tutorials:
+    output: true
+    permalink: /docs/:collection/:path
+  fundamentals:
+    output: true
+    permalink: /docs/:collection/:path
 
 # Defaults
 defaults:
   - scope:
       path: "_docs"
       type: "docs"
+    values:
+      layout: page
+  - scope:
+      path: "_getting-started"
+      type: "getting-started"
+    values:
+      layout: page
+  - scope:
+      path: "_tutorials"
+      type: "tutorials"
+    values:
+      layout: page
+  - scope:
+      path: "_fundamentals"
+      type: "fundamentals"
     values:
       layout: page
   -
