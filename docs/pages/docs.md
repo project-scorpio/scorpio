@@ -5,27 +5,26 @@ permalink: /docs/
 collection: docs
 ---
 
-# Documentation
+# 文档
 
-Scorpio is a modular-based cross-platform framework for the .NET Core and .NET frameworks, with project include AOP, modularity, plug-ins, dependency injection, and some common extension and modules.
+Scorpio 是用于 .NET Core 和 .NET Framework 的基于模块化的跨平台框架，包括AOP，模块化，插件化，依赖项注入以及一些常见的扩展和模块。
 
-## Project Status
+## 项目状态
 
-Scorpio is currently in preview stage and not ready to use in production. The documentation is still in progress and it is far from complete.
+Scorpio 目前处于预览阶段，尚未准备好用于生产中。 该文档仍在进行中，还远远不够完整。
 
-## Getting Started
+## 快速开始
 
-You can start from scratch (with an empty project) then manually install the Scorpio Framework and use the following tutorials:
+您可以使用以下教程从一个空项目开始手动安装并使用 Scorpio 框架：
 
-- [Console Application]({{site.baseurl}}/start)
-- ASP.NET Core Web Application
+- [Console Application]({{site.baseurl}}/docs/getting-started/console)
 
-## Source Code
+## 源代码
 
-Scorpio is hosted on GitHub. See the [source code]({{site.repo}}).
+Scorpio 托管在 GitHub 上。 请参阅 [源代码]({{site.repo}})。
 
-## Want to Contribute?
+## 想要加入?
 
-Scorpio is a community-driven open source project. See the [contribution guide]({{site.baseurl}}/Contribution) if you want to be a part of this project.
+Scorpio是一个社区驱动的开源项目。 如果您想成为该项目的一部分，请参阅 [贡献指南]({{site.baseurl}}/Contribution) 。
 
 
