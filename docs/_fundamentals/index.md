@@ -114,7 +114,7 @@ namespace Scorpio.Sample.AspnetCore
 
 ## Conventional
 
-Conventional 用于对应用 Assembly 中的 Type 执行一些一般性操作，如：依赖关系注入、Aspect 注入、Unit Of Work 注入等。
+Conventional 用于对应用 Assembly 中的 Type 执行一些常规操作，如：依赖关系注入、Aspect 注入、Unit Of Work 注入等。
 
 Conventional 主要由以下类、接口及方法组成：
 

@@ -12,6 +12,12 @@
   links:
     - title: "引导程序"
       url: "/docs/fundamentals/bootstrapper"
+    - title: "模块化"
+      url: "/docs/fundamentals/modularity"
+    - title: "常规性操作"
+      url: "/docs/fundamentals/conventional"
+    - title: "依赖注入"
+      url: "/docs/fundamentals/dependency-injection"
 - title: 教程
   url: /docs/tutorials/example-page
   collection: tutorials

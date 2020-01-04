@@ -144,7 +144,7 @@
 .highlight .s, .highlight .sa, .highlight .dl {
   color: #d14;
 }
-.highlight .na {
+.highlight .na , .n {
   color: #008080;
 }
 .highlight .bp {
