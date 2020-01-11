@@ -46,7 +46,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection RegisterAssemblyByConvention(this IServiceCollection services, Assembly assembly)
         {
             var context = new ConventionalRegistrationContext(assembly, services);
-            GetOrCreateRegistrarList(services).ToImmutableList().ForEach(registrar => registrar.Register(context));
+            GetOrCreateRegistrarList(services).ForEach(registrar => registrar.Register(context));
             return services;
         }
 

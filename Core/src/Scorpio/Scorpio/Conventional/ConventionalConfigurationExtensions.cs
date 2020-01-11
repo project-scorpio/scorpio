@@ -17,9 +17,18 @@ namespace Scorpio.Conventional
         /// <returns></returns>
         public static IConventionalContext Where(this IConventionalConfiguration configuration, Predicate<Type> predicate)
         {
+            return configuration.CreateContext().Where(predicate);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="configuration"></param>
+        /// <returns></returns>
+        public static IConventionalContext CreateContext(this IConventionalConfiguration configuration)
+        {
 
             var context = (configuration as ConventionalConfiguration).GetContext();
-            (context as ConventionalContext).AddPredicate(predicate);
             return context;
         }
 

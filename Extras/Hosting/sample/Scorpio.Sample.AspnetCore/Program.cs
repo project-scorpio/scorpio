@@ -14,10 +14,11 @@ namespace Scorpio.Sample.AspnetCore
         public static void Main(string[] args) => CreateHostBuilder(args).Build().Run();
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args).AddBootstrapper<SampleModule>()
+            Host.CreateDefaultBuilder(args).AddScorpio<SampleModule>()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
     }
 }

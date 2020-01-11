@@ -15,17 +15,6 @@ namespace Microsoft.Extensions.DependencyInjection
     /// </summary>
     public static class ServiceCollectionExtensions
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="services"></param>
-        /// <param name="types"></param>
-        /// <param name="configureAction"></param>
-        /// <returns></returns>
-        public static IServiceCollection RegisterAssembly(this IServiceCollection services, IEnumerable<Type> types, Action<IConventionalConfiguration> configureAction)
-        {
-            return DoConventionalAction<ConventionalDependencyAction>(services, types, configureAction);
-        }
 
         /// <summary>
         /// 
@@ -36,9 +25,9 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns></returns>
         public static IServiceCollection DoConventionalAction<TAction>(this IServiceCollection services, IEnumerable<Type> types, Action<IConventionalConfiguration> configureAction) where TAction : ConventionalActionBase
         {
-            var config = new ConventionalConfiguration(services);
+            var config = new ConventionalConfiguration(services,types);
             configureAction(config);
-            var action = Activator.CreateInstance(typeof(TAction), config, types) as TAction;
+            var action = Activator.CreateInstance(typeof(TAction), config) as TAction;
             action.Action();
             return services;
         }

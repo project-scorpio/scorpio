@@ -16,7 +16,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public void RegisterAssembly_1()
         {
             var services = new ServiceCollection();
-            services.RegisterAssembly(typeof(ServiceCollectionExtensions_Tests).Assembly.GetTypes(), config =>
+            services.DoConventionalAction<ConventionalDependencyAction>(typeof(ServiceCollectionExtensions_Tests).Assembly.GetTypes(), config =>
             {
                 config.Where(t => t.Name == nameof(Service1)).AsDefault();
                 config.Where(t => t.Name == nameof(Service2)).AsDefault();
@@ -31,7 +31,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public void RegisterAssembly_2()
         {
             var services = new ServiceCollection();
-            services.RegisterAssembly(typeof(ServiceCollectionExtensions_Tests).Assembly.GetTypes(), config =>
+            services.DoConventionalAction<ConventionalDependencyAction>(typeof(ServiceCollectionExtensions_Tests).Assembly.GetTypes(), config =>
             {
                 config.Where(t => t.Name == nameof(Service1)).AsSelf();
             });
@@ -44,7 +44,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public void RegisterAssembly_3()
         {
             var services = new ServiceCollection();
-            services.RegisterAssembly(typeof(ServiceCollectionExtensions_Tests).Assembly.GetTypes(), config =>
+            services.DoConventionalAction<ConventionalDependencyAction>(typeof(ServiceCollectionExtensions_Tests).Assembly.GetTypes(), config =>
             {
                 config.Where(t => t.Name == nameof(Service1)).As<IService2>().Lifetime(ServiceLifetime.Singleton);
                 config.Where(t => t.Name == nameof(Service1)).As<IService1>().Lifetime(ServiceLifetime.Transient);
@@ -59,7 +59,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public void RegisterAssembly_4()
         {
             var services = new ServiceCollection();
-            services.RegisterAssembly(typeof(ServiceCollectionExtensions_Tests).Assembly.GetTypes(), config =>
+            services.DoConventionalAction<ConventionalDependencyAction>(typeof(ServiceCollectionExtensions_Tests).Assembly.GetTypes(), config =>
             {
                 config.Where(t => t.Name == nameof(ExposeService)).AsExposeService();
             });

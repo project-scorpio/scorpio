@@ -11,23 +11,22 @@ namespace Scorpio.DependencyInjection.Conventional
 {
     class ConventionalDependencyAction : ConventionalActionBase
     {
-        private readonly List<Type> _types;
 
         
-        public ConventionalDependencyAction(IConventionalConfiguration configuration, IEnumerable<Type> types) : base(configuration)
+        public ConventionalDependencyAction(IConventionalConfiguration configuration) 
+            : base(configuration)
         {
-            _types = types.Where(t => t.IsClass && !t.IsAbstract && !t.IsGenericTypeDefinition).ToList();
         }
 
         protected override void Action(IConventionalContext context)
         {
-
-            _types.FindAll(context.GetTypePredicate().Compile()).ForEach(
+            context.Types.ForEach(
                 t => context.Get<ICollection<IRegisterAssemblyServiceSelector>>("Service").ForEach(
                     selector => selector.Select(t).ForEach(
                     s => context.Services.ReplaceOrAdd(
                         ServiceDescriptor.Describe(s, t, 
-                        context.GetOrAdd<IRegisterAssemblyLifetimeSelector>("Lifetime", new LifetimeSelector(ServiceLifetime.Transient)).Select(t)),
+                        context.GetOrAdd<IRegisterAssemblyLifetimeSelector>("Lifetime", 
+                        new LifetimeSelector(ServiceLifetime.Transient)).Select(t)),
                         t.GetAttribute<ReplaceServiceAttribute>()?.ReplaceService??false
                         ))));
         }

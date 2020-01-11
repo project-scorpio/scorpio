@@ -17,7 +17,7 @@ namespace Scorpio.Options
         /// <summary>
         /// 
         /// </summary>
-        public ExtensibleOptions()
+        protected ExtensibleOptions()
         {
             ExtendedOption = new Dictionary<string, object>();
         }

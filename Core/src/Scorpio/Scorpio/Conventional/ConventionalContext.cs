@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
@@ -8,20 +9,25 @@ namespace Scorpio.Conventional
 {
     internal class ConventionalContext:IConventionalContext
     {
+        private readonly Dictionary<string, object> _items = new Dictionary<string, object>();
+        private readonly IEnumerable<Type> _types;
+
         public IServiceCollection  Services { get;  }
 
-        public Expression<Predicate<Type>> TypePredicate { get; private set; }
 
-        private readonly Dictionary<string, object> _items = new Dictionary<string, object>();
+        internal Expression<Func<Type,bool>> TypePredicate { get; private set; }
 
-        public ConventionalContext(IServiceCollection services)
+        public IEnumerable<Type> Types => _types.Where(TypePredicate.Compile());
+
+        public ConventionalContext(IServiceCollection services, IEnumerable<Type> types)
         {
             Services = services;
+            _types = types;
         }
 
-        public void AddPredicateExpression(Expression<Predicate<Type>> expression)
+        public void AddPredicateExpression(Expression<Func<Type,bool>> expression)
         {
-            TypePredicate = TypePredicate == null ? expression : Expression.Lambda<Predicate<Type>>(Expression.AndAlso(TypePredicate, expression));
+            TypePredicate = TypePredicate == null ? expression : TypePredicate.And(expression);
         }
 
         public void AddPredicate(Predicate<Type> predicate)

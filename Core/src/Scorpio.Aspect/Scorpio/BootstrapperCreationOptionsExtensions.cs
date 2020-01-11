@@ -14,7 +14,7 @@ namespace Scorpio
         /// </summary>
         /// <param name="options"></param>
         /// <returns></returns>
-        public static BootstrapperCreationOptions UseAspect(this BootstrapperCreationOptions options)
+        public static BootstrapperCreationOptions UseAspectCore(this BootstrapperCreationOptions options)
         {
             options.UseServiceProviderFactory(new AspectCore.Extensions.DependencyInjection.ServiceContextProviderFactory());
             options.PostConfigureServices(context => DynamicProxy.InterceptorHelper.RegisterConventionalInterceptor(context.Services));

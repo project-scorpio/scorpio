@@ -111,6 +111,21 @@ namespace System.Reflection
             return IsAssignableToGenericType(givenTypeInfo.BaseType, genericType);
         }
 
+        /// <summary>
+        /// Determines whether this type is a standard type.
+        /// </summary>
+        /// <param name="this">The type to test.</param>
+        /// <returns>True if this type is is a standard type.</returns>
+        public static bool IsStandardType(this Type @this)
+        {
+            if (@this == null)
+            {
+                throw new ArgumentNullException(nameof(@this));
+            }
+
+            return @this.IsClass && !@this.IsAbstract && !@this.IsGenericTypeDefinition;
+        }
+
     }
 }
 

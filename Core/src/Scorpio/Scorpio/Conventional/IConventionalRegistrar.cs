@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace Scorpio.Conventional
@@ -14,5 +15,6 @@ namespace Scorpio.Conventional
         /// </summary>
         /// <param name="context">Registration context</param>
         void Register(IConventionalRegistrationContext context);
+
     }
 }

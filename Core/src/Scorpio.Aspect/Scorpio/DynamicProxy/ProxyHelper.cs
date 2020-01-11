@@ -29,5 +29,24 @@ namespace Scorpio.DynamicProxy
             }
             return proxy;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="proxy"></param>
+        /// <returns></returns>
+        public static T UnProxy<T>(this T proxy) where T:class
+        {
+            if (proxy.IsProxy())
+            {
+                var targetField = proxy.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic).FirstOrDefault(f => f.Name == "_implementation");
+                if (targetField != null)
+                {
+                    return targetField.GetValue(proxy).As<T>();
+                }
+            }
+            return proxy;
+        }
     }
 }

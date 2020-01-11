@@ -20,7 +20,7 @@ namespace Scorpio.Hosting.Tests
             var factory = default(IServiceProviderFactory<IServiceCollection>);
             mock.Setup(b => b.UseServiceProviderFactory(It.IsAny<Func<HostBuilderContext, IServiceProviderFactory<IServiceCollection>>>()))
                 .Callback<Func<HostBuilderContext, IServiceProviderFactory<IServiceCollection>>>(f => factory = f(context));
-            mock.Object.AddBootstrapper<HosttingTestModule>();
+            mock.Object.AddScorpio<HosttingTestModule>();
             factory.CreateBuilder(services);
             services.ShouldContainSingleton(typeof(IBootstrapper), typeof(InternalBootstrapper));
             var serviceProvider = factory.CreateServiceProvider(services);

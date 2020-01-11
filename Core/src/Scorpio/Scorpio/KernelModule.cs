@@ -22,7 +22,7 @@ namespace Scorpio
 
         public override void PreConfigureServices(ConfigureServicesContext context)
         {
-            context.Services.Replace(ServiceDescriptor.Transient(typeof(IOptionsFactory<>), typeof(Options.OptionsFactory<>)));
+            context.Services.ReplaceOrAdd(ServiceDescriptor.Transient(typeof(IOptionsFactory<>), typeof(Options.OptionsFactory<>)),true);
             context.Services.AddConventionalRegistrar(new BasicConventionalRegistrar());
         }
 
@@ -34,7 +34,7 @@ namespace Scorpio
         {
             context.Services.TryAddSingleton(typeof(IAmbientScopeProvider<>), typeof(AmbientDataContextAmbientScopeProvider<>));
             context.Services.TryAddSingleton<ICancellationTokenProvider>(NoneCancellationTokenProvider.Instance);
-            context.Services.RegisterAssemblyByConventionOfType<KernelModule>();
+            context.Services.RegisterAssemblyByConvention();
         }
 
         public override void PostConfigureServices(ConfigureServicesContext context)

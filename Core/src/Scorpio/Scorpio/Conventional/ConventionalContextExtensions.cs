@@ -54,10 +54,14 @@ namespace Scorpio.Conventional
         /// 
         /// </summary>
         /// <param name="context"></param>
+        /// <param name="predicate"></param>
         /// <returns></returns>
-        public static Expression<Predicate<Type>> GetTypePredicate(this IConventionalContext context)
+        public static IConventionalContext Where(this IConventionalContext  context, Predicate<Type> predicate)
         {
-            return (context as ConventionalContext).TypePredicate;
+
+            (context as ConventionalContext).AddPredicate(predicate);
+            return context;
         }
+
     }
 }

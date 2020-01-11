@@ -1,7 +1,8 @@
-﻿using Scorpio.Conventional;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text;
+
 namespace Scorpio.Conventional
 {
     /// <summary>
@@ -12,14 +13,15 @@ namespace Scorpio.Conventional
         /// <summary>
         /// 
         /// </summary>
+        /// <typeparam name="TAction"></typeparam>
         /// <param name="context"></param>
-        /// <param name="configAction"></param>
+        /// <param name="configureAction"></param>
         /// <returns></returns>
-        public static IConventionalRegistrationContext Action(this IConventionalRegistrationContext context,Action<IConventionalConfiguration> configAction)
+        public static IConventionalRegistrationContext DoConventionalAction<TAction>(this IConventionalRegistrationContext  context, Action<IConventionalConfiguration> configureAction) where TAction : ConventionalActionBase
         {
-            var config = new ConventionalConfiguration(context.Services);
-            configAction(config);
+            context.Services.DoConventionalAction<TAction>(context.Types, configureAction);
             return context;
         }
+
     }
 }
