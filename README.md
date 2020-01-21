@@ -24,7 +24,7 @@ Scorpio is a modular-based cross-platform framework for the .NET Core and .NET f
 | Scorpio.AspNetCore.Hosting | [![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Scorpio.AspNetCore.Hosting)](https://www.nuget.org/packages/Scorpio.AspNetCore.Hosting) | [![MyGet (with prereleases)](https://img.shields.io/myget/project-scorpio/vpre/scorpio.aspnetcore.hosting)](https://www.myget.org/feed/project-scorpio/package/nuget/Scorpio.AspNetCore.Hosting) | [![Nuget](https://img.shields.io/nuget/dt/Scorpio.AspNetCore.Hosting)](https://www.nuget.org/packages/Scorpio.AspNetCore.Hosting) |
 
 ## Docs
-* [Scorpio](https://project-scorpio.github.io/Scorpio/)
+* [Scorpio](https://project-scorpio.github.io/scorpio/)
 
 ## Contribute
 One of the easiest ways to contribute is to participate in discussions and discuss issues. You can also contribute by submitting pull requests with code changes.
