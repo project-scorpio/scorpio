@@ -17,7 +17,7 @@ category: Index Page
         </p>
         <div class="d-flex flex-column flex-md-row lead mb-3">
           <a href="{{site.baseurl}}/docs/getting-started/console" class="btn btn-lg btn-bd-primary mb-3 mb-md-0 mr-md-3" onclick="ga('send', 'event', 'Jumbotron actions', 'Get started', 'Get started');">快速入门</a>
-          <a href="{{site.baseurl}}/installation/" class="btn btn-lg btn-outline-secondary">下载列表</a>
+          <a href="{{site.baseurl}}/installation" class="btn btn-lg btn-outline-secondary">下载列表</a>
         </div>
         <p class="text-muted mb-0">
            当前版本：v{{site.currently}} | 文档更新日前 ：{{site.lastupdate}}
