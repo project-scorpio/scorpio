@@ -35,6 +35,18 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="services"></param>
+        /// <param name="types"></param>
+        /// <param name="configureAction"></param>
+        /// <returns></returns>
+        public static IServiceCollection RegisterConventionalDependencyInject(this IServiceCollection services,IEnumerable<Type> types, Action<IConventionalConfiguration> configureAction)
+        {
+            return services.DoConventionalAction<ConventionalDependencyAction>(types, configureAction);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="services"></param>
         /// <returns></returns>
