@@ -98,3 +98,11 @@ public class StartupModule:ScorpioModule
     }
 }
 ```
+
+## 第三方提供程序
+
+虽然 Scorpio 框架没有对任何第三方DI提供程序的核心依赖, 但它必须使用一个提供程序来支持动态代理(dynamic proxying)和一些高级特性以便部分 Scorpio 特性能正常工作.
+
+我们已经为您实现了AspectCore的集成.如果您需要使用，您可以在构建 `Bootstrapper` 时使用 `BootstrapperCreationOptions.UseAspectCore` 方法来集成 AspectCore.
+
+如果您需要集成其他的提供者，您可以实现 `IServiceProviderFactory<TContainerBuilder>` 接口并在创建 Bootstrapper 时使用 `BootstrapperCreationOptions.UseServiceProviderFactory<TContainerBuilder>` 方法注入您的提供者.
