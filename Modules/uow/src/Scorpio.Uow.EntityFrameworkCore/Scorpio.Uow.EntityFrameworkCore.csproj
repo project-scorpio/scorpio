@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Extras\EntityFrameworkCore\src\Scorpio.EntityFrameworkCore\Scorpio.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Scorpio.Uow\Scorpio.Uow.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace />
+    <AssemblyTitle>Scorpio unit of work library</AssemblyTitle>
+  </PropertyGroup>
+
+</Project>

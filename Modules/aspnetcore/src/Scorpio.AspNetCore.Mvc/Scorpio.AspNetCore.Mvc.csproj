@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <AssemblyTitle>Scorpio aspnet core mvc library</AssemblyTitle>
+    <RootNamespace />
+
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Scorpio.AspNetCore\Scorpio.AspNetCore.csproj" />
+  </ItemGroup>
+</Project>

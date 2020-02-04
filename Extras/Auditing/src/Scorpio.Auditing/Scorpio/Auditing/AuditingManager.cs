@@ -1,4 +1,4 @@
-﻿using AspectCore.Injector;
+﻿using AspectCore.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -23,7 +23,7 @@ namespace Scorpio.Auditing
         private readonly IAuditingStore _auditingStore;
         private readonly IServiceProvider _serviceProvider;
         private readonly AuditingOptions _options;
-        [FromContainer]
+        [FromServiceContext]
         protected ILogger<AuditingManager> Logger { get; set; }
 
         public IAuditScope Current => _ambientScopeProvider.GetValue(_ambientContextKey);
@@ -55,31 +55,40 @@ namespace Scorpio.Auditing
             return new DisposableSaveHandle(this, ambientScope, Current.Info, Stopwatch.StartNew());
         }
 
-        protected virtual void BeforeSave(DisposableSaveHandle saveHandle)
+        protected virtual void PreSave(DisposableSaveHandle saveHandle)
         {
             saveHandle.Stopwatch.Stop();
             saveHandle.Info.ExecutionDuration = saveHandle.Stopwatch.Elapsed;
+            ExecutePreContributors(saveHandle.Info);
+        }
+
+        protected virtual void PostSave(DisposableSaveHandle saveHandle)
+        {
             ExecutePostContributors(saveHandle.Info);
         }
 
         internal async Task SaveAsync(DisposableSaveHandle saveHandle)
         {
-            BeforeSave(saveHandle);
+            PreSave(saveHandle);
 
             if (ShouldSave(saveHandle.Info))
             {
                 await _auditingStore.SaveAsync(saveHandle.Info);
             }
+
+            PostSave(saveHandle);
         }
 
         internal void Save(DisposableSaveHandle saveHandle)
         {
-            BeforeSave(saveHandle);
+            PreSave(saveHandle);
 
             if (ShouldSave(saveHandle.Info))
             {
                 _auditingStore.Save(saveHandle.Info);
             }
+            PostSave(saveHandle);
+
         }
 
         protected bool ShouldSave(AuditInfo  auditInfo)
@@ -102,6 +111,26 @@ namespace Scorpio.Auditing
                     try
                     {
                         contributor.PostContribute(context);
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.LogException(ex, LogLevel.Warning);
+                    }
+                }
+            }
+        }
+
+        protected virtual void ExecutePreContributors(AuditInfo auditInfo)
+        {
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var context = new AuditContributionContext(scope.ServiceProvider, auditInfo);
+
+                foreach (var contributor in _options.Contributors)
+                {
+                    try
+                    {
+                        contributor.PreContribute(context);
                     }
                     catch (Exception ex)
                     {

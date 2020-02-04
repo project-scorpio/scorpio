@@ -46,9 +46,9 @@ namespace Scorpio.Modularity.Plugins
             return modules.ToArray();
         }
 
-        private IEnumerable<Assembly> GetAssemblies()
+        internal IEnumerable<Assembly> GetAssemblies()
         {
-            var assemblyFiles = Directory.EnumerateFiles(_path,"*.*",_searchOption).Where(f=>Path.GetExtension(f).IsIn("exe","dll"));
+            var assemblyFiles = Directory.EnumerateFiles(_path, "*.*", _searchOption).Select(p=>new FileInfo(p)).Where(f => f.Extension.ToLowerInvariant().IsIn(".exe", ".dll")).Select(f => f.FullName);
 
             if (Filter != null)
             {

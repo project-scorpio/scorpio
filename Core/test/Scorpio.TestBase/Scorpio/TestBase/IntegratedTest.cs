@@ -1,5 +1,4 @@
-﻿using AspectCore.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Scorpio.Modularity;
 using System;
 using System.Collections.Generic;
@@ -24,15 +23,20 @@ namespace Scorpio.TestBase
 
             BeforeAddBootstrapper(services);
 
-        var bootstrapper=    new InternalBootstrapper(typeof(TStartupModule),services,null,SetBootstrapperCreationOptions);
+            var bootstrapper = CreateBootstrapper(services);
             Bootstrapper = bootstrapper;
 
             AfterAddBootstrapper(services);
 
-            RootServiceProvider = CreateServiceProvider(services);
+            RootServiceProvider = CreateServiceProvider(bootstrapper);
             TestServiceScope = RootServiceProvider.CreateScope();
             bootstrapper.SetServiceProvider(TestServiceScope.ServiceProvider);
             bootstrapper.Initialize();
+        }
+
+        protected virtual Bootstrapper CreateBootstrapper(IServiceCollection services)
+        {
+            return new InternalBootstrapper(typeof(TStartupModule), services, null, SetBootstrapperCreationOptions);
         }
 
         protected virtual IServiceCollection CreateServiceCollection()
@@ -55,9 +59,10 @@ namespace Scorpio.TestBase
 
         }
 
-        protected virtual IServiceProvider CreateServiceProvider(IServiceCollection services)
+        protected virtual IServiceProvider CreateServiceProvider(Bootstrapper  bootstrapper)
         {
-            return services.BuildDynamicProxyServiceProvider();
+            var builder= bootstrapper.ServiceFactoryAdapter.CreateBuilder(bootstrapper.Services);
+            return bootstrapper.ServiceFactoryAdapter.CreateServiceProvider(builder);
         }
 
         public virtual void Dispose()

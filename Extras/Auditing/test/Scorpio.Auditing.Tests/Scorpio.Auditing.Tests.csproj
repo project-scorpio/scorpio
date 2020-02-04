@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace />
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Scorpio.Auditing\Scorpio.Auditing.csproj" />
-    <ProjectReference Include="..\Scorpio.TestBase\Scorpio.TestBase.csproj" />
   </ItemGroup>
 
 </Project>

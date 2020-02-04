@@ -11,8 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E97F3DF6-2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Setting.Tests", "test\Scorpio.Setting.Tests\Scorpio.Setting.Tests.csproj", "{D625473D-8260-4F95-BF67-300573972A24}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.TestBase", "test\Scorpio.TestBase\Scorpio.TestBase.csproj", "{F072E484-3602-44EB-B4A3-1B698E6FA463}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,18 +45,6 @@ Global
 		{D625473D-8260-4F95-BF67-300573972A24}.Release|x64.Build.0 = Release|Any CPU
 		{D625473D-8260-4F95-BF67-300573972A24}.Release|x86.ActiveCfg = Release|Any CPU
 		{D625473D-8260-4F95-BF67-300573972A24}.Release|x86.Build.0 = Release|Any CPU
-		{F072E484-3602-44EB-B4A3-1B698E6FA463}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F072E484-3602-44EB-B4A3-1B698E6FA463}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F072E484-3602-44EB-B4A3-1B698E6FA463}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{F072E484-3602-44EB-B4A3-1B698E6FA463}.Debug|x64.Build.0 = Debug|Any CPU
-		{F072E484-3602-44EB-B4A3-1B698E6FA463}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{F072E484-3602-44EB-B4A3-1B698E6FA463}.Debug|x86.Build.0 = Debug|Any CPU
-		{F072E484-3602-44EB-B4A3-1B698E6FA463}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F072E484-3602-44EB-B4A3-1B698E6FA463}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F072E484-3602-44EB-B4A3-1B698E6FA463}.Release|x64.ActiveCfg = Release|Any CPU
-		{F072E484-3602-44EB-B4A3-1B698E6FA463}.Release|x64.Build.0 = Release|Any CPU
-		{F072E484-3602-44EB-B4A3-1B698E6FA463}.Release|x86.ActiveCfg = Release|Any CPU
-		{F072E484-3602-44EB-B4A3-1B698E6FA463}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,7 +52,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{EAA26152-FDF1-4D00-8CE9-0B26E0B2D4A6} = {7D13B1CE-CDE9-42F0-9DBA-B04DCF7B6BEE}
 		{D625473D-8260-4F95-BF67-300573972A24} = {E97F3DF6-2647-41CB-9C8B-42A0378610B4}
-		{F072E484-3602-44EB-B4A3-1B698E6FA463} = {E97F3DF6-2647-41CB-9C8B-42A0378610B4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2EE2CF2F-915F-4077-8BBA-E84A7AC06458}

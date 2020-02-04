@@ -14,5 +14,10 @@ namespace Scorpio.Conventional
         /// 
         /// </summary>
         IServiceCollection  Services{ get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        IEnumerable<Type> Types { get; }
     }
 }

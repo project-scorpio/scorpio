@@ -16,5 +16,10 @@ namespace Scorpio
         {
             SetServiceProvider(serviceProvider);
         }
+
+        internal new IServiceProvider CreateServiceProvider(IServiceCollection services)
+        {
+            return base.CreateServiceProvider(services);
+        }
     }
 }

@@ -9,6 +9,7 @@ public class BuildService
     private readonly string _nugetQueryUrl;
     private readonly string _nugetPushUrl;
 
+    private readonly string _symbolsPushUrl;
     private readonly DotNetCoreMSBuildSettings _msbuildSettings;
 
     internal BuildContext Context => _context;
@@ -21,6 +22,7 @@ public class BuildService
         _nugetApiKey = _cakeContext.EnvironmentVariable("NugetApiKey");
         _nugetQueryUrl= _cakeContext.EnvironmentVariable("NugetQueryUrl","https://www.myget.org/F/project-scorpio/api/v3/index.json");
         _nugetPushUrl = _cakeContext.EnvironmentVariable("NugetPushUrl");
+        _symbolsPushUrl = _cakeContext.EnvironmentVariable("SymbolsPushUrl");
         _msbuildSettings=new DotNetCoreMSBuildSettings()
 										.SetFileVersion(_context.Version.GetFileVersion())
 										.SetConfiguration(_context.Environment.Configuration)
@@ -62,7 +64,7 @@ public class BuildService
 
     public void Test()
     {
-        var testSettings=new DotNetCoreTestSettings{ Configuration=_context.Environment.Configuration};
+        var testSettings=new DotNetCoreTestSettings{ Configuration=_context.Environment.Configuration,NoBuild= true};
         foreach (var item in _context.TestProjectFiles)
         {
             _cakeContext.DotNetCoreTest(item.FullPath,testSettings);
@@ -75,6 +77,8 @@ public class BuildService
 						   Configuration = _context.Environment.Configuration,
 						   OutputDirectory = _context.ArtifactsPath,
 						   MSBuildSettings=_msbuildSettings,
+                           IncludeSymbols =true,
+                           NoBuild= true
 						};
         foreach (var item in _context.ProjectFiles)
         {
@@ -87,7 +91,10 @@ public class BuildService
         var settings = new DotNetCoreNuGetPushSettings
                          {
 						   Source = _nugetPushUrl,
-						   ApiKey = _nugetApiKey
+						   ApiKey = _nugetApiKey,
+                           IgnoreSymbols=false,
+                           SymbolApiKey=_nugetApiKey,
+                           SymbolSource=_symbolsPushUrl,
                          };
         foreach (var item in packages)
         {
