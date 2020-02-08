@@ -24,22 +24,6 @@ namespace Scorpio.Uow
             context.Services.TryAddTransient<IUnitOfWork, NullUnitOfWork>();
             context.Services.RegisterAssemblyByConventionOfType<UnitOfWorkModule>();
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="context"></param>
-        public override void PostConfigureServices(ConfigureServicesContext context)
-        {
-            base.PostConfigureServices(context);
-        }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="context"></param>
-        public override void Initialize(ApplicationInitializationContext context)
-        {
-            base.Initialize(context);
-        }
     }
 }

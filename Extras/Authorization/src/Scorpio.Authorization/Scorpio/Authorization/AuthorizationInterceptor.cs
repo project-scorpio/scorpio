@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Threading.Tasks;
 using AspectCore.DynamicProxy;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,7 +38,7 @@ namespace Scorpio.Authorization
                 await next(context);
                 return;
             }
-            var service= context.ServiceProvider.GetRequiredService<IAuthorizationService>();
+            var service = context.ServiceProvider.GetRequiredService<IAuthorizationService>();
             var authorizationContext = new InvocationAuthorizationContext(Permissions,RequireAllPermissions,context.ServiceMethod);
             await service.CheckAsync(authorizationContext);
             await next(context);

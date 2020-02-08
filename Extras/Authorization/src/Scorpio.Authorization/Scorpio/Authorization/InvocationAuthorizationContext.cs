@@ -5,7 +5,7 @@ namespace Scorpio.Authorization
 {
     internal class InvocationAuthorizationContext:IInvocationAuthorizationContext
     {
-        public InvocationAuthorizationContext(string[] permissions, bool requireAllPermissions,MethodInfo method)
+        public InvocationAuthorizationContext(string[] permissions, bool requireAllPermissions,MethodBase method)
         {
             Permissions = permissions;
             RequireAllPermissions = requireAllPermissions;
@@ -16,6 +16,6 @@ namespace Scorpio.Authorization
 
         public bool RequireAllPermissions { get; }
 
-        public MethodInfo Method { get; }
+        public MethodBase Method { get; }
     }
 }

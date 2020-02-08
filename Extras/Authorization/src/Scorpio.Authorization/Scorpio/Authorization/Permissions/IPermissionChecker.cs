@@ -24,7 +24,7 @@ namespace Scorpio.Authorization.Permissions
         /// <param name="claimsPrincipal"></param>
         /// <param name="name"></param>
         /// <returns></returns>
-        Task<bool> CheckAsync( IPrincipal claimsPrincipal, string name);
+        Task<bool> CheckAsync(IPrincipal claimsPrincipal, string name);
 
     }
 }
