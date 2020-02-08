@@ -87,7 +87,7 @@ public class BuildService
     }
 
     public void Publish(){
-        var packages=_cakeContext.GetFiles(_nugetRegex);
+        var packages=_cakeContext.GetFiles(_nugetRegex,new GlobberSettings{FilePredicate=f=>f.Path.FullPath.IndexOf(".symbols.")<0});
         var settings = new DotNetCoreNuGetPushSettings
                          {
 						   Source = _nugetPushUrl,
