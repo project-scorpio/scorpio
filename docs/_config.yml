@@ -83,6 +83,9 @@ collections:
   fundamentals:
     output: true
     permalink: /docs/:collection/:path
+  authorization:
+    output: true
+    permalink: /docs/:collection/:path
 
 # Defaults
 defaults:
@@ -106,8 +109,12 @@ defaults:
       type: "fundamentals"
     values:
       layout: page
-  -
-    scope:
+  - scope:
+      path: "_authorization"
+      type: "authorization"
+    values:
+      layout: page
+  - scope:
       path: ""
       type: "pages"
     values:

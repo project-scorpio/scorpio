@@ -18,6 +18,12 @@
       url: "/docs/fundamentals/conventional"
     - title: "依赖注入"
       url: "/docs/fundamentals/dependency-injection"
+- title: 授权
+  url: /docs/authorization/
+  collection: authorization
+  links:
+    - title: "引导程序"
+      url: "/docs/fundamentals/bootstrapper"
 - title: 教程
   url: /docs/tutorials/example-page
   collection: tutorials
