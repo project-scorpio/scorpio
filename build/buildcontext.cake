@@ -7,6 +7,7 @@ public class BuildContext
         Version=new BuildVersion(context);
         Environment=new BuildEnvironment(context);
         Projects = Context.GetDirectories("./**/src/*");
+        Soluations = Context.GetFiles("./**/*.sln");
 		TestProjects = Context.GetDirectories("./**/test/*");
 		ProjectFiles = Context.GetFiles("./**/src/*/*.csproj");
 		TestProjectFiles = Context.GetFiles("./**/test/*/*.csproj");
@@ -18,6 +19,8 @@ public class BuildContext
     public BuildVersion Version { get;}
     
     public BuildEnvironment Environment{get;}
+
+    public FilePathCollection Soluations { get;  }
 
     public DirectoryPathCollection Projects { get;  }
 

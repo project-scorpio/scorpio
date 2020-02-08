@@ -47,7 +47,7 @@ namespace Scorpio.Auditing
 
         protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options)
         {
-            options.UseAspect();
+            options.UseAspectCore();
         }
 
     }
