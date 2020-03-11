@@ -17,7 +17,7 @@ namespace System.Linq.Async
         /// <param name="source"></param>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public static async Task<bool> AnyAsync<TSource>(this IEnumerable<TSource> source, Func<TSource, Task< bool>> predicate)
+        public static async Task<bool> AnyAsync<TSource>(this IEnumerable<TSource> source, Func<TSource, ValueTask< bool>> predicate)
         {
             foreach (var item in source)
             {
@@ -36,7 +36,7 @@ namespace System.Linq.Async
         /// <param name="source"></param>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public static async Task<bool> AllAsync<TSource>(this IEnumerable<TSource> source, Func<TSource, Task<bool>> predicate)
+        public static async Task<bool> AllAsync<TSource>(this IEnumerable<TSource> source, Func<TSource, ValueTask<bool>> predicate)
         {
             foreach (var item in source)
             {

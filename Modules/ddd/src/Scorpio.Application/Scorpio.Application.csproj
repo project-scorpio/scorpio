@@ -6,8 +6,8 @@
     <RootNamespace />
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="8.1.0" />
-    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.0.15" />
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.0.21" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="../../../../Core/src/Scorpio/Scorpio.csproj" />

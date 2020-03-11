@@ -56,7 +56,7 @@ namespace Scorpio.Authorization.Permissions
                 PermissionDefinitionManager.Get(name),
                 claimsPrincipal
                 );
-            return await GrantingProviders.AnyAsync(async p => (await p.CheckAsync(context)).IsGranted);
+            return await GrantingProviders.AnyAsync(async p => (await p.GrantAsync(context)).IsGranted);
         }
     }
 }
