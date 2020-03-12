@@ -28,5 +28,34 @@ public async Task CreateAsync(CreateAuthorDto input)
 
 ## 权限管理
 
-Scorpio 为您提供了完整的权限模型，
+权限系统是为特定用户,角色或客户端授权或禁止的简单策略。Scorpio 为您提供了完整的权限模型，您可以很简单的定义您的权限模型。
+
+### 定义权限
+
+您可以通过创建一个实现了 `IPermissionDefinitionProvider` 接口的类来注入您的权限定义。
+
+``` cs
+using Scorpio.Authorization.Permissions;
+
+namespace Scorpio.Sample.Authroization.Permissions
+{
+    public class SamplePermissionDefinitionProvider : IPermissionDefinitionProvider
+    {
+        public override void Define(IPermissionDefinitionContext context)
+        {
+            var myGroup = context.AddGroup("SampleGroup");
+
+            myGroup.AddPermission("Author_Management_Create_Books");
+        }
+    }
+}
+```
+
+>Scorpio 会自动发现并注入这个类,不需要进行配置!
+
+你需要在 `Define` 方法中添加权限组或者获取已存在的权限组,并向权限组中添加权限。
+
+### 权限授予提供者
+
+
 
