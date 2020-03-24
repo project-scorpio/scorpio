@@ -23,7 +23,6 @@ namespace Scorpio.Auditing
         private readonly IAuditingStore _auditingStore;
         private readonly IServiceProvider _serviceProvider;
         private readonly AuditingOptions _options;
-        [FromServiceContext]
         protected ILogger<AuditingManager> Logger { get; set; }
 
         public IAuditScope Current => _ambientScopeProvider.GetValue(_ambientContextKey);
@@ -40,7 +39,8 @@ namespace Scorpio.Auditing
             _auditingStore = auditingStore;
             _serviceProvider = serviceProvider;
             _options = options.Value;
-            Logger = NullLogger<AuditingManager>.Instance;
+            Logger = serviceProvider.GetService<ILoggerFactory>()?.CreateLogger<AuditingManager>()
+                ?? NullLogger<AuditingManager>.Instance;
         }
 
         public IAuditSaveHandle BeginScope()
@@ -91,9 +91,9 @@ namespace Scorpio.Auditing
 
         }
 
-        protected bool ShouldSave(AuditInfo  auditInfo)
+        protected bool ShouldSave(AuditInfo auditInfo)
         {
-            if (!auditInfo.Actions.Any() )
+            if (!auditInfo.Actions.Any())
             {
                 return false;
             }

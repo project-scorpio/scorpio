@@ -8,7 +8,7 @@ namespace Scorpio.Authorization
     /// <summary>
     /// Authorization interceptor.
     /// </summary>
-    public class AuthorizationInterceptor : AbstractInterceptor
+    internal class AuthorizationInterceptor : AbstractInterceptor
     {
         /// <summary>
         /// 
@@ -33,21 +33,26 @@ namespace Scorpio.Authorization
         /// <param name="next">Next.</param>
         public async override Task Invoke(AspectContext context, AspectDelegate next)
         {
-            if (Aspects.CrossCuttingConcerns.IsApplied(context.Implementation,Concern))
+            if (Aspects.CrossCuttingConcerns.IsApplied(context.Implementation, Concern))
             {
                 await next(context);
                 return;
             }
+            GetPermission(context);
             var service = context.ServiceProvider.GetRequiredService<IAuthorizationService>();
-            var authorizationContext = new InvocationAuthorizationContext(Permissions,RequireAllPermissions,context.ServiceMethod);
+            var authorizationContext = new InvocationAuthorizationContext(Permissions, RequireAllPermissions, context.ServiceMethod);
             await service.CheckAsync(authorizationContext);
             await next(context);
         }
 
-        internal void SetPermission(string[] permissions, bool requireAllPermissions)
+        internal void GetPermission(AspectContext context)
         {
-            Permissions = permissions;
-            RequireAllPermissions = requireAllPermissions;
+            var attribute = context.ImplementationMethod.GetAttribute<AuthorizeAttribute>() ??
+                 context.ServiceMethod.GetAttribute<AuthorizeAttribute>() ??
+                 context.Implementation.GetAttribute<AuthorizeAttribute>() ??
+                 context.ServiceMethod.DeclaringType.GetAttribute<AuthorizeAttribute>();
+            Permissions = attribute?.Permissions;
+            RequireAllPermissions = attribute?.RequireAllPermissions ?? false;
         }
     }
 }

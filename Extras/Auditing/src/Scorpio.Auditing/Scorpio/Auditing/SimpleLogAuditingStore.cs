@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Scorpio.Auditing
 {
@@ -14,10 +15,11 @@ namespace Scorpio.Auditing
     /// </summary>
     internal class SimpleLogAuditingStore : IAuditingStore, ISingletonDependency
     {
+        private readonly IServiceProvider _serviceProvider;
+
         /// <summary>
         /// 
         /// </summary>
-        [FromServiceContext]
         public ILogger<SimpleLogAuditingStore> Logger { get; set; }
 
         /// <summary>
@@ -26,6 +28,13 @@ namespace Scorpio.Auditing
         public SimpleLogAuditingStore()
         {
             Logger = NullLogger<SimpleLogAuditingStore>.Instance;
+        }
+
+        public SimpleLogAuditingStore(IServiceProvider  serviceProvider)
+        {
+            _serviceProvider = serviceProvider;
+            Logger = serviceProvider.GetService<ILoggerFactory>()?.CreateLogger<SimpleLogAuditingStore>()
+                ??NullLogger<SimpleLogAuditingStore>.Instance;
         }
 
         /// <summary>

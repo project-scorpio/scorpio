@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D2856428-C30
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Authorization", "src\Scorpio.Authorization\Scorpio.Authorization.csproj", "{D9332BBA-15A3-494E-A828-CCAB8CBE9490}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Authorization.Tests", "test\Scorpio.Authorization.Tests\Scorpio.Authorization.Tests.csproj", "{552A94BE-C248-40DF-BC6F-5F26B2EA65EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,12 +33,25 @@ Global
 		{D9332BBA-15A3-494E-A828-CCAB8CBE9490}.Release|x64.Build.0 = Release|Any CPU
 		{D9332BBA-15A3-494E-A828-CCAB8CBE9490}.Release|x86.ActiveCfg = Release|Any CPU
 		{D9332BBA-15A3-494E-A828-CCAB8CBE9490}.Release|x86.Build.0 = Release|Any CPU
+		{552A94BE-C248-40DF-BC6F-5F26B2EA65EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{552A94BE-C248-40DF-BC6F-5F26B2EA65EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{552A94BE-C248-40DF-BC6F-5F26B2EA65EC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{552A94BE-C248-40DF-BC6F-5F26B2EA65EC}.Debug|x64.Build.0 = Debug|Any CPU
+		{552A94BE-C248-40DF-BC6F-5F26B2EA65EC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{552A94BE-C248-40DF-BC6F-5F26B2EA65EC}.Debug|x86.Build.0 = Debug|Any CPU
+		{552A94BE-C248-40DF-BC6F-5F26B2EA65EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{552A94BE-C248-40DF-BC6F-5F26B2EA65EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{552A94BE-C248-40DF-BC6F-5F26B2EA65EC}.Release|x64.ActiveCfg = Release|Any CPU
+		{552A94BE-C248-40DF-BC6F-5F26B2EA65EC}.Release|x64.Build.0 = Release|Any CPU
+		{552A94BE-C248-40DF-BC6F-5F26B2EA65EC}.Release|x86.ActiveCfg = Release|Any CPU
+		{552A94BE-C248-40DF-BC6F-5F26B2EA65EC}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D9332BBA-15A3-494E-A828-CCAB8CBE9490} = {D2856428-C301-474B-B456-B692BB3E13C2}
+		{552A94BE-C248-40DF-BC6F-5F26B2EA65EC} = {C57152EE-7CEB-4FD2-A26B-9B8852795752}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D2AFD460-8F30-4611-A635-17D59DE0DE4B}
