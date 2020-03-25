@@ -336,3 +336,4 @@ _site/
 Gemfile.lock
 .DS_Store
 build.cmd
+publish.cmd

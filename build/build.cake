@@ -80,7 +80,7 @@ public class BuildService
                            IncludeSymbols =true,
                            NoBuild= true
 						};
-        foreach (var item in _context.ProjectFiles)
+        foreach (var item in _context.Soluations)
         {
             _cakeContext.DotNetCorePack(item.FullPath,settings);
         }
