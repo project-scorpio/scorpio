@@ -5,6 +5,8 @@ description: Scorpio 授权
 
 # Scorpio 授权
 
+本文介绍了 Scorpio 审计 (`Scorpio.Authorization`) 并提供有关使用方法的指南。
+
 ## 简介
 
 授权用于检查是否允许用户在应用程序中执行某些特定操作。
@@ -50,12 +52,47 @@ namespace Scorpio.Sample.Authroization.Permissions
     }
 }
 ```
-
->Scorpio 会自动发现并注入这个类,不需要进行配置!
-
 你需要在 `Define` 方法中添加权限组或者获取已存在的权限组,并向权限组中添加权限。
+
+>Scorpio 会自动发现并注入这个类,您需要在 `PermissionOptions.DefinitionProviders` 中添加您的提供者 !
+
+``` cs
+context.Services.Configure<PermissionOptions>(opt=>
+            {
+                opt.DefinitionProviders.Add<SamplePermissionDefinitionProvider>();
+            });
+```
 
 ### 权限授予提供者
 
+Scorpio 并没有内置权限授予逻辑，您需要自己通过实现 `IPermissionGrantingProvider` 来完成权限的授予。如：
 
+``` cs
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
 
+namespace Scorpio.Authorization.Permissions
+{
+    class RoleBasePermissionGrantingProvider : IPermissionGrantingProvider
+    {
+        public string Name { get; } = "RoleBaseProvider";
+
+        public Task<PermissionGrantingInfo> GrantAsync(PermissionGrantingContext context)
+        {
+            var success = context.Principal.IsInRole(context.Permission.Name);
+            return Task.FromResult(new PermissionGrantingInfo(success,Name));
+        }
+    }
+}
+```
+
+>Scorpio 会自动发现并注入这个类,您需要在 `PermissionOptions.GrantingProviders` 中添加您的提供者 !
+
+``` cs
+context.Services.Configure<PermissionOptions>(opt=>
+            {
+                opt.GrantingProviders.Add<RoleBasePermissionGrantingProvider>();
+            });
+```
