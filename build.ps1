@@ -83,7 +83,7 @@ if (Get-Command dotnet -ErrorAction SilentlyContinue) {
     $FoundDotNetCliVersion = dotnet --version;
 }
 
-if($FoundDotNetCliVersion -ne $DotNetVersion) {
+if($FoundDotNetCliVersion -lt $DotNetVersion) {
     $InstallPath = Join-Path $PSScriptRoot ".dotnet"
     if (!(Test-Path $InstallPath)) {
         New-Item -Path $InstallPath -ItemType Directory -Force | Out-Null;
@@ -116,7 +116,7 @@ if($FoundDotNetCliVersion -ne $DotNetVersion) {
 [string] $CakeExePath = ''
 [string] $CakeInstalledVersion = Get-Command dotnet-cake -ErrorAction SilentlyContinue  | % {&$_.Source --version}
 
-if ($CakeInstalledVersion -eq $CakeVersion) {
+if ($CakeInstalledVersion -ge $CakeVersion) {
     # Cake found locally
     $CakeExePath = (Get-Command dotnet-cake).Source
 }
