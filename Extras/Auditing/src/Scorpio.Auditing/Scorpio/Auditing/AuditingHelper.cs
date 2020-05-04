@@ -146,6 +146,7 @@ namespace Scorpio.Auditing
         {
             var auditInfo = new AuditInfo
             {
+                ApplicationName=Options.ApplicationName,
                 CurrentUser=_principalAccessor.Principal?.Identity?.Name,
                 ExecutionTime = Clock.Now
             };

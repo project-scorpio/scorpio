@@ -10,6 +10,13 @@ namespace Scorpio.Auditing
     /// </summary>
     public class AuditInfo
     {
+
+        /// <summary>
+        /// The name of the application or service writing audit logs.
+        /// Default: null.
+        /// </summary>
+        public string ApplicationName { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
