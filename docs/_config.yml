@@ -55,8 +55,8 @@ kramdown:
   input: GFM
   syntax_highlighter: rouge
 
-lastupdate: 2019-12-15
-currently: 0.1.0-alpha.4
+lastupdate: 2020-05-04
+currently: 0.1.0-alpha.5
 # If you add tags to pages, you can link them to some external search
 # If you want to disable this, comment the URL.
 tag_search_endpoint: https://ask.cyberinfrastructure.org/search?q=
