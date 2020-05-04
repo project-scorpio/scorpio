@@ -5,7 +5,7 @@ description: Scorpio 授权
 
 # Scorpio 授权
 
-本文介绍了 Scorpio 审计 (`Scorpio.Authorization`) 并提供有关使用方法的指南。
+本文介绍了 Scorpio 审计 ([`Scorpio.Authorization`{:.language-cs}](https://www.nuget.org/packages/Scorpio.Authorization)) 并提供有关使用方法的指南。
 
 ## 简介
 
@@ -15,9 +15,9 @@ Scorpio 为您提供了基于权限模型的灵活的授权系统，您可以很
 
 ## 授权管理
 
-在 Scorpio 您可以使用 `IAuthorizationManager` 控制授权，也可以在打开 Aspect 后，使用 `AuthorizeAttribute` 特性控制授权。
+在 Scorpio 您可以使用 `IAuthorizationManager`{:.language-cs} 控制授权，也可以在打开 Aspect 后，使用 `AuthorizeAttribute`{:.language-cs} 特性控制授权。
 
-您可以使用 `IAuthorizationManager` 在您的代码中有条件的控制授权。如：
+您可以使用 `IAuthorizationManager`{:.language-cs} 在您的代码中有条件的控制授权。如：
 
 ``` csharp
 public async Task CreateAsync(CreateAuthorDto input)
@@ -34,7 +34,7 @@ public async Task CreateAsync(CreateAuthorDto input)
 
 ### 定义权限
 
-您可以通过创建一个实现了 `IPermissionDefinitionProvider` 接口的类来注入您的权限定义。
+您可以通过创建一个实现了 `IPermissionDefinitionProvider`{:.language-cs} 接口的类来注入您的权限定义。
 
 ``` cs
 using Scorpio.Authorization.Permissions;
@@ -52,9 +52,9 @@ namespace Scorpio.Sample.Authroization.Permissions
     }
 }
 ```
-你需要在 `Define` 方法中添加权限组或者获取已存在的权限组,并向权限组中添加权限。
+你需要在 `Define`{:.language-cs} 方法中添加权限组或者获取已存在的权限组,并向权限组中添加权限。
 
->Scorpio 会自动发现并注入这个类,您需要在 `PermissionOptions.DefinitionProviders` 中添加您的提供者 !
+>Scorpio 会自动发现并注入这个类,您需要在 `PermissionOptions.DefinitionProviders`{:.language-cs} 中添加您的提供者 !
 
 ``` cs
 context.Services.Configure<PermissionOptions>(opt=>
@@ -65,7 +65,7 @@ context.Services.Configure<PermissionOptions>(opt=>
 
 ### 权限授予提供者
 
-Scorpio 并没有内置权限授予逻辑，您需要自己通过实现 `IPermissionGrantingProvider` 来完成权限的授予。如：
+Scorpio 并没有内置权限授予逻辑，您需要自己通过实现 `IPermissionGrantingProvider`{:.language-cs} 来完成权限的授予。如：
 
 ``` cs
 using System;
@@ -88,7 +88,7 @@ namespace Scorpio.Authorization.Permissions
 }
 ```
 
->Scorpio 会自动发现并注入这个类,您需要在 `PermissionOptions.GrantingProviders` 中添加您的提供者 !
+>Scorpio 会自动发现并注入这个类,您需要在 `PermissionOptions.GrantingProviders`{:.language-cs} 中添加您的提供者 !
 
 ``` cs
 context.Services.Configure<PermissionOptions>(opt=>

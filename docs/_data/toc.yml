@@ -18,6 +18,8 @@
       url: "/docs/fundamentals/conventional"
     - title: "依赖注入"
       url: "/docs/fundamentals/dependency-injection"
+    - title: "选项"
+      url: "/docs/fundamentals/options"
     - title: "授权"
       url: "/docs/fundamentals/authorization"
     - title: "审计"

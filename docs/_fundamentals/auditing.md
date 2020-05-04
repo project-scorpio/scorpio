@@ -5,7 +5,7 @@ description: Scorpio 审计日志
 
 # Scorpio 审计日志
 
-本文介绍了 Scorpio 审计日志 (`Scorpio.Auditing`) 并提供有关使用方法的指南。
+本文介绍了 Scorpio 审计日志 ([`Scorpio.Auditing`{:.language-cs}](https://www.nuget.org/packages/Scorpio.Auditing)) 并提供有关使用方法的指南。
 
 
 ## 简介
@@ -22,7 +22,7 @@ Scorpio 框架提供了一个可扩展的审计日志系统,自动化的根据�
 
 ## AuditingOptions
 
-`AuditingOptions` 是配置审计日志系统的主要options对象. 你可以在模块的 `ConfigureServices` 方法中进行配置:
+`AuditingOptions`{:.language-cs} 是配置审计日志系统的主要options对象. 你可以在模块的 `ConfigureServices()`{:.language-cs} 方法中进行配置:
 
 ``` cs
 Configure<AuditingOptions>(options =>
@@ -33,11 +33,11 @@ Configure<AuditingOptions>(options =>
 
 这里是你可以配置的选项列表:
 
-+ `IsEnabled` (默认值: `true`): 启用或禁用审计系统的总开关. 如果值为 `false`,则不使用其他选项.
-+ `IsEnabledForAnonymousUsers` (默认值: `true`): 如果只想为经过身份验证的用户记录审计日志,请设置为 `false`.如果为匿名用户保存审计日志,你将看到这些用户的 `CurrentUser` 值为 `null`.
-+ `ApplicationName`: 如果有多个应用程序保存审计日志到单一的数据库,使用此属性设置为你的应用程序名称区分不同的应用程序日志.
-+ `IgnoredTypes`: 审计日志系统忽略的 `Type` 列表. 如果它是实体类型,则不会保存此类型实体的更改. 在序列化操作参数时也使用此列表.
-+ `Contributors`: `IAuditContributor` 实现的列表. 贡献者是扩展审计日志系统的一种方式. 有关详细信息请参阅下面的"审计日志贡献者"部分.
++ `IsEnabled`{:.language-cs} (默认值: `true`{:.language-cs}): 启用或禁用审计系统的总开关. 如果值为 `false`{:.language-cs},则不使用其他选项.
++ `IsEnabledForAnonymousUsers`{:.language-cs} (默认值: `true`{:.language-cs}): 如果只想为经过身份验证的用户记录审计日志,请设置为 `false`{:.language-cs}.如果为匿名用户保存审计日志,你将看到这些用户的 `CurrentUser`{:.language-cs} 值为 `null`{:.language-cs}.
++ `ApplicationName`{:.language-cs}: 如果有多个应用程序保存审计日志到单一的数据库,使用此属性设置为你的应用程序名称区分不同的应用程序日志.
++ `IgnoredTypes`{:.language-cs}: 审计日志系统忽略的 `Type`{:.language-cs} 列表. 如果它是实体类型,则不会保存此类型实体的更改. 在序列化操作参数时也使用此列表.
++ `Contributors`{:.language-cs}: `IAuditContributor`{:.language-cs} 实现的列表. 贡献者是扩展审计日志系统的一种方式. 有关详细信息请参阅下面的"审计日志贡献者"部分.
 
 ## 启用/禁用审计日志服务
 
