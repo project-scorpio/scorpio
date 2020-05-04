@@ -9,9 +9,9 @@ description: Scorpio 基础知识
 
 ## Bootstrapper 
 
-Bootstrapper 类主要用于启动应用程序，发现并装载 ScorpioModule 类及其依赖链，完成应用启动前的初始化操作，以及应用程序的生命周期管理。
+`Bootstrapper`{:.language-cs} 类主要用于启动应用程序，发现并装载 `ScorpioModule`{:.language-cs} 类及其依赖链，完成应用启动前的初始化操作，以及应用程序的生命周期管理。
 
-Bootstrapper 类由 BootStrapper.Create 方法创建或依赖于 Asp.Net Core 的通用主机构造器。如：
+`Bootstrapper`{:.language-cs} 类由 `BootStrapper.Create()`{:.language-cs} 方法创建或依赖于 Asp.Net Core 的通用主机构造器。如：
 
 ``` cs
 
@@ -62,23 +62,23 @@ namespace Scorpio.Sample.AspnetCore
 
 ## Modularity 
 
-Modularity 主要由 ScorpioModule 和 DependsOnAttribute 组成。
+`Modularity`{:.language-cs} 主要由 `ScorpioModule`{:.language-cs} 和 `DependsOnAttribute`{:.language-cs} 组成。
 
-ScorpioModule 类用于以下目的：
+`ScorpioModule`{:.language-cs} 类用于以下目的：
 
 + 配置应用所需服务
 + 初始化应用
 + 关闭应用时清理应用
 
-服务是应用使用的组件，例如，日志记录组件就是一项服务。请将配置（或注册）服务的代码添加到 ScorpioModule.ConfigureServices 方法中。
+服务是应用使用的组件，例如，日志记录组件就是一项服务。请将配置（或注册）服务的代码添加到 `ScorpioModule.ConfigureServices()`{:.language-cs} 方法中。
 
-您可以在应用启动之前进行某些初始化操作，例如：创建应用请求处理管道等。请将初始化应用的代码添加到 ScorpioModule.Initialize 方法中。
+您可以在应用启动之前进行某些初始化操作，例如：创建应用请求处理管道等。请将初始化应用的代码添加到 `ScorpioModule.Initialize()`{:.language-cs} 方法中。
 
-您可以在应用关闭之前进行某些清理操作，例如：关闭应用请求处理管道等。请将关闭应用的代码添加到 ScorpioModule.Shutdown 方法中。
+您可以在应用关闭之前进行某些清理操作，例如：关闭应用请求处理管道等。请将关闭应用的代码添加到 `ScorpioModule.Shutdown()`{:.language-cs} 方法中。
 
-ScorpioModule 使用 DependsOnAttribute 标注 Module 之间的依赖关系。
+`ScorpioModule`{:.language-cs} 使用 `DependsOnAttribute`{:.language-cs} 标注 Module 之间的依赖关系。
 
-下面是 ScorpioModule 类示例：
+下面是 `ScorpioModule`{:.language-cs} 类示例：
 
 ```cs
 using Scorpio.Modularity;
@@ -114,27 +114,27 @@ namespace Scorpio.Sample.AspnetCore
 
 ## Conventional
 
-Conventional 用于对应用 Assembly 中的 Type 执行一些常规操作，如：依赖关系注入、Aspect 注入、Unit Of Work 注入等。
+`Conventional`{:.language-cs} 用于对应用 `Assembly`{:.language-cs} 中的 `Type`{:.language-cs} 执行一些常规操作，如：依赖关系注入、Aspect 注入、Unit Of Work 注入等。
 
-Conventional 主要由以下类、接口及方法组成：
+`Conventional`{:.language-cs} 主要由以下类、接口及方法组成：
 
-+ ConventionalAction 类，用于对执行一般性操作。
-+ ConventionalRegistrar 类，用于注册及配置 ConventionalAction 类。
-+ ServiceCollection.AddConventionalRegistrar() 方法，用于将 ConventionalRegistrar 添加到 ConventionalRegistrar 列表中。
-+ ServiceCollection.RegisterAssemblyByConvention() 方法，用于对指定的 Assembly 执行 ConventionalAction 操作。
++ `ConventionalAction`{:.language-cs} 类，用于对执行一般性操作。
++ `ConventionalRegistrar`{:.language-cs} 类，用于注册及配置 `ConventionalAction`{:.language-cs} 类。
++ `ServiceCollection.AddConventionalRegistrar()`{:.language-cs} 方法，用于将 `ConventionalRegistrar`{:.language-cs} 添加到 `ConventionalRegistrar`{:.language-cs} 列表中。
++ `ServiceCollection.RegisterAssemblyByConvention()`{:.language-cs} 方法，用于对指定的 `Assembly`{:.language-cs} 执行 `ConventionalAction`{:.language-cs} 操作。
 
-在 Scorpio 中，各种自动化操作便是基于 Conventional 设计并实现的。如果您需要实现自己的一般性操作。请实现 ConventionalActionBase 抽象类及 IConventionalRegistrar 接口。
+在 Scorpio 中，各种自动化操作便是基于 `Conventional`{:.language-cs} 设计并实现的。如果您需要实现自己的一般性操作。请实现 `ConventionalActionBase`{:.language-cs} 抽象类及 `IConventionalRegistrar`{:.language-cs} 接口。
 
 ## Dependency Injection
 
-Scorpio 的 DependencyInjection 直接依赖于 Asp.Net Core 的 DependencyInjection 组件，主要实现了对服务的自动依赖注入。
+Scorpio 的 `DependencyInjection`{:.language-cs} 直接依赖于 Asp.Net Core 的 `DependencyInjection`{:.language-cs} 组件，主要实现了对服务的自动依赖注入。
 
-您可以通过使用以下接口或 Attribue 实现服务的自动依赖注入：
+您可以通过使用以下接口或 `Attribue`{:.language-cs} 实现服务的自动依赖注入：
 
-+ ISingletonDependency ，实现 ISingletonDependency 的组件将被注册为 Singleton 生命周期的服务。
-+ ITransientDependency ，实现 ITransientDependency 的组件将被注册为 Transient 生命周期的服务。
-+ IScopedDependency ，实现 IScopedDependency 的组件将被注册为 Scoped 生命周期的服务。
-+ ExposeServicesAttribute ,通过添加 ExposeServicesAttribute 特性可以为组件实现更加灵活的依赖注入选项。
++ `ISingletonDependency`{:.language-cs} ，实现 `ISingletonDependency`{:.language-cs} 的组件将被注册为 Singleton 生命周期的服务。
++ `ITransientDependency`{:.language-cs} ，实现 `ITransientDependency`{:.language-cs} 的组件将被注册为 Transient 生命周期的服务。
++ `IScopedDependency`{:.language-cs} ，实现 `IScopedDependency`{:.language-cs} 的组件将被注册为 Scoped 生命周期的服务。
++ `ExposeServicesAttribute`{:.language-cs} ,通过添加 `ExposeServicesAttribute`{:.language-cs} 特性可以为组件实现更加灵活的依赖注入选项。
 
 如：
 
@@ -151,11 +151,11 @@ class ExposedService:IExposedService
 }
 ```
 
-因 Scorpio 的 DependencyInjection 是基于 Conventional 实现的。所以，您可以通过实现自己的 IConventionalRegistrar 实现更多的自动依赖注入方式。
+因 Scorpio 的 `DependencyInjection`{:.language-cs} 是基于 `Conventional`{:.language-cs} 实现的。所以，您可以通过实现自己的 `IConventionalRegistrar`{:.language-cs} 实现更多的自动依赖注入方式。
 
 ## Options
 
-Scorpio 扩展了 Asp.Net Core 的 Options ，主要是为 Options 的配置添加了 PreConfigure 操作。
+Scorpio 扩展了 Asp.Net Core 的 `Options`{:.language-cs} ，主要是为 `Options`{:.language-cs} 的配置添加了 `PreConfigure`{:.language-cs} 操作。
 
 如：
 
@@ -173,7 +173,7 @@ public override void ConfigureServices(ConfigureServicesContext context)
 
 ## Aspect
 
-Scorpio 依赖 AspectCore 框架提供AOP能力，并为Aspect提供自动注册的能力。在默认的情况下，Aspect 处于关闭状态，如果您需要打开Aspect ，请在构建 Bootstrapper 时使用 BootstrapperCreationOptions.UseAspectCore ,在打开 Aspect 后，Scorpio 的 DependencyInjection 将由 AspcectCore 提供。
+Scorpio 依赖 `AspectCore`{:.language-cs} 框架提供AOP能力，并为Aspect提供自动注册的能力。在默认的情况下，Aspect 处于关闭状态，如果您需要打开Aspect ，请在构建 `Bootstrapper`{:.language-cs} 时使用 `BootstrapperCreationOptions.UseAspectCore()`{:.language-cs} ,在打开 Aspect 后，Scorpio 的 `DependencyInjection`{:.language-cs} 将由 `AspcectCore`{:.language-cs} 提供。
 
 如：
 

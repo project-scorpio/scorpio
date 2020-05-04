@@ -49,8 +49,8 @@ public class BuildEnvironment
 
     public string Configuration=>_context.Argument("configuration",_buildSystem.IsLocalBuild?"Debug":"Release");
 
-    public bool IsPublish=>_buildSystem.IsRunningOnAppVeyor 
-                            && _appVeyor.Environment.Repository.Tag.IsTag;
+    public bool IsPublish=>(_buildSystem.IsRunningOnAppVeyor 
+                            && _appVeyor.Environment.Repository.Tag.IsTag) ||(IsLocalBuild && Configuration=="Release");
 
     public IAppVeyorProvider AppVeyor => _appVeyor;
 

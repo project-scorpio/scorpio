@@ -79,10 +79,12 @@ namespace Scorpio.Auditing
             {
                 return false;
             }
+
             if (context.ServiceMethod.AttributeExists<DisableAuditingAttribute>() || context.ImplementationMethod.AttributeExists<DisableAuditingAttribute>())
             {
                 return false;
             }
+
             var auditScope = _auditingManager.Current;
             if (auditScope == null)
             {

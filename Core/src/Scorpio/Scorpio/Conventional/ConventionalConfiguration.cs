@@ -10,12 +10,15 @@ namespace Scorpio.Conventional
     /// </summary>
     internal sealed class ConventionalConfiguration:IConventionalConfiguration
     {
-        internal ConventionalConfiguration(IServiceCollection services)
+        internal ConventionalConfiguration(IServiceCollection services, IEnumerable<Type> types)
         {
             Services = services;
+            Types = types;
         }
 
         public IServiceCollection Services { get; }
+
+        public IEnumerable<Type> Types { get; }
 
         /// <summary>
         /// 
@@ -24,7 +27,7 @@ namespace Scorpio.Conventional
 
         internal IConventionalContext GetContext()
         {
-            var context = new ConventionalContext(Services);
+            var context = new ConventionalContext(Services,Types);
             Contexts.Add(context);
             return context;
         }

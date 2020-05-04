@@ -14,7 +14,7 @@ namespace Scorpio.Authorization
     {
         public void Register(IConventionalRegistrationContext context)
         {
-            context.Services.RegisterAssembly(context.Assembly, config =>
+            context.Services.RegisterConventionalDependencyInject(context.Types, config =>
             {
                 config.Where(t => t.IsAssignableTo<IPermissionDefinitionProvider>()).AsSelf().Lifetime(ServiceLifetime.Singleton);
                 config.Where(t => t.IsAssignableTo<IPermissionGrantingProvider>()).AsSelf().Lifetime(ServiceLifetime.Singleton);

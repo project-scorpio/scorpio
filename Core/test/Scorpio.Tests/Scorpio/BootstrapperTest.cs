@@ -39,6 +39,7 @@ namespace Scorpio
         {
             using (var bootstrapper = Bootstrapper.Create<IndependentEmptyModule>(c => {
                 c.PlugInSources.AddType<IndependentEmptyPlugInModule>();
+                c.UseServiceProviderFactory(new DefaultServiceProviderFactory());
             }))
             {
                 var moduleContainer = bootstrapper.ServiceProvider.GetRequiredService<IModuleContainer>();

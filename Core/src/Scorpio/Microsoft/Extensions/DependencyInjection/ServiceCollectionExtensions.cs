@@ -15,32 +15,33 @@ namespace Microsoft.Extensions.DependencyInjection
     /// </summary>
     public static class ServiceCollectionExtensions
     {
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="services"></param>
-        /// <param name="assembly"></param>
+        /// <param name="types"></param>
         /// <param name="configureAction"></param>
         /// <returns></returns>
-        public static IServiceCollection RegisterAssembly(this IServiceCollection services, Assembly assembly, Action<IConventionalConfiguration> configureAction)
+        public static IServiceCollection DoConventionalAction<TAction>(this IServiceCollection services, IEnumerable<Type> types, Action<IConventionalConfiguration> configureAction) where TAction : ConventionalActionBase
         {
-            return DoConventionalAction<ConventionalDependencyAction>(services, assembly, configureAction);
+            var config = new ConventionalConfiguration(services,types);
+            configureAction(config);
+            var action = Activator.CreateInstance(typeof(TAction), config) as TAction;
+            action.Action();
+            return services;
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="services"></param>
-        /// <param name="assembly"></param>
+        /// <param name="types"></param>
         /// <param name="configureAction"></param>
         /// <returns></returns>
-        public static IServiceCollection DoConventionalAction<TAction>(this IServiceCollection services, Assembly assembly, Action<IConventionalConfiguration> configureAction) where TAction : ConventionalActionBase
+        public static IServiceCollection RegisterConventionalDependencyInject(this IServiceCollection services,IEnumerable<Type> types, Action<IConventionalConfiguration> configureAction)
         {
-            var config = new ConventionalConfiguration(services);
-            configureAction(config);
-            var action = Activator.CreateInstance(typeof(TAction), config, assembly) as TAction;
-            action.Action();
-            return services;
+            return services.DoConventionalAction<ConventionalDependencyAction>(types, configureAction);
         }
 
         /// <summary>
@@ -63,7 +64,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="services"></param>
         /// <param name="func"></param>
         /// <returns></returns>
-        public static T GetSingletonInstanceOrAdd<T>(this IServiceCollection services,Func<IServiceCollection, T> func) where T:class
+        public static T GetSingletonInstanceOrAdd<T>(this IServiceCollection services, Func<IServiceCollection, T> func) where T : class
         {
             var service = services.GetSingletonInstanceOrNull<T>();
             if (service == null)
@@ -191,7 +192,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns></returns>
         public static IServiceCollection ReplaceEnumerable(this IServiceCollection services, ServiceDescriptor serviceDescriptor)
         {
-            return services.ReplaceEnumerable(ServiceDescriptor.Transient(serviceDescriptor.ServiceType,serviceDescriptor.GetImplementationType()), serviceDescriptor);
+            return services.ReplaceEnumerable(ServiceDescriptor.Transient(serviceDescriptor.ServiceType, serviceDescriptor.GetImplementationType()), serviceDescriptor);
         }
 
         /// <summary>
@@ -201,7 +202,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="serviceDescriptor"></param>
         /// <param name="replaceAll"></param>
         /// <returns></returns>
-        public static IServiceCollection ReplaceOrAdd(this IServiceCollection services, ServiceDescriptor serviceDescriptor,bool replaceAll=false)
+        public static IServiceCollection ReplaceOrAdd(this IServiceCollection services, ServiceDescriptor serviceDescriptor, bool replaceAll = false)
         {
             if (services == null)
             {
@@ -217,12 +218,7 @@ namespace Microsoft.Extensions.DependencyInjection
             {
                 var implementationType = serviceDescriptor.GetImplementationType();
 
-                var registeredServiceDescriptor = services.FirstOrDefault(s => s.ServiceType == serviceDescriptor.ServiceType &&
-                                  s.GetImplementationType() == implementationType);
-                if (registeredServiceDescriptor != null)
-                {
-                    services.Remove(registeredServiceDescriptor);
-                }
+                services.RemoveAll(s=>s.ServiceType==serviceDescriptor.ServiceType && s.GetImplementationType()==implementationType);
 
             }
             else

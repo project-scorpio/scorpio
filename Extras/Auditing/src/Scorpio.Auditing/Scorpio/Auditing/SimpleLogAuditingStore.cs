@@ -1,4 +1,4 @@
-﻿using AspectCore.Injector;
+﻿using AspectCore.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Scorpio.DependencyInjection;
@@ -17,7 +17,7 @@ namespace Scorpio.Auditing
         /// <summary>
         /// 
         /// </summary>
-        [FromContainer]
+        [FromServiceContext]
         public ILogger<SimpleLogAuditingStore> Logger { get; set; }
 
         /// <summary>

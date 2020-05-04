@@ -25,6 +25,6 @@ Scorpio 托管在 GitHub 上。 请参阅 [源代码]({{site.repo}})。
 
 ## 想要加入?
 
-Scorpio是一个社区驱动的开源项目。 如果您想成为该项目的一部分，请参阅 [贡献指南]({{site.baseurl}}/Contribution) 。
+Scorpio是一个社区驱动的开源项目。 如果您想成为该项目的一部分，请参阅 [贡献指南]({{site.baseurl}}/contribution) 。
 
 

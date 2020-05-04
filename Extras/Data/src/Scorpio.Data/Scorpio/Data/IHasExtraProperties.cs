@@ -12,6 +12,6 @@ namespace Scorpio.Data
         /// <summary>
         /// 
         /// </summary>
-        Dictionary<string, object> ExtraProperties { get; }
+        IDictionary<string, object> ExtraProperties { get; }
     }
 }

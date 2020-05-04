@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <AssemblyTitle>Scorpio aspnet core library</AssemblyTitle>
+    <RootNamespace />
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Extras\Auditing\src\Scorpio.Auditing\Scorpio.Auditing.csproj" />
+    <ProjectReference Include="..\..\..\..\Extras\Authorization\src\Scorpio.Authorization\Scorpio.Authorization.csproj" />
+    <ProjectReference Include="..\..\..\..\Modules\uow\src\Scorpio.Uow\Scorpio.Uow.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+</Project>
