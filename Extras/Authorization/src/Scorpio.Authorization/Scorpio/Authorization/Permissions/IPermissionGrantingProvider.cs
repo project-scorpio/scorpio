@@ -20,7 +20,7 @@ namespace Scorpio.Authorization.Permissions
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        Task<PermissionGrantingInfo> CheckAsync(PermissionGrantingContext context);
+        Task<PermissionGrantingInfo> GrantAsync(PermissionGrantingContext context);
 
     }
 }

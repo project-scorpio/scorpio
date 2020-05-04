@@ -39,6 +39,9 @@ namespace Microsoft.Extensions.Hosting
         {
             var serviceProvider = _bootstrapper.CreateServiceProvider(containerBuilder);
             _bootstrapper.SetServiceProviderInternal(serviceProvider);
+            var applicationLifetime = serviceProvider.GetRequiredService<IHostApplicationLifetime>();
+            applicationLifetime.ApplicationStopping.Register(() => _bootstrapper.Shutdown());
+            applicationLifetime.ApplicationStopped.Register(() => (_bootstrapper as IDisposable).Dispose());
             _bootstrapper.Initialize();
             return serviceProvider;
         }

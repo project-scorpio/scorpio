@@ -16,8 +16,8 @@ namespace Scorpio.Authorization
         {
             context.Services.RegisterConventionalDependencyInject(context.Types, config =>
             {
-                config.Where(t => t.IsAssignableTo<IPermissionDefinitionProvider>()).AsSelf().Lifetime(ServiceLifetime.Singleton);
-                config.Where(t => t.IsAssignableTo<IPermissionGrantingProvider>()).AsSelf().Lifetime(ServiceLifetime.Singleton);
+                config.Where(t =>t.IsStandardType() && t.IsAssignableTo<IPermissionDefinitionProvider>()).AsSelf().Lifetime(ServiceLifetime.Singleton);
+                config.Where(t => t.IsStandardType() && t.IsAssignableTo<IPermissionGrantingProvider>()).AsSelf().Lifetime(ServiceLifetime.Singleton);
             });
         }
     }

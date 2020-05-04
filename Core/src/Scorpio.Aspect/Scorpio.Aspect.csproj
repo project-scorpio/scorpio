@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AspectCore.Core" Version="2.0.0" />
     <PackageReference Include="AspectCore.Extensions.DependencyInjection" Version="2.0.0" />
   </ItemGroup>
 

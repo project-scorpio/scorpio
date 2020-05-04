@@ -21,7 +21,7 @@ namespace Scorpio.Authorization
         /// <summary>
         /// 
         /// </summary>
-        MethodInfo Method { get; }
+        MethodBase Method { get; }
 
     }
 }

@@ -48,11 +48,15 @@ namespace Scorpio.Authorization.Permissions
 
         public async Task<bool> CheckAsync(IPrincipal claimsPrincipal, string name)
         {
+            if (GrantingProviders.Count==0)
+            {
+                return true;
+            }
             var context = new PermissionGrantingContext(
                 PermissionDefinitionManager.Get(name),
                 claimsPrincipal
                 );
-            return await GrantingProviders.AnyAsync(async p => (await p.CheckAsync(context)).IsGranted);
+            return await GrantingProviders.AnyAsync(async p => (await p.GrantAsync(context)).IsGranted);
         }
     }
 }

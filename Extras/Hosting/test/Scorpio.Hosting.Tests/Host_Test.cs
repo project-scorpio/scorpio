@@ -6,6 +6,7 @@ using Moq;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting.Internal;
 
 namespace Scorpio.Hosting.Tests
 {
@@ -17,11 +18,14 @@ namespace Scorpio.Hosting.Tests
             var context = new HostBuilderContext(new Dictionary<object, object>());
             var services = new ServiceCollection();
             var mock = new Mock<IHostBuilder>();
+            
             var factory = default(IServiceProviderFactory<IServiceCollection>);
             mock.Setup(b => b.UseServiceProviderFactory(It.IsAny<Func<HostBuilderContext, IServiceProviderFactory<IServiceCollection>>>()))
                 .Callback<Func<HostBuilderContext, IServiceProviderFactory<IServiceCollection>>>(f => factory = f(context));
             mock.Object.AddScorpio<HosttingTestModule>();
             factory.CreateBuilder(services);
+            services.AddSingleton<IHostLifetime, ConsoleLifetime>();
+            services.AddSingleton<IHostApplicationLifetime, ApplicationLifetime>();
             services.ShouldContainSingleton(typeof(IBootstrapper), typeof(InternalBootstrapper));
             var serviceProvider = factory.CreateServiceProvider(services);
             var bootstrapper = serviceProvider.GetRequiredService<IBootstrapper>().ShouldBeOfType<InternalBootstrapper>();

@@ -22,7 +22,7 @@ namespace Scorpio.Authorization
         }
         public async Task CheckAsync(IInvocationAuthorizationContext authorizationContext)
         {
-            if (authorizationContext.Method.AttributeExists<AllowAnonymousAttribute>())
+            if (authorizationContext?.Method?.AttributeExists<AllowAnonymousAttribute>()??false)
             {
                 return;
             }

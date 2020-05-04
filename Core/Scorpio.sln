@@ -27,13 +27,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.TestBase", "test\Scorpio.TestBase\Scorpio.TestBase.csproj", "{D9B79816-60E7-4C6F-AF71-55925689F61B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Utilities", "src\Scorpio.Utilities\Scorpio.Utilities.csproj", "{36B669A4-1D6C-4DA6-AD7D-CDD042FBF90A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Utilities", "src\Scorpio.Utilities\Scorpio.Utilities.csproj", "{36B669A4-1D6C-4DA6-AD7D-CDD042FBF90A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Utilities.Tests", "test\Scorpio.Utilities.Tests\Scorpio.Utilities.Tests.csproj", "{65E5128E-73AF-4D86-AD29-283A4E076FCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Utilities.Tests", "test\Scorpio.Utilities.Tests\Scorpio.Utilities.Tests.csproj", "{65E5128E-73AF-4D86-AD29-283A4E076FCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Aspect", "src\Scorpio.Aspect\Scorpio.Aspect.csproj", "{B3AE22B0-385A-4A5F-9D68-DCC6B1A582F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Aspect", "src\Scorpio.Aspect\Scorpio.Aspect.csproj", "{B3AE22B0-385A-4A5F-9D68-DCC6B1A582F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Aspect.Tests", "test\Scorpio.Aspect.Tests\Scorpio.Aspect.Tests.csproj", "{D473958D-25C6-4B23-891C-10D6F2EBF955}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Aspect.Tests", "test\Scorpio.Aspect.Tests\Scorpio.Aspect.Tests.csproj", "{D473958D-25C6-4B23-891C-10D6F2EBF955}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{CB78686F-92FF-4D3D-8BB1-3D1E03A33AAA}"
+	ProjectSection(SolutionItems) = preProject
+		..\build\build.cake = ..\build\build.cake
+		..\build\buildcontext.cake = ..\build\buildcontext.cake
+		..\build\index.cake = ..\build\index.cake
+		..\build\util.cake = ..\build\util.cake
+		..\build\version.cake = ..\build\version.cake
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -141,6 +150,7 @@ Global
 		{65E5128E-73AF-4D86-AD29-283A4E076FCD} = {C57152EE-7CEB-4FD2-A26B-9B8852795752}
 		{B3AE22B0-385A-4A5F-9D68-DCC6B1A582F6} = {E1A4E891-22ED-4AB6-B1E7-3B1CC4D5BB35}
 		{D473958D-25C6-4B23-891C-10D6F2EBF955} = {C57152EE-7CEB-4FD2-A26B-9B8852795752}
+		{CB78686F-92FF-4D3D-8BB1-3D1E03A33AAA} = {9926D52F-A290-4048-93F1-3FDAC658E199}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D2AFD460-8F30-4611-A635-17D59DE0DE4B}

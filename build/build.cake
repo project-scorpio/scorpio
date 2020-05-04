@@ -41,7 +41,7 @@ public class BuildService
     }
 
     public void Restore(){
-        foreach (var item in _context.ProjectFiles)
+        foreach (var item in _context.Soluations)
         {
             var settings=new DotNetCoreRestoreSettings{
                 Sources=new[]{"https://api.nuget.org/v3/index.json",_nugetQueryUrl}
@@ -56,7 +56,7 @@ public class BuildService
                 Configuration=_context.Environment.Configuration,
                 MSBuildSettings=_msbuildSettings
             };
-        foreach (var item in _context.ProjectFiles)
+        foreach (var item in _context.Soluations)
         {
             _cakeContext.DotNetCoreBuild(item.FullPath,buildSettings);
         }
@@ -65,7 +65,7 @@ public class BuildService
     public void Test()
     {
         var testSettings=new DotNetCoreTestSettings{ Configuration=_context.Environment.Configuration,NoBuild= true};
-        foreach (var item in _context.TestProjectFiles)
+        foreach (var item in _context.Soluations)
         {
             _cakeContext.DotNetCoreTest(item.FullPath,testSettings);
         }
@@ -80,14 +80,14 @@ public class BuildService
                            IncludeSymbols =true,
                            NoBuild= true
 						};
-        foreach (var item in _context.ProjectFiles)
+        foreach (var item in _context.Soluations)
         {
             _cakeContext.DotNetCorePack(item.FullPath,settings);
         }
     }
 
     public void Publish(){
-        var packages=_cakeContext.GetFiles(_nugetRegex);
+        var packages=_cakeContext.GetFiles(_nugetRegex,new GlobberSettings{FilePredicate=f=>f.Path.FullPath.IndexOf(".symbols.")<0});
         var settings = new DotNetCoreNuGetPushSettings
                          {
 						   Source = _nugetPushUrl,

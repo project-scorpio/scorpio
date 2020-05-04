@@ -40,7 +40,6 @@ namespace Scorpio.Authorization
         public async override Task Invoke(AspectContext context, AspectDelegate next)
         {
             var interceptor = context.ServiceProvider.GetService<AuthorizationInterceptor>();
-            interceptor.SetPermission(Permissions,RequireAllPermissions);
             await interceptor.Invoke(context, next);
         }
     }

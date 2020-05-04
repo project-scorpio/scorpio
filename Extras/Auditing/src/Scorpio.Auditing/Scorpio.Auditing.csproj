@@ -5,6 +5,10 @@
     <AssemblyTitle>Scorpio auditing library</AssemblyTitle>
     <RootNamespace />
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="../../../../Core/src/Scorpio/Scorpio.csproj" />
     <ProjectReference Include="../../../../Core/src/Scorpio.Aspect/Scorpio.Aspect.csproj" />

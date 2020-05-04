@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using Scorpio.DependencyInjection;
 using System;
 using System.Collections.Generic;
