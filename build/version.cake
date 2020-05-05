@@ -32,7 +32,7 @@ public class BuildVersion
 
     public string GetVersionSuffix()
 	{
-		var suffix= Suffix == null ? string.Empty : $"-{Suffix}";
+		var suffix= string.IsNullOrWhiteSpace( Suffix)? string.Empty : $"-{Suffix}";
 		if(_context.BuildSystem().IsLocalBuild){
 			return $"{suffix}-dev.{Build}";
 		}
