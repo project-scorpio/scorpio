@@ -35,5 +35,18 @@ namespace System
             return (T)Convert.ChangeType(obj, typeof(T), CultureInfo.InvariantCulture);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public static T Action<T>(this T obj,Action<T> action)
+        {
+            action(obj);
+            return obj;
+        }
+
     }
 }
