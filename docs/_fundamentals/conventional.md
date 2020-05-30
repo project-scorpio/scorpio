@@ -7,16 +7,16 @@ description: Scorpio 常规性操作
 
 ## 什么是 Scorpio 常规性操作
 
-Conventional 用于对应用 Assembly 中的 Type 执行一些常规操作。如：自动的依赖关系注入、Aspect 注入、Unit Of Work 注入等。
+`Conventional`{:.language-cs} 用于对应用 `Assembly`{:.language-cs} 中的 `Type`{:.language-cs} 执行一些常规操作。如：自动的依赖关系注入、Aspect 注入、Unit Of Work 注入等。
 
-Conventional 主要由以下类、接口及方法组成：
+`Conventional`{:.language-cs} 主要由以下类、接口及方法组成：
 
-+ `ConventionalAction` 类，用于对执行一般性操作。
-+ `ConventionalRegistrar` 类，用于注册及配置 `ConventionalAction` 类。
-+ `ServiceCollection.AddConventionalRegistrar()` 方法，用于将 `ConventionalRegistrar` 添加到 `ConventionalRegistrar` 列表中。
-+ `ServiceCollection.RegisterAssemblyByConvention()` 方法，用于对指定的 Assembly 执行 `ConventionalAction` 操作。
++ `ConventionalAction`{:.language-cs} 类，用于对执行一般性操作。
++ `ConventionalRegistrar`{:.language-cs} 类，用于注册及配置 `ConventionalAction`{:.language-cs} 类。
++ `ServiceCollection.AddConventionalRegistrar()`{:.language-cs} 方法，用于将 `ConventionalRegistrar`{:.language-cs} 添加到 `ConventionalRegistrar`{:.language-cs} 列表中。
++ `ServiceCollection.RegisterAssemblyByConvention()`{:.language-cs} 方法，用于对指定的 `Assembly`{:.language-cs} 执行 `ConventionalAction`{:.language-cs} 操作。
 
-在 Scorpio 中，各种自动化操作便是基于 Conventional 设计并实现的。如果您需要实现自己的一般性操作。请实现 `ConventionalActionBase` 抽象类及 `IConventionalRegistrar` 接口。以下为 Scorpio 的 Dependency Injection 组件的实现代码：
+在 Scorpio 中，各种自动化操作便是基于 Conventional 设计并实现的。如果您需要实现自己的一般性操作。请实现 `ConventionalActionBase`{:.language-cs} 抽象类及 `IConventionalRegistrar`{:.language-cs} 接口。以下为 Scorpio 的 Dependency Injection 组件的实现代码：
 
 ``` cs
 using System;
@@ -99,7 +99,7 @@ namespace Scorpio.DependencyInjection.Conventional
 
 ## ConventionalActionBase 类
 
-您如果需要对类执行一些常规的操作，您首先需要继承 `ConventionalActionBase` 类并重写这个类的 `Action(IConventionalContext context)` 方法。如：
+您如果需要对类执行一些常规的操作，您首先需要继承 `ConventionalActionBase`{:.language-cs} 类并重写这个类的 `Action(IConventionalContext context)`{:.language-cs} 方法。如：
 
 ``` cs
 using System;
@@ -135,7 +135,7 @@ namespace Scorpio.DependencyInjection.Conventional
 
 ## IConventionalRegistrar
 
-在编写完成常规操作代码后，我们需要实现 `IConventionalRegistrar` 接口以便将编写好的操作代码注册并配置到 Conventional 中，如：
+在编写完成常规操作代码后，我们需要实现 `IConventionalRegistrar`{:.language-cs} 接口以便将编写好的操作代码注册并配置到 `Conventional`{:.language-cs} 中，如：
 
 ``` cs
 using System;
@@ -164,7 +164,7 @@ namespace Scorpio.DependencyInjection.Conventional
 }
 ```
 
-最后，请调用 `ServiceCollection.AddConventionalRegistrar()` 方法将我们的注册器添加到 Scorpio 中。注册器将在调用 `ServiceCollection.RegisterAssemblyByConvention()` 或者它的重载方法时被依次调用。 如：
+最后，请调用 `ServiceCollection.AddConventionalRegistrar()`{:.language-cs} 方法将我们的注册器添加到 Scorpio 中。注册器将在调用 `ServiceCollection.RegisterAssemblyByConvention()`{:.language-cs} 或者它的重载方法时被依次调用。 如：
 
 ``` cs
 using System;
@@ -208,4 +208,4 @@ namespace Scorpio
 ```
 > 请注意：
 > 
-> 请在 `PreConfigureServices()` 方法中调用 `AddConventionalRegistrar()` 方法，而在 `ConfigureServices()` 方法中调用 `RegisterAssemblyByConvention()` 方法，以确保在调用任何 `RegisterAssemblyByConvention()` 之前所有的注册器已经就绪。
+> 请在 `PreConfigureServices()`{:.language-cs} 方法中调用 `AddConventionalRegistrar()`{:.language-cs} 方法，而在 `ConfigureServices()`{:.language-cs} 方法中调用 `RegisterAssemblyByConvention()`{:.language-cs} 方法，以确保在调用任何 `RegisterAssemblyByConvention()`{:.language-cs} 之前所有的注册器已经就绪。

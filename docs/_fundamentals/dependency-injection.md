@@ -27,7 +27,7 @@ public class StartupModule:ScorpioModule
 
 ## 依照约定的注册
 
-Scorpio 引入了依照约定的服务注册.依照约定你只需要调用 `ServicesCollection.RegisterAssemblyByConvention()`方法 ,它会自动完成服务的注册。
+Scorpio 引入了依照约定的服务注册.依照约定你只需要调用 `ServicesCollection.RegisterAssemblyByConvention()`{:.language-cs}方法 ,它会自动完成服务的注册。
 
 ``` cs
 public class StartupModule:ScorpioModule
@@ -55,11 +55,11 @@ public class TaxCalculator : ITransientDependency
 }
 ```
 
-`TaxCalculator`因为实现了`ITransientDependency`,所以它会自动注册为transient生命周期。
+`TaxCalculator`{:.language-cs}因为实现了`ITransientDependency`{:.language-cs},所以它会自动注册为transient生命周期。
 
 ### ExposeServices 特性
 
-`ExposeServicesAttribute`用于控制相关类提供了什么服务及生命周期。例:
+`ExposeServicesAttribute`{:.language-cs}用于控制相关类提供了什么服务及生命周期。例:
 
 ``` cs
 [ExposeServices(typeof(ITaxCalculator))]
@@ -69,23 +69,23 @@ public class TaxCalculator: ICalculator, ITaxCalculator, ICanCalculate, ITransie
 }
 ```
 
-`TaxCalculator`类只公开`ITaxCalculator`接口.这意味着你只能注入`ITaxCalculator`,但不能注入`TaxCalculator`或`ICalculator`到你的应用程序中。
+`TaxCalculator`{:.language-cs}类只公开`ITaxCalculator`{:.language-cs}接口.这意味着你只能注入`ITaxCalculator`{:.language-cs},但不能注入`TaxCalculator`{:.language-cs}或`ICalculator`{:.language-cs}到你的应用程序中。
 
 ### ReplaceService 特性
 
-`ReplaceServiceAttribute` 用于控制是否替换之前的注入的服务，使用IServiceCollection的Replace扩展方法。
+`ReplaceServiceAttribute`{:.language-cs} 用于控制是否替换之前的注入的服务，使用 `IServiceCollection`{:.language-cs} 的 `Replace`{:.language-cs} 扩展方法。
 
 
 ### 依照约定公开的服务
 
-如果你未指定要公开的服务,则 Scorpio 依照约定公开服务.以上面定义的`TaxCalculator`为例:
+如果你未指定要公开的服务,则 Scorpio 依照约定公开服务.以上面定义的`TaxCalculator`{:.language-cs}为例:
 
-默认情况下,类本身是公开的。这意味着你可以按`TaxCalculator`类注入它。
-默认情况下,默认接口是公开的。默认接口是由命名约定确定.在这个例子中,`ICalculator`和`ITaxCalculator`是`TaxCalculator`的默认接口,但`ICanCalculate`不是.
+默认情况下,类本身是公开的。这意味着你可以按`TaxCalculator`{:.language-cs}类注入它。
+默认情况下,默认接口是公开的。默认接口是由命名约定确定.在这个例子中,`ICalculator`{:.language-cs}和`ITaxCalculator`{:.language-cs}是`TaxCalculator`{:.language-cs}的默认接口,但`ICanCalculate`{:.language-cs}不是.
 
 ## 手动注册
 
-在某些情况下,你可能需要向`IServiceCollection`手动注册服务,尤其是在需要使用自定义工厂方法或singleton实例时.在这种情况下,你可以像[Microsoft文档](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection)描述的那样直接添加服务.例:
+在某些情况下,你可能需要向`IServiceCollection`{:.language-cs}手动注册服务,尤其是在需要使用自定义工厂方法或singleton实例时.在这种情况下,你可以像[Microsoft文档](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection)描述的那样直接添加服务.例:
 
 ``` cs
 public class StartupModule:ScorpioModule
@@ -103,6 +103,6 @@ public class StartupModule:ScorpioModule
 
 虽然 Scorpio 框架没有对任何第三方DI提供程序的核心依赖, 但它必须使用一个提供程序来支持动态代理(dynamic proxying)和一些高级特性以便部分 Scorpio 特性能正常工作.
 
-我们已经为您实现了AspectCore的集成.如果您需要使用，您可以在构建 `Bootstrapper` 时使用 `BootstrapperCreationOptions.UseAspectCore` 方法来集成 AspectCore.
+我们已经为您实现了AspectCore的集成.如果您需要使用，您可以在构建 `Bootstrapper`{:.language-cs} 时使用 `BootstrapperCreationOptions.UseAspectCore`{:.language-cs} 方法来集成 AspectCore.
 
-如果您需要集成其他的提供者，您可以实现 `IServiceProviderFactory<TContainerBuilder>` 接口并在创建 Bootstrapper 时使用 `BootstrapperCreationOptions.UseServiceProviderFactory<TContainerBuilder>` 方法注入您的提供者.
+如果您需要集成其他的提供者，您可以实现 `IServiceProviderFactory<TContainerBuilder>`{:.language-cs} 接口并在创建 `Bootstrapper`{:.language-cs} 时使用 `BootstrapperCreationOptions.UseServiceProviderFactory<TContainerBuilder>`{:.language-cs} 方法注入您的提供者.

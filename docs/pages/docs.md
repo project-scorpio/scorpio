@@ -7,7 +7,7 @@ collection: docs
 
 # 文档
 
-Scorpio 是用于 .NET Core 和 .NET Framework 的基于模块化的跨平台框架，包括AOP，模块化，插件化，依赖项注入以及一些常见的扩展和模块。
+Scorpio 是用于 .NET Core 3.0 + 的基于模块化的跨平台框架，包括AOP，模块化，插件化，依赖项注入以及一些常见的扩展和模块。
 
 ## 项目状态
 

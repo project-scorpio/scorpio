@@ -5,13 +5,13 @@ description: Scorpio 引导程序
 
 # Scorpio 引导程序
 
-本文介绍了 Scorpio 引导程序 (`Bootstrapper`) 并提供有关使用方法的指南。
+本文介绍了 Scorpio 引导程序 (`Bootstrapper`{:.language-cs}) 并提供有关使用方法的指南。
 
 ## 什么是 Scorpio 引导程序？
 
-`Bootstrapper` 类主要用于启动应用程序，发现并装载 `ScorpioModule` 类及其依赖链，完成应用启动前的初始化操作，以及应用程序的生命周期管理。
+`Bootstrapper`{:.language-cs} 类主要用于启动应用程序，发现并装载 `ScorpioModule`{:.language-cs} 类及其依赖链，完成应用启动前的初始化操作，以及应用程序的生命周期管理。
 
-`Bootstrapper` 类由 `BootStrapper.Create` 方法创建或依赖于 Asp.Net Core 的通用主机构造器。如：
+`Bootstrapper`{:.language-cs} 类由 `BootStrapper.Create`{:.language-cs} 方法创建或依赖于 Asp.Net Core 的通用主机构造器。如：
 
 ``` cs
 

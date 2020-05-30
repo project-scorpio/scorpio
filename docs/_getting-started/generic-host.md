@@ -19,14 +19,14 @@ $ mkdir Scorpio.Demo.GenericHost
 $ dotnet new console
 ```
 
-### 添加 Scorpio.Host 包引用
+### 添加 Scorpio.Hosting 包引用
 
 ``` bash
-$ dotnet add package Scropio.Host -v {{site.currently}}
+$ dotnet add package Scropio.Hosting -v {{site.currently}}
 ```
 
 ``` powershell
-PM> install-Package Scropio.Host -v {{site.currently}}
+PM> install-Package Scropio.Hosting -v {{site.currently}}
 ```
 
 ### 创建 Scorpio 模块
@@ -62,7 +62,7 @@ namespace Scorpio.Demo.GenericHost
         public static void Main(string[] args) => CreateHostBuilder(args).Build().Run();
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args).AddBootstrapper<StartupModule>();
+            Host.CreateDefaultBuilder(args).AddScorpio<StartupModule>();
 
 }
 
