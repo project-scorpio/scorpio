@@ -188,4 +188,3 @@ Configure<AuditingOptions>(options =>
     + `ExecutionDuration`: 方法执行时长,以毫秒为单位. 可以用来观察方法的性能.
 
 除了上面说明的标准属性之外,`AuditInfo`, `AuditActionInfo` 对象还实现了 `IHasExtraProperties` 接口,你可以向这些对象添加自定义属性.
-
