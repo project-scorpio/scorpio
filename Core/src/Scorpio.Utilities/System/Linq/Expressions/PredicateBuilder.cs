@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace System.Linq.Expressions
@@ -47,53 +48,336 @@ namespace System.Linq.Expressions
         /// 
         /// </summary>
         /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
         /// <param name="expr1"></param>
         /// <param name="expr2"></param>
         /// <returns></returns>
-        public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> expr1, Expression<Func<T, bool>> expr2)
+        public static Expression<Func<T, TResult>> And<T, TResult>(this Expression<Func<T, TResult>> expr1, Expression<Func<T, TResult>> expr2)
         {
-            var parameter = Expression.Parameter(typeof(T));
+            return Combine(expr1, expr2, (l, r) => Expression.And(l, r));
+        }
 
-            var leftVisitor = new ReplaceExpressionVisitor(expr1.Parameters[0], parameter);
-            var left = leftVisitor.Visit(expr1.Body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="expr1"></param>
+        /// <param name="expr2"></param>
+        /// <returns></returns>
+        public static Expression<Func<T1, T2, TResult>> And<T1, T2, TResult>(this Expression<Func<T1, T2, TResult>> expr1, Expression<Func<T1, T2, TResult>> expr2)
+        {
+            return Combine(expr1, expr2, (l, r) => Expression.And(l, r));
+        }
 
-            var rightVisitor = new ReplaceExpressionVisitor(expr2.Parameters[0], parameter);
-            var right = rightVisitor.Visit(expr2.Body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <typeparam name="T3"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="expr1"></param>
+        /// <param name="expr2"></param>
+        /// <returns></returns>
+        public static Expression<Func<T1, T2, T3, TResult>> And<T1, T2, T3, TResult>(
+            this Expression<Func<T1, T2, T3, TResult>> expr1,
+            Expression<Func<T1, T2, T3, TResult>> expr2)
+        {
+            return Combine(expr1, expr2, (l, r) => Expression.And(l, r));
+        }
 
-            return Expression.Lambda<Func<T, bool>>(Expression.AndAlso(left, right), parameter);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <typeparam name="T3"></typeparam>
+        /// <typeparam name="T4"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="expr1"></param>
+        /// <param name="expr2"></param>
+        /// <returns></returns>
+        public static Expression<Func<T1, T2, T3, T4, TResult>> And<T1, T2, T3, T4, TResult>(
+            this Expression<Func<T1, T2, T3, T4, TResult>> expr1,
+            Expression<Func<T1, T2, T3, T4, TResult>> expr2)
+        {
+            return Combine(expr1, expr2, (l, r) => Expression.And(l, r));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <typeparam name="T3"></typeparam>
+        /// <typeparam name="T4"></typeparam>
+        /// <typeparam name="T5"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="expr1"></param>
+        /// <param name="expr2"></param>
+        /// <returns></returns>
+        public static Expression<Func<T1, T2, T3, T4, T5, TResult>> And<T1, T2, T3, T4, T5, TResult>(
+            this Expression<Func<T1, T2, T3, T4, T5, TResult>> expr1,
+            Expression<Func<T1, T2, T3, T4, T5, TResult>> expr2)
+        {
+            return Combine(expr1, expr2, (l, r) => Expression.And(l, r));
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
         /// <param name="expr1"></param>
         /// <param name="expr2"></param>
         /// <returns></returns>
-        public static Expression<Func<T, bool>> Equal<T>(this Expression<Func<T, bool>> expr1, Expression<Func<T, bool>> expr2)
+        public static Expression<Func<T, TResult>> AndAlso<T, TResult>(this Expression<Func<T, TResult>> expr1, Expression<Func<T, TResult>> expr2)
         {
-            var parameter = Expression.Parameter(typeof(T));
+            return Combine(expr1, expr2, (l, r) => Expression.AndAlso(l, r));
+        }
 
-            var leftVisitor = new ReplaceExpressionVisitor(expr1.Parameters[0], parameter);
-            var left = leftVisitor.Visit(expr1.Body);
 
-            var rightVisitor = new ReplaceExpressionVisitor(expr2.Parameters[0], parameter);
-            var right = rightVisitor.Visit(expr2.Body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="expr1"></param>
+        /// <param name="expr2"></param>
+        /// <returns></returns>
+        public static Expression<Func<T1, T2, TResult>> AndAlso<T1, T2, TResult>(
+            this Expression<Func<T1, T2, TResult>> expr1,
+                 Expression<Func<T1, T2, TResult>> expr2)
+        {
+            return Combine(expr1, expr2, (l, r) => Expression.AndAlso(l, r));
+        }
 
-            return Expression.Lambda<Func<T, bool>>(Expression.Equal(left, right), parameter);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <typeparam name="T3"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="expr1"></param>
+        /// <param name="expr2"></param>
+        /// <returns></returns>
+        public static Expression<Func<T1, T2, T3, TResult>> AndAlso<T1, T2, T3, TResult>(
+            this Expression<Func<T1, T2, T3, TResult>> expr1,
+            Expression<Func<T1, T2, T3, TResult>> expr2)
+        {
+            return Combine(expr1, expr2, (l, r) => Expression.AndAlso(l, r));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <typeparam name="T3"></typeparam>
+        /// <typeparam name="T4"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="expr1"></param>
+        /// <param name="expr2"></param>
+        /// <returns></returns>
+        public static Expression<Func<T1, T2, T3, T4, TResult>> AndAlso<T1, T2, T3, T4, TResult>(
+            this Expression<Func<T1, T2, T3, T4, TResult>> expr1,
+            Expression<Func<T1, T2, T3, T4, TResult>> expr2)
+        {
+            return Combine(expr1, expr2, (l, r) => Expression.AndAlso(l, r));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <typeparam name="T3"></typeparam>
+        /// <typeparam name="T4"></typeparam>
+        /// <typeparam name="T5"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="expr1"></param>
+        /// <param name="expr2"></param>
+        /// <returns></returns>
+        public static Expression<Func<T1, T2, T3, T4, T5, TResult>> AndAlso<T1, T2, T3, T4, T5, TResult>(
+            this Expression<Func<T1, T2, T3, T4, T5, TResult>> expr1,
+            Expression<Func<T1, T2, T3, T4, T5, TResult>> expr2)
+        {
+            return Combine(expr1, expr2, (l, r) => Expression.AndAlso(l, r));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="expr1"></param>
+        /// <param name="expr2"></param>
+        /// <returns></returns>
+        public static Expression<Func<T, TResult>> Equal<T, TResult>(this Expression<Func<T, TResult>> expr1, Expression<Func<T, TResult>> expr2)
+        {
+            return Combine(expr1, expr2, (l, r) => Expression.Equal(l, r));
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="expr1"></param>
+        /// <param name="expr2"></param>
+        /// <returns></returns>
+        public static Expression<Func<T1, T2, TResult>> Equal<T1, T2, TResult>(
+            this Expression<Func<T1, T2, TResult>> expr1,
+                 Expression<Func<T1, T2, TResult>> expr2)
+        {
+            return Combine(expr1, expr2, (l, r) => Expression.Equal(l, r));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <typeparam name="T3"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="expr1"></param>
+        /// <param name="expr2"></param>
+        /// <returns></returns>
+        public static Expression<Func<T1, T2, T3, TResult>> Equal<T1, T2, T3, TResult>(
+            this Expression<Func<T1, T2, T3, TResult>> expr1,
+            Expression<Func<T1, T2, T3, TResult>> expr2)
+        {
+            return Combine(expr1, expr2, (l, r) => Expression.Equal(l, r));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <typeparam name="T3"></typeparam>
+        /// <typeparam name="T4"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="expr1"></param>
+        /// <param name="expr2"></param>
+        /// <returns></returns>
+        public static Expression<Func<T1, T2, T3, T4, TResult>> Equal<T1, T2, T3, T4, TResult>(
+            this Expression<Func<T1, T2, T3, T4, TResult>> expr1,
+            Expression<Func<T1, T2, T3, T4, TResult>> expr2)
+        {
+            return Combine(expr1, expr2, (l, r) => Expression.Equal(l, r));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <typeparam name="T3"></typeparam>
+        /// <typeparam name="T4"></typeparam>
+        /// <typeparam name="T5"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="expr1"></param>
+        /// <param name="expr2"></param>
+        /// <returns></returns>
+        public static Expression<Func<T1, T2, T3, T4, T5, TResult>> Equal<T1, T2, T3, T4, T5, TResult>(
+            this Expression<Func<T1, T2, T3, T4, T5, TResult>> expr1,
+            Expression<Func<T1, T2, T3, T4, T5, TResult>> expr2)
+        {
+            return Combine(expr1, expr2, (l, r) => Expression.Equal(l, r));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TDelegate"></typeparam>
+        /// <param name="expr1"></param>
+        /// <param name="expr2"></param>
+        /// <param name="combineFunc"></param>
+        /// <returns></returns>
+        public static Expression<TDelegate> Combine<TDelegate>(this Expression<TDelegate> expr1, Expression<TDelegate> expr2, Func<Expression, Expression, BinaryExpression> combineFunc)
+        {
+            var (left, right, parameters) = MergeExpressionAndParameters(expr1, expr2);
+            return Expression.Lambda<TDelegate>(combineFunc(left, right), parameters);
+
+        }
+
+        private static (Expression left, Expression right, ParameterExpression[] parameters) MergeExpressionAndParameters(LambdaExpression left, LambdaExpression right)
+        {
+            var parameters = new ParameterExpression[left.Parameters.Count];
+            var leftExpression = left.Body;
+            var rightExpression = right.Body;
+            for (int i = 0; i < left.Parameters.Count; i++)
+            {
+                parameters[i] = Expression.Parameter(left.Parameters[i].Type);
+                var leftVisitor = new ReplaceExpressionVisitor(left.Parameters[i], parameters[i]);
+                leftExpression = leftVisitor.Visit(leftExpression);
+
+                var rightVisitor = new ReplaceExpressionVisitor(right.Parameters[i], parameters[i]);
+                rightExpression = rightVisitor.Visit(rightExpression);
+            }
+            return (leftExpression, rightExpression, parameters);
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public static PredicateTranslation<TSource> Translate<TSource>(this Expression<Func<TSource,bool>> predicate)
+        public static IPredicateTranslation<TSource, TResult> Translate<TSource, TResult>(this Expression<Func<TSource, TResult>> predicate)
         {
-            return new PredicateTranslation<TSource>(predicate);
+            return new PredicateTranslation<TSource, TResult>(predicate);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public static IPredicateTranslation<T1, T2, TResult> Translate<T1, T2, TResult>(this Expression<Func<T1, T2, TResult>> predicate)
+        {
+            return new PredicateTranslation<T1, T2, TResult>(predicate);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <typeparam name="T3"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public static IPredicateTranslation<T1, T2, T3, TResult> Translate<T1, T2, T3, TResult>(this Expression<Func<T1, T2, T3, TResult>> predicate)
+        {
+            return new PredicateTranslation<T1, T2, T3, TResult>(predicate);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <typeparam name="T3"></typeparam>
+        /// <typeparam name="T4"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public static IPredicateTranslation<T1, T2, T3, T4, TResult> Translate<T1, T2, T3, T4, TResult>(this Expression<Func<T1, T2, T3, T4, TResult>> predicate)
+        {
+            return new PredicateTranslation<T1, T2, T3, T4, TResult>(predicate);
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -105,107 +389,7 @@ namespace System.Linq.Expressions
             return new MemberInitTranslation<TSource>(predicate);
         }
 
-        class ReplaceExpressionVisitor : ExpressionVisitor
-        {
-            private readonly Expression _oldValue;
-            private readonly Expression _newValue;
 
-            public ReplaceExpressionVisitor(Expression oldValue, Expression newValue)
-            {
-                _oldValue = oldValue;
-                _newValue = newValue;
-            }
-
-            protected override Expression VisitParameter(ParameterExpression node)
-            {
-                if (node == _oldValue)
-                {
-                    return _newValue;
-                }
-                return base.VisitParameter(node);
-            }
-
-            protected override Expression VisitInvocation(InvocationExpression node)
-            {
-                if (node.Expression==_oldValue && _newValue is LambdaExpression lambda)
-                {
-                    var buiders = lambda.Parameters.Zip(node.Arguments, (p, a) => new ReplaceExpressionVisitor(p, a));
-                    return buiders.Aggregate(lambda.Body, (e, b) => b.Visit(e));
-                }
-                return base.VisitInvocation(node);
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="TSource"></typeparam>
-        public sealed class PredicateTranslation<TSource>
-        {
-            private readonly Expression<Func<TSource, bool>> _predicate;
-
-            internal PredicateTranslation(Expression<Func<TSource,bool>> predicate)
-            {
-                this._predicate = predicate;
-            }
-
-            /// <summary>
-            /// Translates a given predicate for a given subtype.
-            /// </summary>
-            /// <typeparam name="TTranslatedSource">The type of the translated predicate's parameter.</typeparam>
-            /// <returns>A translated predicate expression.</returns>
-            public Expression<Func<TTranslatedSource, bool>> To<TTranslatedSource>()
-            {
-                var s = _predicate.Parameters[0];
-                var t = Expression.Parameter(typeof(TTranslatedSource), s.Name);
-
-                var binder = new ReplaceExpressionVisitor(s, t);
-
-                return Expression.Lambda<Func<TTranslatedSource, bool>>(
-                    binder.Visit(_predicate.Body), t);
-            }
-
-            /// <summary>
-            /// Translates a given predicate for a given related type.
-            /// </summary>
-            /// <typeparam name="TTranslatedSource">The type of the translated predicate's parameter.</typeparam>
-            /// <param name="path">The path from the desired type to the given type.</param>
-            /// <returns>A translated predicate expression.</returns>
-            public Expression<Func<TTranslatedSource, bool>> To<TTranslatedSource>(Expression<Func<TTranslatedSource, TSource>> path)
-            {
-                if (path == null)
-                    throw new ArgumentNullException(nameof(path));
-
-                var s = _predicate.Parameters[0];
-                var t = path.Parameters[0];
-
-                var binder = new ReplaceExpressionVisitor(s, path.Body);
-
-                return Expression.Lambda<Func<TTranslatedSource, bool>>(
-                    binder.Visit(_predicate.Body), t);
-            }
-
-            /// <summary>
-            /// Translates a given predicate for a given related type.
-            /// </summary>
-            /// <typeparam name="TTranslatedSource">The type of the translated predicate's parameter.</typeparam>
-            /// <param name="translation">The translation from the desired type to the given type,
-            /// using the initially given predicate to be injected into a new predicate.</param>
-            /// <returns>A translated predicate expression.</returns>
-            public Expression<Func<TTranslatedSource, bool>> To<TTranslatedSource>(Expression<Func<TTranslatedSource, Func<TSource, bool>, bool>> translation)
-            {
-                if (translation == null)
-                    throw new ArgumentNullException(nameof(translation));
-
-                var t = translation.Parameters[0];
-                var s = translation.Parameters[1];
-
-                var binder = new ReplaceExpressionVisitor(s, _predicate);
-
-                return Expression.Lambda<Func<TTranslatedSource, bool>>(
-                    binder.Visit(translation.Body), t);
-            }
-        }
 
         /// <summary>
         /// 
@@ -232,9 +416,9 @@ namespace System.Linq.Expressions
                 var t = Expression.Parameter(type, s.Name);
                 var init = _predicate.Body as MemberInitExpression;
 
-             var binds=   init.Bindings.OfType<MemberAssignment>().Select(b => Expression.Bind(type.GetProperty(b.Member.Name), b.Expression));
+                var binds = init.Bindings.OfType<MemberAssignment>().Select(b => Expression.Bind(type.GetProperty(b.Member.Name), b.Expression));
                 return Expression.Lambda<Func<TTranslatedSource, TTranslatedSource>>(
-                     Expression.MemberInit(Expression.New(typeof(TTranslatedSource)),binds), t);
+                     Expression.MemberInit(Expression.New(typeof(TTranslatedSource)), binds), t);
             }
 
             /// <summary>

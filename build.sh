@@ -27,7 +27,7 @@ export DOTNET_ROLL_FORWARD_ON_NO_CANDIDATE_FX=2
 
 DOTNET_INSTALLED_VERSION=$(dotnet --version 2>&1)
 
-if [ "$DOTNET_VERSION" > "$DOTNET_INSTALLED_VERSION" ]; then
+if [[ "$DOTNET_VERSION" > "$DOTNET_INSTALLED_VERSION" ]]; then
     echo "Installing .NET CLI..."
     if [ ! -d "$SCRIPT_DIR/.dotnet" ]; then
       mkdir "$SCRIPT_DIR/.dotnet"
@@ -44,7 +44,7 @@ fi
 
 CAKE_INSTALLED_VERSION=$(dotnet-cake --version 2>&1)
 
-if [ "$CAKE_VERSION" > "$CAKE_INSTALLED_VERSION" ]; then
+if [[ "$CAKE_VERSION" > "$CAKE_INSTALLED_VERSION" ]]; then
     if [ ! -f "$CAKE_EXE" ] || [ ! -d "$CAKE_PATH" ]; then
         if [ -f "$CAKE_EXE" ]; then
             dotnet tool uninstall --tool-path $TOOLS_DIR Cake.Tool

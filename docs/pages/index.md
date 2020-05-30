@@ -13,7 +13,7 @@ category: Index Page
       <div class="col-md-6 order-md-1 text-center text-md-left pr-md-5">
         <h1 class="mb-3 bd-text-purple-bright">Scorpio</h1>
         <p class="lead">
-          Scorpio是用于.NET Core和.NET Framework 的基于模块化的跨平台框架，包括AOP，模块化，插件化，依赖项注入以及一些常见的扩展和模块。
+          Scorpio是用于.NET Core 3.0 + 的基于模块化的跨平台框架，包括AOP，模块化，插件化，依赖项注入以及一些常见的扩展和模块。
         </p>
         <div class="d-flex flex-column flex-md-row lead mb-3">
           <a href="{{site.baseurl}}/docs/getting-started/console" class="btn btn-lg btn-bd-primary mb-3 mb-md-0 mr-md-3" onclick="ga('send', 'event', 'Jumbotron actions', 'Get started', 'Get started');">快速入门</a>
@@ -33,7 +33,7 @@ category: Index Page
     {% include default-package-icon.svg %}
 
     <h3>安装 Nuget 包</h3>
-    <p>使用nuget安装Scorpio及其依赖项。 您需要创建一个NetStandard2.1、.NET Core 3.0 或 .NET Framework 4.8项目。 </p>
+    <p>使用nuget安装Scorpio及其依赖项。 您需要创建一个NetStandard2.1、.NET Core 3.0+ 的项目。 </p>
 
 <figure class="highlight"><pre><code class="language-powershell" data-lang="sh">Install-Package Scropio <span class="nt">-v</span> {{site.currently}}</code></pre></figure>
 

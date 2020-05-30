@@ -19,6 +19,7 @@ namespace Scorpio.Quartz
         }
         protected override IScheduler Instantiate(QuartzSchedulerResources rsrcs, QuartzScheduler qs)
         {
+            
             var sch = base.Instantiate(rsrcs, qs);
             sch.JobFactory = _serviceProvider.GetService<IJobFactory>();
             return sch;
