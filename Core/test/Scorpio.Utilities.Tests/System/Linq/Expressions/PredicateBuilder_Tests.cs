@@ -46,6 +46,17 @@ namespace System.Linq.Expressions
             func.Compile().Invoke(5, 5).ShouldBeFalse();
             func.Compile().Invoke(4, 5).ShouldBeFalse();
         }
+        [Fact]
+        public void OrElse_TT()
+        {
+            Expression<Func<int, int, bool>> func1 = (a, b) => a + b == 10;
+            Expression<Func<int, int, bool>> func2 = (a, b) => a - b == 2;
+            var func = func1.OrElse(func2);
+            func.Compile().Invoke(6, 4).ShouldBeTrue();
+            func.Compile().Invoke(5, 5).ShouldBeTrue();
+            func.Compile().Invoke(4, 2).ShouldBeTrue();
+            func.Compile().Invoke(4, 5).ShouldBeFalse();
+        }
 
         [Fact]
         public void Translate()

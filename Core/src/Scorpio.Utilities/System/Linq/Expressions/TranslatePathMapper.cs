@@ -4,6 +4,10 @@ using System.Text;
 
 namespace System.Linq.Expressions
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="TDelegate"></typeparam>
     public sealed class TranslatePathMapper<TDelegate>
     {
         private readonly Expression<TDelegate> _predicate;
@@ -13,6 +17,14 @@ namespace System.Linq.Expressions
         {
             _predicate = predicate;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TTranslatedSource"></typeparam>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public TranslatePathMapper<TDelegate> Map<TSource, TTranslatedSource>(Expression<Func<TTranslatedSource, TSource>> path)
         {
             _expressions.Add(path);

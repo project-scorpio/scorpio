@@ -5,11 +5,11 @@ using System.Text;
 namespace System.Linq.Expressions
 {
 
-    internal abstract class PredicateTranslation<TDelegate>
+    internal abstract class ExpressionTranslation<TDelegate>
     {
         private readonly Expression<TDelegate> _predicate;
 
-        internal PredicateTranslation(Expression<TDelegate> predicate)
+        internal ExpressionTranslation(Expression<TDelegate> predicate)
         {
             this._predicate = predicate;
         }
