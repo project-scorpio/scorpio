@@ -9,15 +9,26 @@ using Scorpio.Conventional;
 
 namespace Scorpio.DependencyInjection.Conventional
 {
-    class ConventionalDependencyAction : ConventionalActionBase
+    /// <summary>
+    /// 
+    /// </summary>
+    public sealed class ConventionalDependencyAction : ConventionalActionBase
     {
 
         
-        public ConventionalDependencyAction(IConventionalConfiguration configuration) 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="configuration"></param>
+        internal ConventionalDependencyAction(IConventionalConfiguration configuration) 
             : base(configuration)
         {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
         protected override void Action(IConventionalContext context)
         {
             context.Types.ForEach(

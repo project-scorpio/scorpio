@@ -229,8 +229,8 @@ namespace Scorpio.EntityFrameworkCore
                 if (item.Key.IsAssignableFrom(typeof(TEntity)))
                 {
                     var filterexpression = item.Value.BuildFilterExpression<TEntity>(DataFilter, this);
-                    filterexpression = filterexpression.Or(filterexpression.Equal(expr2 => DataFilter.IsEnabled(item.Key)));
-                    expression = expression == null ? filterexpression : expression.And(filterexpression);
+                    filterexpression = filterexpression.OrElse(filterexpression.Equal(expr2 => DataFilter.IsEnabled(item.Key)));
+                    expression = expression == null ? filterexpression : expression.AndAlso(filterexpression);
                 }
             });
             return expression;

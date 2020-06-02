@@ -16,7 +16,7 @@ namespace Scorpio.DependencyInjection.Conventional
         /// <param name="context"></param>
         /// <param name="serviceLifetime"></param>
         /// <returns></returns>
-        public static IConventionalContext Lifetime(this IConventionalContext context, ServiceLifetime serviceLifetime)
+        public static IConventionalContext<TAction> Lifetime<TAction>(this IConventionalContext<TAction> context, ServiceLifetime serviceLifetime)
         {
             context.Set("Lifetime", new LifetimeSelector(serviceLifetime));
             return context;
@@ -28,7 +28,7 @@ namespace Scorpio.DependencyInjection.Conventional
         /// <param name="context"></param>
         /// <param name="lifetimeSelector"></param>
         /// <returns></returns>
-        public static IConventionalContext Lifetime(this IConventionalContext context, IRegisterAssemblyLifetimeSelector  lifetimeSelector)
+        public static IConventionalContext<TAction> Lifetime<TAction>(this IConventionalContext<TAction> context, IRegisterAssemblyLifetimeSelector  lifetimeSelector)
         {
             context.Set("Lifetime", lifetimeSelector);
             return context;
@@ -40,7 +40,7 @@ namespace Scorpio.DependencyInjection.Conventional
         /// <param name="context"></param>
         /// <param name="serviceSelector"></param>
         /// <returns></returns>
-        public static IConventionalContext As(this IConventionalContext context, IRegisterAssemblyServiceSelector serviceSelector)
+        public static IConventionalContext<TAction> As<TAction>(this IConventionalContext<TAction> context, IRegisterAssemblyServiceSelector serviceSelector)
         {
             context.GetOrAdd<ICollection< IRegisterAssemblyServiceSelector>>("Service",new HashSet<IRegisterAssemblyServiceSelector>()).Add(serviceSelector);
             return context;
@@ -51,7 +51,7 @@ namespace Scorpio.DependencyInjection.Conventional
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static IConventionalContext As<T>(this IConventionalContext context)
+        public static IConventionalContext<TAction> As<TAction,T>(this IConventionalContext<TAction> context)
         {
             context.As(new TypeSelector<T>());
             return context;
@@ -61,7 +61,7 @@ namespace Scorpio.DependencyInjection.Conventional
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static IConventionalContext AsDefault(this IConventionalContext context)
+        public static IConventionalContext<TAction> AsDefault<TAction>(this IConventionalContext<TAction> context)
         {
             context.As(new DefaultInterfaceSelector());
             return context;
@@ -72,7 +72,7 @@ namespace Scorpio.DependencyInjection.Conventional
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static IConventionalContext AsSelf(this IConventionalContext context)
+        public static IConventionalContext<TAction> AsSelf<TAction>(this IConventionalContext<TAction> context)
         {
             context.As(new SelfSelector());
             return context;
@@ -83,7 +83,7 @@ namespace Scorpio.DependencyInjection.Conventional
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static IConventionalContext AsExposeService(this IConventionalContext context)
+        public static IConventionalContext<TAction> AsExposeService<TAction>(this IConventionalContext<TAction> context)
         {
             context.As(new ExposeServicesSelector()).Lifetime(new ExposeLifetimeSelector());
             return context;

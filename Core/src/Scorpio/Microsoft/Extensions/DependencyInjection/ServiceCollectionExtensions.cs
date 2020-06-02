@@ -23,26 +23,24 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="types"></param>
         /// <param name="configureAction"></param>
         /// <returns></returns>
-        public static IServiceCollection DoConventionalAction<TAction>(this IServiceCollection services, IEnumerable<Type> types, Action<IConventionalConfiguration> configureAction) where TAction : ConventionalActionBase
+        public static IServiceCollection DoConventionalAction<TAction>(
+            this IServiceCollection services, 
+            IEnumerable<Type> types, 
+            Action<IConventionalConfiguration<TAction>> configureAction) 
+            where TAction : ConventionalActionBase
         {
-            var config = new ConventionalConfiguration(services,types);
+            var config = new ConventionalConfiguration<TAction>(services,types);
             configureAction(config);
-            var action = Activator.CreateInstance(typeof(TAction), config) as TAction;
+            var action = Activator.CreateInstance(
+                typeof(TAction),
+                BindingFlags.Public| BindingFlags.CreateInstance| BindingFlags.Instance| BindingFlags.InvokeMethod| BindingFlags.NonPublic,
+                null,
+                new object[] { config },
+                null) as TAction;
             action.Action();
             return services;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="services"></param>
-        /// <param name="types"></param>
-        /// <param name="configureAction"></param>
-        /// <returns></returns>
-        public static IServiceCollection RegisterConventionalDependencyInject(this IServiceCollection services,IEnumerable<Type> types, Action<IConventionalConfiguration> configureAction)
-        {
-            return services.DoConventionalAction<ConventionalDependencyAction>(types, configureAction);
-        }
 
         /// <summary>
         /// 

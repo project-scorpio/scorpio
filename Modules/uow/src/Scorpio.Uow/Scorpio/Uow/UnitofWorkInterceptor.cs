@@ -34,12 +34,12 @@ namespace Scorpio.Uow
         /// <returns></returns>
         public override async Task Invoke(AspectContext context, AspectDelegate next)
         {
+            var options = CreateOptions();
             if (context.ServiceMethod.AttributeExists<DisableUnitOfWorkAttribute>() || context.ImplementationMethod.AttributeExists<DisableUnitOfWorkAttribute>())
             {
-                await next(context);
-                return;
+                options.Scope = System.Transactions.TransactionScopeOption.Suppress;
             }
-            using (var uow = _unitOfWorkManager.Begin(CreateOptions(context)))
+            using (var uow = _unitOfWorkManager.Begin(options))
             {
                 await next(context);
                 if (context.IsAsync())
@@ -58,7 +58,7 @@ namespace Scorpio.Uow
             _optionsAttribute = options;
         }
 
-        private UnitOfWorkOptions CreateOptions(AspectContext context)
+        private UnitOfWorkOptions CreateOptions()
         {
             var options = new UnitOfWorkOptions();
             _defaultOptions.Normalize(options);

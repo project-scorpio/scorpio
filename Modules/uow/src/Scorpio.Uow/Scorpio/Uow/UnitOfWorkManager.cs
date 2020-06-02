@@ -50,19 +50,22 @@ namespace Scorpio.Uow
                 return new InnerUnitOfWorkCompleteHandle();
             }
 
-            var uow = CreateNewUnitOfWork();
+            var uow = CreateNewUnitOfWork(options);
             uow.Begin(options);
             return uow;
         }
 
-        private IUnitOfWork CreateNewUnitOfWork()
+        private IUnitOfWork CreateNewUnitOfWork( UnitOfWorkOptions options)
         {
             var scope = _serviceProvider.CreateScope();
             try
             {
                 var outerUow = _currentUnitOfWorkProvider.Current;
 
-                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                var unitOfWork = 
+                    options.Scope== TransactionScopeOption.Suppress?
+                    ActivatorUtilities.CreateInstance<NullUnitOfWork>(scope.ServiceProvider): 
+                    scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
 
                 unitOfWork.Outer = outerUow;
 

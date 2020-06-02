@@ -86,7 +86,7 @@ namespace Scorpio.Repositories
         /// </summary>
         /// <param name="predicate"></param>
         /// <param name="autoSave"></param>
-        public virtual void Delete(Expression<Func<TEntity, bool>> predicate, bool autoSave = false)
+        public virtual void Delete(Expression<Func<TEntity, bool>> predicate, bool autoSave = true)
         {
             foreach (var entity in GetQueryable().Where(predicate).ToList())
             {
@@ -101,7 +101,7 @@ namespace Scorpio.Repositories
         /// <param name="autoSave"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public virtual Task DeleteAsync(Expression<Func<TEntity, bool>> predicate, bool autoSave = false, CancellationToken cancellationToken = default)
+        public virtual Task DeleteAsync(Expression<Func<TEntity, bool>> predicate, bool autoSave = true, CancellationToken cancellationToken = default)
         {
             Delete(predicate, autoSave);
             return Task.CompletedTask;
@@ -113,7 +113,7 @@ namespace Scorpio.Repositories
         /// <param name="predicate"></param>
         /// <param name="updateExpression"></param>
         /// <param name="autoSave"></param>
-        public virtual void Update(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TEntity>> updateExpression, bool autoSave = false)
+        public virtual void Update(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TEntity>> updateExpression, bool autoSave = true)
         {
             foreach (var entity in GetQueryable().Where(predicate).ToList())
             {
@@ -145,7 +145,7 @@ namespace Scorpio.Repositories
         /// <param name="autoSave"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public virtual Task UpdateAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TEntity>> updateExpression, bool autoSave = false, CancellationToken cancellationToken = default)
+        public virtual Task UpdateAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TEntity>> updateExpression, bool autoSave = true, CancellationToken cancellationToken = default)
         {
             Update(predicate, updateExpression);
             return Task.CompletedTask;
@@ -229,7 +229,7 @@ namespace Scorpio.Repositories
         /// </summary>
         /// <param name="id"></param>
         /// <param name="autoSave"></param>
-        public virtual void Delete(TKey id, bool autoSave = false)
+        public virtual void Delete(TKey id, bool autoSave = true)
         {
             var entity = Find(id, includeDetails: false);
             if (entity == null)
@@ -247,7 +247,7 @@ namespace Scorpio.Repositories
         /// <param name="autoSave"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public virtual Task DeleteAsync(TKey id, bool autoSave = false, CancellationToken cancellationToken = default)
+        public virtual Task DeleteAsync(TKey id, bool autoSave = true, CancellationToken cancellationToken = default)
         {
             Delete(id, autoSave);
             return Task.CompletedTask;

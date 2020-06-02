@@ -52,7 +52,7 @@ namespace Scorpio.Data
         {
             FilterContext = context;
             var filterexpression = BuildFilterExpression<TEntity>(context);
-            var expression = filterexpression.Or(filterexpression.Equal(expr2 => dataFilter.IsEnabled(FilterType)));
+            var expression = filterexpression.OrElse(filterexpression.Equal(expr2 => dataFilter.IsEnabled(FilterType)));
             return expression;
         }
 

@@ -139,7 +139,7 @@ namespace Scorpio.Uow
             {
                 var context = Options.IsTransactional ?? true ?
                     CreateDbContextWithTransactional<TDbContext>(connectionString) :
-                    ServiceProvider.GetService<TDbContext>();
+                    ServiceProvider.GetRequiredService<TDbContext>();
                 if (Options.Timeout.HasValue &&
                     context.Database.IsRelational() &&
                     context.Database.GetCommandTimeout().HasValue)
