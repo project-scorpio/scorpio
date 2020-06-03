@@ -42,7 +42,10 @@ namespace Scorpio.Uow
         {
             foreach (var item in GetAllActiveDbContexts())
             {
-                item.SaveChanges();
+                if (item.ChangeTracker.HasChanges())
+                {
+                    item.SaveChanges();
+                }
             }
         }
 
@@ -54,7 +57,10 @@ namespace Scorpio.Uow
         {
             foreach (var item in GetAllActiveDbContexts())
             {
-                await item.SaveChangesAsync(cancellationToken);
+                if (item.ChangeTracker.HasChanges())
+                {
+                    await item.SaveChangesAsync(cancellationToken);
+                }   
             }
         }
 
@@ -137,7 +143,7 @@ namespace Scorpio.Uow
         {
             using (DbContextCreationContext.Use(new DbContextCreationContext(connectionString)))
             {
-                var context = Options.IsTransactional ?? true ?
+                var context = Options.IsTransactional ?? true && Options.Scope!= System.Transactions.TransactionScopeOption.Suppress ?
                     CreateDbContextWithTransactional<TDbContext>(connectionString) :
                     ServiceProvider.GetRequiredService<TDbContext>();
                 if (Options.Timeout.HasValue &&

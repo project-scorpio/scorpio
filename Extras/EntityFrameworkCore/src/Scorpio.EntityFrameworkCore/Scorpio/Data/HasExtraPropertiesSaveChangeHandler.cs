@@ -13,15 +13,16 @@ namespace Scorpio.Data
             return Task.CompletedTask;
         }
 
-        public async Task PreSaveChangeAsync(IEnumerable<EntityEntry> entries)
+        public Task PreSaveChangeAsync(IEnumerable<EntityEntry> entries)
         {
-            await entries.ForEachAsync(async entry =>
+             entries.ForEach(entry =>
             {
                 if ((entry.Entity is IHasExtraProperties) && entry.State != Microsoft.EntityFrameworkCore.EntityState.Deleted )
                 {
                     entry.Property(nameof(IHasExtraProperties.ExtraProperties)).IsModified = true;
                 }
             });
+            return Task.CompletedTask;
         }
     }
 }

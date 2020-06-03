@@ -28,7 +28,7 @@ namespace Scorpio.Uow
         {
             if (!(_unitOfWorkManager.Current is EfUnitOfWork uow))
             {
-                return _serviceProvider.GetRequiredService<TDbContext>();
+                throw new NotSupportedException($"UnitOfWork is not type of {typeof(EfUnitOfWork).FullName}.");
             }
             var connectionString = _connectionStringResolver.Resolve<TDbContext>();
             return uow.GetOrCreateDbContext<TDbContext>(connectionString);

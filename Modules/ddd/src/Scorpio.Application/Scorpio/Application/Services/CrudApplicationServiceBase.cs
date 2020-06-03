@@ -27,16 +27,39 @@ namespace Scorpio.Application.Services
         where TEntityDto : IEntityDto<TKey>
 
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="serviceProvider"></param>
+        /// <param name="repository"></param>
         protected CrudApplicationServiceBase(IServiceProvider serviceProvider, IRepository<TEntity, TKey> repository) : base(serviceProvider)
         {
             Repository = repository;
             Configuration = new MapperConfiguration(ConfigMapper);
             Mapper = new Mapper(Configuration);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public MapperConfiguration Configuration { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public IMapper Mapper { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         protected IRepository<TEntity, TKey> Repository { get; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="input"></param>
+        /// <returns></returns>
         protected virtual IQueryable<TEntity> ApplyFilter(IQueryable<TEntity> source, TGetListInput input)
         {
             return input switch
@@ -46,6 +69,12 @@ namespace Scorpio.Application.Services
             };
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="query"></param>
+        /// <param name="input"></param>
+        /// <returns></returns>
         protected virtual IQueryable<TEntity> ApplyPaging(IQueryable<TEntity> query, TGetListInput input)
         {
             if (input is IPagingRequest paging && paging.MaxResultCount>0)
@@ -55,6 +84,12 @@ namespace Scorpio.Application.Services
             return query;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="query"></param>
+        /// <param name="input"></param>
+        /// <returns></returns>
         protected virtual IQueryable<TEntity> ApplySorting(IQueryable<TEntity> query, TGetListInput input)
         {
             return input switch
@@ -76,6 +111,11 @@ namespace Scorpio.Application.Services
             expression.CreateMap<TUpdateInput, TEntity>();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sources"></param>
+        /// <returns></returns>
         protected virtual IQueryable<TEntity> GetQuery(IQueryable<TEntity> sources)
         {
             return sources;
