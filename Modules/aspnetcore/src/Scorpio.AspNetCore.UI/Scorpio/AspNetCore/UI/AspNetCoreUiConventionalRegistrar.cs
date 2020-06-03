@@ -16,7 +16,7 @@ namespace Scorpio.AspNetCore.UI
     {
         public void Register(IConventionalRegistrationContext context)
         {
-            context.Services.RegisterConventionalDependencyInject(context.Types, config =>
+            context.RegisterConventionalDependencyInject( config =>
             {
                 config.Where(t => t.IsAssignableTo<TagHelpers.ITagHelperService>()).AsSelf().Lifetime(ServiceLifetime.Transient);
             });

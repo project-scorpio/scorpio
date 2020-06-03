@@ -143,7 +143,7 @@ namespace Scorpio.Uow
         {
             using (DbContextCreationContext.Use(new DbContextCreationContext(connectionString)))
             {
-                var context = Options.IsTransactional ?? true && Options.Scope!= System.Transactions.TransactionScopeOption.Suppress ?
+                var context = Options.IsTransactional ?? (true && Options.Scope!= System.Transactions.TransactionScopeOption.Suppress) ?
                     CreateDbContextWithTransactional<TDbContext>(connectionString) :
                     ServiceProvider.GetRequiredService<TDbContext>();
                 if (Options.Timeout.HasValue &&

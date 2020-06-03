@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Scorpio.AspNetCore.TagHelpers.Dropdown
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [HtmlTargetElement("a", ParentTag = "dropdown-menu")]
     [HtmlTargetElement("button", ParentTag = "dropdown-menu")]
     public class DropdownMenuItemTagHelper : TagHelper<DropdownMenuItemTagHelper, DropdownMenuItemTagHelperService>
@@ -14,6 +17,11 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
         /// 
         /// </summary>
         public DropdownItemStatus Status { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="service"></param>
         public DropdownMenuItemTagHelper(DropdownMenuItemTagHelperService service) : base(service)
         {
         }

@@ -15,7 +15,7 @@ namespace Scorpio.AspNetCore.Mvc
     {
         public void Register(IConventionalRegistrationContext context)
         {
-            context.Services.RegisterConventionalDependencyInject(context.Types, config =>
+            context.RegisterConventionalDependencyInject( config =>
             {
                 config.Where(t => t.IsAssignableTo<Controller>() || t.AttributeExists<ControllerAttribute>()).AsSelf().Lifetime(ServiceLifetime.Transient);
                 config.Where(t => t.IsAssignableTo<PageModel>() || t.AttributeExists<PageModelAttribute>()).AsSelf().Lifetime(ServiceLifetime.Transient);

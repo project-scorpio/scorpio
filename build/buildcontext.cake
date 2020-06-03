@@ -4,8 +4,8 @@ public class BuildContext
     public BuildContext(ICakeContext context) 
     {
         Context = context;
-        Version=new BuildVersion(context);
         Environment=new BuildEnvironment(context);
+        Version=new BuildVersion(this);
         Projects = Context.GetDirectories("./**/src/*");
         Soluations = Context.GetFiles("./**/*.sln");
 		TestProjects = Context.GetDirectories("./**/test/*");
@@ -52,8 +52,11 @@ public class BuildEnvironment
 
     public string Configuration=>_context.Argument("configuration",_buildSystem.IsLocalBuild?"Debug":"Release");
 
-    public bool IsPublish=>(_buildSystem.IsRunningOnAppVeyor 
-                            && _appVeyor.Environment.Repository.Tag.IsTag) ||(IsLocalBuild && Configuration=="Release");
+    public bool IsRelease=>_buildSystem.IsRunningOnAppVeyor && _appVeyor.Environment.Repository.Tag.IsTag;
+
+    public bool IsDaily=>_buildSystem.IsRunningOnAppVeyor && _appVeyor.Environment.Repository.Branch.ToLower()=="dev";
+
+    public bool IsPublish=>IsRelease||IsDaily;
 
     public IAppVeyorProvider AppVeyor => _appVeyor;
 

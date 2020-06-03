@@ -76,7 +76,6 @@ namespace Scorpio.AspNetCore.TagHelpers
         /// 
         /// </summary>
         /// <param name="context"></param>
-        /// <param name="key"></param>
         public static T InitValue<T>(this TagHelperContext context)
             where T : class
         {

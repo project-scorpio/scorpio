@@ -4,12 +4,12 @@ using System.Xml;
 
 public class BuildVersion
 {
-    private readonly ICakeContext _context;
+    private readonly BuildContext _context;
 
-    public BuildVersion(ICakeContext context)
+    public BuildVersion(BuildContext context)
 	{
         _context = context;
-		var versionFile = context.File("./build/versions.props");
+		var versionFile = context.Context.File("./build/versions.props");
 		var content = System.IO.File.ReadAllText(versionFile.Path.FullPath);
 		XmlDocument doc = new XmlDocument();
 		doc.LoadXml(content);
@@ -17,7 +17,7 @@ public class BuildVersion
 		Minor = int.Parse(doc.DocumentElement.SelectSingleNode("/Project/PropertyGroup/VersionMinor").InnerText);
 		Patch = int.Parse(doc.DocumentElement.SelectSingleNode("/Project/PropertyGroup/VersionPatch").InnerText);
 		Suffix = doc.DocumentElement.SelectSingleNode("/Project/PropertyGroup/VersionSuffix").InnerText;
-		Build = context.BuildSystem().IsRunningOnAppVeyor?context.AppVeyor().Environment.Build.Number:Util.CreateStamp();
+		Build = context.Context.BuildSystem().IsRunningOnAppVeyor?context.Context.AppVeyor().Environment.Build.Number:Util.CreateStamp();
     }
 	
 	public int Major { get; set; }
@@ -33,8 +33,8 @@ public class BuildVersion
     public string GetVersionSuffix()
 	{
 		var suffix= string.IsNullOrWhiteSpace( Suffix)? string.Empty : $"-{Suffix}";
-		if(_context.BuildSystem().IsLocalBuild){
-			return $"{suffix}-dev.{Build}";
+		if(_context.Environment.IsDaily){
+			suffix= $"{suffix}-dev.{Build}";
 		}
 		return suffix;
 	}

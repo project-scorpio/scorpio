@@ -13,7 +13,7 @@ namespace Scorpio.Quartz
     {
         public void Register(IConventionalRegistrationContext context)
         {
-            context.Services.RegisterConventionalDependencyInject(context.Types, config =>
+            context.RegisterConventionalDependencyInject(config =>
             {
                 config.Where(t => t.IsStandardType()).Where(t => t.IsAssignableTo<IJob>()).AsSelf().Lifetime(ServiceLifetime.Transient);
             });
