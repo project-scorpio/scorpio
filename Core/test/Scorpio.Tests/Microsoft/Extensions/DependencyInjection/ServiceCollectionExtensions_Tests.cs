@@ -46,8 +46,8 @@ namespace Microsoft.Extensions.DependencyInjection
             var services = new ServiceCollection();
             services.DoConventionalAction<ConventionalDependencyAction>(typeof(ServiceCollectionExtensions_Tests).Assembly.GetTypes(), config =>
             {
-                config.Where(t => t.Name == nameof(Service1)).As<ConventionalDependencyAction,IService2>().Lifetime(ServiceLifetime.Singleton);
-                config.Where(t => t.Name == nameof(Service1)).As<ConventionalDependencyAction,IService1>().Lifetime(ServiceLifetime.Transient);
+                config.Where(t => t.Name == nameof(Service1)).As<IService2>().Lifetime(ServiceLifetime.Singleton);
+                config.Where(t => t.Name == nameof(Service1)).As<IService1>().Lifetime(ServiceLifetime.Transient);
             });
             services.ShouldContainTransient(typeof(IService1), typeof(Service1));
             services.ShouldNotContainService(typeof(Service1));

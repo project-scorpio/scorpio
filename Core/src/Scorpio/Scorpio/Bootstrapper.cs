@@ -15,7 +15,7 @@ namespace Scorpio
     public abstract class Bootstrapper : IBootstrapper, IModuleContainer
     {
         private bool _isShutdown = false;
-        private Lazy<IServiceFactoryAdapter> _serviceFactory;
+        private readonly Lazy<IServiceFactoryAdapter> _serviceFactory;
 
         private readonly BootstrapperCreationOptions _options;
 
