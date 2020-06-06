@@ -16,4 +16,14 @@ namespace Scorpio.Conventional
         IServiceCollection Services { get; }
 
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public interface IConventionalConfiguration<out TAction>:IConventionalConfiguration
+    {
+      
+
+    }
+
 }

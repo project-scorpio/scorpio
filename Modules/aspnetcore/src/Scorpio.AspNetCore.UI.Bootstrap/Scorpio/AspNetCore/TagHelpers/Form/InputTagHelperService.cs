@@ -2,8 +2,16 @@
 
 namespace Scorpio.AspNetCore.TagHelpers.Form
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class InputTagHelperService : TagHelperService<InputTagHelper>
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="output"></param>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             if (!output.Attributes.ContainsName("placeholder"))

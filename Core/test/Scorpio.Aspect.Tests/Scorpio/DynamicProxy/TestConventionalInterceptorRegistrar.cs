@@ -1,14 +1,20 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Scorpio.Conventional;
+using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace Scorpio.DynamicProxy
 {
-    class TestConventionalInterceptorRegistrar : IConventionaInterceptorRegistrar
+    class TestConventionalInterceptorRegistrar : IConventionalRegistrar
     {
-        public void Register(IConventionaInterceptorContext context)
+        public void Register(IConventionalRegistrationContext context)
         {
-            context.Add<IInterceptorable, TestInterceptor>();
+            context.RegisterConventionalInterceptor(c =>
+            {
+                c.Where(t => t.IsAssignableTo<IInterceptorable>()).Intercept<TestInterceptor>();
+            });
         }
     }
 }

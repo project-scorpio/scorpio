@@ -14,6 +14,10 @@ namespace Scorpio.Uow.EntityFrameworkCore.Uow
     [DependsOn(typeof(EntityFrameworkCoreModule))]
     public sealed class UnitOfWorkEntityFrameworkCoreModule : ScorpioModule
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
         public override void ConfigureServices(ConfigureServicesContext context)
         {
             context.Services.ReplaceTransient<IUnitOfWork, EfUnitOfWork>();

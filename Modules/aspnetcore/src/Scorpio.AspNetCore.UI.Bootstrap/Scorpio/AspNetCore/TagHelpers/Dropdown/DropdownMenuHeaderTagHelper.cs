@@ -11,6 +11,10 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
     [HtmlTargetElement("menu-header", ParentTag = "dropdown-menu")]
     public class DropdownMenuHeaderTagHelper : TagHelper<DropdownMenuHeaderTagHelper, DropdownMenuHeaderTagHelperService>
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="service"></param>
         public DropdownMenuHeaderTagHelper(DropdownMenuHeaderTagHelperService service) : base(service)
         {
         }

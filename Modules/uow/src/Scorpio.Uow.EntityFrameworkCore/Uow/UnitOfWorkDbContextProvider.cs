@@ -17,8 +17,8 @@ namespace Scorpio.Uow
 
         public UnitOfWorkDbContextProvider(
             IServiceProvider serviceProvider,
-           IUnitOfWorkManager unitOfWorkManager,
-           IConnectionStringResolver connectionStringResolver)
+            IUnitOfWorkManager unitOfWorkManager,
+            IConnectionStringResolver connectionStringResolver)
         {
             _serviceProvider = serviceProvider;
             _unitOfWorkManager = unitOfWorkManager;
@@ -28,12 +28,10 @@ namespace Scorpio.Uow
         {
             if (!(_unitOfWorkManager.Current is EfUnitOfWork uow))
             {
-                throw new  NotSupportedException($"UnitOfWork is not type of {typeof(EfUnitOfWork).FullName}.");
+                throw new NotSupportedException($"UnitOfWork is not type of {typeof(EfUnitOfWork).FullName}.");
             }
             var connectionString = _connectionStringResolver.Resolve<TDbContext>();
-           return uow.GetOrCreateDbContext<TDbContext>(connectionString);
+            return uow.GetOrCreateDbContext<TDbContext>(connectionString);
         }
-
-
     }
 }

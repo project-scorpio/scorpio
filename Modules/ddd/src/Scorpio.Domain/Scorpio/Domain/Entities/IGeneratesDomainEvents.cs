@@ -8,7 +8,7 @@ namespace Scorpio.Domain.Entities
     /// <summary>
     /// 
     /// </summary>
-  public  interface IGeneratesDomainEvents
+    public interface IGeneratesDomainEvents
     {
         /// <summary>
         /// 

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using Scorpio.Data;
 using Scorpio.Entities;
 using Scorpio.EntityFrameworkCore;
@@ -8,11 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Z.EntityFramework.Plus;
-using System.Linq.Expressions;
 using Scorpio.Threading;
 
 namespace Scorpio.Repositories.EntityFrameworkCore
@@ -48,14 +45,18 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         DbContext IEfCoreRepository<TEntity>.DbContext => DbContext;
 
 
-       
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="serviceProvider"></param>
         /// <param name="contextProvider"></param>
         /// <param name="cancellationTokenProvider"></param>
-        public EfCoreRepository(IServiceProvider serviceProvider, IDbContextProvider<TDbContext> contextProvider,ICancellationTokenProvider cancellationTokenProvider) : base(serviceProvider, cancellationTokenProvider)
+        public EfCoreRepository(
+            IServiceProvider serviceProvider,
+            IDbContextProvider<TDbContext> contextProvider,
+            ICancellationTokenProvider cancellationTokenProvider)
+            : base(serviceProvider, cancellationTokenProvider)
         {
             _contextProvider = contextProvider;
         }
@@ -68,7 +69,7 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         /// <param name="entity"></param>
         /// <param name="autoSave"></param>
         /// <returns></returns>
-        public override TEntity Insert(TEntity entity, bool autoSave = false)
+        public override TEntity Insert(TEntity entity, bool autoSave = true)
         {
             var result = DbSet.Add(entity).Entity;
             if (autoSave)
@@ -85,7 +86,7 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         /// <param name="autoSave"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public override async Task<TEntity> InsertAsync(TEntity entity, bool autoSave = false, CancellationToken cancellationToken = default)
+        public override async Task<TEntity> InsertAsync(TEntity entity, bool autoSave = true, CancellationToken cancellationToken = default)
         {
             var result = await DbSet.AddAsync(entity, cancellationToken);
             if (autoSave)
@@ -101,7 +102,7 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         /// <param name="entity"></param>
         /// <param name="autoSave"></param>
         /// <returns></returns>
-        public override TEntity Update(TEntity entity, bool autoSave = false)
+        public override TEntity Update(TEntity entity, bool autoSave = true)
         {
             DbContext.Attach(entity);
             var result = DbContext.Update(entity).Entity;
@@ -119,7 +120,7 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         /// <param name="autoSave"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public override async Task<TEntity> UpdateAsync(TEntity entity, bool autoSave = false, CancellationToken cancellationToken = default)
+        public override async Task<TEntity> UpdateAsync(TEntity entity, bool autoSave = true, CancellationToken cancellationToken = default)
         {
             DbContext.Attach(entity);
             var result = DbContext.Update(entity).Entity;
@@ -135,7 +136,7 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         /// </summary>
         /// <param name="entity"></param>
         /// <param name="autoSave"></param>
-        public override void Delete(TEntity entity, bool autoSave = false)
+        public override void Delete(TEntity entity, bool autoSave = true)
         {
             DbSet.Remove(entity);
             if (autoSave)
@@ -151,7 +152,7 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         /// <param name="autoSave"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public override async Task DeleteAsync(TEntity entity, bool autoSave = false, CancellationToken cancellationToken = default)
+        public override async Task DeleteAsync(TEntity entity, bool autoSave = true, CancellationToken cancellationToken = default)
         {
             DbSet.Remove(entity);
             if (autoSave)
@@ -165,16 +166,16 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         /// </summary>
         /// <param name="predicate"></param>
         /// <param name="autoSave"></param>
-        public override void Delete(Expression<Func<TEntity, bool>> predicate, bool autoSave = false)
+        public override void Delete(Expression<Func<TEntity, bool>> predicate, bool autoSave = true)
         {
             var query = GetQueryable().IgnoreQueryFilters().Where(predicate);
             if (typeof(TEntity).IsAssignableTo<ISoftDelete>())
             {
                 Expression<Func<SoftDelete, SoftDelete>> updator = d => new SoftDelete { IsDeleted = true };
-                 query.Update(updator.Translate().To<TEntity>());
+                query.Update(updator.Translate<SoftDelete>().To<TEntity>());
                 return;
             }
-             query.Delete();
+            query.Delete();
         }
 
         /// <summary>
@@ -184,13 +185,13 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         /// <param name="autoSave"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public override async Task DeleteAsync(Expression<Func<TEntity, bool>> predicate, bool autoSave = false, CancellationToken cancellationToken = default)
+        public override async Task DeleteAsync(Expression<Func<TEntity, bool>> predicate, bool autoSave = true, CancellationToken cancellationToken = default)
         {
             var query = GetQueryable().IgnoreQueryFilters().Where(predicate);
             if (typeof(TEntity).IsAssignableTo<ISoftDelete>())
             {
                 Expression<Func<SoftDelete, SoftDelete>> updator = d => new SoftDelete { IsDeleted = true };
-                await query.UpdateAsync(updator.Translate().To<TEntity>(),cancellationToken);
+                await query.UpdateAsync(updator.Translate<SoftDelete>().To<TEntity>(), cancellationToken);
                 return;
             }
             await query.DeleteAsync(cancellationToken);
@@ -202,7 +203,10 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         /// <param name="predicate"></param>
         /// <param name="updateExpression"></param>
         /// <param name="autoSave"></param>
-        public override void Update(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TEntity>> updateExpression, bool autoSave = false)
+        public override void Update(
+            Expression<Func<TEntity, bool>> predicate,
+            Expression<Func<TEntity, TEntity>> updateExpression, 
+            bool autoSave = true)
         {
             GetQueryable().IgnoreQueryFilters().Where(predicate).Update(updateExpression);
         }
@@ -215,9 +219,37 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         /// <param name="autoSave"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public override async Task UpdateAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TEntity>> updateExpression, bool autoSave = false, CancellationToken cancellationToken = default)
+        public override async Task UpdateAsync(
+            Expression<Func<TEntity, bool>> predicate,
+            Expression<Func<TEntity, TEntity>> updateExpression,
+            bool autoSave = true,
+            CancellationToken cancellationToken = default)
         {
             await GetQueryable().IgnoreQueryFilters().Where(predicate).UpdateAsync(updateExpression, cancellationToken);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override void SaveChanges()
+        {
+            if (DbContext?.ChangeTracker?.HasChanges() ?? false)
+            {
+                DbContext?.SaveChanges();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public override async Task SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            if (DbContext?.ChangeTracker?.HasChanges() ?? false)
+            {
+                await DbContext?.SaveChangesAsync(cancellationToken);
+            }
         }
 
         /// <summary>
@@ -280,10 +312,10 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         public virtual async Task EnsureCollectionLoadedAsync<TProperty>(
-       TEntity entity,
-       Expression<Func<TEntity, IEnumerable<TProperty>>> propertyExpression,
-       CancellationToken cancellationToken = default)
-       where TProperty : class
+            TEntity entity,
+            Expression<Func<TEntity, IEnumerable<TProperty>>> propertyExpression,
+            CancellationToken cancellationToken = default)
+            where TProperty : class
         {
             await DbContext.Entry(entity).Collection(propertyExpression).LoadAsync(GetCancellationToken(cancellationToken));
         }
@@ -313,12 +345,13 @@ namespace Scorpio.Repositories.EntityFrameworkCore
     /// <typeparam name="TDbContext"></typeparam>
     /// <typeparam name="TEntity"></typeparam>
     /// <typeparam name="TKey"></typeparam>
-    public class EfCoreRepository<TDbContext, TEntity, TKey> : EfCoreRepository<TDbContext, TEntity>,
-    IEfCoreRepository<TEntity, TKey>,
-    ISupportsExplicitLoading<TEntity, TKey>
-
-    where TDbContext : DbContext
-    where TEntity : class, IEntity<TKey>
+    public class EfCoreRepository<TDbContext, TEntity, TKey> : 
+        EfCoreRepository<TDbContext, TEntity>,
+        IEfCoreRepository<TEntity, TKey>,
+        ISupportsExplicitLoading<TEntity, TKey>
+        
+        where TDbContext : DbContext
+        where TEntity : class, IEntity<TKey>
     {
 
         /// <summary>
@@ -327,7 +360,11 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         /// <param name="serviceProvider"></param>
         /// <param name="contextProvider"></param>
         /// <param name="cancellationTokenProvider"></param>
-        public EfCoreRepository(IServiceProvider serviceProvider, IDbContextProvider<TDbContext> contextProvider, ICancellationTokenProvider cancellationTokenProvider) : base(serviceProvider, contextProvider, cancellationTokenProvider)
+        public EfCoreRepository(
+            IServiceProvider serviceProvider,
+            IDbContextProvider<TDbContext> contextProvider,
+            ICancellationTokenProvider cancellationTokenProvider) 
+            : base(serviceProvider, contextProvider, cancellationTokenProvider)
         {
         }
 
@@ -400,7 +437,7 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         /// </summary>
         /// <param name="id"></param>
         /// <param name="autoSave"></param>
-        public virtual void Delete(TKey id, bool autoSave = false)
+        public virtual void Delete(TKey id, bool autoSave = true)
         {
             var entity = Find(id, includeDetails: false);
             if (entity == null)
@@ -418,7 +455,7 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         /// <param name="autoSave"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public virtual async Task DeleteAsync(TKey id, bool autoSave = false, CancellationToken cancellationToken = default)
+        public virtual async Task DeleteAsync(TKey id, bool autoSave = true, CancellationToken cancellationToken = default)
         {
             var entity = await FindAsync(id, includeDetails: false, cancellationToken: cancellationToken);
             if (entity == null)

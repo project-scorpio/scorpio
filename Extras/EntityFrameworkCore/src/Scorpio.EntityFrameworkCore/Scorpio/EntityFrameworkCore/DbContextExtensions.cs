@@ -13,6 +13,11 @@ namespace Scorpio.EntityFrameworkCore
     public static class DbContextExtensions
     {
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dbContext"></param>
+        /// <returns></returns>
         public static bool HasRelationalTransactionManager(this DbContext dbContext)
         {
             return dbContext.Database.GetService<IDbContextTransactionManager>() is IRelationalTransactionManager;

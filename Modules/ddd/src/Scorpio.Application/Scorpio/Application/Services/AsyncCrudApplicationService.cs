@@ -22,6 +22,12 @@ namespace Scorpio.Application.Services
         where TEntity : class, IEntity<TKey>
         where TEntityDto : IEntityDto<TKey>
     {
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="serviceProvider"></param>
+        /// <param name="repository"></param>
         protected AsyncCrudApplicationService(IServiceProvider serviceProvider, IRepository<TEntity, TKey> repository) : base(serviceProvider, repository)
         {
         }
@@ -40,6 +46,12 @@ namespace Scorpio.Application.Services
         where TEntity : class, IEntity<TKey>
         where TEntityDto : IEntityDto<TKey>
     {
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="serviceProvider"></param>
+        /// <param name="repository"></param>
         protected AsyncCrudApplicationService(IServiceProvider serviceProvider, IRepository<TEntity, TKey> repository) : base(serviceProvider, repository)
         {
         }
@@ -59,10 +71,26 @@ namespace Scorpio.Application.Services
         where TEntity : class, IEntity<TKey>
         where TEntityDto : IEntityDto<TKey>
     {
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="serviceProvider"></param>
+        /// <param name="repository"></param>
         protected AsyncCrudApplicationService(IServiceProvider serviceProvider, IRepository<TEntity, TKey> repository) : base(serviceProvider, repository)
         {
         }
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TEntityDto"></typeparam>
+    /// <typeparam name="TKey"></typeparam>
+    /// <typeparam name="TGetListInput"></typeparam>
+    /// <typeparam name="TCreateInput"></typeparam>
+    /// <typeparam name="TUpdateInput"></typeparam>
     public abstract class AsyncCrudApplicationService<TEntity, TEntityDto, TKey, TGetListInput, TCreateInput, TUpdateInput>
         : CrudApplicationServiceBase<TEntity, TEntityDto, TKey, TGetListInput, TCreateInput, TUpdateInput>,
         IAsyncCrudApplicationService<TEntityDto, TKey, TGetListInput, TCreateInput, TUpdateInput>

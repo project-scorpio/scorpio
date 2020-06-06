@@ -1,4 +1,5 @@
 ﻿using AspectCore.DynamicProxy;
+using Scorpio.Conventional;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,15 +11,19 @@ namespace Scorpio.DynamicProxy
     /// </summary>
     public static class ConventionalInterceptorExtensions
     {
+       
         /// <summary>
         /// 
         /// </summary>
-        /// <typeparam name="TServiceType"></typeparam>
         /// <typeparam name="TInterceptor"></typeparam>
         /// <param name="context"></param>
-        public static void Add<TServiceType, TInterceptor>(this IConventionaInterceptorContext context) where TInterceptor : IInterceptor
+        /// <returns></returns>
+        public static IConventionalContext<ConventionalInterceptorAction> Intercept<TInterceptor>(this IConventionalContext<ConventionalInterceptorAction> context)
+            where TInterceptor : IInterceptor
         {
-            context.Add(typeof(TServiceType), typeof(TInterceptor));
+            var typeList= context.GetOrAdd(ConventionalInterceptorAction.Interceptors, n => new TypeList<IInterceptor>());
+            typeList.Add<TInterceptor>();
+            return context;
         }
     }
 }

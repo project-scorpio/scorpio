@@ -14,11 +14,11 @@ namespace Scorpio.Authorization
     {
         public void Register(IConventionalRegistrationContext context)
         {
-            context.Services.RegisterConventionalDependencyInject(context.Types, config =>
-            {
-                config.Where(t =>t.IsStandardType() && t.IsAssignableTo<IPermissionDefinitionProvider>()).AsSelf().Lifetime(ServiceLifetime.Singleton);
-                config.Where(t => t.IsStandardType() && t.IsAssignableTo<IPermissionGrantingProvider>()).AsSelf().Lifetime(ServiceLifetime.Singleton);
-            });
+            context.RegisterConventionalDependencyInject(config =>
+           {
+               config.Where(t => t.IsStandardType() && t.IsAssignableTo<IPermissionDefinitionProvider>()).AsSelf().Lifetime(ServiceLifetime.Singleton);
+               config.Where(t => t.IsStandardType() && t.IsAssignableTo<IPermissionGrantingProvider>()).AsSelf().Lifetime(ServiceLifetime.Singleton);
+           });
         }
     }
 }

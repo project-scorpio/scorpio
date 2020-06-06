@@ -45,7 +45,7 @@ namespace Scorpio.Uow
 
             var outerUow = _currentUnitOfWorkProvider.Current;
 
-            if ((options.Scope?? TransactionScopeOption.Required) == TransactionScopeOption.Required && outerUow != null)
+            if ((options.Scope ?? TransactionScopeOption.Required) == TransactionScopeOption.Required && outerUow != null)
             {
                 return new InnerUnitOfWorkCompleteHandle();
             }

@@ -15,7 +15,7 @@ namespace Scorpio.Conventional
         public IServiceCollection  Services { get;  }
 
 
-        internal Expression<Func<Type,bool>> TypePredicate { get; private set; }
+        public Expression<Func<Type,bool>> TypePredicate { get; private set; }
 
         public IEnumerable<Type> Types => _types.Where(TypePredicate.Compile());
 
@@ -27,7 +27,7 @@ namespace Scorpio.Conventional
 
         public void AddPredicateExpression(Expression<Func<Type,bool>> expression)
         {
-            TypePredicate = TypePredicate == null ? expression : TypePredicate.And(expression);
+            TypePredicate = TypePredicate == null ? expression : TypePredicate.AndAlso(expression);
         }
 
         public void AddPredicate(Predicate<Type> predicate)
@@ -47,6 +47,13 @@ namespace Scorpio.Conventional
         public void SetItem<T>(string key,T item)
         {
             _items[key] = item;
+        }
+    }
+
+    internal class ConventionalContext<TAction> : ConventionalContext, IConventionalContext<TAction>
+    {
+        public ConventionalContext(IServiceCollection services, IEnumerable<Type> types) : base(services, types)
+        {
         }
     }
 }

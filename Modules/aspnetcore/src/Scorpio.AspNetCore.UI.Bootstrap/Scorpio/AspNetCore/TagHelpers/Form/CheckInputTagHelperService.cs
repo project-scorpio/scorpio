@@ -2,8 +2,16 @@
 using System;
 namespace Scorpio.AspNetCore.TagHelpers.Form
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class CheckInputTagHelperService:TagHelperService<CheckInputTagHelper>
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="output"></param>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.PreElement.AppendHtml("<div class=\"form-check\">");
