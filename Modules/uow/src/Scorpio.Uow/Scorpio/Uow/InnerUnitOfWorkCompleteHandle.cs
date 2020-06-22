@@ -71,17 +71,5 @@ namespace Scorpio.Uow
         {
             Disposed?.Invoke(this, EventArgs.Empty);
         }
-
-        private static bool HasException()
-        {
-            try
-            {
-                return Marshal.GetExceptionCode() != 0;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
     }
 }

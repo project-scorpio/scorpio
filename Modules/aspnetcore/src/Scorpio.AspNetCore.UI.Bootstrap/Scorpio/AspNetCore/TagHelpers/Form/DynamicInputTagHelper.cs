@@ -7,17 +7,25 @@ using System.Text;
 
 namespace Scorpio.AspNetCore.TagHelpers.Form
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class DynamicInputTagHelper : TagHelper<DynamicInputTagHelper, DynamicInputTagHelperService>
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
         public ModelExpression AspFor { get; set; }
 
-        [HtmlAttributeNotBound]
-        [ViewContext]
-        public ViewContext ViewContext { get; set; }
+      
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="service"></param>
         public DynamicInputTagHelper(DynamicInputTagHelperService service) : base(service)
         {
+           
         }
     }
 }

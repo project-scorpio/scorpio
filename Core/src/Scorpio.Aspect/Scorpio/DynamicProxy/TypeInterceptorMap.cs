@@ -24,7 +24,7 @@ namespace Scorpio.DynamicProxy
 
         public override int GetHashCode()
         {
-            return InterceptorType.GetHashCode();
+            return HashCode.Combine(InterceptorType);
         }
 
         public override bool Equals(object obj)

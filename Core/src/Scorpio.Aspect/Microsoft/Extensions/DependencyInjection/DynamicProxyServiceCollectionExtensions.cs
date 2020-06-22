@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Scorpio.Conventional;
 using Scorpio.DynamicProxy;
 using System;
 using System.Collections.Generic;
@@ -12,37 +13,21 @@ namespace Microsoft.Extensions.DependencyInjection
     /// </summary>
     public static class DynamicProxyServiceCollectionExtensions
     {
+       
         /// <summary>
         /// 
         /// </summary>
         /// <param name="services"></param>
-        /// <param name="registrar"></param>
+        /// <param name="types"></param>
+        /// <param name="configureAction"></param>
         /// <returns></returns>
-        public static IServiceCollection AddConventionalRegistrar(this IServiceCollection services, IConventionaInterceptorRegistrar registrar)
+        public static IServiceCollection RegisterConventionalInterceptor(
+            this IServiceCollection services,
+            IEnumerable<Type> types,
+            Action<IConventionalConfiguration<ConventionalInterceptorAction>> configureAction)
         {
-            InterceptorHelper.AddConventionalRegistrar(registrar);
-            return services;
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="services"></param>
-        /// <returns></returns>
-        public static IServiceCollection AddConventionalRegistrar<T>(this IServiceCollection services)
-            where T : IConventionaInterceptorRegistrar
-        {
-            return services.AddConventionalRegistrar(Activator.CreateInstance<T>());
+            return services.DoConventionalAction(types, configureAction);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="services"></param>
-        /// <returns></returns>
-        internal static IServiceCollection RegisterConventionalInterceptor(this IServiceCollection services)
-        {
-            InterceptorHelper.RegisterConventionalInterceptor(services);
-            return services;
-        }
     }
 }

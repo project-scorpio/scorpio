@@ -56,14 +56,39 @@ namespace Scorpio.Application.Services
         :IApplicationService
         where TEntityDto:IEntityDto<TKey>
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         TEntityDto Get(TKey id);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         IPagedResult<TEntityDto> GetList(TGetListInput input);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         TEntityDto Create(TCreateInput input);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="input"></param>
+        /// <returns></returns>
         TEntityDto Update(TKey id, TUpdateInput input);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
         void Delete(TKey id);
     }
 }

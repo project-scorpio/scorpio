@@ -8,6 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Scorpio\DynamicProxy\ConventionaInterceptorContext.cs" />
+    <Compile Remove="Scorpio\DynamicProxy\IConventionaInterceptorContext.cs" />
+    <Compile Remove="Scorpio\DynamicProxy\IConventionaInterceptorRegistrar.cs" />
+    <Compile Remove="Scorpio\DynamicProxy\InterceptorHelper.cs" />
+    <Compile Remove="Scorpio\DynamicProxy\TypeInterceptorMap.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AspectCore.Extensions.DependencyInjection" Version="2.0.0" />
   </ItemGroup>
 

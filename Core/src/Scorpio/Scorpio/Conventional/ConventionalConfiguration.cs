@@ -8,7 +8,7 @@ namespace Scorpio.Conventional
     /// <summary>
     /// 
     /// </summary>
-    internal sealed class ConventionalConfiguration:IConventionalConfiguration
+    internal abstract class ConventionalConfiguration:IConventionalConfiguration
     {
         internal ConventionalConfiguration(IServiceCollection services, IEnumerable<Type> types)
         {
@@ -25,11 +25,29 @@ namespace Scorpio.Conventional
         /// </summary>
         internal ICollection<ConventionalContext> Contexts { get; } = new List<ConventionalContext>();
 
-        internal IConventionalContext GetContext()
+        internal abstract IConventionalContext GetContext();
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="TAction"></typeparam>
+    internal class ConventionalConfiguration<TAction> : ConventionalConfiguration, IConventionalConfiguration<TAction>
+    {
+        internal ConventionalConfiguration(IServiceCollection services, IEnumerable<Type> types) : base(services, types)
         {
-            var context = new ConventionalContext(Services,Types);
+        }
+
+        internal override IConventionalContext GetContext()
+        {
+            return GetInternalContext();
+        }
+        internal  IConventionalContext<TAction> GetInternalContext()
+        {
+            var context = new ConventionalContext<TAction>(Services, Types);
             Contexts.Add(context);
             return context;
         }
+
     }
 }

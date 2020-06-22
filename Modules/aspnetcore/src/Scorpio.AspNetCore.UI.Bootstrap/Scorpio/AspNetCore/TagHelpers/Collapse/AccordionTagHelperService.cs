@@ -9,6 +9,10 @@ namespace Scorpio.AspNetCore.TagHelpers.Collapse
     /// </summary>
     public class AccordionTagHelperService : TagHelperService<AccordionTagHelper>
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
         public override void Init(TagHelperContext context)
         {
             context.InitValue<AccordionItemList>();
@@ -34,7 +38,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Collapse
         private string ApplyContent(TagHelperContext context)
         {
             var children = context.GetValue<AccordionItemList>().OrderBy(i => i.Order).ToArray();
-            for (int i = 0; i < children.Length; i++)
+            for (var i = 0; i < children.Length; i++)
             {
                 ref AccordionItem item = ref children[i];
                 item.Content = item.Content.Replace("__PARENT_ID__", $"#{TagHelper.Id}");

@@ -7,13 +7,27 @@ using System.Text;
 
 namespace Scorpio.Quartz
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public  class QuartzModule : ScorpioModule
     {
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
         public override void PreConfigureServices(ConfigureServicesContext context)
         {
             context.Services.AddConventionalRegistrar<ConventionalRegistrar>();
             base.PreConfigureServices(context);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
         public override void ConfigureServices(ConfigureServicesContext context)
         {
             context.Services.AddSingleton(sp => sp.GetService<ISchedulerFactory>().GetScheduler().Result);
@@ -22,6 +36,10 @@ namespace Scorpio.Quartz
             base.ConfigureServices(context);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
         public override void Initialize(ApplicationInitializationContext context)
         {
             base.Initialize(context);

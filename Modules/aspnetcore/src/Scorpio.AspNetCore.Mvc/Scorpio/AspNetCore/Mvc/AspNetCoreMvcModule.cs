@@ -37,7 +37,7 @@ namespace Scorpio.AspNetCore.Mvc
             context.Services.RegisterAssemblyByConvention();
             context.Services.Options<MvcOptions>().PreConfigure<IServiceProvider>(
                 (options, serviceProvider) => options.AddScorpio(serviceProvider));
-          context.Services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+          context.Services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             context.Services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();
             //Use DI to create controllers

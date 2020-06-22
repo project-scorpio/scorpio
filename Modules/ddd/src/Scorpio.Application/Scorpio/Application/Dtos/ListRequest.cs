@@ -18,14 +18,29 @@ namespace Scorpio.Application.Dtos
         object[] IFilterRequest.Parameters => Parameters;
         string ISortingRequest.Sorting => string.Join(",", Sorting);
 
+        /// <summary>
+        /// 
+        /// </summary>
         public int SkipCount { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public int MaxResultCount { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected object[] Parameters { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected string WhereString { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected List<string> Sorting { get; set; } = new List<string>();
 
         /// <summary>
@@ -71,6 +86,11 @@ namespace Scorpio.Application.Dtos
             return this;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sorting"></param>
+        /// <returns></returns>
         public ListRequest<TEntityDto> Sort(string sorting)
         {
             Sorting.Clear();
@@ -78,6 +98,11 @@ namespace Scorpio.Application.Dtos
             return this;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sorting"></param>
+        /// <returns></returns>
         public ListRequest<TEntityDto> AddSort(string sorting)
         {
             Sorting.Add(sorting);
