@@ -5,7 +5,7 @@ namespace Scorpio.DependencyInjection
     /// <summary>
     /// 
     /// </summary>
-    public sealed class ReplaceServiceAttribute:Attribute
+    public sealed class ReplaceServiceAttribute : Attribute
     {
         /// <summary>
         /// 

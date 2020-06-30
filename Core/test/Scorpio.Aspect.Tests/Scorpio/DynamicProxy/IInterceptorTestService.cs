@@ -1,7 +1,4 @@
 ﻿using AspectCore.DynamicProxy;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.DynamicProxy
 {
@@ -9,7 +6,7 @@ namespace Scorpio.DynamicProxy
     {
 
     }
-    public interface IInterceptorTestService: IInterceptorable
+    public interface IInterceptorTestService : IInterceptorable
     {
         [NonAspect]
         bool InterceptorInvoked { get; }

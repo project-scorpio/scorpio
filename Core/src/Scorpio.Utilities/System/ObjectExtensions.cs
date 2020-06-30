@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
+﻿using System.Globalization;
 
 namespace System
 {
@@ -42,7 +38,7 @@ namespace System
         /// <param name="obj"></param>
         /// <param name="action"></param>
         /// <returns></returns>
-        public static T Action<T>(this T obj,Action<T> action)
+        public static T Action<T>(this T obj, Action<T> action)
         {
             action(obj);
             return obj;

@@ -1,9 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
-using Scorpio.DependencyInjection;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+
+using Microsoft.Extensions.Logging;
 
 namespace Scorpio.Modularity
 {
@@ -38,7 +37,7 @@ namespace Scorpio.Modularity
 
             foreach (var module in _moduleContainer.Modules)
             {
-                _logger.LogInformation($"- ({module.Type.FullName})" );
+                _logger.LogInformation($"- ({module.Type.FullName})");
             }
         }
 

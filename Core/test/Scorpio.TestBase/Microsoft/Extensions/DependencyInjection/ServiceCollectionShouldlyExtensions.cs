@@ -1,8 +1,7 @@
-﻿using Shouldly;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
+
+using Shouldly;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -10,7 +9,7 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static ServiceDescriptor ShouldContainTransient(this IServiceCollection services, Type serviceType, Type implementationType = null)
         {
-            var serviceDescriptor = services.SingleOrDefault(s => s.ServiceType == serviceType && s.GetImplementationType()==(implementationType??serviceType));
+            var serviceDescriptor = services.SingleOrDefault(s => s.ServiceType == serviceType && s.GetImplementationType() == (implementationType ?? serviceType));
 
             serviceDescriptor.ShouldNotBeNull();
             serviceDescriptor.GetImplementationType().ShouldBe(implementationType ?? serviceType);
@@ -52,9 +51,9 @@ namespace Microsoft.Extensions.DependencyInjection
 
             serviceDescriptor.ShouldBeNull();
         }
-        public static void ShouldNotContainService(this IServiceCollection services, Type serviceType,Type implementationType)
+        public static void ShouldNotContainService(this IServiceCollection services, Type serviceType, Type implementationType)
         {
-            var serviceDescriptor = services.SingleOrDefault(s => s.ServiceType == serviceType && s.GetImplementationType()==implementationType);
+            var serviceDescriptor = services.SingleOrDefault(s => s.ServiceType == serviceType && s.GetImplementationType() == implementationType);
 
             serviceDescriptor.ShouldBeNull();
         }

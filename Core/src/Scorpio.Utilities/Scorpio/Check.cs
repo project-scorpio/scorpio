@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 
 namespace Scorpio
 {
@@ -19,7 +18,7 @@ namespace Scorpio
         /// <param name="value"></param>
         /// <param name="parameterName"></param>
         /// <returns></returns>
-        public static T NotNull<T>(T value,   string parameterName)
+        public static T NotNull<T>(T value, string parameterName)
         {
             if (value == null)
             {
@@ -37,7 +36,7 @@ namespace Scorpio
         /// <param name="parameterName"></param>
         /// <param name="message"></param>
         /// <returns></returns>
-        public static T NotNull<T>(T value,   string parameterName, string message)
+        public static T NotNull<T>(T value, string parameterName, string message)
         {
             if (value == null)
             {
@@ -53,7 +52,7 @@ namespace Scorpio
         /// <param name="value"></param>
         /// <param name="parameterName"></param>
         /// <returns></returns>
-        public static string NotNullOrWhiteSpace(string value,   string parameterName)
+        public static string NotNullOrWhiteSpace(string value, string parameterName)
         {
             if (value.IsNullOrWhiteSpace())
             {
@@ -69,7 +68,7 @@ namespace Scorpio
         /// <param name="value"></param>
         /// <param name="parameterName"></param>
         /// <returns></returns>
-        public static string NotNullOrEmpty(string value,   string parameterName)
+        public static string NotNullOrEmpty(string value, string parameterName)
         {
             if (value.IsNullOrEmpty())
             {
@@ -86,7 +85,7 @@ namespace Scorpio
         /// <param name="value"></param>
         /// <param name="parameterName"></param>
         /// <returns></returns>
-        public static ICollection<T> NotNullOrEmpty<T>(ICollection<T> value,   string parameterName)
+        public static ICollection<T> NotNullOrEmpty<T>(ICollection<T> value, string parameterName)
         {
             if (value.IsNullOrEmpty())
             {

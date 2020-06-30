@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Scorpio.Modularity
+﻿namespace Scorpio.Modularity
 {
     public class ModuleBase : ScorpioModule
     {
@@ -19,7 +15,7 @@ namespace Scorpio.Modularity
         public bool ShutdownCalled { get; set; }
         public override void ConfigureServices(ConfigureServicesContext context)
         {
-            ConfigureServicesCalled=true;
+            ConfigureServicesCalled = true;
         }
 
         public override void PreConfigureServices(ConfigureServicesContext context)

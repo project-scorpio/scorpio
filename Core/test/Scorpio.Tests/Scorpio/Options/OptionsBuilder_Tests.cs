@@ -1,11 +1,12 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+
+using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.Options;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
-using System.Linq;
+
 using Shouldly;
+
+using Xunit;
 namespace Scorpio.Tests.Scorpio.Options
 {
     public class OptionsBuilder_Tests
@@ -15,7 +16,7 @@ namespace Scorpio.Tests.Scorpio.Options
         public OptionsBuilder_Tests()
         {
             _serviceCollection = new ServiceCollection();
-            _optionsBuilder = new OptionsBuilder<TestOptions>(_serviceCollection,"");
+            _optionsBuilder = new OptionsBuilder<TestOptions>(_serviceCollection, "");
         }
 
         [Fact]
@@ -30,7 +31,7 @@ namespace Scorpio.Tests.Scorpio.Options
         public void PreConfigureD1()
         {
             _serviceCollection.Clear();
-            _optionsBuilder.PreConfigure<Service1>((o,s) => { });
+            _optionsBuilder.PreConfigure<Service1>((o, s) => { });
             _serviceCollection.ShouldContainTransient(typeof(IPreConfigureOptions<TestOptions>))
                 .ImplementationFactory.ShouldBeOfType<Func<IServiceProvider, IPreConfigureOptions<TestOptions>>>();
         }
@@ -63,9 +64,9 @@ namespace Scorpio.Tests.Scorpio.Options
         public void PreConfigureD5()
         {
             _serviceCollection.Clear();
-            _optionsBuilder.PreConfigure<Service1, Service2, IServiceProvider, IService3,IService1>((o, s1, s2, s3, s4,s5) => { });
+            _optionsBuilder.PreConfigure<Service1, Service2, IServiceProvider, IService3, IService1>((o, s1, s2, s3, s4, s5) => { });
             _serviceCollection.ShouldContainTransient(typeof(IPreConfigureOptions<TestOptions>))
-                .ImplementationFactory.ShouldBeOfType<Func< IServiceProvider,IPreConfigureOptions<TestOptions>>>();
+                .ImplementationFactory.ShouldBeOfType<Func<IServiceProvider, IPreConfigureOptions<TestOptions>>>();
         }
     }
 }

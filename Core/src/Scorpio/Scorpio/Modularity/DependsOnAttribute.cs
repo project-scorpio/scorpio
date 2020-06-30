@@ -1,7 +1,5 @@
 ﻿
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.Modularity
 {
@@ -14,7 +12,7 @@ namespace Scorpio.Modularity
         /// <summary>
         /// 
         /// </summary>
-        
+
         public Type[] DependedTypes { get; }
 
         /// <summary>

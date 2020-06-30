@@ -1,8 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Collections.Generic;
+
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.Modularity
 {
@@ -11,7 +10,7 @@ namespace Scorpio.Modularity
     /// </summary>
     public class ConfigureServicesContext
     {
-        internal ConfigureServicesContext(IBootstrapper bootstrapper, IServiceCollection services,IConfiguration configuration)
+        internal ConfigureServicesContext(IBootstrapper bootstrapper, IServiceCollection services, IConfiguration configuration)
         {
             Bootstrapper = bootstrapper;
             Services = services;
@@ -31,7 +30,7 @@ namespace Scorpio.Modularity
         /// <summary>
         /// The <see cref="IConfiguration" /> containing the merged configuration of the application.
         /// </summary>
-        public IConfiguration Configuration { get;  }
+        public IConfiguration Configuration { get; }
 
         /// <summary>
         /// A central location for sharing state between components during the host building process.

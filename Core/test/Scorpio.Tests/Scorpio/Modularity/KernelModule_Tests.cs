@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
-using Shouldly;
+﻿using System.Linq;
+
 using Microsoft.Extensions.DependencyInjection;
-using System.Linq;
+
 using Scorpio.DependencyInjection;
+
+using Shouldly;
+
+using Xunit;
 
 namespace Scorpio.Modularity
 {

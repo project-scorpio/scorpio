@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
+
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
+
 using Scorpio.Conventional;
 
 namespace Scorpio.DependencyInjection.Conventional
@@ -15,12 +13,12 @@ namespace Scorpio.DependencyInjection.Conventional
     public sealed class ConventionalDependencyAction : ConventionalActionBase
     {
 
-        
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="configuration"></param>
-        internal ConventionalDependencyAction(IConventionalConfiguration configuration) 
+        internal ConventionalDependencyAction(IConventionalConfiguration configuration)
             : base(configuration)
         {
         }
@@ -35,10 +33,10 @@ namespace Scorpio.DependencyInjection.Conventional
                 t => context.Get<ICollection<IRegisterAssemblyServiceSelector>>("Service").ForEach(
                     selector => selector.Select(t).ForEach(
                     s => context.Services.ReplaceOrAdd(
-                        ServiceDescriptor.Describe(s, t, 
-                        context.GetOrAdd<IRegisterAssemblyLifetimeSelector>("Lifetime", 
+                        ServiceDescriptor.Describe(s, t,
+                        context.GetOrAdd<IRegisterAssemblyLifetimeSelector>("Lifetime",
                         new LifetimeSelector(ServiceLifetime.Transient)).Select(t)),
-                        t.GetAttribute<ReplaceServiceAttribute>()?.ReplaceService??false
+                        t.GetAttribute<ReplaceServiceAttribute>()?.ReplaceService ?? false
                         ))));
         }
     }

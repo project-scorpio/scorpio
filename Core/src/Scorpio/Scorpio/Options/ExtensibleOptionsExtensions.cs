@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Scorpio.Options
 {
@@ -16,9 +14,9 @@ namespace Scorpio.Options
         /// <param name="options"></param>
         /// <param name="name"></param>
         /// <returns></returns>
-        public static TOption GetOption<TOption>(this ExtensibleOptions options,string name)
+        public static TOption GetOption<TOption>(this ExtensibleOptions options, string name)
         {
-            return (TOption)options.ExtendedOption.GetOrAdd(name,()=>default(TOption));
+            return (TOption)options.ExtendedOption.GetOrAdd(name, () => default(TOption));
         }
 
         /// <summary>
@@ -28,9 +26,9 @@ namespace Scorpio.Options
         /// <param name="options"></param>
         /// <param name="name"></param>
         /// <param name="option"></param>
-        public static void SetOption<TOption>(this ExtensibleOptions options, string name,TOption option)
+        public static void SetOption<TOption>(this ExtensibleOptions options, string name, TOption option)
         {
-             options.ExtendedOption[name]=option;
+            options.ExtendedOption[name] = option;
         }
 
     }

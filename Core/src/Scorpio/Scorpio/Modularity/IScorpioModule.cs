@@ -1,11 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Extensions.DependencyInjection;
-
-
-namespace Scorpio.Modularity
+﻿namespace Scorpio.Modularity
 {
     /// <summary>
     /// 

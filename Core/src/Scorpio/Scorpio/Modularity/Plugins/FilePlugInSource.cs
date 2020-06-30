@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Loader;
-using System.Text;
-using System.Linq;
 namespace Scorpio.Modularity.Plugins
 {
     internal class FilePlugInSource : IPlugInSource

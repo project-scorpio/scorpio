@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Scorpio.DynamicProxy
+﻿namespace Scorpio.DynamicProxy
 {
     public class InterceptorTestService : IInterceptorTestService
     {
@@ -23,5 +19,5 @@ namespace Scorpio.DynamicProxy
         }
     }
 
-    
+
 }

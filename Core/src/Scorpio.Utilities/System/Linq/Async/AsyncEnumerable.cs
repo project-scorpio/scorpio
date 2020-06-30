@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace System.Linq.Async
@@ -17,7 +15,7 @@ namespace System.Linq.Async
         /// <param name="source"></param>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public static async Task<bool> AnyAsync<TSource>(this IEnumerable<TSource> source, Func<TSource, Task< bool>> predicate)
+        public static async Task<bool> AnyAsync<TSource>(this IEnumerable<TSource> source, Func<TSource, Task<bool>> predicate)
         {
             foreach (var item in source)
             {

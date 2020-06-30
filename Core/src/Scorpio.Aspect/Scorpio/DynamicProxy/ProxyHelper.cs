@@ -1,9 +1,8 @@
-﻿using AspectCore.DynamicProxy;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using System.Linq;
 using System.Reflection;
+
+using AspectCore.DynamicProxy;
 
 namespace Scorpio.DynamicProxy
 {
@@ -21,8 +20,8 @@ namespace Scorpio.DynamicProxy
         {
             if (proxy.IsProxy())
             {
-                var targetField = proxy.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic).FirstOrDefault(f=>f.Name== "_implementation");
-                if (targetField!=null)
+                var targetField = proxy.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic).FirstOrDefault(f => f.Name == "_implementation");
+                if (targetField != null)
                 {
                     return targetField.GetValue(proxy);
                 }
@@ -36,7 +35,7 @@ namespace Scorpio.DynamicProxy
         /// <typeparam name="T"></typeparam>
         /// <param name="proxy"></param>
         /// <returns></returns>
-        public static T UnProxy<T>(this T proxy) where T:class
+        public static T UnProxy<T>(this T proxy) where T : class
         {
             if (proxy.IsProxy())
             {

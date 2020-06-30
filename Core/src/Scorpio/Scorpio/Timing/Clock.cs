@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.Options;
+﻿using System;
+
+using Microsoft.Extensions.Options;
+
 using Scorpio.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.Timing
 {

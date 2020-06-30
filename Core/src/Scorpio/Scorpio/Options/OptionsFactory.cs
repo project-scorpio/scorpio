@@ -1,7 +1,6 @@
-﻿using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+
+using Microsoft.Extensions.Options;
 
 namespace Scorpio.Options
 {
@@ -22,7 +21,7 @@ namespace Scorpio.Options
         /// <param name="setups">The configuration actions to run.</param>
         /// <param name="postConfigures">The initialization actions to run.</param>
         /// <param name="preConfigureOptions"></param>
-        public OptionsFactory(IEnumerable<IConfigureOptions<TOptions>> setups, IEnumerable<IPostConfigureOptions<TOptions>> postConfigures, IEnumerable<IPreConfigureOptions<TOptions>>  preConfigureOptions)
+        public OptionsFactory(IEnumerable<IConfigureOptions<TOptions>> setups, IEnumerable<IPostConfigureOptions<TOptions>> postConfigures, IEnumerable<IPreConfigureOptions<TOptions>> preConfigureOptions)
         {
             _setups = setups;
             _postConfigures = postConfigures;

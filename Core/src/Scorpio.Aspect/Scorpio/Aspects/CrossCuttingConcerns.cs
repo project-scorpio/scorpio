@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.Aspects
 {
@@ -54,7 +53,7 @@ namespace Scorpio.Aspects
         /// <param name="obj"></param>
         /// <param name="concern"></param>
         /// <returns></returns>
-        public static bool IsApplied( object obj,  string concern)
+        public static bool IsApplied(object obj, string concern)
         {
             if (obj == null)
             {

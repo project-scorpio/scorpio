@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using AspectCore.Extensions.DependencyInjection;
+
 using Microsoft.Extensions.DependencyInjection;
+
 using Shouldly;
+
 using Xunit;
-using AspectCore.Extensions.DependencyInjection;
 namespace Scorpio.DynamicProxy
 {
     public class ServiceCollectionExtensions_Tests

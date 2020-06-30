@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Loader;
-using System.Text;
 
 namespace Scorpio.Modularity.Plugins
 {
@@ -48,7 +47,7 @@ namespace Scorpio.Modularity.Plugins
 
         internal IEnumerable<Assembly> GetAssemblies()
         {
-            var assemblyFiles = Directory.EnumerateFiles(_path, "*.*", _searchOption).Select(p=>new FileInfo(p)).Where(f => f.Extension.ToLowerInvariant().IsIn(".exe", ".dll")).Select(f => f.FullName);
+            var assemblyFiles = Directory.EnumerateFiles(_path, "*.*", _searchOption).Select(p => new FileInfo(p)).Where(f => f.Extension.ToLowerInvariant().IsIn(".exe", ".dll")).Select(f => f.FullName);
 
             if (Filter != null)
             {

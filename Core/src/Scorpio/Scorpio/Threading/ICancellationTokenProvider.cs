@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 
 namespace Scorpio.Threading
 {
@@ -9,7 +6,7 @@ namespace Scorpio.Threading
     /// <summary>
     /// 
     /// </summary>
-  public  interface ICancellationTokenProvider
+    public interface ICancellationTokenProvider
     {
 
         /// <summary>

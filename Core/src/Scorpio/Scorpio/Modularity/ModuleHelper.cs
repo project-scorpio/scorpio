@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 namespace Scorpio.Modularity
 {
     internal static class ModuleHelper
@@ -29,7 +28,7 @@ namespace Scorpio.Modularity
                     dependencies.AddIfNotContains(dependedModuleType);
                 }
             }
-            if (dependencies.Count==0 && moduleType !=typeof(KernelModule))
+            if (dependencies.Count == 0 && moduleType != typeof(KernelModule))
             {
                 dependencies.Add(typeof(KernelModule));
             }

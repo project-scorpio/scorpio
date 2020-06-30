@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace System.Linq.Expressions
+﻿namespace System.Linq.Expressions
 {
     partial class PredicateBuilder
     {
@@ -18,7 +14,7 @@ namespace System.Linq.Expressions
             this Expression<Func<T, TResult>> left,
             Expression<Func<T, TResult>> right)
         {
-            return Combine(left, right, (lft, rit) => Expression.ExclusiveOr(lft, rit));
+            return BinaryCombine(left, right, (lft, rit) => Expression.ExclusiveOr(lft, rit));
         }
 
         /// <summary>
@@ -34,7 +30,7 @@ namespace System.Linq.Expressions
             this Expression<Func<T1, T2, TResult>> left,
             Expression<Func<T1, T2, TResult>> right)
         {
-            return Combine(left, right, (lft, rit) => Expression.ExclusiveOr(lft, rit));
+            return BinaryCombine(left, right, (lft, rit) => Expression.ExclusiveOr(lft, rit));
         }
 
         /// <summary>
@@ -51,7 +47,7 @@ namespace System.Linq.Expressions
             this Expression<Func<T1, T2, T3, TResult>> left,
             Expression<Func<T1, T2, T3, TResult>> right)
         {
-            return Combine(left, right, (lft, rit) => Expression.ExclusiveOr(lft, rit));
+            return BinaryCombine(left, right, (lft, rit) => Expression.ExclusiveOr(lft, rit));
         }
 
         /// <summary>
@@ -69,7 +65,7 @@ namespace System.Linq.Expressions
             this Expression<Func<T1, T2, T3, T4, TResult>> left,
             Expression<Func<T1, T2, T3, T4, TResult>> right)
         {
-            return Combine(left, right, (lft, rit) => Expression.ExclusiveOr(lft, rit));
+            return BinaryCombine(left, right, (lft, rit) => Expression.ExclusiveOr(lft, rit));
         }
 
         /// <summary>
@@ -88,7 +84,7 @@ namespace System.Linq.Expressions
             this Expression<Func<T1, T2, T3, T4, T5, TResult>> left,
             Expression<Func<T1, T2, T3, T4, T5, TResult>> right)
         {
-            return Combine(left, right, (lft, rit) => Expression.ExclusiveOr(lft, rit));
+            return BinaryCombine(left, right, (lft, rit) => Expression.ExclusiveOr(lft, rit));
         }
 
     }

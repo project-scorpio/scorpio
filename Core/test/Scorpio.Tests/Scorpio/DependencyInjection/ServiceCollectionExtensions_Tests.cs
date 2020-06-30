@@ -1,24 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using Xunit;
-using Shouldly;
-using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
 using System.Linq;
+
+using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.Conventional;
-using Scorpio.DependencyInjection.Conventional;
+
+using Shouldly;
+
+using Xunit;
 
 namespace Scorpio.DependencyInjection
 {
-   public class ServiceCollectionExtensions_Tests
+    public class ServiceCollectionExtensions_Tests
     {
         [Fact]
         public void AddConventionalRegistrar()
         {
-            var services= new ServiceCollection();
+            var services = new ServiceCollection();
             services.AddConventionalRegistrar<EmptyConventionalDependencyRegistrar>();
-            services.GetSingletonInstanceOrNull<ConventionalRegistrarList>().Any(c=>c.GetType()==typeof(EmptyConventionalDependencyRegistrar)).ShouldBeTrue();
+            services.GetSingletonInstanceOrNull<ConventionalRegistrarList>().Any(c => c.GetType() == typeof(EmptyConventionalDependencyRegistrar)).ShouldBeTrue();
         }
 
         [Fact]

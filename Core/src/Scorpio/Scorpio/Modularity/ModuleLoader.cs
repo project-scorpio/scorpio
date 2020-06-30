@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using Microsoft.Extensions.DependencyInjection;
-using Scorpio.Modularity;
+
 using Scorpio.Modularity.Plugins;
 
 namespace Scorpio.Modularity
@@ -74,7 +75,7 @@ namespace Scorpio.Modularity
         {
             var sortedModules = modules.SortByDependencies(m => m.Dependencies);
             sortedModules.MoveItem(m => m.Type == startupModuleType, modules.Count - 1);
-            sortedModules.MoveItem(m => m.Type == typeof(KernelModule),0);
+            sortedModules.MoveItem(m => m.Type == typeof(KernelModule), 0);
             return sortedModules;
         }
 

@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio
 {
     /// <summary>
     /// 
     /// </summary>
-    public interface ITypeDictionary:ITypeDictionary<object,object>
+    public interface ITypeDictionary : ITypeDictionary<object, object>
     {
 
     }
@@ -17,15 +16,15 @@ namespace Scorpio
     /// </summary>
     /// <typeparam name="TBaseKeyType"></typeparam>
     /// <typeparam name="TBaseValueType"></typeparam>
-    public interface ITypeDictionary<in TBaseKeyType,in TBaseValueType>:IDictionary<Type,Type>
+    public interface ITypeDictionary<in TBaseKeyType, in TBaseValueType> : IDictionary<Type, Type>
     {
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="TKeyType"></typeparam>
         /// <typeparam name="TValueType"></typeparam>
-        void Add<TKeyType, TValueType>() 
-            where TKeyType:TBaseKeyType where TValueType:TBaseValueType;
+        void Add<TKeyType, TValueType>()
+            where TKeyType : TBaseKeyType where TValueType : TBaseValueType;
 
         /// <summary>
         /// 

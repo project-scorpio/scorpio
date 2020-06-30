@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -20,7 +18,7 @@ namespace Scorpio.Linq
         /// <param name="queryable"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<int> CountAsync<T>(IQueryable<T> queryable,CancellationToken cancellationToken= default);
+        Task<int> CountAsync<T>(IQueryable<T> queryable, CancellationToken cancellationToken = default);
 
 
         /// <summary>

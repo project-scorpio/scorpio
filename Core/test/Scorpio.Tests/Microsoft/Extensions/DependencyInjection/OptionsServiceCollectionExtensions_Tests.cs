@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-using Xunit;
+﻿using Scorpio.Options;
+
 using Shouldly;
-using Scorpio.DependencyInjection;
-using Scorpio.Conventional;
-using Scorpio.DependencyInjection.Conventional;
-using Microsoft.Extensions.DependencyInjection;
-using Scorpio.Options;
+
+using Xunit;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

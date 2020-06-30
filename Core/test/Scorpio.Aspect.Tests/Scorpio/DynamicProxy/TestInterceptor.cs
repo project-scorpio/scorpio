@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+
 using AspectCore.DynamicProxy;
 namespace Scorpio.DynamicProxy
 {
@@ -10,7 +8,7 @@ namespace Scorpio.DynamicProxy
         public string ServiceMethodName { get; private set; }
         public override async Task Invoke(AspectContext context, AspectDelegate next)
         {
-            
+
             ServiceMethodName = context.ServiceMethod.Name;
             if (context.ServiceMethod.Name == "Test")
             {
