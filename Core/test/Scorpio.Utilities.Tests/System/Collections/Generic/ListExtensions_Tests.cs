@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Shouldly;
+﻿using Shouldly;
+
 using Xunit;
 namespace System.Collections.Generic
 {

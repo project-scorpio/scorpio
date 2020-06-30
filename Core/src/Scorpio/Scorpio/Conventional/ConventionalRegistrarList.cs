@@ -2,7 +2,7 @@
 
 namespace Scorpio.Conventional
 {
-    internal class ConventionalRegistrarList:List<IConventionalRegistrar>
+    internal class ConventionalRegistrarList : List<IConventionalRegistrar>
     {
 
     }

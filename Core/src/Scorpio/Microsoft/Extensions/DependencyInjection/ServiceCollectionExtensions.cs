@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using System.Text;
+
 using Scorpio.Conventional;
 using Scorpio.DependencyInjection.Conventional;
-using Scorpio.Options;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -24,16 +23,16 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="configureAction"></param>
         /// <returns></returns>
         public static IServiceCollection DoConventionalAction<TAction>(
-            this IServiceCollection services, 
-            IEnumerable<Type> types, 
-            Action<IConventionalConfiguration<TAction>> configureAction) 
+            this IServiceCollection services,
+            IEnumerable<Type> types,
+            Action<IConventionalConfiguration<TAction>> configureAction)
             where TAction : ConventionalActionBase
         {
-            var config = new ConventionalConfiguration<TAction>(services,types);
+            var config = new ConventionalConfiguration<TAction>(services, types);
             configureAction(config);
             var action = Activator.CreateInstance(
                 typeof(TAction),
-                BindingFlags.Public| BindingFlags.CreateInstance| BindingFlags.Instance| BindingFlags.InvokeMethod| BindingFlags.NonPublic,
+                BindingFlags.Public | BindingFlags.CreateInstance | BindingFlags.Instance | BindingFlags.InvokeMethod | BindingFlags.NonPublic,
                 null,
                 new object[] { config },
                 null) as TAction;
@@ -195,16 +194,6 @@ namespace Microsoft.Extensions.DependencyInjection
             return services;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="services"></param>
-        /// <param name="serviceDescriptor"></param>
-        /// <returns></returns>
-        public static IServiceCollection ReplaceEnumerable(this IServiceCollection services, ServiceDescriptor serviceDescriptor)
-        {
-            return services.ReplaceEnumerable(ServiceDescriptor.Transient(serviceDescriptor.ServiceType, serviceDescriptor.GetImplementationType()), serviceDescriptor);
-        }
 
         /// <summary>
         /// 
@@ -229,7 +218,7 @@ namespace Microsoft.Extensions.DependencyInjection
             {
                 var implementationType = serviceDescriptor.GetImplementationType();
 
-                services.RemoveAll(s=>s.ServiceType==serviceDescriptor.ServiceType && s.GetImplementationType()==implementationType);
+                services.RemoveAll(s => s.ServiceType == serviceDescriptor.ServiceType && s.GetImplementationType() == implementationType);
 
             }
             else

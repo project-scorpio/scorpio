@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Reflection;
-using System.Text;
 
 namespace Scorpio.Modularity
 {
-    class ModuleDescriptor:IModuleDescriptor
+    class ModuleDescriptor : IModuleDescriptor
     {
         public Type Type { get; }
 

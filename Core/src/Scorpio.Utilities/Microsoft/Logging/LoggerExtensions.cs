@@ -1,8 +1,8 @@
-﻿using Scorpio.ExceptionHandling;
-using Scorpio.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+
+using Scorpio.ExceptionHandling;
+using Scorpio.Logging;
 
 namespace Microsoft.Extensions.Logging
 {

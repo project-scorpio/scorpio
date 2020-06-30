@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+
+using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.Modularity;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.TestBase
 {
@@ -59,9 +59,9 @@ namespace Scorpio.TestBase
 
         }
 
-        protected virtual IServiceProvider CreateServiceProvider(Bootstrapper  bootstrapper)
+        protected virtual IServiceProvider CreateServiceProvider(Bootstrapper bootstrapper)
         {
-            var builder= bootstrapper.ServiceFactoryAdapter.CreateBuilder(bootstrapper.Services);
+            var builder = bootstrapper.ServiceFactoryAdapter.CreateBuilder(bootstrapper.Services);
             return bootstrapper.ServiceFactoryAdapter.CreateServiceProvider(builder);
         }
 

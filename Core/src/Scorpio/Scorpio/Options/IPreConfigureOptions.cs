@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Scorpio.Options
+﻿namespace Scorpio.Options
 {
     /// <summary>
     /// 
     /// </summary>
     /// <typeparam name="TOptions"></typeparam>
-    public interface IPreConfigureOptions<in TOptions> where TOptions:class
+    public interface IPreConfigureOptions<in TOptions> where TOptions : class
     {
         /// <summary>
         /// 

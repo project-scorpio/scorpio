@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Scorpio.Modularity;
-using Scorpio.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
-using Scorpio.Conventional;
-using Scorpio.DependencyInjection.Conventional;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
-using Scorpio.Threading;
+
+using Scorpio.DependencyInjection.Conventional;
+using Scorpio.Modularity;
 using Scorpio.Runtime;
+using Scorpio.Threading;
 
 namespace Scorpio
 {
@@ -22,7 +17,7 @@ namespace Scorpio
 
         public override void PreConfigureServices(ConfigureServicesContext context)
         {
-            context.Services.ReplaceOrAdd(ServiceDescriptor.Transient(typeof(IOptionsFactory<>), typeof(Options.OptionsFactory<>)),true);
+            context.Services.ReplaceOrAdd(ServiceDescriptor.Transient(typeof(IOptionsFactory<>), typeof(Options.OptionsFactory<>)), true);
             context.AddConventionalRegistrar(new BasicConventionalRegistrar());
         }
 
@@ -35,11 +30,6 @@ namespace Scorpio
             context.Services.TryAddSingleton(typeof(IAmbientScopeProvider<>), typeof(AmbientDataContextAmbientScopeProvider<>));
             context.Services.TryAddSingleton<ICancellationTokenProvider>(NoneCancellationTokenProvider.Instance);
             context.RegisterAssemblyByConvention();
-        }
-
-        public override void PostConfigureServices(ConfigureServicesContext context)
-        {
-            
         }
     }
 }

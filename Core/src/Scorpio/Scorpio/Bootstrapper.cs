@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using Microsoft.Extensions.DependencyInjection;
-using Scorpio.Modularity;
-using Scorpio.DependencyInjection;
 using System.Reflection;
+
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
+using Scorpio.Modularity;
 
 namespace Scorpio
 {
@@ -112,7 +112,7 @@ namespace Scorpio
 
         private void ConfigureServices()
         {
-            var context = new ConfigureServicesContext(this, Services,Configuration);
+            var context = new ConfigureServicesContext(this, Services, Configuration);
             Services.AddSingleton(context);
             _options.PreConfigureServices(context);
             Modules.ForEach(m => m.Instance.PreConfigureServices(context));
@@ -243,29 +243,31 @@ namespace Scorpio
                 if (disposing)
                 {
                     Shutdown();
-                    // TODO: dispose managed state (managed objects).
                 }
-
-                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
-                // TODO: set large fields to null.
 
                 _disposedValue = true;
             }
         }
 
-        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
-        // ~Bootstrapper() {
-        //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-        //   Dispose(false);
-        // }
+        /// <summary>
+        /// 
+        /// </summary>
+        ~Bootstrapper()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(false);
+        }
 
         // This code added to correctly implement the disposable pattern.
-        void IDisposable.Dispose()
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Dispose()
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
             Dispose(true);
-            // TODO: uncomment the following line if the finalizer is overridden above.
-            // GC.SuppressFinalize(this);
+
+            GC.SuppressFinalize(this);
         }
         #endregion
     }

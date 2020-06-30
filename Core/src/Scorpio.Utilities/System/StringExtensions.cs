@@ -1,10 +1,11 @@
 ﻿
-using Scorpio;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+
+using Scorpio;
 
 namespace System
 {
@@ -98,7 +99,7 @@ namespace System
         public static string Left(this string str, int len)
         {
             Check.NotNull(str, nameof(str));
-            if (len<=0)
+            if (len <= 0)
             {
                 throw new ArgumentException("len argument can not be less than 0", nameof(len));
             }
@@ -152,14 +153,14 @@ namespace System
         /// <param name="c">Char to search in <paramref name="str"/></param>
         /// <param name="n">Count of the occurence</param>
         /// <param name="comparisonType">String comparison type</param>
-        public static int NthIndexOf(this string str, char c, int n,StringComparison comparisonType)
+        public static int NthIndexOf(this string str, char c, int n, StringComparison comparisonType)
         {
             Check.NotNull(str, nameof(str));
 
             var count = 0;
             for (var i = 0; i < str.Length; i++)
             {
-                if (!str[i].ToString().Equals(c.ToString(),comparisonType))
+                if (!str[i].ToString().Equals(c.ToString(), comparisonType))
                 {
                     continue;
                 }
@@ -510,7 +511,7 @@ namespace System
         /// <summary>
         /// Converts given string to a byte array using the given <paramref name="encoding"/>
         /// </summary>
-        public static byte[] GetBytes( this string str,  Encoding encoding)
+        public static byte[] GetBytes(this string str, Encoding encoding)
         {
             Check.NotNull(str, nameof(str));
             Check.NotNull(encoding, nameof(encoding));

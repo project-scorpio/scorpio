@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
+
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Scorpio.Conventional
 {
@@ -14,7 +14,7 @@ namespace Scorpio.Conventional
         /// <summary>
         /// 
         /// </summary>
-        IServiceCollection  Services{ get; }
+        IServiceCollection Services { get; }
 
         /// <summary>
         /// 

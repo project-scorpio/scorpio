@@ -1,11 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.Modularity.Plugins;
+
 using Shouldly;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 using Xunit;
-using Scorpio.DependencyInjection;
 
 namespace Scorpio.Modularity
 {

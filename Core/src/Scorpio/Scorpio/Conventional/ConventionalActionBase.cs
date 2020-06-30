@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Scorpio.Conventional
 {
@@ -9,7 +7,7 @@ namespace Scorpio.Conventional
     /// </summary>
     public abstract class ConventionalActionBase
     {
-        private readonly IConventionalConfiguration  _configuration;
+        private readonly IConventionalConfiguration _configuration;
 
         /// <summary>
         /// 
@@ -30,6 +28,6 @@ namespace Scorpio.Conventional
         /// 
         /// </summary>
         /// <param name="context"></param>
-         protected abstract void Action(IConventionalContext context);
+        protected abstract void Action(IConventionalContext context);
     }
 }

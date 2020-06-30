@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Text;
+﻿using System.Reflection;
+
 using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.Conventional;
 
 namespace Scorpio.Modularity
@@ -54,7 +52,7 @@ namespace Scorpio.Modularity
         /// <param name="context"></param>
         /// <param name="assembly"></param>
         /// <returns></returns>
-        public static ConfigureServicesContext RegisterAssemblyByConvention(this ConfigureServicesContext context,Assembly assembly)
+        public static ConfigureServicesContext RegisterAssemblyByConvention(this ConfigureServicesContext context, Assembly assembly)
         {
             context.Services.RegisterAssemblyByConvention(assembly);
             return context;
@@ -66,7 +64,7 @@ namespace Scorpio.Modularity
         /// <typeparam name="T"></typeparam>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static ConfigureServicesContext RegisterAssemblyByConventionOfType<T>(this ConfigureServicesContext  context)
+        public static ConfigureServicesContext RegisterAssemblyByConventionOfType<T>(this ConfigureServicesContext context)
         {
             context.Services.RegisterAssemblyByConventionOfType<T>();
             return context;

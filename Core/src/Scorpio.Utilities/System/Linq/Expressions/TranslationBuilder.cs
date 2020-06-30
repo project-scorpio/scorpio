@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace System.Linq.Expressions
+﻿namespace System.Linq.Expressions
 {
     /// <summary>
     /// 

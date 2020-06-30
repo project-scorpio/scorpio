@@ -1,9 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System.Runtime.ExceptionServices;
+
+using Microsoft.Extensions.Logging;
+
 using Scorpio.Logging;
-using System;
-using System.Collections.Generic;
-using System.Runtime.ExceptionServices;
-using System.Text;
 
 namespace System
 {

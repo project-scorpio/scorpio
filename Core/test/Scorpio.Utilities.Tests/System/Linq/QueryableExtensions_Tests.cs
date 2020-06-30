@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
+﻿using System.Collections.Generic;
+
 using Shouldly;
+
+using Xunit;
 
 namespace System.Linq
 {
     public class QueryableExtensions_Tests
     {
-        static IQueryable<string> _sourceList = new List<string> { "Item1", "Item2", "Item3","Item4","Item5","Item6","Item7" }.AsQueryable();
+        static IQueryable<string> _sourceList = new List<string> { "Item1", "Item2", "Item3", "Item4", "Item5", "Item6", "Item7" }.AsQueryable();
 
         [Fact]
         public void PageBy()
@@ -28,10 +28,10 @@ namespace System.Linq
             _sourceList.OrderBy(s => s).WhereIf<string, IOrderedQueryable<string>>(true, i => i == "Item2").ShouldHaveSingleItem().ShouldBe("Item2");
             _sourceList.OrderBy(s => s).WhereIf<string, IOrderedQueryable<string>>(false, i => i == "Item2").Count().ShouldBe(7);
             _sourceList.OrderBy(s => s).WhereIf<string, IOrderedQueryable<string>>(false, i => i == "Item2").ShouldBe(_sourceList);
-            _sourceList.WhereIf(true, (item,i) => item == "Item2").ShouldHaveSingleItem().ShouldBe("Item2");
+            _sourceList.WhereIf(true, (item, i) => item == "Item2").ShouldHaveSingleItem().ShouldBe("Item2");
             _sourceList.WhereIf(false, (item, i) => item == "Item2").Count().ShouldBe(7);
             _sourceList.WhereIf(false, (item, i) => item == "Item2").ShouldBe(_sourceList);
-            _sourceList.OrderBy(s=>s).WhereIf<string,IOrderedQueryable<string>>(true, (item, i) => item == "Item2").ShouldHaveSingleItem().ShouldBe("Item2");
+            _sourceList.OrderBy(s => s).WhereIf<string, IOrderedQueryable<string>>(true, (item, i) => item == "Item2").ShouldHaveSingleItem().ShouldBe("Item2");
             _sourceList.OrderBy(s => s).WhereIf<string, IOrderedQueryable<string>>(false, (item, i) => item == "Item2").Count().ShouldBe(7);
             _sourceList.OrderBy(s => s).WhereIf<string, IOrderedQueryable<string>>(false, (item, i) => item == "Item2").ShouldBe(_sourceList);
         }

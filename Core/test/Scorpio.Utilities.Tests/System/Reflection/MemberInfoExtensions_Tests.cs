@@ -1,9 +1,8 @@
-﻿using Shouldly;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
+
+using Shouldly;
+
 using Xunit;
 
 namespace System.Reflection
@@ -48,7 +47,7 @@ namespace System.Reflection
             new AttributeTestClass().GetAttribute<DisplayNameAttribute>().ShouldBeNull();
             Should.Throw<ArgumentNullException>(() => (null as Type).GetAttribute<DisplayNameAttribute>());
             Should.Throw<ArgumentNullException>(() => (null as object).GetAttribute<DisplayNameAttribute>());
-            new AttributeTestClassWithDisplayAttirbute().Member(m=>m.Name).GetAttribute<DisplayNameAttribute>().ShouldNotBeNull();
+            new AttributeTestClassWithDisplayAttirbute().Member(m => m.Name).GetAttribute<DisplayNameAttribute>().ShouldNotBeNull();
         }
 
         [Fact]

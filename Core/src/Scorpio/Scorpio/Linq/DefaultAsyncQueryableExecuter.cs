@@ -1,17 +1,17 @@
-﻿using Scorpio.DependencyInjection;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Scorpio.DependencyInjection;
 namespace Scorpio.Linq
 {
     internal class DefaultAsyncQueryableExecuter : IAsyncQueryableExecuter, ISingletonDependency
     {
         public static DefaultAsyncQueryableExecuter Instance { get; } = new DefaultAsyncQueryableExecuter();
 
-        public Task<int> CountAsync<T>(IQueryable<T> queryable,CancellationToken cancellationToken=default)
+        public Task<int> CountAsync<T>(IQueryable<T> queryable, CancellationToken cancellationToken = default)
         {
             return Task.FromResult(queryable.Count());
         }

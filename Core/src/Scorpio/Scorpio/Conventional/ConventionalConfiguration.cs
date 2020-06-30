@@ -1,16 +1,16 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Scorpio.Conventional
 {
     /// <summary>
     /// 
     /// </summary>
-    internal abstract class ConventionalConfiguration:IConventionalConfiguration
+    internal abstract class ConventionalConfiguration : IConventionalConfiguration
     {
-        internal ConventionalConfiguration(IServiceCollection services, IEnumerable<Type> types)
+        protected ConventionalConfiguration(IServiceCollection services, IEnumerable<Type> types)
         {
             Services = services;
             Types = types;
@@ -42,7 +42,7 @@ namespace Scorpio.Conventional
         {
             return GetInternalContext();
         }
-        internal  IConventionalContext<TAction> GetInternalContext()
+        internal IConventionalContext<TAction> GetInternalContext()
         {
             var context = new ConventionalContext<TAction>(Services, Types);
             Contexts.Add(context);

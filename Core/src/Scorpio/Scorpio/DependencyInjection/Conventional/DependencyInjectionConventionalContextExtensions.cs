@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Collections.Generic;
+
+using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.Conventional;
-using System;
-using System.Collections.Generic;
-using System.Text;
 namespace Scorpio.DependencyInjection.Conventional
 {
     /// <summary>
@@ -28,7 +28,7 @@ namespace Scorpio.DependencyInjection.Conventional
         /// <param name="context"></param>
         /// <param name="lifetimeSelector"></param>
         /// <returns></returns>
-        public static IConventionalContext<ConventionalDependencyAction> Lifetime(this IConventionalContext<ConventionalDependencyAction> context, IRegisterAssemblyLifetimeSelector  lifetimeSelector)
+        public static IConventionalContext<ConventionalDependencyAction> Lifetime(this IConventionalContext<ConventionalDependencyAction> context, IRegisterAssemblyLifetimeSelector lifetimeSelector)
         {
             context.Set("Lifetime", lifetimeSelector);
             return context;
@@ -42,7 +42,7 @@ namespace Scorpio.DependencyInjection.Conventional
         /// <returns></returns>
         public static IConventionalContext<ConventionalDependencyAction> As(this IConventionalContext<ConventionalDependencyAction> context, IRegisterAssemblyServiceSelector serviceSelector)
         {
-            context.GetOrAdd<ICollection< IRegisterAssemblyServiceSelector>>("Service",new HashSet<IRegisterAssemblyServiceSelector>()).Add(serviceSelector);
+            context.GetOrAdd<ICollection<IRegisterAssemblyServiceSelector>>("Service", new HashSet<IRegisterAssemblyServiceSelector>()).Add(serviceSelector);
             return context;
         }
 

@@ -1,15 +1,15 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Scorpio
 {
     /// <summary>
     /// 
     /// </summary>
-    public interface IBootstrapper:IDisposable
+    public interface IBootstrapper : IDisposable
     {
         /// <summary>
         /// Type of the startup (entrance) module of the application.
@@ -30,7 +30,7 @@ namespace Scorpio
         /// <summary>
         /// A central location for sharing state between components during the host building process.
         /// </summary>
-        IDictionary<string,object> Properties { get; }
+        IDictionary<string, object> Properties { get; }
 
         /// <summary>
         /// Reference to the root service provider used by the application.

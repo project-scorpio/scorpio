@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+
+using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.DependencyInjection.Conventional;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.Conventional
 {
@@ -18,7 +18,7 @@ namespace Scorpio.Conventional
         /// <param name="context"></param>
         /// <param name="configureAction"></param>
         /// <returns></returns>
-        public static IConventionalRegistrationContext DoConventionalAction<TAction>(this IConventionalRegistrationContext  context, Action<IConventionalConfiguration<TAction>> configureAction) where TAction : ConventionalActionBase
+        public static IConventionalRegistrationContext DoConventionalAction<TAction>(this IConventionalRegistrationContext context, Action<IConventionalConfiguration<TAction>> configureAction) where TAction : ConventionalActionBase
         {
             context.Services.DoConventionalAction(context.Types, configureAction);
             return context;
@@ -30,9 +30,9 @@ namespace Scorpio.Conventional
         /// <param name="context"></param>
         /// <param name="configureAction"></param>
         /// <returns></returns>
-        public static IConventionalRegistrationContext RegisterConventionalDependencyInject(this IConventionalRegistrationContext  context, Action<IConventionalConfiguration<ConventionalDependencyAction>> configureAction)
+        public static IConventionalRegistrationContext RegisterConventionalDependencyInject(this IConventionalRegistrationContext context, Action<IConventionalConfiguration<ConventionalDependencyAction>> configureAction)
         {
-            return context.DoConventionalAction( configureAction);
+            return context.DoConventionalAction(configureAction);
         }
 
     }

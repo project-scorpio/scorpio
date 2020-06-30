@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
+
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Scorpio.Conventional
@@ -21,7 +21,7 @@ namespace Scorpio.Conventional
         /// </summary>
         public IEnumerable<Type> Types { get; }
 
-        internal ConventionalRegistrationContext(Assembly assembly, IServiceCollection  services )
+        internal ConventionalRegistrationContext(Assembly assembly, IServiceCollection services)
         {
             Assembly = assembly;
             Types = assembly.GetTypes();
