@@ -336,3 +336,6 @@ _site/
 Gemfile.lock
 .DS_Store
 publish.cmd
+.dotnet/
+.vscode/
+.sonarqube/
