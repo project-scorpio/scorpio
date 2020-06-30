@@ -1,7 +1,7 @@
 ﻿
 namespace System.Linq.Expressions
 {
-       
+
     /// <summary>
     /// 
     /// </summary>
@@ -32,7 +32,7 @@ namespace System.Linq.Expressions
     /// <typeparam name="T1"></typeparam>
     /// <typeparam name="T2"></typeparam>
     /// <typeparam name="TResult"></typeparam>
-    public interface IExpressionTranslation<T1, T2, TResult> 
+    public interface IExpressionTranslation<T1, T2, TResult>
     {
         /// <summary>
         /// 
@@ -60,7 +60,7 @@ namespace System.Linq.Expressions
     /// <typeparam name="T2"></typeparam>
     /// <typeparam name="T3"></typeparam>
     /// <typeparam name="TResult"></typeparam>
-    public interface IExpressionTranslation<T1, T2, T3, TResult> 
+    public interface IExpressionTranslation<T1, T2, T3, TResult>
     {
         /// <summary>
         /// 

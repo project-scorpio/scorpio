@@ -1,11 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
-using Shouldly;
+
 using Microsoft.Extensions.DependencyInjection;
-using Scorpio.Modularity.Plugins;
+
 using Scorpio.Modularity;
+using Scorpio.Modularity.Plugins;
+
+using Shouldly;
+
+using Xunit;
 
 namespace Scorpio
 {
@@ -37,7 +39,8 @@ namespace Scorpio
         [Fact]
         public void Should_Initialize_PlugIn()
         {
-            using (var bootstrapper = Bootstrapper.Create<IndependentEmptyModule>(c => {
+            using (var bootstrapper = Bootstrapper.Create<IndependentEmptyModule>(c =>
+            {
                 c.PlugInSources.AddType<IndependentEmptyPlugInModule>();
                 c.UseServiceProviderFactory(new DefaultServiceProviderFactory());
             }))

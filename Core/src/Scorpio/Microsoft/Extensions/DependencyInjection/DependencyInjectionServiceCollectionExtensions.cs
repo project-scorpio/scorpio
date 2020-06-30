@@ -1,12 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Scorpio.Conventional;
-using Scorpio.DependencyInjection.Conventional;
-using Scorpio.DependencyInjection;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Reflection;
-using System.Text;
-using System.Collections.Immutable;
+
+using Scorpio.Conventional;
 namespace Microsoft.Extensions.DependencyInjection
 {
     /// <summary>
@@ -78,7 +73,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns></returns>
         private static ConventionalRegistrarList GetOrCreateRegistrarList(IServiceCollection services)
         {
-            return services.GetSingletonInstanceOrAdd(s=>new ConventionalRegistrarList());
+            return services.GetSingletonInstanceOrAdd(s => new ConventionalRegistrarList());
         }
     }
 }

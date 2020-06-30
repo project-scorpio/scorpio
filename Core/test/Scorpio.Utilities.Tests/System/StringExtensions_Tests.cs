@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Shouldly;
+
 using Xunit;
-using Shouldly;
 namespace System
 {
     public class StringExtensions_Tests
@@ -147,7 +145,7 @@ namespace System
         {
             var str = "Scorpio\r\nproject\r\nis\r\ngreat.\r\n";
             str.SplitToLines().Length.ShouldBe(5);
-            str.SplitToLines( StringSplitOptions.RemoveEmptyEntries).Length.ShouldBe(4);
+            str.SplitToLines(StringSplitOptions.RemoveEmptyEntries).Length.ShouldBe(4);
         }
 
         [Theory]
@@ -157,7 +155,7 @@ namespace System
         [InlineData(" Scorpio", " Scorpio")]
         [InlineData("S", "s")]
         [InlineData("", "")]
-        public void ToCamelCase(string value,string expected)
+        public void ToCamelCase(string value, string expected)
         {
             value.ToCamelCase().ShouldBe(expected);
         }
@@ -169,7 +167,7 @@ namespace System
         [InlineData("Remove emptyEntries", "Remove empty entries")]
         [InlineData("ThisIsSampleSentence", "This is sample sentence")]
         [InlineData("  ", "  ")]
-        public void ToSentenceCase(string value,string expected)
+        public void ToSentenceCase(string value, string expected)
         {
             value.ToSentenceCase().ShouldBe(expected);
             value.ToSentenceCase(true).ShouldBe(expected);

@@ -1,11 +1,10 @@
-﻿using Scorpio;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
+
+using Scorpio;
 
 namespace System.Reflection
 {
@@ -111,7 +110,7 @@ namespace System.Reflection
         /// <param name="object"> The member to inspect.</param>
         /// <param name="inherit">true to inspect the ancestors of element; otherwise, false.</param>
         /// <returns>A custom attribute that matches attributeType, or null if no such attribute is found.</returns>
-        public static TAttribute GetAttribute<TAttribute>(this object @object, bool inherit = false) 
+        public static TAttribute GetAttribute<TAttribute>(this object @object, bool inherit = false)
         {
             return @object.GetAttributes<TAttribute>(inherit).FirstOrDefault();
         }
@@ -125,7 +124,7 @@ namespace System.Reflection
         /// <returns>A collection of the custom attributes that are applied to element and that match T, or an empty collection if no such attributes exist.</returns>
         public static IEnumerable<TAttribute> GetAttributes<TAttribute>(this object @object, bool inherit = false)
         {
-            Check.NotNull(@object,nameof(@object));
+            Check.NotNull(@object, nameof(@object));
             return @object.GetType().GetAttributes<TAttribute>(inherit);
         }
 
@@ -163,7 +162,7 @@ namespace System.Reflection
         /// <param name="memberInfo"> The member to inspect.</param>
         /// <param name="inherit">true to inspect the ancestors of element; otherwise, false.</param>
         /// <returns>A custom attribute that matches attributeType, or null if no such attribute is found.</returns>
-        public static TAttribute GetAttribute<TAttribute>(this MemberInfo memberInfo, bool inherit = false) 
+        public static TAttribute GetAttribute<TAttribute>(this MemberInfo memberInfo, bool inherit = false)
         {
             return memberInfo.GetAttributes<TAttribute>(inherit).FirstOrDefault();
         }
@@ -175,7 +174,7 @@ namespace System.Reflection
         /// <param name="memberInfo"> The member to inspect.</param>
         /// <param name="inherit">true to inspect the ancestors of element; otherwise, false.</param>
         /// <returns>A collection of the custom attributes that are applied to element and that match T, or an empty collection if no such attributes exist.</returns>
-        public static IEnumerable<TAttribute> GetAttributes<TAttribute>(this MemberInfo memberInfo, bool inherit = false) 
+        public static IEnumerable<TAttribute> GetAttributes<TAttribute>(this MemberInfo memberInfo, bool inherit = false)
         {
             Check.NotNull(memberInfo, nameof(memberInfo));
             return memberInfo.GetCustomAttributes(inherit).OfType<TAttribute>();

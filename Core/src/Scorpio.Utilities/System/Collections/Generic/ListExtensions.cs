@@ -1,9 +1,7 @@
 ﻿
-using Scorpio;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+
+using Scorpio;
 
 namespace System.Collections.Generic
 {
@@ -221,8 +219,8 @@ namespace System.Collections.Generic
         /// <param name="selector"></param>
         /// <param name="factory"></param>
         /// <returns></returns>
-        
-        public static T GetOrAdd<T>( this IList<T> source, Func<T, bool> selector, Func<T> factory)
+
+        public static T GetOrAdd<T>(this IList<T> source, Func<T, bool> selector, Func<T> factory)
         {
             Check.NotNull(source, nameof(source));
 

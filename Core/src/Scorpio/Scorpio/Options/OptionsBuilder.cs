@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Scorpio.Options
@@ -8,7 +7,7 @@ namespace Scorpio.Options
     /// <summary>
     /// 
     /// </summary>
-    public  class OptionsBuilder<TOptions>:Microsoft.Extensions.Options.OptionsBuilder<TOptions> where TOptions:class
+    public class OptionsBuilder<TOptions> : Microsoft.Extensions.Options.OptionsBuilder<TOptions> where TOptions : class
     {
         /// <summary>
         /// 

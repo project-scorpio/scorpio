@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Scorpio.Modularity;
+﻿using Scorpio.Modularity;
 
 namespace Scorpio.Tests.Scorpio.Options
 {

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Concurrent;
 
 namespace System.Collections.Generic
 {
@@ -91,7 +88,7 @@ namespace System.Collections.Generic
         /// <typeparam name="TKey">Type of the key</typeparam>
         /// <typeparam name="TValue">Type of the value</typeparam>
         /// <returns>Value if found, default if can not found.</returns>
-        public static TValue GetOrDefault<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey key,TValue @default)
+        public static TValue GetOrDefault<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey key, TValue @default)
         {
             return dictionary.TryGetValue(key, out var obj) ? obj : @default;
         }

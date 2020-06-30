@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -17,7 +14,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="serviceProvider"></param>
         /// <param name="defaultValue"></param>
         /// <returns></returns>
-        public static T GetService<T>(this IServiceProvider serviceProvider,Func<T> defaultValue)
+        public static T GetService<T>(this IServiceProvider serviceProvider, Func<T> defaultValue)
         {
             var result = serviceProvider.GetService<T>() ?? defaultValue();
             return result;

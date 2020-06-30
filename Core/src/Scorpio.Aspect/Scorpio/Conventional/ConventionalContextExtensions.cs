@@ -1,7 +1,6 @@
-﻿using Scorpio.DynamicProxy;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+
+using Scorpio.DynamicProxy;
 
 namespace Scorpio.Conventional
 {
@@ -17,7 +16,7 @@ namespace Scorpio.Conventional
         /// <param name="configureAction"></param>
         /// <returns></returns>
         public static IConventionalRegistrationContext RegisterConventionalInterceptor(
-            this IConventionalRegistrationContext  context,
+            this IConventionalRegistrationContext context,
             Action<IConventionalConfiguration<ConventionalInterceptorAction>> configureAction)
         {
             return context.DoConventionalAction(configureAction);

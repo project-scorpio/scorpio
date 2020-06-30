@@ -7,7 +7,7 @@ namespace Scorpio.Modularity.Plugins
     /// <summary>
     /// 
     /// </summary>
-    public class PlugInSourceList:List<IPlugInSource>
+    public class PlugInSourceList : List<IPlugInSource>
     {
         internal Type[] GetAllModules()
         {

@@ -1,13 +1,13 @@
-﻿using AspectCore.Configuration;
+﻿using System.Collections.Generic;
+using System.Reflection;
+
+using AspectCore.Configuration;
 using AspectCore.DynamicProxy;
 using AspectCore.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection;
+
 using Microsoft.Extensions.DependencyInjection.Extensions;
+
 using Scorpio.Conventional;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
 
 namespace Scorpio.DynamicProxy
 {

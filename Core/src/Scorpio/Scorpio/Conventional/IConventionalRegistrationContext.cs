@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
+﻿using System;
 using System.Collections.Generic;
-using System;
+
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Scorpio.Conventional
 {

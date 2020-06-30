@@ -1,7 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.Conventional
 {
@@ -20,9 +17,9 @@ namespace Scorpio.Conventional
     /// <summary>
     /// 
     /// </summary>
-    public interface IConventionalConfiguration<out TAction>:IConventionalConfiguration
+    public interface IConventionalConfiguration<out TAction> : IConventionalConfiguration
     {
-      
+
 
     }
 

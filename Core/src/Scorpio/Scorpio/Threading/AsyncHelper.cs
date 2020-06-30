@@ -1,9 +1,8 @@
-﻿using Nito.AsyncEx;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
+
+using Nito.AsyncEx;
 
 namespace Scorpio.Threading
 {
@@ -16,7 +15,7 @@ namespace Scorpio.Threading
         /// Checks if given method is an async method.
         /// </summary>
         /// <param name="method">A method to check</param>
-        public static bool IsAsync( this MethodInfo method)
+        public static bool IsAsync(this MethodInfo method)
         {
             Check.NotNull(method, nameof(method));
 
@@ -28,7 +27,7 @@ namespace Scorpio.Threading
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public static bool IsTask( this Type type)
+        public static bool IsTask(this Type type)
         {
             return type == typeof(Task) || type.GetTypeInfo().IsGenericType && type.GetGenericTypeDefinition() == typeof(Task<>);
         }
@@ -38,7 +37,7 @@ namespace Scorpio.Threading
         /// Return T, if given type is Task{T}.
         /// Returns given type otherwise.
         /// </summary>
-        public static Type UnwrapTask( Type type)
+        public static Type UnwrapTask(Type type)
         {
             Check.NotNull(type, nameof(type));
 

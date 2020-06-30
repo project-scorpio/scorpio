@@ -1,9 +1,7 @@
-﻿using Scorpio.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Security.Principal;
-using System.Text;
+﻿using System.Security.Principal;
 using System.Threading;
+
+using Scorpio.DependencyInjection;
 
 namespace Scorpio.Security
 {
@@ -15,6 +13,6 @@ namespace Scorpio.Security
         /// <summary>
         /// 
         /// </summary>
-        public virtual IPrincipal Principal => Thread.CurrentPrincipal ;
+        public virtual IPrincipal Principal => Thread.CurrentPrincipal;
     }
 }

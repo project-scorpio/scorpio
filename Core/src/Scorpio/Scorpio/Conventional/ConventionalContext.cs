@@ -1,21 +1,21 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
+
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Scorpio.Conventional
 {
-    internal class ConventionalContext:IConventionalContext
+    internal class ConventionalContext : IConventionalContext
     {
         private readonly Dictionary<string, object> _items = new Dictionary<string, object>();
         private readonly IEnumerable<Type> _types;
 
-        public IServiceCollection  Services { get;  }
+        public IServiceCollection Services { get; }
 
 
-        public Expression<Func<Type,bool>> TypePredicate { get; private set; }
+        public Expression<Func<Type, bool>> TypePredicate { get; private set; }
 
         public IEnumerable<Type> Types => _types.Where(TypePredicate.Compile());
 
@@ -25,7 +25,7 @@ namespace Scorpio.Conventional
             _types = types;
         }
 
-        public void AddPredicateExpression(Expression<Func<Type,bool>> expression)
+        public void AddPredicateExpression(Expression<Func<Type, bool>> expression)
         {
             TypePredicate = TypePredicate == null ? expression : TypePredicate.AndAlso(expression);
         }
@@ -37,14 +37,14 @@ namespace Scorpio.Conventional
 
         public T GetItem<T>(string key)
         {
-            if(!_items.TryGetValue(key, out var value))
+            if (!_items.TryGetValue(key, out var value))
             {
                 return default;
             }
             return (T)value;
         }
 
-        public void SetItem<T>(string key,T item)
+        public void SetItem<T>(string key, T item)
         {
             _items[key] = item;
         }

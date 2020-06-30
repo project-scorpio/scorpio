@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Reflection;
-using Scorpio.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Scorpio.DependencyInjection.Conventional
 {
@@ -30,7 +27,7 @@ namespace Scorpio.DependencyInjection.Conventional
 
         public IEnumerable<Type> Select(Type componentType)
         {
-            var services = componentType.GetInterfaces().Where(s =>s.IsPublic).ToList();
+            var services = componentType.GetInterfaces().Where(s => s.IsPublic).ToList();
             services.Add(componentType);
             return services;
         }

@@ -1,10 +1,11 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System;
+using System.Collections.Generic;
+
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.Modularity;
 using Scorpio.Modularity.Plugins;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio
 {
@@ -14,11 +15,11 @@ namespace Scorpio
     public sealed class BootstrapperCreationOptions
     {
 
-        private readonly HashSet<Action<ConfigureServicesContext>> _preConfigureServiceActions=new HashSet<Action<ConfigureServicesContext>>();
+        private readonly HashSet<Action<ConfigureServicesContext>> _preConfigureServiceActions = new HashSet<Action<ConfigureServicesContext>>();
 
         private readonly HashSet<Action<ConfigureServicesContext>> _configureServiceActions = new HashSet<Action<ConfigureServicesContext>>();
 
-        private readonly HashSet<Action<ConfigureServicesContext>> _postConfigureServiceActions=new HashSet<Action<ConfigureServicesContext>>();
+        private readonly HashSet<Action<ConfigureServicesContext>> _postConfigureServiceActions = new HashSet<Action<ConfigureServicesContext>>();
 
         /// <summary>
         /// 
@@ -80,7 +81,7 @@ namespace Scorpio
         /// 
         /// </summary>
         /// <param name="action"></param>
-        public  void Configuration( Action<IConfigurationBuilder> action)
+        public void Configuration(Action<IConfigurationBuilder> action)
         {
 
             ConfigurationActions.Add(action);
@@ -91,7 +92,7 @@ namespace Scorpio
         /// </summary>
         /// <typeparam name="TContainerBuilder"></typeparam>
         /// <param name="factory"></param>
-        public  void UseServiceProviderFactory<TContainerBuilder>(IServiceProviderFactory<TContainerBuilder> factory)
+        public void UseServiceProviderFactory<TContainerBuilder>(IServiceProviderFactory<TContainerBuilder> factory)
         {
             ServiceFactory = () => new ServiceFactoryAdapter<TContainerBuilder>(factory);
         }

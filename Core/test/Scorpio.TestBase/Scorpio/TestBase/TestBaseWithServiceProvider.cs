@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Scorpio.TestBase
 {
-   public abstract class TestBaseWithServiceProvider
+    public abstract class TestBaseWithServiceProvider
     {
         protected abstract IServiceProvider ServiceProvider { get; }
 

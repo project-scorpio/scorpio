@@ -1,10 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+using System.Collections.Generic;
+
 using Scorpio.Conventional;
 using Scorpio.DynamicProxy;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -13,7 +11,7 @@ namespace Microsoft.Extensions.DependencyInjection
     /// </summary>
     public static class DynamicProxyServiceCollectionExtensions
     {
-       
+
         /// <summary>
         /// 
         /// </summary>

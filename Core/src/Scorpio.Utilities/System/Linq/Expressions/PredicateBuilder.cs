@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
-
-namespace System.Linq.Expressions
+﻿namespace System.Linq.Expressions
 {
     /// <summary>
     /// 
@@ -33,10 +28,10 @@ namespace System.Linq.Expressions
         /// <param name="right"></param>
         /// <returns></returns>
         public static Expression<Func<T, TResult>> Equal<T, TResult>(
-            this Expression<Func<T, TResult>> left, 
+            this Expression<Func<T, TResult>> left,
             Expression<Func<T, TResult>> right)
         {
-            return Combine(left, right, (lft, rit) => Expression.Equal(lft, rit));
+            return BinaryCombine(left, right, (lft, rit) => Expression.Equal(lft, rit));
         }
 
 
@@ -53,7 +48,7 @@ namespace System.Linq.Expressions
             this Expression<Func<T1, T2, TResult>> left,
                  Expression<Func<T1, T2, TResult>> right)
         {
-            return Combine(left, right, (lft, rit) => Expression.Equal(lft, rit));
+            return BinaryCombine(left, right, (lft, rit) => Expression.Equal(lft, rit));
         }
 
         /// <summary>
@@ -70,7 +65,7 @@ namespace System.Linq.Expressions
             this Expression<Func<T1, T2, T3, TResult>> left,
             Expression<Func<T1, T2, T3, TResult>> right)
         {
-            return Combine(left, right, (lft, rit) => Expression.Equal(lft, rit));
+            return BinaryCombine(left, right, (lft, rit) => Expression.Equal(lft, rit));
         }
 
         /// <summary>
@@ -88,7 +83,7 @@ namespace System.Linq.Expressions
             this Expression<Func<T1, T2, T3, T4, TResult>> left,
             Expression<Func<T1, T2, T3, T4, TResult>> right)
         {
-            return Combine(left, right, (lft, rit) => Expression.Equal(lft, rit));
+            return BinaryCombine(left, right, (lft, rit) => Expression.Equal(lft, rit));
         }
 
         /// <summary>
@@ -107,7 +102,7 @@ namespace System.Linq.Expressions
             this Expression<Func<T1, T2, T3, T4, T5, TResult>> left,
             Expression<Func<T1, T2, T3, T4, T5, TResult>> right)
         {
-            return Combine(left, right, (lft, rit) => Expression.Equal(lft, rit));
+            return BinaryCombine(left, right, (lft, rit) => Expression.Equal(lft, rit));
         }
 
         /// <summary>
@@ -118,9 +113,9 @@ namespace System.Linq.Expressions
         /// <param name="right"></param>
         /// <param name="combineFunc"></param>
         /// <returns></returns>
-        public static Expression<TDelegate> Combine<TDelegate>(
-            this Expression<TDelegate> left, 
-            Expression<TDelegate> right, 
+        public static Expression<TDelegate> BinaryCombine<TDelegate>(
+            this Expression<TDelegate> left,
+            Expression<TDelegate> right,
             Func<Expression, Expression, BinaryExpression> combineFunc)
         {
             var (lft, rit, parameters) = MergeExpressionAndParameters(left, right);
@@ -129,13 +124,13 @@ namespace System.Linq.Expressions
         }
 
         private static (Expression left, Expression right, ParameterExpression[] parameters) MergeExpressionAndParameters(
-            LambdaExpression left, 
+            LambdaExpression left,
             LambdaExpression right)
         {
             var parameters = new ParameterExpression[left.Parameters.Count];
             var leftExpression = left.Body;
             var rightExpression = right.Body;
-            for (int i = 0; i < left.Parameters.Count; i++)
+            for (var i = 0; i < left.Parameters.Count; i++)
             {
                 parameters[i] = Expression.Parameter(left.Parameters[i].Type);
                 var leftVisitor = new ReplaceExpressionVisitor(left.Parameters[i], parameters[i]);
