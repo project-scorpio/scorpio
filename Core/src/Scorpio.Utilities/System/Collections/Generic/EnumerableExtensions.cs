@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace System.Collections.Generic
@@ -93,8 +92,7 @@ namespace System.Collections.Generic
         /// <typeparam name="T">The type of elements in the enumerable.</typeparam>
         /// <param name="source">An <see cref="IEnumerable{T}"/> to apply action.</param>
         /// <param name="action">The <see cref="Action{T}"/> delegate to perform on each element of the <see cref="IEnumerable{T}"/>.</param>
-        /// <param name="cancellationToken"></param>
-        public static async Task ForEachAsync<T>(this IEnumerable<T> source, Func<T, Task> action, CancellationToken cancellationToken = default)
+        public static async Task ForEachAsync<T>(this IEnumerable<T> source, Func<T, Task> action)
         {
             if (source.IsNullOrEmpty() || action == null)
             {
@@ -102,118 +100,9 @@ namespace System.Collections.Generic
             }
             foreach (var item in source)
             {
-                if (cancellationToken.IsCancellationRequested)
-                {
-                    break;
-                }
                 await action(item);
             }
         }
-        /// <summary>
-        /// Performs the specified action on each element of the <see cref="IEnumerable{T}"/>.
-        /// </summary>
-        /// <typeparam name="T">The type of elements in the enumerable.</typeparam>
-        /// <param name="source">An <see cref="IEnumerable{T}"/> to apply action.</param>
-        /// <param name="action">The <see cref="Action{T}"/> delegate to perform on each element of the <see cref="IEnumerable{T}"/>.</param>
-        /// <param name="cancellationToken"></param>
-        public static async Task ForEachAsync<T>(this IEnumerable<T> source, Func<T, CancellationToken, Task> action, CancellationToken cancellationToken = default)
-        {
-            if (source.IsNullOrEmpty() || action == null)
-            {
-                return;
-            }
-            foreach (var item in source)
-            {
-                if (cancellationToken.IsCancellationRequested)
-                {
-                    break;
-                }
-                await action(item, cancellationToken);
-            }
-        }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="TSource"></typeparam>
-        /// <param name="source"></param>
-        /// <param name="predicate"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
-        public static async Task<bool> AnyAsync<TSource>(this IEnumerable<TSource> source, Func<TSource, Task<bool>> predicate, CancellationToken cancellationToken = default)
-        {
-            foreach (var item in source)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                if (await predicate(item))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="TSource"></typeparam>
-        /// <param name="source"></param>
-        /// <param name="predicate"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
-        public static async Task<bool> AnyAsync<TSource>(this IEnumerable<TSource> source, Func<TSource,CancellationToken, Task<bool>> predicate, CancellationToken cancellationToken = default)
-        {
-            foreach (var item in source)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                if (await predicate(item,cancellationToken))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="TSource"></typeparam>
-        /// <param name="source"></param>
-        /// <param name="predicate"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
-        public static async Task<bool> AllAsync<TSource>(this IEnumerable<TSource> source, Func<TSource, Task<bool>> predicate, CancellationToken cancellationToken = default)
-        {
-            foreach (var item in source)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                if (!(await predicate(item)))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="TSource"></typeparam>
-        /// <param name="source"></param>
-        /// <param name="predicate"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
-        public static async Task<bool> AllAsync<TSource>(this IEnumerable<TSource> source, Func<TSource,CancellationToken, Task<bool>> predicate, CancellationToken cancellationToken = default)
-        {
-            foreach (var item in source)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                if (!(await predicate(item,cancellationToken)))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
     }
 }
