@@ -29,20 +29,6 @@ namespace System
             return str + c;
         }
 
-        /// <summary>
-        /// Adds a char to beginning of given string if it does not starts with the char.
-        /// </summary>
-        public static string EnsureStartsWith(this string str, char c, StringComparison comparisonType = StringComparison.Ordinal)
-        {
-            Check.NotNull(str, nameof(str));
-
-            if (str.StartsWith(c.ToString(), comparisonType))
-            {
-                return str;
-            }
-
-            return c + str;
-        }
 
         /// <summary>
         /// Adds a char to end of given string if it does not ends with the char.

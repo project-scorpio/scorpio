@@ -34,7 +34,7 @@ namespace System.Linq.Expressions
             var parameters = new ParameterExpression[_predicate.Parameters.Count];
             _predicate.Parameters.CopyTo(parameters, 0);
             var expression = _predicate.Body;
-            for (int i = 0; i < _predicate.Parameters.Count; i++)
+            for (var i = 0; i < _predicate.Parameters.Count; i++)
             {
                 var s = _predicate.Parameters[i];
                 var path = _expressions.Find(e => e.ReturnType == s.Type);
