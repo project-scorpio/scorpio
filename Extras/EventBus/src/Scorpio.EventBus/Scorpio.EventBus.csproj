@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Core\src\Scorpio\Scorpio.csproj" />
+    <ProjectReference Include="..\..\..\..\Core\src\Scorpio.Aspect\Scorpio.Aspect.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
