@@ -1,8 +1,9 @@
-﻿using System.Reflection;
-
-using Microsoft.Extensions.DependencyInjection;
-
+﻿using Microsoft.Extensions.DependencyInjection;
 using Scorpio.Conventional;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Text;
 
 namespace Scorpio.Modularity
 {
@@ -12,25 +13,12 @@ namespace Scorpio.Modularity
     public static class ConfigureServicesContextExtensions
     {
         /// <summary>
-        /// 向 <see cref="IServiceCollection"/> 集合添加 <see cref="IConventionalRegistrar"/> 对象实例，用于为 <see cref="RegisterAssemblyByConvention(ConfigureServicesContext, Assembly)"/> 方法提供通用注册者。
-        /// </summary>
-        /// <param name="context"></param>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public static ConfigureServicesContext AddConventionalRegistrar<T>(this ConfigureServicesContext context)
-            where T : IConventionalRegistrar
-        {
-            context.Services.AddConventionalRegistrar<T>();
-            return context;
-        }
-
-        /// <summary>
-        /// 向 <see cref="IServiceCollection"/> 集合添加 <see cref="IConventionalRegistrar"/> 对象实例，用于为 <see cref="RegisterAssemblyByConvention(ConfigureServicesContext, Assembly)"/> 方法提供通用注册者。
+        /// 向 <see cref="IServiceCollection"/> 集合添加 <see cref="IConventionalRegistrar"/> 对象实例，用于为 <see cref="RegisterAssemblyByConvention(IServiceCollection, Assembly)"/> 方法提供通用注册者。
         /// </summary>
         /// <param name="context"></param>
         /// <param name="registrar"></param>
         /// <returns></returns>
-        public static ConfigureServicesContext AddConventionalRegistrar(this ConfigureServicesContext context, IConventionalRegistrar registrar)
+        public static ConfigureServicesContext AddConventionalRegistrar(this ConfigureServicesContext  context, IConventionalRegistrar registrar)
         {
             context.Services.AddConventionalRegistrar(registrar);
             return context;
@@ -41,11 +29,12 @@ namespace Scorpio.Modularity
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static ConfigureServicesContext RegisterAssemblyByConvention(this ConfigureServicesContext context)
+        public static ConfigureServicesContext AddConventionalRegistrar<T>(this ConfigureServicesContext context)
+          where T : IConventionalRegistrar
         {
-            context.Services.RegisterAssemblyByConvention();
-            return context;
+            return context.AddConventionalRegistrar(Activator.CreateInstance<T>());
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -58,17 +47,26 @@ namespace Scorpio.Modularity
             return context;
         }
 
+
         /// <summary>
         /// 
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public static ConfigureServicesContext RegisterAssemblyByConvention(this ConfigureServicesContext context)
+        {
+            var assembly = Assembly.GetCallingAssembly();
+            return RegisterAssemblyByConvention(context, assembly);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
         public static ConfigureServicesContext RegisterAssemblyByConventionOfType<T>(this ConfigureServicesContext context)
         {
-            context.Services.RegisterAssemblyByConventionOfType<T>();
-            return context;
+            return context.RegisterAssemblyByConvention(typeof(T).GetTypeInfo().Assembly);
         }
-
     }
 }
