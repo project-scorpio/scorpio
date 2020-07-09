@@ -28,8 +28,7 @@ namespace Scorpio.Linq
 
         public IAsyncEnumerable<TSource> AsAsyncEnumerable<TSource>(IQueryable<TSource> sources)
         {
-            var asyncEnumerable = sources as IAsyncEnumerable<TSource>;
-            if (asyncEnumerable != null)
+            if (sources is IAsyncEnumerable<TSource> asyncEnumerable)
             {
                 return asyncEnumerable;
             }

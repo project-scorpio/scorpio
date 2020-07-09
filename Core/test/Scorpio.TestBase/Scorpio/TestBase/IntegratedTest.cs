@@ -9,6 +9,8 @@ namespace Scorpio.TestBase
     public abstract class IntegratedTest<TStartupModule> : TestBaseWithServiceProvider, IDisposable
         where TStartupModule : IScorpioModule
     {
+        private bool _disposedValue;
+
         protected IBootstrapper Bootstrapper { get; }
 
         protected override IServiceProvider ServiceProvider => Bootstrapper.ServiceProvider;
@@ -65,11 +67,28 @@ namespace Scorpio.TestBase
             return bootstrapper.ServiceFactoryAdapter.CreateServiceProvider(builder);
         }
 
-        public virtual void Dispose()
+        protected virtual void Dispose(bool disposing)
         {
-            Bootstrapper.Shutdown();
-            TestServiceScope.Dispose();
-            Bootstrapper.Dispose();
+            if (!_disposedValue)
+            {
+                if (disposing)
+                {
+                    Bootstrapper.Shutdown();
+                    TestServiceScope.Dispose();
+                    Bootstrapper.Dispose();
+                }
+
+                
+                _disposedValue = true;
+            }
+        }
+
+       
+        public void Dispose()
+        {
+            // 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Scorpio.Runtime
 {
     internal class AmbientDataContextAmbientScopeProvider<T> : IAmbientScopeProvider<T>
     {
-
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S2743:Static fields should not be used in generic types", Justification = "<挂起>")]
         private static readonly ConcurrentDictionary<string, ScopeItem> _scopeDictionary = new ConcurrentDictionary<string, ScopeItem>();
 
         private readonly IAmbientDataContext _dataContext;

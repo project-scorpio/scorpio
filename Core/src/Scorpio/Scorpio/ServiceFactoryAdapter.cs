@@ -6,16 +6,12 @@ namespace Scorpio
 {
     class ServiceFactoryAdapter<TContainerBuilder> : IServiceFactoryAdapter
     {
-        private IServiceProviderFactory<TContainerBuilder> _serviceProviderFactory;
+        private readonly IServiceProviderFactory<TContainerBuilder> _serviceProviderFactory;
 
 
         public ServiceFactoryAdapter(IServiceProviderFactory<TContainerBuilder> serviceProviderFactory)
         {
-            if (serviceProviderFactory == null)
-            {
-                throw new ArgumentNullException("serviceProviderFactory");
-            }
-            _serviceProviderFactory = serviceProviderFactory;
+            _serviceProviderFactory = serviceProviderFactory ?? throw new ArgumentNullException("serviceProviderFactory");
         }
 
 
