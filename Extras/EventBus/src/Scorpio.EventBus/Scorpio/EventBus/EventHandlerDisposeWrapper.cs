@@ -5,7 +5,7 @@ namespace Scorpio.EventBus
     /// <summary>
     /// 
     /// </summary>
-    public class EventHandlerDisposeWrapper : IEventHandlerDisposeWrapper
+    internal class EventHandlerDisposeWrapper : IEventHandlerDisposeWrapper
     {
         /// <summary>
         /// 
@@ -13,6 +13,7 @@ namespace Scorpio.EventBus
         public IEventHandler EventHandler { get; }
 
         private readonly Action _disposeAction;
+        private bool _disposedValue;
 
         /// <summary>
         /// 
@@ -28,9 +29,30 @@ namespace Scorpio.EventBus
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="disposing"></param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposedValue)
+            {
+                if (disposing)
+                {
+                    _disposeAction?.Invoke();
+                }
+
+
+                _disposedValue = true;
+            }
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void Dispose()
         {
-            _disposeAction?.Invoke();
+            // 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }

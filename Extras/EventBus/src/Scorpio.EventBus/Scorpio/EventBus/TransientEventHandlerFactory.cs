@@ -1,5 +1,9 @@
 ﻿using System;
 
+using Microsoft.Extensions.DependencyInjection;
+
+using Scorpio.DependencyInjection;
+
 namespace Scorpio.EventBus
 {
     /// <summary>
@@ -35,10 +39,12 @@ namespace Scorpio.EventBus
     /// </remarks>
     internal class TransientEventHandlerFactory : IEventHandlerFactory
     {
+        private readonly IHybridServiceScopeFactory _serviceScopeFactory;
         private readonly Type _handlerType;
 
-        public TransientEventHandlerFactory(Type handlerType)
+        public TransientEventHandlerFactory(IHybridServiceScopeFactory serviceScopeFactory, Type handlerType)
         {
+            _serviceScopeFactory = serviceScopeFactory;
             _handlerType = handlerType;
         }
         /// <summary>
@@ -47,8 +53,13 @@ namespace Scorpio.EventBus
         /// <returns>The handler object</returns>
         public IEventHandlerDisposeWrapper GetHandler()
         {
-            var handler = Activator.CreateInstance(_handlerType) as IEventHandler;
-            return new EventHandlerDisposeWrapper(handler, () => (handler as IDisposable)?.Dispose());
+            var scope = _serviceScopeFactory.CreateScope();
+            var handler = ActivatorUtilities.CreateInstance(scope.ServiceProvider, _handlerType) as IEventHandler;
+            return new EventHandlerDisposeWrapper(handler, () =>
+            {
+                (handler as IDisposable)?.Dispose();
+                scope.Dispose();
+            });
         }
     }
 }

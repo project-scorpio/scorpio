@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
 
-using Scorpio.DependencyInjection;
 using Scorpio.Threading;
 
 namespace Scorpio.EventBus
@@ -18,13 +18,12 @@ namespace Scorpio.EventBus
         /// <summary>
         /// Reference to the Logger.
         /// </summary>
-        [AspectCore.DependencyInjection.FromServiceContext]
         public ILogger<LocalEventBus> Logger { get; set; }
 
 
-        public LocalEventBus(IOptions<EventBusOptions> options, IHybridServiceScopeFactory serviceScopeFactory) : base(options, serviceScopeFactory)
+        public LocalEventBus(IOptions<EventBusOptions> options, IServiceProvider serviceProvider) : base(options, serviceProvider)
         {
-            Logger = NullLogger<LocalEventBus>.Instance;
+            Logger = (serviceProvider.GetService<ILoggerFactory>() ?? NullLoggerFactory.Instance).CreateLogger<LocalEventBus>();
         }
 
 

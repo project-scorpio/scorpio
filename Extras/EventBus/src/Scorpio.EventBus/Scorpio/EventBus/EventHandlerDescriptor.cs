@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Reflection;
 
+using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.DependencyInjection;
 
 namespace Scorpio.EventBus
@@ -66,7 +68,7 @@ namespace Scorpio.EventBus
         /// </summary>
         /// <typeparam name="TEventHandler"></typeparam>
         /// <returns></returns>
-        public static EventHandlerDescriptor ServiceProvider<TEventHandler>() where TEventHandler : class, IEventHandler
+        public static EventHandlerDescriptor ByServiceProvider<TEventHandler>() where TEventHandler : class, IEventHandler
         {
             return Describe<TEventHandler>(EventHandlerActivationType.ByServiceProvider);
         }
@@ -96,45 +98,21 @@ namespace Scorpio.EventBus
         /// </summary>
         /// <param name="serviceProvider"></param>
         /// <returns></returns>
-        public IEventHandlerFactory GetEventHandlerFactory(IHybridServiceScopeFactory serviceProvider)
+        public IEventHandlerFactory GetEventHandlerFactory(IServiceProvider serviceProvider)
         {
             return _factory ??= CreateFactory(serviceProvider);
         }
 
-        private IEventHandlerFactory CreateFactory(IHybridServiceScopeFactory serviceProvider)
+        private IEventHandlerFactory CreateFactory(IServiceProvider serviceProvider)
         {
-            switch (ActivationType)
+            var serviceScopeFactory = serviceProvider.GetRequiredService<IHybridServiceScopeFactory>();
+            return ActivationType switch
             {
-                case EventHandlerActivationType.ByServiceProvider:
-                    return new IocEventHandlerFactory(serviceProvider, HandlerType);
-                case EventHandlerActivationType.Singleton:
-                    return new SingleInstanceHandlerFactory(Activator.CreateInstance(HandlerType) as IEventHandler);
-                case EventHandlerActivationType.Transient:
-                    return new TransientEventHandlerFactory(HandlerType);
-                default:
-                    return null;
-            }
+                EventHandlerActivationType.ByServiceProvider => new IocEventHandlerFactory(serviceScopeFactory, HandlerType),
+                EventHandlerActivationType.Singleton => new SingleInstanceHandlerFactory(ActivatorUtilities.CreateInstance(serviceProvider, HandlerType) as IEventHandler),
+                EventHandlerActivationType.Transient => new TransientEventHandlerFactory(serviceScopeFactory, HandlerType),
+                _ => null,
+            };
         }
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public enum EventHandlerActivationType
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        ByServiceProvider,
-
-        /// <summary>
-        /// 
-        /// </summary>
-        Singleton,
-
-        /// <summary>
-        /// 
-        /// </summary>
-        Transient,
     }
 }
