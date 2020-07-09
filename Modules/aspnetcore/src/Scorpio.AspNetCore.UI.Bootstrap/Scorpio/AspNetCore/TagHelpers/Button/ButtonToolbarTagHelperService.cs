@@ -16,7 +16,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
         {
             output.TagName = "div";
             output.AddClass("btn-toolbar");
-            output.Attributes.Add("role","toolbar");
+            output.Attributes.Add("role", "toolbar");
         }
     }
 }

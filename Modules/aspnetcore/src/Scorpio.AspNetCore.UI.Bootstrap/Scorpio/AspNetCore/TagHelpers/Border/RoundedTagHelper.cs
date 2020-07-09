@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Razor.TagHelpers;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+
+using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Scorpio.AspNetCore.TagHelpers.Border
 {
@@ -10,7 +8,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Border
     /// 
     /// </summary>
     [HtmlTargetElement(HtmlTargetElementAttribute.ElementCatchAllTarget, Attributes = "rounded")]
-    public class RoundedTagHelper : TagHelper<RoundedTagHelper,RoundedTagHelperService>
+    public class RoundedTagHelper : TagHelper<RoundedTagHelper, RoundedTagHelperService>
     {
         /// <summary>
         /// 
@@ -23,7 +21,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Border
         /// <summary>
         /// 
         /// </summary>
-        public RoundedType  Rounded { get;  set; }
+        public RoundedType Rounded { get; set; }
 
         /// <summary>
         /// 

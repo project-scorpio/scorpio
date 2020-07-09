@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Scorpio.Data
@@ -15,13 +14,13 @@ namespace Scorpio.Data
 
         public Task PreSaveChangeAsync(IEnumerable<EntityEntry> entries)
         {
-             entries.ForEach(entry =>
-            {
-                if ((entry.Entity is IHasExtraProperties) && entry.State != Microsoft.EntityFrameworkCore.EntityState.Deleted )
-                {
-                    entry.Property(nameof(IHasExtraProperties.ExtraProperties)).IsModified = true;
-                }
-            });
+            entries.ForEach(entry =>
+           {
+               if ((entry.Entity is IHasExtraProperties) && entry.State != Microsoft.EntityFrameworkCore.EntityState.Deleted)
+               {
+                   entry.Property(nameof(IHasExtraProperties.ExtraProperties)).IsModified = true;
+               }
+           });
             return Task.CompletedTask;
         }
     }

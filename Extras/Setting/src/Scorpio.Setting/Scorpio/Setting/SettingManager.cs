@@ -1,12 +1,9 @@
-﻿using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 namespace Scorpio.Setting
 {
-    internal class SettingManager : ISettingManager,DependencyInjection.ISingletonDependency
+    internal class SettingManager : ISettingManager, DependencyInjection.ISingletonDependency
     {
         private readonly ISettingDefinitionManager _definitionManager;
         private readonly ISettingProviderManager _providerManager;
@@ -20,11 +17,11 @@ namespace Scorpio.Setting
         {
             var setting = _definitionManager.Get(name) as SettingDefinition<T>;
             var providers = _providerManager.Providers.Reverse();
-            var value =await GetValueFromProvidersAsync(providers, setting);
+            var value = await GetValueFromProvidersAsync(providers, setting);
             return value;
         }
 
-        public async Task SetAsync<T>(string name, T value, string providerName="Default")
+        public async Task SetAsync<T>(string name, T value, string providerName = "Default")
         {
             var setting = _definitionManager.Get(name) as SettingDefinition<T>;
             var providers = _providerManager.Providers.Where(p => p.Name == providerName);

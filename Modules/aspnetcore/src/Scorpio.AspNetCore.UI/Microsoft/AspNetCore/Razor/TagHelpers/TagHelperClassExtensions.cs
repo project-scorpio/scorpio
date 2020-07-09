@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace Microsoft.AspNetCore.Razor.TagHelpers
 {
@@ -20,7 +18,7 @@ namespace Microsoft.AspNetCore.Razor.TagHelpers
         {
             var type = @enum.GetType();
             var members = type.GetMember(@enum.ToString());
-            return  members.FirstOrDefault()?.GetAttribute<ClassNameAttribute>()?.ClassName ?? @enum.ToString().ToLowerInvariant();
+            return members.FirstOrDefault()?.GetAttribute<ClassNameAttribute>()?.ClassName ?? @enum.ToString().ToLowerInvariant();
         }
 
         /// <summary>
@@ -45,7 +43,7 @@ namespace Microsoft.AspNetCore.Razor.TagHelpers
         /// 
         /// </summary>
         /// <param name="className"></param>
-        public ClassNameAttribute( string className)
+        public ClassNameAttribute(string className)
         {
             ClassName = className;
         }

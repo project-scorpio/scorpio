@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Razor.TagHelpers;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+
+using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Scorpio.AspNetCore.TagHelpers.Blockquote
 {
@@ -10,7 +8,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Blockquote
     /// 
     /// </summary>
     [HtmlTargetElement("p", ParentTag = "blockquote")]
-    public class BlockquoteParagraphTagHelper:TagHelper
+    public class BlockquoteParagraphTagHelper : TagHelper
     {
         /// <summary>
         /// 

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Scorpio.AspNetCore.TagHelpers.Collapse
 {
@@ -11,7 +9,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Collapse
         public string Content { get; set; }
     }
 
-    internal class AccordionItemList:List<AccordionItem>
+    internal class AccordionItemList : List<AccordionItem>
     {
 
     }

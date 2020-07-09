@@ -1,19 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Scorpio.Modularity;
-using Scorpio.DependencyInjection.Conventional;
-using Microsoft.Extensions.DependencyInjection;
-using Scorpio.Security;
-using Scorpio.Uow;
-using Scorpio.Threading;
-using Scorpio.Auditing;
-using Microsoft.Extensions.DependencyInjection.Extensions;
+
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+
 using Scorpio.AspNetCore.Auditing;
 using Scorpio.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authorization;
+using Scorpio.Auditing;
 using Scorpio.Authorization;
+using Scorpio.Modularity;
+using Scorpio.Uow;
 
 namespace Scorpio.AspNetCore
 {
@@ -31,10 +28,10 @@ namespace Scorpio.AspNetCore
         /// <param name="context"></param>
         public override void ConfigureServices(ConfigureServicesContext context)
         {
-           context.Services.Options<AuditingOptions>().Configure<IServiceProvider>((options,serviceProvider) =>
-            {
-                options.Contributors.Add(new AspNetCoreAuditContributor(serviceProvider));
-            });
+            context.Services.Options<AuditingOptions>().Configure<IServiceProvider>((options, serviceProvider) =>
+             {
+                 options.Contributors.Add(new AspNetCoreAuditContributor(serviceProvider));
+             });
             context.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             context.Services.AddAuthorization();
 

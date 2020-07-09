@@ -1,7 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.EntityFrameworkCore
 {
@@ -9,8 +6,8 @@ namespace Scorpio.EntityFrameworkCore
     /// 
     /// </summary>
     /// <typeparam name="TDbContext"></typeparam>
-   public interface IDbContextProvider<TDbContext>
-        where TDbContext:DbContext
+    public interface IDbContextProvider<out TDbContext>
+        where TDbContext : DbContext
     {
         /// <summary>
         /// 

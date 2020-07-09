@@ -1,11 +1,11 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Reflection;
+
+using Microsoft.Extensions.DependencyInjection;
+
 using Quartz;
+
 using Scorpio.Conventional;
 using Scorpio.DependencyInjection.Conventional;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
 
 namespace Scorpio.Quartz
 {

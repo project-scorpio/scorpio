@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Scorpio.AspNetCore.TagHelpers.Card
@@ -9,14 +7,14 @@ namespace Scorpio.AspNetCore.TagHelpers.Card
     /// <summary>
     /// 
     /// </summary>
-    [HtmlTargetElement("img",ParentTag ="card")]
-    public class CardImageTagHelper:TagHelper
+    [HtmlTargetElement("img", ParentTag = "card")]
+    public class CardImageTagHelper : TagHelper
     {
 
         /// <summary>
         /// 
         /// </summary>
-        public CardImagePosition  Position { get; set; }
+        public CardImagePosition Position { get; set; }
         /// <summary>
         /// 
         /// </summary>

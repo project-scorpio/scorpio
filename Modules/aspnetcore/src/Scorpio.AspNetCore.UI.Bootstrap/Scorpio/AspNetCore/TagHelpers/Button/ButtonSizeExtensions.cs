@@ -17,7 +17,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
                 case Size.Default:
                     return "";
                 default:
-                    throw new Exception($"Unknown {nameof(Size)}: {size}");
+                    throw new NotSupportedException($"Unknown {nameof(Size)}: {size}");
             }
         }
     }

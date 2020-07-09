@@ -1,14 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
-using Microsoft.AspNetCore.Razor.TagHelpers;
+﻿using System.Reflection;
+
 using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.Conventional;
 using Scorpio.DependencyInjection.Conventional;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
 
 namespace Scorpio.AspNetCore.UI
 {
@@ -16,10 +11,10 @@ namespace Scorpio.AspNetCore.UI
     {
         public void Register(IConventionalRegistrationContext context)
         {
-            context.RegisterConventionalDependencyInject( config =>
-            {
-                config.Where(t => t.IsAssignableTo<TagHelpers.ITagHelperService>()).AsSelf().Lifetime(ServiceLifetime.Transient);
-            });
+            context.RegisterConventionalDependencyInject(config =>
+           {
+               config.Where(t => t.IsAssignableTo<TagHelpers.ITagHelperService>()).AsSelf().Lifetime(ServiceLifetime.Transient);
+           });
         }
     }
 }

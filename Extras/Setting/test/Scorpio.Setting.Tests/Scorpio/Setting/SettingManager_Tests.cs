@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Extensions.DependencyInjection;
-using Xunit;
+﻿using Microsoft.Extensions.DependencyInjection;
+
 using Shouldly;
+
+using Xunit;
 namespace Scorpio.Setting
 {
-    public class SettingManager_Tests:TestBase.IntegratedTest<SettingTestModule>
+    public class SettingManager_Tests : TestBase.IntegratedTest<SettingTestModule>
     {
         private readonly ISettingManager _settingManager;
         public SettingManager_Tests()

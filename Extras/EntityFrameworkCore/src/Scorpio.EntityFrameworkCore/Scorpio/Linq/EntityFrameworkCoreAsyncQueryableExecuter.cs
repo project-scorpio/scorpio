@@ -1,12 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query.Internal;
-using Scorpio.DependencyInjection;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Microsoft.EntityFrameworkCore;
+
+using Scorpio.DependencyInjection;
 namespace Scorpio.Linq
 {
     internal class EntityFrameworkCoreAsyncQueryableExecuter : IAsyncQueryableExecuter, ISingletonDependency

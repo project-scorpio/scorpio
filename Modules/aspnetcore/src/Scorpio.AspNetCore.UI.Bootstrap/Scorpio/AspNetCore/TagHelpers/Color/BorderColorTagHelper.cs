@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Razor.TagHelpers;
 namespace Scorpio.AspNetCore.TagHelpers.Color
 {
     /// <summary>
     /// 
     /// </summary>
-    [HtmlTargetElement(Attributes ="bd-color")]
-    public class BorderColorTagHelper:TagHelper
+    [HtmlTargetElement(Attributes = "bd-color")]
+    public class BorderColorTagHelper : TagHelper
     {
         /// <summary>
         /// 
         /// </summary>
         [HtmlAttributeName("bd-color")]
-        public BorderColorType   BorderColor { get; set; }
+        public BorderColorType BorderColor { get; set; }
         /// <summary>
         /// 
         /// </summary>

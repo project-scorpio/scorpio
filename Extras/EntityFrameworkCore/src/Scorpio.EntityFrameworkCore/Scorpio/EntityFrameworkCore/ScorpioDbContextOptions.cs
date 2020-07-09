@@ -1,9 +1,8 @@
-﻿using JetBrains.Annotations;
-using Scorpio.EntityFrameworkCore.DependencyInjection;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+
+using Scorpio.EntityFrameworkCore.DependencyInjection;
 
 namespace Scorpio.EntityFrameworkCore
 {
@@ -23,7 +22,7 @@ namespace Scorpio.EntityFrameworkCore
         internal IEnumerable<IModelCreatingContributor> GetModelCreatingContributors<TDbContext>()
               where TDbContext : ScorpioDbContext<TDbContext> => _commonModelCreatingContributors.Concat(_modelCreatingContributors.GetOrDefault(typeof(TDbContext)) ?? new List<IModelCreatingContributor>());
         internal IEnumerable<IModelCreatingContributor> GetModelCreatingContributors(Type dbcontextType)
-              => _commonModelCreatingContributors.Concat(_modelCreatingContributors.GetOrDefault(dbcontextType)??new List<IModelCreatingContributor>());
+              => _commonModelCreatingContributors.Concat(_modelCreatingContributors.GetOrDefault(dbcontextType) ?? new List<IModelCreatingContributor>());
 
         private readonly Dictionary<Type, List<IModelCreatingContributor>> _modelCreatingContributors;
 
@@ -45,7 +44,7 @@ namespace Scorpio.EntityFrameworkCore
         /// 
         /// </summary>
         /// <param name="action"></param>
-        public void PreConfigure( Action<DbContextConfigurationContext> action)
+        public void PreConfigure(Action<DbContextConfigurationContext> action)
         {
             Check.NotNull(action, nameof(action));
 
@@ -55,20 +54,9 @@ namespace Scorpio.EntityFrameworkCore
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="action"></param>
-        public void Configure( Action<DbContextConfigurationContext> action)
-        {
-            Check.NotNull(action, nameof(action));
-
-            DefaultConfigureAction = action;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
         /// <typeparam name="TDbContext"></typeparam>
         /// <param name="action"></param>
-        public void PreConfigure<TDbContext>( Action<DbContextConfigurationContext<TDbContext>> action)
+        public void PreConfigure<TDbContext>(Action<DbContextConfigurationContext<TDbContext>> action)
             where TDbContext : ScorpioDbContext<TDbContext>
         {
             Check.NotNull(action, nameof(action));
@@ -85,9 +73,22 @@ namespace Scorpio.EntityFrameworkCore
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="action"></param>
+        public void Configure(Action<DbContextConfigurationContext> action)
+        {
+            Check.NotNull(action, nameof(action));
+
+            DefaultConfigureAction = action;
+        }
+
+     
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <typeparam name="TDbContext"></typeparam>
         /// <param name="action"></param>
-        public void Configure<TDbContext>( Action<DbContextConfigurationContext<TDbContext>> action)
+        public void Configure<TDbContext>(Action<DbContextConfigurationContext<TDbContext>> action)
             where TDbContext : ScorpioDbContext<TDbContext>
         {
             Check.NotNull(action, nameof(action));
@@ -136,7 +137,7 @@ namespace Scorpio.EntityFrameworkCore
         /// 
         /// </summary>
         /// <typeparam name="TContributor"></typeparam>
-        public void AddModelCreatingContributor< TContributor>()
+        public void AddModelCreatingContributor<TContributor>()
             where TContributor : class, IModelCreatingContributor
         {
             AddModelCreatingContributor(Activator.CreateInstance<TContributor>());

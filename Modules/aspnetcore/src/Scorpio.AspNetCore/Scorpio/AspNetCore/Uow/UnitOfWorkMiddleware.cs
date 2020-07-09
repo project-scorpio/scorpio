@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Threading.Tasks;
+
+using Microsoft.AspNetCore.Http;
+
 using Scorpio.Uow;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Scorpio.AspNetCore.Uow
 {
@@ -20,7 +19,7 @@ namespace Scorpio.AspNetCore.Uow
         /// </summary>
         /// <param name="next"></param>
         /// <param name="unitOfWorkManager"></param>
-        public UnitOfWorkMiddleware(RequestDelegate next,IUnitOfWorkManager unitOfWorkManager)
+        public UnitOfWorkMiddleware(RequestDelegate next, IUnitOfWorkManager unitOfWorkManager)
         {
             _next = next;
             _unitOfWorkManager = unitOfWorkManager;
@@ -33,7 +32,7 @@ namespace Scorpio.AspNetCore.Uow
         /// <returns></returns>
         public async Task Invoke(HttpContext httpContext)
         {
-            using (var uow=_unitOfWorkManager.Begin())
+            using (var uow = _unitOfWorkManager.Begin())
             {
                 await _next(httpContext);
                 await uow.CompleteAsync(httpContext.RequestAborted);

@@ -1,16 +1,14 @@
-﻿using JetBrains.Annotations;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data.Common;
-using System.Text;
+
+using Microsoft.EntityFrameworkCore;
 
 namespace Scorpio.EntityFrameworkCore.DependencyInjection
 {
     /// <summary>
     /// 
     /// </summary>
-    public class DbContextConfigurationContext 
+    public class DbContextConfigurationContext
     {
         /// <summary>
         /// 

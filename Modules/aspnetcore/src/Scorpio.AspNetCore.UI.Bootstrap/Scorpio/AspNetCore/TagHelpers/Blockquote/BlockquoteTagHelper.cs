@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Scorpio.AspNetCore.TagHelpers.Blockquote
@@ -9,7 +7,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Blockquote
     /// <summary>
     /// 
     /// </summary>
-    public class BlockquoteTagHelper:TagHelper
+    public class BlockquoteTagHelper : TagHelper
     {
         /// <summary>
         /// 

@@ -1,16 +1,19 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Scorpio.Data;
-using Scorpio.Entities;
-using Scorpio.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using Z.EntityFramework.Plus;
+
+using Microsoft.EntityFrameworkCore;
+
+using Scorpio.Data;
+using Scorpio.Entities;
+using Scorpio.EntityFrameworkCore;
 using Scorpio.Threading;
+
+using Z.EntityFramework.Plus;
 
 namespace Scorpio.Repositories.EntityFrameworkCore
 {
@@ -205,7 +208,7 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         /// <param name="autoSave"></param>
         public override void Update(
             Expression<Func<TEntity, bool>> predicate,
-            Expression<Func<TEntity, TEntity>> updateExpression, 
+            Expression<Func<TEntity, TEntity>> updateExpression,
             bool autoSave = true)
         {
             GetQueryable().IgnoreQueryFilters().Where(predicate).Update(updateExpression);
@@ -345,11 +348,11 @@ namespace Scorpio.Repositories.EntityFrameworkCore
     /// <typeparam name="TDbContext"></typeparam>
     /// <typeparam name="TEntity"></typeparam>
     /// <typeparam name="TKey"></typeparam>
-    public class EfCoreRepository<TDbContext, TEntity, TKey> : 
+    public class EfCoreRepository<TDbContext, TEntity, TKey> :
         EfCoreRepository<TDbContext, TEntity>,
         IEfCoreRepository<TEntity, TKey>,
         ISupportsExplicitLoading<TEntity, TKey>
-        
+
         where TDbContext : DbContext
         where TEntity : class, IEntity<TKey>
     {
@@ -363,7 +366,7 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         public EfCoreRepository(
             IServiceProvider serviceProvider,
             IDbContextProvider<TDbContext> contextProvider,
-            ICancellationTokenProvider cancellationTokenProvider) 
+            ICancellationTokenProvider cancellationTokenProvider)
             : base(serviceProvider, contextProvider, cancellationTokenProvider)
         {
         }

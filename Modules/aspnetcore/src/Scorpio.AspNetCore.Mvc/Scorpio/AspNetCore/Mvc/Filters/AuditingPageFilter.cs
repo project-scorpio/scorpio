@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Options;
+
 using Scorpio.Aspects;
 using Scorpio.Auditing;
 using Scorpio.DependencyInjection;
@@ -104,7 +104,7 @@ namespace Scorpio.AspNetCore.Mvc.Filters
                 return false;
             }
 
-            if (!(context.ActionDescriptor is CompiledPageActionDescriptor))
+            if (context.ActionDescriptor == null)
             {
                 return false;
             }

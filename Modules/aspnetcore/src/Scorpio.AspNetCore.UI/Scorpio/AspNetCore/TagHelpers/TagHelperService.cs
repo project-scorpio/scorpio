@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using System.IO;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Scorpio.AspNetCore.TagHelpers
@@ -24,7 +22,7 @@ namespace Scorpio.AspNetCore.TagHelpers
         /// <summary>
         /// 
         /// </summary>
-        public TTagHelper TagHelper { get ; internal set; }
+        public TTagHelper TagHelper { get; internal set; }
 
         /// <summary>
         /// 
@@ -32,7 +30,7 @@ namespace Scorpio.AspNetCore.TagHelpers
         /// <param name="context"></param>
         public virtual void Init(TagHelperContext context)
         {
-            
+
         }
 
         /// <summary>
@@ -43,7 +41,7 @@ namespace Scorpio.AspNetCore.TagHelpers
         /// <returns></returns>
         public virtual void Process(TagHelperContext context, TagHelperOutput output)
         {
-            
+
         }
 
         /// <summary>

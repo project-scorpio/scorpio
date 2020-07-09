@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Razor.TagHelpers;
 namespace Scorpio.AspNetCore.TagHelpers.Color
 {
     /// <summary>
     /// 
     /// </summary>
-    [HtmlTargetElement(Attributes ="bg-color")]
-    public class BackgroundColorTagHelper:TagHelper
+    [HtmlTargetElement(Attributes = "bg-color")]
+    public class BackgroundColorTagHelper : TagHelper
     {
         /// <summary>
         /// 
         /// </summary>
         [HtmlAttributeName("bg-color")]
-        public BackgroundColorType  BackgroundColor { get; set; }
+        public BackgroundColorType BackgroundColor { get; set; }
         /// <summary>
         /// 
         /// </summary>
