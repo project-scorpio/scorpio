@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 
 using Microsoft.Extensions.Options;
 
-using Scorpio.DependencyInjection;
-
 namespace Scorpio.EventBus
 {
     /// <summary>
@@ -30,17 +28,18 @@ namespace Scorpio.EventBus
         /// <summary>
         /// 
         /// </summary>
-        protected IHybridServiceScopeFactory ServiceScopeFactory { get; }
+        protected IServiceProvider ServiceProvider { get; }
+
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="options"></param>
-        /// <param name="serviceScopeFactory"></param>
-        protected EventBusBase(IOptions<EventBusOptions> options, IHybridServiceScopeFactory serviceScopeFactory)
+        /// <param name="serviceProvider"></param>
+        protected EventBusBase(IOptions<EventBusOptions> options, IServiceProvider serviceProvider)
         {
             Options = options.Value;
-            ServiceScopeFactory = serviceScopeFactory;
+            ServiceProvider = serviceProvider;
             HandlerFactories = new ConcurrentDictionary<Type, List<IEventHandlerFactory>>();
             Init();
         }
@@ -177,7 +176,7 @@ namespace Scorpio.EventBus
 
             foreach (var handlerFactories in GetHandlerFactories(eventType))
             {
-                foreach (var handlerFactory in handlerFactories.EventHandlerFactories.ToArray()) 
+                foreach (var handlerFactory in handlerFactories.EventHandlerFactories.ToArray())
                 {
                     await TriggerHandlerAsync(handlerFactory, handlerFactories.EventType, eventData, exceptions);
                 }
@@ -219,7 +218,7 @@ namespace Scorpio.EventBus
                     var genericArgs = @interface.GetGenericArguments();
                     if (genericArgs.Length == 1)
                     {
-                        Subscribe(genericArgs[0], handler.GetEventHandlerFactory(ServiceScopeFactory));
+                        Subscribe(genericArgs[0], handler.GetEventHandlerFactory(ServiceProvider));
                     }
                 }
             }
