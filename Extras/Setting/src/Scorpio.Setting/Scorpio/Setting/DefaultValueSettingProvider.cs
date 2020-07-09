@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace Scorpio.Setting
 {
@@ -14,7 +11,7 @@ namespace Scorpio.Setting
             return Task.FromResult(new SettingValue<T> { Definition = settingDefinition, Value = settingDefinition.Default });
         }
 
-        public Task SetAsync<T>(SettingDefinition<T> settingDefinition,T value)
+        public Task SetAsync<T>(SettingDefinition<T> settingDefinition, T value)
         {
             return Task.CompletedTask;
         }

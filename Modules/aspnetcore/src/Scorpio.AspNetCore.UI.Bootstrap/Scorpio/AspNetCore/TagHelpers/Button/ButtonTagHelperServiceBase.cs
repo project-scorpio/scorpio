@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Razor.TagHelpers;
-using System;
+﻿using System;
+
+using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Scorpio.AspNetCore.TagHelpers.Button
 {
@@ -45,7 +46,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
 
             if (TagHelper.ButtonType != ButtonType.Default)
             {
-                output.AddClass($"btn-{(TagHelper.OutLine&&TagHelper.ButtonType!= ButtonType.Link?"outline-":"")}{ TagHelper.ButtonType.ToClassName()}");
+                output.AddClass($"btn-{(TagHelper.OutLine && TagHelper.ButtonType != ButtonType.Link ? "outline-" : "")}{ TagHelper.ButtonType.ToClassName()}");
             }
 
             if (TagHelper.Size != Size.Default)

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 namespace Scorpio.AspNetCore.TagHelpers.Card
@@ -9,7 +7,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Card
     /// <summary>
     /// 
     /// </summary>
-    [HtmlTargetElement("card-header",ParentTag ="card")]
+    [HtmlTargetElement("card-header", ParentTag = "card")]
     public class CardHeaderTagHelper : TagHelper
     {
 

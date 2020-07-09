@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Razor.TagHelpers;
-using System;
+﻿using System;
+
+using Microsoft.AspNetCore.Razor.TagHelpers;
 namespace Scorpio.AspNetCore.TagHelpers.Form
 {
     /// <summary>
     /// 
     /// </summary>
-    public class CheckInputTagHelperService:TagHelperService<CheckInputTagHelper>
+    public class CheckInputTagHelperService : TagHelperService<CheckInputTagHelper>
     {
         /// <summary>
         /// 
@@ -16,7 +17,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
         {
             output.PreElement.AppendHtml("<div class=\"form-check\">");
             output.AddClass("form-check-input");
-            output.PostElement.AppendHtml($"<label class=\"form-check-label\" for=\"{output.Attributes["id"].Value}\">{ (TagHelper.Text.IsNullOrWhiteSpace()? TagHelper.Title:TagHelper.Text)}</label></div>");
+            output.PostElement.AppendHtml($"<label class=\"form-check-label\" for=\"{output.Attributes["id"].Value}\">{ (TagHelper.Text.IsNullOrWhiteSpace() ? TagHelper.Title : TagHelper.Text)}</label></div>");
 
         }
     }

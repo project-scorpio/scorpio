@@ -5,7 +5,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
     /// <summary>
     /// 
     /// </summary>
-    public class FormTagHelperService:TagHelperService<FormTagHelper>
+    public class FormTagHelperService : TagHelperService<FormTagHelper>
     {
         /// <summary>
         /// 

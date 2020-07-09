@@ -1,8 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Scorpio.EntityFrameworkCore
 {

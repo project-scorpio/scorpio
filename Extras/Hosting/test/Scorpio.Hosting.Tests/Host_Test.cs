@@ -1,12 +1,15 @@
-using Microsoft.Extensions.Hosting;
 using System;
-using Xunit;
-using Shouldly;
-using Moq;
-using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
-using Microsoft.Extensions.Configuration;
+
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Hosting.Internal;
+
+using Moq;
+
+using Shouldly;
+
+using Xunit;
 
 namespace Scorpio.Hosting.Tests
 {
@@ -18,7 +21,7 @@ namespace Scorpio.Hosting.Tests
             var context = new HostBuilderContext(new Dictionary<object, object>());
             var services = new ServiceCollection();
             var mock = new Mock<IHostBuilder>();
-            
+
             var factory = default(IServiceProviderFactory<IServiceCollection>);
             mock.Setup(b => b.UseServiceProviderFactory(It.IsAny<Func<HostBuilderContext, IServiceProviderFactory<IServiceCollection>>>()))
                 .Callback<Func<HostBuilderContext, IServiceProviderFactory<IServiceCollection>>>(f => factory = f(context));

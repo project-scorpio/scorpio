@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Html;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+
+using Microsoft.AspNetCore.Html;
 
 namespace Microsoft.AspNetCore.Mvc.Rendering
 {
@@ -16,7 +15,7 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
         /// <param name="tagBuilder"></param>
         /// <param name="className"></param>
         /// <returns></returns>
-        public static TagBuilder AddClass(this TagBuilder tagBuilder,string className)
+        public static TagBuilder AddClass(this TagBuilder tagBuilder, string className)
         {
             tagBuilder.AddCssClass(className);
             return tagBuilder;
@@ -29,9 +28,9 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
         /// <param name="name"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static TagBuilder AddAttribute(this TagBuilder tagBuilder, string name,string value)
+        public static TagBuilder AddAttribute(this TagBuilder tagBuilder, string name, string value)
         {
-            tagBuilder.MergeAttribute(name,value,true);
+            tagBuilder.MergeAttribute(name, value, true);
             return tagBuilder;
         }
 
@@ -41,7 +40,7 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
         /// <param name="tagBuilder"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static TagBuilder Id(this TagBuilder tagBuilder,string id)
+        public static TagBuilder Id(this TagBuilder tagBuilder, string id)
         {
             tagBuilder.GenerateId(id, "-");
             return tagBuilder;
@@ -53,7 +52,7 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
         /// <param name="tagBuilder"></param>
         /// <param name="content"></param>
         /// <returns></returns>
-        public static TagBuilder Content(this TagBuilder tagBuilder,IHtmlContent content)
+        public static TagBuilder Content(this TagBuilder tagBuilder, IHtmlContent content)
         {
             tagBuilder.InnerHtml.AppendHtml(content);
             return tagBuilder;
@@ -77,7 +76,7 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
         /// <param name="tagBuilder"></param>
         /// <param name="func"></param>
         /// <returns></returns>
-        public static TagBuilder AddChild(this TagBuilder tagBuilder,Func<TagBuilder,TagBuilder> func)
+        public static TagBuilder AddChild(this TagBuilder tagBuilder, Func<TagBuilder, TagBuilder> func)
         {
             var child = func(tagBuilder);
             tagBuilder.InnerHtml.AppendHtml(child);

@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Razor.TagHelpers;
 namespace Scorpio.AspNetCore.TagHelpers.Blockquote
 {
     /// <summary>
     /// 
     /// </summary>
-    [HtmlTargetElement("footer",ParentTag ="blockquote")]
-    public class BlockquoteFooterTagHelper:TagHelper
+    [HtmlTargetElement("footer", ParentTag = "blockquote")]
+    public class BlockquoteFooterTagHelper : TagHelper
     {
         /// <summary>
         /// 

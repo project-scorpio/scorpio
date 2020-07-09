@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Razor.TagHelpers;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+
+using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Scorpio.AspNetCore.TagHelpers.Border
 {
@@ -10,7 +8,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Border
     /// 
     /// </summary>
     [HtmlTargetElement(HtmlTargetElementAttribute.ElementCatchAllTarget, Attributes = "border")]
-    public class BorderTagHelper : TagHelper<BorderTagHelper,BorderTagHelperService>
+    public class BorderTagHelper : TagHelper<BorderTagHelper, BorderTagHelperService>
     {
         /// <summary>
         /// 
@@ -23,7 +21,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Border
         /// <summary>
         /// 
         /// </summary>
-        public BorderType Border { get;  set; }
+        public BorderType Border { get; set; }
 
         /// <summary>
         /// 

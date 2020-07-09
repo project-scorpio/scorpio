@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Scorpio.AspNetCore.TagHelpers
+﻿namespace Scorpio.AspNetCore.TagHelpers
 {
     /// <summary>
     /// 

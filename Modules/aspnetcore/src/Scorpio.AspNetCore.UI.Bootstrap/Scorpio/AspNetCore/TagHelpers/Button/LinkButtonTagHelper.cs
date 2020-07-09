@@ -54,7 +54,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
         /// 
         /// </summary>
         /// <param name="service"></param>
-        public LinkButtonTagHelper(LinkButtonTagHelperService service) 
+        public LinkButtonTagHelper(LinkButtonTagHelperService service)
             : base(service)
         {
 

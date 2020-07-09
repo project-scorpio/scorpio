@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Common;
-using System.Text;
 using System.Threading;
 
 namespace Scorpio.EntityFrameworkCore.DependencyInjection
@@ -35,7 +33,7 @@ namespace Scorpio.EntityFrameworkCore.DependencyInjection
         /// 
         /// </summary>
         /// <param name="connectionString"></param>
-        public DbContextCreationContext( string connectionString)
+        public DbContextCreationContext(string connectionString)
         {
             ConnectionString = connectionString;
         }

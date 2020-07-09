@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Options;
+
 using Scorpio.Aspects;
 using Scorpio.Auditing;
 using Scorpio.DependencyInjection;

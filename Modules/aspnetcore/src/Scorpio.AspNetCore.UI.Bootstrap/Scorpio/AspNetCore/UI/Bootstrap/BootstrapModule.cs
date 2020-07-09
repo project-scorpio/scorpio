@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.Modularity;
 
 namespace Scorpio.AspNetCore.UI.Bootstrap
@@ -10,7 +8,7 @@ namespace Scorpio.AspNetCore.UI.Bootstrap
     /// 
     /// </summary>
     [DependsOn(typeof(AspNetCoreUiModule))]
-    public class BootstrapModule: ScorpioModule
+    public class BootstrapModule : ScorpioModule
     {
         /// <summary>
         /// 

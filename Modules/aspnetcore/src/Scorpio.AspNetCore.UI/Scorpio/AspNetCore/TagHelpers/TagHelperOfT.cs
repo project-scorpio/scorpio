@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Scorpio;
-using Scorpio.Threading;
 
 namespace Scorpio.AspNetCore.TagHelpers
 {

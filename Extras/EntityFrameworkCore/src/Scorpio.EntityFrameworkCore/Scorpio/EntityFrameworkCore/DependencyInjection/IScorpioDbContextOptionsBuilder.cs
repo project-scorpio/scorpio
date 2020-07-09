@@ -1,10 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using System;
 
 using Scorpio.Entities;
 using Scorpio.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.EntityFrameworkCore.DependencyInjection
 {

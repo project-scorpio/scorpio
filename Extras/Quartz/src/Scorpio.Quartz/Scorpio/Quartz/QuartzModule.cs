@@ -1,9 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+
 using Quartz;
+
 using Scorpio.Modularity;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.Quartz
 {
@@ -11,7 +10,7 @@ namespace Scorpio.Quartz
     /// <summary>
     /// 
     /// </summary>
-    public  class QuartzModule : ScorpioModule
+    public class QuartzModule : ScorpioModule
     {
 
         /// <summary>

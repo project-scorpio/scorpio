@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.Setting
 {
@@ -65,7 +63,7 @@ namespace Scorpio.Setting
         /// </summary>
         /// <param name="name"></param>
         /// <param name="defaultValue"></param>
-        public SettingDefinition(string name, T defaultValue = default) : this(name, null,defaultValue:defaultValue)
+        public SettingDefinition(string name, T defaultValue = default) : this(name, null, defaultValue: defaultValue)
         {
 
         }
@@ -75,7 +73,7 @@ namespace Scorpio.Setting
         /// <param name="name"></param>
         /// <param name="displayName"></param>
         /// <param name="defaultValue"></param>
-        public SettingDefinition(string name,string displayName,T defaultValue = default) : this(name, displayName, null,defaultValue)
+        public SettingDefinition(string name, string displayName, T defaultValue = default) : this(name, displayName, null, defaultValue)
         {
 
         }
@@ -87,7 +85,7 @@ namespace Scorpio.Setting
         /// <param name="description"></param>
         /// <param name="defaultValue"></param>
         public SettingDefinition(string name, string displayName, string description, T defaultValue = default)
-            : base(name, displayName, description, typeof(T),  defaultValue)
+            : base(name, displayName, description, typeof(T), defaultValue)
         {
         }
 

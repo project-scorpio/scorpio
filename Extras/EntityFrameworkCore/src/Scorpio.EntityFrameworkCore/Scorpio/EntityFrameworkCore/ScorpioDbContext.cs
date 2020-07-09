@@ -1,20 +1,20 @@
-﻿using JetBrains.Annotations;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Scorpio.Data;
-using Scorpio.Threading;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+
+using Scorpio.Data;
+using Scorpio.Threading;
 
 namespace Scorpio.EntityFrameworkCore
 {
@@ -193,13 +193,13 @@ namespace Scorpio.EntityFrameworkCore
         /// <param name="entityType"></param>
         protected void ConfigureCreatingContributor<TEntity>(ModelBuilder modelBuilder, IMutableEntityType entityType) where TEntity : class
         {
-            var context = new ModelCreatingContributionContext<TEntity>(modelBuilder, entityType);
+            var context = new ModelCreatingContributionContext(modelBuilder, entityType);
             var modelCreatingContributors = ScorpioDbContextOptions.GetModelCreatingContributors(GetType());
             if (modelCreatingContributors != null)
             {
                 foreach (var item in modelCreatingContributors)
                 {
-                    item.Contributor(context);
+                    item.Contributor<TEntity>(context);
                 }
             }
         }

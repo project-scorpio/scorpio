@@ -1,9 +1,9 @@
 ﻿
-using Scorpio.Entities;
-using Scorpio.Repositories.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Text;
+
+using Scorpio.Entities;
+using Scorpio.Repositories.EntityFrameworkCore;
 
 namespace Scorpio.EntityFrameworkCore.DependencyInjection
 {
@@ -30,8 +30,8 @@ namespace Scorpio.EntityFrameworkCore.DependencyInjection
 
         private Type GetDefaultRepositoryType(Type entityType)
         {
-            var defaultType= _optionsBuilder.DefaultRepositoryType;
-            if (defaultType==typeof(EfCoreRepository<,,>))
+            var defaultType = _optionsBuilder.DefaultRepositoryType;
+            if (defaultType == typeof(EfCoreRepository<,,>))
             {
                 var primaryKeyType = EntityHelper.FindPrimaryKeyType(entityType);
                 defaultType = defaultType.MakeGenericType(typeof(TDbContext), entityType, primaryKeyType);

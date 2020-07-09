@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Scorpio.AspNetCore.TagHelpers.Dropdown
+﻿namespace Scorpio.AspNetCore.TagHelpers.Dropdown
 {
     /// <summary>
     /// 
     /// </summary>
-    public class DropdownTagHelper:TagHelper<DropdownTagHelper,DropdownTagHelperService>
+    public class DropdownTagHelper : TagHelper<DropdownTagHelper, DropdownTagHelperService>
     {
         /// <summary>
         /// 

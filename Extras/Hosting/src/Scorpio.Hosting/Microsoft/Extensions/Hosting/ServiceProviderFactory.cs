@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+
+using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Microsoft.Extensions.Hosting
 {

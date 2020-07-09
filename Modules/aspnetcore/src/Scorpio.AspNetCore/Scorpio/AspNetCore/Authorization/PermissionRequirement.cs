@@ -1,14 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.AspNetCore.Authorization
 {
     /// <summary>
     /// 
     /// </summary>
-    public class PermissionRequirement: IAuthorizationRequirement
+    public class PermissionRequirement : IAuthorizationRequirement
     {
         /// <summary>
         /// 

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,12 +18,12 @@ namespace Quartz
         /// <param name="configureTrigger"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public static Task ScheduleJob<TJob>(this IScheduler scheduler,Action<JobBuilder> configureJob,Action<TriggerBuilder> configureTrigger,CancellationToken cancellationToken=default) where TJob:IJob
+        public static Task ScheduleJob<TJob>(this IScheduler scheduler, Action<JobBuilder> configureJob, Action<TriggerBuilder> configureTrigger, CancellationToken cancellationToken = default) where TJob : IJob
         {
 
             var detail = JobBuilder.Create<TJob>().Action(configureJob).Build();
             var trigger = TriggerBuilder.Create().Action(configureTrigger).Build();
-            return scheduler.ScheduleJob(detail, trigger,cancellationToken);
+            return scheduler.ScheduleJob(detail, trigger, cancellationToken);
 
         }
     }

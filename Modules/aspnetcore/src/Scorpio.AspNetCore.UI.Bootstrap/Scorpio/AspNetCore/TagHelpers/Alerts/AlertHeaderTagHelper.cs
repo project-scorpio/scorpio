@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Razor.TagHelpers;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+
+using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Scorpio.AspNetCore.TagHelpers.Alerts
 {
@@ -15,7 +13,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Alerts
     [HtmlTargetElement("h4", ParentTag = "alert", TagStructure = TagStructure.NormalOrSelfClosing)]
     [HtmlTargetElement("h5", ParentTag = "alert", TagStructure = TagStructure.NormalOrSelfClosing)]
     [HtmlTargetElement("h6", ParentTag = "alert", TagStructure = TagStructure.NormalOrSelfClosing)]
-    public class AlertHeaderTagHelper:TagHelper
+    public class AlertHeaderTagHelper : TagHelper
     {
         /// <summary>
         /// 

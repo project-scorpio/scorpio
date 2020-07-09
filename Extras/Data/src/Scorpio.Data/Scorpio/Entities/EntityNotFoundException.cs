@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace Scorpio.Entities
 {
     /// <summary>
     /// This exception is thrown if an entity excepted to be found but not found.
     /// </summary>
+    [Serializable]
     public class EntityNotFoundException : ScorpioException
     {
         /// <summary>
@@ -72,6 +74,15 @@ namespace Scorpio.Entities
             : base(message, innerException)
         {
 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="info"></param>
+        /// <param name="context"></param>
+        protected EntityNotFoundException(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
         }
     }
 }

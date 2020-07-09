@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Options;
-using Scorpio.Authorization.Permissions;
-using Scorpio.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
+
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Options;
+
+using Scorpio.DependencyInjection;
 
 namespace Scorpio.AspNetCore.Authorization
 {

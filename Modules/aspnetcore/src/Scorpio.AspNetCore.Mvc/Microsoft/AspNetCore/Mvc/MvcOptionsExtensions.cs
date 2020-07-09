@@ -1,13 +1,11 @@
-﻿using Scorpio.AspNetCore.Mvc.Filters;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
+using Scorpio.AspNetCore.Mvc.Filters;
 
 namespace Microsoft.AspNetCore.Mvc
 {
     internal static class MvcOptionsExtensions
     {
-        public static void AddScorpio(this MvcOptions options,IServiceProvider serviceProvider)
+        public static void AddScorpio(this MvcOptions options)
         {
             AddFilters(options);
         }

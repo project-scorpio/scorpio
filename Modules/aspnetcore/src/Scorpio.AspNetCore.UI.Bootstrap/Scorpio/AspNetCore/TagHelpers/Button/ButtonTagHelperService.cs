@@ -1,6 +1,6 @@
 ﻿using System;
+
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Microsoft.Extensions.Localization;
 
 namespace Scorpio.AspNetCore.TagHelpers.Button
 {

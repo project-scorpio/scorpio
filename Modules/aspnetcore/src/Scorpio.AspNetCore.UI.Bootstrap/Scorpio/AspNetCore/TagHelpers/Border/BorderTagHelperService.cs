@@ -1,7 +1,4 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.AspNetCore.TagHelpers.Border
 {
@@ -17,7 +14,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Border
         /// <param name="output"></param>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            if (TagHelper.Border== BorderType.All)
+            if (TagHelper.Border == BorderType.All)
             {
                 output.AddClass("border");
             }

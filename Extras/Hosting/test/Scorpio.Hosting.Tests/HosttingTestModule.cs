@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.Modularity;
-using Microsoft.Extensions.DependencyInjection;
 namespace Scorpio.Hosting.Tests
 {
     public class HosttingTestModule : ScorpioModule

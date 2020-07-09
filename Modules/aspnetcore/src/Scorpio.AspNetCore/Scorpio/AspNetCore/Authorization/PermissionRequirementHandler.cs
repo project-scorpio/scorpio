@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Threading.Tasks;
+
+using Microsoft.AspNetCore.Authorization;
+
 using Scorpio.Authorization.Permissions;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Scorpio.AspNetCore.Authorization
 {

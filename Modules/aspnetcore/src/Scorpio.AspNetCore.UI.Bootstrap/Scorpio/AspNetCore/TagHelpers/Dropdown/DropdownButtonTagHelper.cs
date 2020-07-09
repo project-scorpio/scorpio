@@ -1,7 +1,4 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.AspNetCore.TagHelpers.Dropdown
 {
@@ -15,7 +12,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
         /// <summary>
         /// 
         /// </summary>
-        public DropdownButtonType  DropdownButtonType { get; set; }
+        public DropdownButtonType DropdownButtonType { get; set; }
 
         /// <summary>
         /// 

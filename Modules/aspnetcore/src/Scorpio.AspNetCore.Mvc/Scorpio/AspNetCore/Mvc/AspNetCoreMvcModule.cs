@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Scorpio.Modularity;
-using Microsoft.Extensions.DependencyInjection;
+
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.AspNetCore.Mvc.Controllers;
-using Microsoft.AspNetCore.Mvc.ViewComponents;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
+using Microsoft.AspNetCore.Mvc.ViewComponents;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+
+using Scorpio.Modularity;
 
 namespace Scorpio.AspNetCore.Mvc
 {
@@ -36,8 +35,8 @@ namespace Scorpio.AspNetCore.Mvc
         {
             context.Services.RegisterAssemblyByConvention();
             context.Services.Options<MvcOptions>().PreConfigure<IServiceProvider>(
-                (options, serviceProvider) => options.AddScorpio(serviceProvider));
-          context.Services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+                (options, serviceProvider) => options.AddScorpio());
+            context.Services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             context.Services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();
             //Use DI to create controllers

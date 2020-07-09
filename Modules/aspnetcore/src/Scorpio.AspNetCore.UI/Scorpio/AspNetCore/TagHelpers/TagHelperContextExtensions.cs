@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Razor.TagHelpers;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+
+using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Scorpio.AspNetCore.TagHelpers
 {
@@ -33,7 +32,7 @@ namespace Scorpio.AspNetCore.TagHelpers
         /// <typeparam name="T"></typeparam>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static T GetValue<T>(this TagHelperContext context )
+        public static T GetValue<T>(this TagHelperContext context)
         {
             var key = typeof(T).FullName;
             return GetValue<T>(context, key);
@@ -54,7 +53,7 @@ namespace Scorpio.AspNetCore.TagHelpers
         /// </summary>
         /// <param name="context"></param>
         /// <param name="value"></param>
-        public static void SetValue<T>(this TagHelperContext context,  T value)
+        public static void SetValue<T>(this TagHelperContext context, T value)
         {
             var key = typeof(T).FullName;
             context.SetValue(key, value);

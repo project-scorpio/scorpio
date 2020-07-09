@@ -1,5 +1,3 @@
-using System;
-
 namespace Scorpio.Sample.AspnetCore.Models
 {
     public class ErrorViewModel

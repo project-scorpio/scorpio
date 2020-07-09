@@ -4,7 +4,7 @@
     /// <summary>
     /// 
     /// </summary>
-    
+
     public class BreadcrumbItemTagHelper : TagHelper<BreadcrumbItemTagHelper, BreadcrumbItemTagHelperService>
     {
         /// <summary>

@@ -1,8 +1,5 @@
 ﻿using Scorpio.AspNetCore.Auditing;
 using Scorpio.AspNetCore.Uow;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Microsoft.AspNetCore.Builder
 {

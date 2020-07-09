@@ -1,4 +1,5 @@
 ﻿using System;
+
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Scorpio.AspNetCore.TagHelpers.Button

@@ -1,7 +1,4 @@
 ﻿using Scorpio.Auditing;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.AspNetCore.Auditing
 {

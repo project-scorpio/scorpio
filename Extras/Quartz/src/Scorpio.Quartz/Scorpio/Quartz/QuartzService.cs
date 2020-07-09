@@ -1,28 +1,26 @@
-﻿using Quartz;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+
+using Quartz;
 
 namespace Scorpio.Quartz
 {
     class QuartzService : Microsoft.Extensions.Hosting.IHostedService
     {
-        private readonly IScheduler scheduler;
+        private readonly IScheduler _scheduler;
 
         public QuartzService(IScheduler scheduler)
         {
-            this.scheduler = scheduler;
+            this._scheduler = scheduler;
         }
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-            await scheduler.Start(cancellationToken);
+            await _scheduler.Start(cancellationToken);
         }
 
         public async Task StopAsync(CancellationToken cancellationToken)
         {
-            await scheduler.Shutdown(cancellationToken);
+            await _scheduler.Shutdown(cancellationToken);
         }
     }
 }
