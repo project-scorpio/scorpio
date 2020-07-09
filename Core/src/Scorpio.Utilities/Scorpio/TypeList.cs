@@ -53,10 +53,24 @@ namespace Scorpio
             _typeList = new List<Type>();
         }
 
-        /// <inheritdoc/>
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
         public void Add<T>() where T : TBaseType
         {
             _typeList.Add(typeof(T));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
+        public void Add(Type item)
+        {
+            CheckType(item);
+            _typeList.Add(item);
         }
 
         /// <summary>
@@ -73,12 +87,6 @@ namespace Scorpio
             Add<T>();
         }
 
-        /// <inheritdoc/>
-        public void Add(Type item)
-        {
-            CheckType(item);
-            _typeList.Add(item);
-        }
 
         /// <inheritdoc/>
         public void Insert(int index, Type item)

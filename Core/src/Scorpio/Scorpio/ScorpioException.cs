@@ -6,6 +6,7 @@ namespace Scorpio
     /// <summary>
     /// 
     /// </summary>
+    [Serializable]
     public class ScorpioException : Exception
     {
         /// <summary>

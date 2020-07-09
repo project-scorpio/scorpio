@@ -22,7 +22,7 @@ namespace Scorpio
         /// </summary>
         public void Dispose()
         {
-
+            // Method intentionally left empty.
         }
     }
 }

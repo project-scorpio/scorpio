@@ -35,6 +35,8 @@ namespace Scorpio.Modularity
             return sorted;
         }
 
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -43,6 +45,7 @@ namespace Scorpio.Modularity
         /// <param name="getDependencies">Function to resolve the dependencies</param>
         /// <param name="sorted">List with the sortet items</param>
         /// <param name="visited">Dictionary with the visited items</param>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Bug", "S4143:Collection elements should not be replaced unconditionally", Justification = "<挂起>")]
         private static void SortByDependenciesVisit<T>(T item, Func<T, IEnumerable<T>> getDependencies, List<T> sorted, Dictionary<T, bool> visited)
         {
             var alreadyVisited = visited.TryGetValue(item, out var inProcess);

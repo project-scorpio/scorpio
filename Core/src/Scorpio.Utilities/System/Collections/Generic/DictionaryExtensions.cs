@@ -17,9 +17,9 @@ namespace System.Collections.Generic
         /// <returns>True if key does exists in the dictionary</returns>
         public static bool TryGetValue<T>(this IDictionary<string, object> dictionary, string key, out T value)
         {
-            if (dictionary.TryGetValue(key, out var valueObj) && valueObj is T)
+            if (dictionary.TryGetValue(key, out var valueObj) && valueObj is T t)
             {
-                value = (T)valueObj;
+                value = t;
                 return true;
             }
 

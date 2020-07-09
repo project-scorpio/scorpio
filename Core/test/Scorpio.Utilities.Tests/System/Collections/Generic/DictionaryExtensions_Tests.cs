@@ -5,7 +5,7 @@ namespace System.Collections.Generic
 {
     public class DictionaryExtensions_Tests
     {
-        private Dictionary<string, string> _keyValuePairs = new Dictionary<string, string> {
+        private readonly Dictionary<string, string> _keyValuePairs = new Dictionary<string, string> {
             {"Key1","Value1" },
             {"Key2","Value2" },
             {"Key3","Value3" },
@@ -15,13 +15,7 @@ namespace System.Collections.Generic
         [Fact]
         public void TryGetValue()
         {
-            var _keyValuePairs = new Dictionary<string, object> {
-                { "Key1","Value1" },
-                { "Key2","Value2" },
-                { "Key3","Value3" },
-                { "Key4","Value4" },
-            };
-            _keyValuePairs.TryGetValue("key", out string value).ShouldBeFalse();
+            _keyValuePairs.TryGetValue("key", out var value).ShouldBeFalse();
             value.ShouldBeNull();
             _keyValuePairs.TryGetValue("Key1", out value).ShouldBeTrue();
             value.ShouldBe("Value1");
