@@ -1,9 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
-using Scorpio.Logging;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Runtime.Serialization;
-using System.Text;
+
+using Microsoft.Extensions.Logging;
+
+using Scorpio.Logging;
 
 namespace Scorpio.Authorization
 {
@@ -30,7 +30,7 @@ namespace Scorpio.Authorization
         /// <summary>
         /// Creates a new <see cref="AuthorizationException"/> object.
         /// </summary>
-        public AuthorizationException(SerializationInfo serializationInfo, StreamingContext context)
+        protected AuthorizationException(SerializationInfo serializationInfo, StreamingContext context)
             : base(serializationInfo, context)
         {
 
@@ -56,5 +56,6 @@ namespace Scorpio.Authorization
         {
             LogLevel = LogLevel.Warning;
         }
+
     }
 }

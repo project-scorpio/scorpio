@@ -1,12 +1,11 @@
-﻿using AspectCore.DependencyInjection;
+﻿using System;
+using System.Threading.Tasks;
+
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
+
 using Scorpio.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Scorpio.Auditing
 {
@@ -15,7 +14,6 @@ namespace Scorpio.Auditing
     /// </summary>
     internal class SimpleLogAuditingStore : IAuditingStore, ISingletonDependency
     {
-        private readonly IServiceProvider _serviceProvider;
 
         /// <summary>
         /// 
@@ -30,21 +28,20 @@ namespace Scorpio.Auditing
             Logger = NullLogger<SimpleLogAuditingStore>.Instance;
         }
 
-        public SimpleLogAuditingStore(IServiceProvider  serviceProvider)
+        public SimpleLogAuditingStore(IServiceProvider serviceProvider)
         {
-            _serviceProvider = serviceProvider;
             Logger = serviceProvider.GetService<ILoggerFactory>()?.CreateLogger<SimpleLogAuditingStore>()
-                ??NullLogger<SimpleLogAuditingStore>.Instance;
+                ?? NullLogger<SimpleLogAuditingStore>.Instance;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="auditInfo"></param>
+        /// <param name="info"></param>
         /// <returns></returns>
-        public Task SaveAsync(AuditInfo auditInfo)
+        public Task SaveAsync(AuditInfo info)
         {
-            Logger.LogInformation(auditInfo.ToString());
+            Logger.LogInformation(info.ToString());
             return Task.FromResult(0);
         }
     }

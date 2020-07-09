@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace Scorpio.Data
 {
     /// <summary>
     /// 
     /// </summary>
-    internal abstract class DataFilterDescriptor:IDataFilterDescriptor
+    internal abstract class DataFilterDescriptor : IDataFilterDescriptor
     {
         /// <summary>
         /// 
@@ -29,7 +27,7 @@ namespace Scorpio.Data
         /// 
         /// </summary>
         /// <param name="filterType"></param>
-        internal DataFilterDescriptor(Type filterType)
+        protected DataFilterDescriptor(Type filterType)
         {
             FilterType = filterType;
         }
@@ -68,7 +66,7 @@ namespace Scorpio.Data
     /// 
     /// </summary>
     /// <typeparam name="TFilter"></typeparam>
-    internal sealed class DataFilterDescriptor<TFilter> : DataFilterDescriptor,IDataFilterDescriptor<TFilter>
+    internal sealed class DataFilterDescriptor<TFilter> : DataFilterDescriptor, IDataFilterDescriptor<TFilter>
     {
         /// <summary>
         /// 

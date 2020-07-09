@@ -1,14 +1,15 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Scorpio.DependencyInjection;
-using Scorpio.Security;
-using Scorpio.Timing;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
+
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+
+using Scorpio.DependencyInjection;
+using Scorpio.Security;
+using Scorpio.Timing;
 
 namespace Scorpio.Auditing
 {
@@ -123,7 +124,7 @@ namespace Scorpio.Auditing
         /// <param name="type"></param>
         /// <param name="defaultValue"></param>
         /// <returns></returns>
-        public static bool ShouldAuditTypeByDefault(Type type,bool defaultValue=false)
+        public static bool ShouldAuditTypeByDefault(Type type, bool defaultValue = false)
         {
             if (type.IsDefined(typeof(AuditedAttribute), true))
             {
@@ -146,8 +147,8 @@ namespace Scorpio.Auditing
         {
             var auditInfo = new AuditInfo
             {
-                ApplicationName=Options.ApplicationName,
-                CurrentUser=_principalAccessor.Principal?.Identity?.Name,
+                ApplicationName = Options.ApplicationName,
+                CurrentUser = _principalAccessor.Principal?.Identity?.Name,
                 ExecutionTime = Clock.Now
             };
 
@@ -160,34 +161,32 @@ namespace Scorpio.Auditing
         /// 
         /// </summary>
         /// <param name="type"></param>
-        /// <param name="method"></param>
-        /// <param name="arguments"></param>
+        /// <param name="implementationMethod"></param>
+        /// <param name="parameters"></param>
         /// <returns></returns>
-        public virtual AuditActionInfo CreateAuditAction(Type type, MethodInfo method, object[] arguments)
+        public virtual AuditActionInfo CreateAuditAction(Type type, MethodInfo implementationMethod, object[] parameters)
         {
-            return CreateAuditAction(type, method, CreateArgumentsDictionary(method, arguments));
+            return CreateAuditAction(type, implementationMethod, CreateArgumentsDictionary(implementationMethod, parameters));
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="type"></param>
-        /// <param name="method"></param>
-        /// <param name="arguments"></param>
+        /// <param name="implementationMethod"></param>
+        /// <param name="parameters"></param>
         /// <returns></returns>
-        public virtual AuditActionInfo CreateAuditAction(Type type, MethodInfo method, IDictionary<string, object> arguments)
+        public virtual AuditActionInfo CreateAuditAction(Type type, MethodInfo implementationMethod, IDictionary<string, object> parameters)
         {
             var actionInfo = new AuditActionInfo
             {
                 ServiceName = type != null
                     ? type.FullName
                     : "",
-                MethodName = method.Name,
-                Parameters = SerializeConvertArguments(arguments),
+                MethodName = implementationMethod.Name,
+                Parameters = SerializeConvertArguments(parameters),
                 ExecutionTime = Clock.Now
             };
-
-            //TODO Execute contributors
 
             return actionInfo;
         }

@@ -1,16 +1,16 @@
-﻿using Scorpio.Options;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq.Expressions;
-using System.Text;
+
+using Scorpio.Options;
 
 namespace Scorpio.Auditing
 {
     /// <summary>
     /// 
     /// </summary>
-    public class AuditingOptions:ExtensibleOptions
+    public class AuditingOptions : ExtensibleOptions
     {
         /// <summary>
         /// Default: true.
@@ -38,7 +38,7 @@ namespace Scorpio.Auditing
         /// </summary>
         public List<Type> IgnoredTypes { get; }
 
-        
+
 
         /// <summary>
         /// 

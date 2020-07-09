@@ -1,16 +1,15 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Scorpio.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
+
+using Microsoft.Extensions.DependencyInjection;
+
+using Scorpio.DependencyInjection;
 
 namespace Scorpio.Authorization
 {
     class AuthorizationManager : IAuthorizationManager, ISingletonDependency
     {
-        private IServiceProvider _serviceProvider;
+        private readonly IServiceProvider _serviceProvider;
 
         public AuthorizationManager(IServiceProvider serviceProvider)
         {

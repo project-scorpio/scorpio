@@ -1,9 +1,8 @@
 ﻿using Microsoft.Extensions.Options;
+
 using Newtonsoft.Json;
+
 using Scorpio.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.Auditing
 {

@@ -1,10 +1,5 @@
-﻿
-using Microsoft.CodeAnalysis;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Text;
-using System.Xml.Linq;
 
 namespace Scorpio.Authorization.Permissions
 {
@@ -63,7 +58,7 @@ namespace Scorpio.Authorization.Permissions
         /// </summary>
         /// <param name="name"></param>
         /// <param name="displayName"></param>
-        protected internal PermissionDefinition( string name, string displayName = null)
+        protected internal PermissionDefinition(string name, string displayName = null)
         {
             Name = Check.NotNull(name, nameof(name));
             DisplayName = displayName ?? name;
@@ -78,7 +73,7 @@ namespace Scorpio.Authorization.Permissions
         /// <param name="name"></param>
         /// <param name="displayName"></param>
         /// <returns></returns>
-        public virtual PermissionDefinition AddChild( string name, string displayName = null)
+        public virtual PermissionDefinition AddChild(string name, string displayName = null)
         {
             var child = new PermissionDefinition(name, displayName)
             {

@@ -1,8 +1,9 @@
-﻿using Microsoft.Extensions.Options;
-using Scorpio.DependencyInjection;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+
+using Microsoft.Extensions.Options;
+
+using Scorpio.DependencyInjection;
 
 namespace Scorpio.Data
 {

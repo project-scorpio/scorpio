@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Scorpio.Data
+﻿namespace Scorpio.Data
 {
     /// <summary>
     /// Used to standardize soft deleting entities.

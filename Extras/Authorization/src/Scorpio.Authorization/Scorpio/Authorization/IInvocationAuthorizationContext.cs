@@ -1,5 +1,4 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace Scorpio.Authorization
 {
@@ -16,7 +15,7 @@ namespace Scorpio.Authorization
         /// <summary>
         /// 
         /// </summary>
-         bool RequireAllPermissions { get; }
+        bool RequireAllPermissions { get; }
 
         /// <summary>
         /// 

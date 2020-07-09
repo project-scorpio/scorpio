@@ -1,10 +1,9 @@
-﻿using Scorpio.Entities;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Scorpio.Entities;
 
 namespace Scorpio.Repositories
 {
@@ -35,7 +34,7 @@ namespace Scorpio.Repositories
         /// Set true to automatically save changes to database.
         /// This is useful for ORMs / database APIs those only save changes with an explicit method call, but you need to immediately save changes to the database.
         /// </param>
-        void Delete( Expression<Func<TEntity, bool>> predicate, bool autoSave = true);
+        void Delete(Expression<Func<TEntity, bool>> predicate, bool autoSave = true);
 
         /// <summary>
         /// Deletes many entities by function.
@@ -49,7 +48,7 @@ namespace Scorpio.Repositories
         /// This is useful for ORMs / database APIs those only save changes with an explicit method call, but you need to immediately save changes to the database.
         /// </param>
         /// <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> to observe while waiting for the task to complete.</param>
-        Task DeleteAsync( Expression<Func<TEntity, bool>> predicate, bool autoSave = true, CancellationToken cancellationToken = default);
+        Task DeleteAsync(Expression<Func<TEntity, bool>> predicate, bool autoSave = true, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update many entities by function.
@@ -63,7 +62,7 @@ namespace Scorpio.Repositories
         /// Set true to automatically save changes to database.
         /// This is useful for ORMs / database APIs those only save changes with an explicit method call, but you need to immediately save changes to the database.
         /// </param>
-        void Update(Expression<Func<TEntity, bool>> predicate,Expression<Func<TEntity,TEntity>> updateExpression, bool autoSave = true);
+        void Update(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TEntity>> updateExpression, bool autoSave = true);
 
         /// <summary>
         /// Updates many entities by function.

@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Scorpio.Security;
-using Scorpio;
-using Scorpio.Authorization.Permissions;
+﻿using System.Collections.Generic;
 using System.Linq.Async;
-using Scorpio.DependencyInjection;
 using System.Reflection;
+using System.Threading.Tasks;
+
+using Scorpio.Authorization.Permissions;
+using Scorpio.DependencyInjection;
+using Scorpio.Security;
 namespace Scorpio.Authorization
 {
-    class AuthorizationService : IAuthorizationService,ITransientDependency
+    class AuthorizationService : IAuthorizationService, ITransientDependency
     {
         private readonly ICurrentPrincipalAccessor _currentPrincipalAccessor;
         private readonly IPermissionChecker _permissionChecker;
@@ -20,13 +18,20 @@ namespace Scorpio.Authorization
             _currentPrincipalAccessor = currentPrincipalAccessor;
             _permissionChecker = permissionChecker;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="authorizationContext"></param>
+        /// <returns></returns>
         public async Task CheckAsync(IInvocationAuthorizationContext authorizationContext)
         {
-            if (authorizationContext?.Method?.AttributeExists<AllowAnonymousAttribute>()??false)
+          
+            if (authorizationContext?.Method?.AttributeExists<AllowAnonymousAttribute>() ?? false)
             {
                 return;
             }
-            if (authorizationContext.Permissions.IsNullOrEmpty())
+            if (authorizationContext?.Permissions?.IsNullOrEmpty()??true)
             {
                 if (!(_currentPrincipalAccessor.Principal?.Identity?.IsAuthenticated ?? false))
                 {

@@ -1,11 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Scorpio.Conventional;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
+﻿using System.Reflection;
+
+using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.Authorization.Permissions;
-using Scorpio.DependencyInjection;
+using Scorpio.Conventional;
 using Scorpio.DependencyInjection.Conventional;
 
 namespace Scorpio.Authorization

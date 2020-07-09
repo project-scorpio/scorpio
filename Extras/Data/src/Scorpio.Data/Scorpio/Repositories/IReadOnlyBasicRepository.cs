@@ -1,9 +1,8 @@
-﻿using Scorpio.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Scorpio.Entities;
 
 namespace Scorpio.Repositories
 {
@@ -12,8 +11,8 @@ namespace Scorpio.Repositories
     /// 
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public interface IReadOnlyBasicRepository<TEntity>:IRepository
-        where TEntity:class, IEntity
+    public interface IReadOnlyBasicRepository<TEntity> : IRepository
+        where TEntity : class, IEntity
     {
         /// <summary>
         /// Gets a list of all the entities.

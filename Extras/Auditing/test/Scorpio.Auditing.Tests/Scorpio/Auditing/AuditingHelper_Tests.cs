@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+
 using Microsoft.Extensions.DependencyInjection;
-using Xunit;
+
 using Shouldly;
+
+using Xunit;
 
 namespace Scorpio.Auditing
 {
@@ -45,7 +46,7 @@ namespace Scorpio.Auditing
             var method = type.GetMethod("Action");
             var actual = _auditingHelper.CreateAuditAction(type, method, new object[] { "Test", 18 });
             actual.ServiceName.ShouldBe(type.FullName);
-            actual.MethodName.ShouldBe( method.Name);
+            actual.MethodName.ShouldBe(method.Name);
             actual.Parameters.ShouldBe("{\"name\":\"Test\",\"age\":18}");
         }
     }
@@ -55,12 +56,13 @@ namespace Scorpio.Auditing
     {
         public void Method()
         {
-
+            // Method intentionally left empty.
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:删除未使用的参数", Justification = "<挂起>")]
         public void Action(string name, int age)
         {
-
+            // Method intentionally left empty.
         }
     }
 
@@ -69,7 +71,7 @@ namespace Scorpio.Auditing
     {
         public void Method()
         {
-
+            // Method intentionally left empty.
         }
     }
 
@@ -78,7 +80,7 @@ namespace Scorpio.Auditing
         [Audited]
         public void Method()
         {
-
+            // Method intentionally left empty.
         }
     }
 
@@ -87,7 +89,7 @@ namespace Scorpio.Auditing
     {
         public void Method()
         {
-
+            // Method intentionally left empty.
         }
     }
 
@@ -96,7 +98,7 @@ namespace Scorpio.Auditing
         [DisableAuditing]
         public void Method()
         {
-
+            // Method intentionally left empty.
         }
     }
 
@@ -107,7 +109,7 @@ namespace Scorpio.Auditing
         [DisableAuditing]
         public void Method()
         {
-
+            // Method intentionally left empty.
         }
     }
 
@@ -117,7 +119,7 @@ namespace Scorpio.Auditing
         [Audited]
         public void Method()
         {
-
+            // Method intentionally left empty.
         }
     }
 

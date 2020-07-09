@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
-using Shouldly;
+
 using Microsoft.Extensions.Options;
-using Microsoft.Extensions.DependencyInjection;
+
+using Shouldly;
+
+using Xunit;
 namespace Scorpio.Data
 {
     public class DataFilterDescriptor_Tests
@@ -14,7 +14,7 @@ namespace Scorpio.Data
         {
             var mock = new Moq.Mock<IServiceProvider>();
             var options = new DataFilterOptions();
-            options.Configure<ISoftDelete>(d => d.Expression(t => t.IsDeleted == false));
+            options.Configure<ISoftDelete>(d => d.Expression(t => !t.IsDeleted));
             var descriptor = options.Filter<ISoftDelete>();
             mock.Setup(s => s.GetService(Moq.It.IsAny<Type>())).Returns(new DataFilter<ISoftDelete>(new OptionsWrapper<DataFilterOptions>(options)));
             var filter = new DataFilter(mock.Object);
@@ -36,7 +36,7 @@ namespace Scorpio.Data
             options.Configure<ISoftDelete>(d =>
             {
                 d.Disable();
-                d.Expression(t => t.IsDeleted == false);
+                d.Expression(t => !t.IsDeleted);
             });
             var descriptor = options.Filter<ISoftDelete>();
             mock.Setup(s => s.GetService(Moq.It.IsAny<Type>())).Returns(new DataFilter<ISoftDelete>(new OptionsWrapper<DataFilterOptions>(options)));

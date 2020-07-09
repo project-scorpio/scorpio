@@ -1,13 +1,13 @@
-﻿using Scorpio.TestBase;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Extensions.DependencyInjection;
-using Xunit;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+using Scorpio.TestBase;
+
 using Shouldly;
+
+using Xunit;
 namespace Scorpio.Auditing
 {
-    public class Auditing_Tests: IntegratedTest<AuditingTestModule>
+    public class Auditing_Tests : IntegratedTest<AuditingTestModule>
     {
         private readonly IAuditingManager _auditingManager;
 
@@ -22,12 +22,12 @@ namespace Scorpio.Auditing
             using (_auditingManager.BeginScope())
             {
                 var service = ServiceProvider.GetService<IAttributedAuditingInterface>();
-                service.Test("test",19);
+                service.Test("test", 19);
             }
             var store = ServiceProvider.GetService<IAuditingStore>().ShouldBeOfType<FackAuditingStore>();
             store.Info.ShouldNotBeNull();
             store.Info.CurrentUser.ShouldBe("TestUser");
-            var action= store.Info.Actions.ShouldHaveSingleItem();
+            var action = store.Info.Actions.ShouldHaveSingleItem();
             action.ServiceName.ShouldBe(typeof(AttributedAuditingInterface).FullName);
             action.MethodName.ShouldBe("Test");
         }
@@ -65,11 +65,12 @@ namespace Scorpio.Auditing
     {
         public void Test(string value, int num)
         {
-            
+            // Method intentionally left empty.
         }
 
         public void Test2(string value, int num)
         {
+            // Method intentionally left empty.
         }
     }
 }

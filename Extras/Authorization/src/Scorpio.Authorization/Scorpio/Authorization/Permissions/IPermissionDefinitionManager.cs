@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Scorpio.Authorization.Permissions
 {
@@ -14,14 +12,14 @@ namespace Scorpio.Authorization.Permissions
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        PermissionDefinition Get( string name);
+        PermissionDefinition Get(string name);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        PermissionDefinition GetOrNull( string name);
+        PermissionDefinition GetOrNull(string name);
 
         /// <summary>
         /// 
