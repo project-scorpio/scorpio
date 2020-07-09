@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.TestBase;
-using Microsoft.Extensions.DependencyInjection;
-using Xunit;
+
 using Shouldly;
+
+using Xunit;
 namespace Scorpio.Authorization.Permissions
 {
-    public class PermissionDefinitionManager_Test:IntegratedTest<AuthorizationTestModule>
+    public class PermissionDefinitionManager_Test : IntegratedTest<AuthorizationTestModule>
     {
-        IPermissionDefinitionManager _permissionDefinitionManager;
+        readonly IPermissionDefinitionManager _permissionDefinitionManager;
         public PermissionDefinitionManager_Test()
         {
             _permissionDefinitionManager = ServiceProvider.GetService<IPermissionDefinitionManager>();
@@ -19,7 +19,7 @@ namespace Scorpio.Authorization.Permissions
         public void Get()
         {
             _permissionDefinitionManager.Get("Permission_Test_1").ShouldNotBeNull();
-            Should.Throw<PermissionNotFondException>(()=>_permissionDefinitionManager.Get("NotFoundPermission"));
+            Should.Throw<PermissionNotFondException>(() => _permissionDefinitionManager.Get("NotFoundPermission"));
         }
 
         [Fact]

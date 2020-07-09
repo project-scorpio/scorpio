@@ -1,10 +1,10 @@
-﻿using Scorpio.TestBase;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Extensions.DependencyInjection;
-using Xunit;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+using Scorpio.TestBase;
+
 using Shouldly;
+
+using Xunit;
 
 namespace Scorpio.Authorization
 {

@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
-using System.Threading.Tasks;
-using AspectCore.DynamicProxy;
-using Scorpio.Aspects;
 using System.Reflection;
+using System.Threading.Tasks;
+
+using AspectCore.DynamicProxy;
+
 using Microsoft.Extensions.Options;
+
+using Scorpio.Aspects;
 using Scorpio.Security;
 
 namespace Scorpio.Auditing
@@ -33,7 +34,7 @@ namespace Scorpio.Auditing
         /// <param name="options"></param>
         /// <param name="principalAccessor"></param>
         public AuditingInterceptor(IAuditingHelper auditingHelper,
-            IAuditingManager auditingManager, 
+            IAuditingManager auditingManager,
             IOptions<AuditingOptions> options,
             ICurrentPrincipalAccessor principalAccessor
             )
@@ -87,11 +88,11 @@ namespace Scorpio.Auditing
         {
             audit = null;
             auditAction = null;
-            if (_options.IsEnabled == false)
+            if (!_options.IsEnabled)
             {
                 return false;
             }
-            if (!(_options.IsEnabledForAnonymousUsers || (_principalAccessor.Principal?.Identity?.IsAuthenticated ??false)))
+            if (!(_options.IsEnabledForAnonymousUsers || (_principalAccessor.Principal?.Identity?.IsAuthenticated ?? false)))
             {
                 return false;
             }

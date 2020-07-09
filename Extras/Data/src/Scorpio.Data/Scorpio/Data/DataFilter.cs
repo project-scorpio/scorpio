@@ -1,13 +1,14 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using Scorpio.DependencyInjection;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading;
+
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+
+using Scorpio.DependencyInjection;
 
 namespace Scorpio.Data
 {
@@ -71,7 +72,7 @@ namespace Scorpio.Data
         /// <returns></returns>
         public bool IsEnabled(Type type)
         {
-            return (bool)_isEnabledMethodInfo.MakeGenericMethod(type).Invoke(this,null);
+            return (bool)_isEnabledMethodInfo.MakeGenericMethod(type).Invoke(this, null);
         }
 
         private IDataFilter<TFilter> GetFilter<TFilter>()
@@ -113,7 +114,7 @@ namespace Scorpio.Data
 
         }
 
-        public DataFilter(bool isEnabled):this()
+        public DataFilter(bool isEnabled) : this()
         {
             EnsureInitialized();
             _filter.Value.IsEnabled = isEnabled;
@@ -122,7 +123,7 @@ namespace Scorpio.Data
         /// 
         /// </summary>
         /// <param name="options"></param>
-        public DataFilter(IOptions<DataFilterOptions> options):this()
+        public DataFilter(IOptions<DataFilterOptions> options) : this()
         {
             _options = options.Value;
         }

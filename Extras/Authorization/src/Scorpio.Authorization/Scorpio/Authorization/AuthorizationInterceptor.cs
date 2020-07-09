@@ -1,7 +1,8 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Threading.Tasks;
+
 using AspectCore.DynamicProxy;
+
 using Microsoft.Extensions.DependencyInjection;
 namespace Scorpio.Authorization
 {

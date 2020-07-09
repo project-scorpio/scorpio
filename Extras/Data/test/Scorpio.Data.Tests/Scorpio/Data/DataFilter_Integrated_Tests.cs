@@ -1,22 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
-using Shouldly;
+﻿using System.Collections.Generic;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+
+using Shouldly;
+
+using Xunit;
 
 namespace Scorpio.Data
 {
     public abstract class DataFilter_Integrated_Tests<TModule> : TestBase.IntegratedTest<TModule>
-        where TModule:Modularity.ScorpioModule
+        where TModule : Modularity.ScorpioModule
     {
         public IDataFilter DataFilter { get; set; }
 
         public DataFilterOptions DataFilterOptions { get; set; }
 
         public IDataFilterDescriptor DataFilterDescriptor { get; set; }
-        public DataFilter_Integrated_Tests()
+        protected DataFilter_Integrated_Tests()
         {
             DataFilter = ServiceProvider.GetService<IDataFilter>();
             DataFilterOptions = ServiceProvider.GetService<IOptions<DataFilterOptions>>().Value;
@@ -24,7 +25,7 @@ namespace Scorpio.Data
         }
     }
 
-    public class DataFilter_Integrated_Enable_Tests:DataFilter_Integrated_Tests<DataFilterEnableModule>
+    public class DataFilter_Integrated_Enable_Tests : DataFilter_Integrated_Tests<DataFilterEnableModule>
     {
         [Fact]
         public void Test()

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 
 namespace Scorpio.Entities
 {
@@ -54,18 +53,19 @@ namespace Scorpio.Entities
         /// <summary>
         /// 
         /// </summary>
-        /// <returns></returns>
-        public override object[] GetKeys()
-        {
-            return new object[] { Id };
-        }
-        /// <summary>
-        /// 
-        /// </summary>
         /// <param name="id"></param>
         protected Entity(TPrimaryKey id)
         {
             Id = id;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override object[] GetKeys()
+        {
+            return new object[] { Id };
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Scorpio.Entities
                 return false;
             }
 
-            if (ReferenceEquals(this,other))
+            if (ReferenceEquals(this, other))
             {
                 return true;
             }
@@ -127,25 +127,9 @@ namespace Scorpio.Entities
         /// <inheritdoc/>
         public override int GetHashCode()
         {
-            return Id.GetHashCode();
+            return HashCode.Combine(Id);
         }
 
-        /// <inheritdoc/>
-        public static bool operator ==(Entity<TPrimaryKey> left, Entity<TPrimaryKey> right)
-        {
-            if (Equals(left, null))
-            {
-                return Equals(right, null);
-            }
-
-            return left.Equals(right);
-        }
-
-        /// <inheritdoc/>
-        public static bool operator !=(Entity<TPrimaryKey> left, Entity<TPrimaryKey> right)
-        {
-            return !(left == right);
-        }
 
         /// <inheritdoc/>
         public override string ToString()

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.Auditing
 {
@@ -15,7 +14,7 @@ namespace Scorpio.Auditing
         /// 
         /// </summary>
         /// <param name="auditInfo"></param>
-        internal protected AuditInfoWapper(AuditInfo auditInfo)
+         protected AuditInfoWapper(AuditInfo auditInfo)
         {
             _auditInfo = auditInfo;
         }
@@ -23,12 +22,12 @@ namespace Scorpio.Auditing
         /// <summary>
         /// 
         /// </summary>
-        public string CurrentUser { get=>_auditInfo.CurrentUser; set=>_auditInfo.CurrentUser=value; }
+        public string CurrentUser { get => _auditInfo.CurrentUser; set => _auditInfo.CurrentUser = value; }
 
         /// <summary>
         /// 
         /// </summary>
-        public string ImpersonatorUser { get=>_auditInfo.ImpersonatorUser; set=>_auditInfo.ImpersonatorUser=value; }
+        public string ImpersonatorUser { get => _auditInfo.ImpersonatorUser; set => _auditInfo.ImpersonatorUser = value; }
 
         /// <summary>
         /// 

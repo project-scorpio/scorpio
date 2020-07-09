@@ -6,7 +6,7 @@ namespace Scorpio.Authorization.Permissions
     /// <summary>
     /// 
     /// </summary>
-    public class PermissionGroupDefinition 
+    public class PermissionGroupDefinition
     {
         /// <summary>
         /// Unique name of the group.

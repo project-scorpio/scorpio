@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
+
 using Shouldly;
-using Microsoft.Extensions.DependencyInjection;
+
+using Xunit;
 namespace Scorpio.Data
 {
     public class DataFilter_Tests

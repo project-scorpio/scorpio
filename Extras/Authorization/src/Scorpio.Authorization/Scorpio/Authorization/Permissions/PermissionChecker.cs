@@ -1,13 +1,14 @@
-﻿using Microsoft.Extensions.Options;
-using Scorpio.DependencyInjection;
-using Scorpio.Security;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Async;
 using System.Security.Principal;
-using System.Text;
 using System.Threading.Tasks;
+
+using Microsoft.Extensions.Options;
+
+using Scorpio.DependencyInjection;
+using Scorpio.Security;
 
 namespace Scorpio.Authorization.Permissions
 {
@@ -48,7 +49,7 @@ namespace Scorpio.Authorization.Permissions
 
         public async Task<bool> CheckAsync(IPrincipal claimsPrincipal, string name)
         {
-            if (GrantingProviders.Count==0)
+            if (GrantingProviders.Count == 0)
             {
                 return true;
             }

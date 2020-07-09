@@ -1,11 +1,11 @@
-﻿using Scorpio.DependencyInjection;
-using Scorpio.Entities;
-using Scorpio.Threading;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Scorpio.DependencyInjection;
+using Scorpio.Entities;
+using Scorpio.Threading;
 
 namespace Scorpio.Repositories
 {
@@ -31,7 +31,7 @@ namespace Scorpio.Repositories
         /// <summary>
         /// 
         /// </summary>
-        protected BasicRepositoryBase(IServiceProvider serviceProvider,ICancellationTokenProvider cancellationTokenProvider)
+        protected BasicRepositoryBase(IServiceProvider serviceProvider, ICancellationTokenProvider cancellationTokenProvider)
         {
             ServiceProvider = serviceProvider;
             CancellationTokenProvider = cancellationTokenProvider;
@@ -146,7 +146,7 @@ namespace Scorpio.Repositories
         /// </summary>
         public virtual void SaveChanges()
         {
-            
+
         }
 
         /// <summary>

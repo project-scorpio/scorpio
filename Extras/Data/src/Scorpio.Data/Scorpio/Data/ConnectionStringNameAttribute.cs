@@ -1,8 +1,6 @@
 ﻿
 using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 
 namespace Scorpio.Data
 {
@@ -14,7 +12,7 @@ namespace Scorpio.Data
         /// <summary>
         /// 
         /// </summary>
-        
+
         public string Name { get; }
 
         /// <summary>
@@ -28,7 +26,7 @@ namespace Scorpio.Data
         /// 
         /// </summary>
         /// <param name="name"></param>
-        public ConnectionStringNameAttribute( string name)
+        public ConnectionStringNameAttribute(string name)
         {
             Check.NotNull(name, nameof(name));
 

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Runtime.Serialization;
 
 namespace Scorpio.Data
 {
@@ -14,6 +14,22 @@ namespace Scorpio.Data
         /// 
         /// </summary>
         public static readonly string DefaultConnectionStringName = "Default";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ConnectionStrings()
+        {
+
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="info"></param>
+        /// <param name="context"></param>
+        protected ConnectionStrings(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+        }
 
         /// <summary>
         /// 

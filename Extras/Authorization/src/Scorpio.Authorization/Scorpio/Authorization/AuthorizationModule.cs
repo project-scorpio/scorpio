@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Scorpio.Modularity;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+
 using Scorpio.Authorization.Permissions;
-using Scorpio.Security;
+using Scorpio.Modularity;
 
 namespace Scorpio.Authorization
 {
     /// <summary>
     /// 
     /// </summary>
-    public sealed class AuthorizationModule: ScorpioModule
+    public sealed class AuthorizationModule : ScorpioModule
     {
         /// <summary>
         /// 

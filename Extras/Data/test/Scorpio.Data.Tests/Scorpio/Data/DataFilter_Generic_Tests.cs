@@ -1,9 +1,6 @@
-﻿using Scorpio.TestBase;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Shouldly;
+
 using Xunit;
-using Shouldly;
 namespace Scorpio.Data
 {
     public class DataFilter_Generic_Tests
