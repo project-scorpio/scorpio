@@ -1,7 +1,4 @@
-﻿using AspectCore.DynamicProxy;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 
 namespace Scorpio.Uow
 {
@@ -9,7 +6,7 @@ namespace Scorpio.Uow
     /// 
     /// </summary>
     [AttributeUsage(AttributeTargets.All, AllowMultiple = false, Inherited = false)]
-    public sealed class DisableUnitOfWorkAttribute:Attribute
+    public sealed class DisableUnitOfWorkAttribute : Attribute
     {
     }
 }

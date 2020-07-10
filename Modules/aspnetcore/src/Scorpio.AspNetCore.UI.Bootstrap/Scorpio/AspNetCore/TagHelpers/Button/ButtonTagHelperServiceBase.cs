@@ -83,13 +83,12 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
         /// <returns></returns>
         protected virtual string GetIconClass(TagHelperContext context, TagHelperOutput output)
         {
-            switch (TagHelper.IconType)
+            return TagHelper.IconType switch
             {
-                case FontIconType.FontAwesome:
-                    return "fa fa-" + TagHelper.Icon;
-                default:
-                    return TagHelper.Icon;
-            }
+                FontIconType.FontAwesome => "fa fa-" + TagHelper.Icon,
+                FontIconType.Other => throw new NotImplementedException(),
+                _ => TagHelper.Icon,
+            };
         }
 
         /// <summary>

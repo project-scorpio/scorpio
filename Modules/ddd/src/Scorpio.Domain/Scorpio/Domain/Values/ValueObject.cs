@@ -1,40 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace Scorpio.Data.Values
 {
-    //Inspired from https://blogs.msdn.microsoft.com/cesardelatorre/2011/06/06/implementing-a-value-object-base-class-supertype-patternddd-patterns-related/
-
     /// <summary>
     /// Base class for value objects.
     /// </summary>
     /// <typeparam name="TValueObject">The type of the value object.</typeparam>
-    public abstract class ValueObject<TValueObject> : IEquatable<TValueObject>
+    public abstract class ValueObject<TValueObject>
         where TValueObject : ValueObject<TValueObject>
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
-        public bool Equals(TValueObject other)
-        {
-            if ((object)other == null)
-            {
-                return false;
-            }
-
-            var publicProperties = GetType().GetTypeInfo().GetProperties();
-            if (!publicProperties.Any())
-            {
-                return true;
-            }
-
-            return publicProperties.All(property => Equals(property.GetValue(this, null), property.GetValue(other, null)));
-        }
 
         /// <summary>
         /// 
@@ -47,8 +23,16 @@ namespace Scorpio.Data.Values
             {
                 return false;
             }
-
-            return obj is ValueObject<TValueObject> item && Equals((TValueObject)item);
+            if (obj.GetType()!=GetType())
+            {
+                return false;
+            }
+            var publicProperties = GetType().GetTypeInfo().GetProperties();
+            if (!publicProperties.Any())
+            {
+                return true;
+            }
+            return publicProperties.All(property => Equals(property.GetValue(this, null), property.GetValue(obj, null)));
         }
 
         /// <summary>
@@ -57,7 +41,6 @@ namespace Scorpio.Data.Values
         /// <returns></returns>
         public override int GetHashCode()
         {
-            //TODO: Can we cache the hash value assuming value objects are always immutable? We can make a Reset-like method to reset it's mutated.
 
             const int index = 1;
             const int initialHasCode = 31;
@@ -78,7 +61,6 @@ namespace Scorpio.Data.Values
 
                 if (value == null)
                 {
-                    //support {"a",null,null,"a"} != {null,"a","a",null}
                     hashCode ^= (index * 13);
                     continue;
                 }
@@ -90,36 +72,6 @@ namespace Scorpio.Data.Values
             return hashCode;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <returns></returns>
-        public static bool operator ==(ValueObject<TValueObject> x, ValueObject<TValueObject> y)
-        {
-            if (ReferenceEquals(x, y))
-            {
-                return true;
-            }
-
-            if ((x is null) || (y is null))
-            {
-                return false;
-            }
-
-            return x.Equals(y);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <returns></returns>
-        public static bool operator !=(ValueObject<TValueObject> x, ValueObject<TValueObject> y)
-        {
-            return !(x == y);
-        }
+      
     }
 }

@@ -1,9 +1,9 @@
-﻿using Scorpio.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
+
+using Scorpio.Data;
 
 namespace AutoMapper
 {
@@ -41,7 +41,7 @@ namespace AutoMapper
         /// <param name="properties"></param>
         /// <returns></returns>
         public static IMappingExpression<TSource, TDestination> MapExtraProperties<TSource, TDestination>(
-            this IMappingExpression<TSource, TDestination> mapping, 
+            this IMappingExpression<TSource, TDestination> mapping,
             params Expression<Func<TSource, object>>[] properties)
             where TDestination : IHasExtraProperties
         {
@@ -62,8 +62,8 @@ namespace AutoMapper
         }
 
         private static IEnumerable<ElementInit> GenerateElements<TSource>(
-            System.Reflection.MethodInfo method, 
-            ParameterExpression parameter, 
+            System.Reflection.MethodInfo method,
+            ParameterExpression parameter,
             Expression<Func<TSource, object>>[] expressions)
         {
             return expressions

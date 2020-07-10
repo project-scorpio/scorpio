@@ -1,19 +1,20 @@
-﻿using Scorpio.DependencyInjection;
-using Scorpio.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using Microsoft.Extensions.DependencyInjection;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
+
+using Scorpio.DependencyInjection;
+using Scorpio.EntityFrameworkCore;
 using Scorpio.EntityFrameworkCore.DependencyInjection;
 
 namespace Scorpio.Uow
 {
-    internal class UnitOfWorkEfTransactionStrategy : IEfTransactionStrategy,ITransientDependency
+    internal class UnitOfWorkEfTransactionStrategy : IEfTransactionStrategy, ITransientDependency
     {
         private readonly IServiceProvider _serviceProvider;
+        private bool _disposedValue;
 
         public UnitOfWorkOptions Options { get; private set; }
         /// <summary>
@@ -30,9 +31,9 @@ namespace Scorpio.Uow
 
         public TDbContext CreateDbContext<TDbContext>(string connectionString) where TDbContext : ScorpioDbContext<TDbContext>
         {
-            TDbContext dbContext = null;
             var key = $"Transaction_{connectionString}";
             var descriptor = ActiveTransactions.GetOrDefault(key);
+            TDbContext dbContext;
             if (descriptor == null)
             {
                 dbContext = _serviceProvider.GetRequiredService<TDbContext>();
@@ -65,17 +66,31 @@ namespace Scorpio.Uow
         }
 
 
-        public void Dispose()
-        {
-            ActiveTransactions.Values.ForEach(tran => tran.Dispose());
-            ActiveTransactions.Clear();
-        }
+      
 
         public void InitOptions(UnitOfWorkOptions options)
         {
             Options = options;
         }
 
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposedValue)
+            {
+                if (disposing)
+                {
+                    ActiveTransactions.Values.ForEach(tran => tran.Dispose());
+                    ActiveTransactions.Clear();
+                }
+                _disposedValue = true;
+            }
+        }
 
+        public void Dispose()
+        {
+            // 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
     }
 }

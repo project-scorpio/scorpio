@@ -1,14 +1,13 @@
-﻿using Scorpio.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+
+using Scorpio.DependencyInjection;
 
 namespace Scorpio.Application.Services
 {
     /// <summary>
     /// 
     /// </summary>
-    public abstract class ApplicationService:IApplicationService,ITransientDependency
+    public abstract class ApplicationService : IApplicationService, ITransientDependency
     {
         /// <summary>
         /// 
@@ -18,7 +17,7 @@ namespace Scorpio.Application.Services
         /// <summary>
         /// 
         /// </summary>
-        protected IServiceProvider  ServiceProvider { get; }
+        protected IServiceProvider ServiceProvider { get; }
 
         /// <summary>
         /// 

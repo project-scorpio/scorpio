@@ -13,7 +13,6 @@ namespace Scorpio.AspNetCore.Auditing
     /// </summary>
     internal class AspNetCoreAuditContributor : IAuditContributor
     {
-        private readonly IServiceProvider _serviceProvider;
 
         /// <summary>
         /// 
@@ -24,7 +23,6 @@ namespace Scorpio.AspNetCore.Auditing
         public AspNetCoreAuditContributor(IServiceProvider serviceProvider)
         {
             Logger = serviceProvider.GetService<ILoggerFactory>().CreateLogger<AspNetCoreAuditContributor>();
-            _serviceProvider = serviceProvider;
         }
         public void PreContribute(AuditContributionContext context)
         {

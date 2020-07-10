@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Text;
-
-namespace Scorpio.Application.Dtos
+﻿namespace Scorpio.Application.Dtos
 {
     /// <summary>
     /// 

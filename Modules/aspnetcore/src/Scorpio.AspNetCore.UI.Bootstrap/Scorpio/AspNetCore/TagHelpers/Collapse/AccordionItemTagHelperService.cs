@@ -19,7 +19,6 @@ namespace Scorpio.AspNetCore.TagHelpers.Collapse
         /// <returns></returns>
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
-            var parent = context.GetValue<AccordionTagHelper>("Accordion");
             AddHeader(output);
             output.TagName = "div";
             output.AddClass("collapse");

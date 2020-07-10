@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Scorpio.Application.Services
+﻿namespace Scorpio.Application.Services
 {
     /// <summary>
     /// 
