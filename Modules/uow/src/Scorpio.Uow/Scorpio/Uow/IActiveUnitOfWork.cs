@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -55,6 +53,6 @@ namespace Scorpio.Uow
         /// No explicit call is needed to SaveChanges generally, 
         /// since all changes saved at end of a unit of work automatically.
         /// </summary>
-        Task SaveChangesAsync(CancellationToken cancellationToken=default);
+        Task SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }

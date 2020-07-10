@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.Modularity;
 
-namespace Scorpio.RPC
+namespace Scorpio.Rpc
 {
     /// <summary>
     /// 
     /// </summary>
-    public class RPCModule:ScorpioModule
+    public class RpcModule : ScorpioModule
     {
         /// <summary>
         /// 

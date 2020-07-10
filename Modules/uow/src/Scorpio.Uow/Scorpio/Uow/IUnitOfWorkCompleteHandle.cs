@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -39,6 +37,6 @@ namespace Scorpio.Uow
         /// Completes this unit of work.
         /// It saves all changes and commit transaction if exists.
         /// </summary>
-        Task CompleteAsync(CancellationToken cancellationToken=default);
+        Task CompleteAsync(CancellationToken cancellationToken = default);
     }
 }

@@ -1,11 +1,9 @@
-﻿using Scorpio.Conventional;
+﻿using System.Reflection;
+
+using Scorpio.Conventional;
 using Scorpio.Domain.Services;
 using Scorpio.DynamicProxy;
 using Scorpio.Uow;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
 
 namespace Scorpio.Domain
 {

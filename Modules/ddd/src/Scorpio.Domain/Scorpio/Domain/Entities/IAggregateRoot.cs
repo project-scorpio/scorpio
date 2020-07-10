@@ -1,14 +1,11 @@
 ﻿using Scorpio.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.Domain.Entities
 {
     /// <summary>
     /// 
     /// </summary>
-    public interface IAggregateRoot:IEntity,IGeneratesDomainEvents
+    public interface IAggregateRoot : IEntity, IGeneratesDomainEvents
     {
     }
 

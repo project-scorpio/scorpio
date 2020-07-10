@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using Scorpio.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Scorpio.EntityFrameworkCore.DependencyInjection;
 using System.Threading;
+using System.Threading.Tasks;
+
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+
+using Scorpio.EntityFrameworkCore;
+using Scorpio.EntityFrameworkCore.DependencyInjection;
 
 namespace Scorpio.Uow
 {
@@ -53,14 +54,14 @@ namespace Scorpio.Uow
         /// 
         /// </summary>
         /// <returns></returns>
-        public override async Task SaveChangesAsync(CancellationToken cancellationToken=default)
+        public override async Task SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             foreach (var item in GetAllActiveDbContexts())
             {
                 if (item.ChangeTracker.HasChanges())
                 {
                     await item.SaveChangesAsync(cancellationToken);
-                }   
+                }
             }
         }
 
@@ -91,7 +92,7 @@ namespace Scorpio.Uow
         /// 
         /// </summary>
         /// <returns></returns>
-        protected override async Task CompleteUowAsync(CancellationToken cancellationToken=default)
+        protected override async Task CompleteUowAsync(CancellationToken cancellationToken = default)
         {
             await SaveChangesAsync(cancellationToken);
             if (Options.IsTransactional == true)
@@ -143,7 +144,7 @@ namespace Scorpio.Uow
         {
             using (DbContextCreationContext.Use(new DbContextCreationContext(connectionString)))
             {
-                var context = Options.IsTransactional ?? (true && Options.Scope!= System.Transactions.TransactionScopeOption.Suppress) ?
+                var context = Options.IsTransactional ?? (Options.Scope != System.Transactions.TransactionScopeOption.Suppress) ?
                     CreateDbContextWithTransactional<TDbContext>(connectionString) :
                     ServiceProvider.GetRequiredService<TDbContext>();
                 if (Options.Timeout.HasValue &&

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Scorpio.Uow
+﻿namespace Scorpio.Uow
 {
     /// <summary>
     /// Used to get/set current <see cref="IUnitOfWork"/>. 

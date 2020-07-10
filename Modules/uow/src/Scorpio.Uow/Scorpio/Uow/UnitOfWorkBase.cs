@@ -1,9 +1,8 @@
-﻿using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Microsoft.Extensions.Options;
 
 namespace Scorpio.Uow
 {
@@ -78,7 +77,7 @@ namespace Scorpio.Uow
             Check.NotNull(options, nameof(options));
 
             PreventMultipleBegin();
-            Options = _defaultOptions.Normalize(options.Clone()); 
+            Options = _defaultOptions.Normalize(options.Clone());
             BeginUow();
         }
 
@@ -105,7 +104,7 @@ namespace Scorpio.Uow
         /// 
         /// </summary>
         /// <returns></returns>
-        public async Task CompleteAsync(CancellationToken cancellationToken=default)
+        public async Task CompleteAsync(CancellationToken cancellationToken = default)
         {
             PreventMultipleComplete();
             try
@@ -121,26 +120,7 @@ namespace Scorpio.Uow
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public void Dispose()
-        {
-            if (!_isBeginCalledBefore || IsDisposed)
-            {
-                return;
-            }
-
-            IsDisposed = true;
-
-            if (!_succeed)
-            {
-                OnFailed(_exception);
-            }
-
-            DisposeUow();
-            OnDisposed();
-        }
+   
 
         /// <summary>
         /// 
@@ -151,7 +131,7 @@ namespace Scorpio.Uow
         /// 
         /// </summary>
         /// <returns></returns>
-        public abstract Task SaveChangesAsync(CancellationToken cancellationToken=default);
+        public abstract Task SaveChangesAsync(CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Can be implemented by derived classes to start UOW.
@@ -166,7 +146,7 @@ namespace Scorpio.Uow
         /// <summary>
         /// Should be implemented by derived classes to complete UOW.
         /// </summary>
-        protected abstract Task CompleteUowAsync(CancellationToken cancellationToken=default);
+        protected abstract Task CompleteUowAsync(CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Should be implemented by derived classes to dispose UOW.
@@ -217,6 +197,45 @@ namespace Scorpio.Uow
             }
 
             _isCompleteCalledBefore = true;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="disposing"></param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!IsDisposed)
+            {
+                if (disposing)
+                {
+                    if (!_isBeginCalledBefore)
+                    {
+                        return;
+                    }
+                    if (!_succeed)
+                    {
+                        OnFailed(_exception);
+                    }
+
+                    DisposeUow();
+                    OnDisposed();
+                }
+
+                IsDisposed = true;
+            }
+        }
+
+     
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Dispose()
+        {
+            // 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }

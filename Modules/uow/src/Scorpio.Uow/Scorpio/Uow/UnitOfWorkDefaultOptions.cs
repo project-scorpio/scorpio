@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Transactions;
 
 namespace Scorpio.Uow
@@ -54,12 +52,12 @@ namespace Scorpio.Uow
                 options.Timeout = Timeout;
             }
 
-            if (options.IsTransactional==null)
+            if (options.IsTransactional == null)
             {
                 options.IsTransactional = IsTransactional;
             }
 
-            if (options.Scope==null)
+            if (options.Scope == null)
             {
                 options.Scope = Scope;
             }

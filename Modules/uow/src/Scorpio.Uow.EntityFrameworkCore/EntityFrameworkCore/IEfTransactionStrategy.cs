@@ -1,16 +1,13 @@
-﻿using Scorpio.EntityFrameworkCore;
+﻿using System;
+
 using Scorpio.Uow;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Scorpio.EntityFrameworkCore
 {
     /// <summary>
     /// 
     /// </summary>
-    public interface IEfTransactionStrategy
+    public interface IEfTransactionStrategy:IDisposable
     {
         /// <summary>
         /// 
@@ -32,8 +29,6 @@ namespace Scorpio.EntityFrameworkCore
         /// </summary>
         void Commit();
 
-        /// <summary>
-        /// </summary>
-        void Dispose();
+       
     }
 }

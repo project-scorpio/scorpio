@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Transactions;
 
 namespace Scorpio.Uow
@@ -53,7 +51,8 @@ namespace Scorpio.Uow
         /// <returns></returns>
         public UnitOfWorkOptions Clone()
         {
-            return new UnitOfWorkOptions {
+            return new UnitOfWorkOptions
+            {
                 IsTransactional = IsTransactional,
                 IsolationLevel = IsolationLevel,
                 AsyncFlowOption = AsyncFlowOption,

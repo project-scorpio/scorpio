@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -16,7 +15,7 @@ namespace Scorpio.Uow
         public static readonly string DidNotCallCompleteMethodExceptionMessage = "Did not call Complete method of a unit of work.";
 
         private volatile bool _isCompleteCalled;
-        private volatile bool _isDisposed;
+        private bool _disposedValue;
 
         public event EventHandler Completed;
         public event EventHandler<UnitOfWorkFailedEventArgs> Failed;
@@ -28,27 +27,13 @@ namespace Scorpio.Uow
             OnCompleted();
         }
 
-        public Task CompleteAsync(CancellationToken cancellationToken=default)
+        public Task CompleteAsync(CancellationToken cancellationToken = default)
         {
             _isCompleteCalled = true;
             OnCompleted();
             return Task.FromResult(0);
         }
 
-        public void Dispose()
-        {
-            if (_isDisposed)
-            {
-                return;
-            }
-
-            _isDisposed = true;
-            if (!_isCompleteCalled)
-            {
-                OnFailed(null);
-            }
-            OnDisposed();
-        }
 
         protected virtual void OnCompleted()
         {
@@ -70,6 +55,31 @@ namespace Scorpio.Uow
         protected virtual void OnDisposed()
         {
             Disposed?.Invoke(this, EventArgs.Empty);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposedValue)
+            {
+                if (disposing)
+                {
+                    if (!_isCompleteCalled)
+                    {
+                        OnFailed(null);
+                    }
+                    OnDisposed();
+                }
+
+                _disposedValue = true;
+            }
+        }
+
+
+        public void Dispose()
+        {
+            // 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Scorpio.Application.Dtos
 {
@@ -79,7 +75,7 @@ namespace Scorpio.Application.Dtos
         /// <param name="where"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public ListRequest<TEntityDto> Where(string where,params object[] parameters)
+        public ListRequest<TEntityDto> Where(string where, params object[] parameters)
         {
             WhereString = where;
             Parameters = parameters;

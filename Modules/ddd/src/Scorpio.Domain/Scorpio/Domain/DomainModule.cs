@@ -1,12 +1,8 @@
-﻿using Scorpio.Modularity;
-using Scorpio.Threading;
-using Scorpio.Uow;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Scorpio.DynamicProxy;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.Data;
+using Scorpio.Modularity;
+using Scorpio.Uow;
 
 namespace Scorpio.Domain
 {
@@ -15,7 +11,7 @@ namespace Scorpio.Domain
     /// </summary>
     [DependsOn(typeof(UnitOfWorkModule))]
     [DependsOn(typeof(DataModule))]
-    public sealed class DomainModule:ScorpioModule
+    public sealed class DomainModule : ScorpioModule
     {
 
         /// <summary>
@@ -26,13 +22,6 @@ namespace Scorpio.Domain
         {
             context.Services.AddConventionalRegistrar<ConventionalRegistrar>();
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="context"></param>
-        public override void ConfigureServices(ConfigureServicesContext context)
-        {
-            
-        }
+       
     }
 }

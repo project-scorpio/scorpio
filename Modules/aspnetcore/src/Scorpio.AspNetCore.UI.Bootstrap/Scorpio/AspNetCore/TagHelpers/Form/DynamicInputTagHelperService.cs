@@ -8,6 +8,8 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
     /// <summary>
     /// 
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Critical Code Smell", "S4487:Unread \"private\" fields should be removed", Justification = "<挂起>")]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0052:删除未读的私有成员", Justification = "<挂起>")]
     public class DynamicInputTagHelperService : TagHelperService<DynamicInputTagHelper>
     {
         private readonly IHtmlGenerator _htmlGenerator;

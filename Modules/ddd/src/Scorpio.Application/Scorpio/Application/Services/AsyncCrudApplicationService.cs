@@ -1,13 +1,15 @@
-﻿using Scorpio.Application.Dtos;
-using System;
-using AutoMapper.QueryableExtensions;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
 using System.Threading;
-using Scorpio.Repositories;
+using System.Threading.Tasks;
+
+using AutoMapper.QueryableExtensions;
+
+using Microsoft.Extensions.DependencyInjection;
+
+using Scorpio.Application.Dtos;
 using Scorpio.Entities;
 using Scorpio.Linq;
-using Microsoft.Extensions.DependencyInjection;
+using Scorpio.Repositories;
 namespace Scorpio.Application.Services
 {
     /// <summary>
@@ -100,7 +102,7 @@ namespace Scorpio.Application.Services
         /// <summary>
         /// 
         /// </summary>
-        public IAsyncQueryableExecuter AsyncQueryableExecuter { get;  }
+        public IAsyncQueryableExecuter AsyncQueryableExecuter { get; }
 
         /// <summary>
         /// 

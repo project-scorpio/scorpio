@@ -1,9 +1,9 @@
-﻿using Scorpio.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using System.Transactions;
+
 using Microsoft.Extensions.DependencyInjection;
+
+using Scorpio.DependencyInjection;
 namespace Scorpio.Uow
 {
     /// <summary>
