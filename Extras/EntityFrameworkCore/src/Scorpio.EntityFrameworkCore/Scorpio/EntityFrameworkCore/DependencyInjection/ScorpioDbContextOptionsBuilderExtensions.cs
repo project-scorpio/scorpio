@@ -44,7 +44,7 @@ namespace Scorpio.EntityFrameworkCore.DependencyInjection
         /// <param name="optionsBuilder"></param>
         /// <param name="optionsAction"></param>
         /// <returns></returns>
-        public static IScorpioDbContextOptionsBuilder<TDbContext> UseOptions<TDbContext>(this IScorpioDbContextOptionsBuilder<TDbContext> optionsBuilder, Action<DbContextOptionsBuilder<TDbContext>> optionsAction)
+        private static IScorpioDbContextOptionsBuilder<TDbContext> UseOptions<TDbContext>(this IScorpioDbContextOptionsBuilder<TDbContext> optionsBuilder, Action<DbContextOptionsBuilder<TDbContext>> optionsAction)
                where TDbContext : ScorpioDbContext<TDbContext>
         {
             if (optionsBuilder is ScorpioDbContextOptionsBuilder<TDbContext> builder)
