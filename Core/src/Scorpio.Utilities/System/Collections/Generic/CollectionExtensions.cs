@@ -39,6 +39,29 @@ namespace System.Collections.Generic
         }
 
         /// <summary>
+        /// Adds an item to the collection if it's not already in the collection.
+        /// </summary>
+        /// <param name="source">The collection</param>
+        /// <param name="item">Item to check and add</param>
+        /// <param name="comparer"></param>
+        /// <typeparam name="T">Type of the items in the collection</typeparam>
+        /// <returns>Returns True if added, returns False if not.</returns>
+        public static bool AddIfNotContains<T>(this ICollection<T> source, T item,IEqualityComparer<T> comparer)
+        {
+            
+            Check.NotNull(source, nameof(source));
+
+            if (source.Contains(item,comparer))
+            {
+                return false;
+            }
+
+            source.Add(item);
+            return true;
+        }
+
+
+        /// <summary>
         /// Adds an item to the collection if it's not already in the collection based on the given <paramref name="predicate"/>.
         /// </summary>
         /// <param name="source">The collection</param>
@@ -51,7 +74,6 @@ namespace System.Collections.Generic
             Check.NotNull(source, nameof(source));
             Check.NotNull(source, nameof(predicate));
             Check.NotNull(itemFactory, nameof(itemFactory));
-
             if (source.Any(predicate))
             {
                 return false;
@@ -78,6 +100,48 @@ namespace System.Collections.Generic
             }
 
             return items;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="selector"></param>
+        /// <param name="default"></param>
+        /// <returns></returns>
+
+        public static T GetOrDefault<T>(this ICollection<T> source, Func<T, bool> selector,T @default=default)
+        {
+            Check.NotNull(source, nameof(source));
+
+            var item = source.FirstOrDefault(selector)??@default;
+            return item;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="selector"></param>
+        /// <param name="factory"></param>
+        /// <returns></returns>
+
+        public static T GetOrAdd<T>(this ICollection<T> source, Func<T, bool> selector, Func<T> factory)
+        {
+            Check.NotNull(source, nameof(source));
+
+            var item = source.FirstOrDefault(selector);
+
+            if (item == null)
+            {
+                item = factory();
+                source.Add(item);
+            }
+
+            return item;
         }
     }
 }
