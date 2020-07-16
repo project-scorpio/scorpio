@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Razor.TagHelpers;
-using System;
+﻿using System;
+
+using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Scorpio.AspNetCore.TagHelpers.Button
 {
@@ -45,7 +46,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
 
             if (TagHelper.ButtonType != ButtonType.Default)
             {
-                output.AddClass($"btn-{(TagHelper.OutLine&&TagHelper.ButtonType!= ButtonType.Link?"outline-":"")}{ TagHelper.ButtonType.ToClassName()}");
+                output.AddClass($"btn-{(TagHelper.OutLine && TagHelper.ButtonType != ButtonType.Link ? "outline-" : "")}{ TagHelper.ButtonType.ToClassName()}");
             }
 
             if (TagHelper.Size != Size.Default)
@@ -82,13 +83,12 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
         /// <returns></returns>
         protected virtual string GetIconClass(TagHelperContext context, TagHelperOutput output)
         {
-            switch (TagHelper.IconType)
+            return TagHelper.IconType switch
             {
-                case FontIconType.FontAwesome:
-                    return "fa fa-" + TagHelper.Icon;
-                default:
-                    return TagHelper.Icon;
-            }
+                FontIconType.FontAwesome => "fa fa-" + TagHelper.Icon,
+                FontIconType.Other => throw new NotImplementedException(),
+                _ => TagHelper.Icon,
+            };
         }
 
         /// <summary>

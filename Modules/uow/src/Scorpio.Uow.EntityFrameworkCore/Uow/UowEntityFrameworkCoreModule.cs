@@ -1,9 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.EntityFrameworkCore;
 using Scorpio.Modularity;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.Uow.EntityFrameworkCore.Uow
 {
@@ -22,7 +20,7 @@ namespace Scorpio.Uow.EntityFrameworkCore.Uow
         {
             context.Services.ReplaceTransient<IUnitOfWork, EfUnitOfWork>();
             context.Services.AddTransient<IEfTransactionStrategy, UnitOfWorkEfTransactionStrategy>();
-            context.Services.ReplaceOrAdd(ServiceDescriptor.Transient(typeof(IDbContextProvider<>), typeof(UnitOfWorkDbContextProvider<>)),true);
+            context.Services.ReplaceOrAdd(ServiceDescriptor.Transient(typeof(IDbContextProvider<>), typeof(UnitOfWorkDbContextProvider<>)), true);
             context.Services.RegisterAssemblyByConvention();
         }
     }

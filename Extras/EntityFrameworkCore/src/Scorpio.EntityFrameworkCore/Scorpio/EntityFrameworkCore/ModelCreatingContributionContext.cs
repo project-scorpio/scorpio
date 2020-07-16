@@ -1,15 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.EntityFrameworkCore
 {
     /// <summary>
     /// 
     /// </summary>
-    public sealed class ModelCreatingContributionContext<TEntity> where TEntity :class
+    public sealed class ModelCreatingContributionContext
     {
         /// <summary>
         /// 

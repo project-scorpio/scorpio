@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Text;
-
-namespace Scorpio.Data
+﻿namespace Scorpio.Data
 {
     public interface ITestFilter
     {

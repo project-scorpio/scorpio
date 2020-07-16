@@ -1,16 +1,16 @@
-﻿using Scorpio.TestBase;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Extensions.DependencyInjection;
-using Xunit;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+using Scorpio.TestBase;
+
 using Shouldly;
+
+using Xunit;
 
 namespace Scorpio.Authorization
 {
     public class AuthorizationManager_Test : IntegratedTest<AuthorizationTestModule>
     {
-        private IAuthorizationManager _authorizationManager;
+        private readonly IAuthorizationManager _authorizationManager;
 
         public AuthorizationManager_Test()
         {

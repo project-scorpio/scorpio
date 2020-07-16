@@ -6,7 +6,7 @@ namespace Scorpio.Auditing
     /// <summary>
     /// 
     /// </summary>
-    public interface IAuditSaveHandle: IDisposable
+    public interface IAuditSaveHandle : IDisposable
     {
         /// <summary>
         /// 

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
 
 namespace Scorpio.Entities
 {
@@ -16,7 +15,7 @@ namespace Scorpio.Entities
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public static bool IsEntity( Type type)
+        public static bool IsEntity(Type type)
         {
             return typeof(IEntity).IsAssignableFrom(type);
         }
@@ -62,7 +61,7 @@ namespace Scorpio.Entities
         /// Tries to find the primary key type of the given entity type.
         /// May return null if given type does not implement <see cref="IEntity{TKey}"/>
         /// </summary>
-        public static Type FindPrimaryKeyType( Type entityType)
+        public static Type FindPrimaryKeyType(Type entityType)
         {
             if (!typeof(IEntity).IsAssignableFrom(entityType))
             {

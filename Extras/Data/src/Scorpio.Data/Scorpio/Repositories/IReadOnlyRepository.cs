@@ -1,9 +1,8 @@
-﻿using Scorpio.Entities;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
+
+using Scorpio.Entities;
 
 namespace Scorpio.Repositories
 {

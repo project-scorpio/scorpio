@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Razor.TagHelpers;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+
+using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Scorpio.AspNetCore.TagHelpers.Alerts
 {
@@ -10,7 +8,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Alerts
     /// 
     /// </summary>
     [HtmlTargetElement("a", Attributes = "alert-link", TagStructure = TagStructure.NormalOrSelfClosing)]
-    public class AlertLinkTagHelper:TagHelper
+    public class AlertLinkTagHelper : TagHelper
     {
         /// <summary>
         /// 

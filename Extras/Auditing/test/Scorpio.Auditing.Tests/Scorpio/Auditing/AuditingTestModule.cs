@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Security.Principal;
-using System.Text;
-using Scorpio.Modularity;
+
 using Microsoft.Extensions.DependencyInjection;
+
+using Scorpio.Modularity;
 using Scorpio.Security;
 using Scorpio.Timing;
 

@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System;
+
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.AspNetCore.DependencyInjection
 {
@@ -35,14 +35,24 @@ namespace Scorpio.AspNetCore.DependencyInjection
 
         class ServiceScope : IServiceScope
         {
+
             public IServiceProvider ServiceProvider { get; }
 
             public ServiceScope(IServiceProvider serviceProvider)
             {
                 ServiceProvider = serviceProvider;
             }
+
+            protected virtual void Dispose(bool disposing)
+            {
+            }
+
+  
             public void Dispose()
             {
+                // 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中
+                Dispose(disposing: true);
+                GC.SuppressFinalize(this);
             }
         }
     }

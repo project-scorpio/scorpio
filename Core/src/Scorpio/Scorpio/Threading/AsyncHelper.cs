@@ -29,7 +29,7 @@ namespace Scorpio.Threading
         /// <returns></returns>
         public static bool IsTask(this Type type)
         {
-            return type == typeof(Task) || type.GetTypeInfo().IsGenericType && type.GetGenericTypeDefinition() == typeof(Task<>);
+            return type == typeof(Task) || (type.GetTypeInfo().IsGenericType && type.GetGenericTypeDefinition() == typeof(Task<>));
         }
 
         /// <summary>

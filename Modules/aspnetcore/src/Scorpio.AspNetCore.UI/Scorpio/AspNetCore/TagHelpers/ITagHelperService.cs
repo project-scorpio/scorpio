@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Scorpio.DependencyInjection;
 
 namespace Scorpio.AspNetCore.TagHelpers
 {
@@ -15,7 +15,7 @@ namespace Scorpio.AspNetCore.TagHelpers
     /// 
     /// </summary>
     /// <typeparam name="TTagHelper"></typeparam>
-    public interface ITagHelperService<TTagHelper> :ITagHelperService where TTagHelper : TagHelper
+    public interface ITagHelperService<out TTagHelper> : ITagHelperService where TTagHelper : TagHelper
     {
         /// <summary>
         /// 

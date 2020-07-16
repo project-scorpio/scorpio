@@ -1,12 +1,12 @@
-﻿using Scorpio.Entities;
-using System;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Collections;
+
+using Scorpio.Entities;
 using Scorpio.Threading;
 
 namespace Scorpio.Repositories
@@ -128,7 +128,7 @@ namespace Scorpio.Repositories
             var members = body.Bindings.Cast<MemberAssignment>().Select(a => new
             {
                 a.Member.Name,
-                Value=Expression.Lambda(a.Expression).Compile().DynamicInvoke()
+                Value = Expression.Lambda(a.Expression).Compile().DynamicInvoke()
             });
             var type = typeof(TEntity);
             members.ForEach(m =>

@@ -1,9 +1,11 @@
-﻿using Scorpio.Application.Dtos;
+﻿using System;
+using System.Linq;
+
+using AutoMapper.QueryableExtensions;
+
+using Scorpio.Application.Dtos;
 using Scorpio.Entities;
 using Scorpio.Repositories;
-using System;
-using AutoMapper.QueryableExtensions;
-using System.Linq;
 
 namespace Scorpio.Application.Services
 {

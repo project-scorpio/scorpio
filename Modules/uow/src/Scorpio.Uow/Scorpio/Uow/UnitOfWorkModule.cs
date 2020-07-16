@@ -1,16 +1,13 @@
-﻿using Scorpio.Modularity;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Scorpio.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.DependencyInjection;
+
+using Scorpio.Modularity;
 namespace Scorpio.Uow
 {
     /// <summary>
     /// 
     /// </summary>
-    public sealed class UnitOfWorkModule:ScorpioModule
+    public sealed class UnitOfWorkModule : ScorpioModule
     {
 
         /// <summary>

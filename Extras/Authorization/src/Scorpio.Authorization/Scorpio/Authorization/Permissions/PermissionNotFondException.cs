@@ -1,20 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Text;
 
 namespace Scorpio.Authorization.Permissions
 {
     /// <summary>
     /// 
     /// </summary>
+   [Serializable]
     public class PermissionNotFondException : ScorpioException
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="permissionName"></param>
-        public PermissionNotFondException( string permissionName):base($"Undefined permission: {permissionName}")
+        public PermissionNotFondException(string permissionName) : base($"Undefined permission: {permissionName}")
         {
             PermissionName = permissionName;
         }
@@ -24,7 +23,7 @@ namespace Scorpio.Authorization.Permissions
         /// </summary>
         /// <param name="permissionName"></param>
         /// <param name="message"></param>
-        public PermissionNotFondException(string permissionName,string message) : base(message)
+        public PermissionNotFondException(string permissionName, string message) : base(message)
         {
             PermissionName = permissionName;
         }

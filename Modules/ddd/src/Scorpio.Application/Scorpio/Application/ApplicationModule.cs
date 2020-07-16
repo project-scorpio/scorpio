@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Scorpio.Modularity;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.Data;
+using Scorpio.Modularity;
 using Scorpio.Uow;
 
 namespace Scorpio.Application
@@ -13,7 +11,7 @@ namespace Scorpio.Application
     /// </summary>
     [DependsOn(typeof(DataModule))]
     [DependsOn(typeof(UnitOfWorkModule))]
-    public class ApplicationModule: ScorpioModule
+    public class ApplicationModule : ScorpioModule
     {
         /// <summary>
         /// 

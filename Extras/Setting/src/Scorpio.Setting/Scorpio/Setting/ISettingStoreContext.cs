@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Scorpio.Setting
 {
@@ -12,7 +10,7 @@ namespace Scorpio.Setting
         /// <summary>
         /// 
         /// </summary>
-        IDictionary<string,object> Properties { get; }
+        IDictionary<string, object> Properties { get; }
 
         /// <summary>
         /// 

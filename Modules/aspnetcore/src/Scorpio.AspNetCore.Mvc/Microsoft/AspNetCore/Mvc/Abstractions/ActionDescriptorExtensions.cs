@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc.Controllers;
+﻿using System;
+using System.Reflection;
+
+using Microsoft.AspNetCore.Mvc.Controllers;
+
 using Scorpio;
 using Scorpio.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
 
 namespace Microsoft.AspNetCore.Mvc.Abstractions
 {

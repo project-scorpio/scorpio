@@ -42,11 +42,9 @@
                 throw new ArgumentNullException(nameof(path));
 
             var t = path.Parameters[0];
-            var member = path.Body as MemberExpression;
-            if (member == null)
+            if (!(path.Body is MemberExpression member))
                 throw new NotSupportedException("Only member expressions are supported yet.");
-
-            var bind = Expression.Bind(member.Member, _predicate.Body); ;
+            var bind = Expression.Bind(member.Member, _predicate.Body);
 
             return Expression.Lambda<Func<TTranslatedSource, TTranslatedSource>>(
               Expression.MemberInit(Expression.New(typeof(TTranslatedSource)), bind), t);

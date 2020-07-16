@@ -5,7 +5,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
     /// <summary>
     /// 
     /// </summary>
-    public class DropdownTagHelperService:TagHelperService<DropdownTagHelper>
+    public class DropdownTagHelperService : TagHelperService<DropdownTagHelper>
     {
         /// <summary>
         /// 

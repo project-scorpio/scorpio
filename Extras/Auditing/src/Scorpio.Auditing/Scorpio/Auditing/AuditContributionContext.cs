@@ -5,7 +5,7 @@ namespace Scorpio.Auditing
     /// <summary>
     /// 
     /// </summary>
-    public  sealed class AuditContributionContext
+    public sealed class AuditContributionContext
     {
 
         /// <summary>
@@ -27,14 +27,14 @@ namespace Scorpio.Auditing
         /// <summary>
         /// 
         /// </summary>
-        public AuditInfo AuditInfo { get;  }
+        public AuditInfo AuditInfo { get; }
 
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="TWapper"></typeparam>
         /// <returns></returns>
-        public TWapper CreateWapper<TWapper>() where TWapper:AuditInfoWapper
+        public TWapper CreateWapper<TWapper>() where TWapper : AuditInfoWapper
             => Activator.CreateInstance(typeof(TWapper), AuditInfo) as TWapper;
     }
 }

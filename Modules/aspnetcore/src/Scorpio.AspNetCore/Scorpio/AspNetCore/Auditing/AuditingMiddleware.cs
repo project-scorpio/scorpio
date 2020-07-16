@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Threading.Tasks;
+
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
+
 using Scorpio.Auditing;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Scorpio.AspNetCore.Auditing
 {
@@ -71,7 +70,7 @@ namespace Scorpio.AspNetCore.Auditing
                 return false;
             }
 
-            if (!Options.IsEnabledForAnonymousUsers && !(httpContext.User?.Identity.IsAuthenticated??false))
+            if (!Options.IsEnabledForAnonymousUsers && !(httpContext.User?.Identity.IsAuthenticated ?? false))
             {
                 return false;
             }

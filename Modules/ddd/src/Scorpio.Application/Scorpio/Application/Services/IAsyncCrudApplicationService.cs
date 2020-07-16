@@ -1,9 +1,7 @@
-﻿using Scorpio.Application.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+
+using Scorpio.Application.Dtos;
 
 namespace Scorpio.Application.Services
 {
@@ -14,8 +12,8 @@ namespace Scorpio.Application.Services
     /// <typeparam name="TEntityDto"></typeparam>
     /// <typeparam name="TKey"></typeparam>
     public interface IAsyncCrudApplicationService<TEntityDto, in TKey>
-        :IAsyncCrudApplicationService<TEntityDto,TKey,ListRequest<TEntityDto>>
-        where TEntityDto:IEntityDto<TKey>
+        : IAsyncCrudApplicationService<TEntityDto, TKey, ListRequest<TEntityDto>>
+        where TEntityDto : IEntityDto<TKey>
     {
 
     }
@@ -27,8 +25,8 @@ namespace Scorpio.Application.Services
     /// <typeparam name="TKey"></typeparam>
     /// <typeparam name="TGetListInput"></typeparam>
     public interface IAsyncCrudApplicationService<TEntityDto, in TKey, in TGetListInput>
-        :IAsyncCrudApplicationService<TEntityDto,TKey,TGetListInput,TEntityDto>
-        where TEntityDto:IEntityDto<TKey>
+        : IAsyncCrudApplicationService<TEntityDto, TKey, TGetListInput, TEntityDto>
+        where TEntityDto : IEntityDto<TKey>
     {
 
     }
@@ -41,8 +39,8 @@ namespace Scorpio.Application.Services
     /// <typeparam name="TGetListInput"></typeparam>
     /// <typeparam name="TCreateInput"></typeparam>
     public interface IAsyncCrudApplicationService<TEntityDto, in TKey, in TGetListInput, in TCreateInput>
-        :IAsyncCrudApplicationService<TEntityDto,TKey,TGetListInput,TCreateInput,TCreateInput>
-        where TEntityDto:IEntityDto<TKey>
+        : IAsyncCrudApplicationService<TEntityDto, TKey, TGetListInput, TCreateInput, TCreateInput>
+        where TEntityDto : IEntityDto<TKey>
     {
 
     }
@@ -54,9 +52,9 @@ namespace Scorpio.Application.Services
     /// <typeparam name="TGetListInput"></typeparam>
     /// <typeparam name="TCreateInput"></typeparam>
     /// <typeparam name="TUpdateInput"></typeparam>
-    public interface IAsyncCrudApplicationService<TEntityDto,in TKey,in TGetListInput, in TCreateInput,in TUpdateInput>
-        :IApplicationService
-        where TEntityDto:IEntityDto<TKey>
+    public interface IAsyncCrudApplicationService<TEntityDto, in TKey, in TGetListInput, in TCreateInput, in TUpdateInput>
+        : IApplicationService
+        where TEntityDto : IEntityDto<TKey>
     {
 
         /// <summary>
@@ -65,7 +63,7 @@ namespace Scorpio.Application.Services
         /// <param name="id"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<TEntityDto> GetAsync(TKey id, CancellationToken cancellationToken=default);
+        Task<TEntityDto> GetAsync(TKey id, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 

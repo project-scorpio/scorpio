@@ -34,17 +34,4 @@ namespace Scorpio.Modularity
         }
     }
 
-    ///// <summary>
-    ///// 
-    ///// </summary>
-    ///// <typeparam name="TModule"></typeparam>
-    //public class DependsOnAttribute<TModule> : DependsOnAttribute
-    //{
-    //    /// <summary>
-    //    /// 
-    //    /// </summary>
-    //    public DependsOnAttribute() : base(typeof(TModule))
-    //    {
-    //    }
-    //}
 }

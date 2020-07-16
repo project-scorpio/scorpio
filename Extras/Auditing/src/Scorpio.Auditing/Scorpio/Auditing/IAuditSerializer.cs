@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Scorpio.Auditing
+﻿namespace Scorpio.Auditing
 {
     /// <summary>
     /// 

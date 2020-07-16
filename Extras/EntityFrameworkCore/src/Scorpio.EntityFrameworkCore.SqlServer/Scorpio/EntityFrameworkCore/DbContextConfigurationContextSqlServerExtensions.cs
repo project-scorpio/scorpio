@@ -1,10 +1,9 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+
 using Scorpio.EntityFrameworkCore.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.EntityFrameworkCore
 {

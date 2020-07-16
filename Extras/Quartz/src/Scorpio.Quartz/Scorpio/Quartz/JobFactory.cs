@@ -1,9 +1,9 @@
-﻿using Quartz;
+﻿using System;
+
+using Quartz;
 using Quartz.Spi;
+
 using Scorpio.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.Quartz
 {

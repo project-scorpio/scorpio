@@ -1,15 +1,15 @@
-﻿using Scorpio.TestBase;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Extensions.DependencyInjection;
-using Xunit;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+using Scorpio.TestBase;
+
 using Shouldly;
+
+using Xunit;
 namespace Scorpio.Authorization
 {
     public class AuthorizationService_Test : IntegratedTest<AuthorizationTestModule>
     {
-        private IAuthorizationService _authorizationService;
+        private readonly IAuthorizationService _authorizationService;
         public AuthorizationService_Test()
         {
             _authorizationService = ServiceProvider.GetService<IAuthorizationService>();
@@ -44,14 +44,14 @@ namespace Scorpio.Authorization
                 .ShouldThrow<Permissions.PermissionNotFondException>();
             _authorizationService.CheckAsync(
                 new InvocationAuthorizationContext(
-                    new string[] { "Permission_Test_3", "Permission_Test_1", "Permission_Test_2" }, true, this.GetType().GetMethod(nameof(FakeMethod), System.Reflection.BindingFlags.NonPublic| System.Reflection.BindingFlags.Instance)))
+                    new string[] { "Permission_Test_3", "Permission_Test_1", "Permission_Test_2" }, true, this.GetType().GetMethod(nameof(FakeMethod), System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)))
                 .ShouldNotThrow();
         }
 
         [AllowAnonymous]
         void FakeMethod()
         {
-
+            // Method intentionally left empty.
         }
 
     }

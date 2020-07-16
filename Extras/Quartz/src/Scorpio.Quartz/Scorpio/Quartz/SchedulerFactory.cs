@@ -1,12 +1,13 @@
-﻿using Quartz;
+﻿using System;
+
+using Microsoft.Extensions.DependencyInjection;
+
+using Quartz;
 using Quartz.Core;
 using Quartz.Impl;
 using Quartz.Spi;
+
 using Scorpio.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Extensions.DependencyInjection;
 namespace Scorpio.Quartz
 {
     class SchedulerFactory : StdSchedulerFactory, ISingletonDependency
@@ -19,7 +20,7 @@ namespace Scorpio.Quartz
         }
         protected override IScheduler Instantiate(QuartzSchedulerResources rsrcs, QuartzScheduler qs)
         {
-            
+
             var sch = base.Instantiate(rsrcs, qs);
             sch.JobFactory = _serviceProvider.GetService<IJobFactory>();
             return sch;

@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System;
+
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
+
 using Scorpio.Auditing;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.AspNetCore.Auditing
 {
@@ -14,7 +13,6 @@ namespace Scorpio.AspNetCore.Auditing
     /// </summary>
     internal class AspNetCoreAuditContributor : IAuditContributor
     {
-        private readonly IServiceProvider _serviceProvider;
 
         /// <summary>
         /// 
@@ -25,7 +23,6 @@ namespace Scorpio.AspNetCore.Auditing
         public AspNetCoreAuditContributor(IServiceProvider serviceProvider)
         {
             Logger = serviceProvider.GetService<ILoggerFactory>().CreateLogger<AspNetCoreAuditContributor>();
-            _serviceProvider = serviceProvider;
         }
         public void PreContribute(AuditContributionContext context)
         {
@@ -35,7 +32,7 @@ namespace Scorpio.AspNetCore.Auditing
                 return;
             }
             var wapper = context.CreateWapper<AspNetCoreAuditInfoWapper>();
-            wapper.CurrentUser = httpContext.User?.Identity?.Name?? "Anonymous";
+            wapper.CurrentUser = httpContext.User?.Identity?.Name ?? "Anonymous";
             if (wapper.HttpMethod == null)
             {
                 wapper.HttpMethod = httpContext.Request.Method;

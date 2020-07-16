@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace Scorpio.Setting
 {
@@ -29,6 +26,6 @@ namespace Scorpio.Setting
         /// <param name="settingDefinition"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        Task SetAsync<T>(SettingDefinition<T> settingDefinition,T value);
+        Task SetAsync<T>(SettingDefinition<T> settingDefinition, T value);
     }
 }

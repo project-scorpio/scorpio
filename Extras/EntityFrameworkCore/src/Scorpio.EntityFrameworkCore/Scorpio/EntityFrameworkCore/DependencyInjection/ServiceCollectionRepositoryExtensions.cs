@@ -1,11 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 using Scorpio.Entities;
 using Scorpio.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.EntityFrameworkCore.DependencyInjection
 {
@@ -52,7 +51,7 @@ namespace Scorpio.EntityFrameworkCore.DependencyInjection
             }
 
             var primaryKeyType = EntityHelper.FindPrimaryKeyType(entityType);
-            if (primaryKeyType != null )
+            if (primaryKeyType != null)
             {
                 //IReadOnlyBasicRepository<TEntity, TKey>
                 var readOnlyBasicRepositoryInterfaceWithPk = typeof(IReadOnlyBasicRepository<,>).MakeGenericType(entityType, primaryKeyType);

@@ -1,16 +1,16 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.Modularity;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
+
 using Shouldly;
+
+using Xunit;
 
 namespace Scorpio.Data
 {
-    public class ConnectionStringResolver_Tests: TestBase.IntegratedTest<ConnectionStringResolverModule>
+    public class ConnectionStringResolver_Tests : TestBase.IntegratedTest<ConnectionStringResolverModule>
     {
-        public IConnectionStringResolver  Resolver { get; set; }
+        public IConnectionStringResolver Resolver { get; set; }
         public ConnectionStringResolver_Tests()
         {
             Resolver = ServiceProvider.GetRequiredService<IConnectionStringResolver>();

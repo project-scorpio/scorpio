@@ -1,12 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using System.Threading.Tasks;
+
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Scorpio.DependencyInjection;
-using Scorpio.Threading;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Scorpio.AspNetCore.TagHelpers
 {
@@ -64,7 +60,7 @@ namespace Scorpio.AspNetCore.TagHelpers
         /// </summary>
         /// <param name="context"></param>
         /// <param name="output"></param>
-        public virtual void Process(TagHelperContext context,TagHelperOutput output)
+        public virtual void Process(TagHelperContext context, TagHelperOutput output)
         {
 
         }

@@ -5,7 +5,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
     /// <summary>
     /// 
     /// </summary>
-    [HtmlTargetElement("button", Attributes ="button-type", TagStructure = TagStructure.NormalOrSelfClosing)]
+    [HtmlTargetElement("button", Attributes = "button-type", TagStructure = TagStructure.NormalOrSelfClosing)]
     public class ButtonTagHelper : TagHelper<ButtonTagHelper, ButtonTagHelperService>, IButtonTagHelperBase
     {
         /// <summary>
@@ -57,7 +57,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
         /// 
         /// </summary>
         /// <param name="service"></param>
-        public ButtonTagHelper(ButtonTagHelperService service) 
+        public ButtonTagHelper(ButtonTagHelperService service)
             : base(service)
         {
 

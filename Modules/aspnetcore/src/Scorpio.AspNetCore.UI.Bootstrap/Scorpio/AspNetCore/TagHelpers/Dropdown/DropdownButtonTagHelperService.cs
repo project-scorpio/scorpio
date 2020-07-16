@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using System.Linq;
+
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using System.Linq;
 
 namespace Scorpio.AspNetCore.TagHelpers.Dropdown
 {
@@ -24,7 +25,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
                     break;
                 case DropdownButtonType.Split:
                     var tagbuilder = new TagBuilder(output.TagName);
-                    tagbuilder.MergeAttributes(output.Attributes.ToDictionary(a=>a.Name,a=>a.Value));
+                    tagbuilder.MergeAttributes(output.Attributes.ToDictionary(a => a.Name, a => a.Value));
                     tagbuilder.AddClass("dropdown-toggle").AddClass("dropdown-toggle-split").AddAttribute("data-toggle", "dropdown");
                     output.PostElement.AppendHtml(tagbuilder);
                     break;

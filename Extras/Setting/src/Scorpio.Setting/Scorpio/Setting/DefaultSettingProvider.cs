@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Scorpio.Setting
+﻿namespace Scorpio.Setting
 {
     internal class DefaultSettingProvider : SettingProvider, DependencyInjection.ISingletonDependency
     {

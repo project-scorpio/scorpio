@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Scorpio.AspNetCore.TagHelpers.Carousel
@@ -56,9 +56,9 @@ namespace Scorpio.AspNetCore.TagHelpers.Carousel
             output.TagName = "div";
             output.TagMode = TagMode.StartTagAndEndTag;
             AddBasicAttributes(context, output);
-           await output.GetChildContentAsync();
+            await output.GetChildContentAsync();
             var itemList = context.GetValue<List<CarouselItem>>(CAROUSEL_ITEMS_CONTENT);
-            SetOneItemAsActive(context, output, itemList);
+            SetOneItemAsActive(itemList);
             SetIndicators(context, output, itemList);
             output.PreContent.AppendHtml("<div class=\"carousel-inner\">");
             output.PostContent.AppendHtml("</div>");
@@ -125,10 +125,8 @@ namespace Scorpio.AspNetCore.TagHelpers.Carousel
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="context"></param>
-        /// <param name="output"></param>
         /// <param name="itemList"></param>
-        private void SetOneItemAsActive(TagHelperContext context, TagHelperOutput output, List<CarouselItem> itemList)
+        private void SetOneItemAsActive(List<CarouselItem> itemList)
         {
             if (!itemList.Any(it => it.IsActive) && itemList.Count > 0)
             {

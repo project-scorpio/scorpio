@@ -16,8 +16,6 @@ namespace System
         [Fact]
         public void EnsureStartsWith()
         {
-            "hello word".EnsureStartsWith('h').ShouldBe("hello word");
-            "hello word".EnsureStartsWith('i').ShouldBe("ihello word");
             "hello word".EnsureStartsWith("h").ShouldBe("hello word");
             "hello word".EnsureStartsWith("i").ShouldBe("ihello word");
         }

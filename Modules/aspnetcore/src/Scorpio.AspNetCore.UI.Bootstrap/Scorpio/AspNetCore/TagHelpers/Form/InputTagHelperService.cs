@@ -23,7 +23,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
             switch (TagHelper.Orientation)
             {
                 case Orientation.Horizontal:
-                    output.PreElement.AppendHtml($"<div class=\"form-group row\"><label class=\"col-md-2 col-form-label{TagHelper.Size switch { Size.Large => " col-form-label-lg",Size.Small=> " col-form-label-sm",_=>"" }}\" for=\"{output.Attributes["id"].Value}\">{TagHelper.Title}</label><div class=\"col-md-10\">{old}");
+                    output.PreElement.AppendHtml($"<div class=\"form-group row\"><label class=\"col-md-2 col-form-label{TagHelper.Size switch { Size.Large => " col-form-label-lg", Size.Small => " col-form-label-sm", _ => "" }}\" for=\"{output.Attributes["id"].Value}\">{TagHelper.Title}</label><div class=\"col-md-10\">{old}");
                     output.PostElement.AppendHtml($"</div></div>");
                     break;
                 default:

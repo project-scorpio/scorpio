@@ -3,9 +3,10 @@
 using Xunit;
 namespace System.Collections.Generic
 {
+    [Diagnostics.CodeAnalysis.SuppressMessage("Blocker Code Smell", "S2699:Tests should include assertions", Justification = "<挂起>")]
     public class ListExtensions_Tests
     {
-        static List<string> _sourceList = new List<string> { "Item1", "Item2", "Item3" };
+        static readonly List<string> _sourceList = new List<string> { "Item1", "Item2", "Item3" };
 
         [Fact]
         public void FindIndex()

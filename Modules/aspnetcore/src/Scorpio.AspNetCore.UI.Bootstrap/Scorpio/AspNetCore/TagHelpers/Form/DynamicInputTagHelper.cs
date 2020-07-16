@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.AspNetCore.Razor.TagHelpers;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace Scorpio.AspNetCore.TagHelpers.Form
 {
@@ -17,7 +12,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
         /// </summary>
         public ModelExpression AspFor { get; set; }
 
-      
+
 
         /// <summary>
         /// 
@@ -25,7 +20,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
         /// <param name="service"></param>
         public DynamicInputTagHelper(DynamicInputTagHelperService service) : base(service)
         {
-           
+
         }
     }
 }

@@ -7,7 +7,7 @@ namespace System.Linq.Expressions
     {
         private readonly Expression<TDelegate> _predicate;
 
-        internal ExpressionTranslation(Expression<TDelegate> predicate)
+        protected ExpressionTranslation(Expression<TDelegate> predicate)
         {
             this._predicate = predicate;
         }
@@ -30,7 +30,7 @@ namespace System.Linq.Expressions
             _predicate.Parameters.CopyTo(parameters, 0);
             var expression = _predicate.Body;
             var types = parameterTypes.GetEnumerator();
-            for (int i = 0; i < _predicate.Parameters.Count; i++)
+            for (var i = 0; i < _predicate.Parameters.Count; i++)
             {
                 if (!types.MoveNext())
                 {

@@ -1,14 +1,12 @@
-﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using Scorpio.Application.Dtos;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Linq.Dynamic.Core;
-using System.Text;
-using System.Linq.Expressions;
-using Scorpio.Repositories;
+
+using AutoMapper;
+
+using Scorpio.Application.Dtos;
 using Scorpio.Entities;
+using Scorpio.Repositories;
 
 namespace Scorpio.Application.Services
 {
@@ -77,7 +75,7 @@ namespace Scorpio.Application.Services
         /// <returns></returns>
         protected virtual IQueryable<TEntity> ApplyPaging(IQueryable<TEntity> query, TGetListInput input)
         {
-            if (input is IPagingRequest paging && paging.MaxResultCount>0)
+            if (input is IPagingRequest paging && paging.MaxResultCount > 0)
             {
                 return query.Skip(paging.SkipCount).Take(paging.MaxResultCount);
             }

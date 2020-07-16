@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Scorpio.EntityFrameworkCore
+﻿namespace Scorpio.EntityFrameworkCore
 {
     /// <summary>
     /// 
@@ -12,6 +8,6 @@ namespace Scorpio.EntityFrameworkCore
         /// <summary>
         /// 
         /// </summary>
-        void Contributor<TEntity>(ModelCreatingContributionContext<TEntity> context) where TEntity:class;
+        void Contributor<TEntity>(ModelCreatingContributionContext context) where TEntity : class;
     }
 }

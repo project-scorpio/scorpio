@@ -1,8 +1,6 @@
-﻿using Scorpio;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+
+using Scorpio;
 namespace Microsoft.Extensions.Hosting
 {
     /// <summary>
@@ -54,7 +52,7 @@ namespace Microsoft.Extensions.Hosting
         /// <returns></returns>
         public static IHostBuilder AddScorpio(this IHostBuilder builder, Type startupModuleType, Action<BootstrapperCreationOptions> optionsAction)
         {
-            builder.UseServiceProviderFactory(context=>new ServiceProviderFactory(context,startupModuleType,optionsAction));
+            builder.UseServiceProviderFactory(context => new ServiceProviderFactory(context, startupModuleType, optionsAction));
             return builder;
         }
     }

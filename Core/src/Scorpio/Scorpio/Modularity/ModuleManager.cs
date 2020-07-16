@@ -20,13 +20,13 @@ namespace Scorpio.Modularity
 
         }
 
-        public void InitializeModules(ApplicationInitializationContext context)
+        public void InitializeModules(ApplicationInitializationContext  applicationInitializationContext)
         {
             LogListOfModules();
 
-            _moduleContainer.Modules.ForEach(d => d.Instance.PreInitialize(context));
-            _moduleContainer.Modules.ForEach(d => d.Instance.Initialize(context));
-            _moduleContainer.Modules.ForEach(d => d.Instance.PostInitialize(context));
+            _moduleContainer.Modules.ForEach(d => d.Instance.PreInitialize(applicationInitializationContext));
+            _moduleContainer.Modules.ForEach(d => d.Instance.Initialize(applicationInitializationContext));
+            _moduleContainer.Modules.ForEach(d => d.Instance.PostInitialize(applicationInitializationContext));
 
             _logger.LogInformation("Initialized all modules.");
         }
@@ -41,10 +41,10 @@ namespace Scorpio.Modularity
             }
         }
 
-        public void ShutdownModules(ApplicationShutdownContext context)
+        public void ShutdownModules(ApplicationShutdownContext  applicationShutdownContext)
         {
             var modules = _moduleContainer.Modules.Reverse().ToList();
-            modules.ForEach(d => d.Instance.Shutdown(context));
+            modules.ForEach(d => d.Instance.Shutdown(applicationShutdownContext));
         }
     }
 

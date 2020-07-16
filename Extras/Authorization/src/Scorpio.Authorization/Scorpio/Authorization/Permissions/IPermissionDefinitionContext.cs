@@ -1,9 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Scorpio.Authorization.Permissions
+﻿namespace Scorpio.Authorization.Permissions
 {
     /// <summary>
     /// 
@@ -23,7 +18,7 @@ namespace Scorpio.Authorization.Permissions
         /// <param name="name"></param>
         /// <param name="displayName"></param>
         /// <returns></returns>
-        PermissionGroupDefinition AddGroup( string name, string displayName = null);
+        PermissionGroupDefinition AddGroup(string name, string displayName = null);
 
     }
 }

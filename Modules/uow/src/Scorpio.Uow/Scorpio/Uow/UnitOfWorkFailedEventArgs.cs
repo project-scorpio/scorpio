@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.Uow
 {
     /// <summary>
     /// Used as event arguments on <see cref="IUnitOfWork.Failed"/> event.
     /// </summary>
-    public class UnitOfWorkFailedEventArgs:EventArgs
+    public class UnitOfWorkFailedEventArgs : EventArgs
     {
 
         /// <summary>

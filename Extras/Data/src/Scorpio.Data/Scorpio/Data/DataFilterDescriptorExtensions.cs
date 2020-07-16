@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace Scorpio.Data
 {
@@ -15,7 +13,7 @@ namespace Scorpio.Data
         /// </summary>
         /// <param name="descriptor"></param>
         /// <returns></returns>
-        public static IDataFilterDescriptor<TFilter> Enable<TFilter>(this IDataFilterDescriptor<TFilter> descriptor) where TFilter:class
+        public static IDataFilterDescriptor<TFilter> Enable<TFilter>(this IDataFilterDescriptor<TFilter> descriptor) where TFilter : class
         {
             (descriptor as DataFilterDescriptor<TFilter>).IsEnabled = true;
             return descriptor;

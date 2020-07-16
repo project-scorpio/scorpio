@@ -19,7 +19,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Collapse
             {
                 AddButtonAttribute(output);
             }
-            if (output.TagName=="a")
+            if (output.TagName == "a")
             {
                 AddLinkAttribute(output);
             }

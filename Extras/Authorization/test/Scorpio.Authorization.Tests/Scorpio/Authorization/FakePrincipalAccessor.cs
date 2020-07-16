@@ -1,12 +1,10 @@
-﻿using Scorpio.Security;
-using System;
-using System.Collections.Generic;
-using System.Security.Principal;
-using System.Text;
+﻿using System.Security.Principal;
+
+using Scorpio.Security;
 
 namespace Scorpio.Authorization
 {
-    class FakePrincipalAccessor: ICurrentPrincipalAccessor
+    class FakePrincipalAccessor : ICurrentPrincipalAccessor
     {
         public IPrincipal Principal { get; }
 

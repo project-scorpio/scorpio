@@ -6,19 +6,14 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
     {
         public static string ToClassName(this Size size)
         {
-            switch (size)
+            return size switch
             {
-                case Size.Small:
-                    return "btn-sm";
-                case Size.Medium:
-                    return "btn-md";
-                case Size.Large:
-                    return "btn-lg";
-                case Size.Default:
-                    return "";
-                default:
-                    throw new Exception($"Unknown {nameof(Size)}: {size}");
-            }
+                Size.Small => "btn-sm",
+                Size.Medium => "btn-md",
+                Size.Large => "btn-lg",
+                Size.Default => "",
+                _ => throw new NotSupportedException($"Unknown {nameof(Size)}: {size}"),
+            };
         }
     }
 }

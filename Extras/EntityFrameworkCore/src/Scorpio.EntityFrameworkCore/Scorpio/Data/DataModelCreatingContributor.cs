@@ -1,23 +1,23 @@
-﻿using Scorpio.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Reflection;
+
 using Microsoft.EntityFrameworkCore;
+
 using Newtonsoft.Json;
-using System.Collections.Immutable;
+
+using Scorpio.EntityFrameworkCore;
 
 namespace Scorpio.Data
 {
     class DataModelCreatingContributor : IModelCreatingContributor
     {
-        public void Contributor<TEntity>(ModelCreatingContributionContext<TEntity> context) where TEntity : class
+        public void Contributor<TEntity>(ModelCreatingContributionContext context) where TEntity : class
         {
-            ConfigureSoftDelete(context);
-            ConfigureExtraProperties(context);
+            ConfigureSoftDelete<TEntity>(context);
+            ConfigureExtraProperties<TEntity>(context);
         }
 
-        private static void ConfigureExtraProperties<TEntity>(ModelCreatingContributionContext<TEntity> context) where TEntity : class
+        private static void ConfigureExtraProperties<TEntity>(ModelCreatingContributionContext context) where TEntity : class
         {
             if (typeof(TEntity).IsAssignableTo<IHasExtraProperties>())
             {
@@ -28,11 +28,11 @@ namespace Scorpio.Data
                         s => JsonConvert.DeserializeObject<Dictionary<string, object>>(s)
                         ).HasColumnName(nameof(IHasExtraProperties.ExtraProperties));
                 });
-                
+
             }
         }
 
-        private static void ConfigureSoftDelete<TEntity>(ModelCreatingContributionContext<TEntity> context) where TEntity : class
+        private static void ConfigureSoftDelete<TEntity>(ModelCreatingContributionContext context) where TEntity : class
         {
             if (typeof(TEntity).IsAssignableTo<ISoftDelete>())
             {

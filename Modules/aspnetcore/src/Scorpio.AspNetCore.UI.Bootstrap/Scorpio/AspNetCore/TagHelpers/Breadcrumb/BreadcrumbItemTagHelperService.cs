@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text.Encodings.Web;
+
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Scorpio.AspNetCore.TagHelpers.Breadcrumb
@@ -45,7 +46,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Breadcrumb
             var list = context.GetValue<List<BreadcrumbItem>>(BreadcrumbItemsContent);
 
             output.Content.SetHtmlContent(GetInnerHtml(context, output));
-            
+
             list.Add(new BreadcrumbItem
             {
                 Html = RenderTagHelperOutput(output, _encoder),
@@ -69,7 +70,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Breadcrumb
                 output.Attributes.Add("aria-current", "page");
                 return content;
             }
-            return "<a href=\"" + TagHelper.Href + "\" title=\""+TagHelper.Title+"\">" + content+ "</a>";
+            return "<a href=\"" + TagHelper.Href + "\" title=\"" + TagHelper.Title + "\">" + content + "</a>";
         }
 
     }

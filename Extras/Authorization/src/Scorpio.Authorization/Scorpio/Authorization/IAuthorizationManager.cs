@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace Scorpio.Authorization
 {
@@ -16,6 +13,6 @@ namespace Scorpio.Authorization
         /// </summary>
         /// <param name="requireAllPermissions"></param>
         /// <param name="permissions"></param>
-        Task AuthorizeAsync(bool requireAllPermissions,params string[] permissions);
+        Task AuthorizeAsync(bool requireAllPermissions, params string[] permissions);
     }
 }

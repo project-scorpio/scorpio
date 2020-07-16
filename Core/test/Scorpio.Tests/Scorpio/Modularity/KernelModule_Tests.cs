@@ -17,9 +17,9 @@ namespace Scorpio.Modularity
         {
             using (var bootstrapeer = Bootstrapper.Create<MyStartupModule>())
             {
-                bootstrapeer.Services.Where(s => s.ServiceType == typeof(ISingletonUserService)).SingleOrDefault().Lifetime.ShouldBe(ServiceLifetime.Singleton);
-                bootstrapeer.Services.Where(s => s.ServiceType == typeof(IScopedUserService)).SingleOrDefault().Lifetime.ShouldBe(ServiceLifetime.Scoped);
-                bootstrapeer.Services.Where(s => s.ServiceType == typeof(ITransientUserService)).SingleOrDefault().Lifetime.ShouldBe(ServiceLifetime.Transient);
+                bootstrapeer.Services.SingleOrDefault(s => s.ServiceType == typeof(ISingletonUserService)).Lifetime.ShouldBe(ServiceLifetime.Singleton);
+                bootstrapeer.Services.SingleOrDefault(s => s.ServiceType == typeof(IScopedUserService)).Lifetime.ShouldBe(ServiceLifetime.Scoped);
+                bootstrapeer.Services.SingleOrDefault(s => s.ServiceType == typeof(ITransientUserService)).Lifetime.ShouldBe(ServiceLifetime.Transient);
                 bootstrapeer.ServiceProvider.GetService<ISingletonUserService>().ShouldBeOfType<SingletonUserService>().ShouldNotBeNull();
                 bootstrapeer.ServiceProvider.GetService<IScopedUserService>().ShouldBeOfType<ScopedUserService>().ShouldNotBeNull();
                 bootstrapeer.ServiceProvider.GetService<ITransientUserService>().ShouldBeOfType<TransientUserService>().ShouldNotBeNull();

@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Scorpio.AspNetCore.TagHelpers.Carousel
@@ -9,8 +8,8 @@ namespace Scorpio.AspNetCore.TagHelpers.Carousel
     /// <summary>
     /// 
     /// </summary>
-    [HtmlTargetElement(ParentTag ="carousel")]
-    public class CarouselItemTagHelper:TagHelper
+    [HtmlTargetElement(ParentTag = "carousel")]
+    public class CarouselItemTagHelper : TagHelper
     {
         /// <summary>
         /// 
@@ -29,7 +28,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Carousel
             list.Add(new CarouselItem { IsActive = IsActive ?? false });
             output.TagName = "div";
             output.AddClass("carousel-item");
-            if (IsActive??false)
+            if (IsActive ?? false)
             {
                 output.AddClass("active");
             }

@@ -63,13 +63,7 @@ namespace Scorpio.Modularity
             }
         }
 
-        protected virtual void SetDependencies(List<ModuleDescriptor> modules)
-        {
-            foreach (var module in modules)
-            {
-                SetDependencies(modules, module);
-            }
-        }
+       
 
         protected virtual List<IModuleDescriptor> SortByDependency(List<IModuleDescriptor> modules, Type startupModuleType)
         {
@@ -91,16 +85,19 @@ namespace Scorpio.Modularity
             return module;
         }
 
+        protected virtual void SetDependencies(List<ModuleDescriptor> modules)
+        {
+            foreach (var module in modules)
+            {
+                SetDependencies(modules, module);
+            }
+        }
+
         protected virtual void SetDependencies(List<ModuleDescriptor> modules, ModuleDescriptor module)
         {
             foreach (var dependedModuleType in ModuleHelper.FindDependedModuleTypes(module.Type))
             {
-                var dependedModule = modules.FirstOrDefault(m => m.Type == dependedModuleType);
-                if (dependedModule == null)
-                {
-                    throw new System.Exception("Could not find a depended module " + dependedModuleType.AssemblyQualifiedName + " for " + module.Type.AssemblyQualifiedName);
-                }
-
+                var dependedModule = modules.FirstOrDefault(m => m.Type == dependedModuleType)?? throw new NullReferenceException("Could not find a depended module " + dependedModuleType.AssemblyQualifiedName + " for " + module.Type.AssemblyQualifiedName);
                 module.AddDependency(dependedModule);
             }
         }

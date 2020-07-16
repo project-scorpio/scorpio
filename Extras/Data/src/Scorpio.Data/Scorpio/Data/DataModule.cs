@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.Modularity;
-using Scorpio.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Scorpio.Data
 {
@@ -20,7 +17,7 @@ namespace Scorpio.Data
         {
             context.Services.PreConfigure<DataFilterOptions>(options =>
             {
-                options.Configure<ISoftDelete>(f=>f.Expression(d=>d.IsDeleted==false));
+                options.Configure<ISoftDelete>(f => f.Expression(d => !d.IsDeleted));
             });
             context.Services.AddSingleton(typeof(IDataFilter<>), typeof(DataFilter<>));
             context.Services.RegisterAssemblyByConvention();

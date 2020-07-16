@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Razor.TagHelpers;
 namespace Scorpio.AspNetCore.TagHelpers.Color
 {
     /// <summary>
     /// 
     /// </summary>
-    [HtmlTargetElement(Attributes ="txt-color")]
+    [HtmlTargetElement(Attributes = "txt-color")]
     public class TextColorTagHelper : TagHelper
     {
         /// <summary>
         /// 
         /// </summary>
         [HtmlAttributeName("txt-color")]
-        public TextColorType   TextColor { get; set; }
+        public TextColorType TextColor { get; set; }
         /// <summary>
         /// 
         /// </summary>

@@ -1,7 +1,4 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.AspNetCore.TagHelpers.Collapse
 {
@@ -16,7 +13,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Collapse
         /// <summary>
         /// 
         /// </summary>
-        public CollapseType  Collapse { get; set; }
+        public CollapseType Collapse { get; set; }
         /// <summary>
         /// 
         /// </summary>

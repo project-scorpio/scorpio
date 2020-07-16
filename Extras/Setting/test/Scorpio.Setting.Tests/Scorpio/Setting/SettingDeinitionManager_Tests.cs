@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+
 using Shouldly;
+
 using Xunit;
 namespace Scorpio.Setting
 {
-    public class SettingDeinitionManager_Tests:TestBase.IntegratedTest<SettingTestModule>
+    public class SettingDeinitionManager_Tests : TestBase.IntegratedTest<SettingTestModule>
     {
         private readonly ISettingDefinitionManager _settingDefinitionManager;
 
@@ -39,7 +38,8 @@ namespace Scorpio.Setting
         public void SettingDefinitionThrowWhenNotExists()
         {
             _settingDefinitionManager.Get("Setting").ShouldBeOfType<SettingDefinition<string>>().Name.ShouldBe("Setting");
-            Should.Throw(() => {
+            Should.Throw(() =>
+            {
                 _settingDefinitionManager.Get("SettingNotExists");
             }, typeof(ScorpioException));
         }

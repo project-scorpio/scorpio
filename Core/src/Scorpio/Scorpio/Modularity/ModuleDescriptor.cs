@@ -26,7 +26,7 @@ namespace Scorpio.Modularity
             Check.NotNull(type, nameof(type));
             Check.NotNull(instance, nameof(instance));
 
-            if (!type.GetTypeInfo().IsAssignableFrom(instance.GetType()))
+            if (!type.GetTypeInfo().IsInstanceOfType(instance))
             {
                 throw new ArgumentException($"Given module instance ({instance.GetType().AssemblyQualifiedName}) is not an instance of given module type: {type.AssemblyQualifiedName}");
             }

@@ -1,11 +1,11 @@
-﻿using Scorpio.Entities;
-using Scorpio.Threading;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Scorpio.Entities;
+using Scorpio.Threading;
 
 namespace Scorpio.Repositories
 {

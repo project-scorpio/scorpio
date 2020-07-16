@@ -1,12 +1,12 @@
-﻿using Scorpio.DependencyInjection;
-using Scorpio.Uow;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
+
+using Scorpio.DependencyInjection;
 using Scorpio.Timing;
+using Scorpio.Uow;
 
 namespace Scorpio.Domain.Services
 {

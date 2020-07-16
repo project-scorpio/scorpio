@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Scorpio.Authorization.Permissions
+﻿namespace Scorpio.Authorization.Permissions
 {
     public class FakePermissionDefinitionProvider : IPermissionDefinitionProvider
     {

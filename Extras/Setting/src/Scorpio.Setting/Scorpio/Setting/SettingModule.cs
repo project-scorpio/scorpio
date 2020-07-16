@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.Modularity;
-using Microsoft.Extensions.DependencyInjection;
 namespace Scorpio.Setting
 {
     /// <summary>

@@ -1,9 +1,7 @@
-﻿using Scorpio.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+
+using Scorpio.Entities;
 
 namespace Scorpio.Repositories
 {
@@ -23,8 +21,8 @@ namespace Scorpio.Repositories
         /// Set true to automatically save entity to database.
         /// This is useful for ORMs / database APIs those only save changes with an explicit method call, but you need to immediately save changes to the database.
         /// </param>
-        
-        TEntity Insert( TEntity entity, bool autoSave = true);
+
+        TEntity Insert(TEntity entity, bool autoSave = true);
 
         /// <summary>
         /// Inserts a new entity.
@@ -35,8 +33,8 @@ namespace Scorpio.Repositories
         /// </param>
         /// <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> to observe while waiting for the task to complete.</param>
         /// <param name="entity">Inserted entity</param>
-        
-        Task<TEntity> InsertAsync( TEntity entity, bool autoSave = true, CancellationToken cancellationToken = default);
+
+        Task<TEntity> InsertAsync(TEntity entity, bool autoSave = true, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates an existing entity.
@@ -46,8 +44,8 @@ namespace Scorpio.Repositories
         /// Set true to automatically save changes to database.
         /// This is useful for ORMs / database APIs those only save changes with an explicit method call, but you need to immediately save changes to the database.
         /// </param>
-        
-        TEntity Update( TEntity entity, bool autoSave = true);
+
+        TEntity Update(TEntity entity, bool autoSave = true);
 
         /// <summary>
         /// Updates an existing entity. 
@@ -58,8 +56,8 @@ namespace Scorpio.Repositories
         /// </param>
         /// <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> to observe while waiting for the task to complete.</param>
         /// <param name="entity">Entity</param>
-        
-        Task<TEntity> UpdateAsync( TEntity entity, bool autoSave = true, CancellationToken cancellationToken = default);
+
+        Task<TEntity> UpdateAsync(TEntity entity, bool autoSave = true, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Deletes an entity.
@@ -69,7 +67,7 @@ namespace Scorpio.Repositories
         /// Set true to automatically save changes to database.
         /// This is useful for ORMs / database APIs those only save changes with an explicit method call, but you need to immediately save changes to the database.
         /// </param>
-        void Delete( TEntity entity, bool autoSave = true);
+        void Delete(TEntity entity, bool autoSave = true);
 
         /// <summary>
         /// Deletes an entity.
@@ -80,7 +78,7 @@ namespace Scorpio.Repositories
         /// This is useful for ORMs / database APIs those only save changes with an explicit method call, but you need to immediately save changes to the database.
         /// </param>
         /// <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> to observe while waiting for the task to complete.</param>
-        Task DeleteAsync( TEntity entity, bool autoSave = true, CancellationToken cancellationToken = default);
+        Task DeleteAsync(TEntity entity, bool autoSave = true, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -111,7 +109,7 @@ namespace Scorpio.Repositories
         /// Set true to automatically save changes to database.
         /// This is useful for ORMs / database APIs those only save changes with an explicit method call, but you need to immediately save changes to the database.
         /// </param>
-        void Delete(TKey id, bool autoSave = true); //TODO: Return true if deleted
+        void Delete(TKey id, bool autoSave = true); 
 
         /// <summary>
         /// Deletes an entity by primary key.
@@ -122,7 +120,7 @@ namespace Scorpio.Repositories
         /// This is useful for ORMs / database APIs those only save changes with an explicit method call, but you need to immediately save changes to the database.
         /// </param>
         /// <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> to observe while waiting for the task to complete.</param>
-        Task DeleteAsync(TKey id, bool autoSave = true, CancellationToken cancellationToken = default);  //TODO: Return true if deleted
+        Task DeleteAsync(TKey id, bool autoSave = true, CancellationToken cancellationToken = default);  
 
 
     }

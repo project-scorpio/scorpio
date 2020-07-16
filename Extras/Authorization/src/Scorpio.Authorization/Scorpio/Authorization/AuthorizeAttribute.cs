@@ -1,15 +1,15 @@
-﻿using AspectCore.DynamicProxy;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
+
+using AspectCore.DynamicProxy;
+
 using Microsoft.Extensions.DependencyInjection;
 namespace Scorpio.Authorization
 {
     /// <summary>
     /// 
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class| AttributeTargets.Interface | AttributeTargets.Method, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.Method, AllowMultiple = false)]
     public class AuthorizeAttribute : AbstractInterceptorAttribute
     {
 
