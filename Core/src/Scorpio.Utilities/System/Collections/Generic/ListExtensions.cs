@@ -211,29 +211,7 @@ namespace System.Collections.Generic
             source.Insert(targetIndex, item);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="source"></param>
-        /// <param name="selector"></param>
-        /// <param name="factory"></param>
-        /// <returns></returns>
-
-        public static T GetOrAdd<T>(this IList<T> source, Func<T, bool> selector, Func<T> factory)
-        {
-            Check.NotNull(source, nameof(source));
-
-            var item = source.FirstOrDefault(selector);
-
-            if (item == null)
-            {
-                item = factory();
-                source.Add(item);
-            }
-
-            return item;
-        }
+       
 
         /// <summary>
         /// Sort a list by a topological sorting, which consider their dependencies.
