@@ -1,7 +1,4 @@
-
-﻿using System;
-using System.Reflection;
-
+﻿using System.Reflection;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,6 +11,19 @@ namespace Scorpio.Modularity
     /// </summary>
     public static class ConfigureServicesContextExtensions
     {
+        /// <summary>
+        /// 向 <see cref="IServiceCollection"/> 集合添加 <see cref="IConventionalRegistrar"/> 对象实例，用于为 <see cref="RegisterAssemblyByConvention(ConfigureServicesContext, Assembly)"/> 方法提供通用注册者。
+        /// </summary>
+        /// <param name="context"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static ConfigureServicesContext AddConventionalRegistrar<T>(this ConfigureServicesContext context)
+            where T : IConventionalRegistrar
+        {
+            context.Services.AddConventionalRegistrar<T>();
+            return context;
+        }
+
         /// <summary>
         /// 向 <see cref="IServiceCollection"/> 集合添加 <see cref="IConventionalRegistrar"/> 对象实例，用于为 <see cref="RegisterAssemblyByConvention(ConfigureServicesContext, Assembly)"/> 方法提供通用注册者。
         /// </summary>
@@ -31,12 +41,11 @@ namespace Scorpio.Modularity
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static ConfigureServicesContext AddConventionalRegistrar<T>(this ConfigureServicesContext context)
-          where T : IConventionalRegistrar
+        public static ConfigureServicesContext RegisterAssemblyByConvention(this ConfigureServicesContext context)
         {
-            return context.AddConventionalRegistrar(Activator.CreateInstance<T>());
+            context.Services.RegisterAssemblyByConvention();
+            return context;
         }
-
         /// <summary>
         /// 
         /// </summary>
@@ -49,28 +58,17 @@ namespace Scorpio.Modularity
             return context;
         }
 
-
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="context"></param>
-        /// <returns></returns>
-
-        public static ConfigureServicesContext RegisterAssemblyByConvention(this ConfigureServicesContext context)
-
-        {
-            var assembly = Assembly.GetCallingAssembly();
-            return RegisterAssemblyByConvention(context, assembly);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="context"></param>
         /// <returns></returns>
         public static ConfigureServicesContext RegisterAssemblyByConventionOfType<T>(this ConfigureServicesContext context)
         {
-            return context.RegisterAssemblyByConvention(typeof(T).GetTypeInfo().Assembly);
+            context.Services.RegisterAssemblyByConventionOfType<T>();
+            return context;
         }
+
     }
 }
