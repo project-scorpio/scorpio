@@ -339,3 +339,4 @@ publish.cmd
 .dotnet/
 .vscode/
 .sonarqube/
+.sonarlint
