@@ -8,7 +8,9 @@ namespace System.Linq
 {
     public class QueryableExtensions_Tests
     {
+
         static readonly IQueryable<string> _sourceList = new List<string> { "Item1", "Item2", "Item3", "Item4", "Item5", "Item6", "Item7" }.AsQueryable();
+
 
         [Fact]
         public void PageBy()

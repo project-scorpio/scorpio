@@ -1,5 +1,7 @@
+
 ﻿using System;
 using System.Reflection;
+
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -53,7 +55,9 @@ namespace Scorpio.Modularity
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
+
         public static ConfigureServicesContext RegisterAssemblyByConvention(this ConfigureServicesContext context)
+
         {
             var assembly = Assembly.GetCallingAssembly();
             return RegisterAssemblyByConvention(context, assembly);

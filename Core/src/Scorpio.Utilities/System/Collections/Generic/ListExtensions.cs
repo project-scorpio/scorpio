@@ -212,8 +212,5 @@ namespace System.Collections.Generic
             source.RemoveAt(currentIndex);
             source.Insert(targetIndex, item);
         }
-
-       
-
     }
 }

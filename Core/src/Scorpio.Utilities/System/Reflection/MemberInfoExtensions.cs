@@ -183,8 +183,6 @@ namespace System.Reflection
         }
 
 
-
-
         /// <summary>
         ///  Searches for the public members with the specified name.
         /// </summary>
