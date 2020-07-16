@@ -15,7 +15,7 @@ namespace System.Linq.Async
     /// </summary>
     public static class AsyncQueryable
     {
-       
+
         #region Any/All
 
         /// <summary>
@@ -2332,7 +2332,7 @@ namespace System.Linq.Async
             => (await source.ToListAsync(cancellationToken).ConfigureAwait(false)).ToArray();
 
         #endregion
-   
+
         #region ToDictionary
 
         /// <summary>

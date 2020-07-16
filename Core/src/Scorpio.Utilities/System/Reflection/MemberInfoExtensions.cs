@@ -48,7 +48,7 @@ namespace System.Reflection
         {
             Check.NotNull(@object, nameof(@object));
             Check.NotNull(propertyExpression, nameof(propertyExpression));
-            var member = ((MemberExpression)(propertyExpression).Body).Member;
+            MemberInfo member = ((MemberExpression)(propertyExpression).Body).Member;
             return member.GetDescription(inherit);
         }
 
@@ -79,7 +79,6 @@ namespace System.Reflection
             return @object.GetType().GetDisplayName(inherit);
         }
 
-
         /// <summary>
         ///  获取成员元数据的 <see cref="DisplayNameAttribute.DisplayName"/> 特性描述信息
         /// </summary>
@@ -87,7 +86,6 @@ namespace System.Reflection
         /// <param name="propertyExpression">属性</param>
         /// <param name="inherit">是否搜索成员的继承链以查找描述特性</param>
         /// <returns>返回 <see cref="DisplayNameAttribute"/> 特性描述信息，如不存在则返回成员的名称</returns>
-        [Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:删除未使用的参数", Justification = "<挂起>")]
         public static string GetDisplayName<TModel, TProperty>(this TModel @object, Expression<Func<TModel, TProperty>> propertyExpression, bool inherit = false)
         {
             var member = ((MemberExpression)propertyExpression.Body).Member;
@@ -105,7 +103,6 @@ namespace System.Reflection
             return member.GetAttribute<DisplayAttribute>(inherit);
         }
 
-
         /// <summary>
         /// Retrieves a custom attribute of a specified objecct's type that is applied to a specified member, and optionally inspects the ancestors of that member.
         /// </summary>
@@ -119,18 +116,6 @@ namespace System.Reflection
         }
 
         /// <summary>
-        /// Retrieves a custom attribute of a specified type that is applied to a specified member, and optionally inspects the ancestors of that member.
-        /// </summary>
-        /// <typeparam name="TAttribute">The type of attribute to search for.</typeparam>
-        /// <param name="memberInfo"> The member to inspect.</param>
-        /// <param name="inherit">true to inspect the ancestors of element; otherwise, false.</param>
-        /// <returns>A custom attribute that matches attributeType, or null if no such attribute is found.</returns>
-        public static TAttribute GetAttribute<TAttribute>(this MemberInfo memberInfo, bool inherit = false)
-        {
-            return memberInfo.GetAttributes<TAttribute>(inherit).FirstOrDefault();
-        }
-
-        /// <summary>
         /// Retrieves a collection of custom attributes of a specified object's type that are applied to a specified member, and optionally inspects the ancestors of that member.
         /// </summary>
         /// <typeparam name="TAttribute">The type of attribute to search for.</typeparam>
@@ -141,19 +126,6 @@ namespace System.Reflection
         {
             Check.NotNull(@object, nameof(@object));
             return @object.GetType().GetAttributes<TAttribute>(inherit);
-        }
-
-        /// <summary>
-        /// Retrieves a collection of custom attributes of a specified type that are applied to a specified member, and optionally inspects the ancestors of that member.
-        /// </summary>
-        /// <typeparam name="TAttribute">The type of attribute to search for.</typeparam>
-        /// <param name="memberInfo"> The member to inspect.</param>
-        /// <param name="inherit">true to inspect the ancestors of element; otherwise, false.</param>
-        /// <returns>A collection of the custom attributes that are applied to element and that match T, or an empty collection if no such attributes exist.</returns>
-        public static IEnumerable<TAttribute> GetAttributes<TAttribute>(this MemberInfo memberInfo, bool inherit = false)
-        {
-            Check.NotNull(memberInfo, nameof(memberInfo));
-            return memberInfo.GetCustomAttributes(inherit).OfType<TAttribute>();
         }
 
         /// <summary>
@@ -184,12 +156,36 @@ namespace System.Reflection
 
 
         /// <summary>
+        /// Retrieves a custom attribute of a specified type that is applied to a specified member, and optionally inspects the ancestors of that member.
+        /// </summary>
+        /// <typeparam name="TAttribute">The type of attribute to search for.</typeparam>
+        /// <param name="memberInfo"> The member to inspect.</param>
+        /// <param name="inherit">true to inspect the ancestors of element; otherwise, false.</param>
+        /// <returns>A custom attribute that matches attributeType, or null if no such attribute is found.</returns>
+        public static TAttribute GetAttribute<TAttribute>(this MemberInfo memberInfo, bool inherit = false)
+        {
+            return memberInfo.GetAttributes<TAttribute>(inherit).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Retrieves a collection of custom attributes of a specified type that are applied to a specified member, and optionally inspects the ancestors of that member.
+        /// </summary>
+        /// <typeparam name="TAttribute">The type of attribute to search for.</typeparam>
+        /// <param name="memberInfo"> The member to inspect.</param>
+        /// <param name="inherit">true to inspect the ancestors of element; otherwise, false.</param>
+        /// <returns>A collection of the custom attributes that are applied to element and that match T, or an empty collection if no such attributes exist.</returns>
+        public static IEnumerable<TAttribute> GetAttributes<TAttribute>(this MemberInfo memberInfo, bool inherit = false)
+        {
+            Check.NotNull(memberInfo, nameof(memberInfo));
+            return memberInfo.GetCustomAttributes(inherit).OfType<TAttribute>();
+        }
+
+        /// <summary>
         ///  Searches for the public members with the specified name.
         /// </summary>
         /// <param name="object"></param>
         /// <param name="propertyExpression"></param>
         /// <returns></returns>
-        [Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:删除未使用的参数", Justification = "<挂起>")]
         public static MemberInfo Member<TModel, TProperty>(this TModel @object, Expression<Func<TModel, TProperty>> propertyExpression)
         {
             var member = ((MemberExpression)propertyExpression.Body).Member;
