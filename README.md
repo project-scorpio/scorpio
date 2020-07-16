@@ -1,6 +1,7 @@
 # Scorpio 
 ## Introduction
 [![Build status](https://ci.appveyor.com/api/projects/status/um73r8w85qjt0w4v?svg=true)](https://ci.appveyor.com/project/wzd24/scorpio)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=project-scorpio_scorpio&metric=alert_status)](https://sonarcloud.io/dashboard?id=project-scorpio_scorpio)
 [![AppVeyor tests](https://img.shields.io/appveyor/tests/wzd24/scorpio)](https://ci.appveyor.com/project/wzd24/scorpio)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://img.shields.io/github/license/project-scorpio/Scorpio)
 
