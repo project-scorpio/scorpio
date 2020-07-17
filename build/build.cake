@@ -76,7 +76,7 @@ public class BuildService
                 Organization="project-scorpio",
                 Url="https://sonarcloud.io",
                 Login="748862a8ccbf1654ac8b22ad5ae84b14778ba198",
-                OpenCoverReportsPath ="./coverage.opencover.xml"
+                OpenCoverReportsPath ="**/coverage.opencover.xml"
             }; 
         
         if(_context.Environment.IsPullRequest){
