@@ -74,6 +74,9 @@ public class BuildService
         if(!string.IsNullOrWhiteSpace(_context.Environment.Branch)){
             settings.Branch=_context.Environment.Branch;
         }
+        if(_context.Environment.IsPullRequest){
+            settings.PullRequestKey  =_context.Environment.PullRequestKey;
+        }
         return settings;
     }
 
