@@ -71,7 +71,11 @@ public class BuildService
                 Url="https://sonarcloud.io",
                 Login="748862a8ccbf1654ac8b22ad5ae84b14778ba198"
             }; 
-        if(!string.IsNullOrWhiteSpace(_context.Environment.Branch)){
+        
+        if(_context.Environment.IsPullRequest){
+            settings.PullRequestKey  =_context.Environment.PullRequestKey;
+        }
+        else if(!string.IsNullOrWhiteSpace(_context.Environment.Branch)){
             settings.Branch=_context.Environment.Branch;
         }
         return settings;

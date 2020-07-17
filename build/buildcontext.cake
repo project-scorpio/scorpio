@@ -54,6 +54,10 @@ public class BuildEnvironment
 
     public bool IsRelease=>_buildSystem.IsRunningOnAppVeyor && _appVeyor.Environment.Repository.Tag.IsTag;
 
+    public bool IsPullRequest=>_appVeyor.Environment.PullRequest.IsPullRequest;
+
+    public int PullRequestKey=>_appVeyor.Environment.PullRequest.Number;
+
     public bool IsDaily=>_buildSystem.IsRunningOnAppVeyor && _appVeyor.Environment.Repository.Branch.ToLower()=="dev";
 
     public string Branch=>_appVeyor.Environment.Repository.Branch;
