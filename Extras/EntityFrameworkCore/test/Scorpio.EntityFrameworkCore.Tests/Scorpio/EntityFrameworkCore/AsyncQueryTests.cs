@@ -17,6 +17,7 @@ namespace Scorpio.EntityFrameworkCore
         [Fact]
         public async Task AnyAsync()
         {
+
             using (var context = ServiceProvider.GetService<TestDbContext>())
             {
                 context.TestTables.AddRange(

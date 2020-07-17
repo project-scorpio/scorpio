@@ -56,17 +56,25 @@ public class BuildService
                 Configuration=_context.Environment.Configuration,
                 MSBuildSettings=_msbuildSettings
             };
+        var settings = GetSonarBeginSettings(); 
+            _cakeContext.Sonar(ctx=>{
+                foreach (var item in _context.Soluations)
+                {
+                    ctx.DotNetCoreBuild(item.FullPath,buildSettings);
+                }},settings);
+    }
+
+    private SonarBeginSettings GetSonarBeginSettings(){
         var settings = new SonarBeginSettings() {
                 Key="project-scorpio_scorpio",
                 Organization="project-scorpio",
                 Url="https://sonarcloud.io",
                 Login="748862a8ccbf1654ac8b22ad5ae84b14778ba198"
             }; 
-            _cakeContext.Sonar(ctx=>{
-                foreach (var item in _context.Soluations)
-                {
-                    ctx.DotNetCoreBuild(item.FullPath,buildSettings);
-                }},settings);
+        if(!string.IsNullOrWhiteSpace(_context.Environment.Branch)){
+            settings.Branch=_context.Environment.Branch;
+        }
+        return settings;
     }
 
     public void Test()
