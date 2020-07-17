@@ -56,6 +56,8 @@ public class BuildEnvironment
 
     public bool IsDaily=>_buildSystem.IsRunningOnAppVeyor && _appVeyor.Environment.Repository.Branch.ToLower()=="dev";
 
+    public string Branch=>_appVeyor.Environment.Repository.Branch;
+
     public bool IsPublish=>IsRelease||IsDaily;
 
     public IAppVeyorProvider AppVeyor => _appVeyor;
