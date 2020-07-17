@@ -1,9 +1,4 @@
-﻿
-using System.Linq;
-
-using Scorpio;
-
-namespace System.Collections.Generic
+﻿namespace System.Collections.Generic
 {
     /// <summary>
     /// Extension methods for <see cref="IList{T}"/>.
@@ -197,7 +192,7 @@ namespace System.Collections.Generic
         {
             if (!targetIndex.IsBetween(0, source.Count - 1))
             {
-                throw new IndexOutOfRangeException("targetIndex should be between 0 and " + (source.Count - 1));
+                throw new ArgumentOutOfRangeException("targetIndex should be between 0 and " + (source.Count - 1));
             }
 
             var currentIndex = source.FindIndex(0, selector);
@@ -211,7 +206,7 @@ namespace System.Collections.Generic
             source.Insert(targetIndex, item);
         }
 
-       
+
 
         /// <summary>
         /// Sort a list by a topological sorting, which consider their dependencies.
@@ -269,8 +264,8 @@ namespace System.Collections.Generic
                     }
                 }
 
-                visited[item] = false;
                 sorted.Add(item);
+                visited[item] = false;
             }
         }
     }

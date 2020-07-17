@@ -23,7 +23,7 @@ namespace Scorpio.Auditing
 
         public AuditInfo Info { get; }
 
-       
+
 
         public void Save()
         {
@@ -50,7 +50,7 @@ namespace Scorpio.Auditing
                     _ambientScope.Dispose();
                 }
 
-               
+
                 _disposedValue = true;
             }
         }

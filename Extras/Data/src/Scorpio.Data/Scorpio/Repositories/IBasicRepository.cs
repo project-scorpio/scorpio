@@ -109,7 +109,7 @@ namespace Scorpio.Repositories
         /// Set true to automatically save changes to database.
         /// This is useful for ORMs / database APIs those only save changes with an explicit method call, but you need to immediately save changes to the database.
         /// </param>
-        void Delete(TKey id, bool autoSave = true); 
+        void Delete(TKey id, bool autoSave = true);
 
         /// <summary>
         /// Deletes an entity by primary key.
@@ -120,7 +120,7 @@ namespace Scorpio.Repositories
         /// This is useful for ORMs / database APIs those only save changes with an explicit method call, but you need to immediately save changes to the database.
         /// </param>
         /// <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> to observe while waiting for the task to complete.</param>
-        Task DeleteAsync(TKey id, bool autoSave = true, CancellationToken cancellationToken = default);  
+        Task DeleteAsync(TKey id, bool autoSave = true, CancellationToken cancellationToken = default);
 
 
     }

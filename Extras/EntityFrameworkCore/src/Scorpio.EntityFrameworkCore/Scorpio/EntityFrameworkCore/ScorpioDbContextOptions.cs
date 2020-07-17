@@ -81,7 +81,7 @@ namespace Scorpio.EntityFrameworkCore
             DefaultConfigureAction = action;
         }
 
-     
+
 
         /// <summary>
         /// 

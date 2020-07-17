@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq.Async;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -26,12 +25,12 @@ namespace Scorpio.Authorization
         /// <returns></returns>
         public async Task CheckAsync(IInvocationAuthorizationContext authorizationContext)
         {
-          
+
             if (authorizationContext?.Method?.AttributeExists<AllowAnonymousAttribute>() ?? false)
             {
                 return;
             }
-            if (authorizationContext?.Permissions?.IsNullOrEmpty()??true)
+            if (authorizationContext?.Permissions?.IsNullOrEmpty() ?? true)
             {
                 if (!(_currentPrincipalAccessor.Principal?.Identity?.IsAuthenticated ?? false))
                 {

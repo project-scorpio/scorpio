@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
 
 namespace Scorpio.Data.Values
@@ -23,7 +22,7 @@ namespace Scorpio.Data.Values
             {
                 return false;
             }
-            if (obj.GetType()!=GetType())
+            if (obj.GetType() != GetType())
             {
                 return false;
             }
@@ -72,6 +71,6 @@ namespace Scorpio.Data.Values
             return hashCode;
         }
 
-      
+
     }
 }

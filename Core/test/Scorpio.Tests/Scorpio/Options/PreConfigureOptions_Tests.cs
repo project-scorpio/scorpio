@@ -9,6 +9,6 @@ namespace Scorpio.Tests.Scorpio.Options
 
     public class PreConfigureOptionsModule : ScorpioModule
     {
-        
+
     }
 }

@@ -6,7 +6,7 @@ namespace Scorpio.Authorization.Permissions
     /// <summary>
     /// 
     /// </summary>
-   [Serializable]
+    [Serializable]
     public class PermissionNotFondException : ScorpioException
     {
         /// <summary>

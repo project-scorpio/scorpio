@@ -4,8 +4,13 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <AssemblyTitle>Scorpio aspnet core mvc library</AssemblyTitle>
     <RootNamespace />
+    <CodeAnalysisRuleSet>..\..\..\..\.sonarlint\project-scorpio_scorpiocsharp.ruleset</CodeAnalysisRuleSet>
 
   </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\..\..\.sonarlint\project-scorpio_scorpio\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Scorpio.AspNetCore\Scorpio.AspNetCore.csproj" />
   </ItemGroup>
