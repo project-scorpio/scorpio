@@ -15,5 +15,10 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Core\test\Scorpio.TestBase\Scorpio.TestBase.csproj" />
   </ItemGroup>
-
+  <ItemGroup>
+		<PackageReference Include="coverlet.msbuild" Version="2.9.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+  </ItemGroup>
 </Project>

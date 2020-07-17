@@ -56,12 +56,18 @@ public class BuildService
                 Configuration=_context.Environment.Configuration,
                 MSBuildSettings=_msbuildSettings
             };
+        foreach (var item in _context.Soluations)
+        {
+            _cakeContext.DotNetCoreBuild(item.FullPath,buildSettings);
+        }
+    }
+
+    public void Sonar(){
         var settings = GetSonarBeginSettings(); 
-            _cakeContext.Sonar(ctx=>{
-                foreach (var item in _context.Soluations)
-                {
-                    ctx.DotNetCoreBuild(item.FullPath,buildSettings);
-                }},settings);
+         _cakeContext.Sonar(ctx=>{
+             Build();
+             Test();
+        },settings);
     }
 
     private SonarBeginSettings GetSonarBeginSettings(){
@@ -69,7 +75,8 @@ public class BuildService
                 Key="project-scorpio_scorpio",
                 Organization="project-scorpio",
                 Url="https://sonarcloud.io",
-                Login="748862a8ccbf1654ac8b22ad5ae84b14778ba198"
+                Login="748862a8ccbf1654ac8b22ad5ae84b14778ba198",
+                OpenCoverReportsPath ="./coverage.opencover.xml"
             }; 
         
         if(_context.Environment.IsPullRequest){
@@ -83,10 +90,19 @@ public class BuildService
 
     public void Test()
     {
-        var testSettings=new DotNetCoreTestSettings{ Configuration=_context.Environment.Configuration,NoBuild= true};
+        var testSettings=new DotNetCoreTestSettings{ 
+            Configuration=_context.Environment.Configuration,
+            NoBuild= true,
+
+        };
+        var coverletSettings = new CoverletSettings {
+        CollectCoverage = true,
+        CoverletOutputFormat = CoverletOutputFormat.opencover,
+        
+        };
         foreach (var item in _context.Soluations)
         {
-            _cakeContext.DotNetCoreTest(item.FullPath,testSettings);
+            _cakeContext.DotNetCoreTest(item.FullPath,testSettings,coverletSettings);
         }
     }
 
