@@ -31,7 +31,7 @@ namespace Scorpio.EventBus
             }
         }
 
-       
+
         public void Dispose()
         {
             // 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中

@@ -5,6 +5,7 @@
     <AssemblyTitle>Scorpio core library</AssemblyTitle>
     <RootNamespace />
     <PackageTags>Scorpio;Aspect;dependencyinjection;Modularity</PackageTags>
+    <CodeAnalysisRuleSet>..\..\..\.sonarlint\project-scorpio_scorpiocsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,6 +14,10 @@
     <Compile Remove="Scorpio\DynamicProxy\IConventionaInterceptorRegistrar.cs" />
     <Compile Remove="Scorpio\DynamicProxy\InterceptorHelper.cs" />
     <Compile Remove="Scorpio\DynamicProxy\TypeInterceptorMap.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\..\.sonarlint\project-scorpio_scorpio\CSharp\SonarLint.xml" Link="SonarLint.xml" />
   </ItemGroup>
 
   <ItemGroup>

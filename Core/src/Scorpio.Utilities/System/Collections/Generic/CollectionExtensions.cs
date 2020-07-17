@@ -46,12 +46,12 @@ namespace System.Collections.Generic
         /// <param name="comparer"></param>
         /// <typeparam name="T">Type of the items in the collection</typeparam>
         /// <returns>Returns True if added, returns False if not.</returns>
-        public static bool AddIfNotContains<T>(this ICollection<T> source, T item,IEqualityComparer<T> comparer)
+        public static bool AddIfNotContains<T>(this ICollection<T> source, T item, IEqualityComparer<T> comparer)
         {
-            
+
             Check.NotNull(source, nameof(source));
 
-            if (source.Contains(item,comparer))
+            if (source.Contains(item, comparer))
             {
                 return false;
             }
@@ -111,11 +111,11 @@ namespace System.Collections.Generic
         /// <param name="default"></param>
         /// <returns></returns>
 
-        public static T GetOrDefault<T>(this ICollection<T> source, Func<T, bool> selector,T @default=default)
+        public static T GetOrDefault<T>(this ICollection<T> source, Func<T, bool> selector, T @default = default)
         {
             Check.NotNull(source, nameof(source));
 
-            var item = source.FirstOrDefault(selector)??@default;
+            var item = source.FirstOrDefault(selector) ?? @default;
             return item;
         }
 

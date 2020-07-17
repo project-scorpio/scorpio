@@ -7,7 +7,7 @@ namespace Scorpio.EntityFrameworkCore
     /// <summary>
     /// 
     /// </summary>
-    public interface IEfTransactionStrategy:IDisposable
+    public interface IEfTransactionStrategy : IDisposable
     {
         /// <summary>
         /// 
@@ -29,6 +29,6 @@ namespace Scorpio.EntityFrameworkCore
         /// </summary>
         void Commit();
 
-       
+
     }
 }

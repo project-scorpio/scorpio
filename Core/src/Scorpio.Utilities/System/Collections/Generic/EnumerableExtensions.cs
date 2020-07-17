@@ -161,12 +161,12 @@ namespace System.Collections.Generic
         /// <param name="predicate"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public static async Task<bool> AnyAsync<TSource>(this IEnumerable<TSource> source, Func<TSource,CancellationToken, Task<bool>> predicate, CancellationToken cancellationToken = default)
+        public static async Task<bool> AnyAsync<TSource>(this IEnumerable<TSource> source, Func<TSource, CancellationToken, Task<bool>> predicate, CancellationToken cancellationToken = default)
         {
             foreach (var item in source)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                if (await predicate(item,cancellationToken))
+                if (await predicate(item, cancellationToken))
                 {
                     return true;
                 }
@@ -203,12 +203,12 @@ namespace System.Collections.Generic
         /// <param name="predicate"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public static async Task<bool> AllAsync<TSource>(this IEnumerable<TSource> source, Func<TSource,CancellationToken, Task<bool>> predicate, CancellationToken cancellationToken = default)
+        public static async Task<bool> AllAsync<TSource>(this IEnumerable<TSource> source, Func<TSource, CancellationToken, Task<bool>> predicate, CancellationToken cancellationToken = default)
         {
             foreach (var item in source)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                if (!(await predicate(item,cancellationToken)))
+                if (!(await predicate(item, cancellationToken)))
                 {
                     return false;
                 }

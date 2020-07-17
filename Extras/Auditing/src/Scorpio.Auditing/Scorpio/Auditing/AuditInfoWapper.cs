@@ -14,7 +14,7 @@ namespace Scorpio.Auditing
         /// 
         /// </summary>
         /// <param name="auditInfo"></param>
-         protected AuditInfoWapper(AuditInfo auditInfo)
+        protected AuditInfoWapper(AuditInfo auditInfo)
         {
             _auditInfo = auditInfo;
         }

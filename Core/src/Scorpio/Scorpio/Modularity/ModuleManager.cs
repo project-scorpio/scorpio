@@ -20,7 +20,7 @@ namespace Scorpio.Modularity
 
         }
 
-        public void InitializeModules(ApplicationInitializationContext  applicationInitializationContext)
+        public void InitializeModules(ApplicationInitializationContext applicationInitializationContext)
         {
             LogListOfModules();
 
@@ -41,7 +41,7 @@ namespace Scorpio.Modularity
             }
         }
 
-        public void ShutdownModules(ApplicationShutdownContext  applicationShutdownContext)
+        public void ShutdownModules(ApplicationShutdownContext applicationShutdownContext)
         {
             var modules = _moduleContainer.Modules.Reverse().ToList();
             modules.ForEach(d => d.Instance.Shutdown(applicationShutdownContext));

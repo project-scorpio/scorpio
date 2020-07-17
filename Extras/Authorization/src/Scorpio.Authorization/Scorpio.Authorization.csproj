@@ -4,12 +4,15 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyTitle>Scorpio authorization library</AssemblyTitle>
     <RootNamespace />
+    <CodeAnalysisRuleSet>..\..\..\..\.sonarlint\project-scorpio_scorpiocsharp.ruleset</CodeAnalysisRuleSet>
 
   </PropertyGroup>
+
   <ItemGroup>
-    <ProjectReference Include="../../../../Core/src/Scorpio.Aspect/Scorpio.Aspect.csproj" />
+    <AdditionalFiles Include="..\..\..\..\.sonarlint\project-scorpio_scorpio\CSharp\SonarLint.xml" Link="SonarLint.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="../../../../Core/src/Scorpio.Aspect/Scorpio.Aspect.csproj" />
   </ItemGroup>
 
 </Project>

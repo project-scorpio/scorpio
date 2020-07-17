@@ -120,7 +120,7 @@ namespace Scorpio.Uow
             }
         }
 
-   
+
 
         /// <summary>
         /// 
@@ -226,7 +226,7 @@ namespace Scorpio.Uow
             }
         }
 
-     
+
 
         /// <summary>
         /// 

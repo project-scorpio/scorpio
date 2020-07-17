@@ -22,6 +22,6 @@ namespace Scorpio.Domain
         {
             context.Services.AddConventionalRegistrar<ConventionalRegistrar>();
         }
-       
+
     }
 }

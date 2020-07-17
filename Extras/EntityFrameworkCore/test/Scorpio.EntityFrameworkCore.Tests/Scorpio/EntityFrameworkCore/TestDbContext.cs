@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -19,7 +17,7 @@ namespace Scorpio.EntityFrameworkCore
         public DbSet<TestTable> TestTables { get; set; }
     }
 
-    public class TestTable:Entity<int>
+    public class TestTable : Entity<int>
     {
         public string StringValue { get; set; }
     }

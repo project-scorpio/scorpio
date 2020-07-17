@@ -1,6 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<ItemGroup>
+	  <AdditionalFiles Include="..\..\..\..\.sonarlint\project-scorpio_scorpio\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <ProjectReference Include="..\..\..\..\Core\src\Scorpio\Scorpio.csproj" />
 	</ItemGroup>
 	<ItemGroup>
@@ -10,6 +14,7 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<RootNamespace />
+		<CodeAnalysisRuleSet>..\..\..\..\.sonarlint\project-scorpio_scorpiocsharp.ruleset</CodeAnalysisRuleSet>
 	</PropertyGroup>
 
 </Project>

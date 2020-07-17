@@ -29,7 +29,7 @@ namespace Scorpio.Uow
         {
         }
 
-        protected override Task CompleteUowAsync(CancellationToken cancellationToken=default)
+        protected override Task CompleteUowAsync(CancellationToken cancellationToken = default)
         {
             return Task.CompletedTask;
         }
