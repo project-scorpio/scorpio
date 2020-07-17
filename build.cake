@@ -1,6 +1,7 @@
 #tool "nuget:?package=xunit.runner.console&version=2.3.1"
 #addin "nuget:?package=Cake.Sonar&version=1.1.25"
 #tool "nuget:?package=MSBuild.SonarQube.Runner.Tool&version=4.8.0"
+#addin nuget:?package=Cake.Coverlet&version=2.4.2
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 ///////////////////////////////////////////////////////////////////////////////
@@ -25,8 +26,14 @@ Task("Test")
 	service.Test();
 });
 
+Task("Sonar")
+	.IsDependentOn("Clean")
+	.Does(() =>{
+	service.Sonar();
+});
+
 Task("Package")
-    .IsDependentOn("Test")
+    .IsDependentOn("Sonar")
     .WithCriteria(() =>service.Context.Environment.IsPublish)
     .Does(()=>{
 	service.Package();
@@ -39,6 +46,6 @@ Task("Package")
     service.Publish();
 });
 
-Task("Default").IsDependentOn("Build").IsDependentOn("Package").IsDependentOn("Publish");
+Task("Default").IsDependentOn("Sonar").IsDependentOn("Package").IsDependentOn("Publish");
 
 RunTarget(target);
