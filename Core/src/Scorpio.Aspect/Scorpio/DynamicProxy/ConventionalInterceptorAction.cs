@@ -31,7 +31,7 @@ namespace Scorpio.DynamicProxy
         /// <param name="context"></param>
         protected override void Action(IConventionalContext context)
         {
-            var typeList = context.GetOrDefault<ITypeList<IInterceptor>>(Interceptors, n => new TypeList<IInterceptor>());
+            var typeList = context.GetOrDefault(Interceptors,default(ITypeList<IInterceptor>));
             var predicate = context.TypePredicate.Compile();
             typeList.ForEach(t =>
             {

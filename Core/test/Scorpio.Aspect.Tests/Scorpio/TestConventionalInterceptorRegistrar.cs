@@ -1,8 +1,9 @@
 ﻿using System.Reflection;
 
 using Scorpio.Conventional;
+using Scorpio.DynamicProxy;
 
-namespace Scorpio.DynamicProxy
+namespace Scorpio
 {
     class TestConventionalInterceptorRegistrar : IConventionalRegistrar
     {

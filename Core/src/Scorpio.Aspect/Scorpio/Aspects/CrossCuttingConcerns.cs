@@ -16,6 +16,7 @@ namespace Scorpio.Aspects
         /// <param name="concerns"></param>
         public static void AddApplied(object obj, params string[] concerns)
         {
+            Check.NotNull(obj, nameof(obj));
             if (concerns.IsNullOrEmpty())
             {
                 throw new ArgumentNullException(nameof(concerns), $"{nameof(concerns)} should be provided!");
@@ -31,10 +32,13 @@ namespace Scorpio.Aspects
         /// <param name="concerns"></param>
         public static void RemoveApplied(object obj, params string[] concerns)
         {
+            Check.NotNull(obj, nameof(obj));
+
             if (concerns.IsNullOrEmpty())
             {
                 throw new ArgumentNullException(nameof(concerns), $"{nameof(concerns)} should be provided!");
             }
+
 
             if (!(obj is IAvoidDuplicateCrossCuttingConcerns crossCuttingEnabledObj))
             {
@@ -55,11 +59,7 @@ namespace Scorpio.Aspects
         /// <returns></returns>
         public static bool IsApplied(object obj, string concern)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException(nameof(obj));
-            }
-
+            Check.NotNull(obj,nameof(obj));
             if (concern == null)
             {
                 throw new ArgumentNullException(nameof(concern));
@@ -90,6 +90,7 @@ namespace Scorpio.Aspects
         /// <returns></returns>
         public static string[] GetApplieds(object obj)
         {
+            Check.NotNull(obj, nameof(obj));
             if (!(obj is IAvoidDuplicateCrossCuttingConcerns crossCuttingEnabledObj))
             {
                 return new string[0];

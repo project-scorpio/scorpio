@@ -11,23 +11,7 @@ namespace Scorpio.DynamicProxy
     /// </summary>
     public static class ProxyHelper
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="proxy"></param>
-        /// <returns></returns>
-        public static object UnProxy(this object proxy)
-        {
-            if (proxy.IsProxy())
-            {
-                var targetField = proxy.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic).FirstOrDefault(f => f.Name == "_implementation");
-                if (targetField != null)
-                {
-                    return targetField.GetValue(proxy);
-                }
-            }
-            return proxy;
-        }
+
 
         /// <summary>
         /// 
@@ -37,15 +21,12 @@ namespace Scorpio.DynamicProxy
         /// <returns></returns>
         public static T UnProxy<T>(this T proxy) where T : class
         {
-            if (proxy.IsProxy())
+            if (!proxy.IsProxy())
             {
-                var targetField = proxy.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic).FirstOrDefault(f => f.Name == "_implementation");
-                if (targetField != null)
-                {
-                    return targetField.GetValue(proxy).As<T>();
-                }
+                return proxy;
             }
-            return proxy;
+            var targetField = proxy.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic).First(f => f.Name == "_implementation");
+            return targetField.GetValue(proxy).As<T>();
         }
     }
 }

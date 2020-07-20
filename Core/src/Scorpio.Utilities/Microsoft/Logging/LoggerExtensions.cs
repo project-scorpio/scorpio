@@ -11,68 +11,7 @@ namespace Microsoft.Extensions.Logging
     /// </summary>
     public static class LoggerExtensions
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="logger"></param>
-        /// <param name="logLevel"></param>
-        /// <param name="message"></param>
-        public static void LogWithLevel(this ILogger logger, LogLevel logLevel, string message)
-        {
-            switch (logLevel)
-            {
-                case LogLevel.Critical:
-                    logger.LogCritical(message);
-                    break;
-                case LogLevel.Error:
-                    logger.LogError(message);
-                    break;
-                case LogLevel.Warning:
-                    logger.LogWarning(message);
-                    break;
-                case LogLevel.Information:
-                    logger.LogInformation(message);
-                    break;
-                case LogLevel.Trace:
-                    logger.LogTrace(message);
-                    break;
-                default: // LogLevel.Debug || LogLevel.None
-                    logger.LogDebug(message);
-                    break;
-            }
-        }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="logger"></param>
-        /// <param name="logLevel"></param>
-        /// <param name="message"></param>
-        /// <param name="exception"></param>
-        public static void LogWithLevel(this ILogger logger, LogLevel logLevel, string message, Exception exception)
-        {
-            switch (logLevel)
-            {
-                case LogLevel.Critical:
-                    logger.LogCritical(exception, message);
-                    break;
-                case LogLevel.Error:
-                    logger.LogError(exception, message);
-                    break;
-                case LogLevel.Warning:
-                    logger.LogWarning(exception, message);
-                    break;
-                case LogLevel.Information:
-                    logger.LogInformation(exception, message);
-                    break;
-                case LogLevel.Trace:
-                    logger.LogTrace(exception, message);
-                    break;
-                default: // LogLevel.Debug || LogLevel.None
-                    logger.LogDebug(exception, message);
-                    break;
-            }
-        }
 
         /// <summary>
         /// 
@@ -84,7 +23,7 @@ namespace Microsoft.Extensions.Logging
         {
             var selectedLevel = level ?? ex.GetLogLevel();
 
-            logger.LogWithLevel(selectedLevel, ex.Message, ex);
+            logger.Log(selectedLevel, ex.Message, ex);
             LogKnownProperties(logger, ex, selectedLevel);
             LogSelfLogging(logger, ex);
             LogData(logger, ex, selectedLevel);
@@ -94,12 +33,12 @@ namespace Microsoft.Extensions.Logging
         {
             if (exception is IHasErrorCode exceptionWithErrorCode)
             {
-                logger.LogWithLevel(logLevel, "Code:" + exceptionWithErrorCode.Code);
+                logger.Log(logLevel, "Code:" + exceptionWithErrorCode.Code);
             }
 
             if (exception is IHasErrorDetails exceptionWithErrorDetails)
             {
-                logger.LogWithLevel(logLevel, "Details:" + exceptionWithErrorDetails.Details);
+                logger.Log(logLevel, "Details:" + exceptionWithErrorDetails.Details);
             }
         }
 
@@ -116,11 +55,11 @@ namespace Microsoft.Extensions.Logging
                 return;
             }
 
-            logger.LogWithLevel(logLevel, "---------- Exception Data ----------");
+            logger.Log(logLevel, "---------- Exception Data ----------");
 
             foreach (var key in exception.Data.Keys)
             {
-                logger.LogWithLevel(logLevel, $"{key} = {exception.Data[key]}");
+                logger.Log(logLevel, $"{key} = {exception.Data[key]}");
             }
         }
 
