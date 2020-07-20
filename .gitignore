@@ -340,3 +340,4 @@ publish.cmd
 .vscode/
 .sonarqube/
 .sonarlint
+coverage.opencover.xml
