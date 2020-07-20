@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 
 using AspectCore.DynamicProxy;
-namespace Scorpio.DynamicProxy
+namespace Scorpio
 {
     class TestInterceptor : AbstractInterceptor
     {
@@ -16,7 +16,7 @@ namespace Scorpio.DynamicProxy
                 {
                     service.InterceptorInvoked = true;
                 }
-                if (context.Implementation is InterceptorTestService2 service2)
+                if (context.Implementation is NonInterceptorTestService service2)
                 {
                     service2.InterceptorInvoked = true;
                 }

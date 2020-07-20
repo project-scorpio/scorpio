@@ -99,6 +99,16 @@ namespace System.Collections.Generic
         }
 
         [Fact]
+        public void MoveItem()
+        {
+            var list = new List<string>(_sourceList);
+            list.IndexOf("Item1").ShouldBe(0);
+            list.MoveItem(i => i == "Item1", 2);
+            list.IndexOf("Item1").ShouldBe(2);
+            ((Action)(() => list.MoveItem(i => i == "Item1", 3))).ShouldThrow<ArgumentOutOfRangeException>();
+        }
+
+        [Fact]
         public void GetOrAdd()
         {
             IList<string> list = new List<string>(_sourceList);

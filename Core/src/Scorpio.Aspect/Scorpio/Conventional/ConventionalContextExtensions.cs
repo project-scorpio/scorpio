@@ -1,5 +1,7 @@
 ﻿using System;
 
+using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.DynamicProxy;
 
 namespace Scorpio.Conventional
@@ -19,7 +21,8 @@ namespace Scorpio.Conventional
             this IConventionalRegistrationContext context,
             Action<IConventionalConfiguration<ConventionalInterceptorAction>> configureAction)
         {
-            return context.DoConventionalAction(configureAction);
+             context.Services.RegisterConventionalInterceptor(context.Types,configureAction);
+            return context;
         }
 
     }

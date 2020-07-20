@@ -1,24 +1,28 @@
 ﻿using AspectCore.DynamicProxy;
 
-namespace Scorpio.DynamicProxy
+using Scorpio.Aspects;
+
+namespace Scorpio
 {
     public interface IInterceptorable
     {
 
     }
-    public interface IInterceptorTestService : IInterceptorable
+    public interface IInterceptorTestService : IInterceptorable, IAvoidDuplicateCrossCuttingConcerns
     {
         [NonAspect]
         bool InterceptorInvoked { get; }
+
         [NonAspect]
         bool TestInvoked { get; }
 
         void Test();
     }
-    public interface IInterceptorTestService2
+    public interface INonInterceptorTestService 
     {
         [NonAspect]
         bool InterceptorInvoked { get; }
+
         [NonAspect]
         bool TestInvoked { get; }
 

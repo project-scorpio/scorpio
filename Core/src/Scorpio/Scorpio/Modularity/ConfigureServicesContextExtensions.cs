@@ -43,7 +43,8 @@ namespace Scorpio.Modularity
         /// <returns></returns>
         public static ConfigureServicesContext RegisterAssemblyByConvention(this ConfigureServicesContext context)
         {
-            context.Services.RegisterAssemblyByConvention();
+            var assembly = Assembly.GetCallingAssembly();
+            context.Services.RegisterAssemblyByConvention(assembly);
             return context;
         }
         /// <summary>

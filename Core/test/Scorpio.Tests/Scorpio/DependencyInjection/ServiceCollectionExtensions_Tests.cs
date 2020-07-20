@@ -46,6 +46,19 @@ namespace Scorpio.DependencyInjection
             registrar.RegisterAssemblyInvoked.ShouldBeTrue();
             registrar.Types.ShouldBe(assembly);
         }
+
+        [Fact]
+        public void RegisterAssemblyByConvention3()
+        {
+            var services = new ServiceCollection();
+            var registrar = new EmptyConventionalDependencyRegistrar();
+            services.AddConventionalRegistrar(registrar);
+            services.GetSingletonInstanceOrNull<ConventionalRegistrarList>().Contains(registrar).ShouldBeTrue();
+            var assembly = typeof(ServiceCollectionExtensions_Tests).Assembly.GetTypes();
+            services.RegisterAssemblyByConventionOfType<ServiceCollectionExtensions_Tests>();
+            registrar.RegisterAssemblyInvoked.ShouldBeTrue();
+            registrar.Types.ShouldBe(assembly);
+        }
     }
 
     class EmptyConventionalDependencyRegistrar : IConventionalRegistrar

@@ -51,6 +51,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
             serviceDescriptor.ShouldBeNull();
         }
+
         public static void ShouldNotContainService(this IServiceCollection services, Type serviceType, Type implementationType)
         {
             var serviceDescriptor = services.SingleOrDefault(s => s.ServiceType == serviceType && s.GetImplementationType() == implementationType);
