@@ -27,7 +27,7 @@ namespace Scorpio
         /// Adds a type to list if it's not already in the list.
         /// </summary>
         /// <typeparam name="T">Type</typeparam>
-        void TryAdd<T>() where T : TBaseType;
+        bool TryAdd<T>() where T : TBaseType;
 
         /// <summary>
         /// Checks if a type exists in the list.
@@ -40,6 +40,6 @@ namespace Scorpio
         /// Removes a type from list
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        void Remove<T>() where T : TBaseType;
+        bool Remove<T>() where T : TBaseType;
     }
 }

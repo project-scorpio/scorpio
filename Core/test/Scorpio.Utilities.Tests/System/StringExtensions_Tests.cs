@@ -1,4 +1,6 @@
-﻿using Shouldly;
+﻿using System.Text;
+
+using Shouldly;
 
 using Xunit;
 namespace System
@@ -236,6 +238,19 @@ namespace System
         public void TruncateWithPostfixDef(string value, int length, string expected)
         {
             value.TruncateWithPostfix(length).ShouldBe(expected);
+        }
+
+        [Fact]
+        public void GetBytes()
+        {
+            Should.Throw<ArgumentNullException>(() => StringExtensions.GetBytes(null)).ParamName.ShouldBe("str");
+            Should.Throw<ArgumentNullException>(() => StringExtensions.GetBytes("value", null)).ParamName.ShouldBe("encoding");
+            Should.Throw<ArgumentNullException>(() => StringExtensions.GetBytes(null,null)).ParamName.ShouldBe("str");
+            Should.Throw<ArgumentNullException>(() => StringExtensions.GetBytes(null, Encoding.UTF8)).ParamName.ShouldBe("str");
+            var expected = Encoding.UTF8.GetBytes("value");
+            Should.NotThrow(() => "value".GetBytes(Encoding.UTF8)).ShouldBe(expected);
+            Should.NotThrow(() => "value".GetBytes()).ShouldBe(expected);
+
         }
     }
 }

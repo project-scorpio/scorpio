@@ -134,7 +134,7 @@ namespace Scorpio
         /// 
         /// </summary>
         /// <typeparam name="TKeyType"></typeparam>
-        public void Remove<TKeyType>() where TKeyType : TBaseKeyType => Remove(typeof(TKeyType));
+        public bool Remove<TKeyType>() where TKeyType : TBaseKeyType => Remove(typeof(TKeyType));
 
         /// <summary>
         /// 
@@ -154,15 +154,16 @@ namespace Scorpio
         /// </summary>
         /// <typeparam name="TKeyType"></typeparam>
         /// <typeparam name="TValueType"></typeparam>
-        public void TryAdd<TKeyType, TValueType>()
+        public bool TryAdd<TKeyType, TValueType>()
             where TKeyType : TBaseKeyType
             where TValueType : TBaseValueType
         {
             if (_pairs.ContainsKey(typeof(TKeyType)))
             {
-                return;
+                return false;
             }
             Add<TKeyType, TValueType>();
+            return true;
         }
 
         /// <summary>
@@ -192,6 +193,7 @@ namespace Scorpio
 
         private void CheckKeyType(Type key)
         {
+            Check.NotNull(key, nameof(key));
             if (!typeof(TBaseKeyType).GetTypeInfo().IsAssignableFrom(key))
             {
                 throw new ArgumentException($"Given type ({key.AssemblyQualifiedName}) should be instance of {typeof(TBaseKeyType).AssemblyQualifiedName} ", nameof(key));
