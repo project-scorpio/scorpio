@@ -77,14 +77,15 @@ namespace Scorpio
         /// 
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        public void TryAdd<T>() where T : TBaseType
+        public bool TryAdd<T>() where T : TBaseType
         {
             if (Contains<T>())
             {
-                return;
+                return false;
             }
 
             Add<T>();
+            return true;
         }
 
 
@@ -98,6 +99,7 @@ namespace Scorpio
         /// <inheritdoc/>
         public int IndexOf(Type item)
         {
+            CheckType(item);
             return _typeList.IndexOf(item);
         }
 
@@ -110,18 +112,20 @@ namespace Scorpio
         /// <inheritdoc/>
         public bool Contains(Type item)
         {
+            CheckType(item);
             return _typeList.Contains(item);
         }
 
         /// <inheritdoc/>
-        public void Remove<T>() where T : TBaseType
+        public bool Remove<T>() where T : TBaseType
         {
-            _typeList.Remove(typeof(T));
+            return _typeList.Remove(typeof(T));
         }
 
         /// <inheritdoc/>
         public bool Remove(Type item)
         {
+            CheckType(item);
             return _typeList.Remove(item);
         }
 
@@ -156,6 +160,7 @@ namespace Scorpio
 
         private static void CheckType(Type item)
         {
+            Check.NotNull(item, nameof(item));
             if (!typeof(TBaseType).GetTypeInfo().IsAssignableFrom(item))
             {
                 throw new ArgumentException($"Given type ({item.AssemblyQualifiedName}) should be instance of {typeof(TBaseType).AssemblyQualifiedName} ", nameof(item));

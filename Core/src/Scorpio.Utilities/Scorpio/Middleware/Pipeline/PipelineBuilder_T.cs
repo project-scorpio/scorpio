@@ -54,6 +54,7 @@ namespace Scorpio.Middleware.Pipeline
         /// <returns></returns>
         public IPipelineBuilder<TPipelineContext> Use(Func<PipelineRequestDelegate<TPipelineContext>, PipelineRequestDelegate<TPipelineContext>> middleware)
         {
+            Check.NotNull(middleware, nameof(middleware));
             _middlewares.Add(middleware);
             return this;
         }

@@ -36,6 +36,8 @@ namespace Scorpio.Middleware.Pipeline
         /// <param name="args"></param>
         public static IPipelineBuilder<TPipelineContext> UseMiddleware<TPipelineContext>(this IPipelineBuilder<TPipelineContext> builder, Type middlewareType, params object[] args)
         {
+            Check.NotNull(builder, nameof(builder));
+            Check.NotNull(middlewareType, nameof(middlewareType));
             builder.Use(next =>
            {
                var methods = middlewareType.GetMethods(BindingFlags.Instance | BindingFlags.Public).Where(m => m.Name.IsIn("Invoke", "InvokeAsync")).ToArray();
@@ -125,12 +127,7 @@ namespace Scorpio.Middleware.Pipeline
         }
         private static object GetService(IServiceProvider sp, Type type)
         {
-            var service = sp.GetService(type);
-            if (service == null)
-            {
-                throw new InvalidOperationException();
-            }
-
+            var service = sp.GetRequiredService(type);
             return service;
         }
     }

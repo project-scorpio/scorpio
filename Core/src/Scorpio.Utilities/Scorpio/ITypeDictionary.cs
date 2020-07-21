@@ -31,7 +31,7 @@ namespace Scorpio
         /// </summary>
         /// <typeparam name="TKeyType"></typeparam>
         /// <typeparam name="TValueType"></typeparam>
-        void TryAdd<TKeyType, TValueType>()
+        bool TryAdd<TKeyType, TValueType>()
             where TKeyType : TBaseKeyType where TValueType : TBaseValueType;
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Scorpio
         /// 
         /// </summary>
         /// <typeparam name="TKeyType"></typeparam>
-        void Remove<TKeyType>() where TKeyType : TBaseKeyType;
+        bool Remove<TKeyType>() where TKeyType : TBaseKeyType;
 
         /// <summary>
         /// 

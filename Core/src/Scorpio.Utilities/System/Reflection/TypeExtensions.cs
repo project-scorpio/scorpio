@@ -1,4 +1,6 @@
-﻿namespace System.Reflection
+﻿using Scorpio;
+
+namespace System.Reflection
 {
     /// <summary>
     /// Extends <see cref="Type"/> with methods .
@@ -15,15 +17,8 @@
         /// or one of its sub-namespaces; otherwise, false.</returns>
         public static bool IsInNamespace(this Type @this, string @namespace)
         {
-            if (@this == null)
-            {
-                throw new ArgumentNullException(nameof(@this));
-            }
-
-            if (@namespace == null)
-            {
-                throw new ArgumentNullException(nameof(@namespace));
-            }
+            Check.NotNull(@this, nameof(@this));
+            Check.NotNull(@namespace, nameof(@namespace));
 
             return @this.Namespace != null &&
                 (@this.Namespace == @namespace || @this.Namespace.StartsWith(@namespace + ".", StringComparison.Ordinal));
@@ -38,11 +33,6 @@
         /// or one of its sub-namespaces; otherwise, false.</returns>
         public static bool IsInNamespaceOf<T>(this Type @this)
         {
-            if (@this == null)
-            {
-                throw new ArgumentNullException(nameof(@this));
-            }
-
             return IsInNamespace(@this, typeof(T).Namespace);
         }
 
@@ -68,11 +58,8 @@
         /// <returns>True if this type is assignable to references of type</returns>
         public static bool IsAssignableTo(this Type @this, Type type)
         {
-            if (@this == null)
-            {
-                throw new ArgumentNullException(nameof(@this));
-            }
-
+            Check.NotNull(@this, nameof(@this));
+            Check.NotNull(type, nameof(type));
             return type.GetTypeInfo().IsAssignableFrom(@this.GetTypeInfo());
         }
 
@@ -84,6 +71,8 @@
         /// <returns></returns>
         public static bool IsAssignableToGenericType(this Type @this, Type genericType)
         {
+            Check.NotNull(@this, nameof(@this));
+            Check.NotNull(genericType, nameof(genericType));
             var givenTypeInfo = @this.GetTypeInfo();
 
             if (givenTypeInfo.IsGenericType && @this.GetGenericTypeDefinition() == genericType)
