@@ -1,4 +1,5 @@
 ﻿
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 using Scorpio;
@@ -114,7 +115,10 @@ namespace System.Collections.Generic
         public static T GetOrDefault<T>(this ICollection<T> source, Func<T, bool> selector, T @default = default)
         {
             Check.NotNull(source, nameof(source));
-
+            if (!source.Any(selector))
+            {
+                return @default;
+            }
             var item = source.FirstOrDefault(selector) ?? @default;
             return item;
         }
@@ -132,16 +136,13 @@ namespace System.Collections.Generic
         public static T GetOrAdd<T>(this ICollection<T> source, Func<T, bool> selector, Func<T> factory)
         {
             Check.NotNull(source, nameof(source));
-
-            var item = source.FirstOrDefault(selector);
-
-            if (item == null)
+            if (!source.Any(selector))
             {
-                item = factory();
-                source.Add(item);
+                var result = factory();
+                source.Add(result);
+                return result;
             }
-
-            return item;
+            return source.First(selector);
         }
     }
 }

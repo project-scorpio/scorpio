@@ -103,11 +103,7 @@ namespace System.Reflection
         /// <returns>True if this type is is a standard type.</returns>
         public static bool IsStandardType(this Type @this)
         {
-            if (@this == null)
-            {
-                throw new ArgumentNullException(nameof(@this));
-            }
-
+            Check.NotNull(@this, nameof(@this));
             return @this.IsClass && !@this.IsAbstract && !@this.IsGenericTypeDefinition;
         }
 

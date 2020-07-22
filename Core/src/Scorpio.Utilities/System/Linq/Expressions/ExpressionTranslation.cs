@@ -32,10 +32,7 @@ namespace System.Linq.Expressions
             var types = parameterTypes.GetEnumerator();
             for (var i = 0; i < _predicate.Parameters.Count; i++)
             {
-                if (!types.MoveNext())
-                {
-                    break;
-                }
+                types.MoveNext();
                 var s = _predicate.Parameters[i];
                 parameters[i] = Expression.Parameter(types.Current, s.Name);
                 var binder = new ReplaceExpressionVisitor(s, parameters[i]);
@@ -50,9 +47,10 @@ namespace System.Linq.Expressions
                 throw new ArgumentNullException(nameof(action));
             var mapper = new TranslatePathMapper<TDelegate>(_predicate);
             action(mapper);
-            var (expression, parameters) = mapper.MergeExpressionAndParameters();
+            var (expression, parameters) = mapper.MergeExpressionAndParameters<TTranslatedDelegate>();
 
             return Expression.Lambda<TTranslatedDelegate>(expression, parameters);
         }
     }
+
 }
