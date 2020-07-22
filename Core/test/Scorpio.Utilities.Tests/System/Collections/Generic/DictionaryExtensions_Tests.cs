@@ -15,9 +15,16 @@ namespace System.Collections.Generic
         [Fact]
         public void TryGetValue()
         {
-            _keyValuePairs.TryGetValue("key", out var value).ShouldBeFalse();
+            var dic = new Dictionary<string, object> {
+                {"Key1","Value1" },
+                {"Key2","Value2" },
+                {"Key3","Value3" },
+                {"Key4","Value4" },
+            };
+
+            dic.TryGetValue<string>("key", out var value).ShouldBeFalse();
             value.ShouldBeNull();
-            _keyValuePairs.TryGetValue("Key1", out value).ShouldBeTrue();
+            dic.TryGetValue("Key1", out value).ShouldBeTrue();
             value.ShouldBe("Value1");
         }
 

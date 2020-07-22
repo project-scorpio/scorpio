@@ -108,15 +108,6 @@ namespace System.Collections.Generic
             ((Action)(() => list.MoveItem(i => i == "Item1", 3))).ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Fact]
-        public void GetOrAdd()
-        {
-            IList<string> list = new List<string>(_sourceList);
-            list.Contains("Item0").ShouldBeFalse();
-            list.GetOrAdd(i => i == "Item0", () => "Item0").ShouldBe("Item0");
-            list.Contains("Item0").ShouldBeTrue();
-        }
-
         class InsterAfterData : IEnumerable<object[]>
         {
             public IEnumerator<object[]> GetEnumerator()

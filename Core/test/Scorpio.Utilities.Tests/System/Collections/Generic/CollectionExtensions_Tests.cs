@@ -39,6 +39,20 @@ namespace System.Collections.Generic
         }
 
         [Fact]
+        public void AddIfNotContainsWhitComparer()
+        {
+            var collection = new List<int> { 4, 5, 6 };
+
+            collection.AddIfNotContains(5,EqualityComparer<int>.Default);
+            collection.Count.ShouldBe(3);
+
+            collection.AddIfNotContains(4,EqualityComparer<int>.Default);
+            collection.Count.ShouldBe(3);
+
+            collection.AddIfNotContains(8, EqualityComparer<int>.Default);
+            collection.Count.ShouldBe(4);
+        }
+        [Fact]
         public void IsNullOrEmpty()
         {
             List<int> collection = null;
@@ -60,6 +74,29 @@ namespace System.Collections.Generic
             collection.Count.ShouldBe(11);
             collection.RemoveAll(i => i == 5).Count.ShouldBe(3);
             collection.Count.ShouldBe(8);
+        }
+
+        [Fact]
+        public void GetOrDefault()
+        {
+            ICollection<int> collection = new List<int> { 3, 4, 4, 5, 5, 5, 6, 6, 7, 8, 8, 8, 9 };
+            collection.GetOrDefault(i => i == 5).ShouldBe(5);
+            collection.GetOrDefault(i => i == 5, -1).ShouldBe(5);
+            collection.GetOrDefault(i => i == 10).ShouldBe(0);
+            collection.GetOrDefault(i => i == 10, -1).ShouldBe(-1);
+        }
+
+        [Fact]
+        public void GetOrAdd()
+        {
+            ICollection<int> collection = new List<int> { 3,4,5 };
+            collection.GetOrAdd(i => i == 5,()=>5).ShouldBe(5);
+            collection.ShouldNotContain(15);
+            collection.GetOrAdd(i => i == 15, ()=>15).ShouldBe(15);
+            collection.ShouldContain(15);
+            collection.GetOrAdd(i => i == 10,()=>11).ShouldBe(11);
+            collection.ShouldNotContain(10);
+            collection.ShouldContain(11);
         }
     }
 }
