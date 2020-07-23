@@ -33,12 +33,7 @@ namespace Scorpio.Middleware.Pipeline
         /// <returns></returns>
         public PipelineRequestDelegate<TPipelineContext> Build()
         {
-            var app = TailDelegate;
-            foreach (var component in _middlewares.Reverse())
-            {
-                app = component(app);
-            }
-            return app;
+            return _middlewares.Reverse().Aggregate(TailDelegate, (d, f) => f(d));
         }
 
         /// <summary>

@@ -88,7 +88,7 @@ namespace System.Collections.Generic
         {
             IEnumerable<int> enumerable = null;
             var visitedItems = new List<int>();
-            enumerable.ForEachAsync((i, c) => { visitedItems.Add(i); return Task.CompletedTask; }).Wait();
+            enumerable.ForEachAsync((Func<int, Task>)null).Wait();
             visitedItems.ShouldBeEmpty();
         }
 
