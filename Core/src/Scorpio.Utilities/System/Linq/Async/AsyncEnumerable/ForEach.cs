@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 using Scorpio;
 
-namespace System.Linq
+namespace System.Linq.Async
 {
     partial class AsyncEnumerable
     {
@@ -78,29 +78,6 @@ namespace System.Linq
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="enumerable"></param>
-        /// <param name="action"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
-        public static async ValueTask ForEachAsync<T>(this IAsyncEnumerable<T> enumerable, Func<T, int, Task> action, CancellationToken cancellationToken = default)
-        {
-            Check.NotNull(enumerable, nameof(enumerable));
-            Check.NotNull(action, nameof(action));
-
-            await Core(enumerable, action, cancellationToken);
-            static async ValueTask Core(IAsyncEnumerable<T> enumerable, Func<T, int, Task> action, CancellationToken cancellationToken)
-            {
-                var index = 0;
-                await foreach (var item in enumerable.WithCancellation(cancellationToken).ConfigureAwait(false))
-                {
-                    await action(item, checked(index++)).ConfigureAwait(false);
-                }
-            }
-        }
 
         /// <summary>
         /// 
