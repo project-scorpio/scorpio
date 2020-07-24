@@ -5,7 +5,7 @@
     <AssemblyTitle>Scorpio core library</AssemblyTitle>
     <RootNamespace />
     <PackageTags>Scorpio;Aspect;dependencyinjection;Modularity</PackageTags>
-    <CodeAnalysisRuleSet>..\..\..\.sonarlint\project-scorpio_scorpiocsharp.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>Scorpio.Aspect.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>
