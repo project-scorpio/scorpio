@@ -26,7 +26,7 @@ namespace System.Linq.Async
             _threadId = Environment.CurrentManagedThreadId;
         }
 
-        public IAsyncEnumerator<TSource> GetAsyncEnumerator(CancellationToken cancellationToken)
+        public IAsyncEnumerator<TSource> GetAsyncEnumerator(CancellationToken cancellationToken=default)
         {
             cancellationToken.ThrowIfCancellationRequested(); // NB: [LDM-2018-11-28] Equivalent to async iterator behavior.
 

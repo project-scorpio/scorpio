@@ -5,6 +5,7 @@
     <AssemblyTitle>Scorpio utility library</AssemblyTitle>
     <RootNamespace />
     <PackageTags>Scorpio;utility</PackageTags>
+    <CodeAnalysisRuleSet>..\..\..\.sonarlint\project-scorpio_scorpiocsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   

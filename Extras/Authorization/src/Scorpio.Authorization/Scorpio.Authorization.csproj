@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyTitle>Scorpio authorization library</AssemblyTitle>
     <RootNamespace />
-    <CodeAnalysisRuleSet>..\..\..\..\.sonarlint\project-scorpio_scorpiocsharp.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>Scorpio.Authorization.ruleset</CodeAnalysisRuleSet>
 
   </PropertyGroup>
 
