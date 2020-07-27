@@ -8,11 +8,6 @@ namespace Scorpio.Conventional
 {
     class ConventionalRegistrationContext : IConventionalRegistrationContext
     {
-        /// <summary>
-        /// Gets the registering Assembly.
-        /// </summary>
-        internal Assembly Assembly { get; }
-
 
         public IServiceCollection Services { get; }
 
@@ -23,7 +18,6 @@ namespace Scorpio.Conventional
 
         internal ConventionalRegistrationContext(Assembly assembly, IServiceCollection services)
         {
-            Assembly = assembly;
             Types = assembly.GetTypes();
             Services = services;
         }
