@@ -116,7 +116,7 @@ namespace System.Linq.Async
             }
 
 
-            protected override int Count() => _source.Count();
+            protected override int Count() => _source.Count;
 
             protected override IEnumerator<T> GetEnumerator() => _source.GetEnumerator();
 

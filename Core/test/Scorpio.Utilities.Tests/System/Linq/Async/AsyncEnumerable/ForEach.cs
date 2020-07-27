@@ -58,5 +58,17 @@ namespace System.Linq.Async
             await act.ForEachAsync((v, i, c) => Task.Run(() => exp.Add(v)));
             datas.SequenceEqual(exp).ShouldBeTrue();
         }
+
+        [Fact]
+        public async Task GetAsyncEnumerator()
+        {
+            var datas = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8 };
+            var act = datas.ToAsyncEnumerable();
+            var enumerator = act.GetAsyncEnumerator();
+            (await enumerator.MoveNextAsync()).ShouldBeTrue();
+            await enumerator.DisposeAsync();
+            (await enumerator.MoveNextAsync()).ShouldBeFalse();
+        }
+
     }
 }

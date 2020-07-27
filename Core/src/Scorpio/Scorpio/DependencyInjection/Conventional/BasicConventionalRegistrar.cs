@@ -10,7 +10,7 @@ namespace Scorpio.DependencyInjection.Conventional
     {
         public void Register(IConventionalRegistrationContext context)
         {
-            context.DoConventionalAction<ConventionalDependencyAction>(config =>
+            context.RegisterConventionalDependencyInject(config =>
             {
                 config.Where(t => t.IsStandardType()).Where(t => t.IsAssignableTo<ISingletonDependency>()).AsDefault().AsSelf().Lifetime(ServiceLifetime.Singleton);
                 config.Where(t => t.IsStandardType()).Where(t => t.IsAssignableTo<ITransientDependency>()).AsDefault().AsSelf().Lifetime(ServiceLifetime.Transient);
