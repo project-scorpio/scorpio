@@ -106,6 +106,45 @@ namespace System.Linq.Async
             protected abstract IEnumerator<T> GetEnumerator();
         }
 
+        private abstract class AsyncICollectionEnumerableAdapterBase<T> : AsyncEnumerableAdapterBase<T>, ICollection<T>
+        {
+            private readonly ICollection<T> _source;
+
+            protected AsyncICollectionEnumerableAdapterBase(ICollection<T> source)
+            {
+                _source = source;
+            }
+
+
+            protected override int Count() => _source.Count();
+
+            protected override IEnumerator<T> GetEnumerator() => _source.GetEnumerator();
+
+            protected override T[] ToArray() => _source.ToArray();
+
+            protected override List<T> ToList() => _source.ToList();
+
+
+            IEnumerator<T> IEnumerable<T>.GetEnumerator() => _source.GetEnumerator();
+
+            IEnumerator IEnumerable.GetEnumerator() => _source.GetEnumerator();
+
+            void ICollection<T>.Add(T item) => _source.Add(item);
+
+            void ICollection<T>.Clear() => _source.Clear();
+
+            bool ICollection<T>.Contains(T item) => _source.Contains(item);
+
+            void ICollection<T>.CopyTo(T[] array, int arrayIndex) => _source.CopyTo(array, arrayIndex);
+
+            bool ICollection<T>.Remove(T item) => _source.Remove(item);
+
+            int ICollection<T>.Count => _source.Count;
+
+            bool ICollection<T>.IsReadOnly => _source.IsReadOnly;
+        }
+
+
         private sealed class AsyncEnumerableAdapter<T>:AsyncEnumerableAdapterBase<T>
         {
             private readonly IEnumerable<T> _source;
@@ -127,45 +166,16 @@ namespace System.Linq.Async
             protected override List<T> ToList() => _source.ToList();
         }
 
-        private sealed class AsyncIListEnumerableAdapter<T> : AsyncEnumerableAdapterBase<T>, IList<T>
+        private sealed class AsyncIListEnumerableAdapter<T> : AsyncICollectionEnumerableAdapterBase<T>, IList<T>
         {
             private readonly IList<T> _source;
 
-            public AsyncIListEnumerableAdapter(IList<T> source)
+            public AsyncIListEnumerableAdapter(IList<T> source):base(source)
             {
                 _source = source;
             }
 
             public override AsyncIteratorBase<T> Clone() => new AsyncIListEnumerableAdapter<T>(_source);
-
-
-            protected override int Count() => _source.Count();
-
-            protected override IEnumerator<T> GetEnumerator() => _source.GetEnumerator();
-
-            protected override T[] ToArray() => _source.ToArray();
-
-            protected override List<T> ToList() => _source.ToList();
-
-
-
-            IEnumerator<T> IEnumerable<T>.GetEnumerator() => _source.GetEnumerator();
-
-            IEnumerator IEnumerable.GetEnumerator() => _source.GetEnumerator();
-
-            void ICollection<T>.Add(T item) => _source.Add(item);
-
-            void ICollection<T>.Clear() => _source.Clear();
-
-            bool ICollection<T>.Contains(T item) => _source.Contains(item);
-
-            void ICollection<T>.CopyTo(T[] array, int arrayIndex) => _source.CopyTo(array, arrayIndex);
-
-            bool ICollection<T>.Remove(T item) => _source.Remove(item);
-
-            int ICollection<T>.Count => _source.Count;
-
-            bool ICollection<T>.IsReadOnly => _source.IsReadOnly;
 
             int IList<T>.IndexOf(T item) => _source.IndexOf(item);
 
@@ -179,44 +189,18 @@ namespace System.Linq.Async
                 set => _source[index] = value;
             }
         }
-
-        private sealed class AsyncICollectionEnumerableAdapter<T> : AsyncEnumerableAdapterBase<T>, ICollection<T>
+        private sealed class AsyncICollectionEnumerableAdapter<T> : AsyncICollectionEnumerableAdapterBase<T>
         {
             private readonly ICollection<T> _source;
 
-            public AsyncICollectionEnumerableAdapter(ICollection<T> source)
+            public AsyncICollectionEnumerableAdapter(ICollection<T> source) : base(source)
             {
                 _source = source;
             }
 
             public override AsyncIteratorBase<T> Clone() => new AsyncICollectionEnumerableAdapter<T>(_source);
 
-            protected override int Count() => _source.Count();
-
-            protected override IEnumerator<T> GetEnumerator() => _source.GetEnumerator();
-
-            protected override T[] ToArray() => _source.ToArray();
-
-            protected override List<T> ToList() => _source.ToList();
-
-
-            IEnumerator<T> IEnumerable<T>.GetEnumerator() => _source.GetEnumerator();
-
-            IEnumerator IEnumerable.GetEnumerator() => _source.GetEnumerator();
-
-            void ICollection<T>.Add(T item) => _source.Add(item);
-
-            void ICollection<T>.Clear() => _source.Clear();
-
-            bool ICollection<T>.Contains(T item) => _source.Contains(item);
-
-            void ICollection<T>.CopyTo(T[] array, int arrayIndex) => _source.CopyTo(array, arrayIndex);
-
-            bool ICollection<T>.Remove(T item) => _source.Remove(item);
-
-            int ICollection<T>.Count => _source.Count;
-
-            bool ICollection<T>.IsReadOnly => _source.IsReadOnly;
         }
+
     }
 }
