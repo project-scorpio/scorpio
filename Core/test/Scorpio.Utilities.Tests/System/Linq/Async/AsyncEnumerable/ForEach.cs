@@ -13,11 +13,10 @@ namespace System.Linq.Async
         [Fact]
         public async Task ForEachAsync_1()
         {
-            var datas = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8 };
-            var act = datas.ToAsyncEnumerable();
+            var act = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8 }.ToAsyncEnumerable();
             var exp = new List<int>();
             await act.ForEachAsync(v => exp.Add(v));
-            datas.SequenceEqual(exp).ShouldBeTrue();
+            exp.SequenceEqual(act as IList<int>).ShouldBeTrue();
         }
 
         [Fact]

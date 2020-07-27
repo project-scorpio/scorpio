@@ -5,7 +5,6 @@
     <AssemblyTitle>Scorpio core library</AssemblyTitle>
     <RootNamespace />
     <PackageTags>Scorpio;Aspect;dependencyinjection;Modularity</PackageTags>
-    <CodeAnalysisRuleSet>Scorpio.Aspect.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>

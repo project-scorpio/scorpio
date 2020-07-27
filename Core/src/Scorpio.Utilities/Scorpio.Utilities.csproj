@@ -5,7 +5,6 @@
     <AssemblyTitle>Scorpio utility library</AssemblyTitle>
     <RootNamespace />
     <PackageTags>Scorpio;utility</PackageTags>
-    <CodeAnalysisRuleSet>Scorpio.Utilities.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   
