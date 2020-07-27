@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <AssemblyTitle>Scorpio aspnet core mvc library</AssemblyTitle>
     <RootNamespace />
-    <CodeAnalysisRuleSet>..\..\..\..\.sonarlint\project-scorpio_scorpiocsharp.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>Scorpio.AspNetCore.Mvc.ruleset</CodeAnalysisRuleSet>
 
   </PropertyGroup>
 

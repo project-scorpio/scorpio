@@ -1,0 +1,15 @@
+{
+  "ServerUri": "https://sonarcloud.io/",
+  "Organization": {
+    "Key": "project-scorpio",
+    "Name": "project-scorpio"
+  },
+  "ProjectKey": "project-scorpio_scorpio",
+  "ProjectName": "scorpio",
+  "Profiles": {
+    "CSharp": {
+      "ProfileKey": "AXLakigYHXSYsHbBzIfs",
+      "ProfileTimestamp": "2020-07-20T13:51:42Z"
+    }
+  }
+}

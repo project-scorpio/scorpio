@@ -339,5 +339,4 @@ publish.cmd
 .dotnet/
 .vscode/
 .sonarqube/
-.sonarlint
 coverage.opencover.xml

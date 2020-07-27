@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <AssemblyTitle>Scorpio aspnet core ui library</AssemblyTitle>
     <RootNamespace />
-    <CodeAnalysisRuleSet>..\..\..\..\.sonarlint\project-scorpio_scorpiocsharp.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>Scorpio.AspNetCore.UI.ruleset</CodeAnalysisRuleSet>
 
   </PropertyGroup>
 

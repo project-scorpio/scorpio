@@ -13,7 +13,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <RootNamespace />
     <AssemblyTitle>Scorpio unit of work library</AssemblyTitle>
-    <CodeAnalysisRuleSet>..\..\..\..\.sonarlint\project-scorpio_scorpiocsharp.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>Scorpio.Uow.EntityFrameworkCore.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
 </Project>

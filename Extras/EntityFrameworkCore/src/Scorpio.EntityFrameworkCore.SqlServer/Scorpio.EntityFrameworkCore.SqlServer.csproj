@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyTitle>Scorpio entity framework core sql server provider library</AssemblyTitle>
     <RootNamespace />
-    <CodeAnalysisRuleSet>..\..\..\..\.sonarlint\project-scorpio_scorpiocsharp.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>Scorpio.EntityFrameworkCore.SqlServer.ruleset</CodeAnalysisRuleSet>
 
   </PropertyGroup>
 
