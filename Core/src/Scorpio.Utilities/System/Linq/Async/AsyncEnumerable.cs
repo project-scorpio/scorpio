@@ -32,11 +32,84 @@ namespace System.Linq.Async
             };
         }
 
-        private sealed class AsyncEnumerableAdapter<T> : AsyncIterator<T>, IAsyncIListProvider<T>
+        private abstract class AsyncEnumerableAdapterBase<T> : AsyncIterator<T>, IAsyncIListProvider<T>
+        {
+            private IEnumerator<T> _enumerator;
+
+            protected AsyncEnumerableAdapterBase()
+            {
+            }
+
+            public override async ValueTask DisposeAsync()
+            {
+                if (_enumerator != null)
+                {
+                    _enumerator.Dispose();
+                    _enumerator = null;
+                }
+                await base.DisposeAsync().ConfigureAwait(false);
+            }
+
+            protected override async ValueTask<bool> MoveNextCore()
+            {
+                switch (_state)
+                {
+                    case AsyncIteratorState.Allocated:
+                        _enumerator = GetEnumerator();
+                        _state = AsyncIteratorState.Iterating;
+                        goto case AsyncIteratorState.Iterating;
+
+                    case AsyncIteratorState.Iterating:
+                        if (_enumerator!.MoveNext())
+                        {
+                            _current = _enumerator.Current;
+                            return true;
+                        }
+                        await DisposeAsync().ConfigureAwait(false);
+                        break;
+                }
+                return false;
+            }
+
+            //
+            // NB: These optimizations rely on the System.Linq implementation of IEnumerable<T> operators to optimize
+            //     and short-circuit as appropriate.
+            //
+
+            public ValueTask<T[]> ToArrayAsync(CancellationToken cancellationToken)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                return new ValueTask<T[]>(ToArray());
+            }
+
+
+            public ValueTask<List<T>> ToListAsync(CancellationToken cancellationToken)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                return new ValueTask<List<T>>(ToList());
+            }
+
+
+
+            public ValueTask<int> GetCountAsync(bool onlyIfCheap, CancellationToken cancellationToken)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                return new ValueTask<int>(Count());
+            }
+
+            protected abstract T[] ToArray();
+
+            protected abstract List<T> ToList();
+
+            protected abstract int Count();
+
+            protected abstract IEnumerator<T> GetEnumerator();
+        }
+
+        private sealed class AsyncEnumerableAdapter<T>:AsyncEnumerableAdapterBase<T>
         {
             private readonly IEnumerable<T> _source;
 
-            private IEnumerator<T> _enumerator;
 
             public AsyncEnumerableAdapter(IEnumerable<T> source)
             {
@@ -45,71 +118,18 @@ namespace System.Linq.Async
 
             public override AsyncIteratorBase<T> Clone() => new AsyncEnumerableAdapter<T>(_source);
 
-            public override async ValueTask DisposeAsync()
-            {
-                if (_enumerator != null)
-                {
-                    _enumerator.Dispose();
-                    _enumerator = null;
-                }
+            protected override int Count() => _source.Count();
 
-                await base.DisposeAsync().ConfigureAwait(false);
-            }
+            protected override IEnumerator<T> GetEnumerator() => _source.GetEnumerator();
 
-            protected override async ValueTask<bool> MoveNextCore()
-            {
-                switch (_state)
-                {
-                    case AsyncIteratorState.Allocated:
-                        _enumerator = _source.GetEnumerator();
-                        _state = AsyncIteratorState.Iterating;
-                        goto case AsyncIteratorState.Iterating;
+            protected override T[] ToArray() =>_source.ToArray();
 
-                    case AsyncIteratorState.Iterating:
-                        if (_enumerator!.MoveNext())
-                        {
-                            _current = _enumerator.Current;
-                            return true;
-                        }
-
-                        await DisposeAsync().ConfigureAwait(false);
-                        break;
-                }
-
-                return false;
-            }
-
-            //
-            // NB: These optimizations rely on the System.Linq implementation of IEnumerable<T> operators to optimize
-            //     and short-circuit as appropriate.
-            //
-
-            public ValueTask<T[]> ToArrayAsync(CancellationToken cancellationToken)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-
-                return new ValueTask<T[]>(_source.ToArray());
-            }
-
-            public ValueTask<List<T>> ToListAsync(CancellationToken cancellationToken)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-
-                return new ValueTask<List<T>>(_source.ToList());
-            }
-
-            public ValueTask<int> GetCountAsync(bool onlyIfCheap, CancellationToken cancellationToken)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-
-                return new ValueTask<int>(_source.Count());
-            }
+            protected override List<T> ToList() => _source.ToList();
         }
 
-        private sealed class AsyncIListEnumerableAdapter<T> : AsyncIterator<T>, IAsyncIListProvider<T>, IList<T>
+        private sealed class AsyncIListEnumerableAdapter<T> : AsyncEnumerableAdapterBase<T>, IList<T>
         {
             private readonly IList<T> _source;
-            private IEnumerator<T> _enumerator;
 
             public AsyncIListEnumerableAdapter(IList<T> source)
             {
@@ -118,67 +138,16 @@ namespace System.Linq.Async
 
             public override AsyncIteratorBase<T> Clone() => new AsyncIListEnumerableAdapter<T>(_source);
 
-            public override async ValueTask DisposeAsync()
-            {
-                if (_enumerator != null)
-                {
-                    _enumerator.Dispose();
-                    _enumerator = null;
-                }
 
-                await base.DisposeAsync().ConfigureAwait(false);
-            }
+            protected override int Count() => _source.Count();
 
-            protected override async ValueTask<bool> MoveNextCore()
-            {
-                switch (_state)
-                {
-                    case AsyncIteratorState.Allocated:
-                        _enumerator = _source.GetEnumerator();
-                        _state = AsyncIteratorState.Iterating;
-                        goto case AsyncIteratorState.Iterating;
+            protected override IEnumerator<T> GetEnumerator() => _source.GetEnumerator();
 
-                    case AsyncIteratorState.Iterating:
-                        if (_enumerator!.MoveNext())
-                        {
-                            _current = _enumerator.Current;
-                            return true;
-                        }
+            protected override T[] ToArray() => _source.ToArray();
 
-                        await DisposeAsync().ConfigureAwait(false);
-                        break;
-                }
+            protected override List<T> ToList() => _source.ToList();
 
-                return false;
-            }
 
-            //public override IAsyncEnumerable<TResult> Select<TResult>(Func<T, TResult> selector) => new SelectIListIterator<T, TResult>(_source, selector);
-
-            //
-            // NB: These optimizations rely on the System.Linq implementation of IEnumerable<T> operators to optimize
-            //     and short-circuit as appropriate.
-            //
-
-            public ValueTask<T[]> ToArrayAsync(CancellationToken cancellationToken)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-
-                return new ValueTask<T[]>(_source.ToArray());
-            }
-
-            public ValueTask<List<T>> ToListAsync(CancellationToken cancellationToken)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-
-                return new ValueTask<List<T>>(_source.ToList());
-            }
-
-            public ValueTask<int> GetCountAsync(bool onlyIfCheap, CancellationToken cancellationToken)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-
-                return new ValueTask<int>(_source.Count);
-            }
 
             IEnumerator<T> IEnumerable<T>.GetEnumerator() => _source.GetEnumerator();
 
@@ -211,10 +180,9 @@ namespace System.Linq.Async
             }
         }
 
-        private sealed class AsyncICollectionEnumerableAdapter<T> : AsyncIterator<T>, IAsyncIListProvider<T>, ICollection<T>
+        private sealed class AsyncICollectionEnumerableAdapter<T> : AsyncEnumerableAdapterBase<T>, ICollection<T>
         {
             private readonly ICollection<T> _source;
-            private IEnumerator<T> _enumerator;
 
             public AsyncICollectionEnumerableAdapter(ICollection<T> source)
             {
@@ -223,65 +191,14 @@ namespace System.Linq.Async
 
             public override AsyncIteratorBase<T> Clone() => new AsyncICollectionEnumerableAdapter<T>(_source);
 
-            public override async ValueTask DisposeAsync()
-            {
-                if (_enumerator != null)
-                {
-                    _enumerator.Dispose();
-                    _enumerator = null;
-                }
+            protected override int Count() => _source.Count();
 
-                await base.DisposeAsync().ConfigureAwait(false);
-            }
+            protected override IEnumerator<T> GetEnumerator() => _source.GetEnumerator();
 
-            protected override async ValueTask<bool> MoveNextCore()
-            {
-                switch (_state)
-                {
-                    case AsyncIteratorState.Allocated:
-                        _enumerator = _source.GetEnumerator();
-                        _state = AsyncIteratorState.Iterating;
-                        goto case AsyncIteratorState.Iterating;
+            protected override T[] ToArray() => _source.ToArray();
 
-                    case AsyncIteratorState.Iterating:
-                        if (_enumerator!.MoveNext())
-                        {
-                            _current = _enumerator.Current;
-                            return true;
-                        }
+            protected override List<T> ToList() => _source.ToList();
 
-                        await DisposeAsync().ConfigureAwait(false);
-                        break;
-                }
-
-                return false;
-            }
-
-            //
-            // NB: These optimizations rely on the System.Linq implementation of IEnumerable<T> operators to optimize
-            //     and short-circuit as appropriate.
-            //
-
-            public ValueTask<T[]> ToArrayAsync(CancellationToken cancellationToken)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-
-                return new ValueTask<T[]>(_source.ToArray());
-            }
-
-            public ValueTask<List<T>> ToListAsync(CancellationToken cancellationToken)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-
-                return new ValueTask<List<T>>(_source.ToList());
-            }
-
-            public ValueTask<int> GetCountAsync(bool onlyIfCheap, CancellationToken cancellationToken)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-
-                return new ValueTask<int>(_source.Count);
-            }
 
             IEnumerator<T> IEnumerable<T>.GetEnumerator() => _source.GetEnumerator();
 
