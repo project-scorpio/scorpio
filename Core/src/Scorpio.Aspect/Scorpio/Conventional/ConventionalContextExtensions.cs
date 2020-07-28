@@ -21,7 +21,7 @@ namespace Scorpio.Conventional
             this IConventionalRegistrationContext context,
             Action<IConventionalConfiguration<ConventionalInterceptorAction>> configureAction)
         {
-             context.Services.RegisterConventionalInterceptor(context.Types,configureAction);
+            context.Services.RegisterConventionalInterceptor(context.Types, configureAction);
             return context;
         }
 

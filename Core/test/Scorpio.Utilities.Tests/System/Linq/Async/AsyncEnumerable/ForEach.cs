@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-using Xunit;
-using Shouldly;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+
+using Shouldly;
+
+using Xunit;
 
 namespace System.Linq.Async
 {

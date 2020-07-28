@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 using Scorpio.Middleware.Pipeline;
@@ -44,9 +42,9 @@ namespace Scorpio.Middleware
         {
             _next = next;
         }
-        public Task InvokeAsync(TestPipelineContext context,IServiceProvider serviceProvider)
+        public Task InvokeAsync(TestPipelineContext context, IServiceProvider serviceProvider)
         {
-            Check.NotNull(serviceProvider,nameof(serviceProvider));
+            Check.NotNull(serviceProvider, nameof(serviceProvider));
             context.PipelineInvoked = true;
             return _next(context);
         }
@@ -91,7 +89,7 @@ namespace Scorpio.Middleware
         {
             _next = next;
         }
-       
+
     }
 
     public class NotTaskMiddleware

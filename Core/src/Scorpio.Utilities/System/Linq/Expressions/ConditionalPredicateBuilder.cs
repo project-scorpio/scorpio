@@ -1,5 +1,6 @@
 ﻿namespace System.Linq.Expressions
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S2436:Types and methods should not have too many generic parameters", Justification = "<挂起>")]
     partial class PredicateBuilder
     {
 

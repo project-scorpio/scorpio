@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-
-using Microsoft.Extensions.DependencyInjection;
-
+﻿
 using Shouldly;
 
 using Xunit;

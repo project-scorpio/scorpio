@@ -25,12 +25,12 @@
             var t = Expression.Parameter(type, s.Name);
             var init = _predicate.Body as MemberInitExpression;
             var binder = new ReplaceExpressionVisitor(s, t);
-            var binds = init.Bindings.OfType<MemberAssignment>().Select(b=>b.Member.Name).Select(b => Expression.Bind(type.GetProperty(b),Expression.Property(t,b))).ToList();
+            var binds = init.Bindings.OfType<MemberAssignment>().Select(b => b.Member.Name).Select(b => Expression.Bind(type.GetProperty(b), Expression.Property(t, b))).ToList();
             return Expression.Lambda<Func<TTranslatedSource, TTranslatedSource>>(
                  Expression.MemberInit(Expression.New(typeof(TTranslatedSource)), binds), t);
         }
 
-       
+
     }
 
 }

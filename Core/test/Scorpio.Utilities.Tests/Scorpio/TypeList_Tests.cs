@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection.Emit;
-using System.Text;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -52,7 +50,7 @@ namespace Scorpio
             Should.Throw<ArgumentException>(() => td.Contains(typeof(IServiceProvider)));
         }
 
-        
+
         [Fact]
         public void Remove()
         {
@@ -85,7 +83,7 @@ namespace Scorpio
 
         }
 
-       
+
 
         [Fact]
         public void CopyTo()

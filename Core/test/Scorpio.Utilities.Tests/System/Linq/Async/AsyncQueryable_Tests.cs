@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 using Shouldly;
 
@@ -100,7 +97,7 @@ namespace System.Linq.Async
         public void ForEachAsync()
         {
             var source = new int[] { default }.AsQueryable();
-            Should.Throw<InvalidOperationException>(async () => await source.ForEachAsync(i=> { }));
+            Should.Throw<InvalidOperationException>(async () => await source.ForEachAsync(i => { }));
         }
 
         [Fact]
@@ -108,9 +105,9 @@ namespace System.Linq.Async
         {
             var source = new int[] { default }.AsQueryable();
             Should.Throw<InvalidOperationException>(async () => await source.LastAsync());
-            Should.Throw<InvalidOperationException>(async () => await source.LastAsync(a=>default));
+            Should.Throw<InvalidOperationException>(async () => await source.LastAsync(a => default));
             Should.Throw<InvalidOperationException>(async () => await source.LastOrDefaultAsync());
-            Should.Throw<InvalidOperationException>(async () => await source.LastOrDefaultAsync(a=>default));
+            Should.Throw<InvalidOperationException>(async () => await source.LastOrDefaultAsync(a => default));
         }
 
         [Fact]
@@ -176,7 +173,7 @@ namespace System.Linq.Async
             var source = new int[] { default }.AsQueryable();
             Should.Throw<InvalidOperationException>(async () => await source.ToDictionaryAsync(i => i));
             Should.Throw<InvalidOperationException>(async () => await source.ToDictionaryAsync(i => i, i => i));
-            Should.Throw<InvalidOperationException>(async () => await source.ToDictionaryAsync(i => i,  EqualityComparer<int>.Default));
+            Should.Throw<InvalidOperationException>(async () => await source.ToDictionaryAsync(i => i, EqualityComparer<int>.Default));
             Should.Throw<InvalidOperationException>(async () => await source.ToDictionaryAsync(i => i, i => i, EqualityComparer<int>.Default));
         }
 

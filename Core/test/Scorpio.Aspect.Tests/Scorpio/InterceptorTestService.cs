@@ -7,7 +7,7 @@ namespace Scorpio
         public bool InterceptorInvoked { get; set; }
         public bool TestInvoked { get; set; }
 
-        public List<string> AppliedCrossCuttingConcerns { get; }=new List<string>();
+        public List<string> AppliedCrossCuttingConcerns { get; } = new List<string>();
 
         public virtual void Test()
         {

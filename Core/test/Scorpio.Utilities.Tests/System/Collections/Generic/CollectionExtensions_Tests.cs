@@ -43,10 +43,10 @@ namespace System.Collections.Generic
         {
             var collection = new List<int> { 4, 5, 6 };
 
-            collection.AddIfNotContains(5,EqualityComparer<int>.Default);
+            collection.AddIfNotContains(5, EqualityComparer<int>.Default);
             collection.Count.ShouldBe(3);
 
-            collection.AddIfNotContains(4,EqualityComparer<int>.Default);
+            collection.AddIfNotContains(4, EqualityComparer<int>.Default);
             collection.Count.ShouldBe(3);
 
             collection.AddIfNotContains(8, EqualityComparer<int>.Default);
@@ -89,12 +89,12 @@ namespace System.Collections.Generic
         [Fact]
         public void GetOrAdd()
         {
-            ICollection<int> collection = new List<int> { 3,4,5 };
-            collection.GetOrAdd(i => i == 5,()=>5).ShouldBe(5);
+            ICollection<int> collection = new List<int> { 3, 4, 5 };
+            collection.GetOrAdd(i => i == 5, () => 5).ShouldBe(5);
             collection.ShouldNotContain(15);
-            collection.GetOrAdd(i => i == 15, ()=>15).ShouldBe(15);
+            collection.GetOrAdd(i => i == 15, () => 15).ShouldBe(15);
             collection.ShouldContain(15);
-            collection.GetOrAdd(i => i == 10,()=>11).ShouldBe(11);
+            collection.GetOrAdd(i => i == 10, () => 11).ShouldBe(11);
             collection.ShouldNotContain(10);
             collection.ShouldContain(11);
         }

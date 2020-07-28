@@ -3,6 +3,7 @@
     /// <summary>
     /// 
     /// </summary>
+    [Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S2436:Types and methods should not have too many generic parameters", Justification = "<挂起>")]
     public static class TranslationBuilder
     {
         /// <summary>

@@ -18,7 +18,7 @@ namespace Scorpio
 
         void Test();
     }
-    public interface INonInterceptorTestService 
+    public interface INonInterceptorTestService
     {
         [NonAspect]
         bool InterceptorInvoked { get; }

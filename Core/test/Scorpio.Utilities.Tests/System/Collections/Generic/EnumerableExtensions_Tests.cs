@@ -159,8 +159,8 @@ namespace System.Collections.Generic
             IEnumerable<int> enumerable = new List<int> { 3, 4, 5 };
             enumerable.AnyAsync(i => Task.FromResult(i == 4)).Result.ShouldBeTrue();
             enumerable.AnyAsync(i => Task.FromResult(i == 6)).Result.ShouldBeFalse();
-            enumerable.AnyAsync((i,c) => Task.FromResult(i == 4)).Result.ShouldBeTrue();
-            enumerable.AnyAsync((i,c) => Task.FromResult(i == 6)).Result.ShouldBeFalse();
+            enumerable.AnyAsync((i, c) => Task.FromResult(i == 4)).Result.ShouldBeTrue();
+            enumerable.AnyAsync((i, c) => Task.FromResult(i == 6)).Result.ShouldBeFalse();
             var cs = new CancellationTokenSource();
             Should.Throw<OperationCanceledException>(() => enumerable.AnyAsync(i =>
             {
@@ -171,7 +171,7 @@ namespace System.Collections.Generic
                 return Task.FromResult(i == 4);
             }, cs.Token));
             cs = new CancellationTokenSource();
-            Should.Throw<OperationCanceledException>(() => enumerable.AnyAsync((i,c) =>
+            Should.Throw<OperationCanceledException>(() => enumerable.AnyAsync((i, c) =>
             {
                 if (i == 3)
                 {

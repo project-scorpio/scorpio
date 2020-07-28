@@ -32,6 +32,7 @@ namespace System.Linq.Expressions
     /// <typeparam name="T1"></typeparam>
     /// <typeparam name="T2"></typeparam>
     /// <typeparam name="TResult"></typeparam>
+    [Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S2436:Types and methods should not have too many generic parameters", Justification = "<挂起>")]
     public interface IExpressionTranslation<T1, T2, TResult>
     {
         /// <summary>
@@ -60,6 +61,7 @@ namespace System.Linq.Expressions
     /// <typeparam name="T2"></typeparam>
     /// <typeparam name="T3"></typeparam>
     /// <typeparam name="TResult"></typeparam>
+    [Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S2436:Types and methods should not have too many generic parameters", Justification = "<挂起>")]
     public interface IExpressionTranslation<T1, T2, T3, TResult>
     {
         /// <summary>
@@ -91,6 +93,7 @@ namespace System.Linq.Expressions
     /// <typeparam name="T3"></typeparam>
     /// <typeparam name="T4"></typeparam>
     /// <typeparam name="TResult"></typeparam>
+    [Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S2436:Types and methods should not have too many generic parameters", Justification = "<挂起>")]
     public interface IExpressionTranslation<T1, T2, T3, T4, TResult>
     {
         /// <summary>
