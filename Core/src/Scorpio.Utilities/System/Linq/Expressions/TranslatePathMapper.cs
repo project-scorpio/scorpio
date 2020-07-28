@@ -56,6 +56,7 @@ namespace System.Linq.Expressions
 
     internal static class TranslatePathMapper
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S3011:Reflection should not be used to increase accessibility of classes, methods, or fields", Justification = " <挂起>")]
         private static readonly MethodInfo _method = typeof(TranslatePathMapper).GetMethod(nameof(Update), BindingFlags.NonPublic | BindingFlags.Static);
 
         public static LambdaExpression UpdateExpression(LambdaExpression expression, string name)
