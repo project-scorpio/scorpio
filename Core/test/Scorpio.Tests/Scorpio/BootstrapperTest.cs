@@ -1,5 +1,6 @@
 ﻿using System;
 
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 using Scorpio.Modularity;
@@ -19,6 +20,7 @@ namespace Scorpio
             Should.Throw<ArgumentException>(() => Bootstrapper.Create(typeof(BootstrapperTest)));
             using (var bootstrapper = Bootstrapper.Create<IndependentEmptyModule>())
             {
+                bootstrapper.Properties.ShouldBeEmpty();
                 var moduleContainer = bootstrapper.ServiceProvider.GetRequiredService<IModuleContainer>();
                 moduleContainer.Modules.Count.ShouldBe(2);
                 moduleContainer.Modules[1].Type.ShouldBe(typeof(IndependentEmptyModule));
@@ -41,6 +43,7 @@ namespace Scorpio
         {
             using (var bootstrapper = Bootstrapper.Create<IndependentEmptyModule>(c =>
             {
+                c.Configuration(b => b.AddInMemoryCollection());
                 c.PlugInSources.AddType<IndependentEmptyPlugInModule>();
                 c.UseServiceProviderFactory(new DefaultServiceProviderFactory());
             }))

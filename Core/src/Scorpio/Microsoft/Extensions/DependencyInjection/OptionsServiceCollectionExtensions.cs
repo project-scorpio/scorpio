@@ -1,5 +1,6 @@
 ﻿using System;
 
+using Scorpio;
 using Scorpio.Options;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -28,11 +29,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static OptionsBuilder<TOptions> Options<TOptions>(this IServiceCollection services, string name)
             where TOptions : class
         {
-            if (services == null)
-            {
-                throw new ArgumentNullException(nameof(services));
-            }
-
+            Check.NotNull(services, nameof(services));
             services.AddOptions();
             return new OptionsBuilder<TOptions>(services, name);
         }
@@ -60,16 +57,8 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection PreConfigure<TOptions>(this IServiceCollection services, string name, Action<TOptions> configureOptions)
             where TOptions : class
         {
-            if (services == null)
-            {
-                throw new ArgumentNullException(nameof(services));
-            }
-
-            if (configureOptions == null)
-            {
-                throw new ArgumentNullException(nameof(configureOptions));
-            }
-
+            Check.NotNull(services, nameof(services));
+            Check.NotNull(configureOptions, nameof(configureOptions));
             services.AddOptions();
             services.AddSingleton<IPreConfigureOptions<TOptions>>(new PreConfigureOptions<TOptions>(name, configureOptions));
             return services;

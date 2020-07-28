@@ -144,21 +144,18 @@ namespace System
             Check.NotNull(str, nameof(str));
 
             var count = 0;
-            var result = -1;
             for (var i = 0; i < str.Length; i++)
             {
-                if (!str[i].ToString().Equals(c.ToString(), comparisonType))
+                if (!(str[i].ToString().Equals(c.ToString(), comparisonType)))
                 {
                     continue;
                 }
-                count++;
-                if (count == n)
+                if ((++count) == n)
                 {
-                    result = i;
-                    break;
+                    return i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>
