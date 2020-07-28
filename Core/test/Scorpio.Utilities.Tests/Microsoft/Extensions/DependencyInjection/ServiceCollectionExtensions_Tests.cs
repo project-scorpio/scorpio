@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 
 using Shouldly;
 
@@ -32,7 +31,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
     }
 
-   
+
 
     class Service1 : IService1
     {
@@ -44,5 +43,5 @@ namespace Microsoft.Extensions.DependencyInjection
         public Service1 Service1 { get; set; }
     }
 
-   
+
 }

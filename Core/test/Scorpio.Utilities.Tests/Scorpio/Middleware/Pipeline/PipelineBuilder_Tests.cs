@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -36,7 +34,7 @@ namespace Scorpio.Middleware.Pipeline
             var builder = new TestPipelineBuilder(serviceProvider);
             builder.ApplicationServices.ShouldBe(serviceProvider);
             Should.NotThrow(() => builder.UseMiddleware<TestPipelineContext, FuncResultMiddleware>());
-            Should.NotThrow(() => builder.UseMiddleware<TestPipelineContext,TestMiddleware>());
+            Should.NotThrow(() => builder.UseMiddleware<TestPipelineContext, TestMiddleware>());
             var context = new TestPipelineContext();
             context.PipelineInvoked.ShouldBeFalse();
             Should.NotThrow(() => builder.Build()(context));
@@ -58,7 +56,7 @@ namespace Scorpio.Middleware.Pipeline
             var serviceProvider = descriptors.BuildServiceProvider();
             var builder = new TestPipelineBuilder(serviceProvider);
             builder.ApplicationServices.ShouldBe(serviceProvider);
-            Should.NotThrow(() => builder.UseMiddleware<TestPipelineContext,DoublyMethodMiddleware>());
+            Should.NotThrow(() => builder.UseMiddleware<TestPipelineContext, DoublyMethodMiddleware>());
             var context = new TestPipelineContext();
             Should.Throw<InvalidOperationException>(() => builder.Build()(context));
         }

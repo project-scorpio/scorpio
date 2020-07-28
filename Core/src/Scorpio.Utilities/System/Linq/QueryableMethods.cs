@@ -137,6 +137,7 @@ namespace System.Linq
         private static Dictionary<Type, MethodInfo> AverageWithoutSelectorMethods { get; }
         private static Dictionary<Type, MethodInfo> AverageWithSelectorMethods { get; }
 
+        [Diagnostics.CodeAnalysis.SuppressMessage("Critical Code Smell", "S3776:Cognitive Complexity of methods should not be too high", Justification = "<挂起>")]
         static QueryableMethods()
         {
             var queryableMethods = typeof(Queryable)

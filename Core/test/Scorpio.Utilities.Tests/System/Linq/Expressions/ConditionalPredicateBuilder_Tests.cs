@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 using Shouldly;
 
 using Xunit;
@@ -115,8 +112,8 @@ namespace System.Linq.Expressions
             Expression<Func<int, int, int, int, int, bool>> func2 = (a, b, c, d, e) => a - b == c - d + e;
             var func = func1.OrElse(func2);
             func.Compile().Invoke(0, 0, 0, 0, 0).ShouldBeTrue();
-            func.Compile().Invoke(6, 4, 2, 8,8).ShouldBeTrue();
-            func.Compile().Invoke(4, 5, 20, 1,10).ShouldBeFalse();
+            func.Compile().Invoke(6, 4, 2, 8, 8).ShouldBeTrue();
+            func.Compile().Invoke(4, 5, 20, 1, 10).ShouldBeFalse();
         }
 
     }

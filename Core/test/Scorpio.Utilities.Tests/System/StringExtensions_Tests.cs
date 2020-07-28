@@ -245,7 +245,7 @@ namespace System
         {
             Should.Throw<ArgumentNullException>(() => StringExtensions.GetBytes(null)).ParamName.ShouldBe("str");
             Should.Throw<ArgumentNullException>(() => StringExtensions.GetBytes("value", null)).ParamName.ShouldBe("encoding");
-            Should.Throw<ArgumentNullException>(() => StringExtensions.GetBytes(null,null)).ParamName.ShouldBe("str");
+            Should.Throw<ArgumentNullException>(() => StringExtensions.GetBytes(null, null)).ParamName.ShouldBe("str");
             Should.Throw<ArgumentNullException>(() => StringExtensions.GetBytes(null, Encoding.UTF8)).ParamName.ShouldBe("str");
             var expected = Encoding.UTF8.GetBytes("value");
             Should.NotThrow(() => "value".GetBytes(Encoding.UTF8)).ShouldBe(expected);

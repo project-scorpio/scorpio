@@ -17,6 +17,7 @@
         }
     }
 
+    [Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S2436:Types and methods should not have too many generic parameters", Justification = "<挂起>")]
     internal sealed class ExpressionTranslation<T1, T2, TResult> : ExpressionTranslation<Func<T1, T2, TResult>>, IExpressionTranslation<T1, T2, TResult>
     {
         public ExpressionTranslation(Expression<Func<T1, T2, TResult>> predicate) : base(predicate)
@@ -34,6 +35,7 @@
         }
     }
 
+    [Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S2436:Types and methods should not have too many generic parameters", Justification = "<挂起>")]
     internal sealed class ExpressionTranslation<T1, T2, T3, TResult> : ExpressionTranslation<Func<T1, T2, T3, TResult>>, IExpressionTranslation<T1, T2, T3, TResult>
     {
         public ExpressionTranslation(Expression<Func<T1, T2, T3, TResult>> predicate) : base(predicate)
@@ -51,6 +53,7 @@
         }
     }
 
+    [Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S2436:Types and methods should not have too many generic parameters", Justification = "<挂起>")]
     internal sealed class ExpressionTranslation<T1, T2, T3, T4, TResult> : ExpressionTranslation<Func<T1, T2, T3, T4, TResult>>, IExpressionTranslation<T1, T2, T3, T4, TResult>
     {
         public ExpressionTranslation(Expression<Func<T1, T2, T3, T4, TResult>> predicate) : base(predicate)

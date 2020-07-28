@@ -117,6 +117,7 @@ namespace Scorpio.Options
     /// <typeparam name="TOptions"></typeparam>
     /// <typeparam name="TDep1"></typeparam>
     /// <typeparam name="TDep2"></typeparam>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S2436:Types and methods should not have too many generic parameters", Justification = "<挂起>")]
     public class PreConfigureOptions<TOptions, TDep1, TDep2> : IPreConfigureOptions<TOptions>
         where TOptions : class
         where TDep1 : class
@@ -190,6 +191,7 @@ namespace Scorpio.Options
     /// <typeparam name="TDep1"></typeparam>
     /// <typeparam name="TDep2"></typeparam>
     /// <typeparam name="TDep3"></typeparam>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S2436:Types and methods should not have too many generic parameters", Justification = "<挂起>")]
     public class PreConfigureOptions<TOptions, TDep1, TDep2, TDep3> : IPreConfigureOptions<TOptions>
         where TOptions : class
         where TDep1 : class
@@ -272,6 +274,7 @@ namespace Scorpio.Options
     /// <typeparam name="TDep2"></typeparam>
     /// <typeparam name="TDep3"></typeparam>
     /// <typeparam name="TDep4"></typeparam>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S2436:Types and methods should not have too many generic parameters", Justification = "<挂起>")]
     public class PreConfigureOptions<TOptions, TDep1, TDep2, TDep3, TDep4> : IPreConfigureOptions<TOptions>
         where TOptions : class
         where TDep1 : class
@@ -354,6 +357,7 @@ namespace Scorpio.Options
         public void PreConfigure(TOptions options) => PreConfigure(Microsoft.Extensions.Options.Options.DefaultName, options);
     }
 
+
     /// <summary>
     /// Implementation of IPreConfigureOptions.
     /// </summary>
@@ -363,6 +367,7 @@ namespace Scorpio.Options
     /// <typeparam name="TDep3"></typeparam>
     /// <typeparam name="TDep4"></typeparam>
     /// <typeparam name="TDep5"></typeparam>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S2436:Types and methods should not have too many generic parameters", Justification = "<挂起>")]
     public class PreConfigureOptions<TOptions, TDep1, TDep2, TDep3, TDep4, TDep5> : IPreConfigureOptions<TOptions>
         where TOptions : class
         where TDep1 : class

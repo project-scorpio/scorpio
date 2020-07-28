@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -134,7 +132,7 @@ namespace System.Linq.Async
             var enumerator = (act).GetAsyncEnumerator();
             (await enumerator.MoveNextAsync()).ShouldBeTrue();
             array.Add(9);
-            Should.Throw<InvalidOperationException>(async ()=>(await enumerator.MoveNextAsync()).ShouldBeTrue());
+            Should.Throw<InvalidOperationException>(async () => (await enumerator.MoveNextAsync()).ShouldBeTrue());
         }
 
     }

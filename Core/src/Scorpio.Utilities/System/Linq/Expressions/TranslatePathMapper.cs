@@ -39,7 +39,7 @@ namespace System.Linq.Expressions
             for (var i = 0; i < _predicate.Parameters.Count; i++)
             {
                 var s = _predicate.Parameters[i];
-                var path = _expressions.Find(e => e.ReturnType == s.Type && e.Type.GenericTypeArguments[0]== translatedParameters[i]);
+                var path = _expressions.Find(e => e.ReturnType == s.Type && e.Type.GenericTypeArguments[0] == translatedParameters[i]);
                 if (path == null)
                 {
                     continue;
@@ -54,7 +54,7 @@ namespace System.Linq.Expressions
 
     }
 
-    internal class TranslatePathMapper
+    internal static class TranslatePathMapper
     {
         private static readonly MethodInfo _method = typeof(TranslatePathMapper).GetMethod(nameof(Update), BindingFlags.NonPublic | BindingFlags.Static);
 

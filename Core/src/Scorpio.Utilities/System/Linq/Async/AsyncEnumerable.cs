@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -50,6 +49,7 @@ namespace System.Linq.Async
                 await base.DisposeAsync().ConfigureAwait(false);
             }
 
+            [Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S907:\"goto\" statement should not be used", Justification = "<挂起>")]
             protected override async ValueTask<bool> MoveNextCore()
             {
                 switch (_state)
@@ -145,7 +145,7 @@ namespace System.Linq.Async
         }
 
 
-        private sealed class AsyncEnumerableAdapter<T>:AsyncEnumerableAdapterBase<T>
+        private sealed class AsyncEnumerableAdapter<T> : AsyncEnumerableAdapterBase<T>
         {
             private readonly IEnumerable<T> _source;
 
@@ -161,7 +161,7 @@ namespace System.Linq.Async
 
             protected override IEnumerator<T> GetEnumerator() => _source.GetEnumerator();
 
-            protected override T[] ToArray() =>_source.ToArray();
+            protected override T[] ToArray() => _source.ToArray();
 
             protected override List<T> ToList() => _source.ToList();
         }
@@ -170,7 +170,7 @@ namespace System.Linq.Async
         {
             private readonly IList<T> _source;
 
-            public AsyncIListEnumerableAdapter(IList<T> source):base(source)
+            public AsyncIListEnumerableAdapter(IList<T> source) : base(source)
             {
                 _source = source;
             }

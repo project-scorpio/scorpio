@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using Shouldly;
@@ -28,7 +26,7 @@ namespace System.Linq.Async
             var act = array.ToAsyncEnumerable();
             var list = act as IList<int>;
             list.ShouldNotBeNull();
-            list.Insert(0,9);
+            list.Insert(0, 9);
             array.Count.ShouldBe(9);
             array.First().ShouldBe(9);
         }

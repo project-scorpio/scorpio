@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -26,7 +24,7 @@ namespace System.Linq.Async
         {
             var array = new int[] { 1, 2, 3, 4, 5, 6, 7, 8 };
             var act = new TestEnumerable<int>(array).ToAsyncEnumerable();
-           var list= await (act as IAsyncIListProvider<int>).ToListAsync( CancellationToken.None);
+            var list = await (act as IAsyncIListProvider<int>).ToListAsync(CancellationToken.None);
             list.SequenceEqual(array).ShouldBeTrue();
         }
 

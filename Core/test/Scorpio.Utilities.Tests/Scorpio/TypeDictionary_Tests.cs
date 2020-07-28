@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -187,7 +186,7 @@ namespace Scorpio
             };
             var e = (td as IEnumerable).GetEnumerator();
             e.ShouldNotBeNull();
-            Should.Throw<InvalidOperationException>(()=> e.Current.ShouldBe(default));
+            Should.Throw<InvalidOperationException>(() => e.Current.ShouldBe(default));
             e.MoveNext().ShouldBeTrue();
             e.Current.ShouldBe(KeyValuePair.Create(typeof(ServiceCollection), typeof(ServiceProvider)));
         }

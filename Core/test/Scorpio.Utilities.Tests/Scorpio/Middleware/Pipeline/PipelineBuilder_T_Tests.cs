@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -21,7 +18,7 @@ namespace Scorpio.Middleware.Pipeline
             var builder = new TestPipelineBuilder(serviceProvider);
             builder.ApplicationServices.ShouldBe(serviceProvider);
             Should.Throw<ArgumentNullException>(() => builder.Use(null));
-            Should.NotThrow(() => builder.Use(next => context => { context.PipelineInvoked = true;return next(context); }));
+            Should.NotThrow(() => builder.Use(next => context => { context.PipelineInvoked = true; return next(context); }));
             var context = new TestPipelineContext();
             context.PipelineInvoked.ShouldBeFalse();
             Should.NotThrow(() => builder.Build()(context));

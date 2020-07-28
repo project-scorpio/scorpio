@@ -154,7 +154,7 @@ namespace System
                 count++;
                 if (count == n)
                 {
-                    result= i;
+                    result = i;
                     break;
                 }
             }

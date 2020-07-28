@@ -59,7 +59,7 @@ namespace Scorpio.Aspects
         /// <returns></returns>
         public static bool IsApplied(object obj, string concern)
         {
-            Check.NotNull(obj,nameof(obj));
+            Check.NotNull(obj, nameof(obj));
             if (concern == null)
             {
                 throw new ArgumentNullException(nameof(concern));
