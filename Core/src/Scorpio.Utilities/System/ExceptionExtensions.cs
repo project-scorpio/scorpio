@@ -16,10 +16,7 @@ namespace System
         /// while preserving stack trace.
         /// </summary>
         /// <param name="exception">Exception to be re-thrown</param>
-        public static void ReThrow(this Exception exception)
-        {
-            ExceptionDispatchInfo.Capture(exception).Throw();
-        }
+        public static void ReThrow(this Exception exception) => ExceptionDispatchInfo.Capture(exception).Throw();
 
         /// <summary>
         /// Try to get a log level from the given <paramref name="exception"/>

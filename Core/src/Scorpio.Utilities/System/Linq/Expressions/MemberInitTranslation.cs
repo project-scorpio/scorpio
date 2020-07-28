@@ -29,7 +29,6 @@
                  Expression.MemberInit(Expression.New(typeof(TTranslatedSource)), binds), t);
         }
 
-
     }
 
 }

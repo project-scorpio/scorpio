@@ -11,8 +11,6 @@ namespace Microsoft.Extensions.Logging
     /// </summary>
     public static class LoggerExtensions
     {
-
-
         /// <summary>
         /// 
         /// </summary>
@@ -21,9 +19,21 @@ namespace Microsoft.Extensions.Logging
         /// <param name="level"></param>
         public static void LogException(this ILogger logger, Exception ex, LogLevel? level = null)
         {
+            LogException(logger, ex, ex.Message, level);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="ex"></param>
+        /// <param name="message"></param>
+        /// <param name="level"></param>
+        public static void LogException(this ILogger logger, Exception ex, string message, LogLevel? level = null)
+        {
             var selectedLevel = level ?? ex.GetLogLevel();
 
-            logger.Log(selectedLevel, ex.Message, ex);
+            logger.Log(selectedLevel, ex, message);
             LogKnownProperties(logger, ex, selectedLevel);
             LogSelfLogging(logger, ex);
             LogData(logger, ex, selectedLevel);
@@ -63,38 +73,34 @@ namespace Microsoft.Extensions.Logging
             }
         }
 
-        private static void LogSelfLogging(ILogger logger, Exception exception)
+        private static void LogSelfLogging( ILogger logger, Exception exception)
         {
             var loggingExceptions = new List<IExceptionWithSelfLogging>();
+            LogSelfLogging(loggingExceptions, exception);
+            foreach (var ex in loggingExceptions)
+            {
+                ex.Log(logger);
+            }
+
+        }
+
+        private static void LogSelfLogging(List<IExceptionWithSelfLogging> selfLoggings, Exception exception)
+        {
 
             switch (exception)
             {
                 case IExceptionWithSelfLogging ex:
-                    loggingExceptions.Add(ex);
+                    selfLoggings.Add(ex);
                     break;
-                case AggregateException aggException when aggException.InnerException != null:
+                case AggregateException aggException:
                     {
-                        if (aggException.InnerException is IExceptionWithSelfLogging inner)
-                        {
-                            loggingExceptions.Add(inner);
-                        }
-                        foreach (var item in aggException.InnerExceptions)
-                        {
-                            if (item is IExceptionWithSelfLogging ex)
-                            {
-                                loggingExceptions.AddIfNotContains(ex);
-                            }
-                        }
+                        aggException.InnerExceptions.ForEach(e => LogSelfLogging(selfLoggings, e));
                         break;
                     }
                 default:
                     break;
             }
 
-            foreach (var ex in loggingExceptions)
-            {
-                ex.Log(logger);
-            }
         }
     }
 }

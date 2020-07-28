@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
+using Scorpio;
 using Scorpio.Conventional;
 using Scorpio.DependencyInjection.Conventional;
 
@@ -204,15 +205,9 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns></returns>
         public static IServiceCollection ReplaceOrAdd(this IServiceCollection services, ServiceDescriptor serviceDescriptor, bool replaceAll = false)
         {
-            if (services == null)
-            {
-                throw new ArgumentNullException(nameof(services));
-            }
 
-            if (serviceDescriptor == null)
-            {
-                throw new ArgumentNullException(nameof(serviceDescriptor));
-            }
+            Check.NotNull(services, nameof(services));
+            Check.NotNull(serviceDescriptor, nameof(serviceDescriptor));
 
             if (!replaceAll)
             {
@@ -228,41 +223,39 @@ namespace Microsoft.Extensions.DependencyInjection
             services.Add(serviceDescriptor);
             return services;
         }
+
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="TService"></typeparam>
-        /// <typeparam name="TImplementation"></typeparam>
+        /// <typeparam name="TSourceImplementation"></typeparam>
+        /// <typeparam name="TDestinationImplementation"></typeparam>
         /// <param name="services"></param>
-        /// <param name="serviceDescriptor"></param>
+        /// <param name="lifetime"></param>
         /// <returns></returns>
-        public static IServiceCollection ReplaceEnumerable<TService, TImplementation>(this IServiceCollection services, ServiceDescriptor serviceDescriptor)
-           where TService : class where TImplementation : class, TService
+        public static IServiceCollection ReplaceEnumerable<TService, TSourceImplementation, TDestinationImplementation>(this IServiceCollection services,ServiceLifetime lifetime= ServiceLifetime.Transient)
+            where TService : class
+            where TSourceImplementation : class, TService
+            where TDestinationImplementation : class, TService
         {
-            return services.ReplaceEnumerable(ServiceDescriptor.Transient<TService, TImplementation>(), serviceDescriptor);
+            return services.ReplaceEnumerable( ServiceDescriptor.Transient<TService, TSourceImplementation>(), ServiceDescriptor.Describe(typeof(TService), typeof(TDestinationImplementation), lifetime));
         }
 
         /// <summary>
         /// Removes the first service in <see cref="IServiceCollection"/> with the same service type
         /// as <paramref name="sourcedescriptor"/> and adds <paramef name="descriptor"/> to the collection.
         /// </summary>
-        /// <param name="collection">The <see cref="IServiceCollection"/>.</param>
+        /// <param name="services">The <see cref="IServiceCollection"/>.</param>
         /// <param name="sourcedescriptor">The <see cref="ServiceDescriptor"/> to replace with.</param>
-        /// <param name="distdescriptor">The <see cref="ServiceDescriptor"/> to replace with.</param>
+        /// <param name="destdescriptor">The <see cref="ServiceDescriptor"/> to replace with.</param>
         /// <returns></returns>
         public static IServiceCollection ReplaceEnumerable(
-            this IServiceCollection collection,
-            ServiceDescriptor sourcedescriptor, ServiceDescriptor distdescriptor)
+            this IServiceCollection services,
+            ServiceDescriptor sourcedescriptor, ServiceDescriptor destdescriptor)
         {
-            if (collection == null)
-            {
-                throw new ArgumentNullException(nameof(collection));
-            }
-
-            if (sourcedescriptor == null)
-            {
-                throw new ArgumentNullException(nameof(sourcedescriptor));
-            }
+            Check.NotNull(services, nameof(services));
+            Check.NotNull(sourcedescriptor, nameof(sourcedescriptor));
+            Check.NotNull(destdescriptor, nameof(destdescriptor));
 
             var implementationType = sourcedescriptor.GetImplementationType();
 
@@ -273,37 +266,45 @@ namespace Microsoft.Extensions.DependencyInjection
             }
 
 
-            var registeredServiceDescriptor = collection.FirstOrDefault(s => s.ServiceType == sourcedescriptor.ServiceType &&
+            var registeredServiceDescriptor = services.FirstOrDefault(s => s.ServiceType == sourcedescriptor.ServiceType &&
                               s.GetImplementationType() == implementationType);
             if (registeredServiceDescriptor != null)
             {
-                collection.Remove(registeredServiceDescriptor);
+                services.Remove(registeredServiceDescriptor);
             }
 
-            collection.Add(distdescriptor);
-            return collection;
+            services.Add(destdescriptor);
+            return services;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TService"></typeparam>
+        /// <typeparam name="TImplementation"></typeparam>
+        /// <param name="services"></param>
+        /// <returns></returns>
+        public static IServiceCollection RemoveEnumerable<TService,  TImplementation>(this IServiceCollection services)
+            where TService : class
+            where TImplementation : class, TService
+        {
+            return services.RemoveEnumerable(ServiceDescriptor.Transient<TService, TImplementation>());
+        }
+
 
         /// <summary>
         /// Removes the first service in <see cref="IServiceCollection"/> with the same service type
         /// as <paramref name="descriptor"/> and adds <paramef name="descriptor"/> to the collection.
         /// </summary>
-        /// <param name="collection">The <see cref="IServiceCollection"/>.</param>
+        /// <param name="services">The <see cref="IServiceCollection"/>.</param>
         /// <param name="descriptor">The <see cref="ServiceDescriptor"/> to replace with.</param>
         /// <returns></returns>
         public static IServiceCollection RemoveEnumerable(
-            this IServiceCollection collection,
+            this IServiceCollection services,
             ServiceDescriptor descriptor)
         {
-            if (collection == null)
-            {
-                throw new ArgumentNullException(nameof(collection));
-            }
-
-            if (descriptor == null)
-            {
-                throw new ArgumentNullException(nameof(descriptor));
-            }
+            Check.NotNull(services, nameof(services));
+            Check.NotNull(descriptor, nameof(descriptor));
 
             var implementationType = descriptor.GetImplementationType();
 
@@ -314,13 +315,13 @@ namespace Microsoft.Extensions.DependencyInjection
             }
 
 
-            var registeredServiceDescriptor = collection.FirstOrDefault(s => s.ServiceType == descriptor.ServiceType &&
+            var registeredServiceDescriptor = services.FirstOrDefault(s => s.ServiceType == descriptor.ServiceType &&
                               s.GetImplementationType() == implementationType);
             if (registeredServiceDescriptor != null)
             {
-                collection.Remove(registeredServiceDescriptor);
+                services.Remove(registeredServiceDescriptor);
             }
-            return collection;
+            return services;
         }
 
         internal static Type GetImplementationType(this ServiceDescriptor serviceDescriptor)

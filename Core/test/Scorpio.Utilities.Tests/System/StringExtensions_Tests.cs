@@ -92,12 +92,19 @@ namespace System
             str.NthIndexOf('P', 2).ShouldBe(-1);
             str.NthIndexOf('s', 2).ShouldBe(-1);
             str.NthIndexOf('s', 1).ShouldBe(17);
+        }
+
+        [Fact]
+        public void NthIndexOf_StringComparison()
+        {
+            var str = "Scorpio project is great.";
             str.NthIndexOf('s', 1, StringComparison.Ordinal).ShouldBe(17);
             str.NthIndexOf('s', 1, StringComparison.OrdinalIgnoreCase).ShouldBe(0);
             str.NthIndexOf('S', 1, StringComparison.Ordinal).ShouldBe(0);
             str.NthIndexOf('S', 1, StringComparison.OrdinalIgnoreCase).ShouldBe(0);
             str.NthIndexOf('w', 1, StringComparison.OrdinalIgnoreCase).ShouldBe(-1);
         }
+
 
         [Fact]
         public void RemovePostFix()
