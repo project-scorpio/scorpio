@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 using Microsoft.Extensions.Options;
 
@@ -15,18 +16,19 @@ namespace Scorpio.Timing
         [Fact]
         public void Local()
         {
+            var offset = TimeZoneInfo.Local.BaseUtcOffset.Hours;
             var options = new OptionsWrapper<ClockOptions>(new ClockOptions { Kind = DateTimeKind.Local });
             var clock = new Clock(options);
             clock.Now.Kind.ShouldBe(DateTimeKind.Local);
-            var date = new DateTime(2020, 07, 30, 23, 0, 0, DateTimeKind.Local);
+            var date = new DateTime(2020, 07, 30, 24-offset, 0, 0, DateTimeKind.Local);
+            clock.Normalize(date).Kind.ShouldBe(DateTimeKind.Local);
+            clock.Normalize(date).ShouldBe(date);
+            date = new DateTime(2020, 07, 30, 24 - offset, 0, 0, DateTimeKind.Unspecified);
             clock.Normalize(date).Kind.ShouldBe(DateTimeKind.Local);
             clock.Normalize(date).Day.ShouldBe(30);
-            date = new DateTime(2020, 07, 30, 23, 0, 0, DateTimeKind.Unspecified);
+            date = new DateTime(2020, 07, 30, 24 - offset, 0, 0, DateTimeKind.Utc);
             clock.Normalize(date).Kind.ShouldBe(DateTimeKind.Local);
-            clock.Normalize(date).Day.ShouldBe(30);
-            date = new DateTime(2020, 07, 30, 23, 0, 0, DateTimeKind.Utc);
-            clock.Normalize(date).Kind.ShouldBe(DateTimeKind.Local);
-            clock.Normalize(date).Day.ShouldBe(31);
+            clock.Normalize(date).ShouldBe(date.AddHours(offset));
             clock.SupportsMultipleTimezone.ShouldBeFalse();
         }
 
@@ -38,31 +40,32 @@ namespace Scorpio.Timing
             clock.Now.Kind.ShouldBe(DateTimeKind.Local);
             var date = new DateTime(2020, 07, 30, 23, 0, 0, DateTimeKind.Local);
             clock.Normalize(date).Kind.ShouldBe(DateTimeKind.Local);
-            clock.Normalize(date).Day.ShouldBe(30);
+            clock.Normalize(date).ShouldBe(date);
             date = new DateTime(2020, 07, 30, 23, 0, 0, DateTimeKind.Unspecified);
             clock.Normalize(date).Kind.ShouldBe(DateTimeKind.Unspecified);
-            clock.Normalize(date).Day.ShouldBe(30);
+            clock.Normalize(date).ShouldBe(date);
             date = new DateTime(2020, 07, 30, 23, 0, 0, DateTimeKind.Utc);
             clock.Normalize(date).Kind.ShouldBe(DateTimeKind.Utc);
-            clock.Normalize(date).Day.ShouldBe(30);
+            clock.Normalize(date).ShouldBe(date);
             clock.SupportsMultipleTimezone.ShouldBeFalse();
         }
 
         [Fact]
         public void Utc()
         {
+            var offset = TimeZoneInfo.Local.BaseUtcOffset.Hours;
             var options = new OptionsWrapper<ClockOptions>(new ClockOptions { Kind = DateTimeKind.Utc });
             var clock = new Clock(options);
             clock.Now.Kind.ShouldBe(DateTimeKind.Utc);
             var date = new DateTime(2020, 07, 30, 1, 0, 0, DateTimeKind.Local);
             clock.Normalize(date).Kind.ShouldBe(DateTimeKind.Utc);
-            clock.Normalize(date).Day.ShouldBe(29);
+            clock.Normalize(date).ShouldBe(date.AddHours(-offset));
             date = new DateTime(2020, 07, 30, 1, 0, 0, DateTimeKind.Unspecified);
             clock.Normalize(date).Kind.ShouldBe(DateTimeKind.Utc);
-            clock.Normalize(date).Day.ShouldBe(30);
+            clock.Normalize(date).ShouldBe(date);
             date = new DateTime(2020, 07, 30, 1, 0, 0, DateTimeKind.Utc);
             clock.Normalize(date).Kind.ShouldBe(DateTimeKind.Utc);
-            clock.Normalize(date).Day.ShouldBe(30);
+            clock.Normalize(date).ShouldBe(date);
             clock.SupportsMultipleTimezone.ShouldBeTrue();
         }
 
