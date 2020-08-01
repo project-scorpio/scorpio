@@ -73,7 +73,7 @@ namespace Microsoft.Extensions.Logging
             }
         }
 
-        private static void LogSelfLogging( ILogger logger, Exception exception)
+        private static void LogSelfLogging(ILogger logger, Exception exception)
         {
             var loggingExceptions = new List<IExceptionWithSelfLogging>();
             LogSelfLogging(loggingExceptions, exception);

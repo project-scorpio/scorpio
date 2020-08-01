@@ -14,16 +14,16 @@ namespace System.Linq.Async
 {
     public class AsyncQueryable_Tests
     {
-       
 
-        private IQueryable<TSource> GetQueryable<TSource, TResult>(TResult result=default)
+
+        private IQueryable<TSource> GetQueryable<TSource, TResult>(TResult result = default)
         {
             var mock = new Mock<ITestQueryable<TSource>>();
             var providerMock = new Mock<IAsyncQueryProvider>();
             var enumeratorMock = new Mock<IAsyncEnumerator<TSource>>();
             var index = 0;
             enumeratorMock.SetupGet(e => e.Current).Returns(default(TSource));
-            enumeratorMock.Setup(e => e.MoveNextAsync()).Returns(()=>new ValueTask<bool>(index++ < 1));
+            enumeratorMock.Setup(e => e.MoveNextAsync()).Returns(() => new ValueTask<bool>(index++ < 1));
             providerMock.Setup(e => e.ExecuteAsync<Task<TResult>>(It.IsAny<Expression>(), It.IsAny<CancellationToken>())).Returns(Task.FromResult(result));
             mock.SetupGet(e => e.Provider).Returns(providerMock.Object);
             mock.SetupGet(e => e.Expression).Returns(new List<TSource> { }.AsQueryable().Expression);
@@ -37,8 +37,8 @@ namespace System.Linq.Async
             var source = new int[] { default }.AsQueryable();
             Should.Throw<InvalidOperationException>(async () => await source.AnyAsync());
             Should.Throw<InvalidOperationException>(async () => await source.AnyAsync(a => default));
-            GetQueryable<int,bool>(true).AnyAsync().Result.ShouldBeTrue();
-            GetQueryable<int, bool>(true).AnyAsync(a=>default).Result.ShouldBeTrue();
+            GetQueryable<int, bool>(true).AnyAsync().Result.ShouldBeTrue();
+            GetQueryable<int, bool>(true).AnyAsync(a => default).Result.ShouldBeTrue();
         }
 
         [Fact]
@@ -46,7 +46,7 @@ namespace System.Linq.Async
         {
             var source = new int[] { default }.AsQueryable();
             Should.Throw<InvalidOperationException>(async () => await source.AllAsync(a => default));
-            GetQueryable<int, bool>(true).AllAsync(a=>default).Result.ShouldBeTrue();
+            GetQueryable<int, bool>(true).AllAsync(a => default).Result.ShouldBeTrue();
         }
 
         [Fact]
@@ -54,8 +54,8 @@ namespace System.Linq.Async
         {
             GetQueryable<int, double>().AverageAsync().Result.ShouldBe(default);
             GetQueryable<int?, double?>().AverageAsync().Result.ShouldBe(default);
-            GetQueryable<int, double>().AverageAsync(a=>default).Result.ShouldBe(default);
-            GetQueryable<int?, double?>().AverageAsync(a=>default).Result.ShouldBe(default);
+            GetQueryable<int, double>().AverageAsync(a => default).Result.ShouldBe(default);
+            GetQueryable<int?, double?>().AverageAsync(a => default).Result.ShouldBe(default);
             GetQueryable<TestObj<int>, double>().AverageAsync(v => v.Value).Result.ShouldBe(default);
             GetQueryable<TestObj<int?>, double?>().AverageAsync(v => v.Value).Result.ShouldBe(default);
             GetQueryable<long, double>().AverageAsync().Result.ShouldBe(default);

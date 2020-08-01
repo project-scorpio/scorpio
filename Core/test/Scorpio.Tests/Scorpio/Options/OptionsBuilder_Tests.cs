@@ -1,72 +1,134 @@
 ﻿using System;
 
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
-using Scorpio.Options;
+using NSubstitute;
 
 using Shouldly;
 
 using Xunit;
-namespace Scorpio.Tests.Scorpio.Options
+
+namespace Scorpio.Options
 {
     public class OptionsBuilder_Tests
     {
-        private readonly OptionsBuilder<TestOptions> _optionsBuilder;
-        private readonly IServiceCollection _serviceCollection;
-        public OptionsBuilder_Tests()
+        public (IServiceCollection, OptionsBuilder<TestExtensibleOptions>) GetServices()
         {
-            _serviceCollection = new ServiceCollection();
-            _optionsBuilder = new OptionsBuilder<TestOptions>(_serviceCollection, "");
+            var _serviceCollection = new ServiceCollection();
+            _serviceCollection.AddSingleton(Substitute.For<IService1>());
+            _serviceCollection.AddSingleton(Substitute.For<IService2>());
+            _serviceCollection.AddSingleton(Substitute.For<IService3>());
+            _serviceCollection.AddSingleton(Substitute.For<IService4>());
+            _serviceCollection.AddSingleton(Substitute.For<IService5>());
+            _serviceCollection.ReplaceOrAdd(ServiceDescriptor.Transient(typeof(IOptionsFactory<>), typeof(OptionsFactory<>)), true);
+            var _optionsBuilder = _serviceCollection.Options<TestExtensibleOptions>();
+            return (_serviceCollection, _optionsBuilder);
         }
 
         [Fact]
         public void PreConfigure()
         {
-            _serviceCollection.Clear();
-            _optionsBuilder.PreConfigure(o => { });
-            _serviceCollection.ShouldContainSingleton(typeof(IPreConfigureOptions<TestOptions>), typeof(PreConfigureOptions<TestOptions>))
-                .ImplementationInstance.ShouldBeOfType<PreConfigureOptions<TestOptions>>().ShouldNotBeNull();
+            var (services, ob) = GetServices();
+            ob.PreConfigure(o => o.SetOption("default", "value"));
+            services.ShouldContainSingleton(typeof(IPreConfigureOptions<TestExtensibleOptions>), typeof(PreConfigureOptions<TestExtensibleOptions>))
+                .ImplementationInstance.ShouldBeOfType<PreConfigureOptions<TestExtensibleOptions>>().ShouldNotBeNull();
+            var servicePorivder = services.BuildServiceProvider();
+            var opt = servicePorivder.GetRequiredService<IOptions<TestExtensibleOptions>>();
+            opt.Value.ShouldNotBeNull();
+            opt.Value.GetOption<string>("default").ShouldBe("value");
         }
         [Fact]
         public void PreConfigureD1()
         {
-            _serviceCollection.Clear();
-            _optionsBuilder.PreConfigure<Service1>((o, s) => { });
-            _serviceCollection.ShouldContainTransient(typeof(IPreConfigureOptions<TestOptions>))
-                .ImplementationFactory.ShouldBeOfType<Func<IServiceProvider, IPreConfigureOptions<TestOptions>>>();
+            var (services, ob) = GetServices();
+            ob.PreConfigure<IService1>((o, s) =>
+            {
+                o.SetOption("default", "value");
+                s.As<IService1>().ShouldNotBeNull();
+            });
+            services.ShouldContainTransient(typeof(IPreConfigureOptions<TestExtensibleOptions>))
+                .ImplementationFactory.ShouldBeOfType<Func<IServiceProvider, IPreConfigureOptions<TestExtensibleOptions>>>();
+            var servicePorivder = services.BuildServiceProvider();
+            var opt = servicePorivder.GetRequiredService<IOptions<TestExtensibleOptions>>();
+            opt.Value.ShouldNotBeNull();
         }
 
         [Fact]
         public void PreConfigureD2()
         {
-            _serviceCollection.Clear();
-            _optionsBuilder.PreConfigure<Service1, Service2>((o, s1, s2) => { });
-            _serviceCollection.ShouldContainTransient(typeof(IPreConfigureOptions<TestOptions>))
-                .ImplementationFactory.ShouldBeOfType<Func<IServiceProvider, IPreConfigureOptions<TestOptions>>>();
+            var (services, ob) = GetServices();
+            ob.PreConfigure<IService1, IService2>((o, s1, s2) => {
+                o.SetOption("default", "value");
+                s1.As<IService1>().ShouldNotBeNull();
+                s2.As<IService2>().ShouldNotBeNull();
+            });
+            services.ShouldContainTransient(typeof(IPreConfigureOptions<TestExtensibleOptions>))
+                .ImplementationFactory.ShouldBeOfType<Func<IServiceProvider, IPreConfigureOptions<TestExtensibleOptions>>>();
+            var servicePorivder = services.BuildServiceProvider();
+            var opt = servicePorivder.GetRequiredService<IOptions<TestExtensibleOptions>>();
+            opt.Value.ShouldNotBeNull();
         }
         [Fact]
         public void PreConfigureD3()
         {
-            _serviceCollection.Clear();
-            _optionsBuilder.PreConfigure<Service1, Service2, IServiceProvider>((o, s1, s2, s3) => { });
-            _serviceCollection.ShouldContainTransient(typeof(IPreConfigureOptions<TestOptions>))
-                .ImplementationFactory.ShouldBeOfType<Func<IServiceProvider, IPreConfigureOptions<TestOptions>>>();
+            var (services, ob) = GetServices();
+
+            ob.PreConfigure<IService1, IService2, IService3>((o, s1, s2, s3) => {
+                o.SetOption("default", "value");
+                s1.As<IService1>().ShouldNotBeNull();
+                s2.As<IService2>().ShouldNotBeNull();
+                s3.As<IService3>().ShouldNotBeNull();
+            });
+            services.ShouldContainTransient(typeof(IPreConfigureOptions<TestExtensibleOptions>))
+                .ImplementationFactory.ShouldBeOfType<Func<IServiceProvider, IPreConfigureOptions<TestExtensibleOptions>>>();
+            var servicePorivder = services.BuildServiceProvider();
+            var opt = servicePorivder.GetRequiredService<IOptions<TestExtensibleOptions>>();
+            opt.Value.ShouldNotBeNull();
         }
         [Fact]
         public void PreConfigureD4()
         {
-            _serviceCollection.Clear();
-            _optionsBuilder.PreConfigure<Service1, Service2, IServiceProvider, IService3>((o, s1, s2, s3, s4) => { });
-            _serviceCollection.ShouldContainTransient(typeof(IPreConfigureOptions<TestOptions>))
-                .ImplementationFactory.ShouldBeOfType<Func<IServiceProvider, IPreConfigureOptions<TestOptions>>>();
+            var (services, ob) = GetServices();
+            ob.PreConfigure<IService1, IService2, IService3, IService4>((o, s1, s2, s3, s4) => {
+                o.SetOption("default", "value");
+                s1.As<IService1>().ShouldNotBeNull();
+                s2.As<IService2>().ShouldNotBeNull();
+                s3.As<IService3>().ShouldNotBeNull();
+                s4.As<IService4>().ShouldNotBeNull();
+            });
+            services.ShouldContainTransient(typeof(IPreConfigureOptions<TestExtensibleOptions>))
+                .ImplementationFactory.ShouldBeOfType<Func<IServiceProvider, IPreConfigureOptions<TestExtensibleOptions>>>();
+            var servicePorivder = services.BuildServiceProvider();
+            var opt = servicePorivder.GetRequiredService<IOptions<TestExtensibleOptions>>();
+            opt.Value.ShouldNotBeNull();
         }
         [Fact]
         public void PreConfigureD5()
         {
-            _serviceCollection.Clear();
-            _optionsBuilder.PreConfigure<Service1, Service2, IServiceProvider, IService3, IService1>((o, s1, s2, s3, s4, s5) => { });
-            _serviceCollection.ShouldContainTransient(typeof(IPreConfigureOptions<TestOptions>))
-                .ImplementationFactory.ShouldBeOfType<Func<IServiceProvider, IPreConfigureOptions<TestOptions>>>();
+            var (services, ob) = GetServices();
+            ob.PreConfigure<IService1, IService2, IService3, IService4, IService5>((o, s1, s2, s3, s4, s5) => {
+                o.SetOption("default", "value");
+                s1.As<IService1>().ShouldNotBeNull();
+                s2.As<IService2>().ShouldNotBeNull();
+                s3.As<IService3>().ShouldNotBeNull();
+                s4.As<IService4>().ShouldNotBeNull();
+                s5.As<IService5>().ShouldNotBeNull();
+            });
+            services.ShouldContainTransient(typeof(IPreConfigureOptions<TestExtensibleOptions>))
+                .ImplementationFactory.ShouldBeOfType<Func<IServiceProvider, IPreConfigureOptions<TestExtensibleOptions>>>();
+            var servicePorivder = services.BuildServiceProvider();
+            var opt = servicePorivder.GetRequiredService<IOptions<TestExtensibleOptions>>();
+            opt.Value.ShouldNotBeNull();
         }
+
+        public class TestExtensibleOptions : ExtensibleOptions
+        {
+            public TestExtensibleOptions()
+            {
+
+            }
+        }
+
     }
 }

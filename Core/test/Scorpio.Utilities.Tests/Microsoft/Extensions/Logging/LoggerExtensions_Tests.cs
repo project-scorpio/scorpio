@@ -52,7 +52,7 @@ namespace Microsoft.Extensions.Logging
         public void LogSelfLogging()
         {
             var logger = _output.BuildLoggerFor<ListExtensions_Tests>();
-            var ex = new AggregateException("message",new SelfLoggingException("selfloggin"));
+            var ex = new AggregateException("message", new SelfLoggingException("selfloggin"));
             logger.LogException(ex);
             logger.Count.ShouldBe(2);
             logger.Entries.First().Exception.ShouldBeOfType<AggregateException>().InnerException.ShouldNotBeNull();
@@ -82,7 +82,7 @@ namespace Microsoft.Extensions.Logging
 
 
         [Serializable]
-        public class SelfLoggingException : Exception,IExceptionWithSelfLogging
+        public class SelfLoggingException : Exception, IExceptionWithSelfLogging
         {
             public SelfLoggingException() { }
             public SelfLoggingException(string message) : base(message) { }
@@ -93,7 +93,7 @@ namespace Microsoft.Extensions.Logging
 
             public void Log(ILogger logger)
             {
-                logger.LogError(this,$"SelfLogging:{Message}");
+                logger.LogError(this, $"SelfLogging:{Message}");
             }
         }
 

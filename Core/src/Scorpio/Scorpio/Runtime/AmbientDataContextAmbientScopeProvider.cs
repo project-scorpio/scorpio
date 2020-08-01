@@ -33,7 +33,6 @@ namespace Scorpio.Runtime
         public IDisposable BeginScope(string contextKey, T value)
         {
             var item = new ScopeItem(value, GetCurrentItem(contextKey));
-
             if (!_scopeDictionary.TryAdd(item.Id, item))
             {
                 throw new ScorpioException("Can not add item! ScopeDictionary.TryAdd returns false!");

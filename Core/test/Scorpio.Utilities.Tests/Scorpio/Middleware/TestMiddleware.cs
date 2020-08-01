@@ -90,6 +90,12 @@ namespace Scorpio.Middleware
             _next = next;
         }
 
+        public void Execute(TestPipelineContext context)
+        {
+            _next(context).Wait();
+        }
+
+
     }
 
     public class NotTaskMiddleware
@@ -104,6 +110,7 @@ namespace Scorpio.Middleware
         public void Invoke(TestPipelineContext context)
         {
             context.PipelineInvoked = true;
+            _next(context).Wait();
         }
 
     }

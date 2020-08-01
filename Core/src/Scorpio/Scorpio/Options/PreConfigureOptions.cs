@@ -12,7 +12,7 @@ namespace Scorpio.Options
         /// </summary>
         /// <param name="name"></param>
         /// <param name="action"></param>
-        public PreConfigureOptions(string name, Action<TOptions> action)
+        internal PreConfigureOptions(string name, Action<TOptions> action)
         {
             Name = name;
             Action = action;
@@ -35,10 +35,7 @@ namespace Scorpio.Options
         /// <param name="options"></param>
         public virtual void PreConfigure(string name, TOptions options)
         {
-            if (options == null)
-            {
-                throw new ArgumentNullException(nameof(options));
-            }
+            Check.NotNull(options, nameof(options));
 
             // Null name is used to initialize all named options.
             if (Name == null || name == Name)
@@ -46,6 +43,13 @@ namespace Scorpio.Options
                 Action?.Invoke(options);
             }
         }
+
+        /// <summary>
+        /// Invoked to configure a TOptions instance using the <see cref="Microsoft.Extensions.Options.Options.DefaultName"/>.
+        /// </summary>
+        /// <param name="options">The options instance to configured.</param>
+        public void PreConfigure(TOptions options) => PreConfigure(Microsoft.Extensions.Options.Options.DefaultName, options);
+
     }
 
     /// <summary>
@@ -63,7 +67,7 @@ namespace Scorpio.Options
         /// <param name="name">The name of the options.</param>
         /// <param name="dependency">A dependency.</param>
         /// <param name="action">The action to register.</param>
-        public PreConfigureOptions(string name, TDep dependency, Action<TOptions, TDep> action)
+        internal PreConfigureOptions(string name, TDep dependency, Action<TOptions, TDep> action)
         {
             Name = name;
             Action = action;
@@ -92,10 +96,7 @@ namespace Scorpio.Options
         /// <param name="options">The options instance to configured.</param>
         public virtual void PreConfigure(string name, TOptions options)
         {
-            if (options == null)
-            {
-                throw new ArgumentNullException(nameof(options));
-            }
+            Check.NotNull(options, nameof(options));
 
             // Null name is used to configure all named options.
             if (Name == null || name == Name)
@@ -130,7 +131,7 @@ namespace Scorpio.Options
         /// <param name="dependency">A dependency.</param>
         /// <param name="dependency2">A second dependency.</param>
         /// <param name="action">The action to register.</param>
-        public PreConfigureOptions(string name, TDep1 dependency, TDep2 dependency2, Action<TOptions, TDep1, TDep2> action)
+        internal PreConfigureOptions(string name, TDep1 dependency, TDep2 dependency2, Action<TOptions, TDep1, TDep2> action)
         {
             Name = name;
             Action = action;
@@ -165,11 +166,7 @@ namespace Scorpio.Options
         /// <param name="options">The options instance to configured.</param>
         public virtual void PreConfigure(string name, TOptions options)
         {
-            if (options == null)
-            {
-                throw new ArgumentNullException(nameof(options));
-            }
-
+            Check.NotNull(options, nameof(options));
             // Null name is used to configure all named options.
             if (Name == null || name == Name)
             {
@@ -206,7 +203,7 @@ namespace Scorpio.Options
         /// <param name="dependency2">A second dependency.</param>
         /// <param name="dependency3">A third dependency.</param>
         /// <param name="action">The action to register.</param>
-        public PreConfigureOptions(string name, TDep1 dependency, TDep2 dependency2, TDep3 dependency3, Action<TOptions, TDep1, TDep2, TDep3> action)
+        internal PreConfigureOptions(string name, TDep1 dependency, TDep2 dependency2, TDep3 dependency3, Action<TOptions, TDep1, TDep2, TDep3> action)
         {
             Name = name;
             Action = action;
@@ -247,10 +244,7 @@ namespace Scorpio.Options
         /// <param name="options">The options instance to configured.</param>
         public virtual void PreConfigure(string name, TOptions options)
         {
-            if (options == null)
-            {
-                throw new ArgumentNullException(nameof(options));
-            }
+            Check.NotNull(options, nameof(options));
 
             // Null name is used to configure all named options.
             if (Name == null || name == Name)
@@ -291,7 +285,7 @@ namespace Scorpio.Options
         /// <param name="dependency3">A third dependency.</param>
         /// <param name="dependency4">A fourth dependency.</param>
         /// <param name="action">The action to register.</param>
-        public PreConfigureOptions(string name, TDep1 dependency1, TDep2 dependency2, TDep3 dependency3, TDep4 dependency4, Action<TOptions, TDep1, TDep2, TDep3, TDep4> action)
+        internal PreConfigureOptions(string name, TDep1 dependency1, TDep2 dependency2, TDep3 dependency3, TDep4 dependency4, Action<TOptions, TDep1, TDep2, TDep3, TDep4> action)
         {
             Name = name;
             Action = action;
@@ -338,11 +332,7 @@ namespace Scorpio.Options
         /// <param name="options">The options instance to configured.</param>
         public virtual void PreConfigure(string name, TOptions options)
         {
-            if (options == null)
-            {
-                throw new ArgumentNullException(nameof(options));
-            }
-
+            Check.NotNull(options, nameof(options));
             // Null name is used to configure all named options.
             if (Name == null || name == Name)
             {
@@ -386,7 +376,7 @@ namespace Scorpio.Options
         /// <param name="dependency4">A fourth dependency.</param>
         /// <param name="dependency5">A fifth dependency.</param>
         /// <param name="action">The action to register.</param>
-        public PreConfigureOptions(string name, TDep1 dependency1, TDep2 dependency2, TDep3 dependency3, TDep4 dependency4, TDep5 dependency5, Action<TOptions, TDep1, TDep2, TDep3, TDep4, TDep5> action)
+        internal PreConfigureOptions(string name, TDep1 dependency1, TDep2 dependency2, TDep3 dependency3, TDep4 dependency4, TDep5 dependency5, Action<TOptions, TDep1, TDep2, TDep3, TDep4, TDep5> action)
         {
             Name = name;
             Action = action;
@@ -439,10 +429,7 @@ namespace Scorpio.Options
         /// <param name="options">The options instance to configured.</param>
         public virtual void PreConfigure(string name, TOptions options)
         {
-            if (options == null)
-            {
-                throw new ArgumentNullException(nameof(options));
-            }
+            Check.NotNull(options, nameof(options));
 
             // Null name is used to configure all named options.
             if (Name == null || name == Name)

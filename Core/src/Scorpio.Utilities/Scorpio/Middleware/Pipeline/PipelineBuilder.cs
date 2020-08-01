@@ -13,7 +13,7 @@ namespace Scorpio.Middleware.Pipeline
     /// </summary>
     public static class PipelineBuilder
     {
-        private static readonly MethodInfo _getServiceInfo = typeof(PipelineBuilder).GetMethod(nameof(GetService), BindingFlags.NonPublic | BindingFlags.Static)!;
+        private static readonly MethodInfo _getServiceInfo = ((Func<IServiceProvider, Type, object>)PipelineBuilder.GetService).Method!;
 
         /// <summary>
         /// 

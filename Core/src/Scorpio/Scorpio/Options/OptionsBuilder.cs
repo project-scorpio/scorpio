@@ -26,11 +26,7 @@ namespace Scorpio.Options
         /// <param name="configureOptions">The action used to configure the options.</param>
         public virtual OptionsBuilder<TOptions> PreConfigure(Action<TOptions> configureOptions)
         {
-            if (configureOptions == null)
-            {
-                throw new ArgumentNullException(nameof(configureOptions));
-            }
-
+            Check.NotNull(configureOptions, nameof(configureOptions));
             Services.AddSingleton<IPreConfigureOptions<TOptions>>(new PreConfigureOptions<TOptions>(Name, configureOptions));
             return this;
         }
@@ -45,10 +41,7 @@ namespace Scorpio.Options
         public virtual OptionsBuilder<TOptions> PreConfigure<TDep>(Action<TOptions, TDep> configureOptions)
             where TDep : class
         {
-            if (configureOptions == null)
-            {
-                throw new ArgumentNullException(nameof(configureOptions));
-            }
+            Check.NotNull(configureOptions, nameof(configureOptions));
 
             Services.AddTransient<IPreConfigureOptions<TOptions>>(sp =>
                 new PreConfigureOptions<TOptions, TDep>(Name, sp.GetRequiredService<TDep>(), configureOptions));
@@ -67,10 +60,7 @@ namespace Scorpio.Options
             where TDep1 : class
             where TDep2 : class
         {
-            if (configureOptions == null)
-            {
-                throw new ArgumentNullException(nameof(configureOptions));
-            }
+            Check.NotNull(configureOptions, nameof(configureOptions));
 
             Services.AddTransient<IPreConfigureOptions<TOptions>>(sp =>
                 new PreConfigureOptions<TOptions, TDep1, TDep2>(Name, sp.GetRequiredService<TDep1>(), sp.GetRequiredService<TDep2>(), configureOptions));
@@ -91,10 +81,7 @@ namespace Scorpio.Options
             where TDep2 : class
             where TDep3 : class
         {
-            if (configureOptions == null)
-            {
-                throw new ArgumentNullException(nameof(configureOptions));
-            }
+            Check.NotNull(configureOptions, nameof(configureOptions));
 
             Services.AddTransient<IPreConfigureOptions<TOptions>>(
                 sp => new PreConfigureOptions<TOptions, TDep1, TDep2, TDep3>(
@@ -123,10 +110,7 @@ namespace Scorpio.Options
             where TDep3 : class
             where TDep4 : class
         {
-            if (configureOptions == null)
-            {
-                throw new ArgumentNullException(nameof(configureOptions));
-            }
+            Check.NotNull(configureOptions, nameof(configureOptions));
 
             Services.AddTransient<IPreConfigureOptions<TOptions>>(
                 sp => new PreConfigureOptions<TOptions, TDep1, TDep2, TDep3, TDep4>(
@@ -157,10 +141,7 @@ namespace Scorpio.Options
             where TDep4 : class
             where TDep5 : class
         {
-            if (configureOptions == null)
-            {
-                throw new ArgumentNullException(nameof(configureOptions));
-            }
+            Check.NotNull(configureOptions, nameof(configureOptions));
 
             Services.AddTransient<IPreConfigureOptions<TOptions>>(
                 sp => new PreConfigureOptions<TOptions, TDep1, TDep2, TDep3, TDep4, TDep5>(

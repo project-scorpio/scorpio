@@ -11,15 +11,19 @@ namespace Scorpio.Runtime
 
         public void SetData(string key, object value)
         {
-            var asyncLocal = _asyncLocalDictionary.GetOrAdd(key, (k) => new AsyncLocal<object>());
+            var asyncLocal = GetAsyncLocal(key);
             asyncLocal.Value = value;
         }
 
         public object GetData(string key)
         {
-            var asyncLocal = _asyncLocalDictionary.GetOrAdd(key, (k) => new AsyncLocal<object>());
+            var asyncLocal = GetAsyncLocal(key);
             return asyncLocal.Value;
         }
 
+        private static AsyncLocal<object> GetAsyncLocal(string key)
+        {
+            return _asyncLocalDictionary.GetOrAdd(key, (k) => new AsyncLocal<object>());
+        }
     }
 }

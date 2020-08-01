@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 using Scorpio.Modularity;
 using Scorpio.TestBase;
 
@@ -11,7 +8,7 @@ using Xunit;
 
 namespace Scorpio.Runtime
 {
-    public class AmbientDataContextAmbientScopeProvider_Test:IntegratedTest<IndependentEmptyModule>
+    public class AmbientDataContextAmbientScopeProvider_Test : IntegratedTest<IndependentEmptyModule>
     {
         [Fact]
         public void GetValue()
@@ -24,10 +21,10 @@ namespace Scorpio.Runtime
         public void BeginScope()
         {
             var provider = GetRequiredService<IAmbientScopeProvider<string>>();
-            using (provider.BeginScope("Scope","OuterValue"))
+            using (provider.BeginScope("Scope", "OuterValue"))
             {
                 provider.GetValue("Scope").ShouldBe("OuterValue");
-                using (provider.BeginScope("Scope","InnerValue"))
+                using (provider.BeginScope("Scope", "InnerValue"))
                 {
                     provider.GetValue("Scope").ShouldBe("InnerValue");
                 }
