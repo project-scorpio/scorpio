@@ -46,7 +46,7 @@ namespace Scorpio.Conventional
             var context = GetContext();
             context.Get<string>("key").ShouldBeNull();
             context.GetOrDefault("key", "value").ShouldBe("value");
-            context.Get<string>("key").ShouldBe("value");
+            context.Get<string>("key").ShouldBeNull();
         }
     }
 }

@@ -56,6 +56,7 @@ namespace Scorpio.DependencyInjection.Conventional
             context.As(new TypeSelector<T>());
             return context;
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -64,6 +65,17 @@ namespace Scorpio.DependencyInjection.Conventional
         public static IConventionalContext<ConventionalDependencyAction> AsDefault(this IConventionalContext<ConventionalDependencyAction> context)
         {
             context.As(new DefaultInterfaceSelector());
+            return context;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public static IConventionalContext<ConventionalDependencyAction> AsAll(this IConventionalContext<ConventionalDependencyAction> context)
+        {
+            context.As(new AllInterfaceSelector());
             return context;
         }
 

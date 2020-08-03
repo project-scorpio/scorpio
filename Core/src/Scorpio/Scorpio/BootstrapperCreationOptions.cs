@@ -21,10 +21,9 @@ namespace Scorpio
 
         private readonly HashSet<Action<ConfigureServicesContext>> _postConfigureServiceActions = new HashSet<Action<ConfigureServicesContext>>();
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public IServiceCollection Services { get; }
+        private readonly ICollection<Action<IConfigurationBuilder>> _configurationActions = new HashSet<Action<IConfigurationBuilder>>();
+
+
 
         /// <summary>
         /// 
@@ -35,12 +34,9 @@ namespace Scorpio
 
         internal Func<IServiceFactoryAdapter> ServiceFactory { get; set; } = () => new ServiceFactoryAdapter<IServiceCollection>(new DefaultServiceProviderFactory());
 
-        internal ICollection<Action<IConfigurationBuilder>> ConfigurationActions { get; }
 
-        internal BootstrapperCreationOptions(IServiceCollection services)
+        internal BootstrapperCreationOptions()
         {
-            ConfigurationActions = new HashSet<Action<IConfigurationBuilder>>();
-            Services = Check.NotNull(services, nameof(services));
             PlugInSources = new PlugInSourceList();
         }
 
@@ -84,7 +80,7 @@ namespace Scorpio
         public void Configuration(Action<IConfigurationBuilder> action)
         {
 
-            ConfigurationActions.Add(action);
+            _configurationActions.Add(action);
         }
 
         /// <summary>
@@ -95,6 +91,11 @@ namespace Scorpio
         public void UseServiceProviderFactory<TContainerBuilder>(IServiceProviderFactory<TContainerBuilder> factory)
         {
             ServiceFactory = () => new ServiceFactoryAdapter<TContainerBuilder>(factory);
+        }
+
+        internal void ConfigureConfiguration(ConfigurationBuilder configurationBuilder)
+        {
+            _configurationActions.ForEach(a => a(configurationBuilder));
         }
 
         internal void PreConfigureServices(ConfigureServicesContext context)

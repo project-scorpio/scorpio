@@ -61,6 +61,22 @@ namespace Microsoft.Extensions.DependencyInjection
             var services = new ServiceCollection();
             services.RegisterConventionalDependencyInject(typeof(ServiceCollectionExtensions_Tests).Assembly.GetTypes(), config =>
             {
+                config.Where(t => t.Name == nameof(Service1)).AsAll().Lifetime(ServiceLifetime.Transient);
+            });
+            services.ShouldContainTransient(typeof(IService1), typeof(Service1));
+            services.ShouldContainTransient(typeof(Service1), typeof(Service1));
+            services.ShouldContainTransient(typeof(IService2), typeof(Service1));
+            services.ShouldContainTransient(typeof(IService3), typeof(Service1));
+            services.ShouldContainTransient(typeof(IService4), typeof(Service1));
+        }
+
+
+        [Fact]
+        public void RegisterAssembly_5()
+        {
+            var services = new ServiceCollection();
+            services.RegisterConventionalDependencyInject(typeof(ServiceCollectionExtensions_Tests).Assembly.GetTypes(), config =>
+            {
                 config.Where(t => t.Name == nameof(ExposeService)).AsExposeService();
             });
             services.ShouldContainSingleton(typeof(IExposeService), typeof(ExposeService));
