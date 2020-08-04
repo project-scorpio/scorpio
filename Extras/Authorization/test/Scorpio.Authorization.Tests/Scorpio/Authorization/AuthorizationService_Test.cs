@@ -1,5 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+using System.Security.Principal;
 
+using Microsoft.Extensions.DependencyInjection;
+
+using Scorpio.Security;
 using Scorpio.TestBase;
 
 using Shouldly;
@@ -10,9 +14,12 @@ namespace Scorpio.Authorization
     public class AuthorizationService_Test : IntegratedTest<AuthorizationTestModule>
     {
         private readonly IAuthorizationService _authorizationService;
+        private readonly ICurrentPrincipalAccessor _currentPrincipalAccessor;
+
         public AuthorizationService_Test()
         {
             _authorizationService = ServiceProvider.GetService<IAuthorizationService>();
+            _currentPrincipalAccessor= ServiceProvider.GetService<ICurrentPrincipalAccessor>();
         }
 
         [Fact]
@@ -44,8 +51,13 @@ namespace Scorpio.Authorization
                 .ShouldThrow<Permissions.PermissionNotFondException>();
             _authorizationService.CheckAsync(
                 new InvocationAuthorizationContext(
-                    new string[] { "Permission_Test_3", "Permission_Test_1", "Permission_Test_2" }, true, this.GetType().GetMethod(nameof(FakeMethod), System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)))
+                    new string[] { "Permission_Test_3", "Permission_Test_1", "Permission_Test_2" }, true, ((Action)FakeMethod).Method))
                 .ShouldNotThrow();
+            _currentPrincipalAccessor.ShouldBeOfType<FakePrincipalAccessor>().SetPrincipal(null);
+            _authorizationService.CheckAsync(
+                new InvocationAuthorizationContext(
+                    new string[] { }, false, null))
+                .ShouldThrow<AuthorizationException>();
         }
 
         [AllowAnonymous]

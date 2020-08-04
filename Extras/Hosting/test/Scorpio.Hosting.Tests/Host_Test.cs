@@ -34,5 +34,24 @@ namespace Scorpio.Hosting.Tests
             var bootstrapper = serviceProvider.GetRequiredService<IBootstrapper>().ShouldBeOfType<InternalBootstrapper>();
             bootstrapper.ServiceProvider.ShouldBe(serviceProvider);
         }
+        [Fact]
+        public void Test2()
+        {
+            var context = new HostBuilderContext(new Dictionary<object, object>());
+            var services = new ServiceCollection();
+            var mock = new Mock<IHostBuilder>();
+
+            var factory = default(IServiceProviderFactory<IServiceCollection>);
+            mock.Setup(b => b.UseServiceProviderFactory(It.IsAny<Func<HostBuilderContext, IServiceProviderFactory<IServiceCollection>>>()))
+                .Callback<Func<HostBuilderContext, IServiceProviderFactory<IServiceCollection>>>(f => factory = f(context));
+            mock.Object.AddScorpio(typeof(HosttingTestModule));
+            factory.CreateBuilder(services);
+            services.AddSingleton<IHostLifetime, ConsoleLifetime>();
+            services.AddSingleton<IHostApplicationLifetime, ApplicationLifetime>();
+            services.ShouldContainSingleton(typeof(IBootstrapper), typeof(InternalBootstrapper));
+            var serviceProvider = factory.CreateServiceProvider(services);
+            var bootstrapper = serviceProvider.GetRequiredService<IBootstrapper>().ShouldBeOfType<InternalBootstrapper>();
+            bootstrapper.ServiceProvider.ShouldBe(serviceProvider);
+        }
     }
 }
