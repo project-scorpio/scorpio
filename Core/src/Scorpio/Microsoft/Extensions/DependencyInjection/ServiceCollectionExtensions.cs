@@ -337,9 +337,7 @@ namespace Microsoft.Extensions.DependencyInjection
             else if (serviceDescriptor.ImplementationFactory != null)
             {
                 var typeArguments = serviceDescriptor.ImplementationFactory.GetType().GenericTypeArguments;
-
                 Debug.Assert(typeArguments.Length == 2);
-
                 return typeArguments[1];
             }
 

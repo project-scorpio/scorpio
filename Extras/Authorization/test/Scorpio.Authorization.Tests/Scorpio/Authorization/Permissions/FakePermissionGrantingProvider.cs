@@ -9,7 +9,7 @@ namespace Scorpio.Authorization.Permissions
         public Task<PermissionGrantingInfo> GrantAsync(PermissionGrantingContext context)
         {
             var success = context.Permission.Name == "Permission_Test_1"
-                && context.Principal.Identity.Name == "FakeUser";
+                && context?.Principal?.Identity?.Name == "FakeUser";
             return Task.FromResult(new PermissionGrantingInfo(success, Name));
         }
     }

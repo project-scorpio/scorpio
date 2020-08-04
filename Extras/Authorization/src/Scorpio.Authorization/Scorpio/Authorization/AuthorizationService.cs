@@ -30,12 +30,9 @@ namespace Scorpio.Authorization
             {
                 return;
             }
-            if (authorizationContext?.Permissions?.IsNullOrEmpty() ?? true)
+            if (!(_currentPrincipalAccessor.Principal?.Identity?.IsAuthenticated ?? false))
             {
-                if (!(_currentPrincipalAccessor.Principal?.Identity?.IsAuthenticated ?? false))
-                {
-                    throw new AuthorizationException("Authorization failed! User has not logged in.");
-                }
+                throw new AuthorizationException("Authorization failed! User has not logged in.");
             }
             else
             {

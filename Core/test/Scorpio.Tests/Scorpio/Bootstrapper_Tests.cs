@@ -3,9 +3,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-using NSubstitute;
-
-using Scorpio.DependencyInjection.Conventional;
 using Scorpio.Modularity;
 using Scorpio.Modularity.Plugins;
 
@@ -32,7 +29,7 @@ namespace Scorpio
                 module.PreConfigureServicesCalled.ShouldBeTrue();
                 module.ConfigureServicesCalled.ShouldBeTrue();
                 module.PostConfigureServicesCalled.ShouldBeTrue();
-                bootstrapper.Initialize();
+                bootstrapper.Initialize("test");
                 module.PreInitializeCalled.ShouldBeTrue();
                 module.InitializeCalled.ShouldBeTrue();
                 module.PostInitializeCalled.ShouldBeTrue();
