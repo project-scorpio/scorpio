@@ -3,6 +3,9 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+using NSubstitute;
+
+using Scorpio.DependencyInjection.Conventional;
 using Scorpio.Modularity;
 using Scorpio.Modularity.Plugins;
 
@@ -12,12 +15,12 @@ using Xunit;
 
 namespace Scorpio
 {
-    public class BootstrapperTest
+    public class Bootstrapper_Tests
     {
         [Fact]
         public void Should_Initialize_Single_Module()
         {
-            Should.Throw<ArgumentException>(() => Bootstrapper.Create(typeof(BootstrapperTest)));
+            Should.Throw<ArgumentException>(() => Bootstrapper.Create(typeof(Bootstrapper_Tests)));
             using (var bootstrapper = Bootstrapper.Create<IndependentEmptyModule>())
             {
                 bootstrapper.Properties.ShouldBeEmpty();

@@ -71,7 +71,6 @@ namespace Scorpio
             {
                 [typeof(ServiceCollection)] = typeof(ServiceProvider)
             };
-            var tdc = td as ICollection<KeyValuePair<Type, Type>>;
             td.Count.ShouldBe(1);
             td.ShouldContainKey(typeof(ServiceCollection));
             Should.Throw<ArgumentNullException>(() => td.Remove(null));
@@ -92,7 +91,6 @@ namespace Scorpio
             {
                 [typeof(ServiceCollection)] = typeof(ServiceProvider)
             };
-            var tdc = td as ICollection<KeyValuePair<Type, Type>>;
             td.Count.ShouldBe(1);
             td.ShouldContainKey(typeof(ServiceCollection));
             Should.NotThrow(() => td.Remove<IServiceCollection>()).ShouldBeFalse();

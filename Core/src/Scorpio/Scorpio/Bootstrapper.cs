@@ -85,7 +85,7 @@ namespace Scorpio
             Services = services;
             StartupModuleType = startupModuleType;
             Properties = new Dictionary<string, object>();
-            _options = new BootstrapperCreationOptions(services);
+            _options = new BootstrapperCreationOptions();
             ModuleLoader = new ModuleLoader();
             optionsAction(_options);
             _serviceFactory = new Lazy<IServiceFactoryAdapter>(() => _options.ServiceFactory());
@@ -94,7 +94,7 @@ namespace Scorpio
             {
                 configBuilder.AddConfiguration(configuration);
             }
-            _options.ConfigurationActions.ForEach(a => a(configBuilder));
+            _options.ConfigureConfiguration(configBuilder);
             this.Configuration = configBuilder.Build();
             ConfigureCoreService(services);
             Modules = LoadModules();

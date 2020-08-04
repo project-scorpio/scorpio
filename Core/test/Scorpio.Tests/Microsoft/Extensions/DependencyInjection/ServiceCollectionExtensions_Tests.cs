@@ -61,6 +61,22 @@ namespace Microsoft.Extensions.DependencyInjection
             var services = new ServiceCollection();
             services.RegisterConventionalDependencyInject(typeof(ServiceCollectionExtensions_Tests).Assembly.GetTypes(), config =>
             {
+                config.Where(t => t.Name == nameof(Service1)).AsAll().Lifetime(ServiceLifetime.Transient);
+            });
+            services.ShouldContainTransient(typeof(IService1), typeof(Service1));
+            services.ShouldContainTransient(typeof(Service1), typeof(Service1));
+            services.ShouldContainTransient(typeof(IService2), typeof(Service1));
+            services.ShouldContainTransient(typeof(IService3), typeof(Service1));
+            services.ShouldContainTransient(typeof(IService4), typeof(Service1));
+        }
+
+
+        [Fact]
+        public void RegisterAssembly_5()
+        {
+            var services = new ServiceCollection();
+            services.RegisterConventionalDependencyInject(typeof(ServiceCollectionExtensions_Tests).Assembly.GetTypes(), config =>
+            {
                 config.Where(t => t.Name == nameof(ExposeService)).AsExposeService();
             });
             services.ShouldContainSingleton(typeof(IExposeService), typeof(ExposeService));
@@ -79,8 +95,8 @@ namespace Microsoft.Extensions.DependencyInjection
         public void GetSingletonInstanceOrAdd()
         {
             var services = new ServiceCollection();
-            services.GetSingletonInstanceOrAdd<IService1>( new Service1()).ShouldBeOfType<Service1>().ShouldNotBeNull();
-            services.GetSingletonInstanceOrAdd<IService1>( new Service2()).ShouldBeOfType<Service1>().ShouldNotBeNull();
+            services.GetSingletonInstanceOrAdd<IService1>(new Service1()).ShouldBeOfType<Service1>().ShouldNotBeNull();
+            services.GetSingletonInstanceOrAdd<IService1>(new Service2()).ShouldBeOfType<Service1>().ShouldNotBeNull();
         }
 
         [Fact]
@@ -119,7 +135,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddSingleton<IService1>(new Service1());
             services.ShouldContainSingleton(typeof(IService1), typeof(Service1));
             services.ShouldNotContainService(typeof(IService1), typeof(Service2));
-            services.ReplaceSingleton<IService1,Service2>();
+            services.ReplaceSingleton<IService1, Service2>();
             services.ShouldContainSingleton(typeof(IService1), typeof(Service2));
             services.ShouldNotContainService(typeof(IService1), typeof(Service1));
         }
@@ -154,7 +170,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public void ReplaceEnumerable()
         {
             var services = new ServiceCollection();
-            services.AddTransient<IService1,Service1>();
+            services.AddTransient<IService1, Service1>();
             services.ShouldContainTransient(typeof(IService1), typeof(Service1));
             services.ShouldNotContainService(typeof(IService1), typeof(Service2));
             Should.Throw<ArgumentException>(() => services.ReplaceEnumerable<IService1, IService1, Service2>());
@@ -171,7 +187,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddTransient<IService1, Service1>();
             services.ShouldContainTransient(typeof(IService1), typeof(Service1));
             Should.Throw<ArgumentException>(() => services.RemoveEnumerable<IService1, IService1>());
-            services.RemoveEnumerable<IService1,  Service2>();
+            services.RemoveEnumerable<IService1, Service2>();
             services.ShouldContainTransient(typeof(IService1), typeof(Service1));
             services.RemoveEnumerable<IService1, Service1>();
             services.ShouldNotContainService(typeof(IService1));
@@ -198,7 +214,16 @@ namespace Microsoft.Extensions.DependencyInjection
 
     }
 
-    class Service1 : IService1, IService2, IService3
+    public interface IService4
+    {
+
+    }
+    public interface IService5
+    {
+
+    }
+
+    class Service1 : IService1, IService2, IService3,IService4
     {
 
     }

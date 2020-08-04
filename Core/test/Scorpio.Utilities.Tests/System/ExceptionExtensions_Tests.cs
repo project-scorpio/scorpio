@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Text;
+﻿using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
 
 using Microsoft.Extensions.Logging;
@@ -32,9 +29,9 @@ namespace System
         public void GetLogLevel()
         {
             new FormatException().GetLogLevel().ShouldBe(LogLevel.Error);
-            new FormatException().GetLogLevel( LogLevel.Critical).ShouldBe(LogLevel.Critical);
+            new FormatException().GetLogLevel(LogLevel.Critical).ShouldBe(LogLevel.Critical);
             new LogLevelException(LogLevel.Information).GetLogLevel().ShouldBe(LogLevel.Information);
-            new LogLevelException(LogLevel.Information).GetLogLevel( LogLevel.Error).ShouldBe(LogLevel.Information);
+            new LogLevelException(LogLevel.Information).GetLogLevel(LogLevel.Error).ShouldBe(LogLevel.Information);
         }
     }
 
@@ -43,7 +40,7 @@ namespace System
         public LogLevelException()
         {
         }
-        public LogLevelException( LogLevel logLevel) 
+        public LogLevelException(LogLevel logLevel)
         {
             LogLevel = logLevel;
         }

@@ -40,13 +40,7 @@ namespace Scorpio.Conventional
         /// <returns></returns>
         public static T GetOrAdd<T>(this IConventionalContext context, string name, T value)
         {
-            var result = (context as ConventionalContext).GetItem<T>(name);
-            if (Equals(result, default(T)))
-            {
-                context.Set(name, value);
-                result = value;
-            }
-            return result;
+            return GetOrAdd<T>(context, name, key => value);
         }
 
         /// <summary>
@@ -80,12 +74,7 @@ namespace Scorpio.Conventional
         /// <returns></returns>
         public static T GetOrDefault<T>(this IConventionalContext context, string name, T value)
         {
-            var result = (context as ConventionalContext).GetItem<T>(name);
-            if (Equals(result, default(T)))
-            {
-                result = value;
-            }
-            return result;
+            return GetOrDefault<T>(context, name, key => value);
         }
 
         /// <summary>

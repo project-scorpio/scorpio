@@ -10,7 +10,13 @@ namespace Scorpio.Modularity
     /// </summary>
     public class ConfigureServicesContext
     {
-        internal ConfigureServicesContext(IBootstrapper bootstrapper, IServiceCollection services, IConfiguration configuration)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bootstrapper"></param>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        internal protected ConfigureServicesContext(IBootstrapper bootstrapper, IServiceCollection services, IConfiguration configuration)
         {
             Bootstrapper = bootstrapper;
             Services = services;

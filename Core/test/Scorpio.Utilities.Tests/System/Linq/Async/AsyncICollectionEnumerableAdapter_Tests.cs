@@ -79,7 +79,7 @@ namespace System.Linq.Async
             var act = array.ToAsyncEnumerable();
             var exp = new int[8];
             (act as ICollection<int>).CopyTo(exp, 0);
-            array.SequenceEqual(exp);
+            array.SequenceEqual(exp).ShouldBeTrue();
         }
 
         [Fact]

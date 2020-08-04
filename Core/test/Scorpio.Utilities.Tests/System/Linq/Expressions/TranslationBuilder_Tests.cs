@@ -144,8 +144,6 @@ namespace System.Linq.Expressions
             var func2 = func1.Translate<Person>().To<User>();
             func2.Compile().Invoke(new User()).ShouldNotBeNull();
             data.Select(func2).FirstOrDefault().Id.ShouldBe(1);
-            //func1.Translate<Person>().To<Service2>(s => s.Service1).Compile().Invoke(new Service2()).ShouldNotBeNull();
-            //Should.Throw<ArgumentNullException>(() => func1.Translate<Service1>().To<int, int, int, long>(null).Compile());
         }
     }
 

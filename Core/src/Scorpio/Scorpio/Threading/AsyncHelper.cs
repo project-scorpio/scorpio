@@ -18,9 +18,22 @@ namespace Scorpio.Threading
         public static bool IsAsync(this MethodInfo method)
         {
             Check.NotNull(method, nameof(method));
-
             return method.ReturnType.IsTask();
         }
+
+
+        /// <summary>
+        /// Checks if given method is an async method.
+        /// </summary>
+        /// <param name="delegate">A method to check</param>
+        /// <returns></returns>
+        public static bool IsAsync(this Delegate @delegate)
+        {
+            Check.NotNull(@delegate, nameof(@delegate));
+            return IsAsync(@delegate.Method);
+        }
+
+
 
         /// <summary>
         /// 
@@ -29,7 +42,14 @@ namespace Scorpio.Threading
         /// <returns></returns>
         public static bool IsTask(this Type type)
         {
-            return type == typeof(Task) || (type.GetTypeInfo().IsGenericType && type.GetGenericTypeDefinition() == typeof(Task<>));
+            return type switch
+            {
+                Type t when t == typeof(Task) => true,
+                Type t when t == typeof(ValueTask) => true,
+                Type t when t.IsGenericType && t.GetGenericTypeDefinition() == typeof(Task<>) => true,
+                Type t when t.IsGenericType && t.GetGenericTypeDefinition() == typeof(ValueTask<>) => true,
+                _ => false
+            };
         }
 
         /// <summary>
@@ -37,21 +57,17 @@ namespace Scorpio.Threading
         /// Return T, if given type is Task{T}.
         /// Returns given type otherwise.
         /// </summary>
-        public static Type UnwrapTask(Type type)
+        public static Type UnwrapTask(this Type type)
         {
             Check.NotNull(type, nameof(type));
-
-            if (type == typeof(Task))
+            return type switch
             {
-                return typeof(void);
-            }
-
-            if (type.GetTypeInfo().IsGenericType && type.GetGenericTypeDefinition() == typeof(Task<>))
-            {
-                return type.GenericTypeArguments[0];
-            }
-
-            return type;
+                Type t when t == typeof(Task) => typeof(void),
+                Type t when t == typeof(ValueTask) => typeof(void),
+                Type t when t.IsGenericType && t.GetGenericTypeDefinition() == typeof(Task<>) => t.GenericTypeArguments[0],
+                Type t when t.IsGenericType && t.GetGenericTypeDefinition() == typeof(ValueTask<>) => t.GenericTypeArguments[0],
+                Type t => t
+            };
         }
 
         /// <summary>
@@ -60,7 +76,7 @@ namespace Scorpio.Threading
         /// <param name="func">A function that returns a result</param>
         /// <typeparam name="TResult">Result type</typeparam>
         /// <returns>Result of the async operation</returns>
-        public static TResult RunSync<TResult>(Func<Task<TResult>> func)
+        public static TResult RunSync<TResult>(this Func<Task<TResult>> func)
         {
             return AsyncContext.Run(func);
         }
@@ -69,7 +85,7 @@ namespace Scorpio.Threading
         /// Runs a async method synchronously.
         /// </summary>
         /// <param name="action">An async action</param>
-        public static void RunSync(Func<Task> action)
+        public static void RunSync(this Func<Task> action)
         {
             AsyncContext.Run(action);
         }

@@ -24,10 +24,6 @@ namespace Scorpio
 
         public IServiceProvider CreateServiceProvider(object containerBuilder)
         {
-            if (_serviceProviderFactory == null)
-            {
-                throw new InvalidOperationException("CreateBuilder must be called before CreateServiceProvider");
-            }
             return _serviceProviderFactory.CreateServiceProvider((TContainerBuilder)containerBuilder);
         }
     }

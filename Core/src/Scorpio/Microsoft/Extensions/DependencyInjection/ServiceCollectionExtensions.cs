@@ -233,12 +233,12 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="services"></param>
         /// <param name="lifetime"></param>
         /// <returns></returns>
-        public static IServiceCollection ReplaceEnumerable<TService, TSourceImplementation, TDestinationImplementation>(this IServiceCollection services,ServiceLifetime lifetime= ServiceLifetime.Transient)
+        public static IServiceCollection ReplaceEnumerable<TService, TSourceImplementation, TDestinationImplementation>(this IServiceCollection services, ServiceLifetime lifetime = ServiceLifetime.Transient)
             where TService : class
             where TSourceImplementation : class, TService
             where TDestinationImplementation : class, TService
         {
-            return services.ReplaceEnumerable( ServiceDescriptor.Transient<TService, TSourceImplementation>(), ServiceDescriptor.Describe(typeof(TService), typeof(TDestinationImplementation), lifetime));
+            return services.ReplaceEnumerable(ServiceDescriptor.Transient<TService, TSourceImplementation>(), ServiceDescriptor.Describe(typeof(TService), typeof(TDestinationImplementation), lifetime));
         }
 
         /// <summary>
@@ -284,7 +284,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <typeparam name="TImplementation"></typeparam>
         /// <param name="services"></param>
         /// <returns></returns>
-        public static IServiceCollection RemoveEnumerable<TService,  TImplementation>(this IServiceCollection services)
+        public static IServiceCollection RemoveEnumerable<TService, TImplementation>(this IServiceCollection services)
             where TService : class
             where TImplementation : class, TService
         {
