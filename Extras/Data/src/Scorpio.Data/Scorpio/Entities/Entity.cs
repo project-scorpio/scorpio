@@ -131,10 +131,5 @@ namespace Scorpio.Entities
         }
 
 
-        /// <inheritdoc/>
-        public override string ToString()
-        {
-            return $"[{GetType().Name} {Id}]";
-        }
     }
 }

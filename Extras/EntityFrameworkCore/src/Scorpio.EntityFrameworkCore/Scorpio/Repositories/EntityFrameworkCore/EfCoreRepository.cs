@@ -11,7 +11,6 @@ using Microsoft.EntityFrameworkCore;
 using Scorpio.Data;
 using Scorpio.Entities;
 using Scorpio.EntityFrameworkCore;
-using Scorpio.Threading;
 
 using Z.EntityFramework.Plus;
 
@@ -54,12 +53,10 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         /// </summary>
         /// <param name="serviceProvider"></param>
         /// <param name="contextProvider"></param>
-        /// <param name="cancellationTokenProvider"></param>
         public EfCoreRepository(
             IServiceProvider serviceProvider,
-            IDbContextProvider<TDbContext> contextProvider,
-            ICancellationTokenProvider cancellationTokenProvider)
-            : base(serviceProvider, cancellationTokenProvider)
+            IDbContextProvider<TDbContext> contextProvider)
+            : base(serviceProvider)
         {
             _contextProvider = contextProvider;
         }
@@ -342,12 +339,14 @@ namespace Scorpio.Repositories.EntityFrameworkCore
 
     }
 
+
     /// <summary>
     /// 
     /// </summary>
     /// <typeparam name="TDbContext"></typeparam>
     /// <typeparam name="TEntity"></typeparam>
     /// <typeparam name="TKey"></typeparam>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S2436:Types and methods should not have too many generic parameters", Justification = "<挂起>")]
     public class EfCoreRepository<TDbContext, TEntity, TKey> :
         EfCoreRepository<TDbContext, TEntity>,
         IEfCoreRepository<TEntity, TKey>,
@@ -362,12 +361,10 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         /// </summary>
         /// <param name="serviceProvider"></param>
         /// <param name="contextProvider"></param>
-        /// <param name="cancellationTokenProvider"></param>
         public EfCoreRepository(
             IServiceProvider serviceProvider,
-            IDbContextProvider<TDbContext> contextProvider,
-            ICancellationTokenProvider cancellationTokenProvider)
-            : base(serviceProvider, contextProvider, cancellationTokenProvider)
+            IDbContextProvider<TDbContext> contextProvider)
+            : base(serviceProvider, contextProvider)
         {
         }
 

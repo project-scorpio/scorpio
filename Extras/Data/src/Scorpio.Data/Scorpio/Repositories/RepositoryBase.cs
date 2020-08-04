@@ -22,8 +22,7 @@ namespace Scorpio.Repositories
         /// 
         /// </summary>
         /// <param name="serviceProvider"></param>
-        /// <param name="cancellationTokenProvider"></param>
-        protected RepositoryBase(IServiceProvider serviceProvider, ICancellationTokenProvider cancellationTokenProvider) : base(serviceProvider, cancellationTokenProvider)
+        protected RepositoryBase(IServiceProvider serviceProvider) : base(serviceProvider)
         {
         }
 
@@ -48,7 +47,7 @@ namespace Scorpio.Repositories
         /// <returns></returns>
         public virtual IQueryable<TEntity> WithDetails()
         {
-            return GetQueryable();
+            return WithDetails(new Expression<Func<TEntity, object>>[0]);
         }
 
         /// <summary>
@@ -103,8 +102,7 @@ namespace Scorpio.Repositories
         /// <returns></returns>
         public virtual Task DeleteAsync(Expression<Func<TEntity, bool>> predicate, bool autoSave = true, CancellationToken cancellationToken = default)
         {
-            Delete(predicate, autoSave);
-            return Task.CompletedTask;
+            return Invoke(() => Delete(predicate, autoSave), cancellationToken);
         }
 
         /// <summary>
@@ -147,8 +145,7 @@ namespace Scorpio.Repositories
         /// <returns></returns>
         public virtual Task UpdateAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TEntity>> updateExpression, bool autoSave = true, CancellationToken cancellationToken = default)
         {
-            Update(predicate, updateExpression);
-            return Task.CompletedTask;
+            return Invoke(() => Update(predicate, updateExpression), cancellationToken);
         }
     }
 
@@ -164,8 +161,7 @@ namespace Scorpio.Repositories
         /// 
         /// </summary>
         /// <param name="serviceProvider"></param>
-        /// <param name="cancellationTokenProvider"></param>
-        protected RepositoryBase(IServiceProvider serviceProvider, ICancellationTokenProvider cancellationTokenProvider) : base(serviceProvider, cancellationTokenProvider)
+        protected RepositoryBase(IServiceProvider serviceProvider) : base(serviceProvider)
         {
         }
 
@@ -180,6 +176,18 @@ namespace Scorpio.Repositories
             return includeDetails
                 ? WithDetails().FirstOrDefault(EntityHelper.CreateEqualityExpressionForId<TEntity, TKey>(id))
                 : GetQueryable().FirstOrDefault(EntityHelper.CreateEqualityExpressionForId<TEntity, TKey>(id));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="includeDetails"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public virtual Task<TEntity> FindAsync(TKey id, bool includeDetails = true, CancellationToken cancellationToken = default)
+        {
+            return Invoke(() => Find(id, includeDetails), cancellationToken);
         }
 
         /// <summary>
@@ -209,20 +217,9 @@ namespace Scorpio.Repositories
         /// <returns></returns>
         public virtual Task<TEntity> GetAsync(TKey id, bool includeDetails = true, CancellationToken cancellationToken = default)
         {
-            return Task.FromResult(Get(id, includeDetails));
+            return Invoke(() => Get(id, includeDetails), cancellationToken);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="includeDetails"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
-        public virtual Task<TEntity> FindAsync(TKey id, bool includeDetails = true, CancellationToken cancellationToken = default)
-        {
-            return Task.FromResult(Find(id, includeDetails));
-        }
 
         /// <summary>
         /// 
@@ -249,8 +246,7 @@ namespace Scorpio.Repositories
         /// <returns></returns>
         public virtual Task DeleteAsync(TKey id, bool autoSave = true, CancellationToken cancellationToken = default)
         {
-            Delete(id, autoSave);
-            return Task.CompletedTask;
+            return Invoke(() => Delete(id, autoSave), cancellationToken);
         }
     }
 }
