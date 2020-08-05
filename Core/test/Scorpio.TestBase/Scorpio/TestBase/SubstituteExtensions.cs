@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace Scorpio
 {
@@ -12,7 +9,7 @@ namespace Scorpio
         {
             var type = target.GetType();
             var method = type.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance)
-                             .Where(x => x.Name == name).Single();
+                             .Single(x => x.Name == name);
             return method.Invoke(target, args);
         }
     }

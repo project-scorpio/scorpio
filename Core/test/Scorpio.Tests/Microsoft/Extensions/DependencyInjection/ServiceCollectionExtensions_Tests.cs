@@ -223,7 +223,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
     }
 
-    class Service1 : IService1, IService2, IService3,IService4
+    class Service1 : IService1, IService2, IService3, IService4
     {
 
     }

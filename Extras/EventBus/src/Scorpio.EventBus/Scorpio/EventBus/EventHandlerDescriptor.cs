@@ -21,7 +21,7 @@ namespace Scorpio.EventBus
         /// </summary>
         /// <param name="activationType"></param>
         /// <param name="handlerType"></param>
-        public EventHandlerDescriptor(Type handlerType, EventHandlerActivationType activationType)
+        private EventHandlerDescriptor(Type handlerType, EventHandlerActivationType activationType)
         {
             ActivationType = activationType;
             HandlerType = handlerType;

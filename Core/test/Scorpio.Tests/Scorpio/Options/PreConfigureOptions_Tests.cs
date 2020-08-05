@@ -1,7 +1,5 @@
-﻿using Moq;
-
+﻿
 using NSubstitute;
-using NSubstitute.ClearExtensions;
 
 using Scorpio.Modularity;
 

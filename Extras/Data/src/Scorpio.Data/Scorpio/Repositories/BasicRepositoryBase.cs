@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.DependencyInjection;
 using Scorpio.Entities;
 using Scorpio.Threading;
@@ -27,7 +28,7 @@ namespace Scorpio.Repositories
         /// <summary>
         /// 
         /// </summary>
-        public ICancellationTokenProvider CancellationTokenProvider { get;  }
+        public ICancellationTokenProvider CancellationTokenProvider { get; }
 
         private protected Task Invoke(Action action, CancellationToken cancellationToken)
         {
@@ -44,7 +45,7 @@ namespace Scorpio.Repositories
         protected BasicRepositoryBase(IServiceProvider serviceProvider)
         {
             ServiceProvider = serviceProvider;
-            CancellationTokenProvider = ServiceProvider.GetService<ICancellationTokenProvider>()??NoneCancellationTokenProvider.Instance;
+            CancellationTokenProvider = ServiceProvider.GetService<ICancellationTokenProvider>() ?? NoneCancellationTokenProvider.Instance;
         }
 
         /// <summary>

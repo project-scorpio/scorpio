@@ -22,67 +22,47 @@ namespace Scorpio.EntityFrameworkCore.DependencyInjection
         /// <returns></returns>
         public static IServiceCollection AddRepository(this IServiceCollection services, Type entityType, Type repositoryImplementationType)
         {
-            //IReadOnlyBasicRepository<TEntity>
-            var readOnlyBasicRepositoryInterface = typeof(IReadOnlyBasicRepository<>).MakeGenericType(entityType);
-            if (readOnlyBasicRepositoryInterface.IsAssignableFrom(repositoryImplementationType))
+            RegisterInterface<IReadOnlyBasicRepository<Entity>>(services, repositoryImplementationType, entityType, () =>
             {
-                services.TryAddTransient(readOnlyBasicRepositoryInterface, repositoryImplementationType);
-
-                //IReadOnlyRepository<TEntity>
-                var readOnlyRepositoryInterface = typeof(IReadOnlyRepository<>).MakeGenericType(entityType);
-                if (readOnlyRepositoryInterface.IsAssignableFrom(repositoryImplementationType))
-                {
-                    services.TryAddTransient(readOnlyRepositoryInterface, repositoryImplementationType);
-                }
-
-                //IBasicRepository<TEntity>
-                var basicRepositoryInterface = typeof(IBasicRepository<>).MakeGenericType(entityType);
-                if (basicRepositoryInterface.IsAssignableFrom(repositoryImplementationType))
-                {
-                    services.TryAddTransient(basicRepositoryInterface, repositoryImplementationType);
-
-                    //IRepository<TEntity>
-                    var repositoryInterface = typeof(IRepository<>).MakeGenericType(entityType);
-                    if (repositoryInterface.IsAssignableFrom(repositoryImplementationType))
-                    {
-                        services.TryAddTransient(repositoryInterface, repositoryImplementationType);
-                    }
-                }
-            }
+                RegisterInterface<IReadOnlyRepository<Entity>>(services, repositoryImplementationType, entityType, () => { });
+                RegisterInterface<IBasicRepository<Entity>>(services, repositoryImplementationType, entityType, () =>
+                    RegisterInterface<IRepository<Entity>>(services, repositoryImplementationType, entityType, () => { })
+                );
+            });
 
             var primaryKeyType = EntityHelper.FindPrimaryKeyType(entityType);
             if (primaryKeyType != null)
             {
-                //IReadOnlyBasicRepository<TEntity, TKey>
-                var readOnlyBasicRepositoryInterfaceWithPk = typeof(IReadOnlyBasicRepository<,>).MakeGenericType(entityType, primaryKeyType);
-                if (readOnlyBasicRepositoryInterfaceWithPk.IsAssignableFrom(repositoryImplementationType))
-                {
-                    services.TryAddTransient(readOnlyBasicRepositoryInterfaceWithPk, repositoryImplementationType);
+                RegisterInterface<IReadOnlyBasicRepository<Entity<int>, int>>(services, repositoryImplementationType, entityType, primaryKeyType, () =>
+                  {
+                      RegisterInterface<IReadOnlyRepository<Entity<int>, int>>(services, repositoryImplementationType, entityType, primaryKeyType, () => { });
+                      RegisterInterface<IBasicRepository<Entity<int>, int>>(services, repositoryImplementationType, entityType, primaryKeyType, () =>
+                          RegisterInterface<IRepository<Entity<int>, int>>(services, repositoryImplementationType, entityType, primaryKeyType, () => { })
+                      );
+                  });
+            }
+            return services;
+        }
 
-                    //IReadOnlyRepository<TEntity, TKey>
-                    var readOnlyRepositoryInterfaceWithPk = typeof(IReadOnlyRepository<,>).MakeGenericType(entityType, primaryKeyType);
-                    if (readOnlyRepositoryInterfaceWithPk.IsAssignableFrom(repositoryImplementationType))
-                    {
-                        services.TryAddTransient(readOnlyRepositoryInterfaceWithPk, repositoryImplementationType);
-                    }
-
-                    //IBasicRepository<TEntity, TKey>
-                    var basicRepositoryInterfaceWithPk = typeof(IBasicRepository<,>).MakeGenericType(entityType, primaryKeyType);
-                    if (basicRepositoryInterfaceWithPk.IsAssignableFrom(repositoryImplementationType))
-                    {
-                        services.TryAddTransient(basicRepositoryInterfaceWithPk, repositoryImplementationType);
-
-                        //IRepository<TEntity, TKey>
-                        var repositoryInterfaceWithPk = typeof(IRepository<,>).MakeGenericType(entityType, primaryKeyType);
-                        if (repositoryInterfaceWithPk.IsAssignableFrom(repositoryImplementationType))
-                        {
-                            services.TryAddTransient(repositoryInterfaceWithPk, repositoryImplementationType);
-                        }
-                    }
-                }
+        private static void RegisterInterface<TRepository>(IServiceCollection services, Type implementationType, Type entityType, Action action)
+        {
+            var readOnlyRepositoryInterface = typeof(TRepository).GetGenericTypeDefinition().MakeGenericType(entityType);
+            if (readOnlyRepositoryInterface.IsAssignableFrom(implementationType))
+            {
+                services.TryAddTransient(readOnlyRepositoryInterface, implementationType);
+                action();
             }
 
-            return services;
+        }
+        private static void RegisterInterface<TRepository>(IServiceCollection services, Type implementationType, Type entityType, Type primaryKeyType, Action action)
+        {
+            var readOnlyRepositoryInterface = typeof(TRepository).GetGenericTypeDefinition().MakeGenericType(entityType, primaryKeyType);
+            if (readOnlyRepositoryInterface.IsAssignableFrom(implementationType))
+            {
+                services.TryAddTransient(readOnlyRepositoryInterface, implementationType);
+                action();
+            }
+
         }
     }
 }
