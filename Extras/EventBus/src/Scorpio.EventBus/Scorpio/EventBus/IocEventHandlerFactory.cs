@@ -38,8 +38,7 @@ namespace Scorpio.EventBus
         {
             var scope = _serviceScopeFactory.CreateScope();
             return new EventHandlerDisposeWrapper(
-                (IEventHandler)scope.ServiceProvider.GetRequiredService(HandlerType),
-                () => scope.Dispose()
+                (IEventHandler)scope.ServiceProvider.GetRequiredService(HandlerType), () => scope.Dispose()
             );
         }
     }

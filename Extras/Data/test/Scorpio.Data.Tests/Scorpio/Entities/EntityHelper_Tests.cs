@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 using NSubstitute;
 
@@ -44,7 +42,7 @@ namespace Scorpio.Entities
         [Fact]
         public void CreateEqualityExpressionForId()
         {
-            EntityHelper.CreateEqualityExpressionForId<Entity<int>,int>(12).Compile()(Substitute.For<Entity<int>>(12)).ShouldBeTrue();
+            EntityHelper.CreateEqualityExpressionForId<Entity<int>, int>(12).Compile()(Substitute.For<Entity<int>>(12)).ShouldBeTrue();
         }
     }
 }

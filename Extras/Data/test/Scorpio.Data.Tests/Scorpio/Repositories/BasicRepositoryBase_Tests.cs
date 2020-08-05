@@ -5,7 +5,6 @@ using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
 
 using Scorpio.Entities;
-using Scorpio.Threading;
 
 namespace Scorpio.Repositories
 {

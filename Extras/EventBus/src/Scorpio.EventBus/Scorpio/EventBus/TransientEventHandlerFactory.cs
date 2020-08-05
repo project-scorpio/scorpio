@@ -13,20 +13,11 @@ namespace Scorpio.EventBus
     /// <remarks>
     /// This class always creates a new transient instance of handler.
     /// </remarks>
-    internal class TransientEventHandlerFactory<THandler> : IEventHandlerFactory
+    internal class TransientEventHandlerFactory<THandler> : TransientEventHandlerFactory
         where THandler : IEventHandler, new()
     {
-        /// <summary>
-        /// Creates a new instance of the handler object.
-        /// </summary>
-        /// <returns>The handler object</returns>
-        public IEventHandlerDisposeWrapper GetHandler()
+        public TransientEventHandlerFactory(IHybridServiceScopeFactory serviceScopeFactory) : base(serviceScopeFactory, typeof(THandler))
         {
-            var handler = new THandler();
-            return new EventHandlerDisposeWrapper(
-                handler,
-                () => (handler as IDisposable)?.Dispose()
-            );
         }
     }
 
@@ -55,11 +46,7 @@ namespace Scorpio.EventBus
         {
             var scope = _serviceScopeFactory.CreateScope();
             var handler = ActivatorUtilities.CreateInstance(scope.ServiceProvider, _handlerType) as IEventHandler;
-            return new EventHandlerDisposeWrapper(handler, () =>
-            {
-                (handler as IDisposable)?.Dispose();
-                scope.Dispose();
-            });
+            return new EventHandlerDisposeWrapper(handler, () => scope.Dispose());
         }
     }
 }

@@ -54,7 +54,7 @@ namespace Scorpio.Threading
             };
             ((Func<Task>)(async () => { threadLocal.Value = 1; await Task.CompletedTask; })).RunSync();
             threadLocal.Value.ShouldBe(1);
-            ((Func<Task<int>>)(() => {  threadLocal.Value = 2; return Task.FromResult(threadLocal.Value); })).RunSync().ShouldBe(2);
+            ((Func<Task<int>>)(() => { threadLocal.Value = 2; return Task.FromResult(threadLocal.Value); })).RunSync().ShouldBe(2);
             threadLocal.Value.ShouldBe(2);
         }
 

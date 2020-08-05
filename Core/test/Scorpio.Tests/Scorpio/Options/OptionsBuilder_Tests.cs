@@ -58,7 +58,8 @@ namespace Scorpio.Options
         public void PreConfigureD2()
         {
             var (services, ob) = GetServices();
-            ob.PreConfigure<IService1, IService2>((o, s1, s2) => {
+            ob.PreConfigure<IService1, IService2>((o, s1, s2) =>
+            {
                 o.SetOption("default", "value");
                 s1.As<IService1>().ShouldNotBeNull();
                 s2.As<IService2>().ShouldNotBeNull();
@@ -74,7 +75,8 @@ namespace Scorpio.Options
         {
             var (services, ob) = GetServices();
 
-            ob.PreConfigure<IService1, IService2, IService3>((o, s1, s2, s3) => {
+            ob.PreConfigure<IService1, IService2, IService3>((o, s1, s2, s3) =>
+            {
                 o.SetOption("default", "value");
                 s1.As<IService1>().ShouldNotBeNull();
                 s2.As<IService2>().ShouldNotBeNull();
@@ -90,7 +92,8 @@ namespace Scorpio.Options
         public void PreConfigureD4()
         {
             var (services, ob) = GetServices();
-            ob.PreConfigure<IService1, IService2, IService3, IService4>((o, s1, s2, s3, s4) => {
+            ob.PreConfigure<IService1, IService2, IService3, IService4>((o, s1, s2, s3, s4) =>
+            {
                 o.SetOption("default", "value");
                 s1.As<IService1>().ShouldNotBeNull();
                 s2.As<IService2>().ShouldNotBeNull();
@@ -107,7 +110,8 @@ namespace Scorpio.Options
         public void PreConfigureD5()
         {
             var (services, ob) = GetServices();
-            ob.PreConfigure<IService1, IService2, IService3, IService4, IService5>((o, s1, s2, s3, s4, s5) => {
+            ob.PreConfigure<IService1, IService2, IService3, IService4, IService5>((o, s1, s2, s3, s4, s5) =>
+            {
                 o.SetOption("default", "value");
                 s1.As<IService1>().ShouldNotBeNull();
                 s2.As<IService2>().ShouldNotBeNull();

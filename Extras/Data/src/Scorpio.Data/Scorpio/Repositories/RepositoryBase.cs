@@ -7,7 +7,6 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Scorpio.Entities;
-using Scorpio.Threading;
 
 namespace Scorpio.Repositories
 {

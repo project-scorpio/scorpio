@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 using Microsoft.Extensions.Options;
 
@@ -78,7 +76,7 @@ namespace Scorpio.Options
             opt.GetOption<string>("post-named").ShouldBe("value");
         }
 
-        public class TestExtensibleOptions: ExtensibleOptions
+        public class TestExtensibleOptions : ExtensibleOptions
         {
             public TestExtensibleOptions()
             {

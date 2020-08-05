@@ -29,19 +29,7 @@ namespace Scorpio.EventBus
 
         public override async Task PublishAsync(Type eventType, object eventData)
         {
-            var exceptions = new List<Exception>();
-
-            await TriggerHandlersAsync(eventType, eventData, exceptions);
-
-            if (exceptions.Any())
-            {
-                if (exceptions.Count == 1)
-                {
-                    exceptions[0].ReThrow();
-                }
-
-                throw new AggregateException("More than one error has occurred while triggering the event: " + eventType, exceptions);
-            }
+            await TriggerHandlersAsync(eventType, eventData);
         }
 
         public override IDisposable Subscribe(Type eventType, IEventHandlerFactory factory)
@@ -49,7 +37,7 @@ namespace Scorpio.EventBus
             GetOrCreateHandlerFactories(eventType)
                            .Locking(factories => factories.Add(factory));
 
-            return new EventHandlerFactoryUnregistrar(this, eventType, factory);
+            return new DisposeAction(() => Unsubscribe(eventType, factory));
         }
 
 
@@ -70,7 +58,6 @@ namespace Scorpio.EventBus
                                       {
                                           return false;
                                       }
-
                                       return actionHandler.Action == action;
                                   });
                           });

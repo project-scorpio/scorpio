@@ -7,7 +7,10 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+
+using Scorpio.DependencyInjection;
 
 namespace Scorpio.EventBus
 {
@@ -61,7 +64,7 @@ namespace Scorpio.EventBus
             where TEvent : class
             where THandler : IEventHandler, new()
         {
-            return Subscribe(typeof(TEvent), new TransientEventHandlerFactory<THandler>());
+            return Subscribe(typeof(TEvent), new TransientEventHandlerFactory<THandler>(ServiceProvider.GetRequiredService<IHybridServiceScopeFactory>()));
         }
 
         /// <inheritdoc/>
@@ -194,7 +197,7 @@ namespace Scorpio.EventBus
                     var baseEventType = eventType.GetGenericTypeDefinition().MakeGenericType(baseArg);
                     var constructorArgs = ((IEventDataWithInheritableGenericArgument)eventData).GetConstructorArgs();
                     var baseEventData = Activator.CreateInstance(baseEventType, constructorArgs);
-                    await PublishAsync(baseEventType, baseEventData);
+                    await TriggerHandlersAsync(baseEventType, baseEventData, exceptions);
                 }
             }
         }

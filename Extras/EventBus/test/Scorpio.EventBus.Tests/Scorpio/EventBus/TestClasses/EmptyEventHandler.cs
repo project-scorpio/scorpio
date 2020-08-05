@@ -2,9 +2,13 @@
 
 namespace Scorpio.EventBus.TestClasses
 {
-    internal class EmptyEventHandler : IEventHandler<string>
+    internal class EmptyEventHandler : EmptyEventHandler<string>
     {
-        public Task HandleEventAsync(string eventData)
+
+    }
+    internal class EmptyEventHandler<T> : IEventHandler<T>
+    {
+        public Task HandleEventAsync(T eventData)
         {
             return Task.CompletedTask;
         }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 using NSubstitute;
 
@@ -106,7 +105,7 @@ namespace Scorpio.Entities
             var entity = Substitute.For<Entity<int>>(123);
             entity.When(x => x.Equals(Arg.Any<object>())).CallBase();
             entity.WhenForAnyArgs(x => x.IsTransient()).CallBase();
-            entity.GetHashCode().ShouldBe(HashCode.Combine( 123));
+            entity.GetHashCode().ShouldBe(HashCode.Combine(123));
         }
     }
 }
