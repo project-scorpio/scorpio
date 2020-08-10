@@ -24,6 +24,7 @@ namespace Scorpio.Data
                 await entry.ReloadAsync();
                 entry.State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
                 entry.Entity.As<ISoftDelete>().IsDeleted = true;
+                entry.Property(nameof(ISoftDelete.IsDeleted)).IsModified = true;
             });
         }
     }

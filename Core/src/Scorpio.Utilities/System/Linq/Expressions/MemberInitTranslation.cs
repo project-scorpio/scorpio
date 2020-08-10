@@ -24,9 +24,17 @@
             var s = _predicate.Parameters[0];
             var t = Expression.Parameter(type, s.Name);
             var init = _predicate.Body as MemberInitExpression;
-            var binds = init.Bindings.OfType<MemberAssignment>().Select(b => b.Member.Name).Select(b => Expression.Bind(type.GetProperty(b), Expression.Property(t, b))).ToList();
+            var binds = init.Bindings.OfType<MemberAssignment>().Select(b => new { b.Member.Name,b.Expression }).Select(b => Expression.Bind(type.GetProperty(b.Name),GetExpression(t,b.Expression,b.Name))).ToList();
             return Expression.Lambda<Func<TTranslatedSource, TTranslatedSource>>(
                  Expression.MemberInit(Expression.New(typeof(TTranslatedSource)), binds), t);
+            Expression GetExpression(Expression parameter,Expression expression,string propertyName)
+            {
+                return expression.NodeType switch
+                {
+                    ExpressionType.MemberAccess => Expression.Property(parameter, propertyName),
+                    _ => expression
+                };
+            }
         }
 
     }

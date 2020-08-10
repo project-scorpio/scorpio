@@ -11,22 +11,21 @@ namespace Scorpio.EntityFrameworkCore
     /// </summary>
     public class ScorpioDbContextOptions
     {
-        internal List<Action<DbContextConfigurationContext>> DefaultPreConfigureActions { get; set; }
-
-        internal Action<DbContextConfigurationContext> DefaultConfigureAction { get; set; }
-
-        internal Dictionary<Type, List<object>> PreConfigureActions { get; set; }
-
-        internal Dictionary<Type, object> ConfigureActions { get; set; }
-
-        internal IEnumerable<IModelCreatingContributor> GetModelCreatingContributors<TDbContext>()
-              where TDbContext : ScorpioDbContext<TDbContext> => _commonModelCreatingContributors.Concat(_modelCreatingContributors.GetOrDefault(typeof(TDbContext)) ?? new List<IModelCreatingContributor>());
-        internal IEnumerable<IModelCreatingContributor> GetModelCreatingContributors(Type dbcontextType)
-              => _commonModelCreatingContributors.Concat(_modelCreatingContributors.GetOrDefault(dbcontextType) ?? new List<IModelCreatingContributor>());
-
         private readonly Dictionary<Type, List<IModelCreatingContributor>> _modelCreatingContributors;
 
         private readonly List<IModelCreatingContributor> _commonModelCreatingContributors;
+
+        internal List<Action<DbContextConfigurationContext>> DefaultPreConfigureActions { get; }
+
+        internal Action<DbContextConfigurationContext> DefaultConfigureAction { get; private set; }
+
+        internal Dictionary<Type, List<object>> PreConfigureActions { get; }
+
+        internal Dictionary<Type, object> ConfigureActions { get; }
+
+        internal IEnumerable<IModelCreatingContributor> GetModelCreatingContributors(Type dbcontextType)
+              => _commonModelCreatingContributors.Concat(_modelCreatingContributors.GetOrDefault(dbcontextType,key=> new List<IModelCreatingContributor>()));
+
 
         /// <summary>
         /// 
@@ -61,12 +60,7 @@ namespace Scorpio.EntityFrameworkCore
         {
             Check.NotNull(action, nameof(action));
 
-            var actions = PreConfigureActions.GetOrDefault(typeof(TDbContext));
-            if (actions == null)
-            {
-                PreConfigureActions[typeof(TDbContext)] = actions = new List<object>();
-            }
-
+            var actions = PreConfigureActions.GetOrAdd(typeof(TDbContext), t => new List<object>());
             actions.Add(action);
         }
 
@@ -104,11 +98,7 @@ namespace Scorpio.EntityFrameworkCore
         public void AddModelCreatingContributor<TDbContext>(IModelCreatingContributor modelCreatingContributor)
                 where TDbContext : ScorpioDbContext<TDbContext>
         {
-            var contributors = _modelCreatingContributors.GetOrDefault(typeof(TDbContext));
-            if (contributors == null)
-            {
-                _modelCreatingContributors[typeof(TDbContext)] = contributors = new List<IModelCreatingContributor>();
-            }
+            var contributors = _modelCreatingContributors.GetOrAdd(typeof(TDbContext),k => new List<IModelCreatingContributor>());
             contributors.AddIfNotContains(modelCreatingContributor);
         }
 

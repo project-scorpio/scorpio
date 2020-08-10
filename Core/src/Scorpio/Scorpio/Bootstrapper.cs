@@ -155,7 +155,7 @@ namespace Scorpio
             {
                 scope.ServiceProvider
                     .GetRequiredService<IModuleManager>()
-                    .InitializeModules(new ApplicationInitializationContext(scope.ServiceProvider, initializeParams));
+                    .InitializeModules(new ApplicationInitializationContext(scope.ServiceProvider,ServiceProvider, initializeParams));
             }
         }
 
