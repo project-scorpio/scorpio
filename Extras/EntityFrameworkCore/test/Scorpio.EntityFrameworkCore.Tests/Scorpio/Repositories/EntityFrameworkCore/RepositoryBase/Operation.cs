@@ -45,7 +45,7 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         public void Update_Expression()
         {
             var repo = GetUsers();
-           repo.GetDbContext().Entry ( repo.Insert(new TestTable { Id = 10, StringValue = "test" })).State= Microsoft.EntityFrameworkCore.EntityState.Detached;
+            repo.GetDbContext().Entry(repo.Insert(new TestTable { Id = 10, StringValue = "test" })).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
             repo.Update(r => r.Id == 10, r => new TestTable { StringValue = "Jhon" });
             repo.Find(10).StringValue.ShouldBe("Jhon");
         }
@@ -157,8 +157,8 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         [Fact]
         public async System.Threading.Tasks.Task DeleteAsync_ExpressionAsync_S()
         {
-            var repo = ServiceProvider.GetRequiredService<IRepository<SimpleTable,int>>();
-            repo.GetDbContext().Entry(repo.Insert(new SimpleTable  { Id = 10, StringValue = "test" })).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
+            var repo = ServiceProvider.GetRequiredService<IRepository<SimpleTable, int>>();
+            repo.GetDbContext().Entry(repo.Insert(new SimpleTable { Id = 10, StringValue = "test" })).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
             repo.GetCount().ShouldBe(1);
             await repo.DeleteAsync(r => r.Id == 12);
             repo.GetCount().ShouldBe(1);

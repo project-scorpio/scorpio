@@ -23,7 +23,7 @@ namespace Scorpio.Modularity
         /// </summary>
         public IEnumerable<object> Parameters { get; }
 
-        internal ApplicationInitializationContext(IServiceProvider serviceProvider,IServiceProvider rootServiceProvider, params object[] initializeParams)
+        internal ApplicationInitializationContext(IServiceProvider serviceProvider, IServiceProvider rootServiceProvider, params object[] initializeParams)
         {
             Parameters = initializeParams;
             ServiceProvider = serviceProvider;

@@ -21,7 +21,7 @@ namespace Scorpio.Repositories.EntityFrameworkCore
     /// </summary>
     /// <typeparam name="TDbContext"></typeparam>
     /// <typeparam name="TEntity"></typeparam>
-    public class EfCoreRepository<TDbContext, TEntity> : RepositoryBase<TEntity>, IEfCoreRepository<TEntity>
+    public class EfCoreRepository<TDbContext, TEntity> : RepositoryBase<TEntity>, IEfCoreRepository<TEntity>,IAsyncEnumerable<TEntity>
         where TDbContext : DbContext
         where TEntity : class, IEntity
     {
@@ -267,7 +267,7 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         /// <returns></returns>
         public override IQueryable<TEntity> WithDetails(params Expression<Func<TEntity, object>>[] propertySelectors)
         {
-            return propertySelectors.Aggregate( GetQueryable(),(query,selector)=>query.Include(selector));
+            return propertySelectors.Aggregate(GetQueryable(), (query, selector) => query.Include(selector));
         }
 
         /// <summary>
@@ -286,7 +286,7 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         /// <returns></returns>
         public override async Task<long> GetCountAsync(CancellationToken cancellationToken = default)
         {
-            return await DbSet.LongCountAsync(GetCancellationToken( cancellationToken));
+            return await DbSet.LongCountAsync(GetCancellationToken(cancellationToken));
         }
 
         /// <summary>
@@ -308,7 +308,7 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         public override async Task<IEnumerable<TEntity>> GetListAsync(bool includeDetails = false, CancellationToken cancellationToken = default)
         {
             return includeDetails
-                ? await WithDetails().AsNoTracking().ToListAsync(GetCancellationToken( cancellationToken))
+                ? await WithDetails().AsNoTracking().ToListAsync(GetCancellationToken(cancellationToken))
                 : await DbSet.AsNoTracking().ToListAsync(GetCancellationToken(cancellationToken));
         }
 
@@ -346,6 +346,15 @@ namespace Scorpio.Repositories.EntityFrameworkCore
             await DbContext.Entry(entity).Reference(propertyExpression).LoadAsync(GetCancellationToken(cancellationToken));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public IAsyncEnumerator<TEntity> GetAsyncEnumerator(CancellationToken cancellationToken = default)
+        {
+            return ((IAsyncEnumerable<TEntity>)DbSet).GetAsyncEnumerator(cancellationToken);
+        }
     }
 
 
@@ -466,7 +475,7 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         /// <returns></returns>
         public virtual async Task DeleteAsync(TKey id, bool autoSave = true, CancellationToken cancellationToken = default)
         {
-            var entity = await FindAsync(id, includeDetails: false, cancellationToken:GetCancellationToken( cancellationToken));
+            var entity = await FindAsync(id, includeDetails: false, cancellationToken: GetCancellationToken(cancellationToken));
             if (entity == null)
             {
                 return;

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 using Scorpio.DependencyInjection;
 
 namespace Scorpio.EntityFrameworkCore
@@ -11,7 +8,7 @@ namespace Scorpio.EntityFrameworkCore
         string Value { get; set; }
     }
 
-    class StringValueProvider : IStringValueProvider,ISingletonDependency
+    class StringValueProvider : IStringValueProvider, ISingletonDependency
     {
         public string Value { get; set; } = "Row0";
     }

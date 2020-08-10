@@ -58,7 +58,7 @@ namespace Scorpio.EntityFrameworkCore
         /// <param name="context"></param>
         public override void PreInitialize(ApplicationInitializationContext context)
         {
-            EntityFrameworkManager.ContextFactory = c =>context.RootServiceProvider.GetRequiredService(c.GetType()) as DbContext;
+            EntityFrameworkManager.ContextFactory = c => context.RootServiceProvider.GetRequiredService(c.GetType()) as DbContext;
         }
     }
 }

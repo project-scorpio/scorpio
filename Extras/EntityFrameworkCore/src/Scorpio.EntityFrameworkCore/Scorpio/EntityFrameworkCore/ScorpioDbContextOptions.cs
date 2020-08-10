@@ -24,7 +24,7 @@ namespace Scorpio.EntityFrameworkCore
         internal Dictionary<Type, object> ConfigureActions { get; }
 
         internal IEnumerable<IModelCreatingContributor> GetModelCreatingContributors(Type dbcontextType)
-              => _commonModelCreatingContributors.Concat(_modelCreatingContributors.GetOrDefault(dbcontextType,key=> new List<IModelCreatingContributor>()));
+              => _commonModelCreatingContributors.Concat(_modelCreatingContributors.GetOrDefault(dbcontextType, key => new List<IModelCreatingContributor>()));
 
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Scorpio.EntityFrameworkCore
         public void AddModelCreatingContributor<TDbContext>(IModelCreatingContributor modelCreatingContributor)
                 where TDbContext : ScorpioDbContext<TDbContext>
         {
-            var contributors = _modelCreatingContributors.GetOrAdd(typeof(TDbContext),k => new List<IModelCreatingContributor>());
+            var contributors = _modelCreatingContributors.GetOrAdd(typeof(TDbContext), k => new List<IModelCreatingContributor>());
             contributors.AddIfNotContains(modelCreatingContributor);
         }
 

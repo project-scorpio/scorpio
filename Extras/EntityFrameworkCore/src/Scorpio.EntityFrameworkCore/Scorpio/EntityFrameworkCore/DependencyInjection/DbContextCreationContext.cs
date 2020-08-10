@@ -12,16 +12,6 @@ namespace Scorpio.EntityFrameworkCore.DependencyInjection
         /// <summary>
         /// 
         /// </summary>
-        public static DbContextCreationContext Current => _current.Value;
-        private static readonly AsyncLocal<DbContextCreationContext> _current = new AsyncLocal<DbContextCreationContext>();
-
-        /// <summary>
-        /// 
-        /// </summary>
-
-        /// <summary>
-        /// 
-        /// </summary>
         public string ConnectionString { get; }
 
         /// <summary>
@@ -38,16 +28,6 @@ namespace Scorpio.EntityFrameworkCore.DependencyInjection
             ConnectionString = connectionString;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="context"></param>
-        /// <returns></returns>
-        public static IDisposable Use(DbContextCreationContext context)
-        {
-            var previousValue = Current;
-            _current.Value = context;
-            return new DisposeAction(() => _current.Value = previousValue);
-        }
+
     }
 }

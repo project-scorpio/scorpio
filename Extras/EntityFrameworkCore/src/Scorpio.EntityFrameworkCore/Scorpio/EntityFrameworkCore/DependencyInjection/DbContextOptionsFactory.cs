@@ -80,16 +80,10 @@ namespace Scorpio.EntityFrameworkCore.DependencyInjection
         private static DbContextCreationContext GetCreationContext<TDbContext>(IServiceProvider serviceProvider)
             where TDbContext : ScorpioDbContext<TDbContext>
         {
-            var context = DbContextCreationContext.Current;
-            if (context != null)
-            {
-                return context;
-            }
-
             var connectionStringName = ConnectionStringNameAttribute.GetConnStringName<TDbContext>();
             var connectionString = serviceProvider.GetRequiredService<IConnectionStringResolver>().Resolve(connectionStringName);
 
-            return new DbContextCreationContext(
+            return  new DbContextCreationContext(
                 connectionString
             );
         }

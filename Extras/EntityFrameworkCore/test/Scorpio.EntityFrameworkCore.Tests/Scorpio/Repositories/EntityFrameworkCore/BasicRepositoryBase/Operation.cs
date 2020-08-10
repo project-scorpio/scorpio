@@ -41,9 +41,9 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         public async System.Threading.Tasks.Task UpdateAsync()
         {
             var repo = GetUsers();
-            var entity =await repo.InsertAsync(new TestTable { Id = 10, StringValue = "test" });
+            var entity = await repo.InsertAsync(new TestTable { Id = 10, StringValue = "test" });
             entity.StringValue = "Jhon";
-           await repo.UpdateAsync(entity);
+            await repo.UpdateAsync(entity);
             repo.Find(10).StringValue.ShouldBe("Jhon");
         }
 
@@ -107,7 +107,7 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         public async System.Threading.Tasks.Task SaveChangeAsync()
         {
             var repo = GetUsers();
-           await repo.InsertAsync(new TestTable { Id = 10, StringValue = "test" }, false);
+            await repo.InsertAsync(new TestTable { Id = 10, StringValue = "test" }, false);
             repo.GetCount().ShouldBe(0);
             Should.NotThrow(() => repo.SaveChangesAsync());
             repo.GetCount().ShouldBe(1);

@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading;
-using System.Threading.Tasks;
 
 using Microsoft.Extensions.DependencyInjection;
 
 using NSubstitute;
 
-using Scorpio.Entities;
 using Scorpio.EntityFrameworkCore;
 using Scorpio.TestBase;
 
@@ -39,7 +34,7 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         [Fact]
         public void ToEfCoreRepository_E()
         {
-            var repo = Substitute.For<IRepository<TestTable,int>>();
+            var repo = Substitute.For<IRepository<TestTable, int>>();
             Should.Throw<ArgumentException>(() => repo.ToEfCoreRepository());
         }
 
@@ -58,7 +53,7 @@ namespace Scorpio.Repositories.EntityFrameworkCore
             });
 
             repo.EnsureCollectionLoaded(entity, e => e.Details);
-            entity.Details.Count().ShouldBe(1);
+            entity.Details.Count.ShouldBe(1);
         }
 
         [Fact]
@@ -69,7 +64,7 @@ namespace Scorpio.Repositories.EntityFrameworkCore
             {
                 Id = 10,
                 DetailValue = "test",
-                TestTable = new TestTable { Id = 1,  StringValue = "Test" }
+                TestTable = new TestTable { Id = 1, StringValue = "Test" }
             });
             var entity = repo.Get(10);
             repo.EnsurePropertyLoaded(entity, e => e.TestTable);

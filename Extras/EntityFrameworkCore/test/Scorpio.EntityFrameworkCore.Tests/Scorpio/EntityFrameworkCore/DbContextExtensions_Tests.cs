@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 using Microsoft.Extensions.DependencyInjection;
 
 using Shouldly;
@@ -10,7 +7,7 @@ using Xunit;
 
 namespace Scorpio.EntityFrameworkCore
 {
-    public class DbContextExtensions_Tests:TestBase.IntegratedTest<TestModule>
+    public class DbContextExtensions_Tests : TestBase.IntegratedTest<TestModule>
     {
         [Fact]
         public void HasRelationalTransactionManager()

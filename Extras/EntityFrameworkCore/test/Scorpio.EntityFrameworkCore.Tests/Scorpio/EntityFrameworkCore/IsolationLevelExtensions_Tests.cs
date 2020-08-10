@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Transactions;
+﻿using System.Transactions;
 
 using Shouldly;
 
@@ -20,7 +17,7 @@ namespace Scorpio.EntityFrameworkCore
         [InlineData(IsolationLevel.Serializable, SysIsolationLevel.Serializable)]
         [InlineData(IsolationLevel.Snapshot, SysIsolationLevel.Snapshot)]
         [InlineData(IsolationLevel.Unspecified, SysIsolationLevel.Unspecified)]
-        public void ToSystemDataIsolationLevel(IsolationLevel  isolationLevel, SysIsolationLevel  sysIsolationLevel)
+        public void ToSystemDataIsolationLevel(IsolationLevel isolationLevel, SysIsolationLevel sysIsolationLevel)
         {
             isolationLevel.ToSystemDataIsolationLevel().ShouldBe(sysIsolationLevel);
 

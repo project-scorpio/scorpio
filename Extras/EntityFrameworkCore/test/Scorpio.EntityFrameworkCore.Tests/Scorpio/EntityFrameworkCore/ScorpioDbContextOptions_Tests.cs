@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 using NSubstitute;
 
@@ -57,7 +55,7 @@ namespace Scorpio.EntityFrameworkCore
             context.Configure(action);
             context.ConfigureActions
                 .ShouldHaveSingleItem()
-                .Action(kv=>kv.Key.ShouldBe(typeof(TestDbContext)))
+                .Action(kv => kv.Key.ShouldBe(typeof(TestDbContext)))
                 .Value.ShouldBeOfType<Action<DbContextConfigurationContext<TestDbContext>>>().Invoke(null);
             action.ReceivedWithAnyArgs(1).Invoke(null);
         }
@@ -66,7 +64,7 @@ namespace Scorpio.EntityFrameworkCore
         public void AddModelCreatingContributor()
         {
             var context = new ScorpioDbContextOptions();
-            var  contributor = Substitute.For<IModelCreatingContributor>();
+            var contributor = Substitute.For<IModelCreatingContributor>();
             context.AddModelCreatingContributor(contributor);
             context.GetModelCreatingContributors(typeof(ScorpioDbContext)).ShouldHaveSingleItem().ShouldBe(contributor);
             context.GetModelCreatingContributors(typeof(TestDbContext)).ShouldHaveSingleItem().ShouldBe(contributor);

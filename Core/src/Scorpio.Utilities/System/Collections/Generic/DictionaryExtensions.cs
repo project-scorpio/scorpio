@@ -132,7 +132,7 @@ namespace System.Collections.Generic
         /// <returns>Value if found, default if can not found.</returns>
         public static TValue GetOrDefault<TKey, TValue>(this ConcurrentDictionary<TKey, TValue> dictionary, TKey key, TValue @default)
         {
-            return GetOrDefault(dictionary,key,k=>@default);
+            return GetOrDefault(dictionary, key, k => @default);
         }
 
         /// <summary>

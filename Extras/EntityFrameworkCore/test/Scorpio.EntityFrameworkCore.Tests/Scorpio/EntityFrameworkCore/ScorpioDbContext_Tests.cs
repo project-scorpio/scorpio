@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -71,7 +68,7 @@ namespace Scorpio.EntityFrameworkCore
         [Fact]
         public void ContextFilter()
         {
-            
+
             using (var context = ServiceProvider.GetService<TestDbContext>())
             {
                 context.TestTables.AddRange(

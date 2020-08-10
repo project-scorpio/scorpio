@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-
+﻿
 using Scorpio.EntityFrameworkCore;
 
 using Shouldly;

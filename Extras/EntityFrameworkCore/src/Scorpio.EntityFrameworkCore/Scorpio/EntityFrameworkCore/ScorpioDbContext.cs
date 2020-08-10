@@ -14,7 +14,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 using Scorpio.Data;
-using Scorpio.Entities;
 using Scorpio.Threading;
 
 namespace Scorpio.EntityFrameworkCore
