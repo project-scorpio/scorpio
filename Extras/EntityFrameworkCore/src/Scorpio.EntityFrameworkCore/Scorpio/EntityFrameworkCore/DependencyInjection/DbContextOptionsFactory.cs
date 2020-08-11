@@ -85,11 +85,10 @@ namespace Scorpio.EntityFrameworkCore.DependencyInjection
             {
                 return context;
             }
-
             var connectionStringName = ConnectionStringNameAttribute.GetConnStringName<TDbContext>();
             var connectionString = serviceProvider.GetRequiredService<IConnectionStringResolver>().Resolve(connectionStringName);
 
-            return new DbContextCreationContext(
+            return  new DbContextCreationContext(
                 connectionString
             );
         }

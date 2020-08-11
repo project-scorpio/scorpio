@@ -78,7 +78,7 @@ namespace Scorpio.Threading
         }
         public async ValueTask<int> ValueTaskFunctionAsync(int value)
         {
-            return value;
+            return await Task.FromResult( value);
         }
 
     }

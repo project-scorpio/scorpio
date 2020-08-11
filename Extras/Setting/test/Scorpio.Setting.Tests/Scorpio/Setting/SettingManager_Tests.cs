@@ -26,6 +26,7 @@ namespace Scorpio.Setting
             _settingManager.GetAsync<string>("Setting").Result.ShouldBe("SettingValue");
             _settingManager.SetAsync("Setting", "SettingValue2").Wait();
             _settingManager.GetAsync<string>("Setting").Result.ShouldBe("SettingValue2");
+            _settingManager.GetAsync<string>("DefaultSetting").Result.ShouldBe(default);
             _settingManager.GetAsync<int>("IntegerSetting").Result.ShouldBe(20);
             _settingManager.SetAsync("IntegerSetting", 30).Wait();
             _settingManager.GetAsync<int>("IntegerSetting").Result.ShouldBe(30);

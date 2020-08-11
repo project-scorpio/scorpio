@@ -13,11 +13,8 @@ namespace Scorpio.EntityFrameworkCore.DependencyInjection
         /// 
         /// </summary>
         public static DbContextCreationContext Current => _current.Value;
-        private static readonly AsyncLocal<DbContextCreationContext> _current = new AsyncLocal<DbContextCreationContext>();
 
-        /// <summary>
-        /// 
-        /// </summary>
+        private static readonly AsyncLocal<DbContextCreationContext> _current = new AsyncLocal<DbContextCreationContext>();
 
         /// <summary>
         /// 

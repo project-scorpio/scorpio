@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.DependencyInjection;
 
 using Scorpio.Entities;
@@ -39,11 +41,11 @@ namespace Scorpio.EntityFrameworkCore.DependencyInjection
 
         public void AddRepository(Type entityType, Type repositoryType)
         {
-            if (!entityType.IsAssignableTo(typeof(IEntity<>)))
+            if (!entityType.GetInterfaces().Any(i=>i.IsGenericType && i.GetGenericTypeDefinition()==typeof(IEntity<>)))
             {
                 throw new ScorpioException($"Given entityType is not an entity: {entityType.AssemblyQualifiedName}. It must implement {typeof(IEntity<>).AssemblyQualifiedName}.");
             }
-            if (!repositoryType.IsAssignableTo(typeof(IRepository<>)))
+            if (!repositoryType.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IEfCoreRepository<>)))
             {
                 throw new ScorpioException($"Given repositoryType is not a repository: {entityType.AssemblyQualifiedName}. It must implement {typeof(IEfCoreRepository<>).AssemblyQualifiedName}.");
             }

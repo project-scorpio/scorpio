@@ -114,6 +114,7 @@ namespace Scorpio.Repositories
         /// <returns></returns>
         protected virtual CancellationToken GetCancellationToken(CancellationToken prefferedValue = default)
         {
+
             return CancellationTokenProvider.FallbackToProvider(prefferedValue);
         }
 

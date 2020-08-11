@@ -68,12 +68,7 @@ namespace Scorpio.EntityFrameworkCore
         /// </summary>
         protected IServiceProvider ServiceProvider { get; }
 
-        private static readonly MethodInfo _configureEntityPropertiesMethodInfo
-    = typeof(ScorpioDbContext)
-        .GetMethod(
-            nameof(ConfigureEntityProperties),
-            BindingFlags.Instance | BindingFlags.NonPublic
-        );
+        private readonly MethodInfo _configureEntityPropertiesMethodInfo;
 
         /// <summary>
         /// 
@@ -84,7 +79,7 @@ namespace Scorpio.EntityFrameworkCore
         protected ScorpioDbContext(IServiceProvider serviceProvider, DbContextOptions contextOptions, IOptions<DataFilterOptions> filterOptions)
             : base(contextOptions)
         {
-
+            _configureEntityPropertiesMethodInfo = ((Action<ModelBuilder, IMutableEntityType>)ConfigureEntityProperties<object>).Method.GetGenericMethodDefinition();
             _filterOptions = filterOptions.Value;
             ServiceProvider = serviceProvider;
             OnSaveChangeHandlersFactory = ServiceProvider.GetService<IOnSaveChangeHandlersFactory>();
@@ -139,7 +134,7 @@ namespace Scorpio.EntityFrameworkCore
         /// <returns></returns>
         public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
         {
-            var entityChangeList = ChangeTracker.Entries().ToList();
+            var entityChangeList = ChangeTracker.Entries().Where(e => e.State != EntityState.Unchanged).ToList();
             var saveChangeHandlers = OnSaveChangeHandlersFactory.CreateHandlers();
             if (entityChangeList.Count > 0)
             {

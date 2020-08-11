@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Diagnostics;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Query.Internal;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -6,6 +7,8 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Scorpio.Data;
 using Scorpio.EntityFrameworkCore.DependencyInjection;
 using Scorpio.Modularity;
+
+using Z.EntityFramework.Extensions;
 
 namespace Scorpio.EntityFrameworkCore
 {
@@ -24,6 +27,7 @@ namespace Scorpio.EntityFrameworkCore
             context.Services.Configure<ScorpioDbContextOptions>(options =>
             {
                 options.PreConfigure(context => context.DbContextOptions.ReplaceService<IAsyncQueryProvider, QueryProvider>());
+                options.PreConfigure(context => context.DbContextOptions.UseLazyLoadingProxies());
                 options.AddModelCreatingContributor<DataModelCreatingContributor>();
                 options.PreConfigure(dbConfigContext => dbConfigContext.DbContextOptions.ConfigureWarnings(
                     warnings => warnings.Ignore(CoreEventId.LazyLoadOnDisposedContextWarning)

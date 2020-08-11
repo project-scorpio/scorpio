@@ -3,7 +3,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
+using Scorpio.Data;
+using Scorpio.EntityFrameworkCore.DependencyInjection;
 using Scorpio.Modularity;
+
+using Z.EntityFramework.Extensions;
 
 namespace Scorpio.EntityFrameworkCore
 {
@@ -12,15 +16,24 @@ namespace Scorpio.EntityFrameworkCore
     {
         public override void ConfigureServices(ConfigureServicesContext context)
         {
-            context.Services.AddScorpioDbContext<TestDbContext>(builder =>
-            {
-            });
+            context.Services.AddScorpioDbContext<TestDbContext>();
             context.Services.Configure<ScorpioDbContextOptions>(opt =>
             {
-                opt.Configure(c => c.DbContextOptions.UseInMemoryDatabase(Guid.NewGuid().ToString()));
+                opt.PreConfigure<TestDbContext>(c => c.DbContextOptions.ConfigureWarnings(w => w.Default(WarningBehavior.Ignore)));
+                opt.Configure<TestDbContext>(c => c.DbContextOptions.UseInMemoryDatabase(Guid.NewGuid().ToString()));
             });
-
+            context.Services.PreConfigure<DataFilterOptions>(options =>
+            {
+                options.Configure<IStringValue>(f => f.Expression(d => d.StringValue != f.FilterContext.GetParameter<IStringValueProvider>().Value));
+            });
+            context.RegisterAssemblyByConvention();
             base.ConfigureServices(context);
+        }
+
+        public override void Initialize(ApplicationInitializationContext context)
+        {
+            EntityFrameworkManager.ContextFactory = c => c;
+            base.Initialize(context);
         }
     }
 }

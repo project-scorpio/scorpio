@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 
 using Scorpio.Repositories;
+using Scorpio.Repositories.EntityFrameworkCore;
 
 namespace Scorpio.EntityFrameworkCore.DependencyInjection
 {
@@ -26,7 +28,7 @@ namespace Scorpio.EntityFrameworkCore.DependencyInjection
         public static IScorpioDbContextOptionsBuilder<TDbContext> SetDefaultRepository<TDbContext>(this IScorpioDbContextOptionsBuilder<TDbContext> optionsBuilder, Type defaultRepositoryType)
             where TDbContext : ScorpioDbContext<TDbContext>
         {
-            if (!defaultRepositoryType.IsAssignableTo(typeof(IRepository<>)))
+            if (!defaultRepositoryType.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IEfCoreRepository<>)))
             {
                 throw new ScorpioException($"Given repositoryType is not a repository. It must implement {typeof(IRepository<>).AssemblyQualifiedName}.");
             }
