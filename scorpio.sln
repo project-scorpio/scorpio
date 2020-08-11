@@ -19,31 +19,31 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Auditing", "Auditing", "{9D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C357110E-3DBC-4980-90AA-7A1CBCE8516E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Auditing", "Extras\Auditing\src\Scorpio.Auditing\Scorpio.Auditing.csproj", "{D675BEC2-9F0D-40E1-B792-F54B5AB20F98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Auditing", "Extras\Auditing\src\Scorpio.Auditing\Scorpio.Auditing.csproj", "{D675BEC2-9F0D-40E1-B792-F54B5AB20F98}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authorization", "Authorization", "{CFDF7738-D52D-4D4D-89FC-2E751C72CBC8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1A05F0A6-BB53-403F-99EC-0869AB53C2EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Authorization", "Extras\Authorization\src\Scorpio.Authorization\Scorpio.Authorization.csproj", "{1804C37F-E3A7-4BB0-8D8D-2B3AF14C1951}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Authorization", "Extras\Authorization\src\Scorpio.Authorization\Scorpio.Authorization.csproj", "{1804C37F-E3A7-4BB0-8D8D-2B3AF14C1951}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{438F8E68-66BD-46F9-A3DF-55846FB3747D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Aspect.Tests", "Core\test\Scorpio.Aspect.Tests\Scorpio.Aspect.Tests.csproj", "{13A3F3F7-BCFF-42D0-8B39-260A7FAA682E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Aspect.Tests", "Core\test\Scorpio.Aspect.Tests\Scorpio.Aspect.Tests.csproj", "{13A3F3F7-BCFF-42D0-8B39-260A7FAA682E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.TestBase", "Core\test\Scorpio.TestBase\Scorpio.TestBase.csproj", "{895512B6-18D2-4471-BC8C-743E5CD7E940}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Tests", "Core\test\Scorpio.Tests\Scorpio.Tests.csproj", "{08A82DA5-C622-416E-BB6D-CA619447BB9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Tests", "Core\test\Scorpio.Tests\Scorpio.Tests.csproj", "{08A82DA5-C622-416E-BB6D-CA619447BB9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Utilities.Tests", "Core\test\Scorpio.Utilities.Tests\Scorpio.Utilities.Tests.csproj", "{F11BC21F-AB38-4352-B4B8-5E2A9C5009B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Utilities.Tests", "Core\test\Scorpio.Utilities.Tests\Scorpio.Utilities.Tests.csproj", "{F11BC21F-AB38-4352-B4B8-5E2A9C5009B1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B13BEB28-5D9E-450B-B625-D101C169070B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Auditing.Tests", "Extras\Auditing\test\Scorpio.Auditing.Tests\Scorpio.Auditing.Tests.csproj", "{BCEE3522-2A05-4A06-88D9-43897D2DC7C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Auditing.Tests", "Extras\Auditing\test\Scorpio.Auditing.Tests\Scorpio.Auditing.Tests.csproj", "{BCEE3522-2A05-4A06-88D9-43897D2DC7C3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{A7CC4A0E-50EF-4931-A5F7-32C837564AB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Authorization.Tests", "Extras\Authorization\test\Scorpio.Authorization.Tests\Scorpio.Authorization.Tests.csproj", "{6A493F76-AB32-42CE-8B0A-E0F72662F030}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Authorization.Tests", "Extras\Authorization\test\Scorpio.Authorization.Tests\Scorpio.Authorization.Tests.csproj", "{6A493F76-AB32-42CE-8B0A-E0F72662F030}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{272B931A-7171-4D62-9A63-1BE7B489C197}"
 EndProject
@@ -53,7 +53,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Data", "Extras\Data
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{12F3CA60-D16E-4FCC-87FF-3920A9568572}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Data.Tests", "Extras\Data\test\Scorpio.Data.Tests\Scorpio.Data.Tests.csproj", "{B0D46EE6-4FE3-48A5-9C01-2AA0E758BF6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Data.Tests", "Extras\Data\test\Scorpio.Data.Tests\Scorpio.Data.Tests.csproj", "{B0D46EE6-4FE3-48A5-9C01-2AA0E758BF6E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EntityFrameworkCore", "EntityFrameworkCore", "{AB2CEC02-0737-4FCD-8C08-9C0E57642CB1}"
 EndProject
@@ -71,41 +71,41 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventBus", "EventBus", "{B1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E056D25C-C4E5-46CB-8353-E7AF71C14EC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.EventBus", "Extras\EventBus\src\Scorpio.EventBus\Scorpio.EventBus.csproj", "{A992F6FC-7758-4716-B739-B2A4E655FCAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.EventBus", "Extras\EventBus\src\Scorpio.EventBus\Scorpio.EventBus.csproj", "{A992F6FC-7758-4716-B739-B2A4E655FCAF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{14E2162C-C451-4C28-BCF3-5B67A9283F12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.EventBus.Tests", "Extras\EventBus\test\Scorpio.EventBus.Tests\Scorpio.EventBus.Tests.csproj", "{A52D3BF4-5ABC-4046-A17B-49B53857B1F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.EventBus.Tests", "Extras\EventBus\test\Scorpio.EventBus.Tests\Scorpio.EventBus.Tests.csproj", "{A52D3BF4-5ABC-4046-A17B-49B53857B1F9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosting", "Hosting", "{537994F9-C643-4AFB-AF73-CB95DAC5EF6A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{44A4120C-E86A-4407-BD55-600A50B9BFE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Hosting", "Extras\Hosting\src\Scorpio.Hosting\Scorpio.Hosting.csproj", "{9B6A1DE4-BA7D-4541-ACAF-83EA55E53DA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Hosting", "Extras\Hosting\src\Scorpio.Hosting\Scorpio.Hosting.csproj", "{9B6A1DE4-BA7D-4541-ACAF-83EA55E53DA4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D43B4513-BABA-49DB-A6DD-D72510415D8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Hosting.Tests", "Extras\Hosting\test\Scorpio.Hosting.Tests\Scorpio.Hosting.Tests.csproj", "{3C241DCD-809C-434D-A7A5-615DDB73F0AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Hosting.Tests", "Extras\Hosting\test\Scorpio.Hosting.Tests\Scorpio.Hosting.Tests.csproj", "{3C241DCD-809C-434D-A7A5-615DDB73F0AC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Quartz", "Quartz", "{875C8892-6ECC-4003-A2E7-262309BAC0E0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6696D37A-CBAF-4C42-A368-9804CE8995A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Quartz", "Extras\Quartz\src\Scorpio.Quartz\Scorpio.Quartz.csproj", "{8AF61D6E-A5FA-406D-BFCD-E3B9D6787D8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Quartz", "Extras\Quartz\src\Scorpio.Quartz\Scorpio.Quartz.csproj", "{8AF61D6E-A5FA-406D-BFCD-E3B9D6787D8C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E5AE3C59-D8CA-4A06-947D-833FACB78E4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Quartz.Tests", "Extras\Quartz\test\Scorpio.Quartz.Tests\Scorpio.Quartz.Tests.csproj", "{FF4D8147-5E96-4A09-8403-13B4183CE057}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Quartz.Tests", "Extras\Quartz\test\Scorpio.Quartz.Tests\Scorpio.Quartz.Tests.csproj", "{FF4D8147-5E96-4A09-8403-13B4183CE057}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Setting", "Setting", "{D8BCD8A1-3E5B-49EE-81BC-A2EA3B94F29E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AD877615-1960-47BA-A100-4533EE609800}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Setting", "Extras\Setting\src\Scorpio.Setting\Scorpio.Setting.csproj", "{A4F327DB-AA0A-4CD6-8C0F-24068DA02DFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Setting", "Extras\Setting\src\Scorpio.Setting\Scorpio.Setting.csproj", "{A4F327DB-AA0A-4CD6-8C0F-24068DA02DFA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{BE66DB7D-4E1D-4550-8BFB-34F27C07E7A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Setting.Tests", "Extras\Setting\test\Scorpio.Setting.Tests\Scorpio.Setting.Tests.csproj", "{E4DCD1DD-5395-4FAE-9308-66ABE0AFA1CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Setting.Tests", "Extras\Setting\test\Scorpio.Setting.Tests\Scorpio.Setting.Tests.csproj", "{E4DCD1DD-5395-4FAE-9308-66ABE0AFA1CA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{07122C03-7D9E-4F62-BC5F-5C844997E982}"
 EndProject
@@ -113,35 +113,35 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "aspnetcore", "aspnetcore", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DB2B8F4B-EBC6-4C31-A890-775DBD9DE04C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.AspNetCore", "Modules\aspnetcore\src\Scorpio.AspNetCore\Scorpio.AspNetCore.csproj", "{75B5D31C-B2B8-4532-AEA3-552EDFC33618}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.AspNetCore", "Modules\aspnetcore\src\Scorpio.AspNetCore\Scorpio.AspNetCore.csproj", "{75B5D31C-B2B8-4532-AEA3-552EDFC33618}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.AspNetCore.Mvc", "Modules\aspnetcore\src\Scorpio.AspNetCore.Mvc\Scorpio.AspNetCore.Mvc.csproj", "{422BB948-5671-4971-A239-C4E3EB681C8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.AspNetCore.Mvc", "Modules\aspnetcore\src\Scorpio.AspNetCore.Mvc\Scorpio.AspNetCore.Mvc.csproj", "{422BB948-5671-4971-A239-C4E3EB681C8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.AspNetCore.UI", "Modules\aspnetcore\src\Scorpio.AspNetCore.UI\Scorpio.AspNetCore.UI.csproj", "{3B36A161-C56A-4AFB-8F24-BC8D4BF1ED16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.AspNetCore.UI", "Modules\aspnetcore\src\Scorpio.AspNetCore.UI\Scorpio.AspNetCore.UI.csproj", "{3B36A161-C56A-4AFB-8F24-BC8D4BF1ED16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.AspNetCore.UI.Bootstrap", "Modules\aspnetcore\src\Scorpio.AspNetCore.UI.Bootstrap\Scorpio.AspNetCore.UI.Bootstrap.csproj", "{C7DD841D-54D7-47CC-8435-0A9F314BD53A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.AspNetCore.UI.Bootstrap", "Modules\aspnetcore\src\Scorpio.AspNetCore.UI.Bootstrap\Scorpio.AspNetCore.UI.Bootstrap.csproj", "{C7DD841D-54D7-47CC-8435-0A9F314BD53A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ddd", "ddd", "{BEA90512-B868-4AFF-831E-53F3307E6BB4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{59115314-8AD5-4D35-A1A0-A3B7FBAAF68F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Application", "Modules\ddd\src\Scorpio.Application\Scorpio.Application.csproj", "{D9E69082-BC85-4A98-8CB7-CAC571FC669A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Application", "Modules\ddd\src\Scorpio.Application\Scorpio.Application.csproj", "{D9E69082-BC85-4A98-8CB7-CAC571FC669A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Domain", "Modules\ddd\src\Scorpio.Domain\Scorpio.Domain.csproj", "{92E7CEE3-143F-43BC-B343-5AB9095C1414}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Domain", "Modules\ddd\src\Scorpio.Domain\Scorpio.Domain.csproj", "{92E7CEE3-143F-43BC-B343-5AB9095C1414}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "uow", "uow", "{46893A08-1D40-4063-AC22-D7D9FF80E914}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A592C296-D372-4AE9-A429-C80337EC937F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Uow", "Modules\uow\src\Scorpio.Uow\Scorpio.Uow.csproj", "{4B5024C2-D475-4B97-BF15-5C89AEA19C23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Uow", "Modules\uow\src\Scorpio.Uow\Scorpio.Uow.csproj", "{4B5024C2-D475-4B97-BF15-5C89AEA19C23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Uow.EntityFrameworkCore", "Modules\uow\src\Scorpio.Uow.EntityFrameworkCore\Scorpio.Uow.EntityFrameworkCore.csproj", "{36618BBB-6AF3-493F-83DE-841ECE96DF45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Uow.EntityFrameworkCore", "Modules\uow\src\Scorpio.Uow.EntityFrameworkCore\Scorpio.Uow.EntityFrameworkCore.csproj", "{36618BBB-6AF3-493F-83DE-841ECE96DF45}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "rpc", "rpc", "{EB3F0A53-A92B-4A7E-A58E-1575685D56D2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{09EDCBD5-11BD-4149-8B5A-9E8723F57D8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.RPC", "Modules\rpc\src\Scorpio.RPC\Scorpio.RPC.csproj", "{0C5825DB-4709-4238-91A3-C5022967A73D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.RPC", "Modules\rpc\src\Scorpio.RPC\Scorpio.RPC.csproj", "{0C5825DB-4709-4238-91A3-C5022967A73D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{153039F8-72D8-49F0-90CA-0F7880A09313}"
 	ProjectSection(SolutionItems) = preProject
@@ -170,7 +170,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{D98E38DF
 		build\versions.props = build\versions.props
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.EntityFrameworkCore.SqlServer.Tests", "Extras\EntityFrameworkCore\test\Scorpio.EntityFrameworkCore.SqlServer.Tests\Scorpio.EntityFrameworkCore.SqlServer.Tests.csproj", "{9751BE00-4BED-43DB-8A95-FEDAE60940EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.EntityFrameworkCore.SqlServer.Tests", "Extras\EntityFrameworkCore\test\Scorpio.EntityFrameworkCore.SqlServer.Tests\Scorpio.EntityFrameworkCore.SqlServer.Tests.csproj", "{9751BE00-4BED-43DB-8A95-FEDAE60940EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -662,6 +662,7 @@ Global
 		{EB3F0A53-A92B-4A7E-A58E-1575685D56D2} = {07122C03-7D9E-4F62-BC5F-5C844997E982}
 		{09EDCBD5-11BD-4149-8B5A-9E8723F57D8E} = {EB3F0A53-A92B-4A7E-A58E-1575685D56D2}
 		{0C5825DB-4709-4238-91A3-C5022967A73D} = {09EDCBD5-11BD-4149-8B5A-9E8723F57D8E}
+		{153039F8-72D8-49F0-90CA-0F7880A09313} = {A592C296-D372-4AE9-A429-C80337EC937F}
 		{D98E38DF-4824-4ABC-9FF1-824A7C341BB4} = {153039F8-72D8-49F0-90CA-0F7880A09313}
 		{9751BE00-4BED-43DB-8A95-FEDAE60940EE} = {9BA72E50-C7B0-43A8-A7D0-E01AAD8C66CC}
 	EndGlobalSection

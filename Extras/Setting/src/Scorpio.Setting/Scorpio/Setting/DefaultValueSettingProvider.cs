@@ -8,7 +8,7 @@ namespace Scorpio.Setting
 
         public Task<SettingValue<T>> GetAsync<T>(SettingDefinition<T> settingDefinition)
         {
-            return Task.FromResult(new SettingValue<T> { Definition = settingDefinition, Value = settingDefinition.Default });
+            return Task.FromResult(settingDefinition.Default == null ? null : new SettingValue<T> { Definition = settingDefinition, Value = settingDefinition.Default });
         }
 
         public Task SetAsync<T>(SettingDefinition<T> settingDefinition, T value)

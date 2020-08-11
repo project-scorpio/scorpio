@@ -25,13 +25,18 @@ namespace Scorpio.Setting
         [Fact]
         public void SettingDefinitionCount()
         {
-            _settingDefinitionManager.GetAll().Count.ShouldBe(3);
+            _settingDefinitionManager.GetAll().Count.ShouldBe(4);
         }
 
         [Fact]
         public void SettingDefinitionFirst()
         {
-            _settingDefinitionManager.Get("Setting").ShouldBeOfType<SettingDefinition<string>>().Name.ShouldBe("Setting");
+            var def = _settingDefinitionManager.Get("SettingWhthDisplayName").ShouldBeOfType<SettingDefinition<string>>();
+            def.Name.ShouldBe("SettingWhthDisplayName");
+            def.DisplayName.ShouldBe("Setting with display name");
+            def.Description.ShouldBe("Setting description");
+            def.Default.ShouldBe("SettingWhthDisplayNameValue");
+            def.ValueType.ShouldBe(typeof(string));
 
         }
         [Fact]

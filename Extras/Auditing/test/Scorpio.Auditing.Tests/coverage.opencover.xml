@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CoverageSession>
-  <Summary numSequencePoints="2556" visitedSequencePoints="795" numBranchPoints="942" visitedBranchPoints="180" sequenceCoverage="31.1" branchCoverage="19.1" maxCyclomaticComplexity="813" minCyclomaticComplexity="29" visitedClasses="75" numClasses="165" visitedMethods="249" numMethods="827" />
+  <Summary numSequencePoints="2560" visitedSequencePoints="795" numBranchPoints="942" visitedBranchPoints="180" sequenceCoverage="31.05" branchCoverage="19.1" maxCyclomaticComplexity="813" minCyclomaticComplexity="29" visitedClasses="75" numClasses="165" visitedMethods="249" numMethods="827" />
   <Modules>
-    <Module hash="B56E7FA4-D07C-4CA2-9794-4C8CE462DC5D">
+    <Module hash="3B453AD5-C727-4E60-AB43-DED6A83AFE79">
       <ModulePath>Scorpio.Aspect.dll</ModulePath>
-      <ModuleTime>2020-08-10T01:26:59</ModuleTime>
+      <ModuleTime>2020-08-11T08:34:40</ModuleTime>
       <ModuleName>Scorpio.Aspect</ModuleName>
       <Files>
         <File uid="1" fullPath="D:\Users\28070110\source\repos\project-scorpio\scorpio\Core\src\Scorpio.Aspect\Scorpio\BootstrapperCreationOptionsExtensions.cs" />
@@ -262,9 +262,9 @@
         </Class>
       </Classes>
     </Module>
-    <Module hash="099B9C63-25D0-412B-B6BA-1CF6164629A2">
+    <Module hash="B84DDA81-3976-443A-9E24-F13E2046A071">
       <ModulePath>Scorpio.Auditing.dll</ModulePath>
-      <ModuleTime>2020-08-10T01:26:59</ModuleTime>
+      <ModuleTime>2020-08-11T08:34:40</ModuleTime>
       <ModuleName>Scorpio.Auditing</ModuleName>
       <Files>
         <File uid="8" fullPath="D:\Users\28070110\source\repos\project-scorpio\scorpio\Extras\Auditing\src\Scorpio.Auditing\Scorpio\Auditing\AuditContributionContext.cs" />
@@ -1785,9 +1785,9 @@
         </Class>
       </Classes>
     </Module>
-    <Module hash="2531C907-7E94-4426-BB2C-9C8BF6CD0E42">
+    <Module hash="EC4EF1D7-2C63-493F-A7EC-6367DBD44E8F">
       <ModulePath>Scorpio.dll</ModulePath>
-      <ModuleTime>2020-08-10T01:26:59</ModuleTime>
+      <ModuleTime>2020-08-11T08:34:40</ModuleTime>
       <ModuleName>Scorpio</ModuleName>
       <Files>
         <File uid="23" fullPath="D:\Users\28070110\source\repos\project-scorpio\scorpio\Core\src\Scorpio\Scorpio\Bootstrapper.cs" />
@@ -6443,9 +6443,9 @@
         </Class>
       </Classes>
     </Module>
-    <Module hash="2F125254-B280-40AC-A059-3D56CD15B9A5">
+    <Module hash="03E36B44-CCAA-4E41-BB65-10EB84C81002">
       <ModulePath>Scorpio.TestBase.dll</ModulePath>
-      <ModuleTime>2020-08-10T01:26:59</ModuleTime>
+      <ModuleTime>2020-08-11T08:34:40</ModuleTime>
       <ModuleName>Scorpio.TestBase</ModuleName>
       <Files>
         <File uid="79" fullPath="D:\Users\28070110\source\repos\project-scorpio\scorpio\Core\test\Scorpio.TestBase\Scorpio\TestBase\SubstituteExtensions.cs" />
@@ -6462,16 +6462,16 @@
             <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="0" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="4" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
               <MetadataToken />
-              <Name>System.Object Scorpio.SubstituteExtensions::Protected(System.Object,System.String,System.Object[])</Name>
+              <Name>System.Object Scorpio.SubstituteExtensions::GetProperty(System.Object,System.String,System.Object[])</Name>
               <FileRef uid="79" />
               <SequencePoints>
-                <SequencePoint vc="0" uspid="10" ordinal="0" sl="10" sc="1" el="10" ec="2" bec="0" bev="0" fileid="79" />
-                <SequencePoint vc="0" uspid="11" ordinal="1" sl="11" sc="1" el="11" ec="2" bec="0" bev="0" fileid="79" />
-                <SequencePoint vc="0" uspid="12" ordinal="2" sl="12" sc="1" el="12" ec="2" bec="0" bev="0" fileid="79" />
-                <SequencePoint vc="0" uspid="13" ordinal="3" sl="13" sc="1" el="13" ec="2" bec="0" bev="0" fileid="79" />
+                <SequencePoint vc="0" uspid="11" ordinal="0" sl="11" sc="1" el="11" ec="2" bec="0" bev="0" fileid="79" />
+                <SequencePoint vc="0" uspid="12" ordinal="1" sl="12" sc="1" el="12" ec="2" bec="0" bev="0" fileid="79" />
+                <SequencePoint vc="0" uspid="13" ordinal="2" sl="13" sc="1" el="13" ec="2" bec="0" bev="0" fileid="79" />
+                <SequencePoint vc="0" uspid="14" ordinal="3" sl="14" sc="1" el="14" ec="2" bec="0" bev="0" fileid="79" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="0" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="10" ec="1" el="13" bec="0" bev="0" fileid="79" xmlns:p8="xsi" />
+              <MethodPoint vc="0" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="11" ec="1" el="14" bec="0" bev="0" fileid="79" xmlns:p8="xsi" />
             </Method>
           </Methods>
         </Class>
@@ -6816,9 +6816,9 @@
         </Class>
       </Classes>
     </Module>
-    <Module hash="98DCA37C-C440-4517-B598-CE04D245072C">
+    <Module hash="C85B265F-AD27-4FAB-AE8F-2922B58B7E86">
       <ModulePath>Scorpio.Utilities.dll</ModulePath>
-      <ModuleTime>2020-08-10T01:26:59</ModuleTime>
+      <ModuleTime>2020-08-11T08:34:40</ModuleTime>
       <ModuleName>Scorpio.Utilities</ModuleName>
       <Files>
         <File uid="84" fullPath="D:\Users\28070110\source\repos\project-scorpio\scorpio\Core\src\Scorpio.Utilities\System\ComparableExtensions.cs" />
@@ -9055,11 +9055,11 @@
           </Methods>
         </Class>
         <Class>
-          <Summary numSequencePoints="15" visitedSequencePoints="0" numBranchPoints="4" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="2" minCyclomaticComplexity="1" visitedClasses="0" numClasses="1" visitedMethods="0" numMethods="3" />
+          <Summary numSequencePoints="19" visitedSequencePoints="0" numBranchPoints="4" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="2" minCyclomaticComplexity="1" visitedClasses="0" numClasses="1" visitedMethods="0" numMethods="3" />
           <FullName>System.Linq.Expressions.MemberInitTranslation`1</FullName>
           <Methods>
             <Method cyclomaticComplexity="2" nPathComplexity="0" sequenceCoverage="0" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
-              <Summary numSequencePoints="7" visitedSequencePoints="0" numBranchPoints="2" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
+              <Summary numSequencePoints="11" visitedSequencePoints="0" numBranchPoints="2" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
               <MetadataToken />
               <Name>System.Linq.Expressions.Expression`1&lt;System.Func`2&lt;TTranslatedSource,TTranslatedSource&gt;&gt; System.Linq.Expressions.MemberInitTranslation`1::To()</Name>
               <FileRef uid="96" />
@@ -9071,12 +9071,16 @@
                 <SequencePoint vc="0" uspid="27" ordinal="4" sl="27" sc="1" el="27" ec="2" bec="2" bev="0" fileid="96" />
                 <SequencePoint vc="0" uspid="28" ordinal="5" sl="28" sc="1" el="28" ec="2" bec="0" bev="0" fileid="96" />
                 <SequencePoint vc="0" uspid="29" ordinal="6" sl="29" sc="1" el="29" ec="2" bec="0" bev="0" fileid="96" />
+                <SequencePoint vc="0" uspid="30" ordinal="7" sl="30" sc="1" el="30" ec="2" bec="0" bev="0" fileid="96" />
+                <SequencePoint vc="0" uspid="31" ordinal="8" sl="31" sc="1" el="31" ec="2" bec="0" bev="0" fileid="96" />
+                <SequencePoint vc="0" uspid="32" ordinal="9" sl="32" sc="1" el="32" ec="2" bec="0" bev="0" fileid="96" />
+                <SequencePoint vc="0" uspid="33" ordinal="10" sl="33" sc="1" el="33" ec="2" bec="0" bev="0" fileid="96" />
               </SequencePoints>
               <BranchPoints>
                 <BranchPoint vc="0" uspid="27" ordinal="0" path="0" offset="95" offsetend="97" sl="27" fileid="96" />
                 <BranchPoint vc="0" uspid="27" ordinal="1" path="1" offset="95" offsetend="120" sl="27" fileid="96" />
               </BranchPoints>
-              <MethodPoint vc="0" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="23" ec="1" el="29" bec="0" bev="0" fileid="96" xmlns:p8="xsi" />
+              <MethodPoint vc="0" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="23" ec="1" el="33" bec="0" bev="0" fileid="96" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="2" nPathComplexity="0" sequenceCoverage="0" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="5" visitedSequencePoints="0" numBranchPoints="2" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
@@ -9084,17 +9088,17 @@
               <Name>System.Linq.Expressions.Expression System.Linq.Expressions.MemberInitTranslation`1::&lt;To&gt;g__GetExpression|2_2(System.Linq.Expressions.Expression,System.Linq.Expressions.Expression,System.String)</Name>
               <FileRef uid="96" />
               <SequencePoints>
-                <SequencePoint vc="0" uspid="32" ordinal="0" sl="32" sc="1" el="32" ec="2" bec="2" bev="0" fileid="96" />
-                <SequencePoint vc="0" uspid="33" ordinal="1" sl="33" sc="1" el="33" ec="2" bec="0" bev="0" fileid="96" />
-                <SequencePoint vc="0" uspid="34" ordinal="2" sl="34" sc="1" el="34" ec="2" bec="0" bev="0" fileid="96" />
-                <SequencePoint vc="0" uspid="35" ordinal="3" sl="35" sc="1" el="35" ec="2" bec="0" bev="0" fileid="96" />
-                <SequencePoint vc="0" uspid="36" ordinal="4" sl="36" sc="1" el="36" ec="2" bec="0" bev="0" fileid="96" />
+                <SequencePoint vc="0" uspid="39" ordinal="0" sl="39" sc="1" el="39" ec="2" bec="2" bev="0" fileid="96" />
+                <SequencePoint vc="0" uspid="40" ordinal="1" sl="40" sc="1" el="40" ec="2" bec="0" bev="0" fileid="96" />
+                <SequencePoint vc="0" uspid="41" ordinal="2" sl="41" sc="1" el="41" ec="2" bec="0" bev="0" fileid="96" />
+                <SequencePoint vc="0" uspid="42" ordinal="3" sl="42" sc="1" el="42" ec="2" bec="0" bev="0" fileid="96" />
+                <SequencePoint vc="0" uspid="43" ordinal="4" sl="43" sc="1" el="43" ec="2" bec="0" bev="0" fileid="96" />
               </SequencePoints>
               <BranchPoints>
-                <BranchPoint vc="0" uspid="32" ordinal="0" path="0" offset="8" offsetend="10" sl="32" fileid="96" />
-                <BranchPoint vc="0" uspid="32" ordinal="1" path="1" offset="8" offsetend="20" sl="32" fileid="96" />
+                <BranchPoint vc="0" uspid="39" ordinal="0" path="0" offset="8" offsetend="10" sl="39" fileid="96" />
+                <BranchPoint vc="0" uspid="39" ordinal="1" path="1" offset="8" offsetend="20" sl="39" fileid="96" />
               </BranchPoints>
-              <MethodPoint vc="0" uspid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="32" ec="1" el="36" bec="0" bev="0" fileid="96" xmlns:p8="xsi" />
+              <MethodPoint vc="0" uspid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="39" ec="1" el="43" bec="0" bev="0" fileid="96" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="0" branchCoverage="100" isConstructor="True" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="3" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />

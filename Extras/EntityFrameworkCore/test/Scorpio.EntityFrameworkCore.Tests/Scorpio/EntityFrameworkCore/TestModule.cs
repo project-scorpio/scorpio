@@ -7,6 +7,8 @@ using Scorpio.Data;
 using Scorpio.EntityFrameworkCore.DependencyInjection;
 using Scorpio.Modularity;
 
+using Z.EntityFramework.Extensions;
+
 namespace Scorpio.EntityFrameworkCore
 {
     [DependsOn(typeof(EntityFrameworkCoreModule))]
@@ -26,6 +28,12 @@ namespace Scorpio.EntityFrameworkCore
             });
             context.RegisterAssemblyByConvention();
             base.ConfigureServices(context);
+        }
+
+        public override void Initialize(ApplicationInitializationContext context)
+        {
+            EntityFrameworkManager.ContextFactory = c => c;
+            base.Initialize(context);
         }
     }
 }

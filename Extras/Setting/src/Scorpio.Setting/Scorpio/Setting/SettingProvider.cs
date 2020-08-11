@@ -12,7 +12,7 @@ namespace Scorpio.Setting
         /// <summary>
         /// 
         /// </summary>
-        public string Name => "Default";
+        public abstract string Name { get; }
 
         /// <summary>
         /// 

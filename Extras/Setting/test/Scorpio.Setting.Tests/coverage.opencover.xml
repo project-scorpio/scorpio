@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CoverageSession>
-  <Summary numSequencePoints="2301" visitedSequencePoints="643" numBranchPoints="832" visitedBranchPoints="137" sequenceCoverage="27.94" branchCoverage="16.46" maxCyclomaticComplexity="813" minCyclomaticComplexity="45" visitedClasses="75" numClasses="159" visitedMethods="227" numMethods="773" />
+  <Summary numSequencePoints="2305" visitedSequencePoints="656" numBranchPoints="834" visitedBranchPoints="142" sequenceCoverage="28.45" branchCoverage="17.02" maxCyclomaticComplexity="813" minCyclomaticComplexity="45" visitedClasses="76" numClasses="159" visitedMethods="234" numMethods="773" />
   <Modules>
-    <Module hash="428631B1-88DC-4885-92F2-8F3DA41917CE">
+    <Module hash="6C050DD6-15DD-45D0-A24A-B1D39DFC33CE">
       <ModulePath>Scorpio.dll</ModulePath>
-      <ModuleTime>2020-08-10T01:27:03</ModuleTime>
+      <ModuleTime>2020-08-11T08:34:45</ModuleTime>
       <ModuleName>Scorpio</ModuleName>
       <Files>
         <File uid="1" fullPath="D:\Users\28070110\source\repos\project-scorpio\scorpio\Core\src\Scorpio\Scorpio\Bootstrapper.cs" />
@@ -3421,10 +3421,10 @@
               <SequencePoints>
                 <SequencePoint vc="18" uspid="13" ordinal="0" sl="13" sc="1" el="13" ec="2" bec="0" bev="0" fileid="42" />
                 <SequencePoint vc="18" uspid="14" ordinal="1" sl="14" sc="1" el="14" ec="2" bec="0" bev="0" fileid="42" />
-                <SequencePoint vc="1848" uspid="15" ordinal="2" sl="15" sc="1" el="15" ec="2" bec="0" bev="0" fileid="42" />
-                <SequencePoint vc="1824" uspid="16" ordinal="3" sl="16" sc="1" el="16" ec="2" bec="0" bev="0" fileid="42" />
-                <SequencePoint vc="1590" uspid="17" ordinal="4" sl="17" sc="1" el="17" ec="2" bec="0" bev="0" fileid="42" />
-                <SequencePoint vc="2328" uspid="18" ordinal="5" sl="18" sc="1" el="18" ec="2" bec="0" bev="0" fileid="42" />
+                <SequencePoint vc="1968" uspid="15" ordinal="2" sl="15" sc="1" el="15" ec="2" bec="0" bev="0" fileid="42" />
+                <SequencePoint vc="1980" uspid="16" ordinal="3" sl="16" sc="1" el="16" ec="2" bec="0" bev="0" fileid="42" />
+                <SequencePoint vc="1710" uspid="17" ordinal="4" sl="17" sc="1" el="17" ec="2" bec="0" bev="0" fileid="42" />
+                <SequencePoint vc="2448" uspid="18" ordinal="5" sl="18" sc="1" el="18" ec="2" bec="0" bev="0" fileid="42" />
                 <SequencePoint vc="36" uspid="19" ordinal="6" sl="19" sc="1" el="19" ec="2" bec="0" bev="0" fileid="42" />
                 <SequencePoint vc="18" uspid="20" ordinal="7" sl="20" sc="1" el="20" ec="2" bec="0" bev="0" fileid="42" />
               </SequencePoints>
@@ -4660,9 +4660,9 @@
         </Class>
       </Classes>
     </Module>
-    <Module hash="CCA70D51-88D5-4E68-B09C-7179A4899B4B">
+    <Module hash="2130FE4F-D485-420D-AAEB-C9FAD244D64C">
       <ModulePath>Scorpio.Setting.dll</ModulePath>
-      <ModuleTime>2020-08-10T01:27:03</ModuleTime>
+      <ModuleTime>2020-08-11T08:34:45</ModuleTime>
       <ModuleName>Scorpio.Setting</ModuleName>
       <Files>
         <File uid="57" fullPath="D:\Users\28070110\source\repos\project-scorpio\scorpio\Extras\Setting\src\Scorpio.Setting\Scorpio\Setting\DefaultSettingProvider.cs" />
@@ -4681,19 +4681,30 @@
       </Files>
       <Classes>
         <Class>
-          <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="1" numClasses="1" visitedMethods="2" numMethods="2" />
+          <Summary numSequencePoints="4" visitedSequencePoints="4" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="1" numClasses="1" visitedMethods="3" numMethods="3" />
           <FullName>Scorpio.Setting.DefaultSettingProvider</FullName>
           <Methods>
+            <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
+              <MetadataToken />
+              <Name>System.String Scorpio.Setting.DefaultSettingProvider::get_Name()</Name>
+              <FileRef uid="57" />
+              <SequencePoints>
+                <SequencePoint vc="13" uspid="9" ordinal="0" sl="9" sc="1" el="9" ec="2" bec="0" bev="0" fileid="57" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="9" ec="1" el="9" bec="0" bev="0" fileid="57" xmlns:p8="xsi" />
+            </Method>
             <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
               <Name>System.String Scorpio.Setting.DefaultSettingProvider::get_Key()</Name>
               <FileRef uid="57" />
               <SequencePoints>
-                <SequencePoint vc="8" uspid="9" ordinal="0" sl="9" sc="1" el="9" ec="2" bec="0" bev="0" fileid="57" />
+                <SequencePoint vc="9" uspid="11" ordinal="0" sl="11" sc="1" el="11" ec="2" bec="0" bev="0" fileid="57" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="9" ec="1" el="9" bec="0" bev="0" fileid="57" xmlns:p8="xsi" />
+              <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="11" ec="1" el="11" bec="0" bev="0" fileid="57" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="True" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="2" visitedSequencePoints="2" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -4705,12 +4716,12 @@
                 <SequencePoint vc="2" uspid="7" ordinal="1" sl="7" sc="1" el="7" ec="2" bec="0" bev="0" fileid="57" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="2" uspid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="5" ec="1" el="7" bec="0" bev="0" fileid="57" xmlns:p8="xsi" />
+              <MethodPoint vc="2" uspid="0" p8:type="SequencePoint" ordinal="2" offset="2" sc="0" sl="5" ec="1" el="7" bec="0" bev="0" fileid="57" xmlns:p8="xsi" />
             </Method>
           </Methods>
         </Class>
         <Class>
-          <Summary numSequencePoints="3" visitedSequencePoints="2" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="66.66" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="1" numClasses="1" visitedMethods="2" numMethods="3" />
+          <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="2" visitedBranchPoints="2" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="2" minCyclomaticComplexity="1" visitedClasses="1" numClasses="1" visitedMethods="3" numMethods="3" />
           <FullName>Scorpio.Setting.DefaultValueSettingProvider</FullName>
           <Methods>
             <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
@@ -4719,32 +4730,35 @@
               <Name>System.String Scorpio.Setting.DefaultValueSettingProvider::get_Name()</Name>
               <FileRef uid="58" />
               <SequencePoints>
-                <SequencePoint vc="6" uspid="7" ordinal="0" sl="7" sc="1" el="7" ec="2" bec="0" bev="0" fileid="58" />
+                <SequencePoint vc="8" uspid="7" ordinal="0" sl="7" sc="1" el="7" ec="2" bec="0" bev="0" fileid="58" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="7" ec="1" el="7" bec="0" bev="0" fileid="58" xmlns:p8="xsi" />
             </Method>
-            <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
-              <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
+            <Method cyclomaticComplexity="2" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="2" visitedBranchPoints="2" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
               <Name>System.Threading.Tasks.Task`1&lt;Scorpio.Setting.SettingValue`1&lt;T&gt;&gt; Scorpio.Setting.DefaultValueSettingProvider::GetAsync(Scorpio.Setting.SettingDefinition`1&lt;T&gt;)</Name>
               <FileRef uid="58" />
               <SequencePoints>
-                <SequencePoint vc="4" uspid="11" ordinal="0" sl="11" sc="1" el="11" ec="2" bec="0" bev="0" fileid="58" />
+                <SequencePoint vc="8" uspid="11" ordinal="0" sl="11" sc="1" el="11" ec="2" bec="2" bev="2" fileid="58" />
               </SequencePoints>
-              <BranchPoints />
+              <BranchPoints>
+                <BranchPoint vc="7" uspid="11" ordinal="0" path="0" offset="11" offsetend="13" sl="11" fileid="58" />
+                <BranchPoint vc="1" uspid="11" ordinal="1" path="1" offset="11" offsetend="39" sl="11" fileid="58" />
+              </BranchPoints>
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="11" ec="1" el="11" bec="0" bev="0" fileid="58" xmlns:p8="xsi" />
             </Method>
-            <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="0" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
-              <Summary numSequencePoints="1" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
+            <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
               <Name>System.Threading.Tasks.Task Scorpio.Setting.DefaultValueSettingProvider::SetAsync(Scorpio.Setting.SettingDefinition`1&lt;T&gt;,T)</Name>
               <FileRef uid="58" />
               <SequencePoints>
-                <SequencePoint vc="0" uspid="16" ordinal="0" sl="16" sc="1" el="16" ec="2" bec="0" bev="0" fileid="58" />
+                <SequencePoint vc="1" uspid="16" ordinal="0" sl="16" sc="1" el="16" ec="2" bec="0" bev="0" fileid="58" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="0" uspid="0" p8:type="SequencePoint" ordinal="2" offset="2" sc="0" sl="16" ec="1" el="16" bec="0" bev="0" fileid="58" xmlns:p8="xsi" />
+              <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="2" offset="2" sc="0" sl="16" ec="1" el="16" bec="0" bev="0" fileid="58" xmlns:p8="xsi" />
             </Method>
           </Methods>
         </Class>
@@ -4758,15 +4772,15 @@
               <Name>System.Threading.Tasks.Task`1&lt;Scorpio.Setting.SettingValue`1&lt;T&gt;&gt; Scorpio.Setting.InMemorySettingStore::GetAsync(Scorpio.Setting.ISettingStoreContext)</Name>
               <FileRef uid="59" />
               <SequencePoints>
-                <SequencePoint vc="6" uspid="16" ordinal="0" sl="16" sc="1" el="16" ec="2" bec="0" bev="0" fileid="59" />
-                <SequencePoint vc="6" uspid="17" ordinal="1" sl="17" sc="1" el="17" ec="2" bec="0" bev="0" fileid="59" />
-                <SequencePoint vc="6" uspid="18" ordinal="2" sl="18" sc="1" el="18" ec="2" bec="2" bev="2" fileid="59" />
-                <SequencePoint vc="4" uspid="20" ordinal="3" sl="20" sc="1" el="20" ec="2" bec="0" bev="0" fileid="59" />
-                <SequencePoint vc="2" uspid="22" ordinal="4" sl="22" sc="1" el="22" ec="2" bec="0" bev="0" fileid="59" />
+                <SequencePoint vc="10" uspid="16" ordinal="0" sl="16" sc="1" el="16" ec="2" bec="0" bev="0" fileid="59" />
+                <SequencePoint vc="10" uspid="17" ordinal="1" sl="17" sc="1" el="17" ec="2" bec="0" bev="0" fileid="59" />
+                <SequencePoint vc="10" uspid="18" ordinal="2" sl="18" sc="1" el="18" ec="2" bec="2" bev="2" fileid="59" />
+                <SequencePoint vc="7" uspid="20" ordinal="3" sl="20" sc="1" el="20" ec="2" bec="0" bev="0" fileid="59" />
+                <SequencePoint vc="3" uspid="22" ordinal="4" sl="22" sc="1" el="22" ec="2" bec="0" bev="0" fileid="59" />
               </SequencePoints>
               <BranchPoints>
-                <BranchPoint vc="4" uspid="18" ordinal="0" path="0" offset="57" offsetend="59" sl="18" fileid="59" />
-                <BranchPoint vc="2" uspid="18" ordinal="1" path="1" offset="57" offsetend="66" sl="18" fileid="59" />
+                <BranchPoint vc="7" uspid="18" ordinal="0" path="0" offset="57" offsetend="59" sl="18" fileid="59" />
+                <BranchPoint vc="3" uspid="18" ordinal="1" path="1" offset="57" offsetend="66" sl="18" fileid="59" />
               </BranchPoints>
               <MethodPoint vc="5" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="16" ec="1" el="22" bec="0" bev="0" fileid="59" xmlns:p8="xsi" />
             </Method>
@@ -4776,9 +4790,9 @@
               <Name>System.Threading.Tasks.Task Scorpio.Setting.InMemorySettingStore::SetAsync(Scorpio.Setting.ISettingStoreContext,T)</Name>
               <FileRef uid="59" />
               <SequencePoints>
-                <SequencePoint vc="2" uspid="27" ordinal="0" sl="27" sc="1" el="27" ec="2" bec="0" bev="0" fileid="59" />
-                <SequencePoint vc="2" uspid="28" ordinal="1" sl="28" sc="1" el="28" ec="2" bec="0" bev="0" fileid="59" />
-                <SequencePoint vc="2" uspid="29" ordinal="2" sl="29" sc="1" el="29" ec="2" bec="0" bev="0" fileid="59" />
+                <SequencePoint vc="3" uspid="27" ordinal="0" sl="27" sc="1" el="27" ec="2" bec="0" bev="0" fileid="59" />
+                <SequencePoint vc="3" uspid="28" ordinal="1" sl="28" sc="1" el="28" ec="2" bec="0" bev="0" fileid="59" />
+                <SequencePoint vc="3" uspid="29" ordinal="2" sl="29" sc="1" el="29" ec="2" bec="0" bev="0" fileid="59" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="3" uspid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="27" ec="1" el="29" bec="0" bev="0" fileid="59" xmlns:p8="xsi" />
@@ -4789,9 +4803,9 @@
               <Name>System.Void Scorpio.Setting.InMemorySettingStore::.ctor()</Name>
               <FileRef uid="59" />
               <SequencePoints>
-                <SequencePoint vc="2" uspid="10" ordinal="0" sl="10" sc="1" el="10" ec="2" bec="0" bev="0" fileid="59" />
-                <SequencePoint vc="2" uspid="12" ordinal="1" sl="12" sc="1" el="12" ec="2" bec="0" bev="0" fileid="59" />
-                <SequencePoint vc="2" uspid="13" ordinal="2" sl="13" sc="1" el="13" ec="2" bec="0" bev="0" fileid="59" />
+                <SequencePoint vc="4" uspid="10" ordinal="0" sl="10" sc="1" el="10" ec="2" bec="0" bev="0" fileid="59" />
+                <SequencePoint vc="4" uspid="12" ordinal="1" sl="12" sc="1" el="12" ec="2" bec="0" bev="0" fileid="59" />
+                <SequencePoint vc="4" uspid="13" ordinal="2" sl="13" sc="1" el="13" ec="2" bec="0" bev="0" fileid="59" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="3" uspid="0" p8:type="SequencePoint" ordinal="2" offset="2" sc="0" sl="10" ec="1" el="13" bec="0" bev="0" fileid="59" xmlns:p8="xsi" />
@@ -4799,7 +4813,7 @@
           </Methods>
         </Class>
         <Class>
-          <Summary numSequencePoints="12" visitedSequencePoints="9" numBranchPoints="2" visitedBranchPoints="2" sequenceCoverage="75" branchCoverage="100" maxCyclomaticComplexity="2" minCyclomaticComplexity="1" visitedClasses="1" numClasses="1" visitedMethods="3" numMethods="6" />
+          <Summary numSequencePoints="12" visitedSequencePoints="12" numBranchPoints="2" visitedBranchPoints="2" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="2" minCyclomaticComplexity="1" visitedClasses="1" numClasses="1" visitedMethods="6" numMethods="6" />
           <FullName>Scorpio.Setting.SettingDefinition</FullName>
           <Methods>
             <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
@@ -4808,43 +4822,43 @@
               <Name>System.String Scorpio.Setting.SettingDefinition::get_Name()</Name>
               <FileRef uid="60" />
               <SequencePoints>
-                <SequencePoint vc="25" uspid="14" ordinal="0" sl="14" sc="1" el="14" ec="2" bec="0" bev="0" fileid="60" />
+                <SequencePoint vc="39" uspid="14" ordinal="0" sl="14" sc="1" el="14" ec="2" bec="0" bev="0" fileid="60" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="14" ec="1" el="14" bec="0" bev="0" fileid="60" xmlns:p8="xsi" />
             </Method>
-            <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="0" branchCoverage="100" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
-              <Summary numSequencePoints="1" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
+            <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
               <Name>System.String Scorpio.Setting.SettingDefinition::get_DisplayName()</Name>
               <FileRef uid="60" />
               <SequencePoints>
-                <SequencePoint vc="0" uspid="20" ordinal="0" sl="20" sc="1" el="20" ec="2" bec="0" bev="0" fileid="60" />
+                <SequencePoint vc="28" uspid="20" ordinal="0" sl="20" sc="1" el="20" ec="2" bec="0" bev="0" fileid="60" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="0" uspid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="20" ec="1" el="20" bec="0" bev="0" fileid="60" xmlns:p8="xsi" />
+              <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="20" ec="1" el="20" bec="0" bev="0" fileid="60" xmlns:p8="xsi" />
             </Method>
-            <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="0" branchCoverage="100" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
-              <Summary numSequencePoints="1" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
+            <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
               <Name>System.String Scorpio.Setting.SettingDefinition::get_Description()</Name>
               <FileRef uid="60" />
               <SequencePoints>
-                <SequencePoint vc="0" uspid="25" ordinal="0" sl="25" sc="1" el="25" ec="2" bec="0" bev="0" fileid="60" />
+                <SequencePoint vc="28" uspid="25" ordinal="0" sl="25" sc="1" el="25" ec="2" bec="0" bev="0" fileid="60" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="0" uspid="0" p8:type="SequencePoint" ordinal="2" offset="2" sc="0" sl="25" ec="1" el="25" bec="0" bev="0" fileid="60" xmlns:p8="xsi" />
+              <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="2" offset="2" sc="0" sl="25" ec="1" el="25" bec="0" bev="0" fileid="60" xmlns:p8="xsi" />
             </Method>
-            <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="0" branchCoverage="100" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
-              <Summary numSequencePoints="1" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
+            <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
               <Name>System.Type Scorpio.Setting.SettingDefinition::get_ValueType()</Name>
               <FileRef uid="60" />
               <SequencePoints>
-                <SequencePoint vc="0" uspid="30" ordinal="0" sl="30" sc="1" el="30" ec="2" bec="0" bev="0" fileid="60" />
+                <SequencePoint vc="1" uspid="30" ordinal="0" sl="30" sc="1" el="30" ec="2" bec="0" bev="0" fileid="60" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="0" uspid="0" p8:type="SequencePoint" ordinal="3" offset="3" sc="0" sl="30" ec="1" el="30" bec="0" bev="0" fileid="60" xmlns:p8="xsi" />
+              <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="3" offset="3" sc="0" sl="30" ec="1" el="30" bec="0" bev="0" fileid="60" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -4852,7 +4866,7 @@
               <Name>System.Object Scorpio.Setting.SettingDefinition::get_Default()</Name>
               <FileRef uid="60" />
               <SequencePoints>
-                <SequencePoint vc="4" uspid="35" ordinal="0" sl="35" sc="1" el="35" ec="2" bec="0" bev="0" fileid="60" />
+                <SequencePoint vc="16" uspid="35" ordinal="0" sl="35" sc="1" el="35" ec="2" bec="0" bev="0" fileid="60" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="4" offset="4" sc="0" sl="35" ec="1" el="35" bec="0" bev="0" fileid="60" xmlns:p8="xsi" />
@@ -4863,17 +4877,17 @@
               <Name>System.Void Scorpio.Setting.SettingDefinition::.ctor(System.String,System.String,System.String,System.Type,System.Object)</Name>
               <FileRef uid="60" />
               <SequencePoints>
-                <SequencePoint vc="15" uspid="45" ordinal="0" sl="45" sc="1" el="45" ec="2" bec="0" bev="0" fileid="60" />
-                <SequencePoint vc="15" uspid="47" ordinal="1" sl="47" sc="1" el="47" ec="2" bec="0" bev="0" fileid="60" />
-                <SequencePoint vc="15" uspid="48" ordinal="2" sl="48" sc="1" el="48" ec="2" bec="2" bev="2" fileid="60" />
-                <SequencePoint vc="15" uspid="49" ordinal="3" sl="49" sc="1" el="49" ec="2" bec="0" bev="0" fileid="60" />
-                <SequencePoint vc="15" uspid="50" ordinal="4" sl="50" sc="1" el="50" ec="2" bec="0" bev="0" fileid="60" />
-                <SequencePoint vc="15" uspid="51" ordinal="5" sl="51" sc="1" el="51" ec="2" bec="0" bev="0" fileid="60" />
-                <SequencePoint vc="15" uspid="52" ordinal="6" sl="52" sc="1" el="52" ec="2" bec="0" bev="0" fileid="60" />
+                <SequencePoint vc="27" uspid="45" ordinal="0" sl="45" sc="1" el="45" ec="2" bec="0" bev="0" fileid="60" />
+                <SequencePoint vc="27" uspid="47" ordinal="1" sl="47" sc="1" el="47" ec="2" bec="0" bev="0" fileid="60" />
+                <SequencePoint vc="27" uspid="48" ordinal="2" sl="48" sc="1" el="48" ec="2" bec="2" bev="2" fileid="60" />
+                <SequencePoint vc="27" uspid="49" ordinal="3" sl="49" sc="1" el="49" ec="2" bec="0" bev="0" fileid="60" />
+                <SequencePoint vc="27" uspid="50" ordinal="4" sl="50" sc="1" el="50" ec="2" bec="0" bev="0" fileid="60" />
+                <SequencePoint vc="27" uspid="51" ordinal="5" sl="51" sc="1" el="51" ec="2" bec="0" bev="0" fileid="60" />
+                <SequencePoint vc="27" uspid="52" ordinal="6" sl="52" sc="1" el="52" ec="2" bec="0" bev="0" fileid="60" />
               </SequencePoints>
               <BranchPoints>
                 <BranchPoint vc="5" uspid="48" ordinal="0" path="0" offset="20" offsetend="22" sl="48" fileid="60" />
-                <BranchPoint vc="10" uspid="48" ordinal="1" path="1" offset="20" offsetend="25" sl="48" fileid="60" />
+                <BranchPoint vc="22" uspid="48" ordinal="1" path="1" offset="20" offsetend="25" sl="48" fileid="60" />
               </BranchPoints>
               <MethodPoint vc="7" uspid="0" p8:type="SequencePoint" ordinal="5" offset="5" sc="0" sl="45" ec="1" el="52" bec="0" bev="0" fileid="60" xmlns:p8="xsi" />
             </Method>
@@ -4889,7 +4903,7 @@
               <Name>T Scorpio.Setting.SettingDefinition`1::get_Default()</Name>
               <FileRef uid="60" />
               <SequencePoints>
-                <SequencePoint vc="4" uspid="95" ordinal="0" sl="95" sc="1" el="95" ec="2" bec="0" bev="0" fileid="60" />
+                <SequencePoint vc="16" uspid="95" ordinal="0" sl="95" sc="1" el="95" ec="2" bec="0" bev="0" fileid="60" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="95" ec="1" el="95" bec="0" bev="0" fileid="60" xmlns:p8="xsi" />
@@ -4900,8 +4914,8 @@
               <Name>System.Void Scorpio.Setting.SettingDefinition`1::.ctor(System.String,T)</Name>
               <FileRef uid="60" />
               <SequencePoints>
-                <SequencePoint vc="10" uspid="66" ordinal="0" sl="66" sc="1" el="66" ec="2" bec="0" bev="0" fileid="60" />
-                <SequencePoint vc="10" uspid="69" ordinal="1" sl="69" sc="1" el="69" ec="2" bec="0" bev="0" fileid="60" />
+                <SequencePoint vc="22" uspid="66" ordinal="0" sl="66" sc="1" el="66" ec="2" bec="0" bev="0" fileid="60" />
+                <SequencePoint vc="22" uspid="69" ordinal="1" sl="69" sc="1" el="69" ec="2" bec="0" bev="0" fileid="60" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="2" uspid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="66" ec="1" el="69" bec="0" bev="0" fileid="60" xmlns:p8="xsi" />
@@ -4912,8 +4926,8 @@
               <Name>System.Void Scorpio.Setting.SettingDefinition`1::.ctor(System.String,System.String,T)</Name>
               <FileRef uid="60" />
               <SequencePoints>
-                <SequencePoint vc="15" uspid="76" ordinal="0" sl="76" sc="1" el="76" ec="2" bec="0" bev="0" fileid="60" />
-                <SequencePoint vc="15" uspid="79" ordinal="1" sl="79" sc="1" el="79" ec="2" bec="0" bev="0" fileid="60" />
+                <SequencePoint vc="22" uspid="76" ordinal="0" sl="76" sc="1" el="76" ec="2" bec="0" bev="0" fileid="60" />
+                <SequencePoint vc="22" uspid="79" ordinal="1" sl="79" sc="1" el="79" ec="2" bec="0" bev="0" fileid="60" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="2" uspid="0" p8:type="SequencePoint" ordinal="2" offset="2" sc="0" sl="76" ec="1" el="79" bec="0" bev="0" fileid="60" xmlns:p8="xsi" />
@@ -4924,8 +4938,8 @@
               <Name>System.Void Scorpio.Setting.SettingDefinition`1::.ctor(System.String,System.String,System.String,T)</Name>
               <FileRef uid="60" />
               <SequencePoints>
-                <SequencePoint vc="15" uspid="88" ordinal="0" sl="88" sc="1" el="88" ec="2" bec="0" bev="0" fileid="60" />
-                <SequencePoint vc="15" uspid="90" ordinal="1" sl="90" sc="1" el="90" ec="2" bec="0" bev="0" fileid="60" />
+                <SequencePoint vc="27" uspid="88" ordinal="0" sl="88" sc="1" el="88" ec="2" bec="0" bev="0" fileid="60" />
+                <SequencePoint vc="27" uspid="90" ordinal="1" sl="90" sc="1" el="90" ec="2" bec="0" bev="0" fileid="60" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="2" uspid="0" p8:type="SequencePoint" ordinal="3" offset="3" sc="0" sl="88" ec="1" el="90" bec="0" bev="0" fileid="60" xmlns:p8="xsi" />
@@ -4933,50 +4947,50 @@
           </Methods>
         </Class>
         <Class>
-          <Summary numSequencePoints="10" visitedSequencePoints="7" numBranchPoints="4" visitedBranchPoints="3" sequenceCoverage="70" branchCoverage="75" maxCyclomaticComplexity="4" minCyclomaticComplexity="1" visitedClasses="1" numClasses="1" visitedMethods="2" numMethods="4" />
+          <Summary numSequencePoints="10" visitedSequencePoints="10" numBranchPoints="4" visitedBranchPoints="4" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="4" minCyclomaticComplexity="1" visitedClasses="1" numClasses="1" visitedMethods="4" numMethods="4" />
           <FullName>Scorpio.Setting.SettingDefinitionContext</FullName>
           <Methods>
-            <Method cyclomaticComplexity="4" nPathComplexity="0" sequenceCoverage="80" branchCoverage="75" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
-              <Summary numSequencePoints="5" visitedSequencePoints="4" numBranchPoints="4" visitedBranchPoints="3" sequenceCoverage="80" branchCoverage="75" maxCyclomaticComplexity="4" minCyclomaticComplexity="4" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
+            <Method cyclomaticComplexity="4" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="5" visitedSequencePoints="5" numBranchPoints="4" visitedBranchPoints="4" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="4" minCyclomaticComplexity="4" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
               <Name>System.Void Scorpio.Setting.SettingDefinitionContext::Add(Scorpio.Setting.SettingDefinition[])</Name>
               <FileRef uid="61" />
               <SequencePoints>
-                <SequencePoint vc="5" uspid="17" ordinal="0" sl="17" sc="1" el="17" ec="2" bec="2" bev="1" fileid="61" />
-                <SequencePoint vc="0" uspid="19" ordinal="1" sl="19" sc="1" el="19" ec="2" bec="0" bev="0" fileid="61" />
-                <SequencePoint vc="40" uspid="22" ordinal="2" sl="22" sc="1" el="22" ec="2" bec="2" bev="2" fileid="61" />
-                <SequencePoint vc="15" uspid="24" ordinal="3" sl="24" sc="1" el="24" ec="2" bec="0" bev="0" fileid="61" />
-                <SequencePoint vc="5" uspid="26" ordinal="4" sl="26" sc="1" el="26" ec="2" bec="0" bev="0" fileid="61" />
+                <SequencePoint vc="9" uspid="17" ordinal="0" sl="17" sc="1" el="17" ec="2" bec="2" bev="2" fileid="61" />
+                <SequencePoint vc="1" uspid="19" ordinal="1" sl="19" sc="1" el="19" ec="2" bec="0" bev="0" fileid="61" />
+                <SequencePoint vc="62" uspid="22" ordinal="2" sl="22" sc="1" el="22" ec="2" bec="2" bev="2" fileid="61" />
+                <SequencePoint vc="23" uspid="24" ordinal="3" sl="24" sc="1" el="24" ec="2" bec="0" bev="0" fileid="61" />
+                <SequencePoint vc="8" uspid="26" ordinal="4" sl="26" sc="1" el="26" ec="2" bec="0" bev="0" fileid="61" />
               </SequencePoints>
               <BranchPoints>
-                <BranchPoint vc="0" uspid="17" ordinal="0" path="0" offset="6" offsetend="8" sl="17" fileid="61" />
-                <BranchPoint vc="5" uspid="17" ordinal="1" path="1" offset="6" offsetend="9" sl="17" fileid="61" />
-                <BranchPoint vc="15" uspid="22" ordinal="3" path="1" offset="45" offsetend="15" sl="22" fileid="61" />
-                <BranchPoint vc="5" uspid="22" ordinal="2" path="0" offset="45" offsetend="47" sl="22" fileid="61" />
+                <BranchPoint vc="1" uspid="17" ordinal="0" path="0" offset="6" offsetend="8" sl="17" fileid="61" />
+                <BranchPoint vc="8" uspid="17" ordinal="1" path="1" offset="6" offsetend="9" sl="17" fileid="61" />
+                <BranchPoint vc="23" uspid="22" ordinal="3" path="1" offset="45" offsetend="15" sl="22" fileid="61" />
+                <BranchPoint vc="8" uspid="22" ordinal="2" path="0" offset="45" offsetend="47" sl="22" fileid="61" />
               </BranchPoints>
-              <MethodPoint vc="4" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="17" ec="1" el="26" bec="0" bev="0" fileid="61" xmlns:p8="xsi" />
+              <MethodPoint vc="5" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="17" ec="1" el="26" bec="0" bev="0" fileid="61" xmlns:p8="xsi" />
             </Method>
-            <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="0" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
-              <Summary numSequencePoints="1" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
+            <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
               <Name>System.Collections.Generic.IReadOnlyList`1&lt;Scorpio.Setting.SettingDefinition&gt; Scorpio.Setting.SettingDefinitionContext::GetAll()</Name>
               <FileRef uid="61" />
               <SequencePoints>
-                <SequencePoint vc="0" uspid="30" ordinal="0" sl="30" sc="1" el="30" ec="2" bec="0" bev="0" fileid="61" />
+                <SequencePoint vc="2" uspid="30" ordinal="0" sl="30" sc="1" el="30" ec="2" bec="0" bev="0" fileid="61" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="0" uspid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="30" ec="1" el="30" bec="0" bev="0" fileid="61" xmlns:p8="xsi" />
+              <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="30" ec="1" el="30" bec="0" bev="0" fileid="61" xmlns:p8="xsi" />
             </Method>
-            <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="0" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
-              <Summary numSequencePoints="1" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
+            <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
               <Name>Scorpio.Setting.SettingDefinition Scorpio.Setting.SettingDefinitionContext::GetOrNull(System.String)</Name>
               <FileRef uid="61" />
               <SequencePoints>
-                <SequencePoint vc="0" uspid="35" ordinal="0" sl="35" sc="1" el="35" ec="2" bec="0" bev="0" fileid="61" />
+                <SequencePoint vc="2" uspid="35" ordinal="0" sl="35" sc="1" el="35" ec="2" bec="0" bev="0" fileid="61" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="0" uspid="0" p8:type="SequencePoint" ordinal="2" offset="2" sc="0" sl="35" ec="1" el="35" bec="0" bev="0" fileid="61" xmlns:p8="xsi" />
+              <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="2" offset="2" sc="0" sl="35" ec="1" el="35" bec="0" bev="0" fileid="61" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="True" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -4984,9 +4998,9 @@
               <Name>System.Void Scorpio.Setting.SettingDefinitionContext::.ctor(System.Collections.Generic.Dictionary`2&lt;System.String,Scorpio.Setting.SettingDefinition&gt;)</Name>
               <FileRef uid="61" />
               <SequencePoints>
-                <SequencePoint vc="5" uspid="10" ordinal="0" sl="10" sc="1" el="10" ec="2" bec="0" bev="0" fileid="61" />
-                <SequencePoint vc="5" uspid="12" ordinal="1" sl="12" sc="1" el="12" ec="2" bec="0" bev="0" fileid="61" />
-                <SequencePoint vc="5" uspid="13" ordinal="2" sl="13" sc="1" el="13" ec="2" bec="0" bev="0" fileid="61" />
+                <SequencePoint vc="8" uspid="10" ordinal="0" sl="10" sc="1" el="10" ec="2" bec="0" bev="0" fileid="61" />
+                <SequencePoint vc="8" uspid="12" ordinal="1" sl="12" sc="1" el="12" ec="2" bec="0" bev="0" fileid="61" />
+                <SequencePoint vc="8" uspid="13" ordinal="2" sl="13" sc="1" el="13" ec="2" bec="0" bev="0" fileid="61" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="3" uspid="0" p8:type="SequencePoint" ordinal="3" offset="3" sc="0" sl="10" ec="1" el="13" bec="0" bev="0" fileid="61" xmlns:p8="xsi" />
@@ -5003,15 +5017,15 @@
               <Name>Scorpio.Setting.SettingDefinition Scorpio.Setting.SettingDefinitionManager::Get(System.String)</Name>
               <FileRef uid="62" />
               <SequencePoints>
-                <SequencePoint vc="11" uspid="27" ordinal="0" sl="27" sc="1" el="27" ec="2" bec="0" bev="0" fileid="62" />
-                <SequencePoint vc="11" uspid="29" ordinal="1" sl="29" sc="1" el="29" ec="2" bec="0" bev="0" fileid="62" />
-                <SequencePoint vc="11" uspid="30" ordinal="2" sl="30" sc="1" el="30" ec="2" bec="2" bev="2" fileid="62" />
+                <SequencePoint vc="12" uspid="27" ordinal="0" sl="27" sc="1" el="27" ec="2" bec="0" bev="0" fileid="62" />
+                <SequencePoint vc="12" uspid="29" ordinal="1" sl="29" sc="1" el="29" ec="2" bec="0" bev="0" fileid="62" />
+                <SequencePoint vc="12" uspid="30" ordinal="2" sl="30" sc="1" el="30" ec="2" bec="2" bev="2" fileid="62" />
                 <SequencePoint vc="1" uspid="32" ordinal="3" sl="32" sc="1" el="32" ec="2" bec="0" bev="0" fileid="62" />
-                <SequencePoint vc="10" uspid="34" ordinal="4" sl="34" sc="1" el="34" ec="2" bec="0" bev="0" fileid="62" />
+                <SequencePoint vc="11" uspid="34" ordinal="4" sl="34" sc="1" el="34" ec="2" bec="0" bev="0" fileid="62" />
               </SequencePoints>
               <BranchPoints>
                 <BranchPoint vc="1" uspid="30" ordinal="0" path="0" offset="30" offsetend="32" sl="30" fileid="62" />
-                <BranchPoint vc="10" uspid="30" ordinal="1" path="1" offset="30" offsetend="49" sl="30" fileid="62" />
+                <BranchPoint vc="11" uspid="30" ordinal="1" path="1" offset="30" offsetend="49" sl="30" fileid="62" />
               </BranchPoints>
               <MethodPoint vc="5" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="27" ec="1" el="34" bec="0" bev="0" fileid="62" xmlns:p8="xsi" />
             </Method>
@@ -5095,11 +5109,11 @@
               <Name>System.Void Scorpio.Setting.SettingManager/&lt;GetAsync&gt;d__3`1::MoveNext()</Name>
               <FileRef uid="63" />
               <SequencePoints>
-                <SequencePoint vc="6" uspid="18" ordinal="0" sl="18" sc="1" el="18" ec="2" bec="0" bev="0" fileid="63" />
-                <SequencePoint vc="6" uspid="19" ordinal="1" sl="19" sc="1" el="19" ec="2" bec="0" bev="0" fileid="63" />
-                <SequencePoint vc="6" uspid="20" ordinal="2" sl="20" sc="1" el="20" ec="2" bec="0" bev="0" fileid="63" />
-                <SequencePoint vc="6" uspid="21" ordinal="3" sl="21" sc="1" el="21" ec="2" bec="0" bev="0" fileid="63" />
-                <SequencePoint vc="6" uspid="22" ordinal="4" sl="22" sc="1" el="22" ec="2" bec="0" bev="0" fileid="63" />
+                <SequencePoint vc="7" uspid="18" ordinal="0" sl="18" sc="1" el="18" ec="2" bec="0" bev="0" fileid="63" />
+                <SequencePoint vc="7" uspid="19" ordinal="1" sl="19" sc="1" el="19" ec="2" bec="0" bev="0" fileid="63" />
+                <SequencePoint vc="7" uspid="20" ordinal="2" sl="20" sc="1" el="20" ec="2" bec="0" bev="0" fileid="63" />
+                <SequencePoint vc="7" uspid="21" ordinal="3" sl="21" sc="1" el="21" ec="2" bec="0" bev="0" fileid="63" />
+                <SequencePoint vc="7" uspid="22" ordinal="4" sl="22" sc="1" el="22" ec="2" bec="0" bev="0" fileid="63" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="5" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="18" ec="1" el="22" bec="0" bev="0" fileid="63" xmlns:p8="xsi" />
@@ -5153,29 +5167,29 @@
           </Methods>
         </Class>
         <Class>
-          <Summary numSequencePoints="6" visitedSequencePoints="5" numBranchPoints="4" visitedBranchPoints="3" sequenceCoverage="83.33" branchCoverage="75" maxCyclomaticComplexity="4" minCyclomaticComplexity="4" visitedClasses="1" numClasses="1" visitedMethods="1" numMethods="1" />
+          <Summary numSequencePoints="6" visitedSequencePoints="6" numBranchPoints="4" visitedBranchPoints="4" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="4" minCyclomaticComplexity="4" visitedClasses="1" numClasses="1" visitedMethods="1" numMethods="1" />
           <FullName>Scorpio.Setting.SettingManager/&lt;GetValueFromProvidersAsync&gt;d__5`1</FullName>
           <Methods>
-            <Method cyclomaticComplexity="4" nPathComplexity="0" sequenceCoverage="83.33" branchCoverage="75" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
-              <Summary numSequencePoints="6" visitedSequencePoints="5" numBranchPoints="4" visitedBranchPoints="3" sequenceCoverage="83.33" branchCoverage="75" maxCyclomaticComplexity="4" minCyclomaticComplexity="4" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
+            <Method cyclomaticComplexity="4" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="6" visitedSequencePoints="6" numBranchPoints="4" visitedBranchPoints="4" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="4" minCyclomaticComplexity="4" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
               <Name>System.Void Scorpio.Setting.SettingManager/&lt;GetValueFromProvidersAsync&gt;d__5`1::MoveNext()</Name>
               <FileRef uid="63" />
               <SequencePoints>
-                <SequencePoint vc="26" uspid="35" ordinal="0" sl="35" sc="1" el="35" ec="2" bec="2" bev="1" fileid="63" />
-                <SequencePoint vc="10" uspid="37" ordinal="1" sl="37" sc="1" el="37" ec="2" bec="0" bev="0" fileid="63" />
-                <SequencePoint vc="10" uspid="38" ordinal="2" sl="38" sc="1" el="38" ec="2" bec="2" bev="2" fileid="63" />
+                <SequencePoint vc="32" uspid="35" ordinal="0" sl="35" sc="1" el="35" ec="2" bec="2" bev="2" fileid="63" />
+                <SequencePoint vc="12" uspid="37" ordinal="1" sl="37" sc="1" el="37" ec="2" bec="0" bev="0" fileid="63" />
+                <SequencePoint vc="12" uspid="38" ordinal="2" sl="38" sc="1" el="38" ec="2" bec="2" bev="2" fileid="63" />
                 <SequencePoint vc="6" uspid="40" ordinal="3" sl="40" sc="1" el="40" ec="2" bec="0" bev="0" fileid="63" />
-                <SequencePoint vc="0" uspid="43" ordinal="4" sl="43" sc="1" el="43" ec="2" bec="0" bev="0" fileid="63" />
-                <SequencePoint vc="6" uspid="44" ordinal="5" sl="44" sc="1" el="44" ec="2" bec="0" bev="0" fileid="63" />
+                <SequencePoint vc="1" uspid="43" ordinal="4" sl="43" sc="1" el="43" ec="2" bec="0" bev="0" fileid="63" />
+                <SequencePoint vc="7" uspid="44" ordinal="5" sl="44" sc="1" el="44" ec="2" bec="0" bev="0" fileid="63" />
               </SequencePoints>
               <BranchPoints>
-                <BranchPoint vc="10" uspid="35" ordinal="3" path="1" offset="164" offsetend="33" sl="35" fileid="63" />
+                <BranchPoint vc="12" uspid="35" ordinal="3" path="1" offset="164" offsetend="33" sl="35" fileid="63" />
                 <BranchPoint vc="6" uspid="38" ordinal="0" path="0" offset="142" offsetend="144" sl="38" fileid="63" />
-                <BranchPoint vc="10" uspid="38" ordinal="1" path="1" offset="142" offsetend="153" sl="38" fileid="63" />
-                <BranchPoint vc="0" uspid="35" ordinal="2" path="0" offset="164" offsetend="169" sl="35" fileid="63" />
+                <BranchPoint vc="13" uspid="38" ordinal="1" path="1" offset="142" offsetend="153" sl="38" fileid="63" />
+                <BranchPoint vc="1" uspid="35" ordinal="2" path="0" offset="164" offsetend="169" sl="35" fileid="63" />
               </BranchPoints>
-              <MethodPoint vc="5" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="35" ec="1" el="44" bec="0" bev="0" fileid="63" xmlns:p8="xsi" />
+              <MethodPoint vc="6" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="35" ec="1" el="44" bec="0" bev="0" fileid="63" xmlns:p8="xsi" />
             </Method>
           </Methods>
         </Class>
@@ -5245,38 +5259,27 @@
           </Methods>
         </Class>
         <Class>
-          <Summary numSequencePoints="11" visitedSequencePoints="10" numBranchPoints="2" visitedBranchPoints="1" sequenceCoverage="90.9" branchCoverage="50" maxCyclomaticComplexity="2" minCyclomaticComplexity="1" visitedClasses="1" numClasses="1" visitedMethods="4" numMethods="4" />
+          <Summary numSequencePoints="10" visitedSequencePoints="10" numBranchPoints="2" visitedBranchPoints="2" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="2" minCyclomaticComplexity="1" visitedClasses="1" numClasses="1" visitedMethods="3" numMethods="3" />
           <FullName>Scorpio.Setting.SettingProvider</FullName>
           <Methods>
-            <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
-              <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
-              <MetadataToken />
-              <Name>System.String Scorpio.Setting.SettingProvider::get_Name()</Name>
-              <FileRef uid="66" />
-              <SequencePoints>
-                <SequencePoint vc="12" uspid="15" ordinal="0" sl="15" sc="1" el="15" ec="2" bec="0" bev="0" fileid="66" />
-              </SequencePoints>
-              <BranchPoints />
-              <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="15" ec="1" el="15" bec="0" bev="0" fileid="66" xmlns:p8="xsi" />
-            </Method>
-            <Method cyclomaticComplexity="2" nPathComplexity="0" sequenceCoverage="83.33" branchCoverage="50" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
-              <Summary numSequencePoints="6" visitedSequencePoints="5" numBranchPoints="2" visitedBranchPoints="1" sequenceCoverage="83.33" branchCoverage="50" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
+            <Method cyclomaticComplexity="2" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="6" visitedSequencePoints="6" numBranchPoints="2" visitedBranchPoints="2" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
               <Name>Scorpio.Setting.SettingStoreContext Scorpio.Setting.SettingProvider::CreateContext(Scorpio.Setting.SettingDefinition`1&lt;T&gt;)</Name>
               <FileRef uid="66" />
               <SequencePoints>
-                <SequencePoint vc="8" uspid="50" ordinal="0" sl="50" sc="1" el="50" ec="2" bec="0" bev="0" fileid="66" />
-                <SequencePoint vc="8" uspid="51" ordinal="1" sl="51" sc="1" el="51" ec="2" bec="0" bev="0" fileid="66" />
-                <SequencePoint vc="8" uspid="52" ordinal="2" sl="52" sc="1" el="52" ec="2" bec="2" bev="1" fileid="66" />
-                <SequencePoint vc="0" uspid="54" ordinal="3" sl="54" sc="1" el="54" ec="2" bec="0" bev="0" fileid="66" />
-                <SequencePoint vc="8" uspid="56" ordinal="4" sl="56" sc="1" el="56" ec="2" bec="0" bev="0" fileid="66" />
-                <SequencePoint vc="8" uspid="57" ordinal="5" sl="57" sc="1" el="57" ec="2" bec="0" bev="0" fileid="66" />
+                <SequencePoint vc="13" uspid="50" ordinal="0" sl="50" sc="1" el="50" ec="2" bec="0" bev="0" fileid="66" />
+                <SequencePoint vc="13" uspid="51" ordinal="1" sl="51" sc="1" el="51" ec="2" bec="0" bev="0" fileid="66" />
+                <SequencePoint vc="13" uspid="52" ordinal="2" sl="52" sc="1" el="52" ec="2" bec="2" bev="2" fileid="66" />
+                <SequencePoint vc="4" uspid="54" ordinal="3" sl="54" sc="1" el="54" ec="2" bec="0" bev="0" fileid="66" />
+                <SequencePoint vc="13" uspid="56" ordinal="4" sl="56" sc="1" el="56" ec="2" bec="0" bev="0" fileid="66" />
+                <SequencePoint vc="13" uspid="57" ordinal="5" sl="57" sc="1" el="57" ec="2" bec="0" bev="0" fileid="66" />
               </SequencePoints>
               <BranchPoints>
-                <BranchPoint vc="0" uspid="52" ordinal="0" path="0" offset="35" offsetend="37" sl="52" fileid="66" />
-                <BranchPoint vc="8" uspid="52" ordinal="1" path="1" offset="35" offsetend="59" sl="52" fileid="66" />
+                <BranchPoint vc="4" uspid="52" ordinal="0" path="0" offset="35" offsetend="37" sl="52" fileid="66" />
+                <BranchPoint vc="13" uspid="52" ordinal="1" path="1" offset="35" offsetend="59" sl="52" fileid="66" />
               </BranchPoints>
-              <MethodPoint vc="5" uspid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="50" ec="1" el="57" bec="0" bev="0" fileid="66" xmlns:p8="xsi" />
+              <MethodPoint vc="6" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="50" ec="1" el="57" bec="0" bev="0" fileid="66" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -5284,10 +5287,10 @@
               <Name>System.Void Scorpio.Setting.SettingProvider::ConfigContext(Scorpio.Setting.ISettingStoreContext)</Name>
               <FileRef uid="66" />
               <SequencePoints>
-                <SequencePoint vc="8" uspid="80" ordinal="0" sl="80" sc="1" el="80" ec="2" bec="0" bev="0" fileid="66" />
+                <SequencePoint vc="13" uspid="80" ordinal="0" sl="80" sc="1" el="80" ec="2" bec="0" bev="0" fileid="66" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="2" offset="2" sc="0" sl="80" ec="1" el="80" bec="0" bev="0" fileid="66" xmlns:p8="xsi" />
+              <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="80" ec="1" el="80" bec="0" bev="0" fileid="66" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="True" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -5295,12 +5298,12 @@
               <Name>System.Void Scorpio.Setting.SettingProvider::.ctor(Scorpio.Setting.ISettingStore)</Name>
               <FileRef uid="66" />
               <SequencePoints>
-                <SequencePoint vc="2" uspid="26" ordinal="0" sl="26" sc="1" el="26" ec="2" bec="0" bev="0" fileid="66" />
-                <SequencePoint vc="2" uspid="28" ordinal="1" sl="28" sc="1" el="28" ec="2" bec="0" bev="0" fileid="66" />
-                <SequencePoint vc="2" uspid="29" ordinal="2" sl="29" sc="1" el="29" ec="2" bec="0" bev="0" fileid="66" />
+                <SequencePoint vc="4" uspid="26" ordinal="0" sl="26" sc="1" el="26" ec="2" bec="0" bev="0" fileid="66" />
+                <SequencePoint vc="4" uspid="28" ordinal="1" sl="28" sc="1" el="28" ec="2" bec="0" bev="0" fileid="66" />
+                <SequencePoint vc="4" uspid="29" ordinal="2" sl="29" sc="1" el="29" ec="2" bec="0" bev="0" fileid="66" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="3" uspid="0" p8:type="SequencePoint" ordinal="3" offset="3" sc="0" sl="26" ec="1" el="29" bec="0" bev="0" fileid="66" xmlns:p8="xsi" />
+              <MethodPoint vc="3" uspid="0" p8:type="SequencePoint" ordinal="2" offset="2" sc="0" sl="26" ec="1" el="29" bec="0" bev="0" fileid="66" xmlns:p8="xsi" />
             </Method>
           </Methods>
         </Class>
@@ -5314,16 +5317,16 @@
               <Name>System.Void Scorpio.Setting.SettingProvider/&lt;GetAsync&gt;d__6`1::MoveNext()</Name>
               <FileRef uid="66" />
               <SequencePoints>
-                <SequencePoint vc="6" uspid="39" ordinal="0" sl="39" sc="1" el="39" ec="2" bec="0" bev="0" fileid="66" />
-                <SequencePoint vc="6" uspid="40" ordinal="1" sl="40" sc="1" el="40" ec="2" bec="0" bev="0" fileid="66" />
-                <SequencePoint vc="6" uspid="41" ordinal="2" sl="41" sc="1" el="41" ec="2" bec="2" bev="2" fileid="66" />
-                <SequencePoint vc="4" uspid="43" ordinal="3" sl="43" sc="1" el="43" ec="2" bec="0" bev="0" fileid="66" />
-                <SequencePoint vc="2" uspid="45" ordinal="4" sl="45" sc="1" el="45" ec="2" bec="0" bev="0" fileid="66" />
-                <SequencePoint vc="6" uspid="46" ordinal="5" sl="46" sc="1" el="46" ec="2" bec="0" bev="0" fileid="66" />
+                <SequencePoint vc="10" uspid="39" ordinal="0" sl="39" sc="1" el="39" ec="2" bec="0" bev="0" fileid="66" />
+                <SequencePoint vc="10" uspid="40" ordinal="1" sl="40" sc="1" el="40" ec="2" bec="0" bev="0" fileid="66" />
+                <SequencePoint vc="10" uspid="41" ordinal="2" sl="41" sc="1" el="41" ec="2" bec="2" bev="2" fileid="66" />
+                <SequencePoint vc="7" uspid="43" ordinal="3" sl="43" sc="1" el="43" ec="2" bec="0" bev="0" fileid="66" />
+                <SequencePoint vc="3" uspid="45" ordinal="4" sl="45" sc="1" el="45" ec="2" bec="0" bev="0" fileid="66" />
+                <SequencePoint vc="10" uspid="46" ordinal="5" sl="46" sc="1" el="46" ec="2" bec="0" bev="0" fileid="66" />
               </SequencePoints>
               <BranchPoints>
-                <BranchPoint vc="4" uspid="41" ordinal="0" path="0" offset="131" offsetend="133" sl="41" fileid="66" />
-                <BranchPoint vc="2" uspid="41" ordinal="1" path="1" offset="131" offsetend="137" sl="41" fileid="66" />
+                <BranchPoint vc="7" uspid="41" ordinal="0" path="0" offset="131" offsetend="133" sl="41" fileid="66" />
+                <BranchPoint vc="3" uspid="41" ordinal="1" path="1" offset="131" offsetend="137" sl="41" fileid="66" />
               </BranchPoints>
               <MethodPoint vc="6" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="39" ec="1" el="46" bec="0" bev="0" fileid="66" xmlns:p8="xsi" />
             </Method>
@@ -5339,9 +5342,9 @@
               <Name>System.Void Scorpio.Setting.SettingProvider/&lt;SetAsync&gt;d__8`1::MoveNext()</Name>
               <FileRef uid="66" />
               <SequencePoints>
-                <SequencePoint vc="2" uspid="69" ordinal="0" sl="69" sc="1" el="69" ec="2" bec="0" bev="0" fileid="66" />
-                <SequencePoint vc="2" uspid="70" ordinal="1" sl="70" sc="1" el="70" ec="2" bec="0" bev="0" fileid="66" />
-                <SequencePoint vc="2" uspid="71" ordinal="2" sl="71" sc="1" el="71" ec="2" bec="0" bev="0" fileid="66" />
+                <SequencePoint vc="3" uspid="69" ordinal="0" sl="69" sc="1" el="69" ec="2" bec="0" bev="0" fileid="66" />
+                <SequencePoint vc="3" uspid="70" ordinal="1" sl="70" sc="1" el="70" ec="2" bec="0" bev="0" fileid="66" />
+                <SequencePoint vc="3" uspid="71" ordinal="2" sl="71" sc="1" el="71" ec="2" bec="0" bev="0" fileid="66" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="3" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="69" ec="1" el="71" bec="0" bev="0" fileid="66" xmlns:p8="xsi" />
@@ -5358,7 +5361,7 @@
               <Name>System.Collections.Generic.ICollection`1&lt;Scorpio.Setting.ISettingProvider&gt; Scorpio.Setting.SettingProviderManager::get_Providers()</Name>
               <FileRef uid="67" />
               <SequencePoints>
-                <SequencePoint vc="8" uspid="15" ordinal="0" sl="15" sc="1" el="15" ec="2" bec="0" bev="0" fileid="67" />
+                <SequencePoint vc="9" uspid="15" ordinal="0" sl="15" sc="1" el="15" ec="2" bec="0" bev="0" fileid="67" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="15" ec="1" el="15" bec="0" bev="0" fileid="67" xmlns:p8="xsi" />
@@ -5402,7 +5405,7 @@
               <Name>System.Collections.Generic.IDictionary`2&lt;System.String,System.Object&gt; Scorpio.Setting.SettingStoreContext::get_Properties()</Name>
               <FileRef uid="68" />
               <SequencePoints>
-                <SequencePoint vc="24" uspid="13" ordinal="0" sl="13" sc="1" el="13" ec="2" bec="0" bev="0" fileid="68" />
+                <SequencePoint vc="43" uspid="13" ordinal="0" sl="13" sc="1" el="13" ec="2" bec="0" bev="0" fileid="68" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="13" ec="1" el="13" bec="0" bev="0" fileid="68" xmlns:p8="xsi" />
@@ -5413,7 +5416,7 @@
               <Name>Scorpio.Setting.SettingDefinition Scorpio.Setting.SettingStoreContext::get_SettingDefinition()</Name>
               <FileRef uid="68" />
               <SequencePoints>
-                <SequencePoint vc="10" uspid="18" ordinal="0" sl="18" sc="1" el="18" ec="2" bec="0" bev="0" fileid="68" />
+                <SequencePoint vc="16" uspid="18" ordinal="0" sl="18" sc="1" el="18" ec="2" bec="0" bev="0" fileid="68" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="18" ec="1" el="18" bec="0" bev="0" fileid="68" xmlns:p8="xsi" />
@@ -5424,9 +5427,9 @@
               <Name>System.Void Scorpio.Setting.SettingStoreContext::.ctor(Scorpio.Setting.SettingDefinition)</Name>
               <FileRef uid="68" />
               <SequencePoints>
-                <SequencePoint vc="8" uspid="24" ordinal="0" sl="24" sc="1" el="24" ec="2" bec="0" bev="0" fileid="68" />
-                <SequencePoint vc="8" uspid="26" ordinal="1" sl="26" sc="1" el="26" ec="2" bec="0" bev="0" fileid="68" />
-                <SequencePoint vc="8" uspid="27" ordinal="2" sl="27" sc="1" el="27" ec="2" bec="0" bev="0" fileid="68" />
+                <SequencePoint vc="13" uspid="24" ordinal="0" sl="24" sc="1" el="24" ec="2" bec="0" bev="0" fileid="68" />
+                <SequencePoint vc="13" uspid="26" ordinal="1" sl="26" sc="1" el="26" ec="2" bec="0" bev="0" fileid="68" />
+                <SequencePoint vc="13" uspid="27" ordinal="2" sl="27" sc="1" el="27" ec="2" bec="0" bev="0" fileid="68" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="3" uspid="0" p8:type="SequencePoint" ordinal="2" offset="2" sc="0" sl="24" ec="1" el="27" bec="0" bev="0" fileid="68" xmlns:p8="xsi" />
@@ -5443,7 +5446,7 @@
               <Name>Scorpio.Setting.SettingDefinition Scorpio.Setting.SettingValue`1::get_Definition()</Name>
               <FileRef uid="69" />
               <SequencePoints>
-                <SequencePoint vc="10" uspid="11" ordinal="0" sl="11" sc="1" el="11" ec="2" bec="0" bev="0" fileid="69" />
+                <SequencePoint vc="16" uspid="11" ordinal="0" sl="11" sc="1" el="11" ec="2" bec="0" bev="0" fileid="69" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="11" ec="1" el="11" bec="0" bev="0" fileid="69" xmlns:p8="xsi" />
@@ -5454,7 +5457,7 @@
               <Name>T Scorpio.Setting.SettingValue`1::get_Value()</Name>
               <FileRef uid="69" />
               <SequencePoints>
-                <SequencePoint vc="16" uspid="16" ordinal="0" sl="16" sc="1" el="16" ec="2" bec="0" bev="0" fileid="69" />
+                <SequencePoint vc="26" uspid="16" ordinal="0" sl="16" sc="1" el="16" ec="2" bec="0" bev="0" fileid="69" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="16" ec="1" el="16" bec="0" bev="0" fileid="69" xmlns:p8="xsi" />
@@ -5463,9 +5466,9 @@
         </Class>
       </Classes>
     </Module>
-    <Module hash="F0717506-2848-4BE0-9253-D10C0159DA9C">
+    <Module hash="EECFE461-3E6A-444A-878B-31291616A1F0">
       <ModulePath>Scorpio.TestBase.dll</ModulePath>
-      <ModuleTime>2020-08-10T01:27:03</ModuleTime>
+      <ModuleTime>2020-08-11T08:34:45</ModuleTime>
       <ModuleName>Scorpio.TestBase</ModuleName>
       <Files>
         <File uid="70" fullPath="D:\Users\28070110\source\repos\project-scorpio\scorpio\Core\test\Scorpio.TestBase\Scorpio\TestBase\SubstituteExtensions.cs" />
@@ -5476,22 +5479,22 @@
       </Files>
       <Classes>
         <Class>
-          <Summary numSequencePoints="4" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="1" visitedMethods="0" numMethods="1" />
+          <Summary numSequencePoints="4" visitedSequencePoints="4" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="1" numClasses="1" visitedMethods="1" numMethods="1" />
           <FullName>Scorpio.SubstituteExtensions</FullName>
           <Methods>
-            <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="0" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
-              <Summary numSequencePoints="4" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
+            <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="4" visitedSequencePoints="4" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
-              <Name>System.Object Scorpio.SubstituteExtensions::Protected(System.Object,System.String,System.Object[])</Name>
+              <Name>System.Object Scorpio.SubstituteExtensions::GetProperty(System.Object,System.String,System.Object[])</Name>
               <FileRef uid="70" />
               <SequencePoints>
-                <SequencePoint vc="0" uspid="10" ordinal="0" sl="10" sc="1" el="10" ec="2" bec="0" bev="0" fileid="70" />
-                <SequencePoint vc="0" uspid="11" ordinal="1" sl="11" sc="1" el="11" ec="2" bec="0" bev="0" fileid="70" />
-                <SequencePoint vc="0" uspid="12" ordinal="2" sl="12" sc="1" el="12" ec="2" bec="0" bev="0" fileid="70" />
-                <SequencePoint vc="0" uspid="13" ordinal="3" sl="13" sc="1" el="13" ec="2" bec="0" bev="0" fileid="70" />
+                <SequencePoint vc="2" uspid="11" ordinal="0" sl="11" sc="1" el="11" ec="2" bec="0" bev="0" fileid="70" />
+                <SequencePoint vc="2" uspid="12" ordinal="1" sl="12" sc="1" el="12" ec="2" bec="0" bev="0" fileid="70" />
+                <SequencePoint vc="6" uspid="13" ordinal="2" sl="13" sc="1" el="13" ec="2" bec="0" bev="0" fileid="70" />
+                <SequencePoint vc="2" uspid="14" ordinal="3" sl="14" sc="1" el="14" ec="2" bec="0" bev="0" fileid="70" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="0" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="10" ec="1" el="13" bec="0" bev="0" fileid="70" xmlns:p8="xsi" />
+              <MethodPoint vc="4" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="11" ec="1" el="14" bec="0" bev="0" fileid="70" xmlns:p8="xsi" />
             </Method>
           </Methods>
         </Class>
@@ -5836,9 +5839,9 @@
         </Class>
       </Classes>
     </Module>
-    <Module hash="95622E01-EE81-49CA-B1C4-9D2CB298BEA4">
+    <Module hash="5BDF92C6-1B05-46E1-B680-A2D06F6414E6">
       <ModulePath>Scorpio.Utilities.dll</ModulePath>
-      <ModuleTime>2020-08-10T01:27:03</ModuleTime>
+      <ModuleTime>2020-08-11T08:34:45</ModuleTime>
       <ModuleName>Scorpio.Utilities</ModuleName>
       <Files>
         <File uid="75" fullPath="D:\Users\28070110\source\repos\project-scorpio\scorpio\Core\src\Scorpio.Utilities\System\ComparableExtensions.cs" />
@@ -6620,7 +6623,7 @@
               <Name>TAttribute System.Reflection.MemberInfoExtensions::GetAttribute(System.Reflection.MemberInfo,System.Boolean)</Name>
               <FileRef uid="79" />
               <SequencePoints>
-                <SequencePoint vc="942" uspid="129" ordinal="0" sl="129" sc="1" el="129" ec="2" bec="0" bev="0" fileid="79" />
+                <SequencePoint vc="1002" uspid="129" ordinal="0" sl="129" sc="1" el="129" ec="2" bec="0" bev="0" fileid="79" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="8" offset="8" sc="0" sl="129" ec="1" el="129" bec="0" bev="0" fileid="79" xmlns:p8="xsi" />
@@ -6643,8 +6646,8 @@
               <Name>System.Collections.Generic.IEnumerable`1&lt;TAttribute&gt; System.Reflection.MemberInfoExtensions::GetAttributes(System.Reflection.MemberInfo,System.Boolean)</Name>
               <FileRef uid="79" />
               <SequencePoints>
-                <SequencePoint vc="942" uspid="156" ordinal="0" sl="156" sc="1" el="156" ec="2" bec="0" bev="0" fileid="79" />
-                <SequencePoint vc="942" uspid="157" ordinal="1" sl="157" sc="1" el="157" ec="2" bec="0" bev="0" fileid="79" />
+                <SequencePoint vc="1002" uspid="156" ordinal="0" sl="156" sc="1" el="156" ec="2" bec="0" bev="0" fileid="79" />
+                <SequencePoint vc="1002" uspid="157" ordinal="1" sl="157" sc="1" el="157" ec="2" bec="0" bev="0" fileid="79" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="2" uspid="0" p8:type="SequencePoint" ordinal="10" offset="10" sc="0" sl="156" ec="1" el="157" bec="0" bev="0" fileid="79" xmlns:p8="xsi" />
@@ -6667,7 +6670,7 @@
               <Name>System.Boolean System.Reflection.MemberInfoExtensions::AttributeExists(System.Reflection.MemberInfo,System.Boolean)</Name>
               <FileRef uid="79" />
               <SequencePoints>
-                <SequencePoint vc="714" uspid="184" ordinal="0" sl="184" sc="1" el="184" ec="2" bec="0" bev="0" fileid="79" />
+                <SequencePoint vc="774" uspid="184" ordinal="0" sl="184" sc="1" el="184" ec="2" bec="0" bev="0" fileid="79" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="12" offset="12" sc="0" sl="184" ec="1" el="184" bec="0" bev="0" fileid="79" xmlns:p8="xsi" />
@@ -6726,7 +6729,7 @@
               <Name>System.Boolean System.Reflection.TypeExtensions::IsAssignableTo(System.Type)</Name>
               <FileRef uid="80" />
               <SequencePoints>
-                <SequencePoint vc="1656" uspid="50" ordinal="0" sl="50" sc="1" el="50" ec="2" bec="0" bev="0" fileid="80" />
+                <SequencePoint vc="1854" uspid="50" ordinal="0" sl="50" sc="1" el="50" ec="2" bec="0" bev="0" fileid="80" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="2" offset="2" sc="0" sl="50" ec="1" el="50" bec="0" bev="0" fileid="80" xmlns:p8="xsi" />
@@ -6737,9 +6740,9 @@
               <Name>System.Boolean System.Reflection.TypeExtensions::IsAssignableTo(System.Type,System.Type)</Name>
               <FileRef uid="80" />
               <SequencePoints>
-                <SequencePoint vc="1656" uspid="61" ordinal="0" sl="61" sc="1" el="61" ec="2" bec="0" bev="0" fileid="80" />
-                <SequencePoint vc="1656" uspid="62" ordinal="1" sl="62" sc="1" el="62" ec="2" bec="0" bev="0" fileid="80" />
-                <SequencePoint vc="1656" uspid="63" ordinal="2" sl="63" sc="1" el="63" ec="2" bec="0" bev="0" fileid="80" />
+                <SequencePoint vc="1854" uspid="61" ordinal="0" sl="61" sc="1" el="61" ec="2" bec="0" bev="0" fileid="80" />
+                <SequencePoint vc="1854" uspid="62" ordinal="1" sl="62" sc="1" el="62" ec="2" bec="0" bev="0" fileid="80" />
+                <SequencePoint vc="1854" uspid="63" ordinal="2" sl="63" sc="1" el="63" ec="2" bec="0" bev="0" fileid="80" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="3" uspid="0" p8:type="SequencePoint" ordinal="3" offset="3" sc="0" sl="61" ec="1" el="63" bec="0" bev="0" fileid="80" xmlns:p8="xsi" />
@@ -6784,12 +6787,12 @@
               <Name>System.Boolean System.Reflection.TypeExtensions::IsStandardType(System.Type)</Name>
               <FileRef uid="80" />
               <SequencePoints>
-                <SequencePoint vc="5076" uspid="106" ordinal="0" sl="106" sc="1" el="106" ec="2" bec="0" bev="0" fileid="80" />
-                <SequencePoint vc="5076" uspid="107" ordinal="1" sl="107" sc="1" el="107" ec="2" bec="4" bev="4" fileid="80" />
+                <SequencePoint vc="5334" uspid="106" ordinal="0" sl="106" sc="1" el="106" ec="2" bec="0" bev="0" fileid="80" />
+                <SequencePoint vc="5334" uspid="107" ordinal="1" sl="107" sc="1" el="107" ec="2" bec="4" bev="4" fileid="80" />
               </SequencePoints>
               <BranchPoints>
-                <BranchPoint vc="3906" uspid="107" ordinal="0" path="0" offset="18" offsetend="20" sl="107" fileid="80" />
-                <BranchPoint vc="3204" uspid="107" ordinal="2" path="0" offset="26" offsetend="28" sl="107" fileid="80" />
+                <BranchPoint vc="4164" uspid="107" ordinal="0" path="0" offset="18" offsetend="20" sl="107" fileid="80" />
+                <BranchPoint vc="3462" uspid="107" ordinal="2" path="0" offset="26" offsetend="28" sl="107" fileid="80" />
                 <BranchPoint vc="1872" uspid="107" ordinal="1" path="1" offset="18" offsetend="38" sl="107" fileid="80" />
                 <BranchPoint vc="1872" uspid="107" ordinal="3" path="1" offset="26" offsetend="38" sl="107" fileid="80" />
               </BranchPoints>
@@ -8075,11 +8078,11 @@
           </Methods>
         </Class>
         <Class>
-          <Summary numSequencePoints="15" visitedSequencePoints="0" numBranchPoints="4" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="2" minCyclomaticComplexity="1" visitedClasses="0" numClasses="1" visitedMethods="0" numMethods="3" />
+          <Summary numSequencePoints="19" visitedSequencePoints="0" numBranchPoints="4" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="2" minCyclomaticComplexity="1" visitedClasses="0" numClasses="1" visitedMethods="0" numMethods="3" />
           <FullName>System.Linq.Expressions.MemberInitTranslation`1</FullName>
           <Methods>
             <Method cyclomaticComplexity="2" nPathComplexity="0" sequenceCoverage="0" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
-              <Summary numSequencePoints="7" visitedSequencePoints="0" numBranchPoints="2" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
+              <Summary numSequencePoints="11" visitedSequencePoints="0" numBranchPoints="2" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
               <MetadataToken />
               <Name>System.Linq.Expressions.Expression`1&lt;System.Func`2&lt;TTranslatedSource,TTranslatedSource&gt;&gt; System.Linq.Expressions.MemberInitTranslation`1::To()</Name>
               <FileRef uid="87" />
@@ -8091,12 +8094,16 @@
                 <SequencePoint vc="0" uspid="27" ordinal="4" sl="27" sc="1" el="27" ec="2" bec="2" bev="0" fileid="87" />
                 <SequencePoint vc="0" uspid="28" ordinal="5" sl="28" sc="1" el="28" ec="2" bec="0" bev="0" fileid="87" />
                 <SequencePoint vc="0" uspid="29" ordinal="6" sl="29" sc="1" el="29" ec="2" bec="0" bev="0" fileid="87" />
+                <SequencePoint vc="0" uspid="30" ordinal="7" sl="30" sc="1" el="30" ec="2" bec="0" bev="0" fileid="87" />
+                <SequencePoint vc="0" uspid="31" ordinal="8" sl="31" sc="1" el="31" ec="2" bec="0" bev="0" fileid="87" />
+                <SequencePoint vc="0" uspid="32" ordinal="9" sl="32" sc="1" el="32" ec="2" bec="0" bev="0" fileid="87" />
+                <SequencePoint vc="0" uspid="33" ordinal="10" sl="33" sc="1" el="33" ec="2" bec="0" bev="0" fileid="87" />
               </SequencePoints>
               <BranchPoints>
                 <BranchPoint vc="0" uspid="27" ordinal="0" path="0" offset="95" offsetend="97" sl="27" fileid="87" />
                 <BranchPoint vc="0" uspid="27" ordinal="1" path="1" offset="95" offsetend="120" sl="27" fileid="87" />
               </BranchPoints>
-              <MethodPoint vc="0" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="23" ec="1" el="29" bec="0" bev="0" fileid="87" xmlns:p8="xsi" />
+              <MethodPoint vc="0" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="23" ec="1" el="33" bec="0" bev="0" fileid="87" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="2" nPathComplexity="0" sequenceCoverage="0" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="5" visitedSequencePoints="0" numBranchPoints="2" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
@@ -8104,17 +8111,17 @@
               <Name>System.Linq.Expressions.Expression System.Linq.Expressions.MemberInitTranslation`1::&lt;To&gt;g__GetExpression|2_2(System.Linq.Expressions.Expression,System.Linq.Expressions.Expression,System.String)</Name>
               <FileRef uid="87" />
               <SequencePoints>
-                <SequencePoint vc="0" uspid="32" ordinal="0" sl="32" sc="1" el="32" ec="2" bec="2" bev="0" fileid="87" />
-                <SequencePoint vc="0" uspid="33" ordinal="1" sl="33" sc="1" el="33" ec="2" bec="0" bev="0" fileid="87" />
-                <SequencePoint vc="0" uspid="34" ordinal="2" sl="34" sc="1" el="34" ec="2" bec="0" bev="0" fileid="87" />
-                <SequencePoint vc="0" uspid="35" ordinal="3" sl="35" sc="1" el="35" ec="2" bec="0" bev="0" fileid="87" />
-                <SequencePoint vc="0" uspid="36" ordinal="4" sl="36" sc="1" el="36" ec="2" bec="0" bev="0" fileid="87" />
+                <SequencePoint vc="0" uspid="39" ordinal="0" sl="39" sc="1" el="39" ec="2" bec="2" bev="0" fileid="87" />
+                <SequencePoint vc="0" uspid="40" ordinal="1" sl="40" sc="1" el="40" ec="2" bec="0" bev="0" fileid="87" />
+                <SequencePoint vc="0" uspid="41" ordinal="2" sl="41" sc="1" el="41" ec="2" bec="0" bev="0" fileid="87" />
+                <SequencePoint vc="0" uspid="42" ordinal="3" sl="42" sc="1" el="42" ec="2" bec="0" bev="0" fileid="87" />
+                <SequencePoint vc="0" uspid="43" ordinal="4" sl="43" sc="1" el="43" ec="2" bec="0" bev="0" fileid="87" />
               </SequencePoints>
               <BranchPoints>
-                <BranchPoint vc="0" uspid="32" ordinal="0" path="0" offset="8" offsetend="10" sl="32" fileid="87" />
-                <BranchPoint vc="0" uspid="32" ordinal="1" path="1" offset="8" offsetend="20" sl="32" fileid="87" />
+                <BranchPoint vc="0" uspid="39" ordinal="0" path="0" offset="8" offsetend="10" sl="39" fileid="87" />
+                <BranchPoint vc="0" uspid="39" ordinal="1" path="1" offset="8" offsetend="20" sl="39" fileid="87" />
               </BranchPoints>
-              <MethodPoint vc="0" uspid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="32" ec="1" el="36" bec="0" bev="0" fileid="87" xmlns:p8="xsi" />
+              <MethodPoint vc="0" uspid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="39" ec="1" el="43" bec="0" bev="0" fileid="87" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="0" branchCoverage="100" isConstructor="True" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="3" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
@@ -10263,10 +10270,10 @@
               <Name>System.Boolean System.Collections.Generic.CollectionExtensions::IsNullOrEmpty(System.Collections.Generic.ICollection`1&lt;T&gt;)</Name>
               <FileRef uid="95" />
               <SequencePoints>
-                <SequencePoint vc="203" uspid="17" ordinal="0" sl="17" sc="1" el="17" ec="2" bec="2" bev="1" fileid="95" />
+                <SequencePoint vc="207" uspid="17" ordinal="0" sl="17" sc="1" el="17" ec="2" bec="2" bev="1" fileid="95" />
               </SequencePoints>
               <BranchPoints>
-                <BranchPoint vc="203" uspid="17" ordinal="0" path="0" offset="1" offsetend="3" sl="17" fileid="95" />
+                <BranchPoint vc="207" uspid="17" ordinal="0" path="0" offset="1" offsetend="3" sl="17" fileid="95" />
                 <BranchPoint vc="0" uspid="17" ordinal="1" path="1" offset="1" offsetend="16" sl="17" fileid="95" />
               </BranchPoints>
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="17" ec="1" el="17" bec="0" bev="0" fileid="95" xmlns:p8="xsi" />
@@ -10415,7 +10422,7 @@
               <Name>TValue System.Collections.Generic.DictionaryExtensions::GetOrDefault(System.Collections.Generic.Dictionary`2&lt;TKey,TValue&gt;,TKey)</Name>
               <FileRef uid="96" />
               <SequencePoints>
-                <SequencePoint vc="6" uspid="40" ordinal="0" sl="40" sc="1" el="40" ec="2" bec="0" bev="0" fileid="96" />
+                <SequencePoint vc="12" uspid="40" ordinal="0" sl="40" sc="1" el="40" ec="2" bec="0" bev="0" fileid="96" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="40" ec="1" el="40" bec="0" bev="0" fileid="96" xmlns:p8="xsi" />
@@ -10426,7 +10433,7 @@
               <Name>TValue System.Collections.Generic.DictionaryExtensions::GetOrDefault(System.Collections.Generic.IDictionary`2&lt;TKey,TValue&gt;,TKey)</Name>
               <FileRef uid="96" />
               <SequencePoints>
-                <SequencePoint vc="11" uspid="53" ordinal="0" sl="53" sc="1" el="53" ec="2" bec="0" bev="0" fileid="96" />
+                <SequencePoint vc="12" uspid="53" ordinal="0" sl="53" sc="1" el="53" ec="2" bec="0" bev="0" fileid="96" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="2" offset="2" sc="0" sl="53" ec="1" el="53" bec="0" bev="0" fileid="96" xmlns:p8="xsi" />
@@ -10459,7 +10466,7 @@
               <Name>TValue System.Collections.Generic.DictionaryExtensions::GetOrDefault(System.Collections.Generic.Dictionary`2&lt;TKey,TValue&gt;,TKey,TValue)</Name>
               <FileRef uid="96" />
               <SequencePoints>
-                <SequencePoint vc="10" uspid="93" ordinal="0" sl="93" sc="1" el="93" ec="2" bec="0" bev="0" fileid="96" />
+                <SequencePoint vc="20" uspid="93" ordinal="0" sl="93" sc="1" el="93" ec="2" bec="0" bev="0" fileid="96" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="5" offset="5" sc="0" sl="93" ec="1" el="93" bec="0" bev="0" fileid="96" xmlns:p8="xsi" />
@@ -10470,7 +10477,7 @@
               <Name>TValue System.Collections.Generic.DictionaryExtensions::GetOrDefault(System.Collections.Generic.IDictionary`2&lt;TKey,TValue&gt;,TKey,TValue)</Name>
               <FileRef uid="96" />
               <SequencePoints>
-                <SequencePoint vc="12" uspid="107" ordinal="0" sl="107" sc="1" el="107" ec="2" bec="0" bev="0" fileid="96" />
+                <SequencePoint vc="13" uspid="107" ordinal="0" sl="107" sc="1" el="107" ec="2" bec="0" bev="0" fileid="96" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="6" offset="6" sc="0" sl="107" ec="1" el="107" bec="0" bev="0" fileid="96" xmlns:p8="xsi" />
@@ -10503,13 +10510,13 @@
               <Name>TValue System.Collections.Generic.DictionaryExtensions::GetOrDefault(System.Collections.Generic.Dictionary`2&lt;TKey,TValue&gt;,TKey,System.Func`2&lt;TKey,TValue&gt;)</Name>
               <FileRef uid="96" />
               <SequencePoints>
-                <SequencePoint vc="6" uspid="149" ordinal="0" sl="149" sc="1" el="149" ec="2" bec="2" bev="2" fileid="96" />
-                <SequencePoint vc="2" uspid="151" ordinal="1" sl="151" sc="1" el="151" ec="2" bec="0" bev="0" fileid="96" />
-                <SequencePoint vc="4" uspid="153" ordinal="2" sl="153" sc="1" el="153" ec="2" bec="0" bev="0" fileid="96" />
+                <SequencePoint vc="12" uspid="149" ordinal="0" sl="149" sc="1" el="149" ec="2" bec="2" bev="2" fileid="96" />
+                <SequencePoint vc="4" uspid="151" ordinal="1" sl="151" sc="1" el="151" ec="2" bec="0" bev="0" fileid="96" />
+                <SequencePoint vc="8" uspid="153" ordinal="2" sl="153" sc="1" el="153" ec="2" bec="0" bev="0" fileid="96" />
               </SequencePoints>
               <BranchPoints>
-                <BranchPoint vc="2" uspid="149" ordinal="0" path="0" offset="9" offsetend="11" sl="149" fileid="96" />
-                <BranchPoint vc="4" uspid="149" ordinal="1" path="1" offset="9" offsetend="13" sl="149" fileid="96" />
+                <BranchPoint vc="4" uspid="149" ordinal="0" path="0" offset="9" offsetend="11" sl="149" fileid="96" />
+                <BranchPoint vc="8" uspid="149" ordinal="1" path="1" offset="9" offsetend="13" sl="149" fileid="96" />
               </BranchPoints>
               <MethodPoint vc="3" uspid="0" p8:type="SequencePoint" ordinal="9" offset="9" sc="0" sl="149" ec="1" el="153" bec="0" bev="0" fileid="96" xmlns:p8="xsi" />
             </Method>
@@ -10519,12 +10526,12 @@
               <Name>TValue System.Collections.Generic.DictionaryExtensions::GetOrDefault(System.Collections.Generic.IDictionary`2&lt;TKey,TValue&gt;,TKey,System.Func`2&lt;TKey,TValue&gt;)</Name>
               <FileRef uid="96" />
               <SequencePoints>
-                <SequencePoint vc="11" uspid="167" ordinal="0" sl="167" sc="1" el="167" ec="2" bec="2" bev="2" fileid="96" />
-                <SequencePoint vc="10" uspid="169" ordinal="1" sl="169" sc="1" el="169" ec="2" bec="0" bev="0" fileid="96" />
+                <SequencePoint vc="12" uspid="167" ordinal="0" sl="167" sc="1" el="167" ec="2" bec="2" bev="2" fileid="96" />
+                <SequencePoint vc="11" uspid="169" ordinal="1" sl="169" sc="1" el="169" ec="2" bec="0" bev="0" fileid="96" />
                 <SequencePoint vc="1" uspid="171" ordinal="2" sl="171" sc="1" el="171" ec="2" bec="0" bev="0" fileid="96" />
               </SequencePoints>
               <BranchPoints>
-                <BranchPoint vc="10" uspid="167" ordinal="0" path="0" offset="9" offsetend="11" sl="167" fileid="96" />
+                <BranchPoint vc="11" uspid="167" ordinal="0" path="0" offset="9" offsetend="11" sl="167" fileid="96" />
                 <BranchPoint vc="1" uspid="167" ordinal="1" path="1" offset="9" offsetend="13" sl="167" fileid="96" />
               </BranchPoints>
               <MethodPoint vc="3" uspid="0" p8:type="SequencePoint" ordinal="10" offset="10" sc="0" sl="167" ec="1" el="171" bec="0" bev="0" fileid="96" xmlns:p8="xsi" />
@@ -10625,7 +10632,7 @@
               <Name>System.String System.Collections.Generic.EnumerableExtensions::ExpandToString(System.Collections.Generic.IEnumerable`1&lt;T&gt;,System.String)</Name>
               <FileRef uid="97" />
               <SequencePoints>
-                <SequencePoint vc="8" uspid="41" ordinal="0" sl="41" sc="1" el="41" ec="2" bec="0" bev="0" fileid="97" />
+                <SequencePoint vc="13" uspid="41" ordinal="0" sl="41" sc="1" el="41" ec="2" bec="0" bev="0" fileid="97" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="2" offset="2" sc="0" sl="41" ec="1" el="41" bec="0" bev="0" fileid="97" xmlns:p8="xsi" />
@@ -11077,13 +11084,13 @@
               <Name>T Scorpio.Check::NotNull(T,System.String)</Name>
               <FileRef uid="99" />
               <SequencePoints>
-                <SequencePoint vc="10049" uspid="23" ordinal="0" sl="23" sc="1" el="23" ec="2" bec="2" bev="1" fileid="99" />
+                <SequencePoint vc="10764" uspid="23" ordinal="0" sl="23" sc="1" el="23" ec="2" bec="2" bev="1" fileid="99" />
                 <SequencePoint vc="0" uspid="25" ordinal="1" sl="25" sc="1" el="25" ec="2" bec="0" bev="0" fileid="99" />
-                <SequencePoint vc="10049" uspid="28" ordinal="2" sl="28" sc="1" el="28" ec="2" bec="0" bev="0" fileid="99" />
+                <SequencePoint vc="10764" uspid="28" ordinal="2" sl="28" sc="1" el="28" ec="2" bec="0" bev="0" fileid="99" />
               </SequencePoints>
               <BranchPoints>
                 <BranchPoint vc="0" uspid="23" ordinal="0" path="0" offset="6" offsetend="8" sl="23" fileid="99" />
-                <BranchPoint vc="10049" uspid="23" ordinal="1" path="1" offset="6" offsetend="15" sl="23" fileid="99" />
+                <BranchPoint vc="10764" uspid="23" ordinal="1" path="1" offset="6" offsetend="15" sl="23" fileid="99" />
               </BranchPoints>
               <MethodPoint vc="2" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="23" ec="1" el="28" bec="0" bev="0" fileid="99" xmlns:p8="xsi" />
             </Method>
