@@ -13,6 +13,5 @@ namespace Scorpio
                              .Single(x => x.Name == name);
             return method.GetValue(target, args);
         }
-
     }
 }
