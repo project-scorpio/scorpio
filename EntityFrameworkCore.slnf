@@ -9,6 +9,7 @@
       "Extras\\Data\\src\\Scorpio.Data\\Scorpio.Data.csproj",
       "Extras\\EntityFrameworkCore\\src\\Scorpio.EntityFrameworkCore.SqlServer\\Scorpio.EntityFrameworkCore.SqlServer.csproj",
       "Extras\\EntityFrameworkCore\\src\\Scorpio.EntityFrameworkCore\\Scorpio.EntityFrameworkCore.csproj",
+      "Extras\\EntityFrameworkCore\\test\\Scorpio.EntityFrameworkCore.SqlServer.Tests\\Scorpio.EntityFrameworkCore.SqlServer.Tests.csproj",
       "Extras\\EntityFrameworkCore\\test\\Scorpio.EntityFrameworkCore.Tests\\Scorpio.EntityFrameworkCore.Tests.csproj"
     ]
   }

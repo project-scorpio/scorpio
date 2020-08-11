@@ -170,6 +170,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{D98E38DF
 		build\versions.props = build\versions.props
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.EntityFrameworkCore.SqlServer.Tests", "Extras\EntityFrameworkCore\test\Scorpio.EntityFrameworkCore.SqlServer.Tests\Scorpio.EntityFrameworkCore.SqlServer.Tests.csproj", "{9751BE00-4BED-43DB-8A95-FEDAE60940EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -576,6 +578,18 @@ Global
 		{0C5825DB-4709-4238-91A3-C5022967A73D}.Release|x64.Build.0 = Release|Any CPU
 		{0C5825DB-4709-4238-91A3-C5022967A73D}.Release|x86.ActiveCfg = Release|Any CPU
 		{0C5825DB-4709-4238-91A3-C5022967A73D}.Release|x86.Build.0 = Release|Any CPU
+		{9751BE00-4BED-43DB-8A95-FEDAE60940EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9751BE00-4BED-43DB-8A95-FEDAE60940EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9751BE00-4BED-43DB-8A95-FEDAE60940EE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9751BE00-4BED-43DB-8A95-FEDAE60940EE}.Debug|x64.Build.0 = Debug|Any CPU
+		{9751BE00-4BED-43DB-8A95-FEDAE60940EE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9751BE00-4BED-43DB-8A95-FEDAE60940EE}.Debug|x86.Build.0 = Debug|Any CPU
+		{9751BE00-4BED-43DB-8A95-FEDAE60940EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9751BE00-4BED-43DB-8A95-FEDAE60940EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9751BE00-4BED-43DB-8A95-FEDAE60940EE}.Release|x64.ActiveCfg = Release|Any CPU
+		{9751BE00-4BED-43DB-8A95-FEDAE60940EE}.Release|x64.Build.0 = Release|Any CPU
+		{9751BE00-4BED-43DB-8A95-FEDAE60940EE}.Release|x86.ActiveCfg = Release|Any CPU
+		{9751BE00-4BED-43DB-8A95-FEDAE60940EE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -649,6 +663,7 @@ Global
 		{09EDCBD5-11BD-4149-8B5A-9E8723F57D8E} = {EB3F0A53-A92B-4A7E-A58E-1575685D56D2}
 		{0C5825DB-4709-4238-91A3-C5022967A73D} = {09EDCBD5-11BD-4149-8B5A-9E8723F57D8E}
 		{D98E38DF-4824-4ABC-9FF1-824A7C341BB4} = {153039F8-72D8-49F0-90CA-0F7880A09313}
+		{9751BE00-4BED-43DB-8A95-FEDAE60940EE} = {9BA72E50-C7B0-43A8-A7D0-E01AAD8C66CC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE3E4B96-D77C-46B9-ABEF-CEAB697E68DC}
