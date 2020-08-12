@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Threading.Tasks;
 
 namespace System
 {
@@ -41,6 +42,53 @@ namespace System
         public static T Action<T>(this T obj, Action<T> action)
         {
             action(obj);
+            return obj;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public static async ValueTask<T> Action<T>(this T obj, Func<T, ValueTask> action)
+        {
+            await action(obj);
+            return obj;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="condition"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public static T Action<T>(this T obj, bool condition, Action<T> action)
+        {
+            if (condition)
+            {
+                action(obj);
+            }
+            return obj;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="condition"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public static async ValueTask<T> Action<T>(this T obj, bool condition, Func<T, ValueTask> action)
+        {
+            if (condition)
+            {
+                await action(obj);
+            }
             return obj;
         }
 

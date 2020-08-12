@@ -18,7 +18,7 @@ namespace Scorpio.Auditing
         /// <summary>
         /// 
         /// </summary>
-        public ILogger<SimpleLogAuditingStore> Logger { get; set; }
+        public ILogger<SimpleLogAuditingStore> Logger { get; }
 
         /// <summary>
         /// 
@@ -28,10 +28,9 @@ namespace Scorpio.Auditing
             Logger = NullLogger<SimpleLogAuditingStore>.Instance;
         }
 
-        public SimpleLogAuditingStore(IServiceProvider serviceProvider)
+        public SimpleLogAuditingStore(ILogger<SimpleLogAuditingStore> logger)
         {
-            Logger = serviceProvider.GetService<ILoggerFactory>()?.CreateLogger<SimpleLogAuditingStore>()
-                ?? NullLogger<SimpleLogAuditingStore>.Instance;
+            Logger = logger;
         }
 
         /// <summary>

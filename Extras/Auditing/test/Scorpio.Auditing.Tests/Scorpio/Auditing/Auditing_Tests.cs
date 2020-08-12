@@ -19,7 +19,7 @@ namespace Scorpio.Auditing
         [Fact]
         public void AttributedAuditing()
         {
-            using (_auditingManager.BeginScope())
+            using (var scope= _auditingManager.BeginScope())
             {
                 var service = ServiceProvider.GetService<IAttributedAuditingInterface>();
                 service.Test("test", 19);
@@ -31,6 +31,24 @@ namespace Scorpio.Auditing
             action.ServiceName.ShouldBe(typeof(AttributedAuditingInterface).FullName);
             action.MethodName.ShouldBe("Test");
         }
+
+        [Fact]
+        public void AttributedAuditingAsync()
+        {
+            using (var scope = _auditingManager.BeginScope())
+            {
+                var service = ServiceProvider.GetService<IAttributedAuditingInterface>();
+                service.Test("test", 19);
+                Should.NotThrow(() => scope.SaveAsync());
+            }
+            var store = ServiceProvider.GetService<IAuditingStore>().ShouldBeOfType<FackAuditingStore>();
+            store.Info.ShouldNotBeNull();
+            store.Info.CurrentUser.ShouldBe("TestUser");
+            var action = store.Info.Actions.ShouldHaveSingleItem();
+            action.ServiceName.ShouldBe(typeof(AttributedAuditingInterface).FullName);
+            action.MethodName.ShouldBe("Test");
+        }
+
 
         [Fact]
         public void DisAttributedAuditing()

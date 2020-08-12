@@ -70,27 +70,6 @@ namespace Scorpio.Auditing
         /// <summary>
         /// 
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        protected T GetExtraProperty<T>(string name)
-        {
-            return (T)(ExtraProperties.GetOrDefault(name) ?? default(T));
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="value"></param>
-        protected void SetExtraProperty(string name, object value)
-        {
-            ExtraProperties[name] = value;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
         /// <typeparam name="TWapper"></typeparam>
         /// <returns></returns>
         public TWapper CreateWapper<TWapper>() where TWapper : AuditInfoWapper
@@ -122,8 +101,7 @@ namespace Scorpio.Auditing
                 sb.AppendLine("- Actions:");
                 foreach (var action in Actions)
                 {
-                    sb.AppendLine($"  - {action.ServiceName}.{action.MethodName} ({action.ExecutionDuration} ms.)");
-                    sb.AppendLine($"    {action.Parameters}");
+                    sb.AppendLine(action.ToString());
                 }
             }
 
@@ -185,26 +163,24 @@ namespace Scorpio.Auditing
             ExtraProperties = new Dictionary<string, object>();
         }
 
+
         /// <summary>
         /// 
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="name"></param>
         /// <returns></returns>
-        protected T GetExtraProperty<T>(string name)
+        public override string ToString()
         {
-            return (T)(ExtraProperties.GetOrDefault(name) ?? default(T));
+            var sb = new StringBuilder();
+            sb.AppendLine($"  - {ExecutionTime} {ServiceName}.{MethodName} ({ExecutionDuration} ms.)");
+            sb.AppendLine($"    {Parameters}");
+            if (ExtraProperties.Any())
+            {
+                foreach (var property in ExtraProperties)
+                {
+                    sb.AppendLine($"    - {property.Key,-20}: {property.Value}");
+                }
+            }
+            return sb.ToString();
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="value"></param>
-        protected void SetExtraProperty(string name, object value)
-        {
-            ExtraProperties[name] = value;
-        }
-
     }
 }
