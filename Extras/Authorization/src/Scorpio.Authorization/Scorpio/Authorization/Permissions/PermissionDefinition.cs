@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.Immutable;
 
 namespace Scorpio.Authorization.Permissions
@@ -12,6 +13,14 @@ namespace Scorpio.Authorization.Permissions
         /// Unique name of the permission.
         /// </summary>
         public string Name { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string FullName => Parent switch {
+            PermissionDefinition p=>$"{p.FullName}.{Name}",
+            _=>Name
+        };
 
         /// <summary>
         /// Parent of this permission if one exists.
@@ -73,16 +82,39 @@ namespace Scorpio.Authorization.Permissions
         /// <param name="name"></param>
         /// <param name="displayName"></param>
         /// <returns></returns>
-        public virtual PermissionDefinition AddChild(string name, string displayName = null)
+        public virtual PermissionDefinition AddChild(string name, string displayName=default)
+        {
+            return AddChild(name, displayName, p => { });
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public virtual PermissionDefinition AddChild(string name, Action<PermissionDefinition> action)
+        {
+            return AddChild(name, default, action);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="displayName"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public virtual PermissionDefinition AddChild(string name, string displayName,Action<PermissionDefinition> action)
         {
             var child = new PermissionDefinition(name, displayName)
             {
                 Parent = this
             };
-
+            action(child);
             _children.Add(child);
-
-            return child;
+            return this;
         }
 
         /// <summary>
@@ -91,7 +123,7 @@ namespace Scorpio.Authorization.Permissions
         /// <returns></returns>
         public override string ToString()
         {
-            return $"[{nameof(PermissionDefinition)} {Name}]";
+            return $"[{nameof(PermissionDefinition)} {FullName}]";
         }
     }
 }

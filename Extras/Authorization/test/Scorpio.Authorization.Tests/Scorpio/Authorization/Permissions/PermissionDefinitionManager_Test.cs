@@ -32,7 +32,7 @@ namespace Scorpio.Authorization.Permissions
         [Fact]
         public void GetPermissions()
         {
-            _permissionDefinitionManager.GetPermissions().Count.ShouldBe(2);
+            _permissionDefinitionManager.GetPermissions().Count.ShouldBe(3);
             _permissionDefinitionManager.GetPermissions()[0].Name.ShouldBe("Permission_Test_1");
             _permissionDefinitionManager.GetPermissions()[1].Name.ShouldBe("Permission_Test_2");
         }
