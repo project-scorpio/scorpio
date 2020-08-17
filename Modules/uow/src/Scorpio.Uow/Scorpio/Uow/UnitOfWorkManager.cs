@@ -57,8 +57,8 @@ namespace Scorpio.Uow
 
         private IUnitOfWork CreateNewUnitOfWork()
         {
-            var scope = _serviceProvider.CreateScope();
-            try
+
+            using (var scope = _serviceProvider.CreateScope())
             {
                 var outerUow = _currentUnitOfWorkProvider.Current;
 
@@ -75,11 +75,7 @@ namespace Scorpio.Uow
                 };
 
                 return unitOfWork;
-            }
-            catch
-            {
-                scope.Dispose();
-                throw;
+
             }
         }
     }

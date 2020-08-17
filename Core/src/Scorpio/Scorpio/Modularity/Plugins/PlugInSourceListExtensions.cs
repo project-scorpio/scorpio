@@ -12,7 +12,7 @@ namespace Scorpio.Modularity.Plugins
         /// </summary>
         /// <typeparam name="TModule"></typeparam>
         /// <param name="plugs"></param>
-        public static void AddType<TModule>(this PlugInSourceList plugs) where TModule : IScorpioModule
+        public static void AddType<TModule>(this IPlugInSourceList plugs) where TModule : IScorpioModule
         {
             plugs.AddType(typeof(TModule));
         }
@@ -22,7 +22,7 @@ namespace Scorpio.Modularity.Plugins
         /// </summary>
         /// <param name="plugs"></param>
         /// <param name="moduleType"></param>
-        public static void AddType(this PlugInSourceList plugs, params Type[] moduleType)
+        public static void AddType(this IPlugInSourceList plugs, params Type[] moduleType)
         {
             plugs.Add(new TypePlugInSource(moduleType));
         }
@@ -32,9 +32,9 @@ namespace Scorpio.Modularity.Plugins
         /// </summary>
         /// <param name="plugs"></param>
         /// <param name="filePaths"></param>
-        public static void AddFile(this PlugInSourceList plugs, params string[] filePaths)
+        public static void AddFile(this IPlugInSourceList plugs, params string[] filePaths)
         {
-            plugs.Add(new FilePlugInSource(filePaths));
+            plugs.Add(new FilePlugInSource(plugs.As<PlugInSourceList>(), filePaths));
         }
 
         /// <summary>
@@ -42,10 +42,9 @@ namespace Scorpio.Modularity.Plugins
         /// </summary>
         /// <param name="plugs"></param>
         /// <param name="path"></param>
-        /// <param name="searchOption"></param>
-        public static void AddFolder(this PlugInSourceList plugs, string path, System.IO.SearchOption searchOption)
+        public static void AddFolder(this IPlugInSourceList plugs, string path)
         {
-            plugs.Add(new FolderPlugInSource(path, searchOption));
+            plugs.Add(new FolderPlugInSource(plugs.As<PlugInSourceList>(), path));
         }
 
         /// <summary>
@@ -53,11 +52,15 @@ namespace Scorpio.Modularity.Plugins
         /// </summary>
         /// <param name="plugs"></param>
         /// <param name="path"></param>
-        /// <param name="searchOption"></param>
         /// <param name="predicate"></param>
-        public static void AddFolder(this PlugInSourceList plugs, string path, System.IO.SearchOption searchOption, Func<string, bool> predicate)
+        public static void AddFolder(this IPlugInSourceList plugs, string path, Func<string, bool> predicate)
         {
-            plugs.Add(new FolderPlugInSource(path, searchOption) { Filter = predicate });
+            plugs.Add(new FolderPlugInSource(plugs.As<PlugInSourceList>(), path) { Filter = predicate });
+        }
+
+        private static void Add(this IPlugInSourceList plugs,IPlugInSource plug)
+        {
+            (plugs as PlugInSourceList)?.Add(plug);
         }
     }
 }

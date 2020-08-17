@@ -93,7 +93,7 @@ namespace Scorpio.Application.Services
             return input switch
             {
                 ISortingRequest sorting when !string.IsNullOrWhiteSpace(sorting.Sorting) => query.OrderBy(sorting.Sorting),
-                IPagingRequest _ => query.OrderByDescending(t => t.Id),
+                IPagingRequest _ => query.OrderBy(t => t.Id),
                 _ => query
             };
         }

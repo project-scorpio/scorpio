@@ -38,20 +38,22 @@ namespace AutoMapper
         /// <typeparam name="TSource"></typeparam>
         /// <typeparam name="TDestination"></typeparam>
         /// <param name="mapping"></param>
-        /// <param name="properties"></param>
+        /// <param name="action"></param>
         /// <returns></returns>
         public static IMappingExpression<TSource, TDestination> MapExtraProperties<TSource, TDestination>(
             this IMappingExpression<TSource, TDestination> mapping,
-            params Expression<Func<TSource, object>>[] properties)
+            Action< MapExtraPropertiesContext<TSource>> action)
             where TDestination : IHasExtraProperties
         {
-            var expression = GenerateInitExpression(properties);
+            var context = new MapExtraPropertiesContext<TSource>();
+            action(context);
+            var expression = GenerateInitExpression<TSource>(context.Expressions);
             mapping.ForMember(d => d.ExtraProperties, o => o.MapFrom(expression));
             return mapping;
         }
 
         private static Expression<Func<TSource, Dictionary<string, object>>> GenerateInitExpression<TSource>(
-            Expression<Func<TSource, object>>[] expressions)
+            IEnumerable<LambdaExpression> expressions)
         {
             var type = typeof(Dictionary<string, object>);
             var method = type.GetMethod("Add");
@@ -61,15 +63,36 @@ namespace AutoMapper
             return expression;
         }
 
-        private static IEnumerable<ElementInit> GenerateElements<TSource>(
+        private static IEnumerable<ElementInit> GenerateElements(
             System.Reflection.MethodInfo method,
             ParameterExpression parameter,
-            Expression<Func<TSource, object>>[] expressions)
+            IEnumerable<LambdaExpression> expressions)
         {
             return expressions
                 .Select(p => p.Body as MemberExpression)
                 .Select(p =>
                     Expression.ElementInit(method, Expression.Constant(p.Member.Name), Expression.Convert(Expression.Property(parameter, p.Member.Name), typeof(object))));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        public class MapExtraPropertiesContext<TSource>
+        {
+            internal List<LambdaExpression> Expressions { get; } = new List<LambdaExpression>();
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <typeparam name="TMember"></typeparam>
+            /// <param name="expression"></param>
+            /// <returns></returns>
+            public MapExtraPropertiesContext<TSource> Property<TMember>(Expression<Func<TSource,TMember>> expression)
+            {
+                Expressions.Add(expression);
+                return this;
+            }
         }
     }
 }

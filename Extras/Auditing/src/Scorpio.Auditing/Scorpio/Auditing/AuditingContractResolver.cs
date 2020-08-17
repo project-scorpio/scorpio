@@ -12,13 +12,13 @@ namespace Scorpio.Auditing
     /// </summary>
     internal class AuditingContractResolver : CamelCasePropertyNamesContractResolver
     {
-        private readonly List<Type> _ignoredTypes;
+        private readonly IList<Type> _ignoredTypes;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="ignoredTypes"></param>
-        public AuditingContractResolver(List<Type> ignoredTypes)
+        public AuditingContractResolver(IList<Type> ignoredTypes)
         {
             _ignoredTypes = ignoredTypes;
         }

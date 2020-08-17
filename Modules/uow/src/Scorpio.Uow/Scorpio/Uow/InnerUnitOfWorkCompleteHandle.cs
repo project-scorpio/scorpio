@@ -12,7 +12,6 @@ namespace Scorpio.Uow
     /// </summary>
     internal class InnerUnitOfWorkCompleteHandle : IUnitOfWorkCompleteHandle
     {
-        public static readonly string DidNotCallCompleteMethodExceptionMessage = "Did not call Complete method of a unit of work.";
 
         private volatile bool _isCompleteCalled;
         private bool _disposedValue;

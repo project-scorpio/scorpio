@@ -5,19 +5,22 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Loader;
 
+using Microsoft.Extensions.FileSystemGlobbing;
+using Microsoft.Extensions.FileSystemGlobbing.Abstractions;
+
 namespace Scorpio.Modularity.Plugins
 {
     internal class FolderPlugInSource : IPlugInSource
     {
         private readonly string _path;
-        private readonly SearchOption _searchOption;
+        private PlugInSourceList _plugInSourceLists;
 
         public Func<string, bool> Filter { get; set; }
 
-        public FolderPlugInSource(string path, SearchOption searchOption)
+        public FolderPlugInSource(PlugInSourceList plugInSourceLists, string path)
         {
+            _plugInSourceLists = plugInSourceLists;
             _path = path;
-            _searchOption = searchOption;
         }
 
         public Type[] GetModules()
@@ -47,14 +50,16 @@ namespace Scorpio.Modularity.Plugins
 
         internal IEnumerable<Assembly> GetAssemblies()
         {
-            var assemblyFiles = Directory.EnumerateFiles(_path, "*.*", _searchOption).Select(p => new FileInfo(p)).Where(f => f.Extension.ToLowerInvariant().IsIn(".exe", ".dll")).Select(f => f.FullName);
+            var matcher = new Matcher(StringComparison.InvariantCultureIgnoreCase);
+            matcher.AddInclude("./**/*.dll").AddInclude("./**/*.exe");
+            var assemblyFiles = _plugInSourceLists.FileProvider.GetDirectoryContents(_path)
+                .Where(f=>matcher.Match(f.PhysicalPath).HasMatches);
 
             if (Filter != null)
             {
-                assemblyFiles = assemblyFiles.Where(Filter);
+                assemblyFiles = assemblyFiles.Where(f => Filter(f.Name));
             }
-
-            return assemblyFiles.Select(AssemblyLoadContext.Default.LoadFromAssemblyPath);
+            return assemblyFiles.Select(f => _plugInSourceLists.AssemblyLoadContext.LoadFromStream(f.CreateReadStream()));
         }
     }
 }

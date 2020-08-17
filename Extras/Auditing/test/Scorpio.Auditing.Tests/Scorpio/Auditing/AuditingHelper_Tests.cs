@@ -2,6 +2,8 @@
 
 using Microsoft.Extensions.DependencyInjection;
 
+using Newtonsoft.Json;
+
 using Shouldly;
 
 using Xunit;
@@ -44,11 +46,32 @@ namespace Scorpio.Auditing
         {
             var type = typeof(NonAuditingClassWithAuditedAttribute);
             var method = type.GetMethod("Action");
-            var actual = _auditingHelper.CreateAuditAction(type, method, new object[] { "Test", 18 });
+            var actual = _auditingHelper.CreateAuditAction(type, method, new object[] { "Test", new TestClass { Name="Test",Age=18 ,Descript="Descript",IgnoreClass=new IgnoreClass(),Data=new object()} });
             actual.ServiceName.ShouldBe(type.FullName);
             actual.MethodName.ShouldBe(method.Name);
-            actual.Parameters.ShouldBe("{\"name\":\"Test\",\"age\":18}");
+            actual.Parameters.ShouldBe("{\"name\":\"Test\",\"age\":{\"name\":\"Test\",\"age\":18}}");
+
         }
+        class TestClass
+        {
+            public string Name { get; set; }
+
+            public int Age { get; set; }
+
+            [DisableAuditing]
+            public string Descript { get; set; }
+
+            [JsonIgnore]
+            public object Data { get; set; }
+
+            public IgnoreClass  IgnoreClass { get; set; }
+        }
+
+        internal class IgnoreClass
+        {
+
+        }
+
     }
 
 

@@ -37,7 +37,7 @@ namespace Scorpio.Application.Dtos
         /// <summary>
         /// 
         /// </summary>
-        protected List<string> Sorting { get; set; } = new List<string>();
+        protected List<string> Sorting { get; } = new List<string>();
 
         /// <summary>
         /// 
@@ -56,17 +56,6 @@ namespace Scorpio.Application.Dtos
         {
             SkipCount = skipCount;
             MaxResultCount = maxResultCount;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="skipCount"></param>
-        /// <param name="maxResultCount"></param>
-        /// <param name="sorting"></param>
-        public ListRequest(int skipCount, int maxResultCount, string sorting) : this(skipCount, maxResultCount)
-        {
-            Sorting.Add(sorting);
         }
 
         /// <summary>

@@ -115,7 +115,7 @@ namespace Scorpio.Application.Services
         /// <param name="repository"></param>
         protected AsyncCrudApplicationService(IServiceProvider serviceProvider, IRepository<TEntity, TKey> repository) : base(serviceProvider, repository)
         {
-            AsyncQueryableExecuter = serviceProvider.GetService<IAsyncQueryableExecuter>();
+            AsyncQueryableExecuter = ServiceProvider.GetService<IAsyncQueryableExecuter>();
         }
 
         /// <summary>
@@ -140,16 +140,6 @@ namespace Scorpio.Application.Services
         public virtual async Task DeleteAsync(TKey id, CancellationToken cancellationToken = default)
         {
             await Repository.DeleteAsync(id, cancellationToken: cancellationToken);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public virtual TEntityDto Get(TKey id)
-        {
-            return Mapper.Map<TEntityDto>(Repository.Get(id));
         }
 
         /// <summary>
@@ -188,7 +178,7 @@ namespace Scorpio.Application.Services
         /// <returns></returns>
         public virtual async Task<TEntityDto> UpdateAsync(TKey id, TUpdateInput input, CancellationToken cancellationToken = default)
         {
-            var entity = Repository.Get(id);
+            var entity =await Repository.GetAsync(id);
             Mapper.Map(input, entity);
             await Repository.UpdateAsync(entity, cancellationToken: cancellationToken);
             return Mapper.Map<TEntityDto>(entity);

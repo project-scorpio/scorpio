@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+
+using AspectCore.DynamicProxy;
+
+using Microsoft.Extensions.DependencyInjection;
 
 using Scorpio.TestBase;
 
@@ -31,6 +35,24 @@ namespace Scorpio.Auditing
             action.ServiceName.ShouldBe(typeof(AttributedAuditingInterface).FullName);
             action.MethodName.ShouldBe("Test");
         }
+
+        [Fact]
+        public void AttributedAuditingEx()
+        {
+            using (var scope = _auditingManager.BeginScope())
+            {
+                var service = ServiceProvider.GetService<IAttributedAuditingInterface>();
+                Should.Throw<AspectInvocationException>(() => service.TestEx("test", 19)).InnerException.ShouldBeOfType<NotImplementedException>();
+            }
+            var store = ServiceProvider.GetService<IAuditingStore>().ShouldBeOfType<FackAuditingStore>();
+            store.Info.ShouldNotBeNull();
+            store.Info.CurrentUser.ShouldBe("TestUser");
+            var action = store.Info.Actions.ShouldHaveSingleItem();
+            action.ServiceName.ShouldBe(typeof(AttributedAuditingInterface).FullName);
+            action.MethodName.ShouldBe("TestEx");
+            store.Info.Exceptions.ShouldHaveSingleItem().ShouldBeOfType<NotImplementedException>();
+        }
+
 
         [Fact]
         public void AttributedAuditingAsync()
@@ -77,6 +99,9 @@ namespace Scorpio.Auditing
 
         [DisableAuditing]
         void Test2(string value, int num);
+
+        void TestEx(string value, int num);
+
     }
 
     class AttributedAuditingInterface : IAttributedAuditingInterface, DependencyInjection.ITransientDependency
@@ -89,6 +114,11 @@ namespace Scorpio.Auditing
         public void Test2(string value, int num)
         {
             // Method intentionally left empty.
+        }
+
+        public void TestEx(string value, int num)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

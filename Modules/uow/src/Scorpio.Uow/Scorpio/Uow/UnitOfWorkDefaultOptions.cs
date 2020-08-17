@@ -38,6 +38,8 @@ namespace Scorpio.Uow
         {
             IsTransactional = true;
             Scope = TransactionScopeOption.Required;
+            Timeout = null;
+            IsolationLevel = null;
         }
 
         internal UnitOfWorkOptions Normalize(UnitOfWorkOptions options)

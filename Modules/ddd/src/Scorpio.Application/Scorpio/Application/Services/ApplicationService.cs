@@ -12,7 +12,7 @@ namespace Scorpio.Application.Services
         /// <summary>
         /// 
         /// </summary>
-        public static string[] CommonPostfixes { get; set; } = { "AppService", "ApplicationService", "Service" };
+        public static string[] CommonPostfixes { get; } = { "AppService", "ApplicationService", "Service" };
 
         /// <summary>
         /// 
