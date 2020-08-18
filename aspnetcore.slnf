@@ -11,6 +11,10 @@
       "Modules\\aspnetcore\\src\\Scorpio.AspNetCore.UI.Bootstrap\\Scorpio.AspNetCore.UI.Bootstrap.csproj",
       "Modules\\aspnetcore\\src\\Scorpio.AspNetCore.UI\\Scorpio.AspNetCore.UI.csproj",
       "Modules\\aspnetcore\\src\\Scorpio.AspNetCore\\Scorpio.AspNetCore.csproj",
+      "Modules\\aspnetcore\\test\\Scorpio.AspNetCore.Mvc.Tests\\Scorpio.AspNetCore.Mvc.Tests.csproj",
+      "Modules\\aspnetcore\\test\\Scorpio.AspNetCore.Tests\\Scorpio.AspNetCore.Tests.csproj",
+      "Modules\\aspnetcore\\test\\Scorpio.AspNetCore.UI.Bootstrap.Tests\\Scorpio.AspNetCore.UI.Bootstrap.Tests.csproj",
+      "Modules\\aspnetcore\\test\\Scorpio.AspNetCore.UI.Tests\\Scorpio.AspNetCore.UI.Tests.csproj",
       "Modules\\uow\\src\\Scorpio.Uow\\Scorpio.Uow.csproj"
     ]
   }

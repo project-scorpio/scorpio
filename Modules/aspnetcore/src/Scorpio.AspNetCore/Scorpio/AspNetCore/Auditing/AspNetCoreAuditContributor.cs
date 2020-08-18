@@ -52,16 +52,6 @@ namespace Scorpio.AspNetCore.Auditing
             {
                 wapper.BrowserInfo = GetBrowserInfo(httpContext);
             }
-        }
-
-        public void PostContribute(AuditContributionContext context)
-        {
-            var httpContext = context.ServiceProvider.GetRequiredService<IHttpContextAccessor>().HttpContext;
-            if (httpContext == null)
-            {
-                return;
-            }
-            var wapper = context.CreateWapper<AspNetCoreAuditInfoWapper>();
 
             if (wapper.HttpStatusCode == default)
             {
@@ -100,5 +90,8 @@ namespace Scorpio.AspNetCore.Auditing
             return uriBuilder.Uri.AbsoluteUri;
         }
 
+        public void PostContribute(AuditContributionContext context)
+        {
+        }
     }
 }

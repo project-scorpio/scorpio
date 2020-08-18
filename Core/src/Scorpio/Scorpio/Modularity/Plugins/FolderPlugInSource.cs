@@ -39,6 +39,10 @@ namespace Scorpio.Modularity.Plugins
                         }
                     }
                 }
+                catch (ReflectionTypeLoadException)
+                {
+                    continue;
+                }
                 catch (Exception ex)
                 {
                     throw new ScorpioException("Could not get module types from assembly: " + assembly.FullName, ex);

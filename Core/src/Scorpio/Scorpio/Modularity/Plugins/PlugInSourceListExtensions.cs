@@ -37,15 +37,6 @@ namespace Scorpio.Modularity.Plugins
             plugs.Add(new FilePlugInSource(plugs.As<PlugInSourceList>(), filePaths));
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="plugs"></param>
-        /// <param name="path"></param>
-        public static void AddFolder(this IPlugInSourceList plugs, string path)
-        {
-            plugs.Add(new FolderPlugInSource(plugs.As<PlugInSourceList>(), path));
-        }
 
         /// <summary>
         /// 
@@ -53,7 +44,7 @@ namespace Scorpio.Modularity.Plugins
         /// <param name="plugs"></param>
         /// <param name="path"></param>
         /// <param name="predicate"></param>
-        public static void AddFolder(this IPlugInSourceList plugs, string path, Func<string, bool> predicate)
+        public static void AddFolder(this IPlugInSourceList plugs, string path, Func<string, bool> predicate=default)
         {
             plugs.Add(new FolderPlugInSource(plugs.As<PlugInSourceList>(), path) { Filter = predicate });
         }
