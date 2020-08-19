@@ -9,7 +9,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Properties\launchSettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <AdditionalFiles Include="..\..\..\..\.sonarlint\project-scorpio_scorpio\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Properties\launchSettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Scorpio.AspNetCore\Scorpio.AspNetCore.csproj" />

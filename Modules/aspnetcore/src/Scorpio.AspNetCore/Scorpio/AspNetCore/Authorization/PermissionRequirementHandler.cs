@@ -38,6 +38,10 @@ namespace Scorpio.AspNetCore.Authorization
                 {
                     context.Succeed(requirement);
                 }
+                else
+                {
+                    context.Fail();
+                }
             }
             catch (PermissionNotFondException)
             {

@@ -14,13 +14,8 @@ namespace Scorpio.Authorization
         protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options)
         {
             options.UseAspectCore();
+            options.ConfigureServices(c => c.Services.AddTransient<IAuthorizeAttributeTestService, AuthorizeAttributeTestService>());
             base.SetBootstrapperCreationOptions(options);
-        }
-
-        protected override void AfterAddBootstrapper(IServiceCollection services)
-        {
-            services.AddTransient<IAuthorizeAttributeTestService, AuthorizeAttributeTestService>();
-            base.AfterAddBootstrapper(services);
         }
 
         [Fact]

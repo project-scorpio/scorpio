@@ -6,12 +6,11 @@ using Scorpio.Modularity;
 
 namespace Scorpio.TestBase
 {
-    public abstract class IntegratedTest<TStartupModule> : TestBaseWithServiceProvider, IDisposable
+    public abstract class IntegratedTest<TStartupModule> : IntegratedTestBase<TStartupModule>
         where TStartupModule : IScorpioModule
     {
-        private bool _disposedValue;
 
-        protected IBootstrapper Bootstrapper { get; }
+        protected override IBootstrapper Bootstrapper { get; }
 
         protected override IServiceProvider ServiceProvider => Bootstrapper.ServiceProvider;
 
@@ -21,15 +20,9 @@ namespace Scorpio.TestBase
 
         protected IntegratedTest()
         {
-            var services = CreateServiceCollection();
-
-            BeforeAddBootstrapper(services);
-
+            var services = new ServiceCollection();
             var bootstrapper = CreateBootstrapper(services);
             Bootstrapper = bootstrapper;
-
-            AfterAddBootstrapper(services);
-
             RootServiceProvider = CreateServiceProvider(bootstrapper);
             TestServiceScope = RootServiceProvider.CreateScope();
             bootstrapper.SetServiceProvider(TestServiceScope.ServiceProvider);
@@ -41,30 +34,24 @@ namespace Scorpio.TestBase
             return new InternalBootstrapper(typeof(TStartupModule), services, null, SetBootstrapperCreationOptions);
         }
 
-        protected virtual IServiceCollection CreateServiceCollection()
-        {
-            return new ServiceCollection();
-        }
-
-        protected virtual void BeforeAddBootstrapper(IServiceCollection services)
-        {
-
-        }
-
-        protected virtual void SetBootstrapperCreationOptions(BootstrapperCreationOptions options)
-        {
-
-        }
-
-        protected virtual void AfterAddBootstrapper(IServiceCollection services)
-        {
-
-        }
-
         protected virtual IServiceProvider CreateServiceProvider(Bootstrapper bootstrapper)
         {
             var builder = bootstrapper.ServiceFactoryAdapter.CreateBuilder(bootstrapper.Services);
             return bootstrapper.ServiceFactoryAdapter.CreateServiceProvider(builder);
+        }
+    }
+
+    public abstract class IntegratedTestBase<TStartupModule> : TestBaseWithServiceProvider, IDisposable
+    where TStartupModule : IScorpioModule
+    {
+        private bool _disposedValue;
+
+        protected abstract IBootstrapper Bootstrapper { get; }
+
+
+        protected virtual void SetBootstrapperCreationOptions(BootstrapperCreationOptions options)
+        {
+
         }
 
         protected virtual void Dispose(bool disposing)
@@ -74,7 +61,6 @@ namespace Scorpio.TestBase
                 if (disposing)
                 {
                     Bootstrapper.Shutdown();
-                    TestServiceScope.Dispose();
                     Bootstrapper.Dispose();
                 }
 
@@ -91,4 +77,5 @@ namespace Scorpio.TestBase
             GC.SuppressFinalize(this);
         }
     }
+
 }

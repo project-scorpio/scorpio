@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-	  <RootNamespace/>
+	  <RootNamespace />
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -11,6 +11,23 @@
     <PackageReference Include="xunit" Version="2.4.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Scorpio.AspNetCore.Mvc\Scorpio.AspNetCore.Mvc.csproj" />
+    <ProjectReference Include="..\Scorpio.AspNetCore.Tests\Scorpio.AspNetCore.Tests.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Scorpio\AspNetCore\App\Views\Simple\About.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Scorpio\AspNetCore\App\Views\Simple\ExceptionOnRazor.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Scorpio\AspNetCore\App\Views\_ViewImports.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
