@@ -1,23 +1,21 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
-    <AssemblyTitle>Scorpio aspnet core library</AssemblyTitle>
-    <RootNamespace />
-    <CodeAnalysisRuleSet>Scorpio.AspNetCore.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.0</TargetFramework>
+		<AssemblyTitle>Scorpio aspnet core library</AssemblyTitle>
+		<RootNamespace />
+		<OutputType>Library</OutputType>
+		<CodeAnalysisRuleSet>Scorpio.AspNetCore.ruleset</CodeAnalysisRuleSet>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <AdditionalFiles Include="..\..\..\..\.sonarlint\project-scorpio_scorpio\CSharp\SonarLint.xml" Link="SonarLint.xml" />
-  </ItemGroup>
+	<ItemGroup>
+		<AdditionalFiles Include="..\..\..\..\.sonarlint\project-scorpio_scorpio\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+	</ItemGroup>
 
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Extras\Auditing\src\Scorpio.Auditing\Scorpio.Auditing.csproj" />
-    <ProjectReference Include="..\..\..\..\Extras\Authorization\src\Scorpio.Authorization\Scorpio.Authorization.csproj" />
-    <ProjectReference Include="..\..\..\..\Modules\uow\src\Scorpio.Uow\Scorpio.Uow.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\..\Extras\Auditing\src\Scorpio.Auditing\Scorpio.Auditing.csproj" />
+		<ProjectReference Include="..\..\..\..\Extras\Authorization\src\Scorpio.Authorization\Scorpio.Authorization.csproj" />
+		<ProjectReference Include="..\..\..\..\Modules\uow\src\Scorpio.Uow\Scorpio.Uow.csproj" />
+	</ItemGroup>
 </Project>

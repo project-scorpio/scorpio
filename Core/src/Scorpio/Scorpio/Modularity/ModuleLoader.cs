@@ -13,7 +13,7 @@ namespace Scorpio.Modularity
         public IModuleDescriptor[] LoadModules(
             IServiceCollection services,
             Type startupModuleType,
-            PlugInSourceList plugInSources)
+            IPlugInSourceList plugInSources)
         {
             Check.NotNull(services, nameof(services));
             Check.NotNull(startupModuleType, nameof(startupModuleType));
@@ -29,7 +29,7 @@ namespace Scorpio.Modularity
         private List<IModuleDescriptor> GetDescriptors(
             IServiceCollection services,
             Type startupModuleType,
-            PlugInSourceList plugInSources)
+            IPlugInSourceList plugInSources)
         {
             var modules = new List<ModuleDescriptor>();
 
@@ -43,7 +43,7 @@ namespace Scorpio.Modularity
             List<ModuleDescriptor> modules,
             IServiceCollection services,
             Type startupModuleType,
-            PlugInSourceList plugInSources)
+            IPlugInSourceList plugInSources)
         {
             //All modules starting from the startup module
             foreach (var moduleType in ModuleHelper.FindAllModuleTypes(startupModuleType))
@@ -52,7 +52,7 @@ namespace Scorpio.Modularity
             }
 
             //Plugin modules
-            foreach (var moduleType in plugInSources.GetAllModules())
+            foreach (var moduleType in plugInSources.As<PlugInSourceList>().GetAllModules())
             {
                 if (modules.Any(m => m.Type == moduleType))
                 {

@@ -41,7 +41,7 @@ namespace Scorpio.Data.Values
         public override int GetHashCode()
         {
 
-            const int index = 1;
+            var index = 1;
             const int initialHasCode = 31;
 
             var publicProperties = GetType().GetTypeInfo().GetProperties();
@@ -60,7 +60,7 @@ namespace Scorpio.Data.Values
 
                 if (value == null)
                 {
-                    hashCode ^= (index * 13);
+                    hashCode ^= (index++ * 13);
                     continue;
                 }
 

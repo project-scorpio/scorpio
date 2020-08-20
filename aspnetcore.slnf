@@ -5,12 +5,19 @@
       "Core\\src\\Scorpio.Aspect\\Scorpio.Aspect.csproj",
       "Core\\src\\Scorpio.Utilities\\Scorpio.Utilities.csproj",
       "Core\\src\\Scorpio\\Scorpio.csproj",
+      "Core\\test\\Scorpio.TestBase\\Scorpio.TestBase.csproj",
       "Extras\\Auditing\\src\\Scorpio.Auditing\\Scorpio.Auditing.csproj",
       "Extras\\Authorization\\src\\Scorpio.Authorization\\Scorpio.Authorization.csproj",
+      "Extras\\Hosting\\src\\Scorpio.Hosting\\Scorpio.Hosting.csproj",
       "Modules\\aspnetcore\\src\\Scorpio.AspNetCore.Mvc\\Scorpio.AspNetCore.Mvc.csproj",
       "Modules\\aspnetcore\\src\\Scorpio.AspNetCore.UI.Bootstrap\\Scorpio.AspNetCore.UI.Bootstrap.csproj",
       "Modules\\aspnetcore\\src\\Scorpio.AspNetCore.UI\\Scorpio.AspNetCore.UI.csproj",
       "Modules\\aspnetcore\\src\\Scorpio.AspNetCore\\Scorpio.AspNetCore.csproj",
+      "Modules\\aspnetcore\\test\\Scorpio.AspNetCore.Mvc.Tests\\Scorpio.AspNetCore.Mvc.Tests.csproj",
+      "Modules\\aspnetcore\\test\\Scorpio.AspNetCore.TestBase\\Scorpio.AspNetCore.TestBase.csproj",
+      "Modules\\aspnetcore\\test\\Scorpio.AspNetCore.Tests\\Scorpio.AspNetCore.Tests.csproj",
+      "Modules\\aspnetcore\\test\\Scorpio.AspNetCore.UI.Bootstrap.Tests\\Scorpio.AspNetCore.UI.Bootstrap.Tests.csproj",
+      "Modules\\aspnetcore\\test\\Scorpio.AspNetCore.UI.Tests\\Scorpio.AspNetCore.UI.Tests.csproj",
       "Modules\\uow\\src\\Scorpio.Uow\\Scorpio.Uow.csproj"
     ]
   }

@@ -24,6 +24,7 @@ namespace Scorpio.Application.Services
     /// <typeparam name="TEntityDto"></typeparam>
     /// <typeparam name="TKey"></typeparam>
     /// <typeparam name="TGetListInput"></typeparam>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S2436:Types and methods should not have too many generic parameters", Justification = "<挂起>")]
     public interface IAsyncCrudApplicationService<TEntityDto, in TKey, in TGetListInput>
         : IAsyncCrudApplicationService<TEntityDto, TKey, TGetListInput, TEntityDto>
         where TEntityDto : IEntityDto<TKey>
@@ -38,6 +39,7 @@ namespace Scorpio.Application.Services
     /// <typeparam name="TKey"></typeparam>
     /// <typeparam name="TGetListInput"></typeparam>
     /// <typeparam name="TCreateInput"></typeparam>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S2436:Types and methods should not have too many generic parameters", Justification = "<挂起>")]
     public interface IAsyncCrudApplicationService<TEntityDto, in TKey, in TGetListInput, in TCreateInput>
         : IAsyncCrudApplicationService<TEntityDto, TKey, TGetListInput, TCreateInput, TCreateInput>
         where TEntityDto : IEntityDto<TKey>
@@ -52,6 +54,7 @@ namespace Scorpio.Application.Services
     /// <typeparam name="TGetListInput"></typeparam>
     /// <typeparam name="TCreateInput"></typeparam>
     /// <typeparam name="TUpdateInput"></typeparam>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S2436:Types and methods should not have too many generic parameters", Justification = "<挂起>")]
     public interface IAsyncCrudApplicationService<TEntityDto, in TKey, in TGetListInput, in TCreateInput, in TUpdateInput>
         : IApplicationService
         where TEntityDto : IEntityDto<TKey>

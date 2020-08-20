@@ -3,6 +3,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 
 using Scorpio.Auditing;
 
@@ -22,7 +23,7 @@ namespace Scorpio.AspNetCore.Auditing
 
         public AspNetCoreAuditContributor(IServiceProvider serviceProvider)
         {
-            Logger = serviceProvider.GetService<ILoggerFactory>().CreateLogger<AspNetCoreAuditContributor>();
+            Logger = serviceProvider.GetService<ILoggerFactory>(()=>NullLoggerFactory.Instance).CreateLogger<AspNetCoreAuditContributor>();
         }
         public void PreContribute(AuditContributionContext context)
         {
@@ -52,16 +53,6 @@ namespace Scorpio.AspNetCore.Auditing
             {
                 wapper.BrowserInfo = GetBrowserInfo(httpContext);
             }
-        }
-
-        public void PostContribute(AuditContributionContext context)
-        {
-            var httpContext = context.ServiceProvider.GetRequiredService<IHttpContextAccessor>().HttpContext;
-            if (httpContext == null)
-            {
-                return;
-            }
-            var wapper = context.CreateWapper<AspNetCoreAuditInfoWapper>();
 
             if (wapper.HttpStatusCode == default)
             {
@@ -90,15 +81,28 @@ namespace Scorpio.AspNetCore.Auditing
 
         protected virtual string BuildUrl(HttpContext httpContext)
         {
-            var uriBuilder = new UriBuilder
+            try
             {
-                Scheme = httpContext.Request.Scheme,
-                Host = httpContext.Request.Host.Host,
-                Path = httpContext.Request.Path.ToString(),
-                Query = httpContext.Request.QueryString.ToString()
-            };
-            return uriBuilder.Uri.AbsoluteUri;
+                var uriBuilder = new UriBuilder
+                {
+                    Scheme = httpContext.Request.Scheme,
+                    Host = httpContext.Request.Host.Host,
+                    Path = httpContext.Request.Path.ToString(),
+                    Query = httpContext.Request.QueryString.ToString()
+                };
+                return uriBuilder.Uri.AbsoluteUri;
+            }
+            catch (UriFormatException ex)
+            {
+                Logger.LogException(ex, LogLevel.Warning);
+
+                return "";
+            }
         }
 
+        public void PostContribute(AuditContributionContext context)
+        {
+            // Method intentionally left empty.
+        }
     }
 }

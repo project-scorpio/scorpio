@@ -21,7 +21,7 @@ namespace Scorpio.Modularity
         IModuleDescriptor[] LoadModules(
             IServiceCollection services,
             Type startupModuleType,
-            PlugInSourceList plugInSources
+            IPlugInSourceList plugInSources
             );
     }
 }

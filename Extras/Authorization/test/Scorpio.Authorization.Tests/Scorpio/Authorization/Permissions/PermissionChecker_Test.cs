@@ -19,8 +19,8 @@ namespace Scorpio.Authorization.Permissions
         public void CheckAsync()
         {
             _permissionChecker.CheckAsync("Permission_Test_1").Result.ShouldBeTrue();
-            _permissionChecker.CheckAsync("Permission_Test_2").Result.ShouldBeFalse();
-            Should.Throw<PermissionNotFondException>(() => _permissionChecker.CheckAsync("Permission_Test_3"));
+            _permissionChecker.CheckAsync("Permission_Test_1.Permission_Test_2").Result.ShouldBeFalse();
+            Should.Throw<PermissionNotFondException>(() => _permissionChecker.CheckAsync("Permission_Test_4"));
         }
     }
 }

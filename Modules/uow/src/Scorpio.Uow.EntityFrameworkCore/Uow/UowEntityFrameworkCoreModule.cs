@@ -3,7 +3,7 @@
 using Scorpio.EntityFrameworkCore;
 using Scorpio.Modularity;
 
-namespace Scorpio.Uow.EntityFrameworkCore.Uow
+namespace Scorpio.Uow
 {
     /// <summary>
     /// 
@@ -12,6 +12,14 @@ namespace Scorpio.Uow.EntityFrameworkCore.Uow
     [DependsOn(typeof(EntityFrameworkCoreModule))]
     public sealed class UnitOfWorkEntityFrameworkCoreModule : ScorpioModule
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
+        public override void PreConfigureServices(ConfigureServicesContext context)
+        {
+            context.AddConventionalRegistrar<ConventionalRegistrar>();
+        }
         /// <summary>
         /// 
         /// </summary>

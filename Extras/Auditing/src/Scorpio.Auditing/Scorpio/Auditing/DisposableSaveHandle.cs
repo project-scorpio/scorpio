@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Scorpio.Auditing
@@ -27,14 +28,12 @@ namespace Scorpio.Auditing
 
         public void Save()
         {
-            _saved = true;
-            _auditingManager.Save(this);
+            _auditingManager.Action(!_saved, m => { m.Save(this); _saved = true; });
         }
 
         public async Task SaveAsync()
         {
-            _saved = true;
-            await _auditingManager.SaveAsync(this);
+           await _auditingManager.Action(!_saved, async m => {await m.SaveAsync(this); _saved = true; });
         }
 
         protected virtual void Dispose(bool disposing)

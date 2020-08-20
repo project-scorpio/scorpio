@@ -6,7 +6,6 @@ using Scorpio.TestBase;
 
 namespace Scorpio
 {
-    [DependsOn(typeof(TestBaseModule))]
     public class AspectTestModule : ScorpioModule
     {
         public override void ConfigureServices(ConfigureServicesContext context)

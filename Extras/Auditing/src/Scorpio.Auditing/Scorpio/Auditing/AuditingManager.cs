@@ -115,6 +115,7 @@ namespace Scorpio.Auditing
                     catch (Exception ex)
                     {
                         Logger.LogException(ex, LogLevel.Warning);
+                        throw;
                     }
                 }
             }
@@ -135,6 +136,7 @@ namespace Scorpio.Auditing
                     catch (Exception ex)
                     {
                         Logger.LogException(ex, LogLevel.Warning);
+                        throw;
                     }
                 }
             }

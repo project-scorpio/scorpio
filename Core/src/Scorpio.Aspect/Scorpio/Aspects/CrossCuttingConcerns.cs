@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using Scorpio.DynamicProxy;
+
 namespace Scorpio.Aspects
 {
     /// <summary>
@@ -22,7 +24,7 @@ namespace Scorpio.Aspects
                 throw new ArgumentNullException(nameof(concerns), $"{nameof(concerns)} should be provided!");
             }
 
-            (obj as IAvoidDuplicateCrossCuttingConcerns)?.AppliedCrossCuttingConcerns.AddRange(concerns);
+            (obj.UnProxy() as IAvoidDuplicateCrossCuttingConcerns)?.AppliedCrossCuttingConcerns.AddRange(concerns);
         }
 
         /// <summary>
@@ -40,7 +42,7 @@ namespace Scorpio.Aspects
             }
 
 
-            if (!(obj is IAvoidDuplicateCrossCuttingConcerns crossCuttingEnabledObj))
+            if (!(obj.UnProxy() is IAvoidDuplicateCrossCuttingConcerns crossCuttingEnabledObj))
             {
                 return;
             }
@@ -65,7 +67,7 @@ namespace Scorpio.Aspects
                 throw new ArgumentNullException(nameof(concern));
             }
 
-            return (obj as IAvoidDuplicateCrossCuttingConcerns)?.AppliedCrossCuttingConcerns.Contains(concern) ?? false;
+            return (obj.UnProxy() as IAvoidDuplicateCrossCuttingConcerns)?.AppliedCrossCuttingConcerns.Contains(concern) ?? false;
         }
 
         /// <summary>
@@ -91,7 +93,7 @@ namespace Scorpio.Aspects
         public static string[] GetApplieds(object obj)
         {
             Check.NotNull(obj, nameof(obj));
-            if (!(obj is IAvoidDuplicateCrossCuttingConcerns crossCuttingEnabledObj))
+            if (!(obj.UnProxy() is IAvoidDuplicateCrossCuttingConcerns crossCuttingEnabledObj))
             {
                 return new string[0];
             }

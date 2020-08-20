@@ -92,32 +92,17 @@ namespace Scorpio.AspNetCore.Mvc.Filters
         {
             auditLog = null;
             auditLogAction = null;
-
-            if (!Options.IsEnabled)
-            {
-                return false;
-            }
-
-            if (!Options.IsAuditingPage())
-            {
-                return false;
-            }
-
-            if (context.ActionDescriptor == null)
-            {
-                return false;
-            }
-
             var auditLogScope = _auditingManager.Current;
-            if (auditLogScope == null)
+
+            if (!Options.IsEnabled
+                || !Options.IsAuditingPage()
+                || context.ActionDescriptor == null
+                || auditLogScope == null
+                || !_auditingHelper.ShouldSaveAudit(context.HandlerMethod.MethodInfo, true))
             {
                 return false;
             }
 
-            if (!_auditingHelper.ShouldSaveAudit(context.HandlerMethod.MethodInfo, true))
-            {
-                return false;
-            }
             auditLog = auditLogScope.Info;
             auditLogAction = _auditingHelper.CreateAuditAction(
                 context.ActionDescriptor.HandlerTypeInfo,

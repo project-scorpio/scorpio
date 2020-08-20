@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace Scorpio.Authorization.Permissions
 {
@@ -8,7 +9,7 @@ namespace Scorpio.Authorization.Permissions
 
         public Task<PermissionGrantingInfo> GrantAsync(PermissionGrantingContext context)
         {
-            var success = context.Permission.Name == "Permission_Test_1"
+            var success = context.Permission.Name.IsIn("Permission_Test_1", "Permission_Test_3")
                 && context?.Principal?.Identity?.Name == "FakeUser";
             return Task.FromResult(new PermissionGrantingInfo(success, Name));
         }

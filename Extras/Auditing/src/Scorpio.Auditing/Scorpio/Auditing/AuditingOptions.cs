@@ -36,7 +36,7 @@ namespace Scorpio.Auditing
         /// <summary>
         /// 
         /// </summary>
-        public List<Type> IgnoredTypes { get; }
+        public ITypeList IgnoredTypes { get; }
 
 
 
@@ -50,7 +50,7 @@ namespace Scorpio.Auditing
 
             Contributors = new List<IAuditContributor>();
 
-            IgnoredTypes = new List<Type>
+            IgnoredTypes = new TypeList
             {
                 typeof(Stream),
                 typeof(Expression)

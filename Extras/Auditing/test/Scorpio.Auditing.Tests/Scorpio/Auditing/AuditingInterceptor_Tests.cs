@@ -1,6 +1,7 @@
 ﻿namespace Scorpio.Auditing
 {
-    class AuditingInterceptor_Tests
+    public class AuditingInterceptor_Tests
     {
+
     }
 }

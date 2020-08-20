@@ -114,12 +114,12 @@ namespace Scorpio
         {
             var context = new ConfigureServicesContext(this, Services, Configuration);
             Services.AddSingleton(context);
-            _options.PreConfigureServices(context);
             Modules.ForEach(m => m.Instance.PreConfigureServices(context));
-            _options.ConfigureServices(context);
+            _options.PreConfigureServices(context);
             Modules.ForEach(m => m.Instance.ConfigureServices(context));
-            _options.PostConfigureServices(context);
+            _options.ConfigureServices(context);
             Modules.ForEach(m => m.Instance.PostConfigureServices(context));
+            _options.PostConfigureServices(context);
         }
 
         private IReadOnlyList<IModuleDescriptor> LoadModules()

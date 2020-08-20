@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Net;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -37,7 +40,6 @@ namespace Scorpio.AspNetCore.Mvc
             context.Services.Options<MvcOptions>().PreConfigure<IServiceProvider>(
                 (options, serviceProvider) => options.AddScorpio());
             context.Services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-
             context.Services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();
             //Use DI to create controllers
             context.Services.Replace(ServiceDescriptor.Transient<IControllerActivator, ServiceBasedControllerActivator>());

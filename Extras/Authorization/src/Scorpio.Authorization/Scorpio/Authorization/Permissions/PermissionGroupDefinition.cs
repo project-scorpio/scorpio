@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.Immutable;
 
 namespace Scorpio.Authorization.Permissions
@@ -70,18 +71,41 @@ namespace Scorpio.Authorization.Permissions
         /// <returns></returns>
         public virtual PermissionGroupDefinition AddPermission(string name, string displayName = null)
         {
-            var permission = new PermissionDefinition(name, displayName);
-
-            _permissions.Add(permission);
-
-            return this;
+            return AddPermission(name, displayName, p => { });
         }
 
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="name"></param>
+        /// <param name="action"></param>
         /// <returns></returns>
-        public virtual List<PermissionDefinition> GetPermissionsWithChildren()
+        public virtual PermissionGroupDefinition AddPermission(string name,  Action<PermissionDefinition> action)
+        {
+            return AddPermission(name, default, action);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="displayName"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public virtual PermissionGroupDefinition AddPermission(string name, string displayName, Action<PermissionDefinition> action)
+        {
+            var permission = new PermissionDefinition(name, displayName);
+            action(permission);
+            _permissions.Add(permission);
+
+            return this;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public virtual ImmutableList<PermissionDefinition> GetPermissionsWithChildren()
         {
             var permissions = new List<PermissionDefinition>();
 
@@ -90,7 +114,7 @@ namespace Scorpio.Authorization.Permissions
                 AddPermissionToListRecursively(permissions, permission);
             }
 
-            return permissions;
+            return permissions.ToImmutableList();
         }
 
         /// <summary>

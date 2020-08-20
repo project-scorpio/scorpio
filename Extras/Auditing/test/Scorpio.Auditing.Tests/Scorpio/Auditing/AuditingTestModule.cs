@@ -19,6 +19,7 @@ namespace Scorpio.Auditing
             context.Services.Configure<AuditingOptions>(opt =>
             {
                 opt.Contributors.Add(new TestContributor());
+                opt.IgnoredTypes.Add<AuditingHelper_Tests.IgnoreClass>();
             });
             context.Services.RegisterAssemblyByConvention();
             context.Services.ReplaceSingleton<IAuditingStore, FackAuditingStore>();

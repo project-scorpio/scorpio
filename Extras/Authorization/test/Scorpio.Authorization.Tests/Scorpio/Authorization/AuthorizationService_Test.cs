@@ -35,23 +35,23 @@ namespace Scorpio.Authorization
                 .ShouldNotThrow();
             _authorizationService.CheckAsync(
                 new InvocationAuthorizationContext(
-                    new string[] { "Permission_Test_2" }, false, null))
+                    new string[] { "Permission_Test_1.Permission_Test_2" }, false, null))
                 .ShouldThrow<AuthorizationException>();
             _authorizationService.CheckAsync(
                 new InvocationAuthorizationContext(
-                    new string[] { "Permission_Test_1", "Permission_Test_2" }, false, null))
+                    new string[] { "Permission_Test_1", "Permission_Test_1.Permission_Test_2" }, false, null))
                 .ShouldNotThrow();
             _authorizationService.CheckAsync(
                 new InvocationAuthorizationContext(
-                    new string[] { "Permission_Test_1", "Permission_Test_2" }, true, null))
+                    new string[] { "Permission_Test_1", "Permission_Test_1.Permission_Test_2" }, true, null))
                 .ShouldThrow<AuthorizationException>();
             _authorizationService.CheckAsync(
                 new InvocationAuthorizationContext(
-                    new string[] { "Permission_Test_3", "Permission_Test_1", "Permission_Test_2" }, true, null))
+                    new string[] { "Permission_Test_4", "Permission_Test_1", "Permission_Test_1.Permission_Test_2" }, true, null))
                 .ShouldThrow<Permissions.PermissionNotFondException>();
             _authorizationService.CheckAsync(
                 new InvocationAuthorizationContext(
-                    new string[] { "Permission_Test_3", "Permission_Test_1", "Permission_Test_2" }, true, ((Action)FakeMethod).Method))
+                    new string[] { "Permission_Test_3", "Permission_Test_1", "Permission_Test_1.Permission_Test_2" }, true, ((Action)FakeMethod).Method))
                 .ShouldNotThrow();
             _currentPrincipalAccessor.ShouldBeOfType<FakePrincipalAccessor>().SetPrincipal(null);
             _authorizationService.CheckAsync(

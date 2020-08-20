@@ -6,9 +6,11 @@ namespace Scorpio.Modularity.Plugins
     internal class FilePlugInSource : IPlugInSource
     {
         private readonly string[] _filePaths;
+        private PlugInSourceList _plugInSourceLists;
 
-        public FilePlugInSource(params string[] filePaths)
+        public FilePlugInSource(PlugInSourceList plugInSourceLists, string[] filePaths)
         {
+            _plugInSourceLists = plugInSourceLists;
             _filePaths = filePaths;
         }
 
@@ -18,8 +20,10 @@ namespace Scorpio.Modularity.Plugins
 
             foreach (var filePath in _filePaths)
             {
-                var assembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(filePath);
 
+                var assembly = _plugInSourceLists.AssemblyLoadContext.LoadFromStream(
+                    _plugInSourceLists.FileProvider.GetFileInfo(filePath)
+                                                   .CreateReadStream());
                 try
                 {
                     foreach (var type in assembly.GetTypes())

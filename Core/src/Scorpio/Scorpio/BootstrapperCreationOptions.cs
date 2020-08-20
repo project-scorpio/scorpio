@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Loader;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 
 using Scorpio.Modularity;
 using Scorpio.Modularity.Plugins;
@@ -28,7 +30,7 @@ namespace Scorpio
         /// <summary>
         /// 
         /// </summary>
-        public PlugInSourceList PlugInSources { get; }
+        public IPlugInSourceList PlugInSources { get; }
 
 
 
@@ -37,7 +39,7 @@ namespace Scorpio
 
         internal BootstrapperCreationOptions()
         {
-            PlugInSources = new PlugInSourceList();
+            PlugInSources = new PlugInSourceList(new PhysicalFileProvider(AppDomain.CurrentDomain.BaseDirectory), AssemblyLoadContext.Default);
         }
 
         /// <summary>
