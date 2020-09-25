@@ -1,4 +1,6 @@
-﻿namespace Scorpio.AspNetCore.TagHelpers.Badge
+﻿using Microsoft.AspNetCore.Razor.TagHelpers;
+
+namespace Scorpio.AspNetCore.TagHelpers.Badge
 {
     /// <summary>
     /// 
@@ -8,6 +10,7 @@
         /// <summary>
         /// 
         /// </summary>
+        [ClassName("")]
         _,
         /// <summary>
         /// 

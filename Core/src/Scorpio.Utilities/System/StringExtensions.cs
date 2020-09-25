@@ -333,6 +333,24 @@ namespace System
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="useCurrentCulture"></param>
+        /// <returns></returns>
+        public static string ToHyphen(this string str,bool useCurrentCulture = false)
+        {
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                return str;
+            }
+
+            return useCurrentCulture
+                ? Regex.Replace(str, "[a-z][A-Z]", m => m.Value[0] + "-" + char.ToLower(m.Value[1])).ToLower()
+                : Regex.Replace(str, "[a-z][A-Z]", m => m.Value[0] + "-" + char.ToLowerInvariant(m.Value[1])).ToLowerInvariant();
+        }
+
+        /// <summary>
         /// Converts string to enum value.
         /// </summary>
         /// <typeparam name="T">Type of enum</typeparam>

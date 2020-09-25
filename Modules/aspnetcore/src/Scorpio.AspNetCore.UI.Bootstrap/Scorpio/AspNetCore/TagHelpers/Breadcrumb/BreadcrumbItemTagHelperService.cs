@@ -25,6 +25,14 @@ namespace Scorpio.AspNetCore.TagHelpers.Breadcrumb
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="context"></param>
+        public override void Init(TagHelperContext context)
+        {
+            context.InitValue<List<BreadcrumbItem>>(BreadcrumbItemsContent);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="encoder"></param>
         public BreadcrumbItemTagHelperService(HtmlEncoder encoder)
         {

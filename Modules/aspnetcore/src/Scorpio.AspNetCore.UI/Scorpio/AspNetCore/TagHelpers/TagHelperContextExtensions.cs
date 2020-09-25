@@ -66,7 +66,12 @@ namespace Scorpio.AspNetCore.TagHelpers
         public static T InitValue<T>(this TagHelperContext context, string key)
             where T : class
         {
-            var value = Activator.CreateInstance<T>();
+            var value = context.GetValue<T>(key);
+            if (value != default)
+            {
+                return value;
+            }
+            value = Activator.CreateInstance<T>();
             context.SetValue(key, value);
             return value;
         }

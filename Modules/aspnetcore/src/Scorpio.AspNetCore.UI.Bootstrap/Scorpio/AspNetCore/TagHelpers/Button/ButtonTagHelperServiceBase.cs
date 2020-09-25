@@ -86,7 +86,6 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
             return TagHelper.IconType switch
             {
                 FontIconType.FontAwesome => "fa fa-" + TagHelper.Icon,
-                FontIconType.Other => throw new NotImplementedException(),
                 _ => TagHelper.Icon,
             };
         }

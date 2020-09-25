@@ -17,7 +17,7 @@ namespace Scorpio.AspNetCore.UI.Bootstrap
         public override void ConfigureServices(ConfigureServicesContext context)
         {
 
-            context.Services.RegisterAssemblyByConvention();
+            context.RegisterAssemblyByConvention();
         }
     }
 }

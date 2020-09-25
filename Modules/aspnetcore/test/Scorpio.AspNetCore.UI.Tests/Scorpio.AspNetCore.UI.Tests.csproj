@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-	  <RootNamespace/>
+	  <RootNamespace />
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -11,6 +11,11 @@
     <PackageReference Include="xunit" Version="2.4.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Scorpio.AspNetCore.UI\Scorpio.AspNetCore.UI.csproj" />
+    <ProjectReference Include="..\Scorpio.AspNetCore.Tests\Scorpio.AspNetCore.Tests.csproj" />
   </ItemGroup>
 
 </Project>

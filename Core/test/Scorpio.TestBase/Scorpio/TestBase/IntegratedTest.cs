@@ -12,7 +12,7 @@ namespace Scorpio.TestBase
 
         protected override IBootstrapper Bootstrapper { get; }
 
-        protected override IServiceProvider ServiceProvider => Bootstrapper.ServiceProvider;
+        public override IServiceProvider ServiceProvider => Bootstrapper.ServiceProvider;
 
         protected IServiceProvider RootServiceProvider { get; }
 
@@ -54,6 +54,11 @@ namespace Scorpio.TestBase
 
         }
 
+        protected virtual void DisposeInternal(bool disposing)
+        {
+
+        }
+
         protected virtual void Dispose(bool disposing)
         {
             if (!_disposedValue)
@@ -62,6 +67,7 @@ namespace Scorpio.TestBase
                 {
                     Bootstrapper.Shutdown();
                     Bootstrapper.Dispose();
+                    DisposeInternal(disposing);
                 }
 
 

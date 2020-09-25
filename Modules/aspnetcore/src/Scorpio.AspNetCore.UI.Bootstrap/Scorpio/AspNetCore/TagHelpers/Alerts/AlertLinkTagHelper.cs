@@ -19,6 +19,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Alerts
         public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
             output.AddClass("alert-link");
+            output.TagName = "a";
             output.Attributes.RemoveAll("alert-link");
             return base.ProcessAsync(context, output);
         }

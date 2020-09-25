@@ -21,10 +21,9 @@ namespace Scorpio.AspNetCore.TagHelpers.Alerts
         /// <param name="context"></param>
         /// <param name="output"></param>
         /// <returns></returns>
-        public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
+        public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.AddClass("alert-heading");
-            return base.ProcessAsync(context, output);
         }
     }
 }

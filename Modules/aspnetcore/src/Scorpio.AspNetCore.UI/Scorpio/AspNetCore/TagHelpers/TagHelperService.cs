@@ -17,7 +17,7 @@ namespace Scorpio.AspNetCore.TagHelpers
         /// <summary>
         /// 
         /// </summary>
-        public virtual int Order { get; }
+        public virtual int Order { get; } = 0;
 
         /// <summary>
         /// 
