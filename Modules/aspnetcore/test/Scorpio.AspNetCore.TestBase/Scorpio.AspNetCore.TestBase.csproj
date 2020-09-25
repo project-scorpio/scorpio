@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
 	  <RootNamespace />
 	  <SonarQubeTestProject>true</SonarQubeTestProject>
+	  <OutputType>Library</OutputType>
   </PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.TestHost" Version="3.1.7" />
