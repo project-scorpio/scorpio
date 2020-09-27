@@ -74,7 +74,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Carousel
         /// <param name="itemList"></param>
         protected virtual void SetControls(TagHelperContext context, TagHelperOutput output, List<CarouselItem> itemList)
         {
-            if (!Controls ?? false)
+            if (!(Controls ?? false))
             {
                 return;
             }
@@ -101,7 +101,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Carousel
         /// <param name="itemList"></param>
         protected virtual void SetIndicators(TagHelperContext context, TagHelperOutput output, List<CarouselItem> itemList)
         {
-            if (!Indicators ?? false)
+            if (!(Indicators ?? false))
             {
                 return;
             }
@@ -165,7 +165,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Carousel
         /// <param name="output"></param>
         protected virtual void SetFadeAnimation(TagHelperContext context, TagHelperOutput output)
         {
-            if (Crossfade ?? false)
+            if ((Crossfade ?? false))
             {
                 output.AddClass("carousel-fade");
             }
