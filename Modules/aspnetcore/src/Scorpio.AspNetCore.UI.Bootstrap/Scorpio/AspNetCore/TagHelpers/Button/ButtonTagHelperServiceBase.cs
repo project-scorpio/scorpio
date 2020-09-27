@@ -72,7 +72,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
                 return;
             }
 
-            output.Content.AppendHtml($"<i class=\"{GetIconClass(context, output)}\"></i> ");
+            output.Content.AppendHtml($"<i class=\"{GetIconClass(context, output)}\"></i>");
         }
 
         /// <summary>

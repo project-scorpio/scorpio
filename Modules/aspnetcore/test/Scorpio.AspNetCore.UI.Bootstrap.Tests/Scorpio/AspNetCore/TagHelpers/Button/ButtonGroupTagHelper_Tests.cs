@@ -18,7 +18,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
             {
                 o.TagName.ShouldBe("div");
                 o.JustHasClasses("btn-group");
-                o.JustHasAttributes("role", "group");
+                o.HasAttributeAndJustContainsValues("role", "group");
             });
         }
 
@@ -29,7 +29,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
             {
                 o.TagName.ShouldBe("div");
                 o.JustHasClasses("btn-group-vertical");
-                o.JustHasAttributes("role", "group");
+                o.HasAttributeAndJustContainsValues("role", "group");
             });
         }
         [Fact]
@@ -39,7 +39,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
             {
                 o.TagName.ShouldBe("div");
                 o.JustHasClasses("btn-group", "btn-group-lg");
-                o.JustHasAttributes("role", "group");
+                o.HasAttributeAndJustContainsValues("role", "group");
             });
         }
     }
