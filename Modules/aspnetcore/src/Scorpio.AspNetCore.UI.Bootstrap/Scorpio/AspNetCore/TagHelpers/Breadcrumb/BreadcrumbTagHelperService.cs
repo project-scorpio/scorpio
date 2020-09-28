@@ -104,7 +104,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Breadcrumb
         protected virtual string SetActiveClassIfActiveAndGetHtml(BreadcrumbItem item)
         {
             return item.Active ?
-                item.Html.Replace(BreadcrumbItemActivePlaceholder, " active") :
+                item.Html.Replace(BreadcrumbItemActivePlaceholder, "active") :
                 item.Html.Replace(BreadcrumbItemActivePlaceholder, "");
         }
 

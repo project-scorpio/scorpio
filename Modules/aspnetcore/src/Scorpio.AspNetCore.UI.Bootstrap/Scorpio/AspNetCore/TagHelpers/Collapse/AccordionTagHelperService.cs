@@ -41,7 +41,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Collapse
             var children = context.GetValue<AccordionItemList>().OrderBy(i => i.Order).ToArray();
             for (var i = 0; i < children.Length; i++)
             {
-                ref AccordionItem item = ref children[i];
+                ref var item = ref children[i];
                 item.Content = item.Content.Replace("__PARENT_ID__", $"#{TagHelper.Id}");
                 if (i == children.Length - 1)
                 {

@@ -13,7 +13,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
         /// <summary>
         /// 
         /// </summary>
-        public DropdownItemStatus Status { get; set; }
+        public DropdownItemStatus Status { get; set; } = DropdownItemStatus.Normal;
 
         /// <summary>
         /// 

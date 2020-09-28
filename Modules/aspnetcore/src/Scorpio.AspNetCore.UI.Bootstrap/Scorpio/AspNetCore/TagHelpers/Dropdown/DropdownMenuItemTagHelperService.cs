@@ -26,7 +26,6 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
                 default:
                     break;
             }
-            base.Process(context, output);
         }
     }
 }

@@ -10,7 +10,14 @@ namespace Scorpio.AspNetCore.TagHelpers.Collapse
     /// </summary>
     public class AccordionItemTagHelperService : TagHelperService<AccordionItemTagHelper>
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
+        public override void Init(TagHelperContext context)
+        {
+            context.InitValue<AccordionItemList>();
+        }
         /// <summary>
         /// 
         /// </summary>

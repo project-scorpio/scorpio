@@ -23,16 +23,13 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
                     output.AddClass("dropdown-toggle");
                     output.AddAttribute("data-toggle", "dropdown");
                     break;
-                case DropdownButtonType.Split:
+                default:
                     var tagbuilder = new TagBuilder(output.TagName);
                     tagbuilder.MergeAttributes(output.Attributes.ToDictionary(a => a.Name, a => a.Value));
                     tagbuilder.AddClass("dropdown-toggle").AddClass("dropdown-toggle-split").AddAttribute("data-toggle", "dropdown");
                     output.PostElement.AppendHtml(tagbuilder);
                     break;
-                default:
-                    break;
             }
-            base.Process(context, output);
         }
     }
 }

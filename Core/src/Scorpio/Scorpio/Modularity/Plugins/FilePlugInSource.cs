@@ -6,7 +6,7 @@ namespace Scorpio.Modularity.Plugins
     internal class FilePlugInSource : IPlugInSource
     {
         private readonly string[] _filePaths;
-        private PlugInSourceList _plugInSourceLists;
+        private readonly PlugInSourceList _plugInSourceLists;
 
         public FilePlugInSource(PlugInSourceList plugInSourceLists, string[] filePaths)
         {

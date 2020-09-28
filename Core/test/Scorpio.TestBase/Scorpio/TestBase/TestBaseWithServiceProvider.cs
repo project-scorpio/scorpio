@@ -6,7 +6,7 @@ namespace Scorpio.TestBase
 {
     public abstract class TestBaseWithServiceProvider
     {
-        protected abstract IServiceProvider ServiceProvider { get; }
+        public abstract IServiceProvider ServiceProvider { get; }
 
         protected virtual T GetService<T>()
         {

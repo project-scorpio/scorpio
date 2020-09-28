@@ -27,7 +27,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
                     output.PostElement.AppendHtml($"</div></div>");
                     break;
                 default:
-                    output.PreElement.AppendHtml($"<div class=\"form-group\"><label for=\"{output.Attributes["id"]}\">{TagHelper.Title}</label>{old}");
+                    output.PreElement.AppendHtml($"<div class=\"form-group\"><label for=\"{output.Attributes["id"].Value}\">{TagHelper.Title}</label>{old}");
                     output.PostElement.AppendHtml($"</div>");
                     break;
             }

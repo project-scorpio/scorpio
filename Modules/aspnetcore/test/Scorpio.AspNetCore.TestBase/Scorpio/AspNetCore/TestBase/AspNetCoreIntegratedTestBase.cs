@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Hosting;
@@ -25,17 +26,19 @@ namespace Scorpio.AspNetCore.TestBase
 
         protected HttpClient Client { get; }
 
-        protected override IServiceProvider ServiceProvider { get; }
+        public override IServiceProvider ServiceProvider { get; }
+
+        private readonly IHost _host;
 
         protected AspNetCoreIntegratedTestBase()
         {
             var builder = CreateHostBuilder();
 
-            var host = builder.Build();
-            host.Start();
+            _host = builder.Build();
+            _host.Start();
 
-            Server = host.GetTestServer();
-            Client = host.GetTestClient();
+            Server = _host.GetTestServer();
+            Client = _host.GetTestClient();
 
             ServiceProvider = Server.Services;
         }
@@ -48,6 +51,13 @@ namespace Scorpio.AspNetCore.TestBase
                     webBuilder.UseStartup<TStartup>();
                     webBuilder.UseTestServer();
                 });
+        }
+
+        protected override void DisposeInternal(bool disposing)
+        {
+            Server.Dispose();
+            Client.Dispose();
+            _host.Dispose();
         }
 
         #region GetUrl

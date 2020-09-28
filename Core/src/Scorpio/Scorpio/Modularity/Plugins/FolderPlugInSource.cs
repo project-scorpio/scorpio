@@ -13,7 +13,7 @@ namespace Scorpio.Modularity.Plugins
     internal class FolderPlugInSource : IPlugInSource
     {
         private readonly string _path;
-        private PlugInSourceList _plugInSourceLists;
+        private readonly PlugInSourceList _plugInSourceLists;
 
         public Func<string, bool> Filter { get; set; }
 

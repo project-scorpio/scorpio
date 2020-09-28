@@ -21,7 +21,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Border
         /// <summary>
         /// 
         /// </summary>
-        public RoundedType Rounded { get; set; }
+        public RoundedType Rounded { get; set; } = RoundedType.Default;
 
         /// <summary>
         /// 

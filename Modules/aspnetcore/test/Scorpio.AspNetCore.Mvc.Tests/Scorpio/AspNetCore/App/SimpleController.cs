@@ -24,7 +24,6 @@ namespace Scorpio.AspNetCore.App
         {
             // ReSharper disable once Mvc.ViewNotResolved
             throw new ScorpioException();
-            return View();
         }
 
     }

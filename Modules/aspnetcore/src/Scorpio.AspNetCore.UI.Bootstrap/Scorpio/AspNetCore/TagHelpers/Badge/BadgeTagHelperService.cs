@@ -24,11 +24,11 @@ namespace Scorpio.AspNetCore.TagHelpers.Badge
         /// <param name="output"></param>
         protected virtual void SetBadgeStyle(TagHelperContext context, TagHelperOutput output)
         {
-            var badgeType = GetBadgeType(context, output);
+            var badgeType = TagHelper.BadgeType;
 
             if (badgeType != BadgeType.Default && badgeType != BadgeType._)
             {
-                output.AddClass("badge-" + badgeType.ToString().ToLowerInvariant());
+                output.AddClass( badgeType.ToClassName("badge-{0}"));
             }
         }
 
@@ -41,21 +41,12 @@ namespace Scorpio.AspNetCore.TagHelpers.Badge
         {
             output.AddClass("badge");
 
-            if (TagHelper.BadgePillType != BadgeType._)
+            if (TagHelper.BadgePill)
             {
                 output.AddClass("badge-pill");
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="context"></param>
-        /// <param name="output"></param>
-        /// <returns></returns>
-        protected virtual BadgeType GetBadgeType(TagHelperContext context, TagHelperOutput output)
-        {
-            return TagHelper.BadgeType != BadgeType._ ? TagHelper.BadgeType : TagHelper.BadgePillType;
-        }
+       
     }
 }

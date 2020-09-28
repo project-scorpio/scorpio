@@ -13,7 +13,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Card
         /// <summary>
         /// 
         /// </summary>
-        public static HtmlHeadingType DefaultHeading { get; set; } = HtmlHeadingType.H6;
+        public static HtmlHeadingType DefaultHeading { get; } = HtmlHeadingType.H6;
 
         /// <summary>
         /// 

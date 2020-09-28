@@ -27,20 +27,11 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
         /// <param name="output"></param>
         protected virtual void AddSizeClass(TagHelperContext context, TagHelperOutput output)
         {
-            switch (TagHelper.Size)
+            if (TagHelper.Size== Size.Default)
             {
-                case Size.Default:
-                    break;
-                case Size.Small:
-                    output.AddClass("btn-group-sm");
-                    break;
-                case Size.Medium:
-                    output.AddClass("btn-group-md");
-                    break;
-                case Size.Large:
-                    output.AddClass("btn-group-lg");
-                    break;
+                return;
             }
+            output.AddClass(TagHelper.Size.ToClassName("btn-group-{0}"));
         }
 
         /// <summary>
@@ -52,9 +43,6 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
         {
             switch (TagHelper.Direction)
             {
-                case ButtonGroupDirection.Horizontal:
-                    output.AddClass("btn-group");
-                    break;
                 case ButtonGroupDirection.Vertical:
                     output.AddClass("btn-group-vertical");
                     break;

@@ -21,7 +21,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Badge
         /// 
         /// </summary>
         [HtmlAttributeName("badge-pill")]
-        public BadgeType BadgePillType { get; set; } = BadgeType._;
+        public bool BadgePill { get; set; } = false;
 
         /// <summary>
         /// 

@@ -8,7 +8,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public Direction Direction { get; set; }
+        public Direction Direction { get; set; } = Direction.Down;
 
         /// <summary>
         /// 
