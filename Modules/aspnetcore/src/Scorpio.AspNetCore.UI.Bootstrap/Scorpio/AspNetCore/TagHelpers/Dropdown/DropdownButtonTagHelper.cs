@@ -12,7 +12,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
         /// <summary>
         /// 
         /// </summary>
-        public DropdownButtonType DropdownButtonType { get; set; }
+        public DropdownButtonType DropdownButtonType { get; set; } = DropdownButtonType.Single;
 
         /// <summary>
         /// 

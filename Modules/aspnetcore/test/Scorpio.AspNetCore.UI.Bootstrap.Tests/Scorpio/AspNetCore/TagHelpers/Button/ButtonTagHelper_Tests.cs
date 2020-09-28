@@ -20,6 +20,42 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
                 o.HasAttributeAndJustContainsValues("data-busy-text", "...");
             });
         }
+        [Fact]
+        public void ExistsType()
+        {
+            var tag = this.GetTagHelper<ButtonTagHelper>();
+            var (c,o)= tag.GetContextAndOutput("button");
+            o.Attributes.Add("type", "button");
+            tag.Test(c,o,(c, o) =>
+            {
+                o.TagName.ShouldBe("button");
+                o.JustHasClasses("btn");
+                o.HasAttributeAndJustContainsValues("type", "button");
+                o.HasAttributeAndJustContainsValues("data-busy-text", "...");
+            });
+        }
+
+        [Fact]
+        public void EmptyBusyText()
+        {
+            this.Test<ButtonTagHelper>(t => t.BusyText = "", (c, o) =>
+            {
+                o.TagName.ShouldBe("button");
+                o.JustHasClasses("btn");
+                o.JustHasAttributesAndValues(("type", "button"));
+            });
+        }
+
+        [Fact]
+        public void BusyText()
+        {
+            this.Test<ButtonTagHelper>(t => t.BusyText = "busy", (c, o) =>
+            {
+                o.TagName.ShouldBe("button");
+                o.JustHasClasses("btn");
+                o.JustHasAttributesAndValues(("type", "button"), ("data-busy-text", "busy"));
+            });
+        }
 
         [Fact]
         public void ButtonType()
@@ -89,7 +125,6 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
                 o.Content.GetContent().ShouldBe("<span>TestButton</span>");
             });
         }
-
         [Fact]
         public void Icon()
         {
@@ -102,6 +137,22 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
                 o.JustHasClasses("btn");
                 o.JustHasAttributesAndValues(("type", "button"), ("data-busy-text", "..."));
                 o.Content.GetContent().ShouldBe("<i class=\"fa fa-dash\"></i>");
+            });
+        }
+
+        [Fact]
+        public void OtherIcon()
+        {
+            this.Test<ButtonTagHelper>(t =>
+            {
+                t.IconType = FontIconType.Other ;
+                t.Icon = "dash";
+            }, (c, o) =>
+            {
+                o.TagName.ShouldBe("button");
+                o.JustHasClasses("btn");
+                o.JustHasAttributesAndValues(("type", "button"), ("data-busy-text", "..."));
+                o.Content.GetContent().ShouldBe("<i class=\"dash\"></i>");
             });
         }
         [Fact]

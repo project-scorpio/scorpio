@@ -51,7 +51,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
 
             if (TagHelper.Size != Size.Default)
             {
-                output.AddClass(TagHelper.Size.ToClassName());
+                output.AddClass(TagHelper.Size.ToClassName("btn-{0}"));
             }
             if (TagHelper.Block)
             {
@@ -83,11 +83,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
         /// <returns></returns>
         protected virtual string GetIconClass(TagHelperContext context, TagHelperOutput output)
         {
-            return TagHelper.IconType switch
-            {
-                FontIconType.FontAwesome => "fa fa-" + TagHelper.Icon,
-                _ => TagHelper.Icon,
-            };
+            return TagHelper.IconType == FontIconType.FontAwesome ? $"fa fa-{TagHelper.Icon}" : TagHelper.Icon;
         }
 
         /// <summary>

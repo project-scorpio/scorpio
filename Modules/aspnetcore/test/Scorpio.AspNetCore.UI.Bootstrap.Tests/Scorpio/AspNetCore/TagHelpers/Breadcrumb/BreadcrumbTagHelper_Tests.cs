@@ -25,9 +25,9 @@ namespace Scorpio.AspNetCore.TagHelpers.Breadcrumb
         public void Item()
         {
             var tag = this.GetTagHelper<BreadcrumbTagHelper>();
-            var (c, o) = tag.GetContext("breadcrumb");
-            this.GetTagHelper<BreadcrumbItemTagHelper>().Test(c, o, (c, d) => { });
-            tag.Test(c, o, (c, o) =>
+            var c = tag.GetContext();
+            this.GetTagHelper<BreadcrumbItemTagHelper>().Test(c, "breadcrumb-item", (c, d) => { });
+            tag.Test(c, "breadcrumb", (c, o) =>
             {
                 o.TagName.ShouldBe("nav");
                 o.HasAttributeAndJustContainsValues("aria-label", "breadcrumb");

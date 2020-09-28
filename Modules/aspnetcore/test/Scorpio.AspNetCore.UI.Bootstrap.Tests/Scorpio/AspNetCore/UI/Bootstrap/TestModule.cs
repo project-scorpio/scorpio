@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Encodings.Web;
 
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.WebEncoders.Testing;
 
@@ -17,7 +18,6 @@ namespace Scorpio.AspNetCore.UI.Bootstrap
         public override void ConfigureServices(ConfigureServicesContext context)
         {
             context.Services.AddSingleton(HtmlEncoder.Default);
-
         }
     }
 }

@@ -1,5 +1,9 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 
+using Shouldly;
+
+using Xunit;
+
 namespace Scorpio.AspNetCore.TagHelpers.Dropdown
 {
     /// <summary>
@@ -8,6 +12,18 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
     [HtmlTargetElement("dropdown-menu", ParentTag = "dropdown")]
     public class DropdownMenuTagHelper_Tests : AspNetCoreUiBootstrapTestBase
     {
-       
+        [Fact]
+        public void Default()
+        {
+            this.Test<DropdownMenuTagHelper>(t =>
+            {
+
+            }, (a, c, o) =>
+            {
+                o.TagName.ShouldBe("div");
+                o.JustHasClasses("dropdown-menu");
+            });
+        }
+
     }
 }

@@ -11,6 +11,7 @@ namespace Scorpio.AspNetCore.UI.Bootstrap
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
             // Method intentionally left empty.
         }
 

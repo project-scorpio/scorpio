@@ -91,20 +91,21 @@ namespace Scorpio.AspNetCore.TagHelpers.Carousel
         public void Items()
         {
             var tag = this.GetTagHelper<CarouselTagHelper>(t => t.Id = "id");
-            var (c, o) = tag.GetContext("div");
-            this.GetTagHelper<CarouselItemTagHelper>().Test((c, o) =>
+            var c = tag.GetContext();
+            this.GetTagHelper<CarouselItemTagHelper>().Test(c,"div",(c, o) =>
             {
                 o.TagName.ShouldBe("div");
                 o.JustHasClasses("carousel-item");
                 o.PreContent.GetContent().ShouldBe("");
             });
-            tag.Test((c, o) =>
+            tag.Test(c,"div",(c, o) =>
             {
                 o.TagName.ShouldBe("div");
                 o.JustHasClasses("carousel", "slide");
                 o.JustHasAttributesAndValues(("id", "id"), ("data-ride", "carousel"));
                 o.PreContent.GetContent().ShouldBe("<div class=\"carousel-inner\">");
                 o.PostContent.GetContent().ShouldBe("</div>");
+                c.GetValue<List<CarouselItem>>(CarouselTagHelper.CAROUSEL_ITEMS_CONTENT).ShouldHaveSingleItem().IsActive.ShouldBeTrue();
             });
         }
 
@@ -126,19 +127,19 @@ namespace Scorpio.AspNetCore.TagHelpers.Carousel
                 t.Indicators = true;
                 t.Controls = true;
             });
-            var (c, o) = tag.GetContext("div");
-            this.GetTagHelper<CarouselItemTagHelper>().Test(c,o,(c, o) =>
+            var c = tag.GetContext();
+            this.GetTagHelper<CarouselItemTagHelper>().Test(c,"div",(c, o) =>
             {
                 o.TagName.ShouldBe("div");
                 o.JustHasClasses("carousel-item");
                 o.PreContent.GetContent().ShouldBe("");
             });
-            tag.Test(c,o,(c, o) =>
+            tag.Test(c,"div",(c, o) =>
             {
                 o.TagName.ShouldBe("div");
                 o.JustHasClasses("carousel", "slide");
                 o.JustHasAttributesAndValues(("id", "id"), ("data-ride", "carousel"));
-                o.PreContent.GetContent().ShouldBe("<ol class=\"carousel-indicators\"></ol>\r\n<div class=\"carousel-inner\">");
+                o.PreContent.GetContent().ShouldBe("<ol class=\"carousel-indicators\"><li data-target=\"#id\" data-slide-to=\"0\" class=\"active\"></li>\r\n</ol>\r\n<div class=\"carousel-inner\">");
                 o.PostContent.GetContent().ShouldBe("</div>" + html.ToString());
             });
         }

@@ -13,7 +13,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Color
         /// 
         /// </summary>
         [HtmlAttributeName("bg-color")]
-        public BackgroundColorType BackgroundColor { get; set; }
+        public BackgroundColorType BackgroundColor { get; set; } = BackgroundColorType.Default;
         /// <summary>
         /// 
         /// </summary>
@@ -22,7 +22,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Color
         /// <returns></returns>
         public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
-            output.AddClass($"bg-{BackgroundColor.ToClassName()}");
+            output.AddClass(BackgroundColor.ToClassName("bg-{0}"));
             output.Attributes.RemoveAll("bg-color");
             return base.ProcessAsync(context, output);
         }
