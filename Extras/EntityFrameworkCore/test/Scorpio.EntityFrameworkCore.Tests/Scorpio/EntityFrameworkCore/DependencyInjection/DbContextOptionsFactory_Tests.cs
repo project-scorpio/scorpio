@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Scorpio.EntityFrameworkCore.DependencyInjection
+﻿namespace Scorpio.EntityFrameworkCore.DependencyInjection
 {
     public class DbContextOptionsFactory_Tests
     {
         public void Create()
         {
-
+            // Method intentionally left empty.
         }
     }
 }

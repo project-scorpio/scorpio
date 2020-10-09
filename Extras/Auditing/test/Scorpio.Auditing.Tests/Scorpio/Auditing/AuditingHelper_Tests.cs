@@ -46,7 +46,7 @@ namespace Scorpio.Auditing
         {
             var type = typeof(NonAuditingClassWithAuditedAttribute);
             var method = type.GetMethod("Action");
-            var actual = _auditingHelper.CreateAuditAction(type, method, new object[] { "Test", new TestClass { Name="Test",Age=18 ,Descript="Descript",IgnoreClass=new IgnoreClass(),Data=new object()} });
+            var actual = _auditingHelper.CreateAuditAction(type, method, new object[] { "Test", new TestClass { Name = "Test", Age = 18, Descript = "Descript", IgnoreClass = new IgnoreClass(), Data = new object() } });
             actual.ServiceName.ShouldBe(type.FullName);
             actual.MethodName.ShouldBe(method.Name);
             actual.Parameters.ShouldBe("{\"name\":\"Test\",\"age\":{\"name\":\"Test\",\"age\":18}}");
@@ -64,7 +64,7 @@ namespace Scorpio.Auditing
             [JsonIgnore]
             public object Data { get; set; }
 
-            public IgnoreClass  IgnoreClass { get; set; }
+            public IgnoreClass IgnoreClass { get; set; }
         }
 
         internal class IgnoreClass

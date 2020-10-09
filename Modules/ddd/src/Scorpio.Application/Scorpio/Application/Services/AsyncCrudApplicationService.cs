@@ -178,7 +178,7 @@ namespace Scorpio.Application.Services
         /// <returns></returns>
         public virtual async Task<TEntityDto> UpdateAsync(TKey id, TUpdateInput input, CancellationToken cancellationToken = default)
         {
-            var entity =await Repository.GetAsync(id);
+            var entity = await Repository.GetAsync(id);
             Mapper.Map(input, entity);
             await Repository.UpdateAsync(entity, cancellationToken: cancellationToken);
             return Mapper.Map<TEntityDto>(entity);

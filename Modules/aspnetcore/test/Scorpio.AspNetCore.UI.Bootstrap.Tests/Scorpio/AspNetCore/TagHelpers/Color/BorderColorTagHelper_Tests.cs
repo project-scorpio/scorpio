@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-
+﻿
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 using Xunit;
@@ -20,7 +19,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Color
 
             }, (c, o) =>
             {
-                o.JustHasClasses("border-default");
+                o.ShouldJustHasClasses("border-default");
             });
         }
 
@@ -29,10 +28,10 @@ namespace Scorpio.AspNetCore.TagHelpers.Color
         {
             this.Test<BorderColorTagHelper>(t =>
             {
-                t.BorderColor =  BorderColorType.Primary;
+                t.BorderColor = BorderColorType.Primary;
             }, (c, o) =>
             {
-                o.JustHasClasses("border-primary");
+                o.ShouldJustHasClasses("border-primary");
             });
         }
     }

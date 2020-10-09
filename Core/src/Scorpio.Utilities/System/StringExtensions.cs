@@ -338,7 +338,7 @@ namespace System
         /// <param name="str"></param>
         /// <param name="useCurrentCulture"></param>
         /// <returns></returns>
-        public static string ToHyphen(this string str,bool useCurrentCulture = false)
+        public static string ToHyphen(this string str, bool useCurrentCulture = false)
         {
             if (string.IsNullOrWhiteSpace(str))
             {

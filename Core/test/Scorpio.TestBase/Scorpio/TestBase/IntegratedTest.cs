@@ -6,7 +6,7 @@ using Scorpio.Modularity;
 
 namespace Scorpio.TestBase
 {
-    public abstract class IntegratedTest<TStartupModule> : IntegratedTestBase<TStartupModule>
+    public abstract class IntegratedTest<TStartupModule> : IntegratedTestBase
         where TStartupModule : IScorpioModule
     {
 
@@ -41,8 +41,7 @@ namespace Scorpio.TestBase
         }
     }
 
-    public abstract class IntegratedTestBase<TStartupModule> : TestBaseWithServiceProvider, IDisposable
-    where TStartupModule : IScorpioModule
+    public abstract class IntegratedTestBase : TestBaseWithServiceProvider, IDisposable
     {
         private bool _disposedValue;
 

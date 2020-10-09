@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 using NSubstitute;
 
 using Shouldly;
@@ -34,7 +31,7 @@ namespace Scorpio.Setting
             var provider = GetSettingProvider();
             var def = new SettingDefinition<string>("Setting", "DefaultValue");
             Should.NotThrow(() => provider.GetAsync(def)).ShouldBeNull();
-            Should.NotThrow(() => provider.SetAsync(def,"SettingValue"));
+            Should.NotThrow(() => provider.SetAsync(def, "SettingValue"));
             Should.NotThrow(() => provider.GetAsync(def)).Value.ShouldBe("SettingValue");
         }
     }

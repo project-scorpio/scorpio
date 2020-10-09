@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Razor.TagHelpers;
+﻿
+using Shouldly;
 
 using Xunit;
-using Shouldly;
 namespace Scorpio.AspNetCore.TagHelpers.Dropdown
 {
     /// <summary>
@@ -18,8 +18,8 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
-                o.JustHasClasses("dropdown-toggle");
-                o.JustHasAttributesAndValues(("data-toggle", "dropdown"));
+                o.ShouldJustHasClasses("dropdown-toggle");
+                o.ShouldJustHasAttributesAndValues(("data-toggle", "dropdown"));
             });
         }
 
@@ -35,7 +35,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
-                o.NotContainsClasses("dropdown-toggle");
+                o.ShouldNotContainsClasses("dropdown-toggle");
                 o.PostElement.GetContent().ShouldBe($"<{a.Tag} class=\"dropdown-toggle-split dropdown-toggle\" data-toggle=\"dropdown\" title=\"title\"></{a.Tag}>");
             });
         }

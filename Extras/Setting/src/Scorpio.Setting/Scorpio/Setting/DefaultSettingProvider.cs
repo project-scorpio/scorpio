@@ -6,7 +6,7 @@
         {
         }
 
-        public override string Name =>"Default";
+        public override string Name => "Default";
 
         protected override string Key => null;
     }

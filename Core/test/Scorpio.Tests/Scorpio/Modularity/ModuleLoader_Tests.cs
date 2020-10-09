@@ -15,7 +15,7 @@ namespace Scorpio.Modularity
         {
             var services = new ServiceCollection();
             var moduleLoader = new ModuleLoader();
-            var modules = moduleLoader.LoadModules(services, typeof(MyStartupModule), new PlugInSourceList(null,null));
+            var modules = moduleLoader.LoadModules(services, typeof(MyStartupModule), new PlugInSourceList(null, null));
             modules.Length.ShouldBe(3);
             modules[0].Type.ShouldBe(typeof(KernelModule));
             modules[1].Type.ShouldBe(typeof(IndependentEmptyModule));

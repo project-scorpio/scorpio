@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Security.Principal;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -19,7 +18,7 @@ namespace Scorpio.Authorization
         public AuthorizationService_Test()
         {
             _authorizationService = ServiceProvider.GetService<IAuthorizationService>();
-            _currentPrincipalAccessor= ServiceProvider.GetService<ICurrentPrincipalAccessor>();
+            _currentPrincipalAccessor = ServiceProvider.GetService<ICurrentPrincipalAccessor>();
         }
 
         [Fact]

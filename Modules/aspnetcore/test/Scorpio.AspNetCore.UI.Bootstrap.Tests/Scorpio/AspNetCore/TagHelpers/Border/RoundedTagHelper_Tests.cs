@@ -1,9 +1,4 @@
-﻿using System.Threading.Tasks;
-
-using Microsoft.AspNetCore.Razor.TagHelpers;
-
-using Scorpio.AspNetCore.UI.Bootstrap;
-
+﻿
 using Xunit;
 
 namespace Scorpio.AspNetCore.TagHelpers.Border
@@ -18,17 +13,17 @@ namespace Scorpio.AspNetCore.TagHelpers.Border
         {
             this.Test<RoundedTagHelper>((c, o) =>
             {
-                o.JustHasClasses("rounded");
+                o.ShouldJustHasClasses("rounded");
             });
         }
 
         [Fact]
         public void None()
         {
-            this.Test<RoundedTagHelper>(t => t.Rounded =  RoundedType.None, (c, o) =>
-            {
-                o.JustHasClasses("rounded-0");
-            });
+            this.Test<RoundedTagHelper>(t => t.Rounded = RoundedType.None, (c, o) =>
+           {
+               o.ShouldJustHasClasses("rounded-0");
+           });
         }
     }
 }

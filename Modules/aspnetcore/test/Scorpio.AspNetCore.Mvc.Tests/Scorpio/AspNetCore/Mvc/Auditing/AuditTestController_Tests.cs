@@ -1,12 +1,13 @@
-﻿using System;
+﻿using System.Threading.Tasks;
+
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+
 using NSubstitute;
-using System.Threading.Tasks;
-using Xunit;
+
 using Scorpio.Auditing;
+
+using Xunit;
 
 namespace Scorpio.AspNetCore.Mvc.Auditing
 {
@@ -62,11 +63,12 @@ namespace Scorpio.AspNetCore.Mvc.Auditing
             {
                 await GetResponseAsync("api/audit-test/audit-fail", System.Net.HttpStatusCode.NotFound);
             }
-            catch { }
-
-            await _auditingStore.Received().SaveAsync(Arg.Any<AuditInfo>());
+            finally
+            {
+                await _auditingStore.Received().SaveAsync(Arg.Any<AuditInfo>());
+            }
         }
-        
+
         [Fact]
         public async Task Should_Trigger_Middleware_And_AuditLog_Exception_When_Returns_Object()
         {

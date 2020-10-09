@@ -10,9 +10,9 @@ namespace Scorpio.Modularity.Plugins
     /// <summary>
     /// 
     /// </summary>
-    class PlugInSourceList : List<IPlugInSource>,IPlugInSourceList
+    class PlugInSourceList : List<IPlugInSource>, IPlugInSourceList
     {
-        public PlugInSourceList(IFileProvider fileProvider,AssemblyLoadContext assemblyLoadContext)
+        public PlugInSourceList(IFileProvider fileProvider, AssemblyLoadContext assemblyLoadContext)
         {
             FileProvider = fileProvider;
             AssemblyLoadContext = assemblyLoadContext;

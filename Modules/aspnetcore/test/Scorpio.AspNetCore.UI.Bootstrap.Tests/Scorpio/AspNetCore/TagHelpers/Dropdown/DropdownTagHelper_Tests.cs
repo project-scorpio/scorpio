@@ -19,7 +19,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe("div");
-                o.JustHasClasses("dropdown", "btn-group");
+                o.ShouldJustHasClasses("dropdown", "btn-group");
             });
         }
 
@@ -32,7 +32,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe("div");
-                o.JustHasClasses("dropdown", "btn-group", "dropleft");
+                o.ShouldJustHasClasses("dropdown", "btn-group", "dropleft");
             });
         }
 
@@ -46,7 +46,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe("div");
-                o.JustHasClasses("dropdown", "btn-group", "dropright");
+                o.ShouldJustHasClasses("dropdown", "btn-group", "dropright");
             });
         }
 
@@ -59,7 +59,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe("div");
-                o.JustHasClasses("dropdown", "btn-group", "dropup");
+                o.ShouldJustHasClasses("dropdown", "btn-group", "dropup");
             });
         }
 

@@ -21,7 +21,7 @@ namespace Scorpio.Repositories.EntityFrameworkCore
     /// </summary>
     /// <typeparam name="TDbContext"></typeparam>
     /// <typeparam name="TEntity"></typeparam>
-    public class EfCoreRepository<TDbContext, TEntity> : RepositoryBase<TEntity>, IEfCoreRepository<TEntity>,IAsyncEnumerable<TEntity>
+    public class EfCoreRepository<TDbContext, TEntity> : RepositoryBase<TEntity>, IEfCoreRepository<TEntity>, IAsyncEnumerable<TEntity>
         where TDbContext : DbContext
         where TEntity : class, IEntity
     {

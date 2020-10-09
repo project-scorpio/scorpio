@@ -19,6 +19,7 @@ namespace Scorpio.Application.Services
     /// <typeparam name="TGetListInput"></typeparam>
     /// <typeparam name="TCreateInput"></typeparam>
     /// <typeparam name="TUpdateInput"></typeparam>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S2436:Types and methods should not have too many generic parameters", Justification = "<Pending>")]
     public abstract class CrudApplicationServiceBase<TEntity, TEntityDto, TKey, TGetListInput, TCreateInput, TUpdateInput>
         : ApplicationService
         where TEntity : class, IEntity<TKey>

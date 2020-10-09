@@ -13,7 +13,7 @@ namespace Scorpio.AspNetCore.UI
         {
             context.RegisterConventionalDependencyInject(config =>
            {
-               config.Where(t =>t.IsStandardType() && t.IsAssignableTo<TagHelpers.ITagHelperService>()).AsSelf().Lifetime(ServiceLifetime.Transient);
+               config.Where(t => t.IsStandardType() && t.IsAssignableTo<TagHelpers.ITagHelperService>()).AsSelf().Lifetime(ServiceLifetime.Transient);
            });
         }
     }

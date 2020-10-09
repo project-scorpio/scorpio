@@ -1,5 +1,4 @@
-﻿using Scorpio.AspNetCore.UI.Bootstrap;
-
+﻿
 using Shouldly;
 
 using Xunit;
@@ -17,7 +16,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Breadcrumb
             this.Test<BreadcrumbTagHelper>((c, o) =>
             {
                 o.TagName.ShouldBe("nav");
-                o.HasAttributeAndJustContainsValues("aria-label", "breadcrumb");
+                o.ShouldHasAttributeAndJustContainsValues("aria-label", "breadcrumb");
             });
         }
 
@@ -30,7 +29,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Breadcrumb
             tag.Test(c, "breadcrumb", (c, o) =>
             {
                 o.TagName.ShouldBe("nav");
-                o.HasAttributeAndJustContainsValues("aria-label", "breadcrumb");
+                o.ShouldHasAttributeAndJustContainsValues("aria-label", "breadcrumb");
                 o.Content.GetContent().ShouldBe("<li class=\"breadcrumb-item active\" aria-current=\"page\"></li>\r\n");
             });
         }

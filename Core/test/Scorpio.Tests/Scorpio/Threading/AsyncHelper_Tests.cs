@@ -63,9 +63,9 @@ namespace Scorpio.Threading
             return value;
         }
 
-        public Task TaskFunctionAsync()
+        internal async Task TaskFunctionAsync()
         {
-            return Task.CompletedTask;
+            await Task.CompletedTask;
         }
         public Task<int> TaskFunctionAsync(int value)
         {
@@ -78,7 +78,7 @@ namespace Scorpio.Threading
         }
         public async ValueTask<int> ValueTaskFunctionAsync(int value)
         {
-            return await Task.FromResult( value);
+            return await Task.FromResult(value);
         }
 
     }

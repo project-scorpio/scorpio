@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-using Microsoft.AspNetCore.Razor.TagHelpers;
-using Microsoft.Extensions.DependencyInjection;
-
-using Scorpio.AspNetCore.UI.Bootstrap;
 
 using Shouldly;
 
@@ -21,8 +14,8 @@ namespace Scorpio.AspNetCore.TagHelpers.Alerts
             this.Test<AlertTagHelper>((c, o) =>
             {
                 o.TagName.ShouldBe("div");
-                o.HasAttributeAndJustContainsValues("role", "alert");
-                o.JustHasClasses("alert");
+                o.ShouldHasAttributeAndJustContainsValues("role", "alert");
+                o.ShouldJustHasClasses("alert");
             });
         }
 
@@ -32,8 +25,8 @@ namespace Scorpio.AspNetCore.TagHelpers.Alerts
             this.Test<AlertTagHelper>(t => t.Type = AlertType.Primary, (c, o) =>
              {
                  o.TagName.ShouldBe("div");
-                 o.HasAttributeAndJustContainsValues("role", "alert");
-                 o.JustHasClasses("alert", "alert-primary");
+                 o.ShouldHasAttributeAndJustContainsValues("role", "alert");
+                 o.ShouldJustHasClasses("alert", "alert-primary");
              });
         }
 
@@ -47,8 +40,8 @@ namespace Scorpio.AspNetCore.TagHelpers.Alerts
             this.Test<AlertTagHelper>(t => t.Dismissible = true, (c, o) =>
              {
                  o.TagName.ShouldBe("div");
-                 o.HasAttributeAndJustContainsValues("role", "alert");
-                 o.JustHasClasses("alert", "alert-dismissible", "fade", "show");
+                 o.ShouldHasAttributeAndJustContainsValues("role", "alert");
+                 o.ShouldJustHasClasses("alert", "alert-dismissible", "fade", "show");
                  o.PostContent.GetContent().ShouldBe(buttonAsHtml);
              });
         }

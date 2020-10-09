@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 using Scorpio.AspNetCore.App;
-using Scorpio.AspNetCore.TestBase;
 
 using Shouldly;
 
@@ -12,7 +8,7 @@ using Xunit;
 
 namespace Scorpio.AspNetCore.Mvc
 {
-    public class SimpleController_Tests: AspNetCoreMvcTestBase
+    public class SimpleController_Tests : AspNetCoreMvcTestBase
     {
         protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options)
         {

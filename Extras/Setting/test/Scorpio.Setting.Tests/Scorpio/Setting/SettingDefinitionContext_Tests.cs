@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 using Shouldly;
 
@@ -25,7 +23,7 @@ namespace Scorpio.Setting
         {
             var dict = new Dictionary<string, SettingDefinition>();
             var context = new SettingDefinitionContext(dict);
-           context.GetAll().ShouldBeEmpty();
+            context.GetAll().ShouldBeEmpty();
             Should.NotThrow(() => context.Add(new SettingDefinition<string>("Setting")));
             context.GetAll().ShouldHaveSingleItem().Name.ShouldBe("Setting");
         }

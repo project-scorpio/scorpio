@@ -1,8 +1,9 @@
-﻿using System.Threading.Tasks;
-
+﻿
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Xunit;
+
 using Shouldly;
+
+using Xunit;
 
 namespace Scorpio.AspNetCore.TagHelpers.Card
 {
@@ -17,7 +18,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Card
             this.Test<CardSubTitleTagHelper>((c, o) =>
             {
                 o.TagName.ShouldBe("h6");
-                o.JustHasClasses("card-subtitle");
+                o.ShouldJustHasClasses("card-subtitle");
                 o.PreContent.GetContent().ShouldBe("");
             });
         }
@@ -25,12 +26,12 @@ namespace Scorpio.AspNetCore.TagHelpers.Card
         [Fact]
         public void H1()
         {
-            this.Test<CardSubTitleTagHelper>(t=>t.Heading=  HtmlHeadingType.H1,(c, o) =>
-            {
-                o.TagName.ShouldBe("h1");
-                o.JustHasClasses("card-subtitle");
-                o.PreContent.GetContent().ShouldBe("");
-            });
+            this.Test<CardSubTitleTagHelper>(t => t.Heading = HtmlHeadingType.H1, (c, o) =>
+               {
+                   o.TagName.ShouldBe("h1");
+                   o.ShouldJustHasClasses("card-subtitle");
+                   o.PreContent.GetContent().ShouldBe("");
+               });
         }
 
     }

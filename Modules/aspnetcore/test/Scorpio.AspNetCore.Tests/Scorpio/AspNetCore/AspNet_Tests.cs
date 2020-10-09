@@ -1,20 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.TestHost;
-using Microsoft.Extensions.Hosting;
-
-using Scorpio.AspNetCore.TestBase;
-
+﻿
 using Shouldly;
 
 using Xunit;
 
 namespace Scorpio.AspNetCore
 {
-    public class AspNet_Tests: AspNetCoreTestBase
+    public class AspNet_Tests : AspNetCoreTestBase
     {
         protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options)
         {

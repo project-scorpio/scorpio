@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.DependencyInjection;
 
-using Moq;
-
 using Shouldly;
-using System.Reflection;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System.Linq;
 
 namespace Scorpio.AspNetCore
 {
@@ -158,7 +154,7 @@ namespace Scorpio.AspNetCore
                                             Action<ITagHelper, HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction)
             where TTagHelper : TagHelpers.TagHelper
         {
-            test.GetTagHelper<TTagHelper>(initAction).Test(initContextAction,initOutputAction, verifyAction);
+            test.GetTagHelper<TTagHelper>(initAction).Test(initContextAction, initOutputAction, verifyAction);
         }
 
 
@@ -363,7 +359,8 @@ namespace Scorpio.AspNetCore
                                 Action<TagHelperOutput> initOutputAction,
                                 Action<ITagHelper, HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction)
         {
-            var attr = tagHelper.GetAttributes<HtmlTargetElementAttribute>().Where(a => a.Tag == tagHelperOutput.TagName).FirstOrDefault();
+            var attr = tagHelper.GetAttributes<HtmlTargetElementAttribute>()
+                                .FirstOrDefault(a => a.Tag == tagHelperOutput.TagName);
             ProcessCore(tagHelper, attr, tagHelperContext, tagHelperOutput, initContextAction, initOutputAction, verifyAction);
         }
 

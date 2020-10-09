@@ -87,12 +87,13 @@ namespace Scorpio.Entities
         {
             var entity = Substitute.For<Entity<int>>();
             var entity2 = Substitute.For<Entity<int>>();
+            var entity3 = entity;
             entity.When(x => x.Equals(Arg.Any<object>())).CallBase();
             entity.WhenForAnyArgs(x => x.IsTransient()).CallBase();
             entity2.When(x => x.Equals(Arg.Any<object>())).CallBase();
             entity2.WhenForAnyArgs(x => x.IsTransient()).CallBase();
             entity.Equals(new object()).ShouldBeFalse();
-            entity.Equals(entity).ShouldBeTrue();
+            entity.Equals(entity3).ShouldBeTrue();
             entity.Equals(entity2).ShouldBeFalse();
             entity.Id = 1;
             entity2.Id = 1;

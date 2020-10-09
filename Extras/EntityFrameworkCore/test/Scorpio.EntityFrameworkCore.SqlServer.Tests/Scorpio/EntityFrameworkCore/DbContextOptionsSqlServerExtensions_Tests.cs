@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Linq;
 
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-
 using Scorpio.EntityFrameworkCore.DependencyInjection;
 
 using Shouldly;
@@ -15,10 +12,10 @@ namespace Scorpio.EntityFrameworkCore
     /// <summary>
     /// 
     /// </summary>
-    public  class DbContextOptionsSqlServerExtensions_Tests
+    public class DbContextOptionsSqlServerExtensions_Tests
     {
         [Fact]
-        public  void UseSqlServer()
+        public void UseSqlServer()
         {
             var context = new DbContextConfigurationContext("DefaultContext", null, null);
             var options = new ScorpioDbContextOptions();
@@ -29,8 +26,8 @@ namespace Scorpio.EntityFrameworkCore
         }
 
         [Fact]
-        public  void UseSqlServer_T()
-            
+        public void UseSqlServer_T()
+
         {
             var context = new DbContextConfigurationContext<TestDbContext>("DefaultContext", null, null);
             var options = new ScorpioDbContextOptions();

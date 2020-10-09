@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace Scorpio.AspNetCore.UI.Bootstrap
 {
@@ -18,9 +17,9 @@ namespace Scorpio.AspNetCore.UI.Bootstrap
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseAuditing();
-            app.Use(async (ctx,t) =>
+            app.Use(async (ctx, t) =>
             {
-               await ctx.Response.WriteAsync("test");
+                await ctx.Response.WriteAsync("test");
             });
         }
     }

@@ -10,7 +10,7 @@ namespace Microsoft.AspNetCore.Builder
     /// <summary>
     /// 
     /// </summary>
-    public  class ApplicationBuilderExtensions_Tests
+    public class ApplicationBuilderExtensions_Tests
     {
 
         [Fact]

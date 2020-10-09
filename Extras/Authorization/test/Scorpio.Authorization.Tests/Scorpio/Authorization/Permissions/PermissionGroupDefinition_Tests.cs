@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 using Shouldly;
 
@@ -61,7 +59,7 @@ namespace Scorpio.Authorization.Permissions
             var def = new PermissionGroupDefinition("Test");
             def.Permissions.ShouldBeEmpty();
             def
-                .AddPermission("TestPermission", 
+                .AddPermission("TestPermission",
                     p => p.AddChild("TestChild"));
             def.GetPermissionsWithChildren().Count.ShouldBe(2);
         }

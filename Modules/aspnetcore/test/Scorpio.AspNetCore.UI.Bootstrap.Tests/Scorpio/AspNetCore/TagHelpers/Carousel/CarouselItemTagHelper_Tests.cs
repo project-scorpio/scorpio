@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-
+﻿
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Xunit;
+
 using Shouldly;
+
+using Xunit;
 
 namespace Scorpio.AspNetCore.TagHelpers.Carousel
 {
@@ -19,7 +19,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Carousel
             this.Test<CarouselItemTagHelper>((c, o) =>
             {
                 o.TagName.ShouldBe("div");
-                o.JustHasClasses("carousel-item");
+                o.ShouldJustHasClasses("carousel-item");
                 o.PreContent.GetContent().ShouldBe("");
             });
         }
@@ -27,12 +27,12 @@ namespace Scorpio.AspNetCore.TagHelpers.Carousel
         [Fact]
         public void Active()
         {
-            this.Test<CarouselItemTagHelper>(t => t.IsActive = true,(c, o) =>
-            {
-                o.TagName.ShouldBe("div");
-                o.JustHasClasses("carousel-item","active");
-                o.PreContent.GetContent().ShouldBe("");
-            });
+            this.Test<CarouselItemTagHelper>(t => t.IsActive = true, (c, o) =>
+             {
+                 o.TagName.ShouldBe("div");
+                 o.ShouldJustHasClasses("carousel-item", "active");
+                 o.PreContent.GetContent().ShouldBe("");
+             });
         }
 
     }

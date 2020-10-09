@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 using Microsoft.AspNetCore.Authorization;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;

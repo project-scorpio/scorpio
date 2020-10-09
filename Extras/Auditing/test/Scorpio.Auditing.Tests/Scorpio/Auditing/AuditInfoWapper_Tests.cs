@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 using NSubstitute;
-using NSubstitute.Extensions;
 
 using Shouldly;
 
@@ -36,7 +33,7 @@ namespace Scorpio.Auditing
             audit.Actions.ShouldHaveSingleItem();
 
             audit.Exceptions.ShouldBeEmpty();
-            wapper.Exceptions.Add(new  Exception());
+            wapper.Exceptions.Add(new Exception());
             audit.Exceptions.ShouldHaveSingleItem();
 
             audit.ExtraProperties.ShouldBeEmpty();
@@ -55,7 +52,7 @@ namespace Scorpio.Auditing
             var audit = new AuditInfo();
             var wapper = new FakeAuditInfoWapper(audit);
             audit.ExtraProperties.ShouldBeEmpty();
-            wapper.SomeValue="Value";
+            wapper.SomeValue = "Value";
             audit.ExtraProperties.ShouldHaveSingleItem();
             wapper.SomeValue.ShouldBe("Value");
         }
@@ -67,7 +64,7 @@ namespace Scorpio.Auditing
             {
             }
 
-            public string SomeValue { get=>GetExtraProperty<string>(nameof(SomeValue)); set=>SetExtraProperty(nameof(SomeValue),value); }
+            public string SomeValue { get => GetExtraProperty<string>(nameof(SomeValue)); set => SetExtraProperty(nameof(SomeValue), value); }
         }
     }
 }

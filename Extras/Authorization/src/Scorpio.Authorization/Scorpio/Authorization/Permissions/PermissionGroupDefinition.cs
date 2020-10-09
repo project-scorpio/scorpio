@@ -80,7 +80,7 @@ namespace Scorpio.Authorization.Permissions
         /// <param name="name"></param>
         /// <param name="action"></param>
         /// <returns></returns>
-        public virtual PermissionGroupDefinition AddPermission(string name,  Action<PermissionDefinition> action)
+        public virtual PermissionGroupDefinition AddPermission(string name, Action<PermissionDefinition> action)
         {
             return AddPermission(name, default, action);
         }

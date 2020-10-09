@@ -1,5 +1,4 @@
-﻿using Scorpio.AspNetCore.UI.Bootstrap;
-
+﻿
 using Shouldly;
 
 using Xunit;
@@ -17,8 +16,8 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
             this.Test<ButtonGroupTagHelper>((c, o) =>
             {
                 o.TagName.ShouldBe("div");
-                o.JustHasClasses("btn-group");
-                o.HasAttributeAndJustContainsValues("role", "group");
+                o.ShouldJustHasClasses("btn-group");
+                o.ShouldHasAttributeAndJustContainsValues("role", "group");
             });
         }
 
@@ -28,19 +27,19 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
             this.Test<ButtonGroupTagHelper>(t => t.Direction = ButtonGroupDirection.Vertical, (c, o) =>
             {
                 o.TagName.ShouldBe("div");
-                o.JustHasClasses("btn-group-vertical");
-                o.HasAttributeAndJustContainsValues("role", "group");
+                o.ShouldJustHasClasses("btn-group-vertical");
+                o.ShouldHasAttributeAndJustContainsValues("role", "group");
             });
         }
         [Fact]
         public void Size()
         {
-            this.Test<ButtonGroupTagHelper>(t => t.Size= TagHelpers.Size.Large, (c, o) =>
-            {
-                o.TagName.ShouldBe("div");
-                o.JustHasClasses("btn-group", "btn-group-lg");
-                o.HasAttributeAndJustContainsValues("role", "group");
-            });
+            this.Test<ButtonGroupTagHelper>(t => t.Size = TagHelpers.Size.Large, (c, o) =>
+             {
+                 o.TagName.ShouldBe("div");
+                 o.ShouldJustHasClasses("btn-group", "btn-group-lg");
+                 o.ShouldHasAttributeAndJustContainsValues("role", "group");
+             });
         }
     }
 }

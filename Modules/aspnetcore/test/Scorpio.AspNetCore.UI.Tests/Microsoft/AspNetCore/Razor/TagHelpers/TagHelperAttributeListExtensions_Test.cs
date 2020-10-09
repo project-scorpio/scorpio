@@ -1,7 +1,5 @@
 ﻿using System.Threading.Tasks;
 
-using Microsoft.AspNetCore.Mvc.TagHelpers;
-
 using Shouldly;
 
 using Xunit;
@@ -16,12 +14,12 @@ namespace Microsoft.AspNetCore.Razor.TagHelpers
         [Fact]
         public static void AddClass()
         {
-            var output=new TagHelperOutput("div",new TagHelperAttributeList(), (result, encoder) =>
-            {
-                var tagHelperContent = new DefaultTagHelperContent();
-                tagHelperContent.SetHtmlContent(string.Empty);
-                return Task.FromResult<TagHelperContent>(tagHelperContent);
-            });
+            var output = new TagHelperOutput("div", new TagHelperAttributeList(), (result, encoder) =>
+               {
+                   var tagHelperContent = new DefaultTagHelperContent();
+                   tagHelperContent.SetHtmlContent(string.Empty);
+                   return Task.FromResult<TagHelperContent>(tagHelperContent);
+               });
             output.AddClass("");
             output.Attributes.ContainsName("class").ShouldBeFalse();
             output.AddClass("test");

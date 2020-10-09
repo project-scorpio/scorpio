@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using System.IO;
 
 using Shouldly;
 
@@ -21,7 +18,7 @@ namespace Scorpio.Authorization
         [Fact]
         public void InnerException()
         {
-            var ex = new AuthorizationException("Test",new ScorpioException("InnerException"));
+            var ex = new AuthorizationException("Test", new ScorpioException("InnerException"));
             ex.InnerException.ShouldBeOfType<ScorpioException>().Message.ShouldBe("InnerException");
         }
 
@@ -34,7 +31,7 @@ namespace Scorpio.Authorization
             var stream = new MemoryStream();
             formatter.Serialize(stream, ex);
             stream.Seek(0, SeekOrigin.Begin);
-            var act= formatter.Deserialize(stream);
+            var act = formatter.Deserialize(stream);
             act.ShouldBeOfType<AuthorizationException>().InnerException.ShouldBeOfType<ScorpioException>().Message.ShouldBe("InnerException");
         }
 

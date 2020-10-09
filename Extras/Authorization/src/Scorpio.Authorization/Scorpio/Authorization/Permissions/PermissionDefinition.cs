@@ -17,9 +17,10 @@ namespace Scorpio.Authorization.Permissions
         /// <summary>
         /// 
         /// </summary>
-        public string FullName => Parent switch {
-            PermissionDefinition p=>$"{p.FullName}.{Name}",
-            _=>Name
+        public string FullName => Parent switch
+        {
+            PermissionDefinition p => $"{p.FullName}.{Name}",
+            _ => Name
         };
 
         /// <summary>
@@ -82,7 +83,7 @@ namespace Scorpio.Authorization.Permissions
         /// <param name="name"></param>
         /// <param name="displayName"></param>
         /// <returns></returns>
-        public virtual PermissionDefinition AddChild(string name, string displayName=default)
+        public virtual PermissionDefinition AddChild(string name, string displayName = default)
         {
             return AddChild(name, displayName, p => { });
         }
@@ -106,7 +107,7 @@ namespace Scorpio.Authorization.Permissions
         /// <param name="displayName"></param>
         /// <param name="action"></param>
         /// <returns></returns>
-        public virtual PermissionDefinition AddChild(string name, string displayName,Action<PermissionDefinition> action)
+        public virtual PermissionDefinition AddChild(string name, string displayName, Action<PermissionDefinition> action)
         {
             var child = new PermissionDefinition(name, displayName)
             {

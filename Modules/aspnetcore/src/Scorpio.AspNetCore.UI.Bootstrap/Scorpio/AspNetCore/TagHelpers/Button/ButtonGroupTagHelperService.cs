@@ -27,7 +27,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
         /// <param name="output"></param>
         protected virtual void AddSizeClass(TagHelperContext context, TagHelperOutput output)
         {
-            if (TagHelper.Size== Size.Default)
+            if (TagHelper.Size == Size.Default)
             {
                 return;
             }

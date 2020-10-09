@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-
-using NSubstitute.Extensions;
-
 using Scorpio.Data;
 using Scorpio.EntityFrameworkCore;
 using Scorpio.Modularity;

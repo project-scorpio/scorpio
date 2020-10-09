@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Loader;
-using System.Text;
 
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.FileProviders.Internal;
@@ -30,7 +28,7 @@ namespace Scorpio.Modularity.Plugins
             fileProvider.GetDirectoryContents(default).ReturnsForAnyArgs(contents);
             var context = Substitute.For<AssemblyLoadContext>();
             var list = new PlugInSourceList(fileProvider, context);
-            var source = new FolderPlugInSource(list, "plugs") { Filter=f=>f=="Scorpio.Tests.dll"};
+            var source = new FolderPlugInSource(list, "plugs") { Filter = f => f == "Scorpio.Tests.dll" };
             source.GetModules().Count().ShouldBe(5);
         }
     }

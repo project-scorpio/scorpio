@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Razor.TagHelpers;
-
+﻿
 using Shouldly;
 
 using Xunit;
@@ -20,7 +19,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe("h6");
-                o.JustHasClasses("dropdown-header");
+                o.ShouldJustHasClasses("dropdown-header");
             });
         }
 

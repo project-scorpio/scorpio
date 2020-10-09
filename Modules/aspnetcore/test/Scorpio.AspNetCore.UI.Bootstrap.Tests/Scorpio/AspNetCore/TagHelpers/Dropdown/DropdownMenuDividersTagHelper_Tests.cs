@@ -21,7 +21,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe("div");
-                o.JustHasClasses("dropdown-divider");
+                o.ShouldJustHasClasses("dropdown-divider");
             });
         }
 

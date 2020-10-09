@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 using NSubstitute;
-using NSubstitute.Extensions;
-using NSubstitute.ReceivedExtensions;
 
 using Scorpio.Application.Dtos;
 using Scorpio.Entities;
@@ -52,7 +49,7 @@ namespace Scorpio.Application.Services
             Should.NotThrow(() => service.Get(10))
                   .Action(d => d.ShouldNotBeNull())
                   .Action(d => d.Name.ShouldBe("Tom"))
-                  .Action(d=>d.ToString().ShouldBe($"[DTO: {typeof(Dto).Name}] Id = {10}"));
+                  .Action(d => d.ToString().ShouldBe($"[DTO: {typeof(Dto).Name}] Id = {10}"));
             repo.ReceivedWithAnyArgs(1).Get(default);
         }
 

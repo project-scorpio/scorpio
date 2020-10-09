@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 using Scorpio.Data.Values;
 
@@ -15,10 +13,12 @@ namespace Scorpio.Domain.Values
         [Fact]
         public void VO_Equals()
         {
-            new OrderDetail { ProductId = 10, Cost = 100, Count = 2 }.Equals(new OrderDetail { ProductId = 10, Cost = 100, Count = 2 }).ShouldBeTrue();
+            var orderDetail = new OrderDetail { ProductId = 10, Cost = 100, Count = 2 };
+            orderDetail.Equals(new OrderDetail { ProductId = 10, Cost = 100, Count = 2 }).ShouldBeTrue();
             new OrderDetail { ProductId = 10, Cost = 100, Count = 2 }.Equals(new CertDetail { ProductId = 10, Cost = 100, Count = 2 }).ShouldBeFalse();
             new OrderDetail { ProductId = 10, Cost = 100, Count = 2 }.Equals(new OrderDetail { ProductId = 9, Cost = 100, Count = 2 }).ShouldBeFalse();
-            new Empty().Equals(new Empty()).ShouldBeTrue();
+            var empty = new Empty();
+            empty.Equals(new Empty()).ShouldBeTrue();
             new Empty().Equals(null).ShouldBeFalse();
             new OrderDetail { ProductId = 10, Cost = 100, Count = 2 }.GetHashCode().ShouldBe(23837272);
             new Order { Id = 10 }.GetHashCode().ShouldBe(922);
@@ -40,9 +40,9 @@ namespace Scorpio.Domain.Values
         {
             public Address Address { get; set; }
 
-            public HashSet<OrderDetail>  OrderDetails { get; set; }
+            public HashSet<OrderDetail> OrderDetails { get; set; }
 
-            public int Id { get; set;}
+            public int Id { get; set; }
 
         }
 

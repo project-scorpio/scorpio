@@ -23,8 +23,8 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe("input");
-                o.JustHasClasses("form-control");
-                o.JustHasAttributesAndValues(("id", "id"), ("type", "text"), ("placeholder", $"请输入"));
+                o.ShouldJustHasClasses("form-control");
+                o.ShouldJustHasAttributesAndValues(("id", "id"), ("type", "text"), ("placeholder", $"请输入"));
                 o.PreElement.GetContent().ShouldBe("<div class=\"form-group\"><label for=\"id\"></label>");
                 o.PostElement.GetContent().ShouldBe($"</div>");
             });
@@ -35,7 +35,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
         {
             this.Test<InputTagHelper>(t =>
             {
-                
+
             }, c => { }, o =>
             {
                 o.AddAttribute("placeholder", "placeholder");
@@ -44,8 +44,8 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe("input");
-                o.JustHasAttributesAndValues(("id", "id"), ("type", "text"), ("placeholder", $"placeholder"));
-                o.JustHasClasses("form-control");
+                o.ShouldJustHasAttributesAndValues(("id", "id"), ("type", "text"), ("placeholder", $"placeholder"));
+                o.ShouldJustHasClasses("form-control");
                 o.PreElement.GetContent().ShouldBe("<div class=\"form-group\"><label for=\"id\"></label>");
                 o.PostElement.GetContent().ShouldBe($"</div>");
             });
@@ -64,8 +64,8 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe("input");
-                o.JustHasClasses("form-control");
-                o.JustHasAttributesAndValues(("id", "id"), ("type", "text"), ("placeholder", $"请输入"));
+                o.ShouldJustHasClasses("form-control");
+                o.ShouldJustHasAttributesAndValues(("id", "id"), ("type", "text"), ("placeholder", $"请输入"));
                 o.PreElement.GetContent().ShouldBe($"<div class=\"form-group row\"><label class=\"col-md-2 col-form-label\" for=\"id\"></label><div class=\"col-md-10\">");
                 o.PostElement.GetContent().ShouldBe($"</div></div>");
             });
@@ -85,8 +85,8 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe("input");
-                o.JustHasClasses("form-control");
-                o.JustHasAttributesAndValues(("id", "id"), ("type", "text"), ("placeholder", $"请输入"));
+                o.ShouldJustHasClasses("form-control");
+                o.ShouldJustHasAttributesAndValues(("id", "id"), ("type", "text"), ("placeholder", $"请输入"));
                 o.PreElement.GetContent().ShouldBe($"<div class=\"form-group row\"><label class=\"col-md-2 col-form-label\" for=\"id\"></label><div class=\"col-md-10\">");
                 o.PostElement.GetContent().ShouldBe($"</div></div>");
             });
@@ -105,8 +105,8 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe("input");
-                o.JustHasClasses("form-control");
-                o.JustHasAttributesAndValues(("id", "id"), ("type", "text"), ("placeholder", $"请输入Title"));
+                o.ShouldJustHasClasses("form-control");
+                o.ShouldJustHasAttributesAndValues(("id", "id"), ("type", "text"), ("placeholder", $"请输入Title"));
                 o.PreElement.GetContent().ShouldBe("<div class=\"form-group\"><label for=\"id\">Title</label>");
                 o.PostElement.GetContent().ShouldBe($"</div>");
             });
@@ -125,8 +125,8 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe("input");
-                o.JustHasClasses("form-control", "form-control-lg");
-                o.JustHasAttributesAndValues(("id", "id"), ("type", "text"), ("placeholder", $"请输入"));
+                o.ShouldJustHasClasses("form-control", "form-control-lg");
+                o.ShouldJustHasAttributesAndValues(("id", "id"), ("type", "text"), ("placeholder", $"请输入"));
                 o.PreElement.GetContent().ShouldBe("<div class=\"form-group\"><label for=\"id\"></label>");
                 o.PostElement.GetContent().ShouldBe($"</div>");
             });
@@ -145,8 +145,8 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe("input");
-                o.JustHasClasses("form-control", "form-control-sm");
-                o.JustHasAttributesAndValues(("id", "id"), ("type", "text"), ("placeholder", $"请输入"));
+                o.ShouldJustHasClasses("form-control", "form-control-sm");
+                o.ShouldJustHasAttributesAndValues(("id", "id"), ("type", "text"), ("placeholder", $"请输入"));
                 o.PreElement.GetContent().ShouldBe("<div class=\"form-group\"><label for=\"id\"></label>");
                 o.PostElement.GetContent().ShouldBe($"</div>");
             });
@@ -166,8 +166,8 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe("input");
-                o.JustHasClasses("form-control", "form-control-lg");
-                o.JustHasAttributesAndValues(("id", "id"), ("type", "text"), ("placeholder", $"请输入"));
+                o.ShouldJustHasClasses("form-control", "form-control-lg");
+                o.ShouldJustHasAttributesAndValues(("id", "id"), ("type", "text"), ("placeholder", $"请输入"));
                 o.PreElement.GetContent().ShouldBe($"<div class=\"form-group row\"><label class=\"col-md-2 col-form-label col-form-label-lg\" for=\"id\"></label><div class=\"col-md-10\">");
                 o.PostElement.GetContent().ShouldBe($"</div></div>");
             });
@@ -187,8 +187,8 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe("input");
-                o.JustHasClasses("form-control", "form-control-sm");
-                o.JustHasAttributesAndValues(("id", "id"), ("type", "text"), ("placeholder", $"请输入"));
+                o.ShouldJustHasClasses("form-control", "form-control-sm");
+                o.ShouldJustHasAttributesAndValues(("id", "id"), ("type", "text"), ("placeholder", $"请输入"));
                 o.PreElement.GetContent().ShouldBe($"<div class=\"form-group row\"><label class=\"col-md-2 col-form-label col-form-label-sm\" for=\"id\"></label><div class=\"col-md-10\">");
                 o.PostElement.GetContent().ShouldBe($"</div></div>");
             });
@@ -206,8 +206,8 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe("input");
-                o.JustHasClasses();
-                o.JustHasAttributesAndValues(("id", "id"), ("type", "checkbox"), ("placeholder", $"请输入"));
+                o.ShouldJustHasClasses();
+                o.ShouldJustHasAttributesAndValues(("id", "id"), ("type", "checkbox"), ("placeholder", $"请输入"));
                 o.PreElement.GetContent().ShouldBe("<div class=\"form-group\"><label for=\"id\"></label>");
                 o.PostElement.GetContent().ShouldBe($"</div>");
             });

@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-
+﻿
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Scorpio.AspNetCore.TagHelpers.Border
@@ -23,6 +22,6 @@ namespace Scorpio.AspNetCore.TagHelpers.Border
         /// </summary>
         public BorderType Border { get; set; } = BorderType.All;
 
-       
+
     }
 }

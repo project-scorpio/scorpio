@@ -42,7 +42,7 @@ namespace AutoMapper
         /// <returns></returns>
         public static IMappingExpression<TSource, TDestination> MapExtraProperties<TSource, TDestination>(
             this IMappingExpression<TSource, TDestination> mapping,
-            Action< MapExtraPropertiesContext<TSource>> action)
+            Action<MapExtraPropertiesContext<TSource>> action)
             where TDestination : IHasExtraProperties
         {
             var context = new MapExtraPropertiesContext<TSource>();
@@ -88,7 +88,7 @@ namespace AutoMapper
             /// <typeparam name="TMember"></typeparam>
             /// <param name="expression"></param>
             /// <returns></returns>
-            public MapExtraPropertiesContext<TSource> Property<TMember>(Expression<Func<TSource,TMember>> expression)
+            public MapExtraPropertiesContext<TSource> Property<TMember>(Expression<Func<TSource, TMember>> expression)
             {
                 Expressions.Add(expression);
                 return this;

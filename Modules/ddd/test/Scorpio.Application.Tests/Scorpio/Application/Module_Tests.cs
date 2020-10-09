@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,7 +12,7 @@ using Xunit;
 
 namespace Scorpio.Application
 {
-    public class Module_Tests:IntegratedTest<TestModule>
+    public class Module_Tests : IntegratedTest<TestModule>
     {
         protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options)
         {
