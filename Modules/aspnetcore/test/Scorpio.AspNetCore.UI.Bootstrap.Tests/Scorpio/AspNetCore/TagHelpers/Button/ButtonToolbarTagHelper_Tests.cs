@@ -1,5 +1,4 @@
-﻿using Scorpio.AspNetCore.UI.Bootstrap;
-
+﻿
 using Shouldly;
 
 using Xunit;
@@ -17,8 +16,8 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
             this.Test<ButtonToolbarTagHelper>((c, o) =>
             {
                 o.TagName.ShouldBe("div");
-                o.JustHasClasses("btn-toolbar");
-                o.JustHasAttributesAndValues(("role", "toolbar"));
+                o.ShouldJustHasClasses("btn-toolbar");
+                o.ShouldJustHasAttributesAndValues(("role", "toolbar"));
             });
         }
     }

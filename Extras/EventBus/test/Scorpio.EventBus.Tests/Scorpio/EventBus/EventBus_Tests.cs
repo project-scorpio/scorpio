@@ -2,13 +2,19 @@
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+
 using Microsoft.Extensions.DependencyInjection;
+
 using Moq;
+
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;
+
 using Scorpio.EventBus.TestClasses;
 using Scorpio.TestBase;
+
 using Shouldly;
+
 using Xunit;
 
 namespace Scorpio.EventBus

@@ -5,7 +5,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
     /// <summary>
     /// 
     /// </summary>
-   [HtmlTargetElement("input")]
+    [HtmlTargetElement("input")]
     public class InputTagHelper : TagHelper<InputTagHelper, InputTagHelperService>
     {
         /// <summary>

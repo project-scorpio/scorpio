@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,7 +9,7 @@ using Scorpio.Modularity;
 namespace Scorpio.AspNetCore.Mvc
 {
     [DependsOn(typeof(AspNetCoreMvcModule))]
-    public class TestModule:ScorpioModule
+    public class TestModule : ScorpioModule
     {
         public override void ConfigureServices(ConfigureServicesContext context)
         {

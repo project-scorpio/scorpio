@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -35,7 +33,7 @@ namespace Microsoft.AspNetCore.Mvc.Abstractions
         [Fact]
         public void GetMethodInfo()
         {
-            ActionDescriptor descriptor = new ControllerActionDescriptor() { MethodInfo=((Action)GetMethodInfo).Method};
+            ActionDescriptor descriptor = new ControllerActionDescriptor() { MethodInfo = ((Action)GetMethodInfo).Method };
             descriptor.GetMethodInfo().ShouldNotBeNull();
         }
 
@@ -49,7 +47,7 @@ namespace Microsoft.AspNetCore.Mvc.Abstractions
         [Fact]
         public void HasObjectResult()
         {
-            var descriptor = new ControllerActionDescriptor() { MethodInfo = ((Func<string>)(()=>default)).Method };
+            var descriptor = new ControllerActionDescriptor() { MethodInfo = ((Func<string>)(() => default)).Method };
             descriptor.HasObjectResult().ShouldBeTrue();
             descriptor.MethodInfo = ((Func<ViewResult>)(() => default)).Method;
             descriptor.HasObjectResult().ShouldBeFalse();

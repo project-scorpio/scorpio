@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Razor.TagHelpers;
-
-using Scorpio.AspNetCore.UI.Bootstrap;
-
+﻿
 using Shouldly;
 
 using Xunit;
@@ -19,7 +16,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Badge
             this.Test<BadgeTagHelper>((a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
-                o.JustHasClasses("badge");
+                o.ShouldJustHasClasses("badge");
             });
         }
 
@@ -29,7 +26,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Badge
             this.Test<BadgeTagHelper>(t => t.BadgeType = Badge.BadgeType.Primary, (a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
-                o.JustHasClasses("badge", "badge-primary");
+                o.ShouldJustHasClasses("badge", "badge-primary");
             });
         }
 
@@ -39,7 +36,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Badge
             this.Test<BadgeTagHelper>(t => t.BadgePill = true, (a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
-                o.JustHasClasses("badge", "badge-pill");
+                o.ShouldJustHasClasses("badge", "badge-pill");
             });
         }
 
@@ -53,7 +50,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Badge
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
-                o.JustHasClasses("badge", "badge-pill","badge-primary");
+                o.ShouldJustHasClasses("badge", "badge-pill", "badge-primary");
             });
         }
     }

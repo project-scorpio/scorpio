@@ -1,8 +1,6 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Text.Encodings.Web;
 
-using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 using Shouldly;
@@ -16,7 +14,7 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
     /// </summary>
     public class TagBuilderExtensions_Tests
     {
-       [Fact]
+        [Fact]
         public void AddClass()
         {
             var tagBuilder = new TagBuilder("div");
@@ -27,8 +25,8 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
         public void AddAttribute()
         {
             var tagBuilder = new TagBuilder("div");
-            tagBuilder.AddAttribute("attr","test").Attributes["attr"].ShouldBe("test");
-            
+            tagBuilder.AddAttribute("attr", "test").Attributes["attr"].ShouldBe("test");
+
         }
 
         [Fact]
@@ -40,16 +38,16 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
         }
 
         [Fact]
-        public void  Content_1()
+        public void Content_1()
         {
             var tagBuilder = new TagBuilder("div");
             var writer = new StringWriter();
-            tagBuilder.Content(new StringHtmlContent("test")).InnerHtml.WriteTo(writer,HtmlEncoder.Default);
+            tagBuilder.Content(new StringHtmlContent("test")).InnerHtml.WriteTo(writer, HtmlEncoder.Default);
             writer.GetStringBuilder().ToString().ShouldBe("test");
         }
 
         [Fact]
-        public void Content_2( )
+        public void Content_2()
         {
             var tagBuilder = new TagBuilder("div");
             var writer = new StringWriter();
@@ -62,7 +60,7 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
         {
             var tagBuilder = new TagBuilder("div");
             var writer = new StringWriter();
-            tagBuilder.AddChild(h=>new TagBuilder("div")).InnerHtml.WriteTo(writer, HtmlEncoder.Default);
+            tagBuilder.AddChild(h => new TagBuilder("div")).InnerHtml.WriteTo(writer, HtmlEncoder.Default);
             writer.GetStringBuilder().ToString().ShouldBe("<div></div>");
         }
     }

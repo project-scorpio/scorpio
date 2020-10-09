@@ -21,7 +21,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Border
             else
             {
                 output.AddClass(TagHelper.Border.ToClassName("border-{0}"));
-            }   
+            }
             output.Attributes.RemoveAll("border");
         }
     }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 using Scorpio.DependencyInjection;
@@ -21,9 +19,9 @@ namespace Scorpio.Uow
     [UnitOfWork]
     public class TestTableService : ITestTableService, ITransientDependency
     {
-        private readonly IRepository<TestTable,int> _repository;
+        private readonly IRepository<TestTable, int> _repository;
 
-        public TestTableService(IRepository<TestTable,int>  repository)
+        public TestTableService(IRepository<TestTable, int> repository)
         {
             _repository = repository;
         }
@@ -31,7 +29,7 @@ namespace Scorpio.Uow
         public TestTable Add(TestTable testTable)
         {
             _repository.As<IEfCoreRepository<TestTable>>().DbContext.Database.EnsureCreated();
-            return _repository.Insert(testTable,false);
+            return _repository.Insert(testTable, false);
         }
 
         public Task<TestTable> AddAsync(TestTable testTable)

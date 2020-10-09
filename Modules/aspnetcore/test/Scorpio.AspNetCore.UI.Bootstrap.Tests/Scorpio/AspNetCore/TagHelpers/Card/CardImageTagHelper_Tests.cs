@@ -1,8 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using Shouldly;
 
-using Microsoft.AspNetCore.Razor.TagHelpers;
 using Xunit;
-using Shouldly;
 
 namespace Scorpio.AspNetCore.TagHelpers.Card
 {
@@ -17,7 +15,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Card
             this.Test<CardImageTagHelper>((c, o) =>
             {
                 o.TagName.ShouldBe("img");
-                o.JustHasClasses("card-img");
+                o.ShouldJustHasClasses("card-img");
                 o.PreContent.GetContent().ShouldBe("");
             });
         }
@@ -25,12 +23,12 @@ namespace Scorpio.AspNetCore.TagHelpers.Card
         [Fact]
         public void Position()
         {
-            this.Test<CardImageTagHelper>(t=>t.Position= CardImagePosition.Top,(c, o) =>
-            {
-                o.TagName.ShouldBe("img");
-                o.JustHasClasses("card-img-top");
-                o.PreContent.GetContent().ShouldBe("");
-            });
+            this.Test<CardImageTagHelper>(t => t.Position = CardImagePosition.Top, (c, o) =>
+                {
+                    o.TagName.ShouldBe("img");
+                    o.ShouldJustHasClasses("card-img-top");
+                    o.PreContent.GetContent().ShouldBe("");
+                });
         }
 
     }

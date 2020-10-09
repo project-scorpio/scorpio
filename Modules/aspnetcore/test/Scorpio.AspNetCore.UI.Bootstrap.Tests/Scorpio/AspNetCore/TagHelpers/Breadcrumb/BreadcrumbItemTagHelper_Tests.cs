@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 
-using Scorpio.AspNetCore.UI.Bootstrap;
-
 using Shouldly;
 
 using Xunit;

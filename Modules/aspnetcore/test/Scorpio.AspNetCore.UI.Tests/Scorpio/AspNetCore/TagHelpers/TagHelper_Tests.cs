@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Razor.TagHelpers;
@@ -67,10 +66,10 @@ namespace Scorpio.AspNetCore.TagHelpers
                     tagHelperContent.SetHtmlContent(string.Empty);
                     return Task.FromResult<TagHelperContent>(tagHelperContent);
                 });
-            Should.NotThrow(()=> tagHelper.ProcessAsync(tagHelperContext, tagHelperOutput));
+            Should.NotThrow(() => tagHelper.ProcessAsync(tagHelperContext, tagHelperOutput));
             tagHelperOutput.TagName.ShouldBe("div");
             tagHelperOutput.Content.GetContent().ShouldBe("test");
         }
     }
-    
+
 }

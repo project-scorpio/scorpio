@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using System.IO;
 
 using Shouldly;
 
@@ -28,7 +25,7 @@ namespace Scorpio.Authorization.Permissions
         [Fact]
         public void InnerException()
         {
-            var ex = new PermissionNotFondException("Test","Message", new ScorpioException("InnerException"));
+            var ex = new PermissionNotFondException("Test", "Message", new ScorpioException("InnerException"));
             ex.PermissionName.ShouldBe("Test");
             ex.Message.ShouldBe("Message");
             ex.InnerException.ShouldBeOfType<ScorpioException>().Message.ShouldBe("InnerException");
@@ -38,7 +35,7 @@ namespace Scorpio.Authorization.Permissions
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Vulnerability", "S5773:Types allowed to be deserialized should be restricted", Justification = "<挂起>")]
         public void Serializable()
         {
-            var ex = new PermissionNotFondException("Test","Message", new ScorpioException("InnerException"));
+            var ex = new PermissionNotFondException("Test", "Message", new ScorpioException("InnerException"));
             var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
             var stream = new MemoryStream();
             formatter.Serialize(stream, ex);

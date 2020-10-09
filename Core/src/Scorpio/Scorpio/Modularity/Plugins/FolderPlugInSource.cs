@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.Loader;
 
 using Microsoft.Extensions.FileSystemGlobbing;
-using Microsoft.Extensions.FileSystemGlobbing.Abstractions;
 
 namespace Scorpio.Modularity.Plugins
 {
@@ -57,7 +54,7 @@ namespace Scorpio.Modularity.Plugins
             var matcher = new Matcher(StringComparison.InvariantCultureIgnoreCase);
             matcher.AddInclude("./**/*.dll").AddInclude("./**/*.exe");
             var assemblyFiles = _plugInSourceLists.FileProvider.GetDirectoryContents(_path)
-                .Where(f=>matcher.Match(f.PhysicalPath).HasMatches);
+                .Where(f => matcher.Match(f.PhysicalPath).HasMatches);
 
             if (Filter != null)
             {

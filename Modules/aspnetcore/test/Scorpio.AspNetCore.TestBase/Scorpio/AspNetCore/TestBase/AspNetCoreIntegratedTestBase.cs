@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Routing;
@@ -16,7 +14,7 @@ using Scorpio.TestBase;
 
 namespace Scorpio.AspNetCore.TestBase
 {
-    public abstract class AspNetCoreIntegratedTestBase<TStartupModule, TStartup> : IntegratedTestBase<TStartupModule>
+    public abstract class AspNetCoreIntegratedTestBase<TStartupModule, TStartup> : IntegratedTestBase
         where TStartupModule : IScorpioModule
         where TStartup : class
 

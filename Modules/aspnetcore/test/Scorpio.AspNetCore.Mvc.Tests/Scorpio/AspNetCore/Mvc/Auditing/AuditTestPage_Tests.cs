@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 
 using NSubstitute;
@@ -32,7 +27,7 @@ namespace Scorpio.AspNetCore.Mvc.Auditing
             options.ConfigureServices(c =>
             {
                 _auditingStore = Substitute.For<IAuditingStore>();
-                c.Services.ReplaceOrAdd(ServiceDescriptor.Singleton(_auditingStore),true);
+                c.Services.ReplaceOrAdd(ServiceDescriptor.Singleton(_auditingStore), true);
             });
         }
 
@@ -65,13 +60,9 @@ namespace Scorpio.AspNetCore.Mvc.Auditing
         {
             _options.IsEnabled = true;
 
-            try
-            {
-                await GetResponseAsync("/Auditing/AuditTestPage?handler=AuditFailForGetRequests", System.Net.HttpStatusCode.Forbidden);
-            }
-            catch { }
+                await GetResponseAsync("/Auditing/AuditTestPage?handler=AuditFailForGetRequests", System.Net.HttpStatusCode.NotFound);
+                await _auditingStore.Received().SaveAsync(Arg.Any<AuditInfo>());
 
-            await _auditingStore.Received().SaveAsync(Arg.Any<AuditInfo>());
         }
 
         [Fact]

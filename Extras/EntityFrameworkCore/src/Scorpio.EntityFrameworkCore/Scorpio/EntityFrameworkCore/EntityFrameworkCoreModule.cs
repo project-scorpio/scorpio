@@ -8,8 +8,6 @@ using Scorpio.Data;
 using Scorpio.EntityFrameworkCore.DependencyInjection;
 using Scorpio.Modularity;
 
-using Z.EntityFramework.Extensions;
-
 namespace Scorpio.EntityFrameworkCore
 {
     /// <summary>

@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Razor.TagHelpers;
-
-using Moq;
 
 using Shouldly;
 
@@ -28,7 +25,7 @@ namespace Scorpio.AspNetCore.TagHelpers
         public void RenderTagHelperOutput()
         {
             var service = new TestTagHelperService();
-            var tagHelper = new TestTagHelper(service);
+            _ = new TestTagHelper(service);
             var tagHelperContext = new TagHelperContext(
                 new TagHelperAttributeList(),
                 new Dictionary<object, object>(),
@@ -55,7 +52,7 @@ namespace Scorpio.AspNetCore.TagHelpers
         [Fact]
         public void Init()
         {
-            var tagHelper = new TestTagHelper(new TestTagHelperService());   
+            var tagHelper = new TestTagHelper(new TestTagHelperService());
             var tagHelperContext = new TagHelperContext(
                 new TagHelperAttributeList(),
                 new Dictionary<object, object>(),
@@ -67,7 +64,7 @@ namespace Scorpio.AspNetCore.TagHelpers
         [Fact]
         public void Process()
         {
-            var tagHelper =new TestTagHelper(new TestTagHelperService());
+            var tagHelper = new TestTagHelper(new TestTagHelperService());
             var tagHelperContext = new TagHelperContext(
                 new TagHelperAttributeList(),
                 new Dictionary<object, object>(),
@@ -80,7 +77,7 @@ namespace Scorpio.AspNetCore.TagHelpers
                     tagHelperContent.SetHtmlContent(string.Empty);
                     return Task.FromResult<TagHelperContent>(tagHelperContent);
                 });
-            Should.NotThrow(()=> tagHelper.ProcessAsync(tagHelperContext, tagHelperOutput));
+            Should.NotThrow(() => tagHelper.ProcessAsync(tagHelperContext, tagHelperOutput));
             tagHelperOutput.TagName.ShouldBe("div");
             tagHelperOutput.Content.GetContent().ShouldBe("test");
         }
@@ -109,7 +106,7 @@ namespace Scorpio.AspNetCore.TagHelpers
 
         public string InvokeRenderTagHelperOutput(TagHelperContext context, TagHelperOutput output)
         {
-            Process( context,  output);
+            Process(context, output);
             return RenderTagHelperOutput(output, HtmlEncoder.Default);
         }
     }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 
 using Microsoft.Extensions.DependencyInjection;
@@ -64,7 +62,7 @@ namespace Scorpio.Domain.Services
         public void Clock()
         {
             var provider = Substitute.For<IServiceProvider>();
-            var  clock = Substitute.For<IClock>();
+            var clock = Substitute.For<IClock>();
             provider.GetService<IClock>().Returns(clock);
             var service = Substitute.ForPartsOf<DomainService>(provider);
             service.GetProperty("Clock").ShouldBe(clock);

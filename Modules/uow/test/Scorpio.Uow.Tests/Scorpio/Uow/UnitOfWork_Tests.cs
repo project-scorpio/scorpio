@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -104,7 +102,7 @@ namespace Scorpio.Uow
         public void Outer()
         {
             var manager = ServiceProvider.GetService<IUnitOfWorkManager>();
-            using (var uow=manager.Begin())
+            using (var uow = manager.Begin())
             {
                 using (var innerUow = manager.Begin(System.Transactions.TransactionScopeOption.RequiresNew))
                 {

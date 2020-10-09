@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 using Microsoft.Extensions.DependencyInjection;
 
 using Scorpio.TestBase;
@@ -12,7 +9,7 @@ using Xunit;
 
 namespace Scorpio.Uow
 {
-    public class TestTableService_Tests:IntegratedTest<TestModule>
+    public class TestTableService_Tests : IntegratedTest<TestModule>
     {
         protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options)
         {
@@ -23,7 +20,7 @@ namespace Scorpio.Uow
         public void Get()
         {
             var service = ServiceProvider.GetService<ITestTableService>();
-            
+
             Should.NotThrow(() => service.Get(6));
         }
 

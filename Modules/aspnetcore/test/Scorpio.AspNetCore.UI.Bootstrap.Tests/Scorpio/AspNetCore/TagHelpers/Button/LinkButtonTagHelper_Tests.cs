@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Razor.TagHelpers;
-
-using Scorpio.AspNetCore.UI.Bootstrap;
-
+﻿
 using Shouldly;
 
 using Xunit;
@@ -15,16 +12,17 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
         [Fact]
         public void Default()
         {
-            this.Test<LinkButtonTagHelper>((a,c, o) =>
+            this.Test<LinkButtonTagHelper>((a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
-                o.JustHasClasses("btn");
-                if (a.Tag == "a") {
-                    o.JustHasAttributesAndValues(("role", "button")); 
+                o.ShouldJustHasClasses("btn");
+                if (a.Tag == "a")
+                {
+                    o.ShouldJustHasAttributesAndValues(("role", "button"));
                 }
                 else
                 {
-                    o.JustHasAttributesAndValues(("type", "button"), ("role", "button"));
+                    o.ShouldJustHasAttributesAndValues(("type", "button"), ("role", "button"));
                 }
             });
         }
@@ -32,17 +30,17 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
         [Fact]
         public void ButtonType()
         {
-            this.Test<LinkButtonTagHelper>(t => t.ButtonType = Button.ButtonType.Primary, (a,c, o) =>
+            this.Test<LinkButtonTagHelper>(t => t.ButtonType = Button.ButtonType.Primary, (a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
-                o.JustHasClasses("btn", "btn-primary");
+                o.ShouldJustHasClasses("btn", "btn-primary");
                 if (a.Tag == "a")
                 {
-                    o.JustHasAttributesAndValues(("role", "button"));
+                    o.ShouldJustHasAttributesAndValues(("role", "button"));
                 }
                 else
                 {
-                    o.JustHasAttributesAndValues(("type", "button"), ("role", "button"));
+                    o.ShouldJustHasAttributesAndValues(("type", "button"), ("role", "button"));
                 }
             });
         }
@@ -54,17 +52,17 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
             {
                 t.ButtonType = Button.ButtonType.Primary;
                 t.OutLine = true;
-            }, (a,c, o) =>
+            }, (a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
-                o.JustHasClasses("btn", "btn-outline-primary");
+                o.ShouldJustHasClasses("btn", "btn-outline-primary");
                 if (a.Tag == "a")
                 {
-                    o.JustHasAttributesAndValues(("role", "button"));
+                    o.ShouldJustHasAttributesAndValues(("role", "button"));
                 }
                 else
                 {
-                    o.JustHasAttributesAndValues(("type", "button"), ("role", "button"));
+                    o.ShouldJustHasAttributesAndValues(("type", "button"), ("role", "button"));
                 }
             });
         }
@@ -78,14 +76,14 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
-                o.JustHasClasses("btn", "btn-lg");
+                o.ShouldJustHasClasses("btn", "btn-lg");
                 if (a.Tag == "a")
                 {
-                    o.JustHasAttributesAndValues(("role", "button"));
+                    o.ShouldJustHasAttributesAndValues(("role", "button"));
                 }
                 else
                 {
-                    o.JustHasAttributesAndValues(("type", "button"), ("role", "button"));
+                    o.ShouldJustHasAttributesAndValues(("type", "button"), ("role", "button"));
                 }
             });
         }
@@ -99,14 +97,14 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
-                o.JustHasClasses("btn", "btn-block");
+                o.ShouldJustHasClasses("btn", "btn-block");
                 if (a.Tag == "a")
                 {
-                    o.JustHasAttributesAndValues(("role", "button"));
+                    o.ShouldJustHasAttributesAndValues(("role", "button"));
                 }
                 else
                 {
-                    o.JustHasAttributesAndValues(("type", "button"), ("role", "button"));
+                    o.ShouldJustHasAttributesAndValues(("type", "button"), ("role", "button"));
                 }
             });
         }
@@ -120,14 +118,14 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
-                o.JustHasClasses("btn");
+                o.ShouldJustHasClasses("btn");
                 if (a.Tag == "a")
                 {
-                    o.JustHasAttributesAndValues(("role", "button"));
+                    o.ShouldJustHasAttributesAndValues(("role", "button"));
                 }
                 else
                 {
-                    o.JustHasAttributesAndValues(("type", "button"), ("role", "button"));
+                    o.ShouldJustHasAttributesAndValues(("type", "button"), ("role", "button"));
                 }
                 o.Content.GetContent().ShouldBe("<span>TestButton</span>");
             });
@@ -142,14 +140,14 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
-                o.JustHasClasses("btn");
+                o.ShouldJustHasClasses("btn");
                 if (a.Tag == "a")
                 {
-                    o.JustHasAttributesAndValues(("role", "button"));
+                    o.ShouldJustHasAttributesAndValues(("role", "button"));
                 }
                 else
                 {
-                    o.JustHasAttributesAndValues(("type", "button"), ("role", "button"));
+                    o.ShouldJustHasAttributesAndValues(("type", "button"), ("role", "button"));
                 }
                 o.Content.GetContent().ShouldBe("<i class=\"fa fa-dash\"></i>");
             });
@@ -164,14 +162,14 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
-                o.JustHasClasses("btn");
+                o.ShouldJustHasClasses("btn");
                 if (a.Tag == "a")
                 {
-                    o.JustHasAttributesAndValues(("role", "button"));
+                    o.ShouldJustHasAttributesAndValues(("role", "button"));
                 }
                 else
                 {
-                    o.JustHasAttributesAndValues(("type", "button"), ("role", "button"));
+                    o.ShouldJustHasAttributesAndValues(("type", "button"), ("role", "button"));
                 }
                 o.Content.GetContent().ShouldBe("<i class=\"fa fa-dash\"></i><span>TestButton</span>");
             });
@@ -186,14 +184,14 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
-                o.JustHasClasses("btn");
+                o.ShouldJustHasClasses("btn");
                 if (a.Tag == "a")
                 {
-                    o.JustHasAttributesAndValues(("role", "button"), ("disabled", "disabled"));
+                    o.ShouldJustHasAttributesAndValues(("role", "button"), ("disabled", "disabled"));
                 }
                 else
                 {
-                    o.JustHasAttributesAndValues(("type", "button"), ("role", "button"), ("disabled", "disabled"));
+                    o.ShouldJustHasAttributesAndValues(("type", "button"), ("role", "button"), ("disabled", "disabled"));
                 }
                 o.Content.GetContent().ShouldBe("");
             });

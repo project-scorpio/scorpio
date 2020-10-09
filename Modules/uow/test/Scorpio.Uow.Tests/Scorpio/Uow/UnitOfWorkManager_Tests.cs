@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 using Microsoft.Extensions.DependencyInjection;
 
 using Scorpio.TestBase;
@@ -12,7 +9,7 @@ using Xunit;
 
 namespace Scorpio.Uow
 {
-    public class UnitOfWorkManager_Tests:IntegratedTest<TestModule>
+    public class UnitOfWorkManager_Tests : IntegratedTest<TestModule>
     {
         [Fact]
         public void Begin()

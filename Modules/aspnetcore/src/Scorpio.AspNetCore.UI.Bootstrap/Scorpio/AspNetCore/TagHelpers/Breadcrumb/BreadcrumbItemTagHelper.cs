@@ -26,7 +26,7 @@
         /// 
         /// </summary>
         /// <param name="tagHelperService"></param>
-        public BreadcrumbItemTagHelper( BreadcrumbItemTagHelperService tagHelperService)
+        public BreadcrumbItemTagHelper(BreadcrumbItemTagHelperService tagHelperService)
             : base(tagHelperService)
         {
 

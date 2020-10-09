@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-
+﻿
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 using Xunit;
@@ -20,7 +19,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Color
 
             }, (c, o) =>
             {
-                o.JustHasClasses("text-default");
+                o.ShouldJustHasClasses("text-default");
             });
         }
 
@@ -29,10 +28,10 @@ namespace Scorpio.AspNetCore.TagHelpers.Color
         {
             this.Test<TextColorTagHelper>(t =>
             {
-                t.TextColor =  TextColorType.Primary;
+                t.TextColor = TextColorType.Primary;
             }, (c, o) =>
             {
-                o.JustHasClasses("text-primary");
+                o.ShouldJustHasClasses("text-primary");
             });
         }
     }

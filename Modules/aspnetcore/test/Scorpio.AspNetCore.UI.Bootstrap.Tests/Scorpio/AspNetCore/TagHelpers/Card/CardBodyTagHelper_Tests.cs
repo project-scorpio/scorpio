@@ -1,11 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Razor.TagHelpers;
-
-using Scorpio.AspNetCore.UI.Bootstrap;
-
+﻿
 using Shouldly;
 
 using Xunit;
@@ -20,7 +13,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Card
             this.Test<CardBodyTagHelper>((c, o) =>
             {
                 o.TagName.ShouldBe("div");
-                o.JustHasClasses("card-body");
+                o.ShouldJustHasClasses("card-body");
                 o.PreContent.GetContent().ShouldBe("");
             });
         }
@@ -34,7 +27,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Card
             }, (c, o) =>
             {
                 o.TagName.ShouldBe("div");
-                o.JustHasClasses("card-body");
+                o.ShouldJustHasClasses("card-body");
                 o.PreContent.GetContent().ShouldBe("<h5 class=\"card-title\">TestTitle</h5>");
             });
         }
@@ -47,7 +40,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Card
             }, (c, o) =>
             {
                 o.TagName.ShouldBe("div");
-                o.JustHasClasses("card-body");
+                o.ShouldJustHasClasses("card-body");
                 o.PreContent.GetContent().ShouldBe("<h6 class=\"card-subtitle\">TestSubTitle</h6>");
             });
         }
@@ -61,7 +54,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Card
             }, (c, o) =>
             {
                 o.TagName.ShouldBe("div");
-                o.JustHasClasses("card-body");
+                o.ShouldJustHasClasses("card-body");
                 o.PreContent.GetContent().ShouldBe("<h5 class=\"card-title\">TestTitle</h5><h6 class=\"card-subtitle\">TestSubTitle</h6>");
             });
         }

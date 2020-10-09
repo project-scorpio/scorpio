@@ -144,7 +144,7 @@ namespace Scorpio.Authorization.Permissions
         /// <param name="permission"></param>
         protected virtual void AddPermissionToDictionaryRecursively(Dictionary<string, PermissionDefinition> permissions, PermissionDefinition permission)
         {
-            permissions.Add(permission.FullName,permission);
+            permissions.Add(permission.FullName, permission);
 
             foreach (var child in permission.Children)
             {

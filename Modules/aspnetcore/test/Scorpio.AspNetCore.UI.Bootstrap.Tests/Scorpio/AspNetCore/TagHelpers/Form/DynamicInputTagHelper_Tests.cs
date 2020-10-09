@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.AspNetCore.Razor.TagHelpers;
-
-using Shouldly;
+﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 
 using Xunit;
 
@@ -19,10 +16,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
             {
             }, c => { }, o => o.AddAttribute("id", "id"), (a, c, o) =>
             {
-                //o.TagName.ShouldBe("input");
-                //o.JustHasClasses("form-check-input");
-                //o.PreElement.GetContent().ShouldBe("<div class=\"form-check\">");
-                //o.PostElement.GetContent().ShouldBe("<label class=\"form-check-label\" for=\"id\">Text</label></div>");
+                o.ShouldJustHasClasses();
             });
         }
 

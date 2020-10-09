@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.Extensions.Options;
@@ -18,7 +15,7 @@ namespace Scorpio.AspNetCore.Authorization
         public void GetPolicyAsync()
         {
             var provider = new AuthorizationPolicyProvider(new OptionsWrapper<AuthorizationOptions>(new AuthorizationOptions()));
-            Should.NotThrow(() => provider.GetPolicyAsync("test")).Requirements.ShouldHaveSingleItem().ShouldBeOfType< PermissionRequirement>();
+            Should.NotThrow(() => provider.GetPolicyAsync("test")).Requirements.ShouldHaveSingleItem().ShouldBeOfType<PermissionRequirement>();
         }
 
         [Fact]

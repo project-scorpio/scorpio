@@ -25,11 +25,11 @@ namespace Microsoft.AspNetCore.Razor.TagHelpers
         /// <param name="enum"></param>
         /// <param name="format"></param>
         /// <returns></returns>
-        public static string ToClassName(this Enum @enum,string format)
+        public static string ToClassName(this Enum @enum, string format)
         {
             var type = @enum.GetType();
             var members = type.GetMember(@enum.ToString());
-            var value= members.FirstOrDefault()?.GetAttribute<ClassNameAttribute>()?.ClassName ?? @enum.ToString().ToLowerInvariant();
+            var value = members.FirstOrDefault()?.GetAttribute<ClassNameAttribute>()?.ClassName ?? @enum.ToString().ToLowerInvariant();
             if (string.IsNullOrWhiteSpace(value))
             {
                 return string.Empty;

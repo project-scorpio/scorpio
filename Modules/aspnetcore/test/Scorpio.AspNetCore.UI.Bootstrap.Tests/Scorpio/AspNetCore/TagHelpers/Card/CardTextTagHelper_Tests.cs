@@ -1,8 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using Shouldly;
 
-using Microsoft.AspNetCore.Razor.TagHelpers;
 using Xunit;
-using Shouldly;
 
 namespace Scorpio.AspNetCore.TagHelpers.Card
 {
@@ -17,7 +15,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Card
             this.Test<CardTextTagHelper>((c, o) =>
             {
                 o.TagName.ShouldBe("p");
-                o.JustHasClasses("card-text");
+                o.ShouldJustHasClasses("card-text");
                 o.PreContent.GetContent().ShouldBe("");
             });
         }

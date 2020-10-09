@@ -23,7 +23,7 @@ namespace Scorpio.Auditing
         [Fact]
         public void AttributedAuditing()
         {
-            using (var scope= _auditingManager.BeginScope())
+            using (var scope = _auditingManager.BeginScope())
             {
                 var service = ServiceProvider.GetService<IAttributedAuditingInterface>();
                 service.Test("test", 19);

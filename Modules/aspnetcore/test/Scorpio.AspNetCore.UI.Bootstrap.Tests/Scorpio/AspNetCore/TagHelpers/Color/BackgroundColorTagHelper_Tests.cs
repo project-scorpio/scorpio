@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-
+﻿
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 using Xunit;
@@ -20,7 +19,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Color
 
             }, (c, o) =>
             {
-                o.JustHasClasses("bg-default");
+                o.ShouldJustHasClasses("bg-default");
             });
         }
 
@@ -32,7 +31,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Color
                 t.BackgroundColor = BackgroundColorType.Primary;
             }, (c, o) =>
             {
-                o.JustHasClasses("bg-primary");
+                o.ShouldJustHasClasses("bg-primary");
             });
         }
     }

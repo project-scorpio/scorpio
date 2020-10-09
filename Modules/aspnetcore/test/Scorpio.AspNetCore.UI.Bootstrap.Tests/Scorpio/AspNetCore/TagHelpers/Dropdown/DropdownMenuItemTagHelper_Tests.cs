@@ -22,7 +22,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
-                o.JustHasClasses("dropdown-item");
+                o.ShouldJustHasClasses("dropdown-item");
             });
         }
 
@@ -35,7 +35,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
-                o.JustHasClasses("dropdown-item", "active");
+                o.ShouldJustHasClasses("dropdown-item", "active");
             });
         }
 
@@ -48,7 +48,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
             }, (a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
-                o.JustHasClasses("dropdown-item", "disabled");
+                o.ShouldJustHasClasses("dropdown-item", "disabled");
             });
         }
 
