@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
+﻿
 using Scorpio.Modularity;
 
 namespace Scorpio.AspNetCore.UI.Bootstrap

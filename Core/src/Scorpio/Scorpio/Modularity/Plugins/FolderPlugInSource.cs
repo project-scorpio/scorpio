@@ -20,6 +20,7 @@ namespace Scorpio.Modularity.Plugins
             _path = path;
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Minor Code Smell", "S3626:Jump statements should not be redundant", Justification = "<Pending>")]
         public Type[] GetModules()
         {
             var modules = new List<Type>();

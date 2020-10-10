@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-using Scorpio.Data;
+﻿using Scorpio.Data;
 using Scorpio.Modularity;
 using Scorpio.Uow;
 
