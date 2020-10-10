@@ -91,8 +91,20 @@ namespace System.Collections.Generic
         /// <returns>List of removed items</returns>
         public static ICollection<T> RemoveAll<T>(this ICollection<T> source, Func<T, bool> predicate)
         {
+            if (source is IList<T> list)
+            {
+                var result = new List<T>();
+                for (var i = list.Count - 1; i >= 0; i--)
+                {
+                    if (predicate(list[i]))
+                    {
+                        result.Add(list[i]);
+                        list.RemoveAt(i);
+                    }
+                }
+                return result;
+            }
             var items = source.Where(predicate).ToList();
-
             foreach (var item in items)
             {
                 source.Remove(item);
