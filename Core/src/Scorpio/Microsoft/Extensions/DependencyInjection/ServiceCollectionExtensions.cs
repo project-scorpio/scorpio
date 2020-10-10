@@ -213,9 +213,7 @@ namespace Microsoft.Extensions.DependencyInjection
             if (!replaceAll)
             {
                 var implementationType = serviceDescriptor.GetImplementationType();
-
                 services.RemoveAll(s => s.ServiceType == serviceDescriptor.ServiceType && s.GetImplementationType() == implementationType);
-
             }
             else
             {

@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+
+using Microsoft.Extensions.DependencyInjection;
 
 using Quartz;
 
@@ -29,8 +31,21 @@ namespace Scorpio.Quartz
         /// <param name="context"></param>
         public override void ConfigureServices(ConfigureServicesContext context)
         {
-            context.Services.AddSingleton(sp => sp.GetService<ISchedulerFactory>().GetScheduler().Result);
-            context.Services.AddHostedService<QuartzService>();
+            _ = context.Services.AddQuartz(q =>
+              {
+                  q.UseMicrosoftDependencyInjectionScopedJobFactory(c => c.AllowDefaultConstructor = true);
+                  q.UseSimpleTypeLoader();
+                  q.UseInMemoryStore();
+                  q.UseDefaultThreadPool(c => c.MaxConcurrency = 10);
+                  q.UseTimeZoneConverter();
+                  _ = q.UseXmlSchedulingConfiguration(x =>
+                    {
+                        x.Files = new[] { "~/quartz_jobs.config" };
+                        x.ScanInterval = TimeSpan.FromSeconds(2);
+                        x.FailOnFileNotFound = false;
+                        x.FailOnSchedulingError = false;
+                    });
+              });
             context.Services.RegisterAssemblyByConvention();
             base.ConfigureServices(context);
         }
