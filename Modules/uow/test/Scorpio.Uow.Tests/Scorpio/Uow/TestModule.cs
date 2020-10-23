@@ -6,9 +6,6 @@ namespace Scorpio.Uow
     [DependsOn(typeof(UnitOfWorkModule))]
     public class TestModule : ScorpioModule
     {
-        public override void ConfigureServices(ConfigureServicesContext context)
-        {
-            context.RegisterAssemblyByConvention();
-        }
+       
     }
 }

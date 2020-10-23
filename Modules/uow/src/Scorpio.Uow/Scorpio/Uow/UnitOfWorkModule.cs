@@ -19,7 +19,6 @@ namespace Scorpio.Uow
             context.Services.AddOptions<UnitOfWorkDefaultOptions>();
             context.Services.TryAddTransient<UnitOfWorkInterceptor>();
             context.Services.TryAddTransient<IUnitOfWork, NullUnitOfWork>();
-            context.Services.RegisterAssemblyByConventionOfType<UnitOfWorkModule>();
         }
 
     }

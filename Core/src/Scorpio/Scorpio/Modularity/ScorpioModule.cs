@@ -13,7 +13,10 @@ namespace Scorpio.Modularity
     /// </remarks>
     public abstract class ScorpioModule : IScorpioModule
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
+        internal protected bool SkipAutoServiceRegistration { get; set; } = false;
         /// <summary>
         /// 
         /// </summary>

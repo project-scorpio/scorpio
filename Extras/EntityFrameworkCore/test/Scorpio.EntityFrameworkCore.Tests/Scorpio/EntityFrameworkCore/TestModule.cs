@@ -25,8 +25,6 @@ namespace Scorpio.EntityFrameworkCore
             {
                 options.Configure<IStringValue>(f => f.Expression(d => d.StringValue != f.FilterContext.GetParameter<IStringValueProvider>().Value));
             });
-            context.RegisterAssemblyByConvention();
-            base.ConfigureServices(context);
         }
 
         public override void Initialize(ApplicationInitializationContext context)

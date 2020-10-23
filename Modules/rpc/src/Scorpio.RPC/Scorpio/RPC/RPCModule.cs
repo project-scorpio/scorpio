@@ -9,14 +9,6 @@ namespace Scorpio.Rpc
     /// </summary>
     public class RpcModule : ScorpioModule
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="context"></param>
-        public override void ConfigureServices(ConfigureServicesContext context)
-        {
-            context.Services.RegisterAssemblyByConvention();
-            base.ConfigureServices(context);
-        }
+       
     }
 }

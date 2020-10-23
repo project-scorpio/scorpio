@@ -13,7 +13,6 @@ namespace Scorpio.Data
             {
                 options.Configure<ISoftDelete>(c => c.Enable());
             });
-            base.ConfigureServices(context);
         }
     }
     [DependsOn(typeof(DataModule))]
@@ -25,7 +24,6 @@ namespace Scorpio.Data
             {
                 options.Configure<ISoftDelete>(c => c.Disable());
             });
-            base.ConfigureServices(context);
         }
     }
 }

@@ -36,9 +36,6 @@ namespace Scorpio.AspNetCore
             context.Services.AddAuthorization();
 
             context.Services.AddSingleton<IAuthorizationHandler, PermissionRequirementHandler>();
-
-            context.Services.RegisterAssemblyByConvention();
-            base.ConfigureServices(context);
         }
 
         /// <summary>

@@ -19,7 +19,6 @@ namespace Scorpio.Setting
                 opt.SettingProviders.Add<DefaultValueSettingProvider>();
                 opt.SettingProviders.Add<DefaultSettingProvider>();
             });
-            context.Services.RegisterAssemblyByConvention();
         }
     }
 }

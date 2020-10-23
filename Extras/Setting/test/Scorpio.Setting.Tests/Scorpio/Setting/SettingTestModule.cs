@@ -9,12 +9,10 @@ namespace Scorpio.Setting
     {
         public override void ConfigureServices(ConfigureServicesContext context)
         {
-            context.Services.RegisterAssemblyByConvention();
             context.Services.Configure<SettingOptions>(opts =>
             {
                 opts.DefinitionProviders.Add<TestSettingDefinitionProvider>();
             });
-            base.ConfigureServices(context);
         }
     }
 }

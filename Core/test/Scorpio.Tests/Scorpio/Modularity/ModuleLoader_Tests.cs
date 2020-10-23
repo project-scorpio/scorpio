@@ -31,7 +31,6 @@ namespace Scorpio.Modularity
     {
         public override void ConfigureServices(ConfigureServicesContext context)
         {
-            context.RegisterAssemblyByConvention();
         }
     }
 

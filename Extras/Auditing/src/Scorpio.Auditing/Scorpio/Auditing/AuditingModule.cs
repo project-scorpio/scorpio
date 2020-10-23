@@ -27,7 +27,6 @@ namespace Scorpio.Auditing
         public override void ConfigureServices(ConfigureServicesContext context)
         {
             context.Services.TryAddTransient<AuditingInterceptor>();
-            context.Services.RegisterAssemblyByConvention();
         }
     }
 }

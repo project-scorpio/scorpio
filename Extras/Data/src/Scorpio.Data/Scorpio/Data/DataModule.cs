@@ -20,7 +20,6 @@ namespace Scorpio.Data
                 options.Configure<ISoftDelete>(f => f.Expression(d => !d.IsDeleted));
             });
             context.Services.AddSingleton(typeof(IDataFilter<>), typeof(DataFilter<>));
-            context.Services.RegisterAssemblyByConvention();
         }
     }
 }

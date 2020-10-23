@@ -46,8 +46,6 @@ namespace Scorpio.EntityFrameworkCore
             });
             context.Services.TryAddTransient<IOnSaveChangeHandlersFactory, OnSaveChangeHandlersFactory>();
             context.Services.TryAddTransient(typeof(IDbContextProvider<>), typeof(DefaultDbContextProvider<>));
-            context.Services.RegisterAssemblyByConvention();
-            base.ConfigureServices(context);
         }
     }
 }
