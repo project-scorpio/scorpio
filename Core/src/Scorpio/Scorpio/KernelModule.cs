@@ -29,7 +29,6 @@ namespace Scorpio
         {
             context.Services.TryAddSingleton(typeof(IAmbientScopeProvider<>), typeof(AmbientDataContextAmbientScopeProvider<>));
             context.Services.TryAddSingleton<ICancellationTokenProvider>(NoneCancellationTokenProvider.Instance);
-            context.RegisterAssemblyByConvention();
         }
     }
 }

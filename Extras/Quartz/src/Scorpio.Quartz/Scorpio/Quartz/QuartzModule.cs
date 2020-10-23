@@ -22,7 +22,6 @@ namespace Scorpio.Quartz
         public override void PreConfigureServices(ConfigureServicesContext context)
         {
             context.Services.AddConventionalRegistrar<ConventionalRegistrar>();
-            base.PreConfigureServices(context);
         }
 
         /// <summary>
@@ -46,8 +45,6 @@ namespace Scorpio.Quartz
                         x.FailOnSchedulingError = false;
                     });
               });
-            context.Services.RegisterAssemblyByConvention();
-            base.ConfigureServices(context);
         }
 
         /// <summary>

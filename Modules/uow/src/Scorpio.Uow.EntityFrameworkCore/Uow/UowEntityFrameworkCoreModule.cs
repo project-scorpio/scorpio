@@ -29,7 +29,6 @@ namespace Scorpio.Uow
             context.Services.ReplaceTransient<IUnitOfWork, EfUnitOfWork>();
             context.Services.AddTransient<IEfTransactionStrategy, UnitOfWorkEfTransactionStrategy>();
             context.Services.ReplaceOrAdd(ServiceDescriptor.Transient(typeof(IDbContextProvider<>), typeof(UnitOfWorkDbContextProvider<>)), true);
-            context.Services.RegisterAssemblyByConvention();
         }
     }
 }

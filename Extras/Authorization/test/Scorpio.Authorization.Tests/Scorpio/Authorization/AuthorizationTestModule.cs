@@ -12,13 +12,11 @@ namespace Scorpio.Authorization
         public override void ConfigureServices(ConfigureServicesContext context)
         {
             context.Services.ReplaceSingleton<ICurrentPrincipalAccessor, FakePrincipalAccessor>();
-            context.Services.RegisterAssemblyByConvention();
             context.Services.Configure<PermissionOptions>(opt =>
             {
                 opt.DefinitionProviders.Add<FakePermissionDefinitionProvider>();
                 opt.GrantingProviders.Add<FakePermissionGrantingProvider>();
             });
-            base.ConfigureServices(context);
         }
     }
 }

@@ -116,7 +116,13 @@ namespace Scorpio
             Services.AddSingleton(context);
             Modules.ForEach(m => m.Instance.PreConfigureServices(context));
             _options.PreConfigureServices(context);
-            Modules.ForEach(m => m.Instance.ConfigureServices(context));
+            Modules.ForEach(m =>
+            {
+                if (m.Instance is ScorpioModule module && !module.SkipAutoServiceRegistration)
+                {
+                    Services.RegisterAssemblyByConvention(m.Type.Assembly);
+                } 
+                m.Instance.ConfigureServices(context); });
             _options.ConfigureServices(context);
             Modules.ForEach(m => m.Instance.PostConfigureServices(context));
             _options.PostConfigureServices(context);

@@ -17,15 +17,7 @@ namespace Scorpio.AspNetCore.UI
         public override void PreConfigureServices(ConfigureServicesContext context)
         {
             context.Services.AddConventionalRegistrar<AspNetCoreUiConventionalRegistrar>();
-            base.PreConfigureServices(context);
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="context"></param>
-        public override void ConfigureServices(ConfigureServicesContext context)
-        {
-            context.Services.RegisterAssemblyByConvention();
-        }
+      
     }
 }

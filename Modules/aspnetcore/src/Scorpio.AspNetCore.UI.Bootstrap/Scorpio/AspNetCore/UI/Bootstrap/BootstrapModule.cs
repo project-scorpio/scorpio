@@ -9,14 +9,6 @@ namespace Scorpio.AspNetCore.UI.Bootstrap
     [DependsOn(typeof(AspNetCoreUiModule))]
     public class BootstrapModule : ScorpioModule
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="context"></param>
-        public override void ConfigureServices(ConfigureServicesContext context)
-        {
-
-            context.RegisterAssemblyByConvention();
-        }
+       
     }
 }

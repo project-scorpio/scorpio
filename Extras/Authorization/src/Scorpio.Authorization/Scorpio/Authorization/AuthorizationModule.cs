@@ -27,7 +27,6 @@ namespace Scorpio.Authorization
         {
             context.Services.AddOptions<PermissionOptions>();
             context.Services.TryAddTransient<AuthorizationInterceptor>();
-            context.Services.RegisterAssemblyByConvention();
         }
     }
 }

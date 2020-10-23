@@ -29,7 +29,6 @@ namespace Scorpio.Uow
             context.Services.PreConfigure<DataFilterOptions>(options =>
             {
             });
-            context.RegisterAssemblyByConvention();
         }
     }
 }

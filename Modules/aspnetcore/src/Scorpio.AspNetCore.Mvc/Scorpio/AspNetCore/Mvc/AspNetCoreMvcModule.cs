@@ -34,7 +34,6 @@ namespace Scorpio.AspNetCore.Mvc
         /// <param name="context"></param>
         public override void ConfigureServices(ConfigureServicesContext context)
         {
-            context.Services.RegisterAssemblyByConvention();
             context.Services.Options<MvcOptions>().PreConfigure<IServiceProvider>(
                 (options, serviceProvider) => options.AddScorpio());
             context.Services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);

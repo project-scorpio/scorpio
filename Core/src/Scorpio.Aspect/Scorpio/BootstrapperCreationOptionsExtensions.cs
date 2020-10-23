@@ -1,4 +1,6 @@
-﻿namespace Scorpio
+﻿using Scorpio.Modularity;
+
+namespace Scorpio
 {
     /// <summary>
     /// 
