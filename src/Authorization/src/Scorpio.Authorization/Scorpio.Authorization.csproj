@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyTitle>Scorpio authorization library</AssemblyTitle>
+    <RootNamespace />
+    <CodeAnalysisRuleSet>Scorpio.Authorization.ruleset</CodeAnalysisRuleSet>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\..\..\.sonarlint\project-scorpio_scorpio\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../../Core/src/Scorpio.Aspect/Scorpio.Aspect.csproj" />
+  </ItemGroup>
+
+</Project>

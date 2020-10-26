@@ -1,0 +1,13 @@
+{
+  "solution": {
+    "path": "scorpio.sln",
+    "projects": [
+      "Core\\src\\Scorpio.Aspect\\Scorpio.Aspect.csproj",
+      "Core\\src\\Scorpio.Utilities\\Scorpio.Utilities.csproj",
+      "Core\\src\\Scorpio\\Scorpio.csproj",
+      "Core\\test\\Scorpio.TestBase\\Scorpio.TestBase.csproj",
+      "Auditing\\src\\Scorpio.Auditing\\Scorpio.Auditing.csproj",
+      "Auditing\\test\\Scorpio.Auditing.Tests\\Scorpio.Auditing.Tests.csproj"
+    ]
+  }
+}

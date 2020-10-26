@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyTitle>Scorpio core library</AssemblyTitle>
+    <RootNamespace />
+    <PackageTags>Scorpio;Aspect;dependencyinjection;Modularity</PackageTags>
+    <CodeAnalysisRuleSet>..\..\..\..\.sonarlint\project-scorpio_scorpiocsharp.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Scorpio\DynamicProxy\ConventionaInterceptorContext.cs" />
+    <Compile Remove="Scorpio\DynamicProxy\IConventionaInterceptorContext.cs" />
+    <Compile Remove="Scorpio\DynamicProxy\IConventionaInterceptorRegistrar.cs" />
+    <Compile Remove="Scorpio\DynamicProxy\InterceptorHelper.cs" />
+    <Compile Remove="Scorpio\DynamicProxy\TypeInterceptorMap.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\..\..\.sonarlint\project-scorpio_scorpio\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspectCore.Extensions.DependencyInjection" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Scorpio\Scorpio.csproj" />
+  </ItemGroup>
+
+</Project>
