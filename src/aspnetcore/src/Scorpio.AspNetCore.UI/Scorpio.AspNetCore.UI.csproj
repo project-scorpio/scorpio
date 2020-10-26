@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <AssemblyTitle>Scorpio aspnet core ui library</AssemblyTitle>
+    <RootNamespace />
+    <CodeAnalysisRuleSet>Scorpio.AspNetCore.UI.ruleset</CodeAnalysisRuleSet>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\..\.sonarlint\project-scorpio_scorpio\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Scorpio.AspNetCore\Scorpio.AspNetCore.csproj" />
+  </ItemGroup>
+
+</Project>

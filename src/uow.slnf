@@ -1,0 +1,16 @@
+{
+  "solution": {
+    "path": "scorpio.sln",
+    "projects": [
+      "Core\\src\\Scorpio.Aspect\\Scorpio.Aspect.csproj",
+      "Core\\src\\Scorpio.Utilities\\Scorpio.Utilities.csproj",
+      "Core\\src\\Scorpio\\Scorpio.csproj",
+      "Data\\src\\Scorpio.Data\\Scorpio.Data.csproj",
+      "EntityFrameworkCore\\src\\Scorpio.EntityFrameworkCore\\Scorpio.EntityFrameworkCore.csproj",
+      "uow\\src\\Scorpio.Uow.EntityFrameworkCore\\Scorpio.Uow.EntityFrameworkCore.csproj",
+      "uow\\src\\Scorpio.Uow\\Scorpio.Uow.csproj",
+      "uow\\test\\Scorpio.Uow.EntityFrameworkCore.Tests\\Scorpio.Uow.EntityFrameworkCore.Tests.csproj",
+      "uow\\test\\Scorpio.Uow.Tests\\Scorpio.Uow.Tests.csproj"
+    ]
+  }
+}
