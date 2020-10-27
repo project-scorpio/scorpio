@@ -127,7 +127,7 @@ namespace Scorpio.Entities
         /// <inheritdoc/>
         public override int GetHashCode()
         {
-            return HashCode.Combine(Id);
+            return Id.GetHashCode();
         }
 
 

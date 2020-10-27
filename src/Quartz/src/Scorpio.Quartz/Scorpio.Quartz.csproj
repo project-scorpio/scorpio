@@ -13,7 +13,7 @@
     <PackageReference Include="Quartz.Plugins.TimeZoneConverter" Version="3.2.0" />
 	</ItemGroup>
 	<PropertyGroup>
-		<TargetFramework>netstandard2.1</TargetFramework>
+		<TargetFramework>netstandard2.0</TargetFramework>
 		<RootNamespace />
 		<CodeAnalysisRuleSet>Scorpio.Quartz.ruleset</CodeAnalysisRuleSet>
     <SonarQubeExclude>true</SonarQubeExclude>
