@@ -21,7 +21,6 @@ namespace Scorpio.Data
         {
             if (typeof(TEntity).IsAssignableTo<IHasExtraProperties>())
             {
-                context.EntityType.AddAnnotation("test", "testValue");
                 context.ModelBuilder.Entity<TEntity>(e =>
                 {
                     e.Property(x => ((IHasExtraProperties)x).ExtraProperties).HasConversion(

@@ -92,5 +92,30 @@ namespace System
             return obj;
         }
 
+        /// <summary>
+        /// Invoke <see cref="IDisposable.Dispose"/> method if obj is <see cref="IDisposable"/>,otherwise do nothing.
+        /// </summary>
+        /// <param name="obj"></param>
+        public static void SafelyDispose(this object obj)
+        {
+            if (obj is IDisposable disposable)
+            {
+                disposable.Dispose();
+                return;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static async ValueTask SafelyDisposeAsync(this object obj)
+        {
+            if (obj is IAsyncDisposable disposable)
+            {
+                await disposable.DisposeAsync();
+            }
+        }
     }
 }

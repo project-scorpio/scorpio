@@ -1,4 +1,4 @@
-#load "./util.cake"
+#load "./index.cake"
 
 using System.Xml;
 

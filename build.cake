@@ -17,16 +17,29 @@ Task("Clean")
 	service.Clean();
 });
 Task("Build").IsDependentOn("Clean")
+    .WithCriteria(() =>service.Context.Environment.IsLocalBuild)
 	.Does(() =>{
 	service.Build();
 });
 Task("Test")
+    .WithCriteria(() =>service.Context.Environment.IsLocalBuild)
 	.IsDependentOn("Build")
 	.Does(() =>{
 	service.Test();
+	CleanDirectories("./.coverreports/");
+	ReportGenerator(
+		"./src/**/coverage.opencover.xml",
+		"./.coverreports",
+		new ReportGeneratorSettings{
+			ReportTypes=new List<ReportGeneratorReportType>{ReportGeneratorReportType.Html},
+			AssemblyFilters=new List<string>{"-*Test*"}
+		}
+		);
+	StartProcess("cmd","/c start ./.coverreports/index.html");
 });
 
 Task("Sonar")
+    .WithCriteria(() =>service.Context.Environment.IsPublish)
 	.IsDependentOn("Clean")
 	.Does(() =>{
 	service.Sonar();
@@ -46,6 +59,6 @@ Task("Package")
     service.Publish();
 });
 
-Task("Default").IsDependentOn("Sonar").IsDependentOn("Package").IsDependentOn("Publish");
+Task("Default").IsDependentOn("Test").IsDependentOn("Sonar").IsDependentOn("Package").IsDependentOn("Publish");
 
 RunTarget(target);
