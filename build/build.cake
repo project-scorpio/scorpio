@@ -1,4 +1,6 @@
 #load "./index.cake"
+#addin "nuget:?package=Cake.Sonar&version=1.1.25"
+#addin nuget:?package=Cake.Coverlet&version=2.4.2
 
 public class BuildService
 {

@@ -1,0 +1,16 @@
+{
+  "solution": {
+    "path": "scorpio.sln",
+    "projects": [
+      "BackgroundJob\\src\\Scorpio.BackgroundJobs.Abstractions\\Scorpio.BackgroundJobs.Abstractions.csproj",
+      "BackgroundJob\\src\\Scorpio.BackgroundJobs\\Scorpio.BackgroundJobs.csproj",
+      "BackgroundJob\\src\\Scorpio.BackgroundWorkers\\Scorpio.BackgroundWorkers.csproj",
+      "BackgroundJob\\test\\Scorpio.BackgroundJobs.Abstractions.Tests\\Scorpio.BackgroundJobs.Abstractions.Tests.csproj",
+      "BackgroundJob\\test\\Scorpio.BackgroundJobs.Tests\\Scorpio.BackgroundJobs.Tests.csproj",
+      "BackgroundJob\\test\\Scorpio.BackgroundWorkers.Tests\\Scorpio.BackgroundWorkers.Tests.csproj",
+      "Core\\src\\Scorpio.Utilities\\Scorpio.Utilities.csproj",
+      "Core\\src\\Scorpio\\Scorpio.csproj",
+      "Core\\test\\Scorpio.TestBase\\Scorpio.TestBase.csproj"
+    ]
+  }
+}

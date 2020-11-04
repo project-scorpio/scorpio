@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyTitle>Scorpio background library</AssemblyTitle>
+    <RootNamespace />
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Scorpio\BackgroundJobs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Scorpio.BackgroundJobs.Abstractions\Scorpio.BackgroundJobs.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>
