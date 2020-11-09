@@ -13,7 +13,7 @@ namespace Scorpio.BackgroundWorkers
         public int InvokeCount { get; set; }=0;
 
         public ScorpioTimer  ScorpioTimer =>Timer;
-        public FakePeriodicBackgroundWorker(IServiceProvider serviceProvider, ScorpioTimer timer, IServiceScopeFactory serviceScopeFactory) : base(serviceProvider, timer, serviceScopeFactory)
+        public FakePeriodicBackgroundWorker( ScorpioTimer timer, IServiceScopeFactory serviceScopeFactory) : base(timer, serviceScopeFactory)
         {
             timer.Period=3600000;
             timer.RunOnStart=true;

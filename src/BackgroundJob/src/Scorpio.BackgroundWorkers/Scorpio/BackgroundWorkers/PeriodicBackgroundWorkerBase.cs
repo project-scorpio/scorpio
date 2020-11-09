@@ -29,13 +29,11 @@ namespace Scorpio.BackgroundWorkers
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
         /// <param name="timer"></param>
         /// <param name="serviceScopeFactory"></param>
         protected PeriodicBackgroundWorkerBase(
-            IServiceProvider serviceProvider,
             ScorpioTimer timer,
-            IServiceScopeFactory serviceScopeFactory):base(serviceProvider)
+            IServiceScopeFactory serviceScopeFactory):base()
         {
             ServiceScopeFactory = serviceScopeFactory;
             Timer = timer;
