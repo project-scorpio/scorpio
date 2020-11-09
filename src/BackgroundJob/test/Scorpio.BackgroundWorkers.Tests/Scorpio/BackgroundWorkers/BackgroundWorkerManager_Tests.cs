@@ -10,7 +10,7 @@ namespace Scorpio.BackgroundWorkers
         public void Add()
         {
             var worker = Substitute.For<IBackgroundWorker>();
-          using  var manager = new BackgroundWorkerManager();
+            using var manager = new BackgroundWorkerManager();
             manager.Add(worker);
             manager.BackgroundWorkers.ShouldHaveSingleItem().ShouldBe(worker);
             worker.Received(0).StartAsync();
@@ -20,7 +20,7 @@ namespace Scorpio.BackgroundWorkers
         public void AddByStarted()
         {
             var worker = Substitute.For<IBackgroundWorker>();
-           using var manager = new BackgroundWorkerManager();
+            using var manager = new BackgroundWorkerManager();
             Shouldly.Should.NotThrow(() => manager.StartAsync());
             manager.Add(worker);
             manager.BackgroundWorkers.ShouldHaveSingleItem().ShouldBe(worker);

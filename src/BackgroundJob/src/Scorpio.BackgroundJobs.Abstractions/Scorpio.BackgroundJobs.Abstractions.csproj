@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Scorpio\BackgroundJobs\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\Core\src\Scorpio\Scorpio.csproj" />
   </ItemGroup>
 
