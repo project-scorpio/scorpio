@@ -4,13 +4,13 @@ using System.Text;
 
 using Microsoft.Extensions.DependencyInjection;
 
+using Scorpio.DependencyInjection;
 using Scorpio.Threading;
 
 namespace Scorpio.BackgroundWorkers
 {
     public class FakePeriodicBackgroundWorker : PeriodicBackgroundWorkerBase
     {
-        public int InvokeCount { get; set; }=0;
 
         public ScorpioTimer  ScorpioTimer =>Timer;
         public FakePeriodicBackgroundWorker( ScorpioTimer timer, IServiceScopeFactory serviceScopeFactory) : base(timer, serviceScopeFactory)
@@ -21,7 +21,12 @@ namespace Scorpio.BackgroundWorkers
 
         protected override void DoWork(BackgroundWorkerContext workerContext)
         {
-            InvokeCount++;
+            workerContext.ServiceProvider.GetService<WorkerExecutor>().Action(workerContext);
         }
+    }
+
+    public class WorkerExecutor : ISingletonDependency
+    {
+        public Action<BackgroundWorkerContext> Action { get; set; }
     }
 }

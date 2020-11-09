@@ -39,7 +39,7 @@ Task("Test")
 });
 
 Task("Sonar")
-    .WithCriteria(() =>service.Context.Environment.IsPublish)
+    .WithCriteria(() =>service.Context.Environment.IsRunningOnAppVeyor)
 	.IsDependentOn("Clean")
 	.Does(() =>{
 	service.Sonar();
