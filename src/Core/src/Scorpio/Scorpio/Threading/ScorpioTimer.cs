@@ -34,8 +34,9 @@ namespace Scorpio.Threading
         public bool RunOnStart { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets the <see cref="ILogger{TCategoryName}"/> used to log messages from the timer.
         /// </summary>
+        /// <value>The <see cref="ILogger{TCategoryName}"/> used to log messages from the timer.</value>
         public ILogger<ScorpioTimer> Logger { get; set; }
 
         private readonly Timer _taskTimer;

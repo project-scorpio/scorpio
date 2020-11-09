@@ -1,39 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 
 namespace Scorpio.BackgroundWorkers
 {
     /// <summary>
-    /// Base class that can be used to implement <see cref="IBackgroundWorker"/>.
+    /// Provides the abstract base class for a background worker.
     /// </summary>
     public abstract class BackgroundWorkerBase : IBackgroundWorker
     {
 
         /// <summary>
-        /// 
+        /// Gets or sets the <see cref="ILogger{TCategoryName}"/> used to log messages from the background job.
         /// </summary>
-        public ILogger<BackgroundWorkerBase> Logger { protected get; set; }
+        /// <value>The <see cref="ILogger{TCategoryName}"/> used to log messages from the background job.</value>
+        public ILogger<BackgroundWorkerBase> Logger { get; set; }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="BackgroundWorkerBase"/> class.
         /// </summary>
-        protected BackgroundWorkerBase(IServiceProvider serviceProvider)
+        protected BackgroundWorkerBase()
         {
-            Logger =serviceProvider.GetService<ILogger<BackgroundWorkerBase>>()??NullLogger<BackgroundWorkerBase>.Instance;
+            Logger = NullLogger<BackgroundWorkerBase>.Instance;
         }
 
         /// <summary>
-        /// 
+        /// Start the current background worker asynchronously.
         /// </summary>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
+        /// <param name="cancellationToken">Indicates if the worker startup should be aborted.</param>
+        /// <returns>That represents the asynchronous execution.</returns>
         public virtual Task StartAsync(CancellationToken cancellationToken = default)
         {
             Logger.LogDebug("Started background worker: " + ToString());
@@ -41,10 +38,10 @@ namespace Scorpio.BackgroundWorkers
         }
 
         /// <summary>
-        /// 
+        /// Stop processing work and shut down the background worker, gracefully if possible.
         /// </summary>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
+        /// <param name="cancellationToken">Indicates if the graceful shutdown should be aborted.</param>
+        /// <returns>That represents the asynchronous execution.</returns>
         public virtual Task StopAsync(CancellationToken cancellationToken = default)
         {
             Logger.LogDebug("Stopped background worker: " + ToString());
@@ -52,9 +49,9 @@ namespace Scorpio.BackgroundWorkers
         }
 
         /// <summary>
-        /// 
+        /// Returns a string that represents the current object.
         /// </summary>
-        /// <returns></returns>
+        /// <returns> A string that represents the current object.</returns>
         public override string ToString()
         {
             return GetType().FullName;

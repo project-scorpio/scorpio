@@ -19,10 +19,12 @@ namespace Scorpio.Repositories
             var entity = new RoleEntity();
             var repo = Substitute.For<IBasicRepository<RoleEntity, int>, ISupportsExplicitLoading<RoleEntity, int>>();
             var loading = (ISupportsExplicitLoading<RoleEntity, int>)repo;
-            loading.EnsureCollectionLoadedAsync(Arg.Any<RoleEntity>(),
-           Arg.Any<Expression<Func<RoleEntity, IEnumerable<UserEntity>>>>(), Arg.Any<CancellationToken>()).Returns(Task.CompletedTask);
-            loading.EnsurePropertyLoadedAsync(Arg.Any<RoleEntity>(),
-           Arg.Any<Expression<Func<RoleEntity, string>>>(), Arg.Any<CancellationToken>()).Returns(Task.CompletedTask);
+            loading.EnsureCollectionLoadedAsync(default,
+                default(Expression<Func<RoleEntity, IEnumerable<UserEntity>>>),
+                default)
+                .ReturnsForAnyArgs(Task.CompletedTask);
+            loading.EnsurePropertyLoadedAsync(default,
+           default(Expression<Func<RoleEntity, string>>), default).ReturnsForAnyArgs(Task.CompletedTask);
             return (entity, repo, loading);
         }
 
