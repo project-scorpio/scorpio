@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Text;
 
 using NSubstitute;
 using NSubstitute.Extensions;
@@ -37,7 +34,7 @@ namespace Scorpio.BackgroundJobs
             store.ReceivedWithAnyArgs(1).InsertAsync(Arg.Any<BackgroundJobInfo>());
         }
 
-          [Fact]
+        [Fact]
         public void EnqueueAsyncWithDelay()
         {
             var store = Substitute.For<IBackgroundJobStore>();
@@ -54,11 +51,11 @@ namespace Scorpio.BackgroundJobs
                 i.Priority.ShouldBe(BackgroundJobPriority.Normal);
             }));
             var manager = new DefaultBackgroundJobManager(clock, json, store);
-            Should.NotThrow(() => manager.EnqueueAsync("Test",delay:TimeSpan.FromSeconds(1)));
+            Should.NotThrow(() => manager.EnqueueAsync("Test", delay: TimeSpan.FromSeconds(1)));
             store.ReceivedWithAnyArgs(1).InsertAsync(Arg.Any<BackgroundJobInfo>());
         }
 
-          [Fact]
+        [Fact]
         public void EnqueueAsyncWithPriority()
         {
             var store = Substitute.For<IBackgroundJobStore>();
@@ -75,7 +72,7 @@ namespace Scorpio.BackgroundJobs
                 i.Priority.ShouldBe(BackgroundJobPriority.High);
             }));
             var manager = new DefaultBackgroundJobManager(clock, json, store);
-            Should.NotThrow(() => manager.EnqueueAsync("Test",priority:BackgroundJobPriority.High));
+            Should.NotThrow(() => manager.EnqueueAsync("Test", priority: BackgroundJobPriority.High));
             store.ReceivedWithAnyArgs(1).InsertAsync(Arg.Any<BackgroundJobInfo>());
         }
     }

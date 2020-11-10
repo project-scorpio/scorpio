@@ -25,7 +25,7 @@ namespace Scorpio.BackgroundJobs
         /// 
         /// </summary>
         protected IBackgroundJobStore Store { get; }
-        
+
         /// <summary>
         /// 
         /// </summary>

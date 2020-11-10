@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 using Newtonsoft.Json;
 
 using Shouldly;
@@ -27,16 +24,16 @@ namespace Scorpio.BackgroundJobs
             var str = JsonConvert.SerializeObject(1);
             var serialzer = new JsonBackgroundJobSerializer();
             Should.NotThrow(() => serialzer.Deserialize(str, typeof(int))).ShouldBe(1);
-            Should.Throw<JsonSerializationException>(()=>serialzer.Deserialize(str,typeof(BackgroundJobOptions)));
-        }      
-        
+            Should.Throw<JsonSerializationException>(() => serialzer.Deserialize(str, typeof(BackgroundJobOptions)));
+        }
+
         [Fact]
         public void DeserializeOfT()
         {
             var str = JsonConvert.SerializeObject(1);
             var serialzer = new JsonBackgroundJobSerializer();
             Should.NotThrow(() => serialzer.Deserialize<int>(str)).ShouldBe(1);
-            Should.Throw<JsonSerializationException>(()=>serialzer.Deserialize<BackgroundJobOptions>(str));
+            Should.Throw<JsonSerializationException>(() => serialzer.Deserialize<BackgroundJobOptions>(str));
         }
     }
 }
