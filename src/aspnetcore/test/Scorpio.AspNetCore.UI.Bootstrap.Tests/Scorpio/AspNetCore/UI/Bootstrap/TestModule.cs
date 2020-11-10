@@ -9,9 +9,6 @@ namespace Scorpio.AspNetCore.UI.Bootstrap
     [DependsOn(typeof(BootstrapModule))]
     public class TestModule : ScorpioModule
     {
-        public override void ConfigureServices(ConfigureServicesContext context)
-        {
-            context.Services.AddSingleton(HtmlEncoder.Default);
-        }
+        public override void ConfigureServices(ConfigureServicesContext context) => context.Services.AddSingleton(HtmlEncoder.Default);
     }
 }

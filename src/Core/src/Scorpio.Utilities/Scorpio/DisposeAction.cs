@@ -13,15 +13,12 @@ namespace Scorpio
         /// 
         /// </summary>
         /// <param name="action"></param>
-        public DisposeAction(Action action)
-        {
-            _action = action ?? throw new ArgumentNullException(nameof(action));
-        }
+        public DisposeAction(Action action) => _action = action ?? throw new ArgumentNullException(nameof(action));
 
         #region IDisposable Support
         private bool _disposedValue = false; // To detect redundant calls
 
-        void Dispose(bool disposing)
+        private void Dispose(bool disposing)
         {
             if (!_disposedValue)
             {
@@ -35,10 +32,7 @@ namespace Scorpio
         /// <summary>
         /// 
         /// </summary>
-        public void Dispose()
-        {
-            Dispose(true);
-        }
+        public void Dispose() => Dispose(true);
         #endregion
 
     }

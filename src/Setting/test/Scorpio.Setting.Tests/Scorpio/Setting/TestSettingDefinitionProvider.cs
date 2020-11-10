@@ -1,6 +1,6 @@
 ﻿namespace Scorpio.Setting
 {
-    class TestSettingDefinitionProvider : ISettingDefinitionProvider
+    internal class TestSettingDefinitionProvider : ISettingDefinitionProvider
     {
         public void Define(ISettingDefinitionContext context)
         {

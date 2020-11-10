@@ -26,9 +26,6 @@ namespace System
         /// <param name="exception"></param>
         /// <param name="defaultLevel"></param>
         /// <returns></returns>
-        public static LogLevel GetLogLevel(this Exception exception, LogLevel defaultLevel = LogLevel.Error)
-        {
-            return (exception as IHasLogLevel)?.LogLevel ?? defaultLevel;
-        }
+        public static LogLevel GetLogLevel(this Exception exception, LogLevel defaultLevel = LogLevel.Error) => (exception as IHasLogLevel)?.LogLevel ?? defaultLevel;
     }
 }

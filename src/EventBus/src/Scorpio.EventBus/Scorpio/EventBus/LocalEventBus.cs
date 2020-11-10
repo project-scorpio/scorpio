@@ -21,16 +21,10 @@ namespace Scorpio.EventBus
         public ILogger<LocalEventBus> Logger { get; set; }
 
 
-        public LocalEventBus(IOptions<EventBusOptions> options, IServiceProvider serviceProvider) : base(options, serviceProvider)
-        {
-            Logger = (serviceProvider.GetService<ILoggerFactory>() ?? NullLoggerFactory.Instance).CreateLogger<LocalEventBus>();
-        }
+        public LocalEventBus(IOptions<EventBusOptions> options, IServiceProvider serviceProvider) : base(options, serviceProvider) => Logger = (serviceProvider.GetService<ILoggerFactory>() ?? NullLoggerFactory.Instance).CreateLogger<LocalEventBus>();
 
 
-        public override async Task PublishAsync(Type eventType, object eventData)
-        {
-            await TriggerHandlersAsync(eventType, eventData);
-        }
+        public override async Task PublishAsync(Type eventType, object eventData) => await TriggerHandlersAsync(eventType, eventData);
 
         public override IDisposable Subscribe(Type eventType, IEventHandlerFactory factory)
         {
@@ -44,9 +38,7 @@ namespace Scorpio.EventBus
         public override void Unsubscribe<TEvent>(Func<TEvent, Task> action)
         {
             GetOrCreateHandlerFactories(typeof(TEvent))
-                          .Locking(factories =>
-                          {
-                              factories.RemoveAll(
+                          .Locking(factories => factories.RemoveAll(
                                   factory =>
                                   {
                                       if (!(factory is SingleInstanceHandlerFactory singleInstanceFactory))
@@ -59,32 +51,22 @@ namespace Scorpio.EventBus
                                           return false;
                                       }
                                       return actionHandler.Action == action;
-                                  });
-                          });
+                                  }));
         }
 
         public override void Unsubscribe(Type eventType, IEventHandler handler)
         {
             GetOrCreateHandlerFactories(eventType)
-                .Locking(factories =>
-                {
-                    factories.RemoveAll(
+                .Locking(factories => factories.RemoveAll(
                         factory =>
                             factory is SingleInstanceHandlerFactory &&
                             (factory as SingleInstanceHandlerFactory).HandlerInstance == handler
-                    );
-                });
+                    ));
         }
 
-        public override void Unsubscribe(Type eventType, IEventHandlerFactory factory)
-        {
-            GetOrCreateHandlerFactories(eventType).Locking(factories => factories.Remove(factory));
-        }
+        public override void Unsubscribe(Type eventType, IEventHandlerFactory factory) => GetOrCreateHandlerFactories(eventType).Locking(factories => factories.Remove(factory));
 
-        public override void UnsubscribeAll(Type eventType)
-        {
-            GetOrCreateHandlerFactories(eventType).Locking(factories => factories.Clear());
-        }
+        public override void UnsubscribeAll(Type eventType) => GetOrCreateHandlerFactories(eventType).Locking(factories => factories.Clear());
 
         protected override IEnumerable<EventTypeWithEventHandlerFactories> GetHandlerFactories(Type eventType)
         {
@@ -114,10 +96,7 @@ namespace Scorpio.EventBus
             return false;
         }
 
-        private List<IEventHandlerFactory> GetOrCreateHandlerFactories(Type eventType)
-        {
-            return HandlerFactories.GetOrAdd(eventType, (type) => new List<IEventHandlerFactory>());
-        }
+        private List<IEventHandlerFactory> GetOrCreateHandlerFactories(Type eventType) => HandlerFactories.GetOrAdd(eventType, (type) => new List<IEventHandlerFactory>());
 
     }
 }

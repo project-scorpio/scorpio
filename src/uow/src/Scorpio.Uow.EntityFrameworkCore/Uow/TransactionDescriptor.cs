@@ -17,15 +17,9 @@ namespace Scorpio.Uow
 
         public IEnumerable<DbContext> DbContexts => _dbContexts.ToImmutableList();
 
-        public TransactionDescriptor(IDbContextTransaction transaction)
-        {
-            Transaction = transaction;
-        }
+        public TransactionDescriptor(IDbContextTransaction transaction) => Transaction = transaction;
 
-        public void AddContext(DbContext context)
-        {
-            _dbContexts.Add(context);
-        }
+        public void AddContext(DbContext context) => _dbContexts.Add(context);
 
         public void Commit()
         {

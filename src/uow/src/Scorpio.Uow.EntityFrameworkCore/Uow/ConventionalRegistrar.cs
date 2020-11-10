@@ -6,14 +6,8 @@ using Scorpio.Repositories;
 
 namespace Scorpio.Uow
 {
-    class ConventionalRegistrar : IConventionalRegistrar
+    internal class ConventionalRegistrar : IConventionalRegistrar
     {
-        public void Register(IConventionalRegistrationContext context)
-        {
-            context.RegisterConventionalInterceptor(c =>
-            {
-                c.Where(t => t.IsAssignableTo<IRepository>()).Intercept<UnitOfWorkInterceptor>();
-            });
-        }
+        public void Register(IConventionalRegistrationContext context) => context.RegisterConventionalInterceptor(c => c.Where(t => t.IsAssignableTo<IRepository>()).Intercept<UnitOfWorkInterceptor>());
     }
 }

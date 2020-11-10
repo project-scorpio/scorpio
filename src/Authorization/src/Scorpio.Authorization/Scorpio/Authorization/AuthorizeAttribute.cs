@@ -16,10 +16,7 @@ namespace Scorpio.Authorization
         /// <summary>
         /// 
         /// </summary>
-        public AuthorizeAttribute(params string[] permissions)
-        {
-            Permissions = permissions;
-        }
+        public AuthorizeAttribute(params string[] permissions) => Permissions = permissions;
 
         /// <summary>
         /// 
@@ -37,7 +34,7 @@ namespace Scorpio.Authorization
         /// <param name="context"></param>
         /// <param name="next"></param>
         /// <returns></returns>
-        public async override Task Invoke(AspectContext context, AspectDelegate next)
+        public override async Task Invoke(AspectContext context, AspectDelegate next)
         {
             var interceptor = context.ServiceProvider.GetService<AuthorizationInterceptor>();
             await interceptor.Invoke(context, next);

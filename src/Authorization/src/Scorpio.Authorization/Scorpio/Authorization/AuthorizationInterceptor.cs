@@ -32,7 +32,7 @@ namespace Scorpio.Authorization
         /// <returns>The invoke.</returns>
         /// <param name="context">Context.</param>
         /// <param name="next">Next.</param>
-        public async override Task Invoke(AspectContext context, AspectDelegate next)
+        public override async Task Invoke(AspectContext context, AspectDelegate next)
         {
             if (Aspects.CrossCuttingConcerns.IsApplied(context.Implementation, Concern))
             {

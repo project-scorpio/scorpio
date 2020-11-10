@@ -75,9 +75,6 @@ namespace Scorpio.EntityFrameworkCore.DependencyInjection
             : base(
                   connectionString,
                   serviceProvider,
-                  existingConnection)
-        {
-            base.DbContextOptions = new DbContextOptionsBuilder<TDbContext>();
-        }
+                  existingConnection) => base.DbContextOptions = new DbContextOptionsBuilder<TDbContext>();
     }
 }

@@ -14,10 +14,7 @@ namespace Scorpio.Options
         /// <param name="options"></param>
         /// <param name="name"></param>
         /// <returns></returns>
-        public static TOption GetOption<TOption>(this ExtensibleOptions options, string name)
-        {
-            return (TOption)options.ExtendedOption.GetOrAdd(name, () => default(TOption));
-        }
+        public static TOption GetOption<TOption>(this ExtensibleOptions options, string name) => (TOption)options.ExtendedOption.GetOrAdd(name, () => default(TOption));
 
         /// <summary>
         /// 
@@ -26,10 +23,7 @@ namespace Scorpio.Options
         /// <param name="options"></param>
         /// <param name="name"></param>
         /// <param name="option"></param>
-        public static void SetOption<TOption>(this ExtensibleOptions options, string name, TOption option)
-        {
-            options.ExtendedOption[name] = option;
-        }
+        public static void SetOption<TOption>(this ExtensibleOptions options, string name, TOption option) => options.ExtendedOption[name] = option;
 
     }
 }

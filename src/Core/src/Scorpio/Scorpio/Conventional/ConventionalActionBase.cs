@@ -13,10 +13,7 @@ namespace Scorpio.Conventional
         /// 
         /// </summary>
         /// <param name="configuration"></param>
-        protected ConventionalActionBase(IConventionalConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
+        protected ConventionalActionBase(IConventionalConfiguration configuration) => _configuration = configuration;
 
         internal void Action()
         {

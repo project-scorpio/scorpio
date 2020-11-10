@@ -43,10 +43,7 @@ namespace Scorpio.AspNetCore.TagHelpers
         /// <param name="context"></param>
         /// <param name="key"></param>
         /// <param name="value"></param>
-        public static void SetValue(this TagHelperContext context, string key, object value)
-        {
-            context.Items[key] = value;
-        }
+        public static void SetValue(this TagHelperContext context, string key, object value) => context.Items[key] = value;
 
         /// <summary>
         /// 

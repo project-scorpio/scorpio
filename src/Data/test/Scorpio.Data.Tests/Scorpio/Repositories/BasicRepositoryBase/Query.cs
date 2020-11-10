@@ -29,7 +29,7 @@ namespace Scorpio.Repositories
         [Fact]
         public void GetCount()
         {
-            var (repo, list) = GetUsers();
+            var (repo, _) = GetUsers();
             repo.Insert(new User { Id = 10, Name = "Jhon" });
             var exp = repo.GetCount();
             exp.ShouldBe(1);
@@ -38,7 +38,7 @@ namespace Scorpio.Repositories
         [Fact]
         public async System.Threading.Tasks.Task GetCountAsync()
         {
-            var (repo, list) = GetUsers();
+            var (repo, _) = GetUsers();
             repo.Insert(new User { Id = 10, Name = "Jhon" });
             var exp = await repo.GetCountAsync();
             exp.ShouldBe(1);

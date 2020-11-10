@@ -18,10 +18,7 @@ namespace Scorpio.EventBus
                 config.Where(t => t.IsAssignableTo<IEventHandler>() && t.IsAssignableTo<ITransientDependency>()).AsSelf().Lifetime(ServiceLifetime.Transient);
                 config.Where(t => t.IsAssignableTo<IEventHandler>() && t.IsAssignableTo<IScopedDependency>()).AsSelf().Lifetime(ServiceLifetime.Scoped);
             });
-            context.RegisterEventHandler(c =>
-           {
-               c.Where(t => t.IsAssignableTo<IEventHandler>()).AutoActivation();
-           });
+            context.RegisterEventHandler(c => c.Where(t => t.IsAssignableTo<IEventHandler>()).AutoActivation());
         }
     }
 }

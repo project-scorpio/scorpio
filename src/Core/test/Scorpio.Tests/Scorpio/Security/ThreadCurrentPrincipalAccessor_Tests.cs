@@ -9,9 +9,6 @@ namespace Scorpio.Security
     public class ThreadCurrentPrincipalAccessor_Tests
     {
         [Fact]
-        public void Principal()
-        {
-            new ThreadCurrentPrincipalAccessor().Principal.ShouldBe(Thread.CurrentPrincipal);
-        }
+        public void Principal() => new ThreadCurrentPrincipalAccessor().Principal.ShouldBe(Thread.CurrentPrincipal);
     }
 }

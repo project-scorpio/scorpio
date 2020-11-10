@@ -164,10 +164,7 @@ namespace Scorpio.Auditing
         /// <param name="implementationMethod"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public virtual AuditActionInfo CreateAuditAction(Type type, MethodInfo implementationMethod, object[] parameters)
-        {
-            return CreateAuditAction(type, implementationMethod, CreateArgumentsDictionary(implementationMethod, parameters));
-        }
+        public virtual AuditActionInfo CreateAuditAction(Type type, MethodInfo implementationMethod, object[] parameters) => CreateAuditAction(type, implementationMethod, CreateArgumentsDictionary(implementationMethod, parameters));
 
         /// <summary>
         /// 

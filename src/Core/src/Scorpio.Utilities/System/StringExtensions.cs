@@ -64,18 +64,12 @@ namespace System
         /// <summary>
         /// Indicates whether this string is null or an System.String.Empty string.
         /// </summary>
-        public static bool IsNullOrEmpty(this string str)
-        {
-            return string.IsNullOrEmpty(str);
-        }
+        public static bool IsNullOrEmpty(this string str) => string.IsNullOrEmpty(str);
 
         /// <summary>
         /// indicates whether this string is null, empty, or consists only of white-space characters.
         /// </summary>
-        public static bool IsNullOrWhiteSpace(this string str)
-        {
-            return string.IsNullOrWhiteSpace(str);
-        }
+        public static bool IsNullOrWhiteSpace(this string str) => string.IsNullOrWhiteSpace(str);
 
         /// <summary>
         /// Gets a substring of a string from beginning of the string.
@@ -100,10 +94,7 @@ namespace System
         /// <summary>
         /// Converts line endings in the string to <see cref="Environment.NewLine"/>.
         /// </summary>
-        public static string NormalizeLineEndings(this string str)
-        {
-            return str.Replace("\n\r", "\n").Replace("\r\n", "\n").Replace("\r", "\n").Replace("\n", Environment.NewLine);
-        }
+        public static string NormalizeLineEndings(this string str) => str.Replace("\n\r", "\n").Replace("\r\n", "\n").Replace("\r", "\n").Replace("\n", Environment.NewLine);
 
         /// <summary>
         /// Gets index of nth occurence of a char in a string.
@@ -164,10 +155,7 @@ namespace System
         /// <param name="str">The string.</param>
         /// <param name="postFixes">one or more postfix.</param>
         /// <returns>Modified string or the same string if it has not any of given postfixes</returns>
-        public static string RemovePostFix(this string str, params string[] postFixes)
-        {
-            return str.RemovePostFix(StringComparison.Ordinal, postFixes);
-        }
+        public static string RemovePostFix(this string str, params string[] postFixes) => str.RemovePostFix(StringComparison.Ordinal, postFixes);
 
         /// <summary>
         /// Removes first occurrence of the given postfixes from end of the given string.
@@ -205,10 +193,7 @@ namespace System
         /// <param name="str">The string.</param>
         /// <param name="preFixes">one or more prefix.</param>
         /// <returns>Modified string or the same string if it has not any of given prefixes</returns>
-        public static string RemovePreFix(this string str, params string[] preFixes)
-        {
-            return str.RemovePreFix(StringComparison.Ordinal, preFixes);
-        }
+        public static string RemovePreFix(this string str, params string[] preFixes) => str.RemovePreFix(StringComparison.Ordinal, preFixes);
 
         /// <summary>
         /// Removes first occurrence of the given prefixes from beginning of the given string.
@@ -264,34 +249,22 @@ namespace System
         /// <summary>
         /// Uses string.Split method to split given string by given separator.
         /// </summary>
-        public static string[] Split(this string str, string separator)
-        {
-            return str.Split(new[] { separator }, StringSplitOptions.None);
-        }
+        public static string[] Split(this string str, string separator) => str.Split(new[] { separator }, StringSplitOptions.None);
 
         /// <summary>
         /// Uses string.Split method to split given string by given separator.
         /// </summary>
-        public static string[] Split(this string str, string separator, StringSplitOptions options)
-        {
-            return str.Split(new[] { separator }, options);
-        }
+        public static string[] Split(this string str, string separator, StringSplitOptions options) => str.Split(new[] { separator }, options);
 
         /// <summary>
         /// Uses string.Split method to split given string by <see cref="Environment.NewLine"/>.
         /// </summary>
-        public static string[] SplitToLines(this string str)
-        {
-            return str.Split(Environment.NewLine);
-        }
+        public static string[] SplitToLines(this string str) => str.Split(Environment.NewLine);
 
         /// <summary>
         /// Uses string.Split method to split given string by <see cref="Environment.NewLine"/>.
         /// </summary>
-        public static string[] SplitToLines(this string str, StringSplitOptions options)
-        {
-            return str.Split(Environment.NewLine, options);
-        }
+        public static string[] SplitToLines(this string str, StringSplitOptions options) => str.Split(Environment.NewLine, options);
 
         /// <summary>
         /// Converts PascalCase string to camelCase string.
@@ -466,10 +439,7 @@ namespace System
         /// Returning string can not be longer than maxLength.
         /// </summary>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="str"/> is null</exception>
-        public static string TruncateWithPostfix(this string str, int maxLength)
-        {
-            return TruncateWithPostfix(str, maxLength, "...");
-        }
+        public static string TruncateWithPostfix(this string str, int maxLength) => TruncateWithPostfix(str, maxLength, "...");
 
         /// <summary>
         /// Gets a substring of a string from beginning of the string if it exceeds maximum length.
@@ -505,10 +475,7 @@ namespace System
         /// <summary>
         /// Converts given string to a byte array using <see cref="Encoding.UTF8"/> encoding.
         /// </summary>
-        public static byte[] GetBytes(this string str)
-        {
-            return str.GetBytes(Encoding.UTF8);
-        }
+        public static byte[] GetBytes(this string str) => str.GetBytes(Encoding.UTF8);
 
         /// <summary>
         /// Converts given string to a byte array using the given <paramref name="encoding"/>

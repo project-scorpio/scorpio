@@ -13,10 +13,7 @@ namespace Scorpio.Uow
     {
         private readonly ICurrentUnitOfWorkProvider _currentUnitOfWorkProvider;
 
-        public IActiveUnitOfWork Current
-        {
-            get { return _currentUnitOfWorkProvider.Current; }
-        }
+        public IActiveUnitOfWork Current => _currentUnitOfWorkProvider.Current;
 
         private readonly IServiceProvider _serviceProvider;
 
@@ -30,15 +27,9 @@ namespace Scorpio.Uow
 
         }
 
-        public IUnitOfWorkCompleteHandle Begin()
-        {
-            return Begin(new UnitOfWorkOptions());
-        }
+        public IUnitOfWorkCompleteHandle Begin() => Begin(new UnitOfWorkOptions());
 
-        public IUnitOfWorkCompleteHandle Begin(TransactionScopeOption scope)
-        {
-            return Begin(new UnitOfWorkOptions { Scope = scope });
-        }
+        public IUnitOfWorkCompleteHandle Begin(TransactionScopeOption scope) => Begin(new UnitOfWorkOptions { Scope = scope });
 
         public IUnitOfWorkCompleteHandle Begin(UnitOfWorkOptions options)
         {

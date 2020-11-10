@@ -14,10 +14,7 @@ namespace Scorpio.Auditing
     {
         private readonly IAuditingHelper _auditingHelper;
 
-        public AuditingHelper_Tests()
-        {
-            _auditingHelper = ServiceProvider.GetService<IAuditingHelper>();
-        }
+        public AuditingHelper_Tests() => _auditingHelper = ServiceProvider.GetService<IAuditingHelper>();
 
         [Theory]
         [InlineData(typeof(NonAuditingClassWithAuditedAttribute), false)]
@@ -52,7 +49,8 @@ namespace Scorpio.Auditing
             actual.Parameters.ShouldBe("{\"name\":\"Test\",\"age\":{\"name\":\"Test\",\"age\":18}}");
 
         }
-        class TestClass
+
+        private class TestClass
         {
             public string Name { get; set; }
 
@@ -74,8 +72,7 @@ namespace Scorpio.Auditing
 
     }
 
-
-    class NonAuditingClassWithAuditedAttribute
+    internal class NonAuditingClassWithAuditedAttribute
     {
         public void Method()
         {
@@ -90,7 +87,7 @@ namespace Scorpio.Auditing
     }
 
     [Audited]
-    class AuditingClassWithAuditedAttribute
+    internal class AuditingClassWithAuditedAttribute
     {
         public void Method()
         {
@@ -98,7 +95,7 @@ namespace Scorpio.Auditing
         }
     }
 
-    class AuditingMethodWithAuditedAttribute
+    internal class AuditingMethodWithAuditedAttribute
     {
         [Audited]
         public void Method()
@@ -108,7 +105,7 @@ namespace Scorpio.Auditing
     }
 
     [DisableAuditing]
-    class DisableAuditingClassWithAuditedAttribute
+    internal class DisableAuditingClassWithAuditedAttribute
     {
         public void Method()
         {
@@ -116,7 +113,7 @@ namespace Scorpio.Auditing
         }
     }
 
-    class DisableAuditingMethodWithAuditedAttribute
+    internal class DisableAuditingMethodWithAuditedAttribute
     {
         [DisableAuditing]
         public void Method()
@@ -127,7 +124,7 @@ namespace Scorpio.Auditing
 
 
     [Audited]
-    class AuditingClassDisableAuditingMethodWithAuditedAttribute
+    internal class AuditingClassDisableAuditingMethodWithAuditedAttribute
     {
         [DisableAuditing]
         public void Method()
@@ -137,7 +134,7 @@ namespace Scorpio.Auditing
     }
 
     [DisableAuditing]
-    class DisableAuditingClassAuditingMethodWithAuditedAttribute
+    internal class DisableAuditingClassAuditingMethodWithAuditedAttribute
     {
         [Audited]
         public void Method()

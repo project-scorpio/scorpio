@@ -6,14 +6,8 @@ namespace Scorpio.EventBus.Conventional
     {
         private readonly EventHandlerActivationType _activationType;
 
-        public ActivationTypeSelector(EventHandlerActivationType activationType)
-        {
-            _activationType = activationType;
-        }
+        public ActivationTypeSelector(EventHandlerActivationType activationType) => _activationType = activationType;
 
-        EventHandlerActivationType IEventHandlerActivationTypeSelector.Select(Type handlerType)
-        {
-            return _activationType;
-        }
+        EventHandlerActivationType IEventHandlerActivationTypeSelector.Select(Type handlerType) => _activationType;
     }
 }

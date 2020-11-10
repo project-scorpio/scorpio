@@ -22,18 +22,12 @@ namespace Scorpio.Domain.Entities
         /// 
         /// </summary>
         /// <param name="eventData"></param>
-        protected virtual void AddDomainEvent(object eventData)
-        {
-            _domainEvents.Add(eventData);
-        }
+        protected virtual void AddDomainEvent(object eventData) => _domainEvents.Add(eventData);
 
         /// <summary>
         /// 
         /// </summary>
-        public void ClearDomainEvents()
-        {
-            _domainEvents.Clear();
-        }
+        public void ClearDomainEvents() => _domainEvents.Clear();
     }
 
     /// <summary>
@@ -52,17 +46,11 @@ namespace Scorpio.Domain.Entities
         /// 
         /// </summary>
         /// <param name="eventData"></param>
-        protected virtual void AddDomainEvent(object eventData)
-        {
-            _domainEvents.Add(eventData);
-        }
+        protected virtual void AddDomainEvent(object eventData) => _domainEvents.Add(eventData);
 
         /// <summary>
         /// 
         /// </summary>
-        public void ClearDomainEvents()
-        {
-            _domainEvents.Clear();
-        }
+        public void ClearDomainEvents() => _domainEvents.Clear();
     }
 }

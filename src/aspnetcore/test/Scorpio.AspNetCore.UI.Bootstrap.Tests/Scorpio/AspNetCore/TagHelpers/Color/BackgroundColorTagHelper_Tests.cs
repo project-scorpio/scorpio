@@ -17,22 +17,10 @@ namespace Scorpio.AspNetCore.TagHelpers.Color
             this.Test<BackgroundColorTagHelper>(t =>
             {
 
-            }, (c, o) =>
-            {
-                o.ShouldJustHasClasses("bg-default");
-            });
+            }, (c, o) => o.ShouldJustHasClasses("bg-default"));
         }
 
         [Fact]
-        public void Primary()
-        {
-            this.Test<BackgroundColorTagHelper>(t =>
-            {
-                t.BackgroundColor = BackgroundColorType.Primary;
-            }, (c, o) =>
-            {
-                o.ShouldJustHasClasses("bg-primary");
-            });
-        }
+        public void Primary() => this.Test<BackgroundColorTagHelper>(t => t.BackgroundColor = BackgroundColorType.Primary, (c, o) => o.ShouldJustHasClasses("bg-primary"));
     }
 }

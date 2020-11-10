@@ -30,10 +30,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
         [Fact]
         public void Title()
         {
-            this.Test<CheckInputTagHelper>(t =>
-            {
-                t.Title = "Title";
-            }, c => { }, o => o.AddAttribute("id", "id"), (a, c, o) =>
+            this.Test<CheckInputTagHelper>(t => t.Title = "Title", c => { }, o => o.AddAttribute("id", "id"), (a, c, o) =>
             {
                 o.TagName.ShouldBe("input");
                 o.ShouldJustHasClasses("form-check-input");
@@ -45,10 +42,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
         [Fact]
         public void Text()
         {
-            this.Test<CheckInputTagHelper>(t =>
-            {
-                t.Text = "Text";
-            }, c => { }, o => o.AddAttribute("id", "id"), (a, c, o) =>
+            this.Test<CheckInputTagHelper>(t => t.Text = "Text", c => { }, o => o.AddAttribute("id", "id"), (a, c, o) =>
             {
                 o.TagName.ShouldBe("input");
                 o.ShouldJustHasClasses("form-check-input");

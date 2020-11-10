@@ -23,10 +23,7 @@ namespace Scorpio.Middleware.Pipeline
         /// <param name="builder"></param>
         /// <param name="args"></param>
         /// <returns></returns>
-        public static IPipelineBuilder<TPipelineContext> UseMiddleware<TPipelineContext, TMiddleware>(this IPipelineBuilder<TPipelineContext> builder, params object[] args)
-        {
-            return UseMiddleware(builder, typeof(TMiddleware), args);
-        }
+        public static IPipelineBuilder<TPipelineContext> UseMiddleware<TPipelineContext, TMiddleware>(this IPipelineBuilder<TPipelineContext> builder, params object[] args) => UseMiddleware(builder, typeof(TMiddleware), args);
 
         /// <summary>
         /// 

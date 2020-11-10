@@ -72,10 +72,7 @@ namespace Scorpio.Auditing
         /// </summary>
         /// <typeparam name="TWapper"></typeparam>
         /// <returns></returns>
-        public TWapper CreateWapper<TWapper>() where TWapper : AuditInfoWapper
-        {
-            return Activator.CreateInstance(typeof(TWapper), this) as TWapper;
-        }
+        public TWapper CreateWapper<TWapper>() where TWapper : AuditInfoWapper => Activator.CreateInstance(typeof(TWapper), this) as TWapper;
 
         /// <summary>
         /// 
@@ -158,10 +155,7 @@ namespace Scorpio.Auditing
         /// <summary>
         /// 
         /// </summary>
-        public AuditActionInfo()
-        {
-            ExtraProperties = new Dictionary<string, object>();
-        }
+        public AuditActionInfo() => ExtraProperties = new Dictionary<string, object>();
 
 
         /// <summary>

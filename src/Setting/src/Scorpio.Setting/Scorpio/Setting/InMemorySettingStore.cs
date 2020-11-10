@@ -3,14 +3,11 @@ using System.Threading.Tasks;
 
 namespace Scorpio.Setting
 {
-    class InMemorySettingStore : ISettingStore, DependencyInjection.ISingletonDependency
+    internal class InMemorySettingStore : ISettingStore, DependencyInjection.ISingletonDependency
     {
         private readonly Dictionary<string, object> _values;
 
-        public InMemorySettingStore()
-        {
-            _values = new Dictionary<string, object>();
-        }
+        public InMemorySettingStore() => _values = new Dictionary<string, object>();
         public Task<SettingValue<T>> GetAsync<T>(ISettingStoreContext context)
         {
             var key = $"{context.Properties.Values.ExpandToString(":")}:{context.SettingDefinition.Name}";

@@ -12,10 +12,7 @@ namespace System.Linq.Expressions
         private readonly Expression<TDelegate> _predicate;
         private readonly List<LambdaExpression> _expressions = new List<LambdaExpression>();
 
-        internal TranslatePathMapper(Expression<TDelegate> predicate)
-        {
-            _predicate = predicate;
-        }
+        internal TranslatePathMapper(Expression<TDelegate> predicate) => _predicate = predicate;
 
         /// <summary>
         /// 

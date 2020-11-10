@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Scorpio.Conventional
 {
-    class ConventionalRegistrationContext : IConventionalRegistrationContext
+    internal class ConventionalRegistrationContext : IConventionalRegistrationContext
     {
 
         public IServiceCollection Services { get; }

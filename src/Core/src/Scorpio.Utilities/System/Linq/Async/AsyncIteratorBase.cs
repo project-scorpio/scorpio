@@ -19,10 +19,7 @@ namespace System.Linq.Async
         protected AsyncIteratorState _state = AsyncIteratorState.New;
         protected CancellationToken _cancellationToken;
 
-        protected AsyncIteratorBase()
-        {
-            _threadId = Environment.CurrentManagedThreadId;
-        }
+        protected AsyncIteratorBase() => _threadId = Environment.CurrentManagedThreadId;
 
         public IAsyncEnumerator<TSource> GetAsyncEnumerator(CancellationToken cancellationToken = default)
         {

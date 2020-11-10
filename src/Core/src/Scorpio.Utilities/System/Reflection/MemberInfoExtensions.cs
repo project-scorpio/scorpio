@@ -100,10 +100,7 @@ namespace System.Reflection
         /// <param name="member"> The member to inspect.</param>
         /// <param name="inherit">true to inspect the ancestors of element; otherwise, false.</param>
         /// <returns>A <see cref="DisplayAttribute"/> that matches attributeType, or null if no such attribute is found.</returns>
-        private static DisplayAttribute GetDisplayAttribute(this MemberInfo member, bool inherit = false)
-        {
-            return member.GetAttribute<DisplayAttribute>(inherit);
-        }
+        private static DisplayAttribute GetDisplayAttribute(this MemberInfo member, bool inherit = false) => member.GetAttribute<DisplayAttribute>(inherit);
 
         /// <summary>
         /// Retrieves a custom attribute of a specified objecct's type that is applied to a specified member, and optionally inspects the ancestors of that member.
@@ -112,10 +109,7 @@ namespace System.Reflection
         /// <param name="object"> The member to inspect.</param>
         /// <param name="inherit">true to inspect the ancestors of element; otherwise, false.</param>
         /// <returns>A custom attribute that matches attributeType, or null if no such attribute is found.</returns>
-        public static TAttribute GetAttribute<TAttribute>(this object @object, bool inherit = false)
-        {
-            return @object.GetAttributes<TAttribute>(inherit).FirstOrDefault();
-        }
+        public static TAttribute GetAttribute<TAttribute>(this object @object, bool inherit = false) => @object.GetAttributes<TAttribute>(inherit).FirstOrDefault();
 
         /// <summary>
         /// Retrieves a custom attribute of a specified type that is applied to a specified member, and optionally inspects the ancestors of that member.
@@ -124,10 +118,7 @@ namespace System.Reflection
         /// <param name="memberInfo"> The member to inspect.</param>
         /// <param name="inherit">true to inspect the ancestors of element; otherwise, false.</param>
         /// <returns>A custom attribute that matches attributeType, or null if no such attribute is found.</returns>
-        public static TAttribute GetAttribute<TAttribute>(this MemberInfo memberInfo, bool inherit = false)
-        {
-            return memberInfo.GetAttributes<TAttribute>(inherit).FirstOrDefault();
-        }
+        public static TAttribute GetAttribute<TAttribute>(this MemberInfo memberInfo, bool inherit = false) => memberInfo.GetAttributes<TAttribute>(inherit).FirstOrDefault();
 
 
         /// <summary>
@@ -179,10 +170,7 @@ namespace System.Reflection
         /// <param name="memberInfo"> The member to inspect.</param>
         /// <param name="inherit">true to inspect the ancestors of element; otherwise, false.</param>
         /// <returns>A custom attribute that matches attributeType, or null if no such attribute is found.</returns>
-        public static bool AttributeExists<TAttribute>(this MemberInfo memberInfo, bool inherit = false)
-        {
-            return memberInfo.GetAttribute<TAttribute>(inherit) != null;
-        }
+        public static bool AttributeExists<TAttribute>(this MemberInfo memberInfo, bool inherit = false) => memberInfo.GetAttribute<TAttribute>(inherit) != null;
 
 
 

@@ -24,10 +24,7 @@ namespace Scorpio.Uow
 
 
 
-        public UnitOfWorkEfTransactionStrategy(IServiceProvider serviceProvider)
-        {
-            _serviceProvider = serviceProvider;
-        }
+        public UnitOfWorkEfTransactionStrategy(IServiceProvider serviceProvider) => _serviceProvider = serviceProvider;
 
         public TDbContext CreateDbContext<TDbContext>(string connectionString) where TDbContext : ScorpioDbContext<TDbContext>
         {
@@ -60,18 +57,12 @@ namespace Scorpio.Uow
             return dbContext;
         }
 
-        public void Commit()
-        {
-            ActiveTransactions.Values.ForEach(tran => tran.Commit());
-        }
+        public void Commit() => ActiveTransactions.Values.ForEach(tran => tran.Commit());
 
 
 
 
-        public void InitOptions(UnitOfWorkOptions options)
-        {
-            Options = options;
-        }
+        public void InitOptions(UnitOfWorkOptions options) => Options = options;
 
         protected virtual void Dispose(bool disposing)
         {

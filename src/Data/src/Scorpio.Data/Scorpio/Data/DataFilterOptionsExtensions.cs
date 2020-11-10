@@ -14,10 +14,7 @@ namespace Scorpio.Data
         /// <typeparam name="TFilter"></typeparam>
         /// <param name="options"></param>
         /// <returns></returns>
-        internal static IDataFilterDescriptor<TFilter> Filter<TFilter>(this DataFilterOptions options) where TFilter : class
-        {
-            return options.Descriptors.GetOrAdd(typeof(TFilter), t => new DataFilterDescriptor<TFilter>()) as DataFilterDescriptor<TFilter>;
-        }
+        internal static IDataFilterDescriptor<TFilter> Filter<TFilter>(this DataFilterOptions options) where TFilter : class => options.Descriptors.GetOrAdd(typeof(TFilter), t => new DataFilterDescriptor<TFilter>()) as DataFilterDescriptor<TFilter>;
 
         /// <summary>
         /// 

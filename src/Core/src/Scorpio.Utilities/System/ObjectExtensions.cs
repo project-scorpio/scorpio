@@ -15,10 +15,7 @@ namespace System
         /// <param name="obj">Object to cast</param>
         /// <returns>Casted object</returns>
         public static T As<T>(this object obj)
-            where T : class
-        {
-            return obj as T;
-        }
+            where T : class => obj as T;
 
         /// <summary>
         /// Converts given object to a value type using <see cref="Convert.ChangeType(object,System.Type)"/> method.
@@ -27,10 +24,7 @@ namespace System
         /// <typeparam name="T">Type of the target object</typeparam>
         /// <returns>Converted object</returns>
         public static T To<T>(this object obj)
-            where T : struct
-        {
-            return (T)Convert.ChangeType(obj, typeof(T), CultureInfo.InvariantCulture);
-        }
+            where T : struct => (T)Convert.ChangeType(obj, typeof(T), CultureInfo.InvariantCulture);
 
         /// <summary>
         /// 
@@ -101,7 +95,6 @@ namespace System
             if (obj is IDisposable disposable)
             {
                 disposable.Dispose();
-                return;
             }
         }
 

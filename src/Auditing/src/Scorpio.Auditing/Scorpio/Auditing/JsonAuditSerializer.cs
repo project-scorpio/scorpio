@@ -20,10 +20,7 @@ namespace Scorpio.Auditing
         /// 
         /// </summary>
         /// <param name="options"></param>
-        public JsonAuditSerializer(IOptions<AuditingOptions> options)
-        {
-            Options = options.Value;
-        }
+        public JsonAuditSerializer(IOptions<AuditingOptions> options) => Options = options.Value;
 
         /// <summary>
         /// 

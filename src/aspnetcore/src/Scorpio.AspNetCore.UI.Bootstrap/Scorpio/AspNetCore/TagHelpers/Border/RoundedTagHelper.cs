@@ -29,10 +29,6 @@ namespace Scorpio.AspNetCore.TagHelpers.Border
         /// <param name="context"></param>
         /// <param name="output"></param>
         /// <returns></returns>
-        public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
-        {
-
-            return base.ProcessAsync(context, output);
-        }
+        public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output) => base.ProcessAsync(context, output);
     }
 }

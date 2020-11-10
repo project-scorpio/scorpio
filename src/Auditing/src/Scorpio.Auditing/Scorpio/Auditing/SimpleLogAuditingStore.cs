@@ -21,15 +21,9 @@ namespace Scorpio.Auditing
         /// <summary>
         /// 
         /// </summary>
-        public SimpleLogAuditingStore()
-        {
-            Logger = NullLogger<SimpleLogAuditingStore>.Instance;
-        }
+        public SimpleLogAuditingStore() => Logger = NullLogger<SimpleLogAuditingStore>.Instance;
 
-        public SimpleLogAuditingStore(ILogger<SimpleLogAuditingStore> logger)
-        {
-            Logger = logger;
-        }
+        public SimpleLogAuditingStore(ILogger<SimpleLogAuditingStore> logger) => Logger = logger;
 
         /// <summary>
         /// 

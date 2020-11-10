@@ -35,7 +35,7 @@ namespace Scorpio
         /// <param name="index">Index.</param>
         public Type this[int index]
         {
-            get { return _typeList[index]; }
+            get => _typeList[index];
             set
             {
                 CheckType(value);
@@ -48,20 +48,14 @@ namespace Scorpio
         /// <summary>
         /// Creates a new <see cref="TypeList{T}"/> object.
         /// </summary>
-        public TypeList()
-        {
-            _typeList = new List<Type>();
-        }
+        public TypeList() => _typeList = new List<Type>();
 
 
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        public void Add<T>() where T : TBaseType
-        {
-            _typeList.Add(typeof(T));
-        }
+        public void Add<T>() where T : TBaseType => _typeList.Add(typeof(T));
 
         /// <summary>
         /// 
@@ -104,10 +98,7 @@ namespace Scorpio
         }
 
         /// <inheritdoc/>
-        public bool Contains<T>() where T : TBaseType
-        {
-            return Contains(typeof(T));
-        }
+        public bool Contains<T>() where T : TBaseType => Contains(typeof(T));
 
         /// <inheritdoc/>
         public bool Contains(Type item)
@@ -117,10 +108,7 @@ namespace Scorpio
         }
 
         /// <inheritdoc/>
-        public bool Remove<T>() where T : TBaseType
-        {
-            return _typeList.Remove(typeof(T));
-        }
+        public bool Remove<T>() where T : TBaseType => _typeList.Remove(typeof(T));
 
         /// <inheritdoc/>
         public bool Remove(Type item)
@@ -130,33 +118,18 @@ namespace Scorpio
         }
 
         /// <inheritdoc/>
-        public void RemoveAt(int index)
-        {
-            _typeList.RemoveAt(index);
-        }
+        public void RemoveAt(int index) => _typeList.RemoveAt(index);
 
         /// <inheritdoc/>
-        public void Clear()
-        {
-            _typeList.Clear();
-        }
+        public void Clear() => _typeList.Clear();
 
         /// <inheritdoc/>
-        public void CopyTo(Type[] array, int arrayIndex)
-        {
-            _typeList.CopyTo(array, arrayIndex);
-        }
+        public void CopyTo(Type[] array, int arrayIndex) => _typeList.CopyTo(array, arrayIndex);
 
         /// <inheritdoc/>
-        public IEnumerator<Type> GetEnumerator()
-        {
-            return _typeList.GetEnumerator();
-        }
+        public IEnumerator<Type> GetEnumerator() => _typeList.GetEnumerator();
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return _typeList.GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => _typeList.GetEnumerator();
 
         private static void CheckType(Type item)
         {

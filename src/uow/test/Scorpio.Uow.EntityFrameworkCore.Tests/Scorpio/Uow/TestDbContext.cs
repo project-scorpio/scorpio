@@ -10,7 +10,7 @@ using Scorpio.EntityFrameworkCore;
 
 namespace Scorpio.Uow
 {
-    class TestDbContext : ScorpioDbContext<TestDbContext>
+    internal class TestDbContext : ScorpioDbContext<TestDbContext>
     {
         public TestDbContext(IServiceProvider serviceProvider,
             DbContextOptions<TestDbContext> contextOptions,
@@ -40,10 +40,7 @@ namespace Scorpio.Uow
     public class TestTable : Entity<int>, ISoftDelete, IHasExtraProperties
     {
 
-        public TestTable()
-        {
-            Details = new HashSet<TestTableDetail>();
-        }
+        public TestTable() => Details = new HashSet<TestTableDetail>();
         public string StringValue { get; set; }
         public bool IsDeleted { get; set; }
 

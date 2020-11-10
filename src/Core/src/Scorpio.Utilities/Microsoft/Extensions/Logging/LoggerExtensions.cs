@@ -17,10 +17,7 @@ namespace Microsoft.Extensions.Logging
         /// <param name="logger"></param>
         /// <param name="ex"></param>
         /// <param name="level"></param>
-        public static void LogException(this ILogger logger, Exception ex, LogLevel? level = null)
-        {
-            LogException(logger, ex, ex.Message, level);
-        }
+        public static void LogException(this ILogger logger, Exception ex, LogLevel? level = null) => LogException(logger, ex, ex.Message, level);
 
         /// <summary>
         /// 

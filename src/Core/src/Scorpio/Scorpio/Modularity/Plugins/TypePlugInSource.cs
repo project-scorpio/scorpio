@@ -6,14 +6,8 @@ namespace Scorpio.Modularity.Plugins
     {
         private readonly Type[] _moduleTypes;
 
-        public TypePlugInSource(params Type[] moduleTypes)
-        {
-            _moduleTypes = moduleTypes ?? new Type[0];
-        }
+        public TypePlugInSource(params Type[] moduleTypes) => _moduleTypes = moduleTypes ?? new Type[0];
 
-        public Type[] GetModules()
-        {
-            return _moduleTypes;
-        }
+        public Type[] GetModules() => _moduleTypes;
     }
 }

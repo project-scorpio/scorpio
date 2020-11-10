@@ -9,21 +9,9 @@ namespace Scorpio.AspNetCore.TagHelpers.Border
     public class RoundedTagHelper_Tests : AspNetCoreUiBootstrapTestBase
     {
         [Fact]
-        public void Default()
-        {
-            this.Test<RoundedTagHelper>((c, o) =>
-            {
-                o.ShouldJustHasClasses("rounded");
-            });
-        }
+        public void Default() => this.Test<RoundedTagHelper>((c, o) => o.ShouldJustHasClasses("rounded"));
 
         [Fact]
-        public void None()
-        {
-            this.Test<RoundedTagHelper>(t => t.Rounded = RoundedType.None, (c, o) =>
-           {
-               o.ShouldJustHasClasses("rounded-0");
-           });
-        }
+        public void None() => this.Test<RoundedTagHelper>(t => t.Rounded = RoundedType.None, (c, o) => o.ShouldJustHasClasses("rounded-0"));
     }
 }

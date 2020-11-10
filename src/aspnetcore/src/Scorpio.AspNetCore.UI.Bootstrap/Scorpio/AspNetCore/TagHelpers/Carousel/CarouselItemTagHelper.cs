@@ -19,10 +19,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Carousel
         /// 
         /// </summary>
         /// <param name="context"></param>
-        public override void Init(TagHelperContext context)
-        {
-            context.InitValue<List<CarouselItem>>(CarouselTagHelper.CAROUSEL_ITEMS_CONTENT);
-        }
+        public override void Init(TagHelperContext context) => context.InitValue<List<CarouselItem>>(CarouselTagHelper.CAROUSEL_ITEMS_CONTENT);
         /// <summary>
         /// 
         /// </summary>

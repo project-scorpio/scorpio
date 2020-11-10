@@ -57,8 +57,7 @@ namespace Scorpio.Auditing
             wapper.SomeValue.ShouldBe("Value");
         }
 
-
-        class FakeAuditInfoWapper : AuditInfoWapper
+        private class FakeAuditInfoWapper : AuditInfoWapper
         {
             public FakeAuditInfoWapper(AuditInfo auditInfo) : base(auditInfo)
             {

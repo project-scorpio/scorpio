@@ -6,7 +6,7 @@ namespace System.Collections.Generic
     [Diagnostics.CodeAnalysis.SuppressMessage("Blocker Code Smell", "S2699:Tests should include assertions", Justification = "<挂起>")]
     public class ListExtensions_Tests
     {
-        static readonly List<string> _sourceList = new List<string> { "Item1", "Item2", "Item3" };
+        private static readonly List<string> _sourceList = new List<string> { "Item1", "Item2", "Item3" };
 
         [Fact]
         public void FindIndex()
@@ -108,7 +108,7 @@ namespace System.Collections.Generic
             ((Action)(() => list.MoveItem(i => i == "Item1", 3))).ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        class InsterAfterData : IEnumerable<object[]>
+        private class InsterAfterData : IEnumerable<object[]>
         {
             public IEnumerator<object[]> GetEnumerator()
             {
@@ -119,7 +119,8 @@ namespace System.Collections.Generic
 
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
         }
-        class InsterBeforeData : IEnumerable<object[]>
+
+        private class InsterBeforeData : IEnumerable<object[]>
         {
             public IEnumerator<object[]> GetEnumerator()
             {
@@ -130,7 +131,8 @@ namespace System.Collections.Generic
 
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
         }
-        class ReplaceWhileValueData : IEnumerable<object[]>
+
+        private class ReplaceWhileValueData : IEnumerable<object[]>
         {
             public IEnumerator<object[]> GetEnumerator()
             {
@@ -141,7 +143,8 @@ namespace System.Collections.Generic
 
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
         }
-        class ReplaceWhileFactoryData : IEnumerable<object[]>
+
+        private class ReplaceWhileFactoryData : IEnumerable<object[]>
         {
             public IEnumerator<object[]> GetEnumerator()
             {
@@ -153,7 +156,7 @@ namespace System.Collections.Generic
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
         }
 
-        class ReplaceOneSelectorData : IEnumerable<object[]>
+        private class ReplaceOneSelectorData : IEnumerable<object[]>
         {
             public IEnumerator<object[]> GetEnumerator()
             {
@@ -165,7 +168,7 @@ namespace System.Collections.Generic
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
         }
 
-        class ReplaceOneFactoryData : IEnumerable<object[]>
+        private class ReplaceOneFactoryData : IEnumerable<object[]>
         {
             public IEnumerator<object[]> GetEnumerator()
             {
@@ -177,7 +180,7 @@ namespace System.Collections.Generic
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
         }
 
-        class ReplaceOneItemData : IEnumerable<object[]>
+        private class ReplaceOneItemData : IEnumerable<object[]>
         {
             public IEnumerator<object[]> GetEnumerator()
             {

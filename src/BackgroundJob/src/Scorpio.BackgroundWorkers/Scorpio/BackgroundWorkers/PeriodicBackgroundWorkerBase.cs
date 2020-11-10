@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,7 +9,7 @@ using Scorpio.Threading;
 
 namespace Scorpio.BackgroundWorkers
 {
- /// <summary>
+    /// <summary>
     /// Extends <see cref="BackgroundWorkerBase"/> to add a periodic running Timer. 
     /// </summary>
     public abstract class PeriodicBackgroundWorkerBase : BackgroundWorkerBase
@@ -33,7 +31,7 @@ namespace Scorpio.BackgroundWorkers
         /// <param name="serviceScopeFactory"></param>
         protected PeriodicBackgroundWorkerBase(
             ScorpioTimer timer,
-            IServiceScopeFactory serviceScopeFactory):base()
+            IServiceScopeFactory serviceScopeFactory) : base()
         {
             ServiceScopeFactory = serviceScopeFactory;
             Timer = timer;

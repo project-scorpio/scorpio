@@ -17,22 +17,10 @@ namespace Scorpio.AspNetCore.TagHelpers.Color
             this.Test<BorderColorTagHelper>(t =>
             {
 
-            }, (c, o) =>
-            {
-                o.ShouldJustHasClasses("border-default");
-            });
+            }, (c, o) => o.ShouldJustHasClasses("border-default"));
         }
 
         [Fact]
-        public void Primary()
-        {
-            this.Test<BorderColorTagHelper>(t =>
-            {
-                t.BorderColor = BorderColorType.Primary;
-            }, (c, o) =>
-            {
-                o.ShouldJustHasClasses("border-primary");
-            });
-        }
+        public void Primary() => this.Test<BorderColorTagHelper>(t => t.BorderColor = BorderColorType.Primary, (c, o) => o.ShouldJustHasClasses("border-primary"));
     }
 }

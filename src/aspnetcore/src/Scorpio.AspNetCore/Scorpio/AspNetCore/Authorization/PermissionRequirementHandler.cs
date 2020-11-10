@@ -17,10 +17,7 @@ namespace Scorpio.AspNetCore.Authorization
         /// 
         /// </summary>
         /// <param name="permissionChecker"></param>
-        public PermissionRequirementHandler(IPermissionChecker permissionChecker)
-        {
-            _permissionChecker = permissionChecker;
-        }
+        public PermissionRequirementHandler(IPermissionChecker permissionChecker) => _permissionChecker = permissionChecker;
 
         /// <summary>
         /// 

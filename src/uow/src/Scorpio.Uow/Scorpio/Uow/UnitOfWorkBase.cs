@@ -156,27 +156,18 @@ namespace Scorpio.Uow
         /// <summary>
         /// Called to trigger <see cref="Completed"/> event.
         /// </summary>
-        protected virtual void OnCompleted()
-        {
-            Completed?.Invoke(this, EventArgs.Empty);
-        }
+        protected virtual void OnCompleted() => Completed?.Invoke(this, EventArgs.Empty);
 
         /// <summary>
         /// Called to trigger <see cref="Failed"/> event.
         /// </summary>
         /// <param name="exception">Exception that cause failure</param>
-        protected virtual void OnFailed(Exception exception)
-        {
-            Failed?.Invoke(this, new UnitOfWorkFailedEventArgs(exception));
-        }
+        protected virtual void OnFailed(Exception exception) => Failed?.Invoke(this, new UnitOfWorkFailedEventArgs(exception));
 
         /// <summary>
         /// Called to trigger <see cref="Disposed"/> event.
         /// </summary>
-        protected virtual void OnDisposed()
-        {
-            Disposed?.Invoke(this, EventArgs.Empty);
-        }
+        protected virtual void OnDisposed() => Disposed?.Invoke(this, EventArgs.Empty);
 
 
         private void PreventMultipleBegin()

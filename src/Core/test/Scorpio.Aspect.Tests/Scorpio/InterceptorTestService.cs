@@ -9,19 +9,13 @@ namespace Scorpio
 
         public List<string> AppliedCrossCuttingConcerns { get; } = new List<string>();
 
-        public virtual void Test()
-        {
-            TestInvoked = true;
-        }
+        public virtual void Test() => TestInvoked = true;
     }
     public class NonInterceptorTestService : INonInterceptorTestService
     {
         public bool InterceptorInvoked { get; set; }
         public bool TestInvoked { get; set; }
-        public virtual void Test()
-        {
-            TestInvoked = true;
-        }
+        public virtual void Test() => TestInvoked = true;
 
     }
 

@@ -60,8 +60,8 @@ namespace Scorpio.AspNetCore.Mvc.Auditing
         {
             _options.IsEnabled = true;
 
-                await GetResponseAsync("/Auditing/AuditTestPage?handler=AuditFailForGetRequests", System.Net.HttpStatusCode.NotFound);
-                await _auditingStore.Received().SaveAsync(Arg.Any<AuditInfo>());
+            await GetResponseAsync("/Auditing/AuditTestPage?handler=AuditFailForGetRequests", System.Net.HttpStatusCode.NotFound);
+            await _auditingStore.Received().SaveAsync(Arg.Any<AuditInfo>());
 
         }
 

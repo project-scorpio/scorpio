@@ -75,13 +75,12 @@ namespace System.Reflection
 
     [DisplayName("DispalyNameOfAttributeTestClass")]
     [Description("Description of DispalyNameOfAttributeTestClass")]
-
-    class AttributeTestClassWithDisplayNameAttirbute
+    internal class AttributeTestClassWithDisplayNameAttirbute
     {
 
     }
 
-    class AttributeTestClassWithDisplayAttirbute
+    internal class AttributeTestClassWithDisplayAttirbute
     {
         [DisplayName("UserName")]
         [Description("User's name")]
@@ -92,12 +91,13 @@ namespace System.Reflection
         public string DisplayName { get; set; }
 
     }
-    class AttributeTestClass
+
+    internal class AttributeTestClass
     {
 
     }
     [Serializable]
-    class AttributeTestClass2
+    internal class AttributeTestClass2
     {
 
     }

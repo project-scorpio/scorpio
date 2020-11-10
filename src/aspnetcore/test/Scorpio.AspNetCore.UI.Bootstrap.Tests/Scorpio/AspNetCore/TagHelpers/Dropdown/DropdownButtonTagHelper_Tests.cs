@@ -26,13 +26,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
         [Fact]
         public void Split()
         {
-            this.Test<DropdownButtonTagHelper>(t =>
-            {
-                t.DropdownButtonType = DropdownButtonType.Split;
-            }, c => { }, o =>
-            {
-                o.Attributes.Add("title", "title");
-            }, (a, c, o) =>
+            this.Test<DropdownButtonTagHelper>(t => t.DropdownButtonType = DropdownButtonType.Split, c => { }, o => o.Attributes.Add("title", "title"), (a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
                 o.ShouldNotContainsClasses("dropdown-toggle");

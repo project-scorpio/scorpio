@@ -9,7 +9,7 @@ using Scorpio.EntityFrameworkCore;
 
 namespace Scorpio.Data
 {
-    class DataModelCreatingContributor : IModelCreatingContributor
+    internal class DataModelCreatingContributor : IModelCreatingContributor
     {
         public void Contributor<TEntity>(ModelCreatingContributionContext context) where TEntity : class
         {
@@ -21,13 +21,10 @@ namespace Scorpio.Data
         {
             if (typeof(TEntity).IsAssignableTo<IHasExtraProperties>())
             {
-                context.ModelBuilder.Entity<TEntity>(e =>
-                {
-                    e.Property(x => ((IHasExtraProperties)x).ExtraProperties).HasConversion(
+                context.ModelBuilder.Entity<TEntity>(e => e.Property(x => ((IHasExtraProperties)x).ExtraProperties).HasConversion(
                         d => JsonConvert.SerializeObject(d, Formatting.None),
                         s => JsonConvert.DeserializeObject<Dictionary<string, object>>(s)
-                        ).HasColumnName(nameof(IHasExtraProperties.ExtraProperties));
-                });
+                        ).HasColumnName(nameof(IHasExtraProperties.ExtraProperties)));
 
             }
         }
@@ -36,10 +33,7 @@ namespace Scorpio.Data
         {
             if (typeof(TEntity).IsAssignableTo<ISoftDelete>())
             {
-                context.ModelBuilder.Entity<TEntity>(e =>
-                {
-                    e.Property(nameof(ISoftDelete.IsDeleted)).IsRequired().HasColumnName(nameof(ISoftDelete.IsDeleted)).HasDefaultValue(false);
-                });
+                context.ModelBuilder.Entity<TEntity>(e => e.Property(nameof(ISoftDelete.IsDeleted)).IsRequired().HasColumnName(nameof(ISoftDelete.IsDeleted)).HasDefaultValue(false));
             }
         }
     }

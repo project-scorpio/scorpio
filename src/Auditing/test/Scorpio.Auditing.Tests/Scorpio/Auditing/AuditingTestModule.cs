@@ -26,30 +26,21 @@ namespace Scorpio.Auditing
 
     }
 
-    class TestPrincipalAccessor : ICurrentPrincipalAccessor
+    internal class TestPrincipalAccessor : ICurrentPrincipalAccessor
     {
         public IPrincipal Principal { get; }
 
-        public TestPrincipalAccessor()
-        {
-            Principal = new GenericPrincipal(new GenericIdentity("TestUser"), new[] { "Admin" });
-        }
+        public TestPrincipalAccessor() => Principal = new GenericPrincipal(new GenericIdentity("TestUser"), new[] { "Admin" });
     }
 
-    class TestContributor : IAuditContributor
+    internal class TestContributor : IAuditContributor
     {
-        public void PostContribute(AuditContributionContext context)
-        {
-            context.AuditInfo.Comments.Add("PostContribute");
-        }
+        public void PostContribute(AuditContributionContext context) => context.AuditInfo.Comments.Add("PostContribute");
 
-        public void PreContribute(AuditContributionContext context)
-        {
-            context.AuditInfo.Comments.Add("PreContribute");
-        }
+        public void PreContribute(AuditContributionContext context) => context.AuditInfo.Comments.Add("PreContribute");
     }
 
-    class TestClock : IClock
+    internal class TestClock : IClock
     {
         public DateTime Now { get; }
         public DateTimeKind Kind { get; }
@@ -60,9 +51,6 @@ namespace Scorpio.Auditing
             Now = new DateTime(2019, 1, 1, 0, 0, 0);
             SupportsMultipleTimezone = true;
         }
-        public DateTime Normalize(DateTime dateTime)
-        {
-            return dateTime;
-        }
+        public DateTime Normalize(DateTime dateTime) => dateTime;
     }
 }

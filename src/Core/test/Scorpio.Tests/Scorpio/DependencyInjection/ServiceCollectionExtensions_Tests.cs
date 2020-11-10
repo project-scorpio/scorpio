@@ -61,7 +61,7 @@ namespace Scorpio.DependencyInjection
         }
     }
 
-    class EmptyConventionalDependencyRegistrar : IConventionalRegistrar
+    internal class EmptyConventionalDependencyRegistrar : IConventionalRegistrar
     {
         public bool RegisterAssemblyInvoked { get; set; }
 

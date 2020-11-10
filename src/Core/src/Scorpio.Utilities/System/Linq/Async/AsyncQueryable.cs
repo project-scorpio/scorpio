@@ -2327,8 +2327,7 @@ namespace System.Linq.Async
         /// </exception>
         public static async Task<TSource[]> ToArrayAsync<TSource>(
              this IQueryable<TSource> source,
-            CancellationToken cancellationToken = default)
-            => (await source.ToListAsync(cancellationToken).ConfigureAwait(false)).ToArray();
+            CancellationToken cancellationToken = default) => (await source.ToListAsync(cancellationToken).ConfigureAwait(false)).ToArray();
 
         #endregion
 
@@ -2366,8 +2365,7 @@ namespace System.Linq.Async
         public static Task<Dictionary<TKey, TSource>> ToDictionaryAsync<TSource, TKey>(
              this IQueryable<TSource> source,
              Func<TSource, TKey> keySelector,
-            CancellationToken cancellationToken = default)
-            => ToDictionaryAsync(source, keySelector, e => e, comparer: null, cancellationToken);
+            CancellationToken cancellationToken = default) => ToDictionaryAsync(source, keySelector, e => e, comparer: null, cancellationToken);
 
         /// <summary>
         ///     Creates a <see cref="Dictionary{TKey, TValue}" /> from an <see cref="IQueryable{T}" /> by enumerating it
@@ -2405,8 +2403,7 @@ namespace System.Linq.Async
              this IQueryable<TSource> source,
              Func<TSource, TKey> keySelector,
              IEqualityComparer<TKey> comparer,
-            CancellationToken cancellationToken = default)
-            => ToDictionaryAsync(source, keySelector, e => e, comparer, cancellationToken);
+            CancellationToken cancellationToken = default) => ToDictionaryAsync(source, keySelector, e => e, comparer, cancellationToken);
 
         /// <summary>
         ///     Creates a <see cref="Dictionary{TKey, TValue}" /> from an <see cref="IQueryable{T}" /> by enumerating it
@@ -2446,8 +2443,7 @@ namespace System.Linq.Async
              this IQueryable<TSource> source,
              Func<TSource, TKey> keySelector,
              Func<TSource, TElement> elementSelector,
-            CancellationToken cancellationToken = default)
-            => ToDictionaryAsync(source, keySelector, elementSelector, comparer: null, cancellationToken);
+            CancellationToken cancellationToken = default) => ToDictionaryAsync(source, keySelector, elementSelector, comparer: null, cancellationToken);
 
         /// <summary>
         ///     Creates a <see cref="Dictionary{TKey, TValue}" /> from an <see cref="IQueryable{T}" /> by enumerating it
@@ -2619,15 +2615,19 @@ namespace System.Linq.Async
             IQueryable<TSource> source,
             LambdaExpression expression,
             CancellationToken cancellationToken = default)
-            => ExecuteAsync<TSource, TResult>(
-                operatorMethodInfo, source, Expression.Quote(expression), cancellationToken);
+        {
+            return ExecuteAsync<TSource, TResult>(
+                           operatorMethodInfo, source, Expression.Quote(expression), cancellationToken);
+        }
 
         private static TResult ExecuteAsync<TSource, TResult>(
             MethodInfo operatorMethodInfo,
             IQueryable<TSource> source,
             CancellationToken cancellationToken = default)
-            => ExecuteAsync<TSource, TResult>(
-                operatorMethodInfo, source, (Expression)null, cancellationToken);
+        {
+            return ExecuteAsync<TSource, TResult>(
+                           operatorMethodInfo, source, (Expression)null, cancellationToken);
+        }
 
         #endregion
     }

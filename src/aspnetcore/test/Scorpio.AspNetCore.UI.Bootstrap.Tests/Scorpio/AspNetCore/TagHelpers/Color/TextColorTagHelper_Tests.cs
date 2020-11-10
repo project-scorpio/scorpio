@@ -17,22 +17,10 @@ namespace Scorpio.AspNetCore.TagHelpers.Color
             this.Test<TextColorTagHelper>(t =>
             {
 
-            }, (c, o) =>
-            {
-                o.ShouldJustHasClasses("text-default");
-            });
+            }, (c, o) => o.ShouldJustHasClasses("text-default"));
         }
 
         [Fact]
-        public void Primary()
-        {
-            this.Test<TextColorTagHelper>(t =>
-            {
-                t.TextColor = TextColorType.Primary;
-            }, (c, o) =>
-            {
-                o.ShouldJustHasClasses("text-primary");
-            });
-        }
+        public void Primary() => this.Test<TextColorTagHelper>(t => t.TextColor = TextColorType.Primary, (c, o) => o.ShouldJustHasClasses("text-primary"));
     }
 }

@@ -128,20 +128,14 @@ namespace Scorpio.Application.Services
         /// 
         /// </summary>
         /// <param name="id"></param>
-        public virtual void Delete(TKey id)
-        {
-            Repository.Delete(id);
-        }
+        public virtual void Delete(TKey id) => Repository.Delete(id);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public virtual TEntityDto Get(TKey id)
-        {
-            return Mapper.Map<TEntityDto>(Repository.Get(id));
-        }
+        public virtual TEntityDto Get(TKey id) => Mapper.Map<TEntityDto>(Repository.Get(id));
 
         /// <summary>
         /// 

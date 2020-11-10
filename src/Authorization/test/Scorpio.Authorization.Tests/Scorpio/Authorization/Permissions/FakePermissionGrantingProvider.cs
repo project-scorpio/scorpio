@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Scorpio.Authorization.Permissions
 {
-    class FakePermissionGrantingProvider : IPermissionGrantingProvider
+    internal class FakePermissionGrantingProvider : IPermissionGrantingProvider
     {
         public string Name { get; } = "FakeProvider";
 

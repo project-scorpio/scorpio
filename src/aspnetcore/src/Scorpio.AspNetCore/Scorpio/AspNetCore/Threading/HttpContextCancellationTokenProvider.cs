@@ -23,9 +23,6 @@ namespace Scorpio.AspNetCore.Threading
         /// 
         /// </summary>
         /// <param name="httpContextAccesor"></param>
-        public HttpContextCancellationTokenProvider(IHttpContextAccessor httpContextAccesor)
-        {
-            _httpContextAccesor = httpContextAccesor;
-        }
+        public HttpContextCancellationTokenProvider(IHttpContextAccessor httpContextAccesor) => _httpContextAccesor = httpContextAccesor;
     }
 }

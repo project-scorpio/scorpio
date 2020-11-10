@@ -64,19 +64,13 @@ namespace Scorpio.AspNetCore.TestBase
         /// Gets default URL for given controller type.
         /// </summary>
         /// <typeparam name="TController">The type of the controller.</typeparam>
-        protected virtual string GetUrl<TController>()
-        {
-            return "/" + typeof(TController).Name.RemovePostFix("Controller", "AppService", "ApplicationService", "Service");
-        }
+        protected virtual string GetUrl<TController>() => "/" + typeof(TController).Name.RemovePostFix("Controller", "AppService", "ApplicationService", "Service");
 
         /// <summary>
         /// Gets default URL for given controller type's given action.
         /// </summary>
         /// <typeparam name="TController">The type of the controller.</typeparam>
-        protected virtual string GetUrl<TController>(string actionName)
-        {
-            return GetUrl<TController>() + "/" + actionName;
-        }
+        protected virtual string GetUrl<TController>(string actionName) => GetUrl<TController>() + "/" + actionName;
 
         /// <summary>
         /// Gets default URL for given controller type's given action with query string parameters (as anonymous object).

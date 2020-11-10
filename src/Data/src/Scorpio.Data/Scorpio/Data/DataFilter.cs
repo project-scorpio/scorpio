@@ -38,10 +38,7 @@ namespace Scorpio.Data
         /// <typeparam name="TFilter"></typeparam>
         /// <returns></returns>
         public IDisposable Enable<TFilter>()
-            where TFilter : class
-        {
-            return GetFilter<TFilter>().Enable();
-        }
+            where TFilter : class => GetFilter<TFilter>().Enable();
 
         /// <summary>
         /// 
@@ -49,10 +46,7 @@ namespace Scorpio.Data
         /// <typeparam name="TFilter"></typeparam>
         /// <returns></returns>
         public IDisposable Disable<TFilter>()
-            where TFilter : class
-        {
-            return GetFilter<TFilter>().Disable();
-        }
+            where TFilter : class => GetFilter<TFilter>().Disable();
 
         /// <summary>
         /// 
@@ -60,20 +54,14 @@ namespace Scorpio.Data
         /// <typeparam name="TFilter"></typeparam>
         /// <returns></returns>
         public bool IsEnabled<TFilter>()
-            where TFilter : class
-        {
-            return GetFilter<TFilter>().IsEnabled;
-        }
+            where TFilter : class => GetFilter<TFilter>().IsEnabled;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public bool IsEnabled(Type type)
-        {
-            return (bool)_isEnabledMethodInfo.MakeGenericMethod(type).Invoke(this, null);
-        }
+        public bool IsEnabled(Type type) => (bool)_isEnabledMethodInfo.MakeGenericMethod(type).Invoke(this, null);
 
         private IDataFilter<TFilter> GetFilter<TFilter>()
             where TFilter : class
@@ -108,11 +96,7 @@ namespace Scorpio.Data
 
         private readonly AsyncLocal<DataFilterState> _filter;
 
-        public DataFilter()
-        {
-            _filter = new AsyncLocal<DataFilterState>();
-
-        }
+        public DataFilter() => _filter = new AsyncLocal<DataFilterState>();
 
         public DataFilter(bool isEnabled) : this()
         {
@@ -123,10 +107,7 @@ namespace Scorpio.Data
         /// 
         /// </summary>
         /// <param name="options"></param>
-        public DataFilter(IOptions<DataFilterOptions> options) : this()
-        {
-            _options = options.Value;
-        }
+        public DataFilter(IOptions<DataFilterOptions> options) : this() => _options = options.Value;
 
         /// <summary>
         /// 

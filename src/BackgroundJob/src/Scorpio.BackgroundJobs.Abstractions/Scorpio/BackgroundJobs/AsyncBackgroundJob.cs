@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 
@@ -20,10 +21,7 @@ namespace Scorpio.BackgroundJobs
         /// <summary>
         /// Initializes a new instance of the <see cref="AsyncBackgroundJob{TArgs}"/> class.
         /// </summary>
-        protected AsyncBackgroundJob()
-        {
-            Logger = NullLogger<AsyncBackgroundJob<TArgs>>.Instance;
-        }
+        protected AsyncBackgroundJob() => Logger = NullLogger<AsyncBackgroundJob<TArgs>>.Instance;
 
         /// <summary>
         /// Asynchronously executes the background job using the specified args.

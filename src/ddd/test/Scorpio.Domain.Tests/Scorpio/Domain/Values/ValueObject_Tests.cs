@@ -25,18 +25,15 @@ namespace Scorpio.Domain.Values
         }
 
         [Fact]
-        public void OV_GetHashCode()
-        {
-            new Empty().GetHashCode().ShouldBe(31);
-        }
+        public void OV_GetHashCode() => new Empty().GetHashCode().ShouldBe(31);
 
-
-        class Empty : ValueObject<Empty>
+        private class Empty : ValueObject<Empty>
         {
 
         }
 
-        class Order : ValueObject<Order>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S1144:Unused private types or members should be removed", Justification = "<挂起>")]
+        private class Order : ValueObject<Order>
         {
             public Address Address { get; set; }
 
@@ -46,7 +43,8 @@ namespace Scorpio.Domain.Values
 
         }
 
-        class OrderDetail : ValueObject<OrderDetail>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S1144:Unused private types or members should be removed", Justification = "<挂起>")]
+        private class OrderDetail : ValueObject<OrderDetail>
         {
             public int ProductId { get; set; }
 
@@ -55,7 +53,7 @@ namespace Scorpio.Domain.Values
             public decimal Cost { get; set; }
         }
 
-        class CertDetail : ValueObject<CertDetail>
+        private class CertDetail : ValueObject<CertDetail>
         {
             public int ProductId { get; set; }
 
@@ -64,7 +62,8 @@ namespace Scorpio.Domain.Values
             public decimal Cost { get; set; }
         }
 
-        class Address : ValueObject<Address>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S1144:Unused private types or members should be removed", Justification = "<挂起>")]
+        private class Address : ValueObject<Address>
         {
             public Area Area { get; set; }
 
@@ -73,7 +72,8 @@ namespace Scorpio.Domain.Values
             public string Mobile { get; set; }
         }
 
-        class Area : ValueObject<Area>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S1144:Unused private types or members should be removed", Justification = "<挂起>")]
+        private class Area : ValueObject<Area>
         {
             public string Country { get; set; }
 

@@ -19,9 +19,6 @@ namespace Scorpio.Uow
         /// 
         /// </summary>
         /// <param name="exception"></param>
-        public UnitOfWorkFailedEventArgs(Exception exception)
-        {
-            Exception = exception;
-        }
+        public UnitOfWorkFailedEventArgs(Exception exception) => Exception = exception;
     }
 }

@@ -7,15 +7,9 @@ namespace System.Linq.Expressions
     {
         private readonly Expression<TDelegate> _predicate;
 
-        protected ExpressionTranslation(Expression<TDelegate> predicate)
-        {
-            this._predicate = predicate;
-        }
+        protected ExpressionTranslation(Expression<TDelegate> predicate) => _predicate = predicate;
 
-        protected Expression<TTranslatedDelegate> To<TTranslatedDelegate>(params Type[] parameterTypes)
-        {
-            return To<TTranslatedDelegate>((IEnumerable<Type>)parameterTypes);
-        }
+        protected Expression<TTranslatedDelegate> To<TTranslatedDelegate>(params Type[] parameterTypes) => To<TTranslatedDelegate>((IEnumerable<Type>)parameterTypes);
 
 
         protected Expression<TTranslatedDelegate> To<TTranslatedDelegate>(IEnumerable<Type> parameterTypes)
@@ -44,7 +38,10 @@ namespace System.Linq.Expressions
         public Expression<TTranslatedDelegate> To<TTranslatedDelegate>(Action<TranslatePathMapper<TDelegate>> action)
         {
             if (action == null)
+            {
                 throw new ArgumentNullException(nameof(action));
+            }
+
             var mapper = new TranslatePathMapper<TDelegate>(_predicate);
             action(mapper);
             var (expression, parameters) = mapper.MergeExpressionAndParameters<TTranslatedDelegate>();

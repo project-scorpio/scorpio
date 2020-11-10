@@ -15,7 +15,7 @@ namespace System
             object act = new TestPipelineBuilder(null);
             act.As<PipelineBuilder<TestPipelineContext>>().ShouldNotBeNull();
             act.As<IPipelineBuilder<TestPipelineContext>>().ShouldNotBeNull();
-            act.As<String>().ShouldBeNull();
+            act.As<string>().ShouldBeNull();
         }
 
         [Fact]

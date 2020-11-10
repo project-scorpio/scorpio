@@ -7,10 +7,7 @@ namespace Scorpio.AspNetCore
 {
     public class AspNet_Tests : AspNetCoreTestBase
     {
-        protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options)
-        {
-            options.UseAspectCore();
-        }
+        protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options) => options.UseAspectCore();
 
         [Fact]
         public async System.Threading.Tasks.Task HostAsync()

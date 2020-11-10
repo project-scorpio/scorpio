@@ -19,10 +19,7 @@ namespace Scorpio.BackgroundJobs
         /// <summary>
         /// Initializes a new instance of the <see cref="BackgroundJob{TArgs}"/> class.
         /// </summary>
-        protected BackgroundJob()
-        {
-            Logger = NullLogger<BackgroundJob<TArgs>>.Instance;
-        }
+        protected BackgroundJob() => Logger = NullLogger<BackgroundJob<TArgs>>.Instance;
 
         /// <summary>
         /// Synchronize executes the background job using the specified args.

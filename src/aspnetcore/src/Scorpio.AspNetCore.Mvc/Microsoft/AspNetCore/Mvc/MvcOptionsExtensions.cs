@@ -5,10 +5,7 @@ namespace Microsoft.AspNetCore.Mvc
 {
     internal static class MvcOptionsExtensions
     {
-        public static void AddScorpio(this MvcOptions options)
-        {
-            AddFilters(options);
-        }
+        public static void AddScorpio(this MvcOptions options) => AddFilters(options);
 
         private static void AddFilters(MvcOptions options)
         {

@@ -72,10 +72,7 @@ namespace Scorpio.EntityFrameworkCore.DependencyInjection
         }
 
         private static ScorpioDbContextOptions GetDbContextOptions<TDbContext>(IServiceProvider serviceProvider)
-            where TDbContext : ScorpioDbContext<TDbContext>
-        {
-            return serviceProvider.GetRequiredService<IOptions<ScorpioDbContextOptions>>().Value;
-        }
+            where TDbContext : ScorpioDbContext<TDbContext> => serviceProvider.GetRequiredService<IOptions<ScorpioDbContextOptions>>().Value;
 
         private static DbContextCreationContext GetCreationContext<TDbContext>(IServiceProvider serviceProvider)
             where TDbContext : ScorpioDbContext<TDbContext>

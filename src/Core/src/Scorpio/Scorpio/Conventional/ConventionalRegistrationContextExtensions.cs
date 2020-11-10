@@ -30,10 +30,7 @@ namespace Scorpio.Conventional
         /// <param name="context"></param>
         /// <param name="configureAction"></param>
         /// <returns></returns>
-        public static IConventionalRegistrationContext RegisterConventionalDependencyInject(this IConventionalRegistrationContext context, Action<IConventionalConfiguration<ConventionalDependencyAction>> configureAction)
-        {
-            return context.DoConventionalAction(configureAction);
-        }
+        public static IConventionalRegistrationContext RegisterConventionalDependencyInject(this IConventionalRegistrationContext context, Action<IConventionalConfiguration<ConventionalDependencyAction>> configureAction) => context.DoConventionalAction(configureAction);
 
     }
 }

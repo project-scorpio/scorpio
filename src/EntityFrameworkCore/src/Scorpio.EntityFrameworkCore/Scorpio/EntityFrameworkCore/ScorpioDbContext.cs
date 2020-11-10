@@ -83,7 +83,7 @@ namespace Scorpio.EntityFrameworkCore
             _filterOptions = filterOptions.Value;
             ServiceProvider = serviceProvider;
             OnSaveChangeHandlersFactory = ServiceProvider.GetService<IOnSaveChangeHandlersFactory>();
-            Logger = ServiceProvider.GetService<ILoggerFactory>()?.CreateLogger(this.GetType());
+            Logger = ServiceProvider.GetService<ILoggerFactory>()?.CreateLogger(GetType());
             DataFilter = ServiceProvider.GetService<IDataFilter>();
             ScorpioDbContextOptions = ServiceProvider.GetRequiredService<IOptions<ScorpioDbContextOptions>>().Value;
         }
@@ -205,10 +205,7 @@ namespace Scorpio.EntityFrameworkCore
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="entityType"></param>
         /// <returns></returns>
-        protected virtual bool ShouldFilterEntity<TEntity>(IMutableEntityType entityType) where TEntity : class
-        {
-            return _filterOptions.Descriptors.Keys.Any(t => t.IsAssignableFrom(typeof(TEntity)));
-        }
+        protected virtual bool ShouldFilterEntity<TEntity>(IMutableEntityType entityType) where TEntity : class => _filterOptions.Descriptors.Keys.Any(t => t.IsAssignableFrom(typeof(TEntity)));
 
         /// <summary>
         /// 
@@ -236,10 +233,7 @@ namespace Scorpio.EntityFrameworkCore
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public T GetParameter<T>()
-        {
-            return ServiceProvider.GetService<T>();
-        }
+        public T GetParameter<T>() => ServiceProvider.GetService<T>();
 
         /// <summary>
         /// 
@@ -248,9 +242,6 @@ namespace Scorpio.EntityFrameworkCore
         /// <typeparam name="TProperty"></typeparam>
         /// <param name="propertyName"></param>
         /// <returns></returns>
-        public Expression<Func<TEntity, TProperty>> GetPropertyExpression<TEntity, TProperty>(string propertyName)
-        {
-            return e => EF.Property<TProperty>(e, propertyName);
-        }
+        public Expression<Func<TEntity, TProperty>> GetPropertyExpression<TEntity, TProperty>(string propertyName) => e => EF.Property<TProperty>(e, propertyName);
     }
 }

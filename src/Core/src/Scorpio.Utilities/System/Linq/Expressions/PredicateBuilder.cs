@@ -10,14 +10,14 @@
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static Expression<Func<T, bool>> True<T>() { return f => true; }
+        public static Expression<Func<T, bool>> True<T>() => f => true;
 
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static Expression<Func<T, bool>> False<T>() { return f => false; }
+        public static Expression<Func<T, bool>> False<T>() => f => false;
 
         /// <summary>
         /// 
@@ -29,10 +29,7 @@
         /// <returns></returns>
         public static Expression<Func<T, TResult>> Equal<T, TResult>(
             this Expression<Func<T, TResult>> left,
-            Expression<Func<T, TResult>> right)
-        {
-            return BinaryCombine(left, right, (lft, rit) => Expression.Equal(lft, rit));
-        }
+            Expression<Func<T, TResult>> right) => BinaryCombine(left, right, (lft, rit) => Expression.Equal(lft, rit));
 
 
         /// <summary>
@@ -46,10 +43,7 @@
         /// <returns></returns>
         public static Expression<Func<T1, T2, TResult>> Equal<T1, T2, TResult>(
             this Expression<Func<T1, T2, TResult>> left,
-                 Expression<Func<T1, T2, TResult>> right)
-        {
-            return BinaryCombine(left, right, (lft, rit) => Expression.Equal(lft, rit));
-        }
+                 Expression<Func<T1, T2, TResult>> right) => BinaryCombine(left, right, (lft, rit) => Expression.Equal(lft, rit));
 
         /// <summary>
         /// 
@@ -63,10 +57,7 @@
         /// <returns></returns>
         public static Expression<Func<T1, T2, T3, TResult>> Equal<T1, T2, T3, TResult>(
             this Expression<Func<T1, T2, T3, TResult>> left,
-            Expression<Func<T1, T2, T3, TResult>> right)
-        {
-            return BinaryCombine(left, right, (lft, rit) => Expression.Equal(lft, rit));
-        }
+            Expression<Func<T1, T2, T3, TResult>> right) => BinaryCombine(left, right, (lft, rit) => Expression.Equal(lft, rit));
 
         /// <summary>
         /// 
@@ -81,10 +72,7 @@
         /// <returns></returns>
         public static Expression<Func<T1, T2, T3, T4, TResult>> Equal<T1, T2, T3, T4, TResult>(
             this Expression<Func<T1, T2, T3, T4, TResult>> left,
-            Expression<Func<T1, T2, T3, T4, TResult>> right)
-        {
-            return BinaryCombine(left, right, (lft, rit) => Expression.Equal(lft, rit));
-        }
+            Expression<Func<T1, T2, T3, T4, TResult>> right) => BinaryCombine(left, right, (lft, rit) => Expression.Equal(lft, rit));
 
         /// <summary>
         /// 
@@ -100,10 +88,7 @@
         /// <returns></returns>
         public static Expression<Func<T1, T2, T3, T4, T5, TResult>> Equal<T1, T2, T3, T4, T5, TResult>(
             this Expression<Func<T1, T2, T3, T4, T5, TResult>> left,
-            Expression<Func<T1, T2, T3, T4, T5, TResult>> right)
-        {
-            return BinaryCombine(left, right, (lft, rit) => Expression.Equal(lft, rit));
-        }
+            Expression<Func<T1, T2, T3, T4, T5, TResult>> right) => BinaryCombine(left, right, (lft, rit) => Expression.Equal(lft, rit));
 
         /// <summary>
         /// 

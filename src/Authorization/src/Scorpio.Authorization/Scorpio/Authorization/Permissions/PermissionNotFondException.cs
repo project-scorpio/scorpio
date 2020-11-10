@@ -13,20 +13,14 @@ namespace Scorpio.Authorization.Permissions
         /// 
         /// </summary>
         /// <param name="permissionName"></param>
-        public PermissionNotFondException(string permissionName) : base($"Undefined permission: {permissionName}")
-        {
-            PermissionName = permissionName;
-        }
+        public PermissionNotFondException(string permissionName) : base($"Undefined permission: {permissionName}") => PermissionName = permissionName;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="permissionName"></param>
         /// <param name="message"></param>
-        public PermissionNotFondException(string permissionName, string message) : base(message)
-        {
-            PermissionName = permissionName;
-        }
+        public PermissionNotFondException(string permissionName, string message) : base(message) => PermissionName = permissionName;
 
         /// <summary>
         /// 
@@ -34,10 +28,7 @@ namespace Scorpio.Authorization.Permissions
         /// <param name="permissionName"></param>
         /// <param name="message"></param>
         /// <param name="innerException"></param>
-        public PermissionNotFondException(string permissionName, string message, Exception innerException) : base(message, innerException)
-        {
-            PermissionName = permissionName;
-        }
+        public PermissionNotFondException(string permissionName, string message, Exception innerException) : base(message, innerException) => PermissionName = permissionName;
 
         /// <summary>
         /// 

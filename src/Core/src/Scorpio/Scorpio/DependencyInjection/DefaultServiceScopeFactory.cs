@@ -10,14 +10,8 @@ namespace Scorpio.DependencyInjection
     {
         protected IServiceScopeFactory Factory { get; }
 
-        public DefaultServiceScopeFactory(IServiceScopeFactory factory)
-        {
-            Factory = factory;
-        }
+        public DefaultServiceScopeFactory(IServiceScopeFactory factory) => Factory = factory;
 
-        public IServiceScope CreateScope()
-        {
-            return Factory.CreateScope();
-        }
+        public IServiceScope CreateScope() => Factory.CreateScope();
     }
 }

@@ -33,7 +33,7 @@ namespace Scorpio.Modularity
 
     }
 
-    class SingletonUserService : ISingletonUserService, ISingletonDependency
+    internal class SingletonUserService : ISingletonUserService, ISingletonDependency
     {
 
     }
@@ -42,7 +42,7 @@ namespace Scorpio.Modularity
 
     }
 
-    class ScopedUserService : IScopedUserService, IScopedDependency
+    internal class ScopedUserService : IScopedUserService, IScopedDependency
     {
 
     }
@@ -51,7 +51,7 @@ namespace Scorpio.Modularity
 
     }
 
-    class TransientUserService : ITransientUserService, ITransientDependency
+    internal class TransientUserService : ITransientUserService, ITransientDependency
     {
 
     }

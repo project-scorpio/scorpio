@@ -8,7 +8,7 @@ namespace Scorpio.BackgroundJobs
     public interface IAsyncBackgroundJob<in TArgs>
     {
         /// <summary>
-        /// Executes the job with the <see cref="TArgs"/>.
+        /// Executes the job with the <typeparamref name="TArgs"/>.
         /// </summary>
         /// <param name="args">Job arguments.</param>
         Task ExecuteAsync(TArgs args);

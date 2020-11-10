@@ -16,7 +16,7 @@ namespace Scorpio.Auditing
         /// <param name="context"></param>
         /// <param name="next"></param>
         /// <returns></returns>
-        public async override Task Invoke(AspectContext context, AspectDelegate next)
+        public override async Task Invoke(AspectContext context, AspectDelegate next)
         {
             var interceptor = context.ServiceProvider.GetService<AuditingInterceptor>();
             await interceptor.Invoke(context, next);

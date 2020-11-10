@@ -7,10 +7,7 @@ namespace Scorpio.Setting
     {
         private readonly Dictionary<string, SettingDefinition> _settingDefinitions;
 
-        public SettingDefinitionContext(Dictionary<string, SettingDefinition> settingDefinitions)
-        {
-            _settingDefinitions = settingDefinitions;
-        }
+        public SettingDefinitionContext(Dictionary<string, SettingDefinition> settingDefinitions) => _settingDefinitions = settingDefinitions;
 
         public void Add(params SettingDefinition[] settingDefinitions)
         {
@@ -25,14 +22,8 @@ namespace Scorpio.Setting
             }
         }
 
-        public virtual IReadOnlyList<SettingDefinition> GetAll()
-        {
-            return _settingDefinitions.Values.ToImmutableList();
-        }
+        public virtual IReadOnlyList<SettingDefinition> GetAll() => _settingDefinitions.Values.ToImmutableList();
 
-        public SettingDefinition GetOrNull(string name)
-        {
-            return _settingDefinitions.GetOrDefault(name);
-        }
+        public SettingDefinition GetOrNull(string name) => _settingDefinitions.GetOrDefault(name);
     }
 }

@@ -44,8 +44,8 @@ namespace Scorpio.Setting
         /// <param name="defaultValue"></param>
         protected SettingDefinition(string name, string displayName, string description, Type valueType, object defaultValue)
         {
-            this.Name = name;
-            this.DisplayName = string.IsNullOrEmpty(displayName) ? name : displayName;
+            Name = name;
+            DisplayName = string.IsNullOrEmpty(displayName) ? name : displayName;
             Description = description;
             ValueType = valueType;
             Default = defaultValue;

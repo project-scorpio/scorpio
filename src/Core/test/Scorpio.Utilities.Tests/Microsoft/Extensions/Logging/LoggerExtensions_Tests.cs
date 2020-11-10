@@ -16,10 +16,7 @@ namespace Microsoft.Extensions.Logging
     {
         private readonly ITestOutputHelper _output;
 
-        public LoggerExtensions_Tests(ITestOutputHelper output)
-        {
-            _output = output;
-        }
+        public LoggerExtensions_Tests(ITestOutputHelper output) => _output = output;
 
         [Fact]
         public void LogKnownProperties()
@@ -91,10 +88,7 @@ namespace Microsoft.Extensions.Logging
               System.Runtime.Serialization.SerializationInfo info,
               System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
 
-            public void Log(ILogger logger)
-            {
-                logger.LogError(this, $"SelfLogging:{Message}");
-            }
+            public void Log(ILogger logger) => logger.LogError(this, $"SelfLogging:{Message}");
         }
 
     }

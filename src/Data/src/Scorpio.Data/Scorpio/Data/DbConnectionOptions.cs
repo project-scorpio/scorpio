@@ -13,9 +13,6 @@
         /// <summary>
         /// 
         /// </summary>
-        public DbConnectionOptions()
-        {
-            ConnectionStrings = new ConnectionStrings();
-        }
+        public DbConnectionOptions() => ConnectionStrings = new ConnectionStrings();
     }
 }

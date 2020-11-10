@@ -34,10 +34,7 @@ namespace Scorpio.Setting
             return setting;
         }
 
-        public virtual IReadOnlyList<SettingDefinition> GetAll()
-        {
-            return _settingDefinitions.Value.Values.ToImmutableList();
-        }
+        public virtual IReadOnlyList<SettingDefinition> GetAll() => _settingDefinitions.Value.Values.ToImmutableList();
 
         protected virtual IDictionary<string, SettingDefinition> CreateSettingDefinitions()
         {

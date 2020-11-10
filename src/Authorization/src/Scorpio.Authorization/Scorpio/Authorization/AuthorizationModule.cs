@@ -15,10 +15,7 @@ namespace Scorpio.Authorization
         /// 
         /// </summary>
         /// <param name="context"></param>
-        public override void PreConfigureServices(ConfigureServicesContext context)
-        {
-            context.Services.AddConventionalRegistrar<AuthorizationConventionalRegistrar>();
-        }
+        public override void PreConfigureServices(ConfigureServicesContext context) => context.Services.AddConventionalRegistrar<AuthorizationConventionalRegistrar>();
         /// <summary>
         /// 
         /// </summary>

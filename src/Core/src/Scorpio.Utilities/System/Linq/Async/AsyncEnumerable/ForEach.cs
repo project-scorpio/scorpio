@@ -6,7 +6,7 @@ using Scorpio;
 
 namespace System.Linq.Async
 {
-    partial class AsyncEnumerable
+    public partial class AsyncEnumerable
     {
         /// <summary>
         /// 

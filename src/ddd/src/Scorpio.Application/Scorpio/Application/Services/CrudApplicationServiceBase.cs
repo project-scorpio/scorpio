@@ -115,9 +115,6 @@ namespace Scorpio.Application.Services
         /// </summary>
         /// <param name="sources"></param>
         /// <returns></returns>
-        protected virtual IQueryable<TEntity> GetQuery(IQueryable<TEntity> sources)
-        {
-            return sources;
-        }
+        protected virtual IQueryable<TEntity> GetQuery(IQueryable<TEntity> sources) => sources;
     }
 }

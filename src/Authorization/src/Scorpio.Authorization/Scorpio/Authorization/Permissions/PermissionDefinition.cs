@@ -83,10 +83,7 @@ namespace Scorpio.Authorization.Permissions
         /// <param name="name"></param>
         /// <param name="displayName"></param>
         /// <returns></returns>
-        public virtual PermissionDefinition AddChild(string name, string displayName = default)
-        {
-            return AddChild(name, displayName, p => { });
-        }
+        public virtual PermissionDefinition AddChild(string name, string displayName = default) => AddChild(name, displayName, p => { });
 
 
         /// <summary>
@@ -95,10 +92,7 @@ namespace Scorpio.Authorization.Permissions
         /// <param name="name"></param>
         /// <param name="action"></param>
         /// <returns></returns>
-        public virtual PermissionDefinition AddChild(string name, Action<PermissionDefinition> action)
-        {
-            return AddChild(name, default, action);
-        }
+        public virtual PermissionDefinition AddChild(string name, Action<PermissionDefinition> action) => AddChild(name, default, action);
 
         /// <summary>
         /// 
@@ -122,9 +116,6 @@ namespace Scorpio.Authorization.Permissions
         /// 
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
-        {
-            return $"[{nameof(PermissionDefinition)} {FullName}]";
-        }
+        public override string ToString() => $"[{nameof(PermissionDefinition)} {FullName}]";
     }
 }

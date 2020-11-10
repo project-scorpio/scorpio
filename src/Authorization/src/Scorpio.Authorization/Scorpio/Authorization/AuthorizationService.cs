@@ -7,7 +7,7 @@ using Scorpio.DependencyInjection;
 using Scorpio.Security;
 namespace Scorpio.Authorization
 {
-    class AuthorizationService : IAuthorizationService, ITransientDependency
+    internal class AuthorizationService : IAuthorizationService, ITransientDependency
     {
         private readonly ICurrentPrincipalAccessor _currentPrincipalAccessor;
         private readonly IPermissionChecker _permissionChecker;

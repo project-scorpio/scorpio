@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Extensions.DependencyInjection;
-
-using Scorpio.Modularity;
+﻿using Scorpio.Modularity;
 
 namespace Scorpio.BackgroundJobs
 {
@@ -15,9 +11,6 @@ namespace Scorpio.BackgroundJobs
         /// 
         /// </summary>
         /// <param name="context"></param>
-        public override void PreConfigureServices(ConfigureServicesContext context)
-        {
-            context.AddConventionalRegistrar<BackgroundJobsConventionalRegistrar>();
-        }
+        public override void PreConfigureServices(ConfigureServicesContext context) => context.AddConventionalRegistrar<BackgroundJobsConventionalRegistrar>();
     }
 }

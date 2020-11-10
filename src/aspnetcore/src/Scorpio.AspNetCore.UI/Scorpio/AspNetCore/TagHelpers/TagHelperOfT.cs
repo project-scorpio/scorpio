@@ -41,10 +41,7 @@ namespace Scorpio.AspNetCore.TagHelpers
         /// 
         /// </summary>
         /// <param name="context"></param>
-        public override void Init(TagHelperContext context)
-        {
-            Service.Init(context);
-        }
+        public override void Init(TagHelperContext context) => Service.Init(context);
 
         /// <summary>
         /// 
@@ -52,10 +49,7 @@ namespace Scorpio.AspNetCore.TagHelpers
         /// <param name="context"></param>
         /// <param name="output"></param>
         /// <returns></returns>
-        public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
-        {
-            await Service.ProcessAsync(context, output);
-        }
+        public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output) => await Service.ProcessAsync(context, output);
 
     }
 }

@@ -6,10 +6,7 @@ namespace Scorpio.Authorization.Permissions
     {
         internal Dictionary<string, PermissionGroupDefinition> Groups { get; }
 
-        internal PermissionDefinitionContext()
-        {
-            Groups = new Dictionary<string, PermissionGroupDefinition>();
-        }
+        internal PermissionDefinitionContext() => Groups = new Dictionary<string, PermissionGroupDefinition>();
 
         public virtual PermissionGroupDefinition AddGroup(string name, string displayName = null)
         {

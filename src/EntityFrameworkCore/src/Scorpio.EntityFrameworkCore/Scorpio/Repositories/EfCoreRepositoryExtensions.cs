@@ -20,10 +20,7 @@ namespace Scorpio.Repositories
         /// <param name="repository"></param>
         /// <returns></returns>
         public static DbContext GetDbContext<TEntity, TKey>(this IBasicRepository<TEntity, TKey> repository)
-            where TEntity : class, IEntity<TKey>
-        {
-            return repository.ToEfCoreRepository().DbContext;
-        }
+            where TEntity : class, IEntity<TKey> => repository.ToEfCoreRepository().DbContext;
 
         /// <summary>
         /// 

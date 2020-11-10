@@ -24,9 +24,6 @@ namespace Scorpio.Auditing
         /// 
         /// </summary>
         /// <param name="context"></param>
-        public override void ConfigureServices(ConfigureServicesContext context)
-        {
-            context.Services.TryAddTransient<AuditingInterceptor>();
-        }
+        public override void ConfigureServices(ConfigureServicesContext context) => context.Services.TryAddTransient<AuditingInterceptor>();
     }
 }

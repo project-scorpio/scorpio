@@ -29,7 +29,7 @@ namespace Scorpio.BackgroundJobs
                 }
 
                 var genericArgs = @interface.GetGenericArguments();
-               
+
 
                 return genericArgs[0];
             }

@@ -5,33 +5,18 @@ using Scorpio.Aspects;
 
 namespace Scorpio.Authorization
 {
-    class AuthorizeAttributeTestService : IAuthorizeAttributeTestService, IAvoidDuplicateCrossCuttingConcerns
+    internal class AuthorizeAttributeTestService : IAuthorizeAttributeTestService, IAvoidDuplicateCrossCuttingConcerns
     {
         public virtual List<string> AppliedCrossCuttingConcerns { get; } = new List<string>();
 
-        public Task AuthorizeAnonymousAsync()
-        {
-            return Task.CompletedTask;
-        }
+        public Task AuthorizeAnonymousAsync() => Task.CompletedTask;
 
-        public Task AuthorizeByAllAttributeAsync()
-        {
-            return Task.CompletedTask;
-        }
+        public Task AuthorizeByAllAttributeAsync() => Task.CompletedTask;
 
-        public Task AuthorizeByAttributeAsync()
-        {
-            return Task.CompletedTask;
-        }
+        public Task AuthorizeByAttributeAsync() => Task.CompletedTask;
 
-        public Task AuthorizeByNotAllAttributeAsync()
-        {
-            return Task.CompletedTask;
-        }
+        public Task AuthorizeByNotAllAttributeAsync() => Task.CompletedTask;
 
-        public Task AuthorizeByServcieAsync()
-        {
-            return Task.CompletedTask;
-        }
+        public Task AuthorizeByServcieAsync() => Task.CompletedTask;
     }
 }

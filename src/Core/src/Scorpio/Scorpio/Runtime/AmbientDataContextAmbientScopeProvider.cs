@@ -54,10 +54,7 @@ namespace Scorpio.Runtime
             });
         }
 
-        private ScopeItem GetCurrentItem(string contextKey)
-        {
-            return _dataContext.GetData(contextKey) is string objKey ? _scopeDictionary.GetOrDefault(objKey) : null;
-        }
+        private ScopeItem GetCurrentItem(string contextKey) => _dataContext.GetData(contextKey) is string objKey ? _scopeDictionary.GetOrDefault(objKey) : null;
 
         private class ScopeItem
         {

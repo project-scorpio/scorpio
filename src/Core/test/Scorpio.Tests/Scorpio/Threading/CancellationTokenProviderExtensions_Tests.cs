@@ -19,14 +19,11 @@ namespace Scorpio.Threading
             provider.FallbackToProvider(act).ShouldBe(act);
         }
 
-        class TestCancellationTokenProvider : ICancellationTokenProvider
+        private class TestCancellationTokenProvider : ICancellationTokenProvider
         {
             private readonly CancellationTokenSource _source;
 
-            public TestCancellationTokenProvider(CancellationTokenSource source)
-            {
-                _source = source;
-            }
+            public TestCancellationTokenProvider(CancellationTokenSource source) => _source = source;
             public CancellationToken Token => _source.Token;
         }
     }

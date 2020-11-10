@@ -44,34 +44,22 @@ namespace Scorpio.Repositories
         /// 
         /// </summary>
         /// <returns></returns>
-        public virtual IQueryable<TEntity> WithDetails()
-        {
-            return WithDetails(new Expression<Func<TEntity, object>>[0]);
-        }
+        public virtual IQueryable<TEntity> WithDetails() => WithDetails(new Expression<Func<TEntity, object>>[0]);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="propertySelectors"></param>
         /// <returns></returns>
-        public virtual IQueryable<TEntity> WithDetails(params Expression<Func<TEntity, object>>[] propertySelectors)
-        {
-            return GetQueryable();
-        }
+        public virtual IQueryable<TEntity> WithDetails(params Expression<Func<TEntity, object>>[] propertySelectors) => GetQueryable();
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public IEnumerator<TEntity> GetEnumerator()
-        {
-            return GetQueryable().GetEnumerator();
-        }
+        public IEnumerator<TEntity> GetEnumerator() => GetQueryable().GetEnumerator();
 
         /// <summary>
         /// 
@@ -99,10 +87,7 @@ namespace Scorpio.Repositories
         /// <param name="autoSave"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public virtual Task DeleteAsync(Expression<Func<TEntity, bool>> predicate, bool autoSave = true, CancellationToken cancellationToken = default)
-        {
-            return Invoke(() => Delete(predicate, autoSave), cancellationToken);
-        }
+        public virtual Task DeleteAsync(Expression<Func<TEntity, bool>> predicate, bool autoSave = true, CancellationToken cancellationToken = default) => Invoke(() => Delete(predicate, autoSave), cancellationToken);
 
         /// <summary>
         /// 
@@ -128,10 +113,7 @@ namespace Scorpio.Repositories
                 Value = Expression.Lambda(a.Expression).Compile().DynamicInvoke()
             });
             var type = typeof(TEntity);
-            members.ForEach(m =>
-            {
-                type.GetProperty(m.Name).SetValue(entity, m.Value);
-            });
+            members.ForEach(m => type.GetProperty(m.Name).SetValue(entity, m.Value));
         }
 
         /// <summary>
@@ -142,10 +124,7 @@ namespace Scorpio.Repositories
         /// <param name="autoSave"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public virtual Task UpdateAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TEntity>> updateExpression, bool autoSave = true, CancellationToken cancellationToken = default)
-        {
-            return Invoke(() => Update(predicate, updateExpression), cancellationToken);
-        }
+        public virtual Task UpdateAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TEntity>> updateExpression, bool autoSave = true, CancellationToken cancellationToken = default) => Invoke(() => Update(predicate, updateExpression), cancellationToken);
     }
 
     /// <summary>
@@ -184,10 +163,7 @@ namespace Scorpio.Repositories
         /// <param name="includeDetails"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public virtual Task<TEntity> FindAsync(TKey id, bool includeDetails = true, CancellationToken cancellationToken = default)
-        {
-            return Invoke(() => Find(id, includeDetails), cancellationToken);
-        }
+        public virtual Task<TEntity> FindAsync(TKey id, bool includeDetails = true, CancellationToken cancellationToken = default) => Invoke(() => Find(id, includeDetails), cancellationToken);
 
         /// <summary>
         /// 
@@ -214,10 +190,7 @@ namespace Scorpio.Repositories
         /// <param name="includeDetails"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public virtual Task<TEntity> GetAsync(TKey id, bool includeDetails = true, CancellationToken cancellationToken = default)
-        {
-            return Invoke(() => Get(id, includeDetails), cancellationToken);
-        }
+        public virtual Task<TEntity> GetAsync(TKey id, bool includeDetails = true, CancellationToken cancellationToken = default) => Invoke(() => Get(id, includeDetails), cancellationToken);
 
 
         /// <summary>
@@ -243,9 +216,6 @@ namespace Scorpio.Repositories
         /// <param name="autoSave"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public virtual Task DeleteAsync(TKey id, bool autoSave = true, CancellationToken cancellationToken = default)
-        {
-            return Invoke(() => Delete(id, autoSave), cancellationToken);
-        }
+        public virtual Task DeleteAsync(TKey id, bool autoSave = true, CancellationToken cancellationToken = default) => Invoke(() => Delete(id, autoSave), cancellationToken);
     }
 }

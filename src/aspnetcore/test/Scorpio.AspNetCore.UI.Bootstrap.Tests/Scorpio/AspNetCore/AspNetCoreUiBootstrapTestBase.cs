@@ -18,10 +18,7 @@ namespace Scorpio.AspNetCore
 
     public static class AspNetCoreUiBootstrapTestBaseExtensions
     {
-        public static (TagHelperContext, TagHelperOutput) GetContextAndOutput(this ITagHelper tagHelper, string tagName)
-        {
-            return (tagHelper.GetContext(), tagHelper.GetOutput(tagName));
-        }
+        public static (TagHelperContext, TagHelperOutput) GetContextAndOutput(this ITagHelper tagHelper, string tagName) => (tagHelper.GetContext(), tagHelper.GetOutput(tagName));
 
         public static TagHelperContext GetContext(this ITagHelper _)
         {
@@ -50,192 +47,117 @@ namespace Scorpio.AspNetCore
 
 
         public static TTagHelper GetTagHelper<TTagHelper>(this AspNetCoreUiBootstrapTestBase test)
-            where TTagHelper : TagHelpers.TagHelper
-        {
-            return test.GetTagHelper<TTagHelper>(t => { });
-        }
+            where TTagHelper : TagHelpers.TagHelper => test.GetTagHelper<TTagHelper>(t => { });
 
         public static TTagHelper GetTagHelper<TTagHelper>(this AspNetCoreUiBootstrapTestBase test, Action<TTagHelper> initAction)
-            where TTagHelper : TagHelpers.TagHelper
-        {
-            return ActivatorUtilities.CreateInstance<TTagHelper>(test.ServiceProvider).Action(initAction);
-        }
+            where TTagHelper : TagHelpers.TagHelper => ActivatorUtilities.CreateInstance<TTagHelper>(test.ServiceProvider).Action(initAction);
 
         public static void Test<TTagHelper>(this AspNetCoreUiBootstrapTestBase test, Action<TagHelperContext, TagHelperOutput> verifyAction)
-            where TTagHelper : TagHelpers.TagHelper
-        {
-            test.GetTagHelper<TTagHelper>().Test(verifyAction);
-        }
+            where TTagHelper : TagHelpers.TagHelper => test.GetTagHelper<TTagHelper>().Test(verifyAction);
 
         public static void Test<TTagHelper>(this AspNetCoreUiBootstrapTestBase test,
                                             Action<HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction)
-            where TTagHelper : TagHelpers.TagHelper
-        {
-            test.GetTagHelper<TTagHelper>().Test(verifyAction);
-        }
+            where TTagHelper : TagHelpers.TagHelper => test.GetTagHelper<TTagHelper>().Test(verifyAction);
         public static void Test<TTagHelper>(this AspNetCoreUiBootstrapTestBase test, Action<ITagHelper, HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction)
-            where TTagHelper : TagHelpers.TagHelper
-        {
-            test.GetTagHelper<TTagHelper>().Test(verifyAction);
-        }
+            where TTagHelper : TagHelpers.TagHelper => test.GetTagHelper<TTagHelper>().Test(verifyAction);
 
         public static void Test<TTagHelper>(this AspNetCoreUiBootstrapTestBase test,
                                             Action<TTagHelper> initAction,
                                             Action<TagHelperContext, TagHelperOutput> verifyAction)
-            where TTagHelper : TagHelpers.TagHelper
-        {
-            test.GetTagHelper<TTagHelper>(initAction).Test(verifyAction);
-        }
+            where TTagHelper : TagHelpers.TagHelper => test.GetTagHelper<TTagHelper>(initAction).Test(verifyAction);
 
         public static void Test<TTagHelper>(this AspNetCoreUiBootstrapTestBase test,
                                             Action<TTagHelper> initAction,
                                             Action<HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction)
-            where TTagHelper : TagHelpers.TagHelper
-        {
-            test.GetTagHelper<TTagHelper>(initAction).Test(verifyAction);
-        }
+            where TTagHelper : TagHelpers.TagHelper => test.GetTagHelper<TTagHelper>(initAction).Test(verifyAction);
         public static void Test<TTagHelper>(this AspNetCoreUiBootstrapTestBase test,
                                             Action<TTagHelper> initAction,
                                             Action<ITagHelper, HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction)
-            where TTagHelper : TagHelpers.TagHelper
-        {
-            test.GetTagHelper<TTagHelper>(initAction).Test(verifyAction);
-        }
+            where TTagHelper : TagHelpers.TagHelper => test.GetTagHelper<TTagHelper>(initAction).Test(verifyAction);
 
         public static void Test<TTagHelper>(this AspNetCoreUiBootstrapTestBase test,
                                             Action<TagHelperContext> initContextAction,
                                             Action<TagHelperOutput> initOutputAction,
                                             Action<TagHelperContext, TagHelperOutput> verifyAction)
-            where TTagHelper : TagHelpers.TagHelper
-        {
-            test.GetTagHelper<TTagHelper>().Test(initContextAction, initOutputAction, verifyAction);
-        }
+            where TTagHelper : TagHelpers.TagHelper => test.GetTagHelper<TTagHelper>().Test(initContextAction, initOutputAction, verifyAction);
 
         public static void Test<TTagHelper>(this AspNetCoreUiBootstrapTestBase test,
                                             Action<TagHelperContext> initContextAction,
                                             Action<TagHelperOutput> initOutputAction,
                                             Action<HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction)
-            where TTagHelper : TagHelpers.TagHelper
-        {
-            test.GetTagHelper<TTagHelper>().Test(initContextAction, initOutputAction, verifyAction);
-        }
+            where TTagHelper : TagHelpers.TagHelper => test.GetTagHelper<TTagHelper>().Test(initContextAction, initOutputAction, verifyAction);
         public static void Test<TTagHelper>(this AspNetCoreUiBootstrapTestBase test,
                                             Action<TagHelperContext> initContextAction,
                                             Action<TagHelperOutput> initOutputAction,
                                             Action<ITagHelper, HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction)
-            where TTagHelper : TagHelpers.TagHelper
-        {
-            test.GetTagHelper<TTagHelper>().Test(initContextAction, initOutputAction, verifyAction);
-        }
+            where TTagHelper : TagHelpers.TagHelper => test.GetTagHelper<TTagHelper>().Test(initContextAction, initOutputAction, verifyAction);
 
         public static void Test<TTagHelper>(this AspNetCoreUiBootstrapTestBase test,
                                             Action<TTagHelper> initAction,
                                             Action<TagHelperContext> initContextAction,
                                             Action<TagHelperOutput> initOutputAction,
                                             Action<TagHelperContext, TagHelperOutput> verifyAction)
-            where TTagHelper : TagHelpers.TagHelper
-        {
-            test.GetTagHelper<TTagHelper>(initAction).Test(initContextAction, initOutputAction, verifyAction);
-        }
+            where TTagHelper : TagHelpers.TagHelper => test.GetTagHelper<TTagHelper>(initAction).Test(initContextAction, initOutputAction, verifyAction);
 
         public static void Test<TTagHelper>(this AspNetCoreUiBootstrapTestBase test,
                                             Action<TTagHelper> initAction,
                                             Action<TagHelperContext> initContextAction,
                                             Action<TagHelperOutput> initOutputAction,
                                             Action<HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction)
-            where TTagHelper : TagHelpers.TagHelper
-        {
-            test.GetTagHelper<TTagHelper>(initAction).Test(initContextAction, initOutputAction, verifyAction);
-        }
+            where TTagHelper : TagHelpers.TagHelper => test.GetTagHelper<TTagHelper>(initAction).Test(initContextAction, initOutputAction, verifyAction);
         public static void Test<TTagHelper>(this AspNetCoreUiBootstrapTestBase test,
                                             Action<TTagHelper> initAction,
                                             Action<TagHelperContext> initContextAction,
                                             Action<TagHelperOutput> initOutputAction,
                                             Action<ITagHelper, HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction)
-            where TTagHelper : TagHelpers.TagHelper
-        {
-            test.GetTagHelper<TTagHelper>(initAction).Test(initContextAction, initOutputAction, verifyAction);
-        }
+            where TTagHelper : TagHelpers.TagHelper => test.GetTagHelper<TTagHelper>(initAction).Test(initContextAction, initOutputAction, verifyAction);
 
 
         public static void Test(this ITagHelper tagHelper,
-                        Action<TagHelperContext, TagHelperOutput> verifyAction)
-        {
-            Test(tagHelper, (a, c, o) => verifyAction(c, o));
-        }
+                        Action<TagHelperContext, TagHelperOutput> verifyAction) => Test(tagHelper, (a, c, o) => verifyAction(c, o));
 
         public static void Test(this ITagHelper tagHelper,
-                                Action<HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction)
-        {
-            Test(tagHelper, (t, a, c, o) => verifyAction(a, c, o));
-        }
+                                Action<HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction) => Test(tagHelper, (t, a, c, o) => verifyAction(a, c, o));
         public static void Test(this ITagHelper tagHelper,
-                                Action<ITagHelper, HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction)
-        {
-            tagHelper.Test(tagHelper.GetContext(), verifyAction);
-        }
+                                Action<ITagHelper, HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction) => tagHelper.Test(tagHelper.GetContext(), verifyAction);
 
         public static void Test(this ITagHelper tagHelper,
                                 Action<TagHelperContext> initContextAction,
                                 Action<TagHelperOutput> initOutputAction,
-                                Action<TagHelperContext, TagHelperOutput> verifyAction)
-        {
-            Test(tagHelper, initContextAction, initOutputAction, (a, c, o) => verifyAction(c, o));
-        }
+                                Action<TagHelperContext, TagHelperOutput> verifyAction) => Test(tagHelper, initContextAction, initOutputAction, (a, c, o) => verifyAction(c, o));
 
         public static void Test(this ITagHelper tagHelper,
                                 Action<TagHelperContext> initContextAction,
                                 Action<TagHelperOutput> initOutputAction,
-                                Action<HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction)
-        {
-            Test(tagHelper, initContextAction, initOutputAction, (t, a, c, o) => verifyAction(a, c, o));
-        }
+                                Action<HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction) => Test(tagHelper, initContextAction, initOutputAction, (t, a, c, o) => verifyAction(a, c, o));
         public static void Test(this ITagHelper tagHelper,
                                 Action<TagHelperContext> initContextAction,
                                 Action<TagHelperOutput> initOutputAction,
-                                Action<ITagHelper, HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction)
-        {
-            tagHelper.Test(tagHelper.GetContext(), initContextAction, initOutputAction, verifyAction);
-        }
+                                Action<ITagHelper, HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction) => tagHelper.Test(tagHelper.GetContext(), initContextAction, initOutputAction, verifyAction);
 
         public static void Test(this ITagHelper tagHelper,
         TagHelperContext tagHelperContext,
-        Action<TagHelperContext, TagHelperOutput> verifyAction)
-        {
-            tagHelper.Test(tagHelperContext, (a, c, o) => verifyAction(c, o));
-        }
+        Action<TagHelperContext, TagHelperOutput> verifyAction) => tagHelper.Test(tagHelperContext, (a, c, o) => verifyAction(c, o));
 
         public static void Test(this ITagHelper tagHelper,
                 TagHelperContext tagHelperContext,
-                Action<HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction)
-        {
-            tagHelper.Test(tagHelperContext, (t, a, c, o) => verifyAction(a, c, o));
-        }
+                Action<HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction) => tagHelper.Test(tagHelperContext, (t, a, c, o) => verifyAction(a, c, o));
 
         public static void Test(this ITagHelper tagHelper,
                         TagHelperContext tagHelperContext,
-                        Action<ITagHelper, HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction)
-        {
-            tagHelper.Test(tagHelperContext, c => { }, o => { }, verifyAction);
-        }
+                        Action<ITagHelper, HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction) => tagHelper.Test(tagHelperContext, c => { }, o => { }, verifyAction);
 
         public static void Test(this ITagHelper tagHelper,
                 TagHelperContext tagHelperContext,
                 Action<TagHelperContext> initContextAction,
                 Action<TagHelperOutput> initOutputAction,
-                Action<TagHelperContext, TagHelperOutput> verifyAction)
-        {
-            tagHelper.Test(tagHelperContext, initContextAction, initOutputAction, (a, c, o) => verifyAction(c, o));
-        }
+                Action<TagHelperContext, TagHelperOutput> verifyAction) => tagHelper.Test(tagHelperContext, initContextAction, initOutputAction, (a, c, o) => verifyAction(c, o));
 
         public static void Test(this ITagHelper tagHelper,
                 TagHelperContext tagHelperContext,
                 Action<TagHelperContext> initContextAction,
                 Action<TagHelperOutput> initOutputAction,
-                Action<HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction)
-        {
-            tagHelper.Test(tagHelperContext, initContextAction, initOutputAction, (t, a, c, o) => verifyAction(a, c, o));
-        }
+                Action<HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction) => tagHelper.Test(tagHelperContext, initContextAction, initOutputAction, (t, a, c, o) => verifyAction(a, c, o));
 
         public static void Test(this ITagHelper tagHelper,
                         TagHelperContext tagHelperContext,
@@ -251,106 +173,70 @@ namespace Scorpio.AspNetCore
                 Test(tagHelper, tagHelperContext, tagName, initContextAction, initOutputAction, verifyAction);
                 return;
             }
-            attrs.ForEach(a =>
-            {
-                Test(tagHelper, tagHelperContext, a.Tag, initContextAction, initOutputAction, verifyAction);
-            });
+            attrs.ForEach(a => Test(tagHelper, tagHelperContext, a.Tag, initContextAction, initOutputAction, verifyAction));
         }
 
         public static void Test(this ITagHelper tagHelper,
                         TagHelperContext tagHelperContext,
                         string tagName,
-                        Action<TagHelperContext, TagHelperOutput> verifyAction)
-        {
-            tagHelper.Test(tagHelperContext, tagName, (a, c, o) => verifyAction(c, o));
-        }
+                        Action<TagHelperContext, TagHelperOutput> verifyAction) => tagHelper.Test(tagHelperContext, tagName, (a, c, o) => verifyAction(c, o));
 
         public static void Test(this ITagHelper tagHelper,
                                 TagHelperContext tagHelperContext,
                                 string tagName,
-                                Action<HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction)
-        {
-            tagHelper.Test(tagHelperContext, tagName, (t, a, c, o) => verifyAction(a, c, o));
-        }
+                                Action<HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction) => tagHelper.Test(tagHelperContext, tagName, (t, a, c, o) => verifyAction(a, c, o));
         public static void Test(this ITagHelper tagHelper,
                                 TagHelperContext tagHelperContext,
                                 string tagName,
-                                Action<ITagHelper, HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction)
-        {
-            tagHelper.Test(tagHelperContext, tagHelper.GetOutput(tagName), verifyAction);
-        }
+                                Action<ITagHelper, HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction) => tagHelper.Test(tagHelperContext, tagHelper.GetOutput(tagName), verifyAction);
 
         public static void Test(this ITagHelper tagHelper,
                                 TagHelperContext tagHelperContext,
                                 string tagName,
                                 Action<TagHelperContext> initContextAction,
                                 Action<TagHelperOutput> initOutputAction,
-                                Action<TagHelperContext, TagHelperOutput> verifyAction)
-        {
-            tagHelper.Test(tagHelperContext, tagName, initContextAction, initOutputAction, (a, c, o) => verifyAction(c, o));
-        }
+                                Action<TagHelperContext, TagHelperOutput> verifyAction) => tagHelper.Test(tagHelperContext, tagName, initContextAction, initOutputAction, (a, c, o) => verifyAction(c, o));
 
         public static void Test(this ITagHelper tagHelper,
                                 TagHelperContext tagHelperContext,
                                 string tagName,
                                 Action<TagHelperContext> initContextAction,
                                 Action<TagHelperOutput> initOutputAction,
-                                Action<HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction)
-        {
-            tagHelper.Test(tagHelperContext, tagName, initContextAction, initOutputAction, (t, a, c, o) => verifyAction(a, c, o));
-        }
+                                Action<HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction) => tagHelper.Test(tagHelperContext, tagName, initContextAction, initOutputAction, (t, a, c, o) => verifyAction(a, c, o));
         public static void Test(this ITagHelper tagHelper,
                                 TagHelperContext tagHelperContext,
                                 string tagName,
                                 Action<TagHelperContext> initContextAction,
                                 Action<TagHelperOutput> initOutputAction,
-                                Action<ITagHelper, HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction)
-        {
-            tagHelper.Test(tagHelperContext, tagHelper.GetOutput(tagName), initContextAction, initOutputAction, verifyAction);
-        }
+                                Action<ITagHelper, HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction) => tagHelper.Test(tagHelperContext, tagHelper.GetOutput(tagName), initContextAction, initOutputAction, verifyAction);
 
         public static void Test(this ITagHelper tagHelper,
                 TagHelperContext tagHelperContext,
                 TagHelperOutput tagHelperOutput,
-                Action<TagHelperContext, TagHelperOutput> verifyAction)
-        {
-            tagHelper.Test(tagHelperContext, tagHelperOutput, (t, a, c, o) => verifyAction(c, o));
-        }
+                Action<TagHelperContext, TagHelperOutput> verifyAction) => tagHelper.Test(tagHelperContext, tagHelperOutput, (t, a, c, o) => verifyAction(c, o));
         public static void Test(this ITagHelper tagHelper,
                         TagHelperContext tagHelperContext,
                         TagHelperOutput tagHelperOutput,
-                        Action<HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction)
-        {
-            tagHelper.Test(tagHelperContext, tagHelperOutput, (t, a, c, o) => verifyAction(a, c, o));
-        }
+                        Action<HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction) => tagHelper.Test(tagHelperContext, tagHelperOutput, (t, a, c, o) => verifyAction(a, c, o));
 
         public static void Test(this ITagHelper tagHelper,
                         TagHelperContext tagHelperContext,
                         TagHelperOutput tagHelperOutput,
-                        Action<ITagHelper, HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction)
-        {
-            tagHelper.Test(tagHelperContext, tagHelperOutput, c => { }, o => { }, verifyAction);
-        }
+                        Action<ITagHelper, HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction) => tagHelper.Test(tagHelperContext, tagHelperOutput, c => { }, o => { }, verifyAction);
 
         public static void Test(this ITagHelper tagHelper,
                                 TagHelperContext tagHelperContext,
                                 TagHelperOutput tagHelperOutput,
                                 Action<TagHelperContext> initContextAction,
                                 Action<TagHelperOutput> initOutputAction,
-                                Action<TagHelperContext, TagHelperOutput> verifyAction)
-        {
-            tagHelper.Test(tagHelperContext, tagHelperOutput, initContextAction, initOutputAction, (a, c, o) => verifyAction(c, o));
-        }
+                                Action<TagHelperContext, TagHelperOutput> verifyAction) => tagHelper.Test(tagHelperContext, tagHelperOutput, initContextAction, initOutputAction, (a, c, o) => verifyAction(c, o));
 
         public static void Test(this ITagHelper tagHelper,
                                 TagHelperContext tagHelperContext,
                                 TagHelperOutput tagHelperOutput,
                                 Action<TagHelperContext> initContextAction,
                                 Action<TagHelperOutput> initOutputAction,
-                                Action<HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction)
-        {
-            tagHelper.Test(tagHelperContext, tagHelperOutput, initContextAction, initOutputAction, (t, a, c, o) => verifyAction(a, c, o));
-        }
+                                Action<HtmlTargetElementAttribute, TagHelperContext, TagHelperOutput> verifyAction) => tagHelper.Test(tagHelperContext, tagHelperOutput, initContextAction, initOutputAction, (t, a, c, o) => verifyAction(a, c, o));
 
         public static void Test(this ITagHelper tagHelper,
                                 TagHelperContext tagHelperContext,

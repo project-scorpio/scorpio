@@ -26,14 +26,8 @@ namespace Scorpio.AspNetCore.TagHelpers.Collapse
             base.Process(context, output);
         }
 
-        private void AddButtonAttribute(TagHelperOutput output)
-        {
-            output.Attributes.Add("data-target", $"{TagHelper.Target}");
-        }
-        private void AddLinkAttribute(TagHelperOutput output)
-        {
-            output.Attributes.Add("href", $"{TagHelper.Target}");
-        }
+        private void AddButtonAttribute(TagHelperOutput output) => output.Attributes.Add("data-target", $"{TagHelper.Target}");
+        private void AddLinkAttribute(TagHelperOutput output) => output.Attributes.Add("href", $"{TagHelper.Target}");
 
         private void AddCommonAttributes(TagHelperOutput output)
         {

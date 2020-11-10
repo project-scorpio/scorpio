@@ -1,8 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
-using Microsoft.Extensions.Options;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
+
 using Scorpio.DependencyInjection;
 
 namespace Scorpio.BackgroundJobs
@@ -20,12 +21,7 @@ namespace Scorpio.BackgroundJobs
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="options"></param>
-        public BackgroundJobExecuter()
-        {
-
-            Logger = NullLogger<BackgroundJobExecuter>.Instance;
-        }
+        public BackgroundJobExecuter() => Logger = NullLogger<BackgroundJobExecuter>.Instance;
 
         /// <summary>
         /// 
@@ -39,7 +35,7 @@ namespace Scorpio.BackgroundJobs
             {
                 throw new ScorpioException("The job type is not registered to DI: " + context.JobType);
             }
-            var jobExecuteMethod = context.JobType.GetMethod(nameof(IBackgroundJob<object>.Execute)) ?? 
+            var jobExecuteMethod = context.JobType.GetMethod(nameof(IBackgroundJob<object>.Execute)) ??
                                    context.JobType.GetMethod(nameof(IAsyncBackgroundJob<object>.ExecuteAsync));
             if (jobExecuteMethod == null)
             {
@@ -51,7 +47,7 @@ namespace Scorpio.BackgroundJobs
             {
                 if (jobExecuteMethod.Name == nameof(IAsyncBackgroundJob<object>.ExecuteAsync))
                 {
-                    await ((Task) jobExecuteMethod.Invoke(job, new[] {context.JobArgs}));
+                    await ((Task)jobExecuteMethod.Invoke(job, new[] { context.JobArgs }));
                 }
                 else
                 {

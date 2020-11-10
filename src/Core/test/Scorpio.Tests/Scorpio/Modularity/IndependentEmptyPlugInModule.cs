@@ -1,6 +1,6 @@
 ﻿namespace Scorpio.Modularity
 {
-    class IndependentEmptyPlugInModule : ModuleBase
+    internal class IndependentEmptyPlugInModule : ModuleBase
     {
     }
 }

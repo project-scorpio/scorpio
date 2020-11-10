@@ -14,18 +14,12 @@
         /// 
         /// </summary>
         /// <param name="isEnabled"></param>
-        public DataFilterState(bool isEnabled)
-        {
-            IsEnabled = isEnabled;
-        }
+        public DataFilterState(bool isEnabled) => IsEnabled = isEnabled;
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public DataFilterState Clone()
-        {
-            return new DataFilterState(IsEnabled);
-        }
+        public DataFilterState Clone() => new DataFilterState(IsEnabled);
     }
 }

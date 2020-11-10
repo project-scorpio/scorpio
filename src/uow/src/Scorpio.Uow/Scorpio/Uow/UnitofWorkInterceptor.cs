@@ -52,10 +52,7 @@ namespace Scorpio.Uow
             }
         }
 
-        internal void SetOptions(UnitOfWorkAttribute options)
-        {
-            _optionsAttribute = options;
-        }
+        internal void SetOptions(UnitOfWorkAttribute options) => _optionsAttribute = options;
 
         private UnitOfWorkOptions CreateOptions()
         {

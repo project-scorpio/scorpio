@@ -13,10 +13,7 @@ namespace Scorpio.Conventional
         /// <param name="context"></param>
         /// <param name="name"></param>
         /// <param name="value"></param>
-        public static void Set(this IConventionalContext context, string name, object value)
-        {
-            (context as ConventionalContext).SetItem(name, value);
-        }
+        public static void Set(this IConventionalContext context, string name, object value) => (context as ConventionalContext).SetItem(name, value);
 
         /// <summary>
         /// 
@@ -25,10 +22,7 @@ namespace Scorpio.Conventional
         /// <param name="context"></param>
         /// <param name="name"></param>
         /// <returns></returns>
-        public static T Get<T>(this IConventionalContext context, string name)
-        {
-            return (context as ConventionalContext).GetItem<T>(name);
-        }
+        public static T Get<T>(this IConventionalContext context, string name) => (context as ConventionalContext).GetItem<T>(name);
 
         /// <summary>
         /// 
@@ -38,10 +32,7 @@ namespace Scorpio.Conventional
         /// <param name="name"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static T GetOrAdd<T>(this IConventionalContext context, string name, T value)
-        {
-            return GetOrAdd<T>(context, name, key => value);
-        }
+        public static T GetOrAdd<T>(this IConventionalContext context, string name, T value) => GetOrAdd<T>(context, name, key => value);
 
         /// <summary>
         /// 
@@ -72,10 +63,7 @@ namespace Scorpio.Conventional
         /// <param name="name"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static T GetOrDefault<T>(this IConventionalContext context, string name, T value)
-        {
-            return GetOrDefault<T>(context, name, key => value);
-        }
+        public static T GetOrDefault<T>(this IConventionalContext context, string name, T value) => GetOrDefault<T>(context, name, key => value);
 
         /// <summary>
         /// 

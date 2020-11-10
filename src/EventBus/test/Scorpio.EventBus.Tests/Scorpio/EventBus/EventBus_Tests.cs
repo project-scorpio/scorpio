@@ -23,10 +23,7 @@ namespace Scorpio.EventBus
     {
         private readonly IEventBus _eventBus;
 
-        public EventBus_Tests()
-        {
-            _eventBus = ServiceProvider.GetService<IEventBus>();
-        }
+        public EventBus_Tests() => _eventBus = ServiceProvider.GetService<IEventBus>();
 
         [Fact]
         public void Subscribe_Action()
@@ -109,6 +106,7 @@ namespace Scorpio.EventBus
         public void Unsubscribe_A()
         {
             Task action(string s) => Task.Run(() => Console.WriteLine(s));
+
             _eventBus.ShouldBeOfType<LocalEventBus>().HandlerFactories.Clear();
             _eventBus.Subscribe((Func<string, Task>)action);
             _eventBus.ShouldBeOfType<LocalEventBus>().HandlerFactories.ShouldContainKey(typeof(string));

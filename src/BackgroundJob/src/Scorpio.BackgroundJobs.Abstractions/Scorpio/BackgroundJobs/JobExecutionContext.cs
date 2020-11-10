@@ -1,12 +1,11 @@
 ﻿using System;
-using Scorpio.DependencyInjection;
 
 namespace Scorpio.BackgroundJobs
 {
     /// <summary>
     /// 
     /// </summary>
-    public class JobExecutionContext 
+    public class JobExecutionContext
     {
         /// <summary>
         /// 

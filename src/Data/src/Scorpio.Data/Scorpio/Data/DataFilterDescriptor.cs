@@ -27,19 +27,13 @@ namespace Scorpio.Data
         /// 
         /// </summary>
         /// <param name="filterType"></param>
-        protected DataFilterDescriptor(Type filterType)
-        {
-            FilterType = filterType;
-        }
+        protected DataFilterDescriptor(Type filterType) => FilterType = filterType;
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        internal DataFilterState GetState()
-        {
-            return new DataFilterState(IsEnabled);
-        }
+        internal DataFilterState GetState() => new DataFilterState(IsEnabled);
 
         /// <summary>
         /// 
@@ -71,10 +65,7 @@ namespace Scorpio.Data
         /// <summary>
         /// 
         /// </summary>
-        internal DataFilterDescriptor() : base(typeof(TFilter))
-        {
-            IsEnabled = true;
-        }
+        internal DataFilterDescriptor() : base(typeof(TFilter)) => IsEnabled = true;
 
         /// <summary>
         /// 

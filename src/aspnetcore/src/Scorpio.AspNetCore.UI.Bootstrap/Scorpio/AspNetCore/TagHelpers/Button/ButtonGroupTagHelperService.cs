@@ -57,9 +57,6 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
         /// </summary>
         /// <param name="context"></param>
         /// <param name="output"></param>
-        protected virtual void AddAttributes(TagHelperContext context, TagHelperOutput output)
-        {
-            output.Attributes.Add("role", "group");
-        }
+        protected virtual void AddAttributes(TagHelperContext context, TagHelperOutput output) => output.Attributes.Add("role", "group");
     }
 }

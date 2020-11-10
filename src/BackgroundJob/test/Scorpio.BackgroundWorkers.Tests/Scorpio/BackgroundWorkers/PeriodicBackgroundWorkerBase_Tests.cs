@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 using Microsoft.Extensions.DependencyInjection;
-
-using NSubstitute;
-
-using Scorpio.Threading;
 
 using Shouldly;
 
@@ -35,8 +29,10 @@ namespace Scorpio.BackgroundWorkers
             await Task.Delay(1000);
             invokeCount.ShouldBe(1);
             await worker.StopAsync();
+#pragma warning disable S3626 // Jump statements should not be redundant
             executor.Action = c => throw new NotImplementedException();
-            Should.NotThrow(() =>worker.StartAsync());
+#pragma warning restore S3626 // Jump statements should not be redundant
+            Should.NotThrow(() => worker.StartAsync());
         }
     }
 }

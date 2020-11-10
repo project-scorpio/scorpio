@@ -18,10 +18,7 @@ namespace Scorpio.Domain
         /// 
         /// </summary>
         /// <param name="context"></param>
-        public override void PreConfigureServices(ConfigureServicesContext context)
-        {
-            context.Services.AddConventionalRegistrar<ConventionalRegistrar>();
-        }
+        public override void PreConfigureServices(ConfigureServicesContext context) => context.Services.AddConventionalRegistrar<ConventionalRegistrar>();
 
     }
 }

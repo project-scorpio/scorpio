@@ -1,11 +1,6 @@
-using System;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging.Abstractions;
-
-using NSubstitute;
-
-using Scorpio.DependencyInjection;
 
 using Shouldly;
 

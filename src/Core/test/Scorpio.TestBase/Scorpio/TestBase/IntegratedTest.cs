@@ -29,10 +29,7 @@ namespace Scorpio.TestBase
             bootstrapper.Initialize();
         }
 
-        protected virtual Bootstrapper CreateBootstrapper(IServiceCollection services)
-        {
-            return new InternalBootstrapper(typeof(TStartupModule), services, null, SetBootstrapperCreationOptions);
-        }
+        protected virtual Bootstrapper CreateBootstrapper(IServiceCollection services) => new InternalBootstrapper(typeof(TStartupModule), services, null, SetBootstrapperCreationOptions);
 
         protected virtual IServiceProvider CreateServiceProvider(Bootstrapper bootstrapper)
         {

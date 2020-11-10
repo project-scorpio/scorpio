@@ -20,7 +20,7 @@ namespace Scorpio.Auditing
         /// <summary>
         /// 
         /// </summary>
-        public readonly static string Concerns = "Scorpio.Auditing";
+        public static readonly string Concerns = "Scorpio.Auditing";
         private readonly IAuditingHelper _auditingHelper;
         private readonly IAuditingManager _auditingManager;
         private readonly ICurrentPrincipalAccessor _principalAccessor;
@@ -52,7 +52,7 @@ namespace Scorpio.Auditing
         /// <param name="context"></param>
         /// <param name="next"></param>
         /// <returns></returns>
-        public async override Task Invoke(AspectContext context, AspectDelegate next)
+        public override async Task Invoke(AspectContext context, AspectDelegate next)
         {
             if (!ShouldIntercept(context, out var audit, out var auditAction))
             {

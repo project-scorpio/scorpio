@@ -1,6 +1,5 @@
 ﻿
 using NSubstitute;
-using NSubstitute.Extensions;
 
 using Shouldly;
 
@@ -11,7 +10,7 @@ namespace Scorpio.BackgroundJobs
     /// <summary>
     /// Some extension methods for <see cref="IBackgroundJobManager"/>.
     /// </summary>
-    public  class BackgroundJobManagerExtensions_Tests
+    public class BackgroundJobManagerExtensions_Tests
     {
         [Fact]
         public void IsAvailable()

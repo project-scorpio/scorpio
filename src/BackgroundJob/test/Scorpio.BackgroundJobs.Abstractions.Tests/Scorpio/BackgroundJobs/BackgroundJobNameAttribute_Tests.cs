@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-
+﻿
 using Shouldly;
 
 using Xunit;
@@ -22,7 +20,7 @@ namespace Scorpio.BackgroundJobs
 
 
         [BackgroundJobName("Fake")]
-        class FakeBackgroundJobArg
+        private class FakeBackgroundJobArg
         {
 
         }

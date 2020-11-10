@@ -15,11 +15,11 @@ namespace Scorpio.AspNetCore.TagHelpers.Breadcrumb
         /// <summary>
         /// 
         /// </summary>
-        internal protected static readonly string BreadcrumbItemActivePlaceholder = "{_Breadcrumb_Active_Placeholder_}";
+        protected internal static readonly string BreadcrumbItemActivePlaceholder = "{_Breadcrumb_Active_Placeholder_}";
         /// <summary>
         /// 
         /// </summary>
-        internal protected static readonly string BreadcrumbItemsContent = "BreadcrumbItemsContent";
+        protected internal static readonly string BreadcrumbItemsContent = "BreadcrumbItemsContent";
 
         /// <summary>
         /// 
@@ -77,10 +77,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Breadcrumb
         /// <param name="context"></param>
         /// <param name="output"></param>
         /// <returns></returns>
-        protected virtual List<BreadcrumbItem> InitilizeFormGroupContentsContext(TagHelperContext context, TagHelperOutput output)
-        {
-            return context.InitValue<List<BreadcrumbItem>>(BreadcrumbItemsContent);
-        }
+        protected virtual List<BreadcrumbItem> InitilizeFormGroupContentsContext(TagHelperContext context, TagHelperOutput output) => context.InitValue<List<BreadcrumbItem>>(BreadcrumbItemsContent);
 
         /// <summary>
         /// 

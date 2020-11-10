@@ -39,10 +39,7 @@ namespace Scorpio.EventBus.Conventional
         /// <param name="context"></param>
         /// <param name="configureAction"></param>
         /// <returns></returns>
-        public static IConventionalRegistrationContext RegisterEventHandler(this IConventionalRegistrationContext context, Action<IConventionalConfiguration<EventHandlerConventionalAction>> configureAction)
-        {
-            return context.DoConventionalAction(configureAction);
-        }
+        public static IConventionalRegistrationContext RegisterEventHandler(this IConventionalRegistrationContext context, Action<IConventionalConfiguration<EventHandlerConventionalAction>> configureAction) => context.DoConventionalAction(configureAction);
 
 
     }

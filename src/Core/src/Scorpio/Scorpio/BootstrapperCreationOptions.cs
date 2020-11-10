@@ -37,10 +37,7 @@ namespace Scorpio
         internal Func<IServiceFactoryAdapter> ServiceFactory { get; set; } = () => new ServiceFactoryAdapter<IServiceCollection>(new DefaultServiceProviderFactory());
 
 
-        internal BootstrapperCreationOptions()
-        {
-            PlugInSources = new PlugInSourceList(new PhysicalFileProvider(AppDomain.CurrentDomain.BaseDirectory), AssemblyLoadContext.Default);
-        }
+        internal BootstrapperCreationOptions() => PlugInSources = new PlugInSourceList(new PhysicalFileProvider(AppDomain.CurrentDomain.BaseDirectory), AssemblyLoadContext.Default);
 
         /// <summary>
         /// 
@@ -79,39 +76,20 @@ namespace Scorpio
         /// 
         /// </summary>
         /// <param name="action"></param>
-        public void Configuration(Action<IConfigurationBuilder> action)
-        {
-
-            _configurationActions.Add(action);
-        }
+        public void Configuration(Action<IConfigurationBuilder> action) => _configurationActions.Add(action);
 
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="TContainerBuilder"></typeparam>
         /// <param name="factory"></param>
-        public void UseServiceProviderFactory<TContainerBuilder>(IServiceProviderFactory<TContainerBuilder> factory)
-        {
-            ServiceFactory = () => new ServiceFactoryAdapter<TContainerBuilder>(factory);
-        }
+        public void UseServiceProviderFactory<TContainerBuilder>(IServiceProviderFactory<TContainerBuilder> factory) => ServiceFactory = () => new ServiceFactoryAdapter<TContainerBuilder>(factory);
 
-        internal void ConfigureConfiguration(ConfigurationBuilder configurationBuilder)
-        {
-            _configurationActions.ForEach(a => a(configurationBuilder));
-        }
+        internal void ConfigureConfiguration(ConfigurationBuilder configurationBuilder) => _configurationActions.ForEach(a => a(configurationBuilder));
 
-        internal void PreConfigureServices(ConfigureServicesContext context)
-        {
-            _preConfigureServiceActions.ForEach(a => a(context));
-        }
+        internal void PreConfigureServices(ConfigureServicesContext context) => _preConfigureServiceActions.ForEach(a => a(context));
 
-        internal void ConfigureServices(ConfigureServicesContext context)
-        {
-            _configureServiceActions.ForEach(a => a(context));
-        }
-        internal void PostConfigureServices(ConfigureServicesContext context)
-        {
-            _postConfigureServiceActions.ForEach(a => a(context));
-        }
+        internal void ConfigureServices(ConfigureServicesContext context) => _configureServiceActions.ForEach(a => a(context));
+        internal void PostConfigureServices(ConfigureServicesContext context) => _postConfigureServiceActions.ForEach(a => a(context));
     }
 }

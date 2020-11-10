@@ -54,7 +54,7 @@ namespace Scorpio
         /// <summary>
         /// 
         /// </summary>
-        internal protected IModuleLoader ModuleLoader { get; }
+        protected internal IModuleLoader ModuleLoader { get; }
 
         /// <summary>
         /// 
@@ -95,7 +95,7 @@ namespace Scorpio
                 configBuilder.AddConfiguration(configuration);
             }
             _options.ConfigureConfiguration(configBuilder);
-            this.Configuration = configBuilder.Build();
+            Configuration = configBuilder.Build();
             ConfigureCoreService(services);
             Modules = LoadModules();
             ConfigureServices();
@@ -121,36 +121,28 @@ namespace Scorpio
                 if (m.Instance is ScorpioModule module && !module.SkipAutoServiceRegistration)
                 {
                     Services.RegisterAssemblyByConvention(m.Type.Assembly);
-                } 
-                m.Instance.ConfigureServices(context); });
+                }
+                m.Instance.ConfigureServices(context);
+            });
             _options.ConfigureServices(context);
             Modules.ForEach(m => m.Instance.PostConfigureServices(context));
             _options.PostConfigureServices(context);
         }
 
-        private IReadOnlyList<IModuleDescriptor> LoadModules()
-        {
-            return ModuleLoader.LoadModules(Services, StartupModuleType, _options.PlugInSources);
-        }
+        private IReadOnlyList<IModuleDescriptor> LoadModules() => ModuleLoader.LoadModules(Services, StartupModuleType, _options.PlugInSources);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="serviceProvider"></param>
-        protected internal void SetServiceProvider(IServiceProvider serviceProvider)
-        {
-            ServiceProvider = serviceProvider;
-        }
+        protected internal void SetServiceProvider(IServiceProvider serviceProvider) => ServiceProvider = serviceProvider;
 
 
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual void Initialize(params object[] initializeParams)
-        {
-            InitializeModules(initializeParams);
-        }
+        public virtual void Initialize(params object[] initializeParams) => InitializeModules(initializeParams);
 
         /// <summary>
         /// 
@@ -189,10 +181,7 @@ namespace Scorpio
         /// <typeparam name="TStartupModule"></typeparam>
         /// <param name="optionsAction"></param>
         /// <returns></returns>
-        public static IBootstrapper Create<TStartupModule>(Action<BootstrapperCreationOptions> optionsAction) where TStartupModule : IScorpioModule
-        {
-            return Create(typeof(TStartupModule), optionsAction);
-        }
+        public static IBootstrapper Create<TStartupModule>(Action<BootstrapperCreationOptions> optionsAction) where TStartupModule : IScorpioModule => Create(typeof(TStartupModule), optionsAction);
 
         /// <summary>
         /// 
@@ -219,20 +208,14 @@ namespace Scorpio
         /// </summary>
         /// <param name="startupModuleType"></param>
         /// <returns></returns>
-        public static IBootstrapper Create(Type startupModuleType)
-        {
-            return Create(startupModuleType, o => { });
-        }
+        public static IBootstrapper Create(Type startupModuleType) => Create(startupModuleType, o => { });
 
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="TStartupModule"></typeparam>
         /// <returns></returns>
-        public static IBootstrapper Create<TStartupModule>() where TStartupModule : IScorpioModule
-        {
-            return Create(typeof(TStartupModule));
-        }
+        public static IBootstrapper Create<TStartupModule>() where TStartupModule : IScorpioModule => Create(typeof(TStartupModule));
 
 
         #region IDisposable Support

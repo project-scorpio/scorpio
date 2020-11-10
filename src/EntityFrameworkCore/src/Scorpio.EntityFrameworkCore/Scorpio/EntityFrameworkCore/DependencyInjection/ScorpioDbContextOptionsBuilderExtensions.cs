@@ -63,10 +63,7 @@ namespace Scorpio.EntityFrameworkCore.DependencyInjection
         /// <param name="loggerFactory"></param>
         /// <returns></returns>
         public static IScorpioDbContextOptionsBuilder<TDbContext> UseLoggerFactory<TDbContext>(this IScorpioDbContextOptionsBuilder<TDbContext> optionsBuilder, ILoggerFactory loggerFactory)
-       where TDbContext : ScorpioDbContext<TDbContext>
-        {
-            return optionsBuilder.UseOptions(b => b.UseLoggerFactory(loggerFactory));
-        }
+       where TDbContext : ScorpioDbContext<TDbContext> => optionsBuilder.UseOptions(b => b.UseLoggerFactory(loggerFactory));
 
         /// <summary>
         /// 
@@ -76,10 +73,7 @@ namespace Scorpio.EntityFrameworkCore.DependencyInjection
         /// <param name="memoryCache"></param>
         /// <returns></returns>
         public static IScorpioDbContextOptionsBuilder<TDbContext> UseMemoryCache<TDbContext>(this IScorpioDbContextOptionsBuilder<TDbContext> optionsBuilder, IMemoryCache memoryCache)
-       where TDbContext : ScorpioDbContext<TDbContext>
-        {
-            return optionsBuilder.UseOptions(b => b.UseMemoryCache(memoryCache));
-        }
+       where TDbContext : ScorpioDbContext<TDbContext> => optionsBuilder.UseOptions(b => b.UseMemoryCache(memoryCache));
 
         /// <summary>
         /// 

@@ -31,10 +31,7 @@ namespace System.Reflection
         /// <param name="this">The type to test.</param>
         /// <returns>True if this type is in the same namespace as <typeparamref name="T"/>
         /// or one of its sub-namespaces; otherwise, false.</returns>
-        public static bool IsInNamespaceOf<T>(this Type @this)
-        {
-            return IsInNamespace(@this, typeof(T).Namespace);
-        }
+        public static bool IsInNamespaceOf<T>(this Type @this) => IsInNamespace(@this, typeof(T).Namespace);
 
 
 
@@ -45,10 +42,7 @@ namespace System.Reflection
         /// <param name="this">The type to test.</param>
         /// <returns>True if this type is assignable to references of type
         /// <typeparamref name="T"/>; otherwise, False.</returns>
-        public static bool IsAssignableTo<T>(this Type @this)
-        {
-            return @this.IsAssignableTo(typeof(T));
-        }
+        public static bool IsAssignableTo<T>(this Type @this) => @this.IsAssignableTo(typeof(T));
 
         /// <summary>
         /// Determines whether this type is assignable to <paramref name="type"/>.

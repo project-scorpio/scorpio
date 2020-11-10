@@ -16,10 +16,7 @@ namespace Scorpio.Uow
         {
         }
 
-        public override Task SaveChangesAsync(CancellationToken cancellationToken = default)
-        {
-            return Task.CompletedTask;
-        }
+        public override Task SaveChangesAsync(CancellationToken cancellationToken = default) => Task.CompletedTask;
 
         protected override void BeginUow()
         {
@@ -29,10 +26,7 @@ namespace Scorpio.Uow
         {
         }
 
-        protected override Task CompleteUowAsync(CancellationToken cancellationToken = default)
-        {
-            return Task.CompletedTask;
-        }
+        protected override Task CompleteUowAsync(CancellationToken cancellationToken = default) => Task.CompletedTask;
 
         protected override void DisposeUow()
         {

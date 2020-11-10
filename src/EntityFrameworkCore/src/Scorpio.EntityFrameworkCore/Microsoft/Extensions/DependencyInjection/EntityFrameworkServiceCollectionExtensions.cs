@@ -20,10 +20,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="services"></param>
         /// <returns></returns>
         public static IServiceCollection AddScorpioDbContext<TDbContext>(this IServiceCollection services)
-            where TDbContext : ScorpioDbContext<TDbContext>
-        {
-            return services.AddScorpioDbContext<TDbContext>(b => { });
-        }
+            where TDbContext : ScorpioDbContext<TDbContext> => services.AddScorpioDbContext<TDbContext>(b => { });
         /// <summary>
         /// 
         /// </summary>

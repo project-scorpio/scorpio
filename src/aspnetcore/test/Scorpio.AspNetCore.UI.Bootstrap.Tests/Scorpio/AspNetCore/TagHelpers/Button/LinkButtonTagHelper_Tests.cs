@@ -70,10 +70,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
         [Fact]
         public void Size()
         {
-            this.Test<LinkButtonTagHelper>(t =>
-            {
-                t.Size = TagHelpers.Size.Large;
-            }, (a, c, o) =>
+            this.Test<LinkButtonTagHelper>(t => t.Size = TagHelpers.Size.Large, (a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
                 o.ShouldJustHasClasses("btn", "btn-lg");
@@ -91,10 +88,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
         [Fact]
         public void Block()
         {
-            this.Test<LinkButtonTagHelper>(t =>
-            {
-                t.Block = true;
-            }, (a, c, o) =>
+            this.Test<LinkButtonTagHelper>(t => t.Block = true, (a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
                 o.ShouldJustHasClasses("btn", "btn-block");
@@ -112,10 +106,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
         [Fact]
         public void Text()
         {
-            this.Test<LinkButtonTagHelper>(t =>
-            {
-                t.Text = "TestButton";
-            }, (a, c, o) =>
+            this.Test<LinkButtonTagHelper>(t => t.Text = "TestButton", (a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
                 o.ShouldJustHasClasses("btn");
@@ -134,10 +125,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
         [Fact]
         public void Icon()
         {
-            this.Test<LinkButtonTagHelper>(t =>
-            {
-                t.Icon = "dash";
-            }, (a, c, o) =>
+            this.Test<LinkButtonTagHelper>(t => t.Icon = "dash", (a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
                 o.ShouldJustHasClasses("btn");
@@ -178,10 +166,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
         [Fact]
         public void Disable()
         {
-            this.Test<LinkButtonTagHelper>(t =>
-            {
-                t.Disabled = true;
-            }, (a, c, o) =>
+            this.Test<LinkButtonTagHelper>(t => t.Disabled = true, (a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
                 o.ShouldJustHasClasses("btn");

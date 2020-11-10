@@ -25,10 +25,7 @@ namespace Scorpio.Entities
         /// 
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
-        {
-            return $"[ENTITY: {GetType().Name}] Keys = {GetKeys().ExpandToString(", ")}";
-        }
+        public override string ToString() => $"[ENTITY: {GetType().Name}] Keys = {GetKeys().ExpandToString(", ")}";
     }
 
     /// <summary>
@@ -54,19 +51,13 @@ namespace Scorpio.Entities
         /// 
         /// </summary>
         /// <param name="id"></param>
-        protected Entity(TPrimaryKey id)
-        {
-            Id = id;
-        }
+        protected Entity(TPrimaryKey id) => Id = id;
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public override object[] GetKeys()
-        {
-            return new object[] { Id };
-        }
+        public override object[] GetKeys() => new object[] { Id };
 
         /// <summary>
         /// 
@@ -125,10 +116,7 @@ namespace Scorpio.Entities
         }
 
         /// <inheritdoc/>
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(Id.GetHashCode());
-        }
+        public override int GetHashCode() => HashCode.Combine(Id.GetHashCode());
 
 
     }

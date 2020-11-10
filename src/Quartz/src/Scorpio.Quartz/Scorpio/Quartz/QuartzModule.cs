@@ -19,10 +19,7 @@ namespace Scorpio.Quartz
         /// 
         /// </summary>
         /// <param name="context"></param>
-        public override void PreConfigureServices(ConfigureServicesContext context)
-        {
-            context.Services.AddConventionalRegistrar<ConventionalRegistrar>();
-        }
+        public override void PreConfigureServices(ConfigureServicesContext context) => context.Services.AddConventionalRegistrar<ConventionalRegistrar>();
 
         /// <summary>
         /// 
@@ -51,9 +48,6 @@ namespace Scorpio.Quartz
         /// 
         /// </summary>
         /// <param name="context"></param>
-        public override void Initialize(ApplicationInitializationContext context)
-        {
-            base.Initialize(context);
-        }
+        public override void Initialize(ApplicationInitializationContext context) => base.Initialize(context);
     }
 }

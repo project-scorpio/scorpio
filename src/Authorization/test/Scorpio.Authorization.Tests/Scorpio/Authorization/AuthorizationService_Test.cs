@@ -60,7 +60,7 @@ namespace Scorpio.Authorization
         }
 
         [AllowAnonymous]
-        void FakeMethod()
+        private void FakeMethod()
         {
             // Method intentionally left empty.
         }
