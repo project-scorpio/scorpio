@@ -8,11 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Scorpio\BackgroundJobs\" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Scorpio.BackgroundJobs.Abstractions\Scorpio.BackgroundJobs.Abstractions.csproj" />
+    <ProjectReference Include="..\Scorpio.BackgroundWorkers\Scorpio.BackgroundWorkers.csproj" />
   </ItemGroup>
 
 </Project>

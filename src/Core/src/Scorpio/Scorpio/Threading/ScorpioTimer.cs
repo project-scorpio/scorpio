@@ -11,7 +11,7 @@ namespace Scorpio.Threading
     /// <summary>
     /// A roboust timer implementation that ensures no overlapping occurs. It waits exactly specified <see cref="Period"/> between ticks.
     /// </summary>
-    public class ScorpioTimer : ITransientDependency, IDisposable
+    public class ScorpioTimer : ITransientDependency, IDisposable, IScorpioTimer
     {
         /// <summary>
         /// This event is raised periodically according to Period of Timer.
