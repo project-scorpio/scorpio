@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 using AspectCore.Extensions.Reflection;
 
@@ -11,7 +9,7 @@ namespace Scorpio.DependencyInjection
 {
     internal static class PropertyInjectionUtils
     {
-        private readonly static ConcurrentDictionary<Type, bool> _dictionary = new ConcurrentDictionary<Type, bool>();
+        private static readonly ConcurrentDictionary<Type, bool> _dictionary = new ConcurrentDictionary<Type, bool>();
 
         public static bool TypeRequired(Type type)
         {
@@ -23,6 +21,6 @@ namespace Scorpio.DependencyInjection
                 .Where(x => x.CanWrite).Any(x => !x.GetReflector().IsDefined<NotAutowiredAttribute>()));
         }
 
-      
+
     }
 }

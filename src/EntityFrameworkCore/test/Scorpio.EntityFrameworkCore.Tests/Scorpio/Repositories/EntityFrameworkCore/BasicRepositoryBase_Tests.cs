@@ -2,7 +2,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
 using Scorpio.EntityFrameworkCore;
-using Scorpio.TestBase;
 
 namespace Scorpio.Repositories.EntityFrameworkCore
 {

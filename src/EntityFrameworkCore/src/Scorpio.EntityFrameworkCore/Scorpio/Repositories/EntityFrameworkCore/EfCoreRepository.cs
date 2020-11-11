@@ -347,7 +347,7 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         /// <param name="contextProvider"></param>
         public EfCoreRepository(
             IDbContextProvider<TDbContext> contextProvider)
-            : base( contextProvider)
+            : base(contextProvider)
         {
         }
 

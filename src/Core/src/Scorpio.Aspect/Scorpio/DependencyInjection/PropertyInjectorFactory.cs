@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 using AspectCore.DependencyInjection;
 
@@ -19,10 +17,6 @@ namespace Scorpio.DependencyInjection
 
         }
 
-        public IPropertyInjector Create(Type implementationType)
-        {
-            return new PropertyInjector(_servicePorvider, _propertyResolverSelector.SelectPropertyResolver(implementationType));
-
-        }
+        public IPropertyInjector Create(Type implementationType) => new PropertyInjector(_servicePorvider, _propertyResolverSelector.SelectPropertyResolver(implementationType));
     }
 }

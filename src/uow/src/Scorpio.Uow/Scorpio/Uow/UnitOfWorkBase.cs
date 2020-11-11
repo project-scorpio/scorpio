@@ -4,8 +4,6 @@ using System.Threading.Tasks;
 
 using Microsoft.Extensions.Options;
 
-using Scorpio.DependencyInjection;
-
 namespace Scorpio.Uow
 {
     /// <summary>
@@ -64,10 +62,7 @@ namespace Scorpio.Uow
         /// </summary>
         protected UnitOfWorkBase(
              IOptions<UnitOfWorkDefaultOptions> options
-            )
-        {
-            _defaultOptions = options.Value;
-        }
+            ) => _defaultOptions = options.Value;
         /// <summary>
         /// 
         /// </summary>
@@ -124,10 +119,7 @@ namespace Scorpio.Uow
         /// 
         /// </summary>
         /// <param name="outer"></param>
-        public virtual void SetOuter(IUnitOfWork outer)
-        {
-            Outer = outer;
-        }
+        public virtual void SetOuter(IUnitOfWork outer) => Outer = outer;
 
         /// <summary>
         /// 

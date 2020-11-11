@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Microsoft.Extensions.DependencyInjection;
-
 using Scorpio.DependencyInjection;
 using Scorpio.Entities;
 using Scorpio.Threading;
@@ -23,12 +21,12 @@ namespace Scorpio.Repositories
         /// <summary>
         /// 
         /// </summary>
-        protected IServiceProvider ServiceProvider { get;set; }
+        protected IServiceProvider ServiceProvider { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public ICancellationTokenProvider CancellationTokenProvider { get; set;}
+        public ICancellationTokenProvider CancellationTokenProvider { get; set; }
 
         private protected Task Invoke(Action action, CancellationToken cancellationToken) => Task.Run(action, CancellationTokenProvider.FallbackToProvider(cancellationToken));
         private protected Task<TResult> Invoke<TResult>(Func<TResult> action, CancellationToken cancellationToken) => Task.Run(action, GetCancellationToken(cancellationToken));

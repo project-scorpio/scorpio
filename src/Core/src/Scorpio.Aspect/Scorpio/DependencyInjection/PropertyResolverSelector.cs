@@ -3,9 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
-using AspectCore.DependencyInjection;
 using AspectCore.Extensions.Reflection;
 
 namespace Scorpio.DependencyInjection

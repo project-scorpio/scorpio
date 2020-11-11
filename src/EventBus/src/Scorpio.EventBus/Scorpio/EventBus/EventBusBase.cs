@@ -31,7 +31,7 @@ namespace Scorpio.EventBus
         /// <summary>
         /// 
         /// </summary>
-        protected IServiceProvider ServiceProvider { get;}
+        protected IServiceProvider ServiceProvider { get; }
 
 
         /// <summary>

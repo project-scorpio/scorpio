@@ -3,8 +3,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-using Scorpio.TestBase;
-
 using Shouldly;
 
 using Xunit;

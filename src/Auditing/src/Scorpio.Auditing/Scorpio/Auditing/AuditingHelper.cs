@@ -32,17 +32,17 @@ namespace Scorpio.Auditing
         /// <summary>
         /// 
         /// </summary>
-        public IClock Clock { get; set;}
+        public IClock Clock { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        protected AuditingOptions Options{get; }
+        protected AuditingOptions Options { get; }
 
         /// <summary>
         /// 
         /// </summary>
-        protected IAuditSerializer AuditSerializer{get; }
+        protected IAuditSerializer AuditSerializer { get; }
 
         /// <summary>
         /// 

@@ -12,10 +12,7 @@ namespace Scorpio.Auditing
 {
     public class AuditingHelper_Tests : Scorpio.TestBase.IntegratedTest<AuditingTestModule>
     {
-        protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options)
-        {
-            options.UseAspectCore();
-        }
+        protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options) => options.UseAspectCore();
         private readonly IAuditingHelper _auditingHelper;
 
         public AuditingHelper_Tests() => _auditingHelper = ServiceProvider.GetService<IAuditingHelper>();

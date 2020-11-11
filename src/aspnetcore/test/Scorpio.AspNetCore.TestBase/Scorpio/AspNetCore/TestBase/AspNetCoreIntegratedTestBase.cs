@@ -20,16 +20,13 @@ namespace Scorpio.AspNetCore.TestBase
 
     {
 
-        protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options)
-        {
-            options.UseAspectCore();
-        }
+        protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options) => options.UseAspectCore();
         protected override IBootstrapper Bootstrapper => ServiceProvider.GetService<IBootstrapper>();
         protected TestServer Server { get; }
 
         protected HttpClient Client { get; }
 
-        public override IServiceProvider ServiceProvider { get;}
+        public override IServiceProvider ServiceProvider { get; }
 
         private readonly IHost _host;
 

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Scorpio.EntityFrameworkCore
+﻿namespace Scorpio.EntityFrameworkCore
 {
-    public abstract class EntityFrameworkCoreTestBase:TestBase.IntegratedTest<EntityFrameworkCoreTestModule>
+    public abstract class EntityFrameworkCoreTestBase : TestBase.IntegratedTest<EntityFrameworkCoreTestModule>
     {
         protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options)
         {

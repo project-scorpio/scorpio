@@ -1,6 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.BackgroundWorkers;
+
 using Shouldly;
+
 using Xunit;
 
 namespace Scorpio.BackgroundJobs

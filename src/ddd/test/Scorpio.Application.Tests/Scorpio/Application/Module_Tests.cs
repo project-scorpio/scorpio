@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 using Microsoft.Extensions.DependencyInjection;
 
 using Scorpio.Application.Services;
@@ -26,6 +25,6 @@ namespace Scorpio.Application
 
     internal class TestAppService : ApplicationService, ITestAppService, ITransientDependency
     {
-       
+
     }
 }

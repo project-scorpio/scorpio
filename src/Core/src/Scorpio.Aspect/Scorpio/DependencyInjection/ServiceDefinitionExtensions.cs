@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 
 using AspectCore.DependencyInjection;
 
@@ -11,7 +9,7 @@ namespace Scorpio.DependencyInjection
     {
         internal static bool RequiredPropertyInjection(this ServiceDefinition serviceDefinition)
         {
-            if (serviceDefinition.GetType().Name=="ProxyServiceDefinition" && serviceDefinition.ServiceType.GetTypeInfo().IsInterface)
+            if (serviceDefinition.GetType().Name == "ProxyServiceDefinition" && serviceDefinition.ServiceType.GetTypeInfo().IsInterface)
             {
                 return false;
             }
@@ -43,7 +41,7 @@ namespace Scorpio.DependencyInjection
 
                 return typeArguments[1];
             }
-            else if (serviceDefinition.GetType().Name=="ProxyServiceDefinition")
+            else if (serviceDefinition.GetType().Name == "ProxyServiceDefinition")
             {
                 return ((dynamic)serviceDefinition).ProxyType;
             }
