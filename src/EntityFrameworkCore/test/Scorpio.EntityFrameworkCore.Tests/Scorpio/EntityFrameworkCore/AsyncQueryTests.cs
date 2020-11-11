@@ -10,7 +10,7 @@ using Xunit;
 
 namespace Scorpio.EntityFrameworkCore
 {
-    public class AsyncQueryTests : TestBase.IntegratedTest<TestModule>
+    public class AsyncQueryTests : EntityFrameworkCoreTestBase
     {
 
 

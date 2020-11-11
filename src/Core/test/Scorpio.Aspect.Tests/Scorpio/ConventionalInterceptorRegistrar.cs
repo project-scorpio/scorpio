@@ -5,14 +5,8 @@ using Scorpio.DynamicProxy;
 
 namespace Scorpio
 {
-    class TestConventionalInterceptorRegistrar : IConventionalRegistrar
+    internal class TestConventionalInterceptorRegistrar : IConventionalRegistrar
     {
-        public void Register(IConventionalRegistrationContext context)
-        {
-            context.RegisterConventionalInterceptor(c =>
-            {
-                c.Where(t => t.IsAssignableTo<IInterceptorable>()).Intercept<TestInterceptor>();
-            });
-        }
+        public void Register(IConventionalRegistrationContext context) => context.RegisterConventionalInterceptor(c => c.Where(t => t.IsAssignableTo<IInterceptorable>()).Intercept<TestInterceptor>());
     }
 }

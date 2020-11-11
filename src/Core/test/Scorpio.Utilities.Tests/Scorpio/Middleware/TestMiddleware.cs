@@ -9,10 +9,7 @@ namespace Scorpio.Middleware
     {
         private readonly PipelineRequestDelegate<TestPipelineContext> _next;
 
-        public TestMiddleware(PipelineRequestDelegate<TestPipelineContext> next)
-        {
-            _next = next;
-        }
+        public TestMiddleware(PipelineRequestDelegate<TestPipelineContext> next) => _next = next;
         public Task InvokeAsync(TestPipelineContext context)
         {
             context.PipelineInvoked = true;
@@ -24,24 +21,15 @@ namespace Scorpio.Middleware
     {
         private readonly PipelineRequestDelegate<TestPipelineContext> _next;
 
-        public NonParameterMiddleware(PipelineRequestDelegate<TestPipelineContext> next)
-        {
-            _next = next;
-        }
-        public Task InvokeAsync()
-        {
-            return _next(null);
-        }
+        public NonParameterMiddleware(PipelineRequestDelegate<TestPipelineContext> next) => _next = next;
+        public Task InvokeAsync() => _next(null);
     }
 
     public class ManyParametersMiddleware
     {
         private readonly PipelineRequestDelegate<TestPipelineContext> _next;
 
-        public ManyParametersMiddleware(PipelineRequestDelegate<TestPipelineContext> next)
-        {
-            _next = next;
-        }
+        public ManyParametersMiddleware(PipelineRequestDelegate<TestPipelineContext> next) => _next = next;
         public Task InvokeAsync(TestPipelineContext context, IServiceProvider serviceProvider)
         {
             Check.NotNull(serviceProvider, nameof(serviceProvider));
@@ -54,10 +42,7 @@ namespace Scorpio.Middleware
     {
         private readonly PipelineRequestDelegate<TestPipelineContext> _next;
 
-        public ByRefParametersMiddleware(PipelineRequestDelegate<TestPipelineContext> next)
-        {
-            _next = next;
-        }
+        public ByRefParametersMiddleware(PipelineRequestDelegate<TestPipelineContext> next) => _next = next;
         public Task InvokeAsync(TestPipelineContext context, ref int age)
         {
             age = 100;
@@ -70,10 +55,7 @@ namespace Scorpio.Middleware
     {
         private readonly PipelineRequestDelegate<TestPipelineContext> _next;
 
-        public FuncResultMiddleware(PipelineRequestDelegate<TestPipelineContext> next)
-        {
-            _next = next;
-        }
+        public FuncResultMiddleware(PipelineRequestDelegate<TestPipelineContext> next) => _next = next;
         public async Task<string> InvokeAsync(TestPipelineContext context)
         {
             context.PipelineInvoked = true;
@@ -85,15 +67,9 @@ namespace Scorpio.Middleware
     {
         private readonly PipelineRequestDelegate<TestPipelineContext> _next;
 
-        public NonMethodMiddleware(PipelineRequestDelegate<TestPipelineContext> next)
-        {
-            _next = next;
-        }
+        public NonMethodMiddleware(PipelineRequestDelegate<TestPipelineContext> next) => _next = next;
 
-        public void Execute(TestPipelineContext context)
-        {
-            _next(context).Wait();
-        }
+        public void Execute(TestPipelineContext context) => _next(context).Wait();
 
 
     }
@@ -102,10 +78,7 @@ namespace Scorpio.Middleware
     {
         private readonly PipelineRequestDelegate<TestPipelineContext> _next;
 
-        public NotTaskMiddleware(PipelineRequestDelegate<TestPipelineContext> next)
-        {
-            _next = next;
-        }
+        public NotTaskMiddleware(PipelineRequestDelegate<TestPipelineContext> next) => _next = next;
 
         public void Invoke(TestPipelineContext context)
         {
@@ -119,19 +92,13 @@ namespace Scorpio.Middleware
     {
         private readonly PipelineRequestDelegate<TestPipelineContext> _next;
 
-        public DoublyMethodMiddleware(PipelineRequestDelegate<TestPipelineContext> next)
-        {
-            _next = next;
-        }
+        public DoublyMethodMiddleware(PipelineRequestDelegate<TestPipelineContext> next) => _next = next;
         public async Task InvokeAsync(TestPipelineContext context)
         {
             context.PipelineInvoked = true;
             await _next(context);
         }
 
-        public void Invoke(TestPipelineContext context)
-        {
-            context.PipelineInvoked = true;
-        }
+        public void Invoke(TestPipelineContext context) => context.PipelineInvoked = true;
     }
 }

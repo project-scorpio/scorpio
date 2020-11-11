@@ -29,6 +29,7 @@ namespace Scorpio.AspNetCore.Mvc.Auditing
                 _auditingStore = Substitute.For<IAuditingStore>();
                 c.Services.ReplaceOrAdd(ServiceDescriptor.Singleton(_auditingStore), true);
             });
+            base.SetBootstrapperCreationOptions(options);
         }
 
 
@@ -60,8 +61,8 @@ namespace Scorpio.AspNetCore.Mvc.Auditing
         {
             _options.IsEnabled = true;
 
-                await GetResponseAsync("/Auditing/AuditTestPage?handler=AuditFailForGetRequests", System.Net.HttpStatusCode.NotFound);
-                await _auditingStore.Received().SaveAsync(Arg.Any<AuditInfo>());
+            await GetResponseAsync("/Auditing/AuditTestPage?handler=AuditFailForGetRequests", System.Net.HttpStatusCode.NotFound);
+            await _auditingStore.Received().SaveAsync(Arg.Any<AuditInfo>());
 
         }
 

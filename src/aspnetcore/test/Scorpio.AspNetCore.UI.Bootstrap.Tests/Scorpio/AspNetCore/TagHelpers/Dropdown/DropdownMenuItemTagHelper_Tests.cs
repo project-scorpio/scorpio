@@ -29,10 +29,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
         [Fact]
         public void Active()
         {
-            this.Test<DropdownMenuItemTagHelper>(t =>
-            {
-                t.Status = DropdownItemStatus.Active;
-            }, (a, c, o) =>
+            this.Test<DropdownMenuItemTagHelper>(t => t.Status = DropdownItemStatus.Active, (a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
                 o.ShouldJustHasClasses("dropdown-item", "active");
@@ -42,10 +39,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
         [Fact]
         public void Disabled()
         {
-            this.Test<DropdownMenuItemTagHelper>(t =>
-            {
-                t.Status = DropdownItemStatus.Disabled;
-            }, (a, c, o) =>
+            this.Test<DropdownMenuItemTagHelper>(t => t.Status = DropdownItemStatus.Disabled, (a, c, o) =>
             {
                 o.TagName.ShouldBe(a.Tag);
                 o.ShouldJustHasClasses("dropdown-item", "disabled");

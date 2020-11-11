@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Scorpio.EntityFrameworkCore
 {
-    public class DatabaseFacadeExtensions_Tests : TestBase.IntegratedTest<TestModule>
+    public class DatabaseFacadeExtensions_Tests : EntityFrameworkCoreTestBase
     {
         [Fact]
         public void IsRelational()

@@ -38,10 +38,7 @@ namespace Scorpio.Conventional
         {
         }
 
-        internal override IConventionalContext GetContext()
-        {
-            return GetInternalContext();
-        }
+        internal override IConventionalContext GetContext() => GetInternalContext();
         internal IConventionalContext<TAction> GetInternalContext()
         {
             var context = new ConventionalContext<TAction>(Services, Types);

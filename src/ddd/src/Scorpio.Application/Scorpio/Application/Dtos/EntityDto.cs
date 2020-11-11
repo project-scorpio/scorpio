@@ -18,9 +18,6 @@ namespace Scorpio.Application.Dtos
         /// 
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
-        {
-            return $"[DTO: {GetType().Name}] Id = {Id}";
-        }
+        public override string ToString() => $"[DTO: {GetType().Name}] Id = {Id}";
     }
 }

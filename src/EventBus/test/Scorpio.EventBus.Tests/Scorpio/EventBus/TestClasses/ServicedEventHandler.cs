@@ -4,11 +4,7 @@ namespace Scorpio.EventBus.TestClasses
 {
     public class ServicedEventHandler : IEventHandler<TestEventData>, DependencyInjection.ITransientDependency
     {
-        public Task HandleEventAsync(TestEventData eventData)
-        {
-            return Task.CompletedTask;
-
-        }
+        public Task HandleEventAsync(TestEventData eventData) => Task.CompletedTask;
     }
 
     public class TestEventData

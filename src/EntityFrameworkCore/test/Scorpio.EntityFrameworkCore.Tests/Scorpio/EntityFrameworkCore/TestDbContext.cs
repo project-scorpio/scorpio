@@ -9,9 +9,9 @@ using Scorpio.Entities;
 
 namespace Scorpio.EntityFrameworkCore
 {
-    class TestDbContext : ScorpioDbContext<TestDbContext>
+    internal class TestDbContext : ScorpioDbContext<TestDbContext>
     {
-        public TestDbContext(IServiceProvider serviceProvider, DbContextOptions<TestDbContext> contextOptions, IOptions<DataFilterOptions> filterOptions) : base(serviceProvider, contextOptions, filterOptions)
+        public TestDbContext( DbContextOptions<TestDbContext> contextOptions) : base( contextOptions)
         {
         }
 
@@ -24,10 +24,7 @@ namespace Scorpio.EntityFrameworkCore
     public class TestTable : Entity<int>, ISoftDelete, IHasExtraProperties, IStringValue
     {
 
-        public TestTable()
-        {
-            Details = new HashSet<TestTableDetail>();
-        }
+        public TestTable() => Details = new HashSet<TestTableDetail>();
         public string StringValue { get; set; }
         public bool IsDeleted { get; set; }
 

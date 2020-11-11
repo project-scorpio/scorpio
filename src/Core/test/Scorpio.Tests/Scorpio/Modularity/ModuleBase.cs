@@ -13,39 +13,18 @@
         public bool PostInitializeCalled { get; set; }
 
         public bool ShutdownCalled { get; set; }
-        public override void ConfigureServices(ConfigureServicesContext context)
-        {
-            ConfigureServicesCalled = true;
-        }
+        public override void ConfigureServices(ConfigureServicesContext context) => ConfigureServicesCalled = true;
 
-        public override void PreConfigureServices(ConfigureServicesContext context)
-        {
-            PreConfigureServicesCalled = true;
-        }
+        public override void PreConfigureServices(ConfigureServicesContext context) => PreConfigureServicesCalled = true;
 
-        public override void PostConfigureServices(ConfigureServicesContext context)
-        {
-            PostConfigureServicesCalled = true;
-        }
+        public override void PostConfigureServices(ConfigureServicesContext context) => PostConfigureServicesCalled = true;
 
-        public override void PreInitialize(ApplicationInitializationContext context)
-        {
-            PreInitializeCalled = true;
-        }
+        public override void PreInitialize(ApplicationInitializationContext context) => PreInitializeCalled = true;
 
-        public override void Initialize(ApplicationInitializationContext context)
-        {
-            InitializeCalled = true;
-        }
+        public override void Initialize(ApplicationInitializationContext context) => InitializeCalled = true;
 
-        public override void PostInitialize(ApplicationInitializationContext context)
-        {
-            PostInitializeCalled = true;
-        }
+        public override void PostInitialize(ApplicationInitializationContext context) => PostInitializeCalled = true;
 
-        public override void Shutdown(ApplicationShutdownContext context)
-        {
-            ShutdownCalled = true;
-        }
+        public override void Shutdown(ApplicationShutdownContext context) => ShutdownCalled = true;
     }
 }

@@ -22,10 +22,7 @@ namespace Scorpio.Authorization
         /// <summary>
         /// Creates a new <see cref="AuthorizationException"/> object.
         /// </summary>
-        public AuthorizationException()
-        {
-            LogLevel = LogLevel.Warning;
-        }
+        public AuthorizationException() => LogLevel = LogLevel.Warning;
 
         /// <summary>
         /// Creates a new <see cref="AuthorizationException"/> object.
@@ -41,10 +38,7 @@ namespace Scorpio.Authorization
         /// </summary>
         /// <param name="message">Exception message</param>
         public AuthorizationException(string message)
-            : base(message)
-        {
-            LogLevel = LogLevel.Warning;
-        }
+            : base(message) => LogLevel = LogLevel.Warning;
 
         /// <summary>
         /// Creates a new <see cref="AuthorizationException"/> object.
@@ -52,10 +46,7 @@ namespace Scorpio.Authorization
         /// <param name="message">Exception message</param>
         /// <param name="innerException">Inner exception</param>
         public AuthorizationException(string message, Exception innerException)
-            : base(message, innerException)
-        {
-            LogLevel = LogLevel.Warning;
-        }
+            : base(message, innerException) => LogLevel = LogLevel.Warning;
 
     }
 }

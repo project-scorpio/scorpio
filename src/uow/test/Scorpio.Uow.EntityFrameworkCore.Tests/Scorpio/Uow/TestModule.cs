@@ -3,6 +3,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
+
 using Scorpio.Data;
 using Scorpio.EntityFrameworkCore;
 using Scorpio.Modularity;

@@ -21,9 +21,6 @@ namespace Scorpio.Runtime
             return asyncLocal.Value;
         }
 
-        private static AsyncLocal<object> GetAsyncLocal(string key)
-        {
-            return _asyncLocalDictionary.GetOrAdd(key, (k) => new AsyncLocal<object>());
-        }
+        private static AsyncLocal<object> GetAsyncLocal(string key) => _asyncLocalDictionary.GetOrAdd(key, (k) => new AsyncLocal<object>());
     }
 }

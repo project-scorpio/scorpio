@@ -9,6 +9,6 @@ namespace Scorpio.AspNetCore.UI.Bootstrap
     [DependsOn(typeof(AspNetCoreUiModule))]
     public class BootstrapModule : ScorpioModule
     {
-       
+
     }
 }

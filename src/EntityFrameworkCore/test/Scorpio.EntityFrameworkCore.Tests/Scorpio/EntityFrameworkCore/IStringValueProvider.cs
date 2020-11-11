@@ -8,7 +8,7 @@ namespace Scorpio.EntityFrameworkCore
         string Value { get; set; }
     }
 
-    class StringValueProvider : IStringValueProvider, ISingletonDependency
+    internal class StringValueProvider : IStringValueProvider, ISingletonDependency
     {
         public string Value { get; set; } = "Row0";
     }

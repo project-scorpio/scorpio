@@ -15,10 +15,7 @@ namespace Scorpio.Auditing
     {
         private readonly IAuditingManager _auditingManager;
 
-        public Auditing_Tests()
-        {
-            _auditingManager = ServiceProvider.GetService<IAuditingManager>();
-        }
+        public Auditing_Tests() => _auditingManager = ServiceProvider.GetService<IAuditingManager>();
 
         [Fact]
         public void AttributedAuditing()
@@ -85,10 +82,7 @@ namespace Scorpio.Auditing
             store.Info.ShouldBeNull();
         }
 
-        protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options)
-        {
-            options.UseAspectCore();
-        }
+        protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options) => options.UseAspectCore();
 
     }
 
@@ -104,7 +98,7 @@ namespace Scorpio.Auditing
 
     }
 
-    class AttributedAuditingInterface : IAttributedAuditingInterface, DependencyInjection.ITransientDependency
+    internal class AttributedAuditingInterface : IAttributedAuditingInterface, DependencyInjection.ITransientDependency
     {
         public void Test(string value, int num)
         {
@@ -116,9 +110,6 @@ namespace Scorpio.Auditing
             // Method intentionally left empty.
         }
 
-        public void TestEx(string value, int num)
-        {
-            throw new System.NotImplementedException();
-        }
+        public void TestEx(string value, int num) => throw new System.NotImplementedException();
     }
 }

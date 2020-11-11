@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Scorpio.BackgroundWorkers
 {
@@ -18,9 +16,6 @@ namespace Scorpio.BackgroundWorkers
         /// 
         /// </summary>
         /// <param name="serviceProvider"></param>
-        public BackgroundWorkerContext(IServiceProvider serviceProvider)
-        {
-            ServiceProvider = serviceProvider;
-        }
+        public BackgroundWorkerContext(IServiceProvider serviceProvider) => ServiceProvider = serviceProvider;
     }
 }

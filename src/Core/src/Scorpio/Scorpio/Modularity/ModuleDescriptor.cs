@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Scorpio.Modularity
 {
-    class ModuleDescriptor : IModuleDescriptor
+    internal class ModuleDescriptor : IModuleDescriptor
     {
         public Type Type { get; }
 
@@ -39,14 +39,8 @@ namespace Scorpio.Modularity
             _dependencies = new List<IModuleDescriptor>();
         }
 
-        public void AddDependency(IModuleDescriptor descriptor)
-        {
-            _dependencies.AddIfNotContains(descriptor);
-        }
+        public void AddDependency(IModuleDescriptor descriptor) => _dependencies.AddIfNotContains(descriptor);
 
-        public override string ToString()
-        {
-            return $"[ModuleDescriptor {Type.FullName}]";
-        }
+        public override string ToString() => $"[ModuleDescriptor {Type.FullName}]";
     }
 }

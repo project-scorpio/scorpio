@@ -11,7 +11,7 @@ using Z.EntityFramework.Extensions;
 namespace Scorpio.EntityFrameworkCore
 {
     [DependsOn(typeof(EntityFrameworkCoreModule))]
-    public sealed class TestModule : ScorpioModule
+    public sealed class EntityFrameworkCoreTestModule : ScorpioModule
     {
         public override void ConfigureServices(ConfigureServicesContext context)
         {
@@ -21,10 +21,7 @@ namespace Scorpio.EntityFrameworkCore
                 opt.PreConfigure<TestDbContext>(c => c.DbContextOptions.ConfigureWarnings(w => w.Default(WarningBehavior.Ignore)));
                 opt.Configure<TestDbContext>(c => c.DbContextOptions.UseInMemoryDatabase(Guid.NewGuid().ToString()));
             });
-            context.Services.PreConfigure<DataFilterOptions>(options =>
-            {
-                options.Configure<IStringValue>(f => f.Expression(d => d.StringValue != f.FilterContext.GetParameter<IStringValueProvider>().Value));
-            });
+            context.Services.PreConfigure<DataFilterOptions>(options => options.Configure<IStringValue>(f => f.Expression(d => d.StringValue != f.FilterContext.GetParameter<IStringValueProvider>().Value)));
         }
 
         public override void Initialize(ApplicationInitializationContext context)

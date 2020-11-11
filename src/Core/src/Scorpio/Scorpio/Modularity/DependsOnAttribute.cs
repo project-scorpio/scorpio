@@ -19,19 +19,13 @@ namespace Scorpio.Modularity
         /// 
         /// </summary>
         /// <param name="dependedTypes"></param>
-        public DependsOnAttribute(params Type[] dependedTypes)
-        {
-            DependedTypes = dependedTypes ?? new Type[0];
-        }
+        public DependsOnAttribute(params Type[] dependedTypes) => DependedTypes = dependedTypes ?? new Type[0];
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public virtual Type[] GetDependedTypes()
-        {
-            return DependedTypes;
-        }
+        public virtual Type[] GetDependedTypes() => DependedTypes;
     }
 
 }

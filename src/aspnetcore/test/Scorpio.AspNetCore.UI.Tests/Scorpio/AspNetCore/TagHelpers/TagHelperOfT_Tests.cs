@@ -83,14 +83,14 @@ namespace Scorpio.AspNetCore.TagHelpers
         }
     }
 
-    class TestTagHelper : TagHelper<TestTagHelper, TestTagHelperService>
+    internal class TestTagHelper : TagHelper<TestTagHelper, TestTagHelperService>
     {
         public TestTagHelper(TestTagHelperService service) : base(service)
         {
         }
     }
 
-    class TestTagHelperService : TagHelperService<TestTagHelper>
+    internal class TestTagHelperService : TagHelperService<TestTagHelper>
     {
         public override void Init(TagHelperContext context)
         {

@@ -92,19 +92,13 @@ namespace Scorpio.Authorization.Permissions
         /// 
         /// </summary>
         /// <returns></returns>
-        public virtual IReadOnlyList<PermissionDefinition> GetPermissions()
-        {
-            return PermissionDefinitions.Values.ToImmutableList();
-        }
+        public virtual IReadOnlyList<PermissionDefinition> GetPermissions() => PermissionDefinitions.Values.ToImmutableList();
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public IReadOnlyList<PermissionGroupDefinition> GetGroups()
-        {
-            return PermissionGroupDefinitions.Values.ToImmutableList();
-        }
+        public IReadOnlyList<PermissionGroupDefinition> GetGroups() => PermissionGroupDefinitions.Values.ToImmutableList();
 
         /// <summary>
         /// 

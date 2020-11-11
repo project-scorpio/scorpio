@@ -73,10 +73,7 @@ namespace Scorpio.Modularity
             return sortedModules;
         }
 
-        protected virtual ModuleDescriptor CreateModuleDescriptor(IServiceCollection services, Type moduleType, bool isLoadedAsPlugIn = false)
-        {
-            return new ModuleDescriptor(moduleType, CreateAndRegisterModule(services, moduleType), isLoadedAsPlugIn);
-        }
+        protected virtual ModuleDescriptor CreateModuleDescriptor(IServiceCollection services, Type moduleType, bool isLoadedAsPlugIn = false) => new ModuleDescriptor(moduleType, CreateAndRegisterModule(services, moduleType), isLoadedAsPlugIn);
 
         protected virtual IScorpioModule CreateAndRegisterModule(IServiceCollection services, Type moduleType)
         {

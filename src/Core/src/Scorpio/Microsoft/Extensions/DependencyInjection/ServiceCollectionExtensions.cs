@@ -52,10 +52,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection RegisterConventionalDependencyInject(
             this IServiceCollection services,
             IEnumerable<Type> types,
-            Action<IConventionalConfiguration<ConventionalDependencyAction>> configureAction)
-        {
-            return services.DoConventionalAction(types, configureAction);
-        }
+            Action<IConventionalConfiguration<ConventionalDependencyAction>> configureAction) => services.DoConventionalAction(types, configureAction);
         /// <summary>
         /// 
         /// </summary>
@@ -235,10 +232,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection ReplaceEnumerable<TService, TSourceImplementation, TDestinationImplementation>(this IServiceCollection services, ServiceLifetime lifetime = ServiceLifetime.Transient)
             where TService : class
             where TSourceImplementation : class, TService
-            where TDestinationImplementation : class, TService
-        {
-            return services.ReplaceEnumerable(ServiceDescriptor.Transient<TService, TSourceImplementation>(), ServiceDescriptor.Describe(typeof(TService), typeof(TDestinationImplementation), lifetime));
-        }
+            where TDestinationImplementation : class, TService => services.ReplaceEnumerable(ServiceDescriptor.Transient<TService, TSourceImplementation>(), ServiceDescriptor.Describe(typeof(TService), typeof(TDestinationImplementation), lifetime));
 
         /// <summary>
         /// Removes the first service in <see cref="IServiceCollection"/> with the same service type
@@ -285,10 +279,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns></returns>
         public static IServiceCollection RemoveEnumerable<TService, TImplementation>(this IServiceCollection services)
             where TService : class
-            where TImplementation : class, TService
-        {
-            return services.RemoveEnumerable(ServiceDescriptor.Transient<TService, TImplementation>());
-        }
+            where TImplementation : class, TService => services.RemoveEnumerable(ServiceDescriptor.Transient<TService, TImplementation>());
 
 
         /// <summary>

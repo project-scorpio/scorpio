@@ -8,19 +8,12 @@ namespace Scorpio.AspNetCore.UI.Bootstrap
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:删除未使用的参数", Justification = "<挂起>")]
     public class Startup
     {
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddMvc();
-            // Method intentionally left empty.
-        }
+        public void ConfigureServices(IServiceCollection services) => services.AddMvc();// Method intentionally left empty.
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseAuditing();
-            app.Use(async (ctx, t) =>
-            {
-                await ctx.Response.WriteAsync("test");
-            });
+            app.Use(async (ctx, t) => await ctx.Response.WriteAsync("test"));
         }
     }
 }

@@ -27,10 +27,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="services"></param>
         /// <returns></returns>
         public static IServiceCollection AddConventionalRegistrar<T>(this IServiceCollection services)
-          where T : IConventionalRegistrar
-        {
-            return services.AddConventionalRegistrar(Activator.CreateInstance<T>());
-        }
+          where T : IConventionalRegistrar => services.AddConventionalRegistrar(Activator.CreateInstance<T>());
 
         /// <summary>
         /// 
@@ -62,18 +59,12 @@ namespace Microsoft.Extensions.DependencyInjection
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
-        public static IServiceCollection RegisterAssemblyByConventionOfType<T>(this IServiceCollection services)
-        {
-            return services.RegisterAssemblyByConvention(typeof(T).GetTypeInfo().Assembly);
-        }
+        public static IServiceCollection RegisterAssemblyByConventionOfType<T>(this IServiceCollection services) => services.RegisterAssemblyByConvention(typeof(T).GetTypeInfo().Assembly);
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        private static ConventionalRegistrarList GetOrCreateRegistrarList(IServiceCollection services)
-        {
-            return services.GetSingletonInstanceOrAdd(s => new ConventionalRegistrarList());
-        }
+        private static ConventionalRegistrarList GetOrCreateRegistrarList(IServiceCollection services) => services.GetSingletonInstanceOrAdd(s => new ConventionalRegistrarList());
     }
 }

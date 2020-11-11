@@ -1,16 +1,13 @@
-﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
-using Microsoft.Extensions.Options;
-using System;
-using System.Threading.Tasks;
-using Scorpio.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection;
-using NSubstitute;
-using Shouldly;
-using Xunit;
-using NSubstitute.ExceptionExtensions;
+﻿using System;
 using System.Reflection;
-using NSubstitute.Extensions;
+
+using Microsoft.Extensions.DependencyInjection;
+
+using NSubstitute;
+
+using Shouldly;
+
+using Xunit;
 
 namespace Scorpio.BackgroundJobs
 {
@@ -45,7 +42,9 @@ namespace Scorpio.BackgroundJobs
             Should.Throw<BackgroundJobExecutionException>(async () =>
             {
                 var job = ServiceProvider.GetRequiredService<BackgroundJob<string>>();
+#pragma warning disable S3626 // Jump statements should not be redundant
                 job.WhenForAnyArgs(e => e.Execute(Arg.Any<string>())).Do(x => throw new NotImplementedException());
+#pragma warning restore S3626 // Jump statements should not be redundant
                 await executor.ExecuteAsync(new JobExecutionContext(ServiceProvider, typeof(BackgroundJob<string>), "Test"));
             }).InnerException.ShouldBeOfType<TargetInvocationException>().InnerException.ShouldBeOfType<NotImplementedException>();
 

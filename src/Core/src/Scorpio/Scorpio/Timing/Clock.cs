@@ -20,10 +20,7 @@ namespace Scorpio.Timing
         /// 
         /// </summary>
         /// <param name="options"></param>
-        public Clock(IOptions<ClockOptions> options)
-        {
-            Options = options.Value;
-        }
+        public Clock(IOptions<ClockOptions> options) => Options = options.Value;
 
         /// <summary>
         /// 

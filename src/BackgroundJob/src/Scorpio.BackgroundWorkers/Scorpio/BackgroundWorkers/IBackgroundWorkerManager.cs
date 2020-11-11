@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 using Scorpio.Runtime;
 
 namespace Scorpio.BackgroundWorkers
 {
-  /// <summary>
+    /// <summary>
     /// Used to manage background workers.
     /// </summary>
     public interface IBackgroundWorkerManager : IRunnable

@@ -14,10 +14,7 @@ namespace Scorpio.Auditing
         /// 
         /// </summary>
         /// <param name="auditInfo"></param>
-        protected AuditInfoWapper(AuditInfo auditInfo)
-        {
-            _auditInfo = auditInfo;
-        }
+        protected AuditInfoWapper(AuditInfo auditInfo) => _auditInfo = auditInfo;
 
         /// <summary>
         /// 
@@ -60,20 +57,14 @@ namespace Scorpio.Auditing
         /// <typeparam name="T"></typeparam>
         /// <param name="name"></param>
         /// <returns></returns>
-        protected T GetExtraProperty<T>(string name)
-        {
-            return (T)(ExtraProperties.GetOrDefault(name) ?? default(T));
-        }
+        protected T GetExtraProperty<T>(string name) => (T)(ExtraProperties.GetOrDefault(name) ?? default(T));
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="name"></param>
         /// <param name="value"></param>
-        protected void SetExtraProperty(string name, object value)
-        {
-            ExtraProperties[name] = value;
-        }
+        protected void SetExtraProperty(string name, object value) => ExtraProperties[name] = value;
 
     }
 }

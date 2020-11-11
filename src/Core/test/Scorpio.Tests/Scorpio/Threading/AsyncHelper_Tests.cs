@@ -58,28 +58,13 @@ namespace Scorpio.Threading
             threadLocal.Value.ShouldBe(2);
         }
 
-        public int IntFunction(int value)
-        {
-            return value;
-        }
+        public int IntFunction(int value) => value;
 
-        internal async Task TaskFunctionAsync()
-        {
-            await Task.CompletedTask;
-        }
-        public Task<int> TaskFunctionAsync(int value)
-        {
-            return Task.FromResult(value);
-        }
+        internal async Task TaskFunctionAsync() => await Task.CompletedTask;
+        public Task<int> TaskFunctionAsync(int value) => Task.FromResult(value);
 
-        public async ValueTask ValueTaskFunctionAsync()
-        {
-            await Task.CompletedTask;
-        }
-        public async ValueTask<int> ValueTaskFunctionAsync(int value)
-        {
-            return await Task.FromResult(value);
-        }
+        public async ValueTask ValueTaskFunctionAsync() => await Task.CompletedTask;
+        public async ValueTask<int> ValueTaskFunctionAsync(int value) => await Task.FromResult(value);
 
     }
 }

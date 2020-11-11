@@ -18,10 +18,7 @@ namespace Scorpio.Auditing
         /// 
         /// </summary>
         /// <param name="ignoredTypes"></param>
-        public AuditingContractResolver(IList<Type> ignoredTypes)
-        {
-            _ignoredTypes = ignoredTypes;
-        }
+        public AuditingContractResolver(IList<Type> ignoredTypes) => _ignoredTypes = ignoredTypes;
 
         /// <summary>
         /// 

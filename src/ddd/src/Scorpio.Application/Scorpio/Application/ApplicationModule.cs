@@ -15,11 +15,8 @@ namespace Scorpio.Application
         /// 
         /// </summary>
         /// <param name="context"></param>
-        public override void PreConfigureServices(ConfigureServicesContext context)
-        {
-            context.AddConventionalRegistrar<ConventionalRegistrar>();
-        }
+        public override void PreConfigureServices(ConfigureServicesContext context) => context.AddConventionalRegistrar<ConventionalRegistrar>();
 
-       
+
     }
 }

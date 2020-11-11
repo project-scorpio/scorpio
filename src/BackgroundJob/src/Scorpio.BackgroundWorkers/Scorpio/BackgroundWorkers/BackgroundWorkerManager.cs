@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.WebSockets;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 
 using Scorpio.DependencyInjection;
 using Scorpio.Threading;
@@ -29,15 +24,12 @@ namespace Scorpio.BackgroundWorkers
         /// <summary>
         /// 
         /// </summary>
-        public IReadOnlyCollection<IBackgroundWorker> BackgroundWorkers =>_backgroundWorkers;
+        public IReadOnlyCollection<IBackgroundWorker> BackgroundWorkers => _backgroundWorkers;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BackgroundWorkerManager"/> class.
         /// </summary>
-        public BackgroundWorkerManager()
-        {
-            _backgroundWorkers = new List<IBackgroundWorker>();
-        }
+        public BackgroundWorkerManager() => _backgroundWorkers = new List<IBackgroundWorker>();
 
         /// <summary>
         /// 

@@ -15,9 +15,6 @@ namespace Scorpio.Timing
         /// <summary>
         /// 
         /// </summary>
-        public ClockOptions()
-        {
-            Kind = DateTimeKind.Unspecified;
-        }
+        public ClockOptions() => Kind = DateTimeKind.Unspecified;
     }
 }

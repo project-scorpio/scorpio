@@ -6,6 +6,6 @@ namespace Scorpio.Uow
     [DependsOn(typeof(UnitOfWorkModule))]
     public class TestModule : ScorpioModule
     {
-       
+
     }
 }

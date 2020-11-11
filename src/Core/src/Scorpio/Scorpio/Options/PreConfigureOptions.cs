@@ -49,7 +49,6 @@ namespace Scorpio.Options
         /// </summary>
         /// <param name="options">The options instance to configured.</param>
         public void PreConfigure(TOptions options) => PreConfigure(Microsoft.Extensions.Options.Options.DefaultName, options);
-
     }
 
     /// <summary>

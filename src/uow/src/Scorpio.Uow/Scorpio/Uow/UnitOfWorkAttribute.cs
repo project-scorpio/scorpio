@@ -5,6 +5,9 @@ using System.Transactions;
 using AspectCore.DynamicProxy;
 
 using Microsoft.Extensions.DependencyInjection;
+
+using Scorpio.DependencyInjection;
+
 namespace Scorpio.Uow
 {
     /// <summary>
@@ -21,6 +24,7 @@ namespace Scorpio.Uow
         /// Is this UOW transactional?
         /// Uses default value if not supplied.
         /// </summary>
+        [NotAutowired]
         public bool? IsTransactional { get; set; }
 
         /// <summary>

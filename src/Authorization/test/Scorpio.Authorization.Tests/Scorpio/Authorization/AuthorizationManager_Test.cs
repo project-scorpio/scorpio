@@ -12,10 +12,7 @@ namespace Scorpio.Authorization
     {
         private readonly IAuthorizationManager _authorizationManager;
 
-        public AuthorizationManager_Test()
-        {
-            _authorizationManager = ServiceProvider.GetService<IAuthorizationManager>();
-        }
+        public AuthorizationManager_Test() => _authorizationManager = ServiceProvider.GetService<IAuthorizationManager>();
 
         [Fact]
         public void AuthorizeAsync()

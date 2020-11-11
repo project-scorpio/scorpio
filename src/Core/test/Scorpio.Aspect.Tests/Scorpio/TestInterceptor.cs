@@ -3,7 +3,7 @@
 using AspectCore.DynamicProxy;
 namespace Scorpio
 {
-    class TestInterceptor : AbstractInterceptor
+    internal class TestInterceptor : AbstractInterceptor
     {
         public string ServiceMethodName { get; private set; }
         public override async Task Invoke(AspectContext context, AspectDelegate next)

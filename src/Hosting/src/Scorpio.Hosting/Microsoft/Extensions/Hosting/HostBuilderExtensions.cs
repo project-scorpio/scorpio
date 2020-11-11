@@ -16,10 +16,7 @@ namespace Microsoft.Extensions.Hosting
         /// <param name="hostBuilder"></param>
         /// <returns></returns>
         public static IHostBuilder AddScorpio<TStartupModule>(this IHostBuilder hostBuilder)
-                 where TStartupModule : Scorpio.Modularity.IScorpioModule
-        {
-            return AddScorpio<TStartupModule>(hostBuilder, o => { });
-        }
+                 where TStartupModule : Scorpio.Modularity.IScorpioModule => AddScorpio<TStartupModule>(hostBuilder, o => { });
         /// <summary>
         /// 
         /// </summary>
@@ -28,10 +25,7 @@ namespace Microsoft.Extensions.Hosting
         /// <param name="optionsAction"></param>
         /// <returns></returns>
         public static IHostBuilder AddScorpio<TStartupModule>(this IHostBuilder hostBuilder, Action<BootstrapperCreationOptions> optionsAction)
-            where TStartupModule : Scorpio.Modularity.IScorpioModule
-        {
-            return AddScorpio(hostBuilder, typeof(TStartupModule), optionsAction);
-        }
+            where TStartupModule : Scorpio.Modularity.IScorpioModule => AddScorpio(hostBuilder, typeof(TStartupModule), optionsAction);
 
         /// <summary>
         /// 
@@ -39,10 +33,7 @@ namespace Microsoft.Extensions.Hosting
         /// <param name="builder"></param>
         /// <param name="startupModuleType"></param>
         /// <returns></returns>
-        public static IHostBuilder AddScorpio(this IHostBuilder builder, Type startupModuleType)
-        {
-            return AddScorpio(builder, startupModuleType, o => { });
-        }
+        public static IHostBuilder AddScorpio(this IHostBuilder builder, Type startupModuleType) => AddScorpio(builder, startupModuleType, o => { });
         /// <summary>
         /// 
         /// </summary>

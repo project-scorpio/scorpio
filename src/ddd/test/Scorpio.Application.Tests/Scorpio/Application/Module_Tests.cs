@@ -14,15 +14,9 @@ namespace Scorpio.Application
 {
     public class Module_Tests : IntegratedTest<TestModule>
     {
-        protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options)
-        {
-            options.UseAspectCore();
-        }
+        protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options) => options.UseAspectCore();
         [Fact]
-        public void GetAppService()
-        {
-            ServiceProvider.GetRequiredService<ITestAppService>().ShouldBeOfType<TestAppService>();
-        }
+        public void GetAppService() => ServiceProvider.GetRequiredService<ITestAppService>().ShouldBeOfType<TestAppService>();
     }
 
     public interface ITestAppService : IApplicationService
@@ -30,10 +24,8 @@ namespace Scorpio.Application
 
     }
 
-    class TestAppService : ApplicationService, ITestAppService, ITransientDependency
+    internal class TestAppService : ApplicationService, ITestAppService, ITransientDependency
     {
-        public TestAppService(IServiceProvider serviceProvider) : base(serviceProvider)
-        {
-        }
+       
     }
 }

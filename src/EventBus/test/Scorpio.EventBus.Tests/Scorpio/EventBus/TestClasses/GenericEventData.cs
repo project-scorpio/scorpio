@@ -4,13 +4,7 @@
     {
         public T Value { get; }
 
-        public GenericEventData(T value)
-        {
-            Value = value;
-        }
-        public object[] GetConstructorArgs()
-        {
-            return new object[] { Value };
-        }
+        public GenericEventData(T value) => Value = value;
+        public object[] GetConstructorArgs() => new object[] { Value };
     }
 }

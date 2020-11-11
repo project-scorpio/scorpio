@@ -8,14 +8,8 @@ namespace Scorpio.EntityFrameworkCore
     {
         private readonly IServiceProvider _serviceProvider;
 
-        public DefaultDbContextProvider(IServiceProvider serviceProvider)
-        {
-            _serviceProvider = serviceProvider;
-        }
+        public DefaultDbContextProvider(IServiceProvider serviceProvider) => _serviceProvider = serviceProvider;
 
-        public TDbContext GetDbContext()
-        {
-            return _serviceProvider.GetRequiredService<TDbContext>();
-        }
+        public TDbContext GetDbContext() => _serviceProvider.GetRequiredService<TDbContext>();
     }
 }

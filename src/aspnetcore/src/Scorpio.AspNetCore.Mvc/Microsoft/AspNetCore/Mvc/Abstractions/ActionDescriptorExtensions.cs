@@ -33,39 +33,27 @@ namespace Microsoft.AspNetCore.Mvc.Abstractions
         /// </summary>
         /// <param name="actionDescriptor"></param>
         /// <returns></returns>
-        public static MethodInfo GetMethodInfo(this ActionDescriptor actionDescriptor)
-        {
-            return actionDescriptor.AsControllerActionDescriptor().MethodInfo;
-        }
+        public static MethodInfo GetMethodInfo(this ActionDescriptor actionDescriptor) => actionDescriptor.AsControllerActionDescriptor().MethodInfo;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="actionDescriptor"></param>
         /// <returns></returns>
-        public static Type GetReturnType(this ActionDescriptor actionDescriptor)
-        {
-            return actionDescriptor.GetMethodInfo().ReturnType;
-        }
+        public static Type GetReturnType(this ActionDescriptor actionDescriptor) => actionDescriptor.GetMethodInfo().ReturnType;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="actionDescriptor"></param>
         /// <returns></returns>
-        public static bool HasObjectResult(this ActionDescriptor actionDescriptor)
-        {
-            return ActionResultHelper.IsObjectResult(actionDescriptor.GetReturnType());
-        }
+        public static bool HasObjectResult(this ActionDescriptor actionDescriptor) => ActionResultHelper.IsObjectResult(actionDescriptor.GetReturnType());
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="actionDescriptor"></param>
         /// <returns></returns>
-        public static bool IsControllerAction(this ActionDescriptor actionDescriptor)
-        {
-            return actionDescriptor is ControllerActionDescriptor;
-        }
+        public static bool IsControllerAction(this ActionDescriptor actionDescriptor) => actionDescriptor is ControllerActionDescriptor;
     }
 }

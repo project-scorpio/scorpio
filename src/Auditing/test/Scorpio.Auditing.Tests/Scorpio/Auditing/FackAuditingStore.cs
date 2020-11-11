@@ -2,7 +2,7 @@
 
 namespace Scorpio.Auditing
 {
-    class FackAuditingStore : IAuditingStore
+    internal class FackAuditingStore : IAuditingStore
     {
         public AuditInfo Info { get; private set; }
         public Task SaveAsync(AuditInfo info)

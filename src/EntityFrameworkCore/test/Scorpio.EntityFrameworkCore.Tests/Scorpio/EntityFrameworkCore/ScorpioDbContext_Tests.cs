@@ -8,17 +8,14 @@ using Scorpio.TestBase;
 using Shouldly;
 
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Scorpio.EntityFrameworkCore
 {
-    public class ScorpioDbContext_Tests : IntegratedTest<TestModule>
+    public class ScorpioDbContext_Tests : EntityFrameworkCoreTestBase
     {
-        private readonly ITestOutputHelper _output;
 
-        public ScorpioDbContext_Tests(ITestOutputHelper output)
+        public ScorpioDbContext_Tests()
         {
-            _output = output;
         }
         [Fact]
         public void SaveChanges()

@@ -26,10 +26,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
         [Fact]
         public void Left()
         {
-            this.Test<DropdownTagHelper>(t =>
-            {
-                t.Direction = Direction.Left;
-            }, (a, c, o) =>
+            this.Test<DropdownTagHelper>(t => t.Direction = Direction.Left, (a, c, o) =>
             {
                 o.TagName.ShouldBe("div");
                 o.ShouldJustHasClasses("dropdown", "btn-group", "dropleft");
@@ -39,11 +36,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
         [Fact]
         public void Right()
         {
-            this.Test<DropdownTagHelper>(t =>
-            {
-                t.Direction = Direction.Right;
-
-            }, (a, c, o) =>
+            this.Test<DropdownTagHelper>(t => t.Direction = Direction.Right, (a, c, o) =>
             {
                 o.TagName.ShouldBe("div");
                 o.ShouldJustHasClasses("dropdown", "btn-group", "dropright");
@@ -53,10 +46,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
         [Fact]
         public void Up()
         {
-            this.Test<DropdownTagHelper>(t =>
-            {
-                t.Direction = Direction.Up;
-            }, (a, c, o) =>
+            this.Test<DropdownTagHelper>(t => t.Direction = Direction.Up, (a, c, o) =>
             {
                 o.TagName.ShouldBe("div");
                 o.ShouldJustHasClasses("dropdown", "btn-group", "dropup");

@@ -14,9 +14,6 @@ namespace Scorpio.AspNetCore.Security.Claims
 
         public IPrincipal Principal => _httpContextAccessor.HttpContext?.User ?? Thread.CurrentPrincipal;
 
-        public HttpContextCurrentPrincipalAccessor(IHttpContextAccessor httpContextAccessor)
-        {
-            _httpContextAccessor = httpContextAccessor;
-        }
+        public HttpContextCurrentPrincipalAccessor(IHttpContextAccessor httpContextAccessor) => _httpContextAccessor = httpContextAccessor;
     }
 }

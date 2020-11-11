@@ -86,10 +86,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
         [Fact]
         public void Size()
         {
-            this.Test<ButtonTagHelper>(t =>
-            {
-                t.Size = TagHelpers.Size.Large;
-            }, (c, o) =>
+            this.Test<ButtonTagHelper>(t => t.Size = TagHelpers.Size.Large, (c, o) =>
             {
                 o.TagName.ShouldBe("button");
                 o.ShouldJustHasClasses("btn", "btn-lg");
@@ -100,10 +97,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
         [Fact]
         public void Block()
         {
-            this.Test<ButtonTagHelper>(t =>
-            {
-                t.Block = true;
-            }, (c, o) =>
+            this.Test<ButtonTagHelper>(t => t.Block = true, (c, o) =>
             {
                 o.TagName.ShouldBe("button");
                 o.ShouldJustHasClasses("btn", "btn-block");
@@ -114,10 +108,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
         [Fact]
         public void Text()
         {
-            this.Test<ButtonTagHelper>(t =>
-            {
-                t.Text = "TestButton";
-            }, (c, o) =>
+            this.Test<ButtonTagHelper>(t => t.Text = "TestButton", (c, o) =>
             {
                 o.TagName.ShouldBe("button");
                 o.ShouldJustHasClasses("btn");
@@ -128,10 +119,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
         [Fact]
         public void Icon()
         {
-            this.Test<ButtonTagHelper>(t =>
-            {
-                t.Icon = "dash";
-            }, (c, o) =>
+            this.Test<ButtonTagHelper>(t => t.Icon = "dash", (c, o) =>
             {
                 o.TagName.ShouldBe("button");
                 o.ShouldJustHasClasses("btn");
@@ -174,10 +162,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
         [Fact]
         public void Disable()
         {
-            this.Test<ButtonTagHelper>(t =>
-            {
-                t.Disabled = true;
-            }, (c, o) =>
+            this.Test<ButtonTagHelper>(t => t.Disabled = true, (c, o) =>
             {
                 o.TagName.ShouldBe("button");
                 o.ShouldJustHasClasses("btn");

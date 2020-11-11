@@ -26,9 +26,8 @@ namespace Scorpio.Application.Services
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
         /// <param name="repository"></param>
-        protected CrudApplicationService(IServiceProvider serviceProvider, IRepository<TEntity, TKey> repository) : base(serviceProvider, repository)
+        protected CrudApplicationService(IRepository<TEntity, TKey> repository) : base(repository)
         {
         }
     }
@@ -51,9 +50,8 @@ namespace Scorpio.Application.Services
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
         /// <param name="repository"></param>
-        protected CrudApplicationService(IServiceProvider serviceProvider, IRepository<TEntity, TKey> repository) : base(serviceProvider, repository)
+        protected CrudApplicationService(IRepository<TEntity, TKey> repository) : base(repository)
         {
         }
     }
@@ -77,9 +75,8 @@ namespace Scorpio.Application.Services
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
         /// <param name="repository"></param>
-        protected CrudApplicationService(IServiceProvider serviceProvider, IRepository<TEntity, TKey> repository) : base(serviceProvider, repository)
+        protected CrudApplicationService(IRepository<TEntity, TKey> repository) : base(repository)
         {
         }
     }
@@ -105,9 +102,8 @@ namespace Scorpio.Application.Services
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
         /// <param name="repository"></param>
-        protected CrudApplicationService(IServiceProvider serviceProvider, IRepository<TEntity, TKey> repository) : base(serviceProvider, repository)
+        protected CrudApplicationService(IRepository<TEntity, TKey> repository) : base(repository)
         {
         }
 
@@ -128,20 +124,14 @@ namespace Scorpio.Application.Services
         /// 
         /// </summary>
         /// <param name="id"></param>
-        public virtual void Delete(TKey id)
-        {
-            Repository.Delete(id);
-        }
+        public virtual void Delete(TKey id) => Repository.Delete(id);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public virtual TEntityDto Get(TKey id)
-        {
-            return Mapper.Map<TEntityDto>(Repository.Get(id));
-        }
+        public virtual TEntityDto Get(TKey id) => Mapper.Map<TEntityDto>(Repository.Get(id));
 
         /// <summary>
         /// 

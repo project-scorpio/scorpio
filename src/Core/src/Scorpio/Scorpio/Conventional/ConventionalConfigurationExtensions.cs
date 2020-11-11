@@ -14,10 +14,7 @@ namespace Scorpio.Conventional
         /// <param name="configuration"></param>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public static IConventionalContext<TAction> Where<TAction>(this IConventionalConfiguration<TAction> configuration, Predicate<Type> predicate)
-        {
-            return configuration.CreateContext().Where(predicate);
-        }
+        public static IConventionalContext<TAction> Where<TAction>(this IConventionalConfiguration<TAction> configuration, Predicate<Type> predicate) => configuration.CreateContext().Where(predicate);
 
         /// <summary>
         /// 
@@ -31,9 +28,6 @@ namespace Scorpio.Conventional
             return context;
         }
 
-        internal static IEnumerable<IConventionalContext> GetContexts(this IConventionalConfiguration configuration)
-        {
-            return (configuration as ConventionalConfiguration).Contexts;
-        }
+        internal static IEnumerable<IConventionalContext> GetContexts(this IConventionalConfiguration configuration) => (configuration as ConventionalConfiguration).Contexts;
     }
 }

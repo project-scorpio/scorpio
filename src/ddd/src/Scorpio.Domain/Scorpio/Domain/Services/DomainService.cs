@@ -15,34 +15,32 @@ namespace Scorpio.Domain.Services
     /// </summary>
     public abstract class DomainService : IDomainService, ITransientDependency
     {
-        private readonly ICurrentUnitOfWorkProvider _currentUnitOfWorkProvider;
         /// <summary>
         /// 
         /// </summary>
-        protected IServiceProvider ServiceProvider { get; }
+        protected IServiceProvider ServiceProvider { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        protected IUnitOfWork CurrentUnitOfWork => _currentUnitOfWorkProvider?.Current;
+        protected IUnitOfWork CurrentUnitOfWork => CurrentUnitOfWorkProvider?.Current;
         /// <summary>
         /// 
         /// </summary>
-        protected IClock Clock { get; }
+        protected IClock Clock { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        protected ILogger Logger { get; }
+        protected ILogger<DomainService> Logger { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
-        protected DomainService(IServiceProvider serviceProvider)
-        {
-            ServiceProvider = serviceProvider;
-            _currentUnitOfWorkProvider = serviceProvider.GetService<ICurrentUnitOfWorkProvider>();
-            Logger = serviceProvider.GetService<ILoggerFactory>(() => NullLoggerFactory.Instance).CreateLogger(GetType());
-            Clock = serviceProvider.GetService<IClock>();
-        }
+        internal ICurrentUnitOfWorkProvider CurrentUnitOfWorkProvider { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected DomainService() => Logger = NullLogger<DomainService>.Instance;
     }
 }

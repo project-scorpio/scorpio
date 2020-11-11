@@ -10,25 +10,13 @@ namespace Scorpio.AspNetCore
 {
     public static class AttributeExtensions
     {
-        public static void ShouldContainsAttribute(this TagHelperOutput output, string name, string value)
-        {
-            (output.Attributes[name]?.Value?.ToString()?.Split(' ')?.Contains(value) ?? false).ShouldBe(true);
-        }
+        public static void ShouldContainsAttribute(this TagHelperOutput output, string name, string value) => (output.Attributes[name]?.Value?.ToString()?.Split(' ')?.Contains(value) ?? false).ShouldBe(true);
 
-        public static void ShouldHasAttributeAndContainsValues(this TagHelperOutput output, string name, params string[] values)
-        {
-            values.ForEach(c => output.ShouldContainsAttribute(name, c));
-        }
+        public static void ShouldHasAttributeAndContainsValues(this TagHelperOutput output, string name, params string[] values) => values.ForEach(c => output.ShouldContainsAttribute(name, c));
 
-        public static void ShouldHasAttributeAndNotContainsValue(this TagHelperOutput output, string name, string value)
-        {
-            (output.Attributes[name]?.Value?.ToString()?.Split(' ')?.Contains(value) ?? false).ShouldBe(false);
-        }
+        public static void ShouldHasAttributeAndNotContainsValue(this TagHelperOutput output, string name, string value) => (output.Attributes[name]?.Value?.ToString()?.Split(' ')?.Contains(value) ?? false).ShouldBe(false);
 
-        public static void ShouldHasAttributeAndNotContainsValues(this TagHelperOutput output, string name, params string[] values)
-        {
-            values.ForEach(c => output.ShouldHasAttributeAndNotContainsValue(name, c));
-        }
+        public static void ShouldHasAttributeAndNotContainsValues(this TagHelperOutput output, string name, params string[] values) => values.ForEach(c => output.ShouldHasAttributeAndNotContainsValue(name, c));
 
         public static void ShouldHasAttributeAndJustContainsValues(this TagHelperOutput output, string name, params string[] values)
         {

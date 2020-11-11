@@ -21,10 +21,7 @@ namespace Scorpio.Data
         /// 
         /// </summary>
         /// <param name="options"></param>
-        public DefaultConnectionStringResolver(IOptionsSnapshot<DbConnectionOptions> options)
-        {
-            Options = options.Value;
-        }
+        public DefaultConnectionStringResolver(IOptionsSnapshot<DbConnectionOptions> options) => Options = options.Value;
 
         /// <summary>
         /// 

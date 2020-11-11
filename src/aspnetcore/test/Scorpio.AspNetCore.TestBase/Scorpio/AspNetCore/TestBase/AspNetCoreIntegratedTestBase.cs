@@ -19,12 +19,17 @@ namespace Scorpio.AspNetCore.TestBase
         where TStartup : class
 
     {
+
+        protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options)
+        {
+            options.UseAspectCore();
+        }
         protected override IBootstrapper Bootstrapper => ServiceProvider.GetService<IBootstrapper>();
         protected TestServer Server { get; }
 
         protected HttpClient Client { get; }
 
-        public override IServiceProvider ServiceProvider { get; }
+        public override IServiceProvider ServiceProvider { get;}
 
         private readonly IHost _host;
 
@@ -43,12 +48,12 @@ namespace Scorpio.AspNetCore.TestBase
 
         protected virtual IHostBuilder CreateHostBuilder()
         {
-            return Host.CreateDefaultBuilder().AddScorpio<TStartupModule>(SetBootstrapperCreationOptions)
+            return Host.CreateDefaultBuilder()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<TStartup>();
                     webBuilder.UseTestServer();
-                });
+                }).AddScorpio<TStartupModule>(SetBootstrapperCreationOptions);
         }
 
         protected override void DisposeInternal(bool disposing)
@@ -64,19 +69,13 @@ namespace Scorpio.AspNetCore.TestBase
         /// Gets default URL for given controller type.
         /// </summary>
         /// <typeparam name="TController">The type of the controller.</typeparam>
-        protected virtual string GetUrl<TController>()
-        {
-            return "/" + typeof(TController).Name.RemovePostFix("Controller", "AppService", "ApplicationService", "Service");
-        }
+        protected virtual string GetUrl<TController>() => "/" + typeof(TController).Name.RemovePostFix("Controller", "AppService", "ApplicationService", "Service");
 
         /// <summary>
         /// Gets default URL for given controller type's given action.
         /// </summary>
         /// <typeparam name="TController">The type of the controller.</typeparam>
-        protected virtual string GetUrl<TController>(string actionName)
-        {
-            return GetUrl<TController>() + "/" + actionName;
-        }
+        protected virtual string GetUrl<TController>(string actionName) => GetUrl<TController>() + "/" + actionName;
 
         /// <summary>
         /// Gets default URL for given controller type's given action with query string parameters (as anonymous object).

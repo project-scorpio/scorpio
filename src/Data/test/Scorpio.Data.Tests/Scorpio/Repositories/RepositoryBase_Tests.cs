@@ -14,35 +14,21 @@ namespace Scorpio.Repositories
         {
 
             var list = new List<User> { };
-            var repo = new TestRepository(list, new ServiceCollection().BuildServiceProvider());
+            var repo = new TestRepository(list);
             return (repo, list);
         }
 
-
-
-        class TestRepository : RepositoryBase<User, int>
+        private class TestRepository : RepositoryBase<User, int>
         {
             private readonly IList<User> _sources;
 
-            public TestRepository(IList<User> sources, IServiceProvider serviceProvider) : base(serviceProvider)
-            {
-                _sources = sources;
-            }
+            public TestRepository(IList<User> sources) => _sources = sources;
 
-            public override void Delete(User entity, bool autoSave = true)
-            {
-                _sources.Remove(entity);
-            }
+            public override void Delete(User entity, bool autoSave = true) => _sources.Remove(entity);
 
-            public override long GetCount()
-            {
-                return _sources.Count;
-            }
+            public override long GetCount() => _sources.Count;
 
-            public override IEnumerable<User> GetList(bool includeDetails = false)
-            {
-                return _sources.ToList();
-            }
+            public override IEnumerable<User> GetList(bool includeDetails = false) => _sources.ToList();
 
             public override User Insert(User entity, bool autoSave = true)
             {
@@ -56,10 +42,7 @@ namespace Scorpio.Repositories
                 return entity;
             }
 
-            protected override IQueryable<User> GetQueryable()
-            {
-                return _sources.AsQueryable();
-            }
+            protected override IQueryable<User> GetQueryable() => _sources.AsQueryable();
         }
         public class User : Entity<int>
         {

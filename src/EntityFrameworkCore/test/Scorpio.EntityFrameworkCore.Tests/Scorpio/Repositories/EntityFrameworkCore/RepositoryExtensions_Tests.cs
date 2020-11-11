@@ -14,7 +14,7 @@ using Xunit;
 
 namespace Scorpio.Repositories.EntityFrameworkCore
 {
-    public class RepositoryExtensions_Tests : IntegratedTest<TestModule>
+    public class RepositoryExtensions_Tests : EntityFrameworkCoreTestBase
     {
 
         [Fact]

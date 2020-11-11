@@ -56,10 +56,7 @@ namespace Scorpio.Repositories
             Expression<Func<TEntity, IEnumerable<TProperty>>> propertyExpression
         )
             where TEntity : class, IEntity<TKey>
-            where TProperty : class
-        {
-            AsyncHelper.RunSync(() => repository.EnsureCollectionLoadedAsync(entity, propertyExpression));
-        }
+            where TProperty : class => AsyncHelper.RunSync(() => repository.EnsureCollectionLoadedAsync(entity, propertyExpression));
 
         /// <summary>
         /// 
@@ -102,9 +99,6 @@ namespace Scorpio.Repositories
             Expression<Func<TEntity, TProperty>> propertyExpression
         )
             where TEntity : class, IEntity<TKey>
-            where TProperty : class
-        {
-            AsyncHelper.RunSync(() => repository.EnsurePropertyLoadedAsync(entity, propertyExpression));
-        }
+            where TProperty : class => AsyncHelper.RunSync(() => repository.EnsurePropertyLoadedAsync(entity, propertyExpression));
     }
 }

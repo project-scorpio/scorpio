@@ -30,10 +30,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
         /// </summary>
         /// <param name="context"></param>
         /// <param name="output"></param>
-        protected virtual void NormalizeTagMode(TagHelperContext context, TagHelperOutput output)
-        {
-            output.TagMode = TagMode.StartTagAndEndTag;
-        }
+        protected virtual void NormalizeTagMode(TagHelperContext context, TagHelperOutput output) => output.TagMode = TagMode.StartTagAndEndTag;
 
         /// <summary>
         /// 
@@ -81,10 +78,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Button
         /// <param name="context"></param>
         /// <param name="output"></param>
         /// <returns></returns>
-        protected virtual string GetIconClass(TagHelperContext context, TagHelperOutput output)
-        {
-            return TagHelper.IconType == FontIconType.FontAwesome ? $"fa fa-{TagHelper.Icon}" : TagHelper.Icon;
-        }
+        protected virtual string GetIconClass(TagHelperContext context, TagHelperOutput output) => TagHelper.IconType == FontIconType.FontAwesome ? $"fa fa-{TagHelper.Icon}" : TagHelper.Icon;
 
         /// <summary>
         /// 

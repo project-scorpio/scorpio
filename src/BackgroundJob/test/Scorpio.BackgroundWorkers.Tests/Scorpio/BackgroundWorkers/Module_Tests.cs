@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -14,17 +11,11 @@ using Xunit;
 
 namespace Scorpio.BackgroundWorkers
 {
-    public class Module_Tests:BackgroundWorkersTestBase
+    public class Module_Tests : BackgroundWorkersTestBase
     {
         private readonly IBackgroundWorker _worker;
-        public Module_Tests()
-        {
-            _worker=Substitute.For<IBackgroundWorker>();
-        }
-        protected override void DisposeInternal(bool disposing)
-        {
-           _worker.ReceivedWithAnyArgs(1).StopAsync(Arg.Any<CancellationToken>());
-        }
+        public Module_Tests() => _worker = Substitute.For<IBackgroundWorker>();
+        protected override void DisposeInternal(bool disposing) => _worker.ReceivedWithAnyArgs(1).StopAsync(Arg.Any<CancellationToken>());
         [Fact]
         public void Start()
         {

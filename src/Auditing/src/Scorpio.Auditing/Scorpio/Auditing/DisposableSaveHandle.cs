@@ -25,15 +25,9 @@ namespace Scorpio.Auditing
 
 
 
-        public void Save()
-        {
-            _auditingManager.Action(!_saved, m => { m.Save(this); _saved = true; });
-        }
+        public void Save() => _auditingManager.Action(!_saved, m => { m.Save(this); _saved = true; });
 
-        public async Task SaveAsync()
-        {
-            await _auditingManager.Action(!_saved, async m => { await m.SaveAsync(this); _saved = true; });
-        }
+        public async Task SaveAsync() => await _auditingManager.Action(!_saved, async m => { await m.SaveAsync(this); _saved = true; });
 
         protected virtual void Dispose(bool disposing)
         {

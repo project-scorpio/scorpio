@@ -6,7 +6,7 @@ using Scorpio.TestBase;
 
 namespace Scorpio.Repositories.EntityFrameworkCore
 {
-    public partial class BasicRepositoryBase_Tests : IntegratedTest<TestModule>
+    public partial class BasicRepositoryBase_Tests : EntityFrameworkCoreTestBase
     {
         private IBasicRepository<TestTable, int> GetUsers()
         {

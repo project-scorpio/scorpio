@@ -10,15 +10,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
     public class FormTagHelper_Tests : AspNetCoreUiBootstrapTestBase
     {
         [Fact]
-        public void Default()
-        {
-            this.Test<FormTagHelper>(t =>
-            {
-            }, c => { }, o => o.AddAttribute("id", "id"), (a, c, o) =>
-            {
-                o.ShouldJustHasClasses();
-            });
-        }
+        public void Default() => this.Test<FormTagHelper>(t => { }, c => { }, o => o.AddAttribute("id", "id"), (a, c, o) => o.ShouldJustHasClasses());
 
 
     }

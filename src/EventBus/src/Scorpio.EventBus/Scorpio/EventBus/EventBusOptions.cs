@@ -15,19 +15,13 @@ namespace Scorpio.EventBus
         /// <summary>
         /// 
         /// </summary>
-        public EventBusOptions()
-        {
-            Handlers = new HashSet<EventHandlerDescriptor>();
-        }
+        public EventBusOptions() => Handlers = new HashSet<EventHandlerDescriptor>();
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="handlerDescriptor"></param>
-        public void AddHandler(EventHandlerDescriptor handlerDescriptor)
-        {
-            Handlers.Add(handlerDescriptor);
-        }
+        public void AddHandler(EventHandlerDescriptor handlerDescriptor) => Handlers.Add(handlerDescriptor);
 
     }
 }

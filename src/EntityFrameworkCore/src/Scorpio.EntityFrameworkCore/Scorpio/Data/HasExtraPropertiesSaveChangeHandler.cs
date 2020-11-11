@@ -5,12 +5,9 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Scorpio.Data
 {
-    class HasExtraPropertiesSaveChangeHandler : EntityFrameworkCore.IOnSaveChangeHandler
+    internal class HasExtraPropertiesSaveChangeHandler : EntityFrameworkCore.IOnSaveChangeHandler
     {
-        public Task PostSaveChangeAsync(IEnumerable<EntityEntry> entries)
-        {
-            return Task.CompletedTask;
-        }
+        public Task PostSaveChangeAsync(IEnumerable<EntityEntry> entries) => Task.CompletedTask;
 
         public Task PreSaveChangeAsync(IEnumerable<EntityEntry> entries)
         {

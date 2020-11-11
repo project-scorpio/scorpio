@@ -29,6 +29,7 @@ namespace Scorpio.AspNetCore.Mvc.Auditing
                 _auditingStore = Substitute.For<IAuditingStore>();
                 c.Services.ReplaceOrAdd(ServiceDescriptor.Singleton(_auditingStore), true);
             });
+            base.SetBootstrapperCreationOptions(options);
         }
 
         [Fact]

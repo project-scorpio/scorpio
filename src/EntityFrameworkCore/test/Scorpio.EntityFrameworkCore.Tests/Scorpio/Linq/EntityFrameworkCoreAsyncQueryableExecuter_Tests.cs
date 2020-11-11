@@ -11,7 +11,7 @@ using Xunit;
 
 namespace Scorpio.Linq
 {
-    public class EntityFrameworkCoreAsyncQueryableExecuter_Tests : IntegratedTest<TestModule>
+    public class EntityFrameworkCoreAsyncQueryableExecuter_Tests : EntityFrameworkCoreTestBase
     {
         [Fact]
         public void CountAsync()

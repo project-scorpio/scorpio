@@ -79,10 +79,7 @@ namespace Scorpio.Aspects
         public static IDisposable Applying(object obj, params string[] concerns)
         {
             AddApplied(obj, concerns);
-            return new DisposeAction(() =>
-            {
-                RemoveApplied(obj, concerns);
-            });
+            return new DisposeAction(() => RemoveApplied(obj, concerns));
         }
 
         /// <summary>

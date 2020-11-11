@@ -58,50 +58,35 @@ namespace Scorpio.EventBus
         /// <typeparam name="TEventHandler"></typeparam>
         /// <param name="activationType"></param>
         /// <returns></returns>
-        public static EventHandlerDescriptor Describe<TEventHandler>(EventHandlerActivationType activationType) where TEventHandler : class, IEventHandler
-        {
-            return Describe(typeof(TEventHandler), activationType);
-        }
+        public static EventHandlerDescriptor Describe<TEventHandler>(EventHandlerActivationType activationType) where TEventHandler : class, IEventHandler => Describe(typeof(TEventHandler), activationType);
 
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="TEventHandler"></typeparam>
         /// <returns></returns>
-        public static EventHandlerDescriptor ByServiceProvider<TEventHandler>() where TEventHandler : class, IEventHandler
-        {
-            return Describe<TEventHandler>(EventHandlerActivationType.ByServiceProvider);
-        }
+        public static EventHandlerDescriptor ByServiceProvider<TEventHandler>() where TEventHandler : class, IEventHandler => Describe<TEventHandler>(EventHandlerActivationType.ByServiceProvider);
 
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="TEventHandler"></typeparam>
         /// <returns></returns>
-        public static EventHandlerDescriptor Singleton<TEventHandler>() where TEventHandler : class, IEventHandler
-        {
-            return Describe<TEventHandler>(EventHandlerActivationType.Singleton);
-        }
+        public static EventHandlerDescriptor Singleton<TEventHandler>() where TEventHandler : class, IEventHandler => Describe<TEventHandler>(EventHandlerActivationType.Singleton);
 
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="TEventHandler"></typeparam>
         /// <returns></returns>
-        public static EventHandlerDescriptor Transient<TEventHandler>() where TEventHandler : class, IEventHandler
-        {
-            return Describe<TEventHandler>(EventHandlerActivationType.Transient);
-        }
+        public static EventHandlerDescriptor Transient<TEventHandler>() where TEventHandler : class, IEventHandler => Describe<TEventHandler>(EventHandlerActivationType.Transient);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="serviceProvider"></param>
         /// <returns></returns>
-        public IEventHandlerFactory GetEventHandlerFactory(IServiceProvider serviceProvider)
-        {
-            return _factory ??= CreateFactory(serviceProvider);
-        }
+        public IEventHandlerFactory GetEventHandlerFactory(IServiceProvider serviceProvider) => _factory ??= CreateFactory(serviceProvider);
 
         private IEventHandlerFactory CreateFactory(IServiceProvider serviceProvider)
         {

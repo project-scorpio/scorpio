@@ -9,11 +9,8 @@ namespace Scorpio.Authorization.Permissions
 {
     public class PermissionDefinitionManager_Test : IntegratedTest<AuthorizationTestModule>
     {
-        readonly IPermissionDefinitionManager _permissionDefinitionManager;
-        public PermissionDefinitionManager_Test()
-        {
-            _permissionDefinitionManager = ServiceProvider.GetService<IPermissionDefinitionManager>();
-        }
+        private readonly IPermissionDefinitionManager _permissionDefinitionManager;
+        public PermissionDefinitionManager_Test() => _permissionDefinitionManager = ServiceProvider.GetService<IPermissionDefinitionManager>();
 
         [Fact]
         public void Get()

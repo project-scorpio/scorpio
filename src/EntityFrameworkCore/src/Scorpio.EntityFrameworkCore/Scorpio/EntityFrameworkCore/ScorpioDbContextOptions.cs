@@ -109,28 +109,19 @@ namespace Scorpio.EntityFrameworkCore
         /// <typeparam name="TDbContext"></typeparam>
         public void AddModelCreatingContributor<TDbContext, TContributor>()
             where TDbContext : ScorpioDbContext<TDbContext>
-            where TContributor : class, IModelCreatingContributor
-        {
-            AddModelCreatingContributor<TDbContext>(Activator.CreateInstance<TContributor>());
-        }
+            where TContributor : class, IModelCreatingContributor => AddModelCreatingContributor<TDbContext>(Activator.CreateInstance<TContributor>());
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="modelCreatingContributor"></param>
-        public void AddModelCreatingContributor(IModelCreatingContributor modelCreatingContributor)
-        {
-            _commonModelCreatingContributors.AddIfNotContains(modelCreatingContributor);
-        }
+        public void AddModelCreatingContributor(IModelCreatingContributor modelCreatingContributor) => _commonModelCreatingContributors.AddIfNotContains(modelCreatingContributor);
 
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="TContributor"></typeparam>
         public void AddModelCreatingContributor<TContributor>()
-            where TContributor : class, IModelCreatingContributor
-        {
-            AddModelCreatingContributor(Activator.CreateInstance<TContributor>());
-        }
+            where TContributor : class, IModelCreatingContributor => AddModelCreatingContributor(Activator.CreateInstance<TContributor>());
     }
 }

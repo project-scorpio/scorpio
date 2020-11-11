@@ -12,10 +12,7 @@ namespace Scorpio.Auditing
         /// </summary>
         /// <param name="auditingStore"></param>
         /// <param name="auditInfo"></param>
-        public static void Save(this IAuditingStore auditingStore, AuditInfo auditInfo)
-        {
-            AsyncHelper.RunSync(() => auditingStore.SaveAsync(auditInfo));
-        }
+        public static void Save(this IAuditingStore auditingStore, AuditInfo auditInfo) => AsyncHelper.RunSync(() => auditingStore.SaveAsync(auditInfo));
 
     }
 }

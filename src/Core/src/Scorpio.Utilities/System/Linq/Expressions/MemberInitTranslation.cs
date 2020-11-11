@@ -8,10 +8,7 @@
     {
         private readonly Expression<Func<TSource, TSource>> _predicate;
 
-        internal MemberInitTranslation(Expression<Func<TSource, TSource>> predicate)
-        {
-            this._predicate = predicate;
-        }
+        internal MemberInitTranslation(Expression<Func<TSource, TSource>> predicate) => _predicate = predicate;
 
         /// <summary>
         /// Translates a given predicate for a given subtype.

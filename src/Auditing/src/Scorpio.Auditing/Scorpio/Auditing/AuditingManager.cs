@@ -16,7 +16,7 @@ namespace Scorpio.Auditing
 {
     internal class AuditingManager : IAuditingManager, ITransientDependency
     {
-        private readonly static string _ambientContextKey = "Scorpio.Auditing.IAuditScope";
+        private static readonly string _ambientContextKey = "Scorpio.Auditing.IAuditScope";
 
         private readonly IAmbientScopeProvider<IAuditScope> _ambientScopeProvider;
         private readonly IAuditingHelper _auditingHelper;
@@ -39,8 +39,7 @@ namespace Scorpio.Auditing
             _auditingStore = auditingStore;
             _serviceProvider = serviceProvider;
             _options = options.Value;
-            Logger = serviceProvider.GetService<ILoggerFactory>()?.CreateLogger<AuditingManager>()
-                ?? NullLogger<AuditingManager>.Instance;
+            Logger = NullLogger<AuditingManager>.Instance;
         }
 
         public IAuditSaveHandle BeginScope()
@@ -62,10 +61,7 @@ namespace Scorpio.Auditing
             ExecutePreContributors(saveHandle.Info);
         }
 
-        protected virtual void PostSave(DisposableSaveHandle saveHandle)
-        {
-            ExecutePostContributors(saveHandle.Info);
-        }
+        protected virtual void PostSave(DisposableSaveHandle saveHandle) => ExecutePostContributors(saveHandle.Info);
 
         internal async Task SaveAsync(DisposableSaveHandle saveHandle)
         {

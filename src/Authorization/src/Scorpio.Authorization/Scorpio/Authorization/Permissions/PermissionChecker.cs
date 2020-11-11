@@ -11,7 +11,7 @@ using Scorpio.Security;
 
 namespace Scorpio.Authorization.Permissions
 {
-    class PermissionChecker : IPermissionChecker, ISingletonDependency
+    internal class PermissionChecker : IPermissionChecker, ISingletonDependency
     {
         protected IReadOnlyList<IPermissionGrantingProvider> GrantingProviders => _lazyProviders.Value;
 
@@ -41,10 +41,7 @@ namespace Scorpio.Authorization.Permissions
                 true);
         }
 
-        public Task<bool> CheckAsync(string name)
-        {
-            return CheckAsync(CurrentPrincipalAccessor.Principal, name);
-        }
+        public Task<bool> CheckAsync(string name) => CheckAsync(CurrentPrincipalAccessor.Principal, name);
 
         public async Task<bool> CheckAsync(IPrincipal claimsPrincipal, string name)
         {

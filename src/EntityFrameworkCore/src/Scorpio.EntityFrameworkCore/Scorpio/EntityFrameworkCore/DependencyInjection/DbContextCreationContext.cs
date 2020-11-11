@@ -30,10 +30,7 @@ namespace Scorpio.EntityFrameworkCore.DependencyInjection
         /// 
         /// </summary>
         /// <param name="connectionString"></param>
-        public DbContextCreationContext(string connectionString)
-        {
-            ConnectionString = connectionString;
-        }
+        public DbContextCreationContext(string connectionString) => ConnectionString = connectionString;
 
         /// <summary>
         /// 

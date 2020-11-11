@@ -22,10 +22,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection RegisterConventionalInterceptor(
             this IServiceCollection services,
             IEnumerable<Type> types,
-            Action<IConventionalConfiguration<ConventionalInterceptorAction>> configureAction)
-        {
-            return services.DoConventionalAction(types, configureAction);
-        }
+            Action<IConventionalConfiguration<ConventionalInterceptorAction>> configureAction) => services.DoConventionalAction(types, configureAction);
 
     }
 }

@@ -5,6 +5,7 @@ using System.Reflection;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
 
 using Scorpio.DependencyInjection;
@@ -21,7 +22,7 @@ namespace Scorpio.Auditing
         /// <summary>
         /// 
         /// </summary>
-        protected ILogger<AuditingHelper> Logger { get; }
+        protected ILogger<AuditingHelper> Logger { get; set; }
 
         /// <summary>
         /// 
@@ -31,17 +32,17 @@ namespace Scorpio.Auditing
         /// <summary>
         /// 
         /// </summary>
-        protected IClock Clock { get; }
+        public IClock Clock { get; set;}
 
         /// <summary>
         /// 
         /// </summary>
-        protected AuditingOptions Options;
+        protected AuditingOptions Options{get; }
 
         /// <summary>
         /// 
         /// </summary>
-        protected IAuditSerializer AuditSerializer;
+        protected IAuditSerializer AuditSerializer{get; }
 
         /// <summary>
         /// 
@@ -51,35 +52,27 @@ namespace Scorpio.Auditing
         /// <summary>
         /// 
         /// </summary>
-        protected IServiceProvider ServiceProvider;
+        protected IServiceProvider ServiceProvider { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="auditSerializer"></param>
         /// <param name="options"></param>
-        /// <param name="clock"></param>
         /// <param name="auditingStore"></param>
-        /// <param name="logger"></param>
         /// <param name="principalAccessor"></param>
-        /// <param name="serviceProvider"></param>
         public AuditingHelper(
             IAuditSerializer auditSerializer,
             IOptions<AuditingOptions> options,
-            IClock clock,
             IAuditingStore auditingStore,
-            ILogger<AuditingHelper> logger,
-            ICurrentPrincipalAccessor principalAccessor,
-            IServiceProvider serviceProvider)
+            ICurrentPrincipalAccessor principalAccessor
+            )
         {
             Options = options.Value;
             AuditSerializer = auditSerializer;
-            Clock = clock;
             AuditingStore = auditingStore;
-
-            Logger = logger;
+            Logger = NullLogger<AuditingHelper>.Instance;
             _principalAccessor = principalAccessor;
-            ServiceProvider = serviceProvider;
         }
 
         /// <summary>
@@ -164,10 +157,7 @@ namespace Scorpio.Auditing
         /// <param name="implementationMethod"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public virtual AuditActionInfo CreateAuditAction(Type type, MethodInfo implementationMethod, object[] parameters)
-        {
-            return CreateAuditAction(type, implementationMethod, CreateArgumentsDictionary(implementationMethod, parameters));
-        }
+        public virtual AuditActionInfo CreateAuditAction(Type type, MethodInfo implementationMethod, object[] parameters) => CreateAuditAction(type, implementationMethod, CreateArgumentsDictionary(implementationMethod, parameters));
 
         /// <summary>
         /// 

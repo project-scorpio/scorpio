@@ -14,9 +14,6 @@ namespace Scorpio.EntityFrameworkCore
         /// </summary>
         /// <param name="database"></param>
         /// <returns></returns>
-        public static bool IsRelational(this DatabaseFacade database)
-        {
-            return database.GetInfrastructure().GetService<IRelationalConnection>() != null;
-        }
+        public static bool IsRelational(this DatabaseFacade database) => database.GetInfrastructure().GetService<IRelationalConnection>() != null;
     }
 }

@@ -11,10 +11,7 @@ namespace Scorpio.Uow
 {
     public class TestTableService_Tests : IntegratedTest<TestModule>
     {
-        protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options)
-        {
-            options.UseAspectCore();
-        }
+        protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options) => options.UseAspectCore();
 
         [Fact]
         public void Get()

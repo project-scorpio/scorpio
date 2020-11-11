@@ -110,10 +110,7 @@ namespace System.Linq.Async
         {
             private readonly ICollection<T> _source;
 
-            protected AsyncICollectionEnumerableAdapterBase(ICollection<T> source)
-            {
-                _source = source;
-            }
+            protected AsyncICollectionEnumerableAdapterBase(ICollection<T> source) => _source = source;
 
 
             protected override int Count() => _source.Count;
@@ -123,7 +120,6 @@ namespace System.Linq.Async
             protected override T[] ToArray() => _source.ToArray();
 
             protected override List<T> ToList() => _source.ToList();
-
 
             IEnumerator<T> IEnumerable<T>.GetEnumerator() => _source.GetEnumerator();
 
@@ -150,10 +146,7 @@ namespace System.Linq.Async
             private readonly IEnumerable<T> _source;
 
 
-            public AsyncEnumerableAdapter(IEnumerable<T> source)
-            {
-                _source = source;
-            }
+            public AsyncEnumerableAdapter(IEnumerable<T> source) => _source = source;
 
             public override AsyncIteratorBase<T> Clone() => new AsyncEnumerableAdapter<T>(_source);
 
@@ -170,10 +163,7 @@ namespace System.Linq.Async
         {
             private readonly IList<T> _source;
 
-            public AsyncIListEnumerableAdapter(IList<T> source) : base(source)
-            {
-                _source = source;
-            }
+            public AsyncIListEnumerableAdapter(IList<T> source) : base(source) => _source = source;
 
             public override AsyncIteratorBase<T> Clone() => new AsyncIListEnumerableAdapter<T>(_source);
 
@@ -193,13 +183,9 @@ namespace System.Linq.Async
         {
             private readonly ICollection<T> _source;
 
-            public AsyncICollectionEnumerableAdapter(ICollection<T> source) : base(source)
-            {
-                _source = source;
-            }
+            public AsyncICollectionEnumerableAdapter(ICollection<T> source) : base(source) => _source = source;
 
             public override AsyncIteratorBase<T> Clone() => new AsyncICollectionEnumerableAdapter<T>(_source);
-
         }
 
     }

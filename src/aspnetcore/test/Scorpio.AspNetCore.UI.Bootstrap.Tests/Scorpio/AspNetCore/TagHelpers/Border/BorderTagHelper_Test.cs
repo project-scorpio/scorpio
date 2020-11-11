@@ -12,21 +12,9 @@ namespace Scorpio.AspNetCore.TagHelpers.Border
     public class BorderTagHelper_Test : AspNetCoreUiBootstrapTestBase
     {
         [Fact]
-        public void Default()
-        {
-            this.Test<BorderTagHelper>((c, o) =>
-            {
-                o.ShouldJustHasClasses("border");
-            });
-        }
+        public void Default() => this.Test<BorderTagHelper>((c, o) => o.ShouldJustHasClasses("border"));
 
         [Fact]
-        public void None()
-        {
-            this.Test<BorderTagHelper>(t => t.Border = BorderType.None, (c, o) =>
-                {
-                    o.ShouldJustHasClasses("border-0");
-                });
-        }
+        public void None() => this.Test<BorderTagHelper>(t => t.Border = BorderType.None, (c, o) => o.ShouldJustHasClasses("border-0"));
     }
 }

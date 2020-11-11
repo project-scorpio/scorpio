@@ -24,19 +24,13 @@ namespace Scorpio.DependencyInjection
         /// 
         /// </summary>
         /// <param name="exposedServiceTypes"></param>
-        public ExposeServicesAttribute(params Type[] exposedServiceTypes)
-        {
-            ExposedServiceTypes = exposedServiceTypes ?? new Type[0];
-        }
+        public ExposeServicesAttribute(params Type[] exposedServiceTypes) => ExposedServiceTypes = exposedServiceTypes ?? new Type[0];
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="targetType"></param>
         /// <returns></returns>
-        public Type[] GetExposedServiceTypes(Type targetType)
-        {
-            return ExposedServiceTypes;
-        }
+        public Type[] GetExposedServiceTypes(Type targetType) => ExposedServiceTypes;
     }
 }

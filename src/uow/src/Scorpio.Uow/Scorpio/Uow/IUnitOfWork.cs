@@ -34,12 +34,18 @@ namespace Scorpio.Uow
         /// <summary>
         /// Reference to the outer UOW if exists.
         /// </summary>
-        IUnitOfWork Outer { get; set; }
+        IUnitOfWork Outer { get;}
 
         /// <summary>
         /// Begins the unit of work with given options.
         /// </summary>
         /// <param name="options">Unit of work options</param>
         void Begin(UnitOfWorkOptions options);
+       
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="outer"></param>
+        void SetOuter(IUnitOfWork outer);
     }
 }

@@ -31,58 +31,39 @@ namespace Scorpio.EventBus
         /// <summary>
         /// 
         /// </summary>
-        protected IServiceProvider ServiceProvider { get; }
+        protected IServiceProvider ServiceProvider { get;}
 
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="options"></param>
         /// <param name="serviceProvider"></param>
-        protected EventBusBase(IOptions<EventBusOptions> options, IServiceProvider serviceProvider)
+        /// <param name="options"></param>
+        protected EventBusBase(IServiceProvider serviceProvider, IOptions<EventBusOptions> options)
         {
-            Options = options.Value;
             ServiceProvider = serviceProvider;
+            Options = options.Value;
             HandlerFactories = new ConcurrentDictionary<Type, List<IEventHandlerFactory>>();
             Init();
         }
 
-        private void Init()
-        {
-            SubscribeHandlers(Options.Handlers);
-
-        }
+        private void Init() => SubscribeHandlers(Options.Handlers);
 
         /// <inheritdoc/>
-        public virtual IDisposable Subscribe<TEvent>(Func<TEvent, Task> action) where TEvent : class
-        {
-            return Subscribe(typeof(TEvent), new ActionEventHandler<TEvent>(action));
-        }
+        public virtual IDisposable Subscribe<TEvent>(Func<TEvent, Task> action) where TEvent : class => Subscribe(typeof(TEvent), new ActionEventHandler<TEvent>(action));
 
         /// <inheritdoc/>
         public virtual IDisposable Subscribe<TEvent, THandler>()
             where TEvent : class
-            where THandler : IEventHandler, new()
-        {
-            return Subscribe(typeof(TEvent), new TransientEventHandlerFactory<THandler>(ServiceProvider.GetRequiredService<IHybridServiceScopeFactory>()));
-        }
+            where THandler : IEventHandler, new() => Subscribe(typeof(TEvent), new TransientEventHandlerFactory<THandler>(ServiceProvider.GetRequiredService<IHybridServiceScopeFactory>()));
 
         /// <inheritdoc/>
-        public virtual IDisposable Subscribe(Type eventType, IEventHandler handler)
-        {
-            return Subscribe(eventType, new SingleInstanceHandlerFactory(handler));
-        }
+        public virtual IDisposable Subscribe(Type eventType, IEventHandler handler) => Subscribe(eventType, new SingleInstanceHandlerFactory(handler));
         /// <inheritdoc/>
-        public virtual IDisposable Subscribe<TEvent>(IEventHandler<TEvent> handler)
-        {
-            return Subscribe(typeof(TEvent), new SingleInstanceHandlerFactory(handler));
-        }
+        public virtual IDisposable Subscribe<TEvent>(IEventHandler<TEvent> handler) => Subscribe(typeof(TEvent), new SingleInstanceHandlerFactory(handler));
 
         /// <inheritdoc/>
-        public virtual IDisposable Subscribe<TEvent>(IEventHandlerFactory factory) where TEvent : class
-        {
-            return Subscribe(typeof(TEvent), factory);
-        }
+        public virtual IDisposable Subscribe<TEvent>(IEventHandlerFactory factory) where TEvent : class => Subscribe(typeof(TEvent), factory);
 
         /// <summary>
         /// 
@@ -100,10 +81,7 @@ namespace Scorpio.EventBus
         public abstract void Unsubscribe<TEvent>(Func<TEvent, Task> action) where TEvent : class;
 
         /// <inheritdoc/>
-        public virtual void Unsubscribe<TEvent>(IEventHandler<TEvent> handler) where TEvent : class
-        {
-            Unsubscribe(typeof(TEvent), handler);
-        }
+        public virtual void Unsubscribe<TEvent>(IEventHandler<TEvent> handler) where TEvent : class => Unsubscribe(typeof(TEvent), handler);
 
         /// <summary>
         /// 
@@ -113,10 +91,7 @@ namespace Scorpio.EventBus
         public abstract void Unsubscribe(Type eventType, IEventHandler handler);
 
         /// <inheritdoc/>
-        public virtual void Unsubscribe<TEvent>(IEventHandlerFactory factory) where TEvent : class
-        {
-            Unsubscribe(typeof(TEvent), factory);
-        }
+        public virtual void Unsubscribe<TEvent>(IEventHandlerFactory factory) where TEvent : class => Unsubscribe(typeof(TEvent), factory);
 
         /// <summary>
         /// 
@@ -126,19 +101,13 @@ namespace Scorpio.EventBus
         public abstract void Unsubscribe(Type eventType, IEventHandlerFactory factory);
 
         /// <inheritdoc/>
-        public virtual void UnsubscribeAll<TEvent>() where TEvent : class
-        {
-            UnsubscribeAll(typeof(TEvent));
-        }
+        public virtual void UnsubscribeAll<TEvent>() where TEvent : class => UnsubscribeAll(typeof(TEvent));
 
         /// <inheritdoc/>
         public abstract void UnsubscribeAll(Type eventType);
 
         /// <inheritdoc/>
-        public virtual Task PublishAsync<TEvent>(TEvent eventData) where TEvent : class
-        {
-            return PublishAsync(typeof(TEvent), eventData);
-        }
+        public virtual Task PublishAsync<TEvent>(TEvent eventData) where TEvent : class => PublishAsync(typeof(TEvent), eventData);
 
         /// <inheritdoc/>
         public abstract Task PublishAsync(Type eventType, object eventData);
@@ -313,10 +282,7 @@ namespace Scorpio.EventBus
             /// <summary>
             /// 
             /// </summary>
-            public bool IsCompleted
-            {
-                get { return SynchronizationContext.Current == null; }
-            }
+            public bool IsCompleted => SynchronizationContext.Current == null;
 
             /// <summary>
             /// 
@@ -340,10 +306,7 @@ namespace Scorpio.EventBus
             /// 
             /// </summary>
             /// <returns></returns>
-            public SynchronizationContextRemover GetAwaiter()
-            {
-                return this;
-            }
+            public SynchronizationContextRemover GetAwaiter() => this;
 
             /// <summary>
             /// 

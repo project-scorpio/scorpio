@@ -24,10 +24,7 @@ namespace Scorpio
         /// <summary>
         /// 
         /// </summary>
-        public TypeDictionary()
-        {
-            _pairs = new Dictionary<Type, Type>();
-        }
+        public TypeDictionary() => _pairs = new Dictionary<Type, Type>();
         /// <summary>
         /// 
         /// </summary>
@@ -178,10 +175,7 @@ namespace Scorpio
         /// 
         /// </summary>
         /// <returns></returns>
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return _pairs.GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => _pairs.GetEnumerator();
 
         private void CheckValueType(Type value)
         {

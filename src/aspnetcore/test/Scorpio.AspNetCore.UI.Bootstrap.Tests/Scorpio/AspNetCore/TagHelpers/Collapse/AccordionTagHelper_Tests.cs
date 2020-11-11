@@ -17,10 +17,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Collapse
         [Fact]
         public void Default()
         {
-            this.Test<AccordionTagHelper>(t =>
-            {
-                t.Id = "id";
-            }, (c, o) =>
+            this.Test<AccordionTagHelper>(t => t.Id = "id", (c, o) =>
              {
                  o.TagName.ShouldBe("div");
                  o.ShouldJustHasClasses("card");
@@ -31,10 +28,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Collapse
         [Fact]
         public void Item()
         {
-            var tag = this.GetTagHelper<AccordionTagHelper>(t =>
-            {
-                t.Id = "id";
-            });
+            var tag = this.GetTagHelper<AccordionTagHelper>(t => t.Id = "id");
             var c = tag.GetContext();
             this.GetTagHelper<AccordionItemTagHelper>(t => t.Id = "id_id").Test(c, "div", (c, o) =>
             {
@@ -54,10 +48,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Collapse
         [Fact]
         public void Items()
         {
-            var tag = this.GetTagHelper<AccordionTagHelper>(t =>
-            {
-                t.Id = "id";
-            });
+            var tag = this.GetTagHelper<AccordionTagHelper>(t => t.Id = "id");
             var c = tag.GetContext();
             this.GetTagHelper<AccordionItemTagHelper>(t => t.Id = "id_id").Test(c, "div", (c, o) =>
             {

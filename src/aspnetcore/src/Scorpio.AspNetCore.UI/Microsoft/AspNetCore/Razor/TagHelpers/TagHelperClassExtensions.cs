@@ -14,10 +14,7 @@ namespace Microsoft.AspNetCore.Razor.TagHelpers
         /// </summary>
         /// <param name="enum"></param>
         /// <returns></returns>
-        public static string ToClassName(this Enum @enum)
-        {
-            return @enum.ToClassName("{0}");
-        }
+        public static string ToClassName(this Enum @enum) => @enum.ToClassName("{0}");
 
         /// <summary>
         /// 
@@ -59,10 +56,7 @@ namespace Microsoft.AspNetCore.Razor.TagHelpers
         /// 
         /// </summary>
         /// <param name="className"></param>
-        public ClassNameAttribute(string className)
-        {
-            ClassName = className;
-        }
+        public ClassNameAttribute(string className) => ClassName = className;
 
         /// <summary>
         /// 
@@ -79,10 +73,7 @@ namespace Microsoft.AspNetCore.Razor.TagHelpers
         /// 
         /// </summary>
         /// <param name="tagName"></param>
-        public TagNameAttribute(string tagName)
-        {
-            TagName = tagName;
-        }
+        public TagNameAttribute(string tagName) => TagName = tagName;
 
         /// <summary>
         /// 

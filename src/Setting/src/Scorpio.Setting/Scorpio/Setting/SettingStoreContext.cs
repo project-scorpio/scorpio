@@ -21,9 +21,6 @@ namespace Scorpio.Setting
         /// 
         /// </summary>
         /// <param name="settingDefinition"></param>
-        public SettingStoreContext(SettingDefinition settingDefinition)
-        {
-            SettingDefinition = settingDefinition;
-        }
+        public SettingStoreContext(SettingDefinition settingDefinition) => SettingDefinition = settingDefinition;
     }
 }

@@ -11,9 +11,6 @@
         /// <typeparam name="T"></typeparam>
         /// <param name="resolver"></param>
         /// <returns></returns>
-        public static string Resolve<T>(this IConnectionStringResolver resolver)
-        {
-            return resolver.Resolve(ConnectionStringNameAttribute.GetConnStringName<T>());
-        }
+        public static string Resolve<T>(this IConnectionStringResolver resolver) => resolver.Resolve(ConnectionStringNameAttribute.GetConnStringName<T>());
     }
 }

@@ -10,15 +10,12 @@ namespace Scorpio.Options
         /// <summary>
         /// 
         /// </summary>
-        internal protected IDictionary<string, object> ExtendedOption { get; }
+        protected internal IDictionary<string, object> ExtendedOption { get; }
 
         /// <summary>
         /// 
         /// </summary>
-        protected ExtensibleOptions()
-        {
-            ExtendedOption = new Dictionary<string, object>();
-        }
+        protected ExtensibleOptions() => ExtendedOption = new Dictionary<string, object>();
 
 
     }

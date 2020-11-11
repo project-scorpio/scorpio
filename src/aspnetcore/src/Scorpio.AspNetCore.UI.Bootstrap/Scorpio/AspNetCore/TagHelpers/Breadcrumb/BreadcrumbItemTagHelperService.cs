@@ -20,24 +20,18 @@ namespace Scorpio.AspNetCore.TagHelpers.Breadcrumb
         /// <summary>
         /// 
         /// </summary>
-        internal protected static readonly string BreadcrumbItemsContent = "BreadcrumbItemsContent";
+        protected internal static readonly string BreadcrumbItemsContent = "BreadcrumbItemsContent";
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="context"></param>
-        public override void Init(TagHelperContext context)
-        {
-            context.InitValue<List<BreadcrumbItem>>(BreadcrumbItemsContent);
-        }
+        public override void Init(TagHelperContext context) => context.InitValue<List<BreadcrumbItem>>(BreadcrumbItemsContent);
         /// <summary>
         /// 
         /// </summary>
         /// <param name="encoder"></param>
-        public BreadcrumbItemTagHelperService(HtmlEncoder encoder)
-        {
-            _encoder = encoder;
-        }
+        public BreadcrumbItemTagHelperService(HtmlEncoder encoder) => _encoder = encoder;
 
         /// <summary>
         /// 

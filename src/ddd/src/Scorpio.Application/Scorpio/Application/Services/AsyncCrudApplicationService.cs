@@ -29,9 +29,8 @@ namespace Scorpio.Application.Services
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
         /// <param name="repository"></param>
-        protected AsyncCrudApplicationService(IServiceProvider serviceProvider, IRepository<TEntity, TKey> repository) : base(serviceProvider, repository)
+        protected AsyncCrudApplicationService( IRepository<TEntity, TKey> repository) : base( repository)
         {
         }
     }
@@ -54,9 +53,8 @@ namespace Scorpio.Application.Services
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
         /// <param name="repository"></param>
-        protected AsyncCrudApplicationService(IServiceProvider serviceProvider, IRepository<TEntity, TKey> repository) : base(serviceProvider, repository)
+        protected AsyncCrudApplicationService( IRepository<TEntity, TKey> repository) : base( repository)
         {
         }
     }
@@ -80,9 +78,8 @@ namespace Scorpio.Application.Services
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
         /// <param name="repository"></param>
-        protected AsyncCrudApplicationService(IServiceProvider serviceProvider, IRepository<TEntity, TKey> repository) : base(serviceProvider, repository)
+        protected AsyncCrudApplicationService(IRepository<TEntity, TKey> repository) : base( repository)
         {
         }
     }
@@ -106,16 +103,14 @@ namespace Scorpio.Application.Services
         /// <summary>
         /// 
         /// </summary>
-        public IAsyncQueryableExecuter AsyncQueryableExecuter { get; }
+        public IAsyncQueryableExecuter AsyncQueryableExecuter { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
         /// <param name="repository"></param>
-        protected AsyncCrudApplicationService(IServiceProvider serviceProvider, IRepository<TEntity, TKey> repository) : base(serviceProvider, repository)
+        protected AsyncCrudApplicationService( IRepository<TEntity, TKey> repository) : base( repository)
         {
-            AsyncQueryableExecuter = ServiceProvider.GetService<IAsyncQueryableExecuter>();
         }
 
         /// <summary>
@@ -137,10 +132,7 @@ namespace Scorpio.Application.Services
         /// <param name="id"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public virtual async Task DeleteAsync(TKey id, CancellationToken cancellationToken = default)
-        {
-            await Repository.DeleteAsync(id, cancellationToken: cancellationToken);
-        }
+        public virtual async Task DeleteAsync(TKey id, CancellationToken cancellationToken = default) => await Repository.DeleteAsync(id, cancellationToken: cancellationToken);
 
         /// <summary>
         /// 
@@ -148,10 +140,7 @@ namespace Scorpio.Application.Services
         /// <param name="id"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public virtual async Task<TEntityDto> GetAsync(TKey id, CancellationToken cancellationToken = default)
-        {
-            return Mapper.Map<TEntityDto>(await Repository.GetAsync(id, cancellationToken: cancellationToken));
-        }
+        public virtual async Task<TEntityDto> GetAsync(TKey id, CancellationToken cancellationToken = default) => Mapper.Map<TEntityDto>(await Repository.GetAsync(id, cancellationToken: cancellationToken));
 
         /// <summary>
         /// 

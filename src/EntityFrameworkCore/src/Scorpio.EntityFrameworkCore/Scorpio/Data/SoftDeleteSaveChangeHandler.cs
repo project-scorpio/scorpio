@@ -6,12 +6,9 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Scorpio.Data
 {
-    class SoftDeleteSaveChangeHandler : EntityFrameworkCore.IOnSaveChangeHandler
+    internal class SoftDeleteSaveChangeHandler : EntityFrameworkCore.IOnSaveChangeHandler
     {
-        public Task PostSaveChangeAsync(IEnumerable<EntityEntry> entries)
-        {
-            return Task.CompletedTask;
-        }
+        public Task PostSaveChangeAsync(IEnumerable<EntityEntry> entries) => Task.CompletedTask;
 
         public async Task PreSaveChangeAsync(IEnumerable<EntityEntry> entries)
         {

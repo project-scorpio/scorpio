@@ -15,10 +15,7 @@ namespace Scorpio.EntityFrameworkCore.DependencyInjection
     {
         public IServiceCollection Services { get; }
 
-        public ScorpioDbContextOptionsBuilder(IServiceCollection services)
-        {
-            Services = services;
-        }
+        public ScorpioDbContextOptionsBuilder(IServiceCollection services) => Services = services;
 
     }
 
@@ -52,10 +49,7 @@ namespace Scorpio.EntityFrameworkCore.DependencyInjection
 
         public void AddRepository<TEntity, TRepository>()
             where TEntity : class, IEntity
-            where TRepository : IRepository<TEntity>
-        {
-            RepositoryTypes.Add<TEntity, TRepository>();
-        }
+            where TRepository : IRepository<TEntity> => RepositoryTypes.Add<TEntity, TRepository>();
 
 
     }

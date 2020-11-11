@@ -38,10 +38,7 @@ namespace Scorpio.Data
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static string GetConnStringName<T>()
-        {
-            return GetConnStringName(typeof(T));
-        }
+        public static string GetConnStringName<T>() => GetConnStringName(typeof(T));
 
         /// <summary>
         /// 

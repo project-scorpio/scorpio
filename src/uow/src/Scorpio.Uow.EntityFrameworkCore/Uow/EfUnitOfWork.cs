@@ -28,13 +28,9 @@ namespace Scorpio.Uow
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
         /// <param name="transactionStrategy"></param>
         /// <param name="options"></param>
-        public EfUnitOfWork(IServiceProvider serviceProvider, IEfTransactionStrategy transactionStrategy, IOptions<UnitOfWorkDefaultOptions> options) : base(serviceProvider, options)
-        {
-            _transactionStrategy = transactionStrategy;
-        }
+        public EfUnitOfWork(IEfTransactionStrategy transactionStrategy, IOptions<UnitOfWorkDefaultOptions> options) : base(options) => _transactionStrategy = transactionStrategy;
 
         /// <summary>
         /// 
@@ -121,10 +117,7 @@ namespace Scorpio.Uow
         /// 获取全部活动的DBContext
         /// </summary>
         /// <returns></returns>
-        public IReadOnlyList<ScorpioDbContext> GetAllActiveDbContexts()
-        {
-            return ActiveDbContexts.Values.ToImmutableList();
-        }
+        public IReadOnlyList<ScorpioDbContext> GetAllActiveDbContexts() => ActiveDbContexts.Values.ToImmutableList();
 
         /// <summary>
         /// 
@@ -158,9 +151,6 @@ namespace Scorpio.Uow
         }
 
         private TDbContext CreateDbContextWithTransactional<TDbContext>(string connectionString)
-            where TDbContext : ScorpioDbContext<TDbContext>
-        {
-            return _transactionStrategy.CreateDbContext<TDbContext>(connectionString);
-        }
+            where TDbContext : ScorpioDbContext<TDbContext> => _transactionStrategy.CreateDbContext<TDbContext>(connectionString);
     }
 }

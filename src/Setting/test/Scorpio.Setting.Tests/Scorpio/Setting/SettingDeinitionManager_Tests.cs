@@ -10,23 +10,13 @@ namespace Scorpio.Setting
         private readonly ISettingDefinitionManager _settingDefinitionManager;
 
 
-        public SettingDeinitionManager_Tests()
-        {
-            _settingDefinitionManager = ServiceProvider.GetService<ISettingDefinitionManager>();
-
-        }
+        public SettingDeinitionManager_Tests() => _settingDefinitionManager = ServiceProvider.GetService<ISettingDefinitionManager>();
 
         [Fact]
-        public void SettingDefinitionManagerTest()
-        {
-            _settingDefinitionManager.ShouldBeOfType<SettingDefinitionManager>().ShouldNotBeNull();
-        }
+        public void SettingDefinitionManagerTest() => _settingDefinitionManager.ShouldBeOfType<SettingDefinitionManager>().ShouldNotBeNull();
 
         [Fact]
-        public void SettingDefinitionCount()
-        {
-            _settingDefinitionManager.GetAll().Count.ShouldBe(4);
-        }
+        public void SettingDefinitionCount() => _settingDefinitionManager.GetAll().Count.ShouldBe(4);
 
         [Fact]
         public void SettingDefinitionFirst()
@@ -43,10 +33,7 @@ namespace Scorpio.Setting
         public void SettingDefinitionThrowWhenNotExists()
         {
             _settingDefinitionManager.Get("Setting").ShouldBeOfType<SettingDefinition<string>>().Name.ShouldBe("Setting");
-            Should.Throw(() =>
-            {
-                _settingDefinitionManager.Get("SettingNotExists");
-            }, typeof(ScorpioException));
+            Should.Throw(() => _settingDefinitionManager.Get("SettingNotExists"), typeof(ScorpioException));
         }
     }
 }

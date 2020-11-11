@@ -16,7 +16,7 @@ namespace Scorpio.Modularity
         /// <summary>
         /// 
         /// </summary>
-        internal protected bool SkipAutoServiceRegistration { get; set; } = false;
+        protected internal bool SkipAutoServiceRegistration { get; set; } = false;
         /// <summary>
         /// 
         /// </summary>

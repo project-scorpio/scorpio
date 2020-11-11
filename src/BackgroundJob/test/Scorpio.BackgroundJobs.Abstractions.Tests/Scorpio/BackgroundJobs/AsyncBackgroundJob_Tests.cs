@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
+﻿using Microsoft.Extensions.Logging.Abstractions;
 
 using NSubstitute;
 
@@ -14,14 +12,14 @@ namespace Scorpio.BackgroundJobs
     /// Provides the abstract base class for a asynchronous background job.
     /// </summary>
     /// <typeparam name="TArgs">The args for the background job execution.</typeparam>
-    public  class AsyncBackgroundJob_Tests
+    public class AsyncBackgroundJob_Tests
     {
 
-    
-       [Fact]
+
+        [Fact]
         public void Logger()
         {
-            var job=Substitute.ForPartsOf<AsyncBackgroundJob<string>>();
+            var job = Substitute.ForPartsOf<AsyncBackgroundJob<string>>();
             job.Logger.ShouldBe(NullLogger<AsyncBackgroundJob<string>>.Instance);
         }
     }

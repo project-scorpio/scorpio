@@ -15,10 +15,7 @@ namespace Scorpio.Entities
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public static bool IsEntity(Type type)
-        {
-            return typeof(IEntity).IsAssignableFrom(type);
-        }
+        public static bool IsEntity(Type type) => typeof(IEntity).IsAssignableFrom(type);
 
         /// <summary>
         /// 
@@ -52,10 +49,7 @@ namespace Scorpio.Entities
         /// May return null if given type does not implement <see cref="IEntity{TKey}"/>
         /// </summary>
         public static Type FindPrimaryKeyType<TEntity>()
-            where TEntity : IEntity
-        {
-            return FindPrimaryKeyType(typeof(TEntity));
-        }
+            where TEntity : IEntity => FindPrimaryKeyType(typeof(TEntity));
 
         /// <summary>
         /// Tries to find the primary key type of the given entity type.

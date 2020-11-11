@@ -12,7 +12,6 @@ namespace Scorpio.BackgroundJobs
         private readonly Dictionary<Type, BackgroundJobConfiguration> _jobConfigurationsByArgsType;
         private readonly Dictionary<string, BackgroundJobConfiguration> _jobConfigurationsByName;
 
-        //TODO: Implement for all providers! (Hangfire does not implement yet)
         /// <summary>
         /// Default: true.
         /// </summary>
@@ -32,10 +31,7 @@ namespace Scorpio.BackgroundJobs
         /// </summary>
         /// <typeparam name="TArgs"></typeparam>
         /// <returns></returns>
-        public BackgroundJobConfiguration GetJob<TArgs>()
-        {
-            return GetJob(typeof(TArgs));
-        }
+        public BackgroundJobConfiguration GetJob<TArgs>() => GetJob(typeof(TArgs));
 
         /// <summary>
         /// 
@@ -75,28 +71,19 @@ namespace Scorpio.BackgroundJobs
         /// 
         /// </summary>
         /// <returns></returns>
-        public IReadOnlyList<BackgroundJobConfiguration> GetJobs()
-        {
-            return _jobConfigurationsByArgsType.Values.ToImmutableList();
-        }
+        public IReadOnlyList<BackgroundJobConfiguration> GetJobs() => _jobConfigurationsByArgsType.Values.ToImmutableList();
 
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="TJob"></typeparam>
-        public void AddJob<TJob>()
-        {
-            AddJob(typeof(TJob));
-        }
+        public void AddJob<TJob>() => AddJob(typeof(TJob));
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="jobType"></param>
-        public void AddJob(Type jobType)
-        {
-            AddJob(new BackgroundJobConfiguration(jobType));
-        }
+        public void AddJob(Type jobType) => AddJob(new BackgroundJobConfiguration(jobType));
 
         /// <summary>
         /// 

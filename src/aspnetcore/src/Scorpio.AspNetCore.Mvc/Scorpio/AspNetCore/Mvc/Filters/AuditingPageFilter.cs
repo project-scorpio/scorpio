@@ -83,10 +83,7 @@ namespace Scorpio.AspNetCore.Mvc.Filters
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public Task OnPageHandlerSelectionAsync(PageHandlerSelectedContext context)
-        {
-            return Task.CompletedTask;
-        }
+        public Task OnPageHandlerSelectionAsync(PageHandlerSelectedContext context) => Task.CompletedTask;
 
         private bool ShouldSaveAudit(PageHandlerExecutingContext context, out AuditInfo auditLog, out AuditActionInfo auditLogAction)
         {

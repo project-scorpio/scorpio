@@ -16,9 +16,6 @@ namespace Scorpio.Data
         /// <summary>
         /// 
         /// </summary>
-        public DataFilterOptions()
-        {
-            Descriptors = new Dictionary<Type, DataFilterDescriptor>();
-        }
+        public DataFilterOptions() => Descriptors = new Dictionary<Type, DataFilterDescriptor>();
     }
 }

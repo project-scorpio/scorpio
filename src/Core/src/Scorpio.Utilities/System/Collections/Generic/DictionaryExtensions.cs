@@ -35,10 +35,7 @@ namespace System.Collections.Generic
         /// <typeparam name="TKey">Type of the key</typeparam>
         /// <typeparam name="TValue">Type of the value</typeparam>
         /// <returns>Value if found, default if can not found.</returns>
-        public static TValue GetOrDefault<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey key)
-        {
-            return dictionary.GetOrDefault(key, default(TValue));
-        }
+        public static TValue GetOrDefault<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey key) => dictionary.GetOrDefault(key, default(TValue));
 
         /// <summary>
         /// Gets a value from the dictionary with given key. Returns default value if can not find.
@@ -48,10 +45,7 @@ namespace System.Collections.Generic
         /// <typeparam name="TKey">Type of the key</typeparam>
         /// <typeparam name="TValue">Type of the value</typeparam>
         /// <returns>Value if found, default if can not found.</returns>
-        public static TValue GetOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key)
-        {
-            return dictionary.GetOrDefault(key, default(TValue));
-        }
+        public static TValue GetOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key) => dictionary.GetOrDefault(key, default(TValue));
 
         /// <summary>
         /// Gets a value from the dictionary with given key. Returns default value if can not find.
@@ -61,10 +55,7 @@ namespace System.Collections.Generic
         /// <typeparam name="TKey">Type of the key</typeparam>
         /// <typeparam name="TValue">Type of the value</typeparam>
         /// <returns>Value if found, default if can not found.</returns>
-        public static TValue GetOrDefault<TKey, TValue>(this IReadOnlyDictionary<TKey, TValue> dictionary, TKey key)
-        {
-            return dictionary.GetOrDefault(key, default(TValue));
-        }
+        public static TValue GetOrDefault<TKey, TValue>(this IReadOnlyDictionary<TKey, TValue> dictionary, TKey key) => dictionary.GetOrDefault(key, default(TValue));
 
         /// <summary>
         /// Gets a value from the dictionary with given key. Returns default value if can not find.
@@ -74,10 +65,7 @@ namespace System.Collections.Generic
         /// <typeparam name="TKey">Type of the key</typeparam>
         /// <typeparam name="TValue">Type of the value</typeparam>
         /// <returns>Value if found, default if can not found.</returns>
-        public static TValue GetOrDefault<TKey, TValue>(this ConcurrentDictionary<TKey, TValue> dictionary, TKey key)
-        {
-            return dictionary.GetOrDefault(key, default(TValue));
-        }
+        public static TValue GetOrDefault<TKey, TValue>(this ConcurrentDictionary<TKey, TValue> dictionary, TKey key) => dictionary.GetOrDefault(key, default(TValue));
 
         /// <summary>
         /// Gets a value from the dictionary with given key. Returns default value if can not find.
@@ -88,10 +76,7 @@ namespace System.Collections.Generic
         /// <typeparam name="TKey">Type of the key</typeparam>
         /// <typeparam name="TValue">Type of the value</typeparam>
         /// <returns>Value if found, default if can not found.</returns>
-        public static TValue GetOrDefault<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey key, TValue @default)
-        {
-            return GetOrDefault(dictionary, key, k => @default);
-        }
+        public static TValue GetOrDefault<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey key, TValue @default) => GetOrDefault(dictionary, key, k => @default);
 
         /// <summary>
         /// Gets a value from the dictionary with given key. Returns default value if can not find.
@@ -102,10 +87,7 @@ namespace System.Collections.Generic
         /// <typeparam name="TKey">Type of the key</typeparam>
         /// <typeparam name="TValue">Type of the value</typeparam>
         /// <returns>Value if found, default if can not found.</returns>
-        public static TValue GetOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, TValue @default)
-        {
-            return GetOrDefault(dictionary, key, k => @default);
-        }
+        public static TValue GetOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, TValue @default) => GetOrDefault(dictionary, key, k => @default);
 
         /// <summary>
         /// Gets a value from the dictionary with given key. Returns default value if can not find.
@@ -116,10 +98,7 @@ namespace System.Collections.Generic
         /// <typeparam name="TKey">Type of the key</typeparam>
         /// <typeparam name="TValue">Type of the value</typeparam>
         /// <returns>Value if found, default if can not found.</returns>
-        public static TValue GetOrDefault<TKey, TValue>(this IReadOnlyDictionary<TKey, TValue> dictionary, TKey key, TValue @default)
-        {
-            return GetOrDefault(dictionary, key, k => @default);
-        }
+        public static TValue GetOrDefault<TKey, TValue>(this IReadOnlyDictionary<TKey, TValue> dictionary, TKey key, TValue @default) => GetOrDefault(dictionary, key, k => @default);
 
         /// <summary>
         /// Gets a value from the dictionary with given key. Returns default value if can not find.
@@ -130,10 +109,7 @@ namespace System.Collections.Generic
         /// <typeparam name="TKey">Type of the key</typeparam>
         /// <typeparam name="TValue">Type of the value</typeparam>
         /// <returns>Value if found, default if can not found.</returns>
-        public static TValue GetOrDefault<TKey, TValue>(this ConcurrentDictionary<TKey, TValue> dictionary, TKey key, TValue @default)
-        {
-            return GetOrDefault(dictionary, key, k => @default);
-        }
+        public static TValue GetOrDefault<TKey, TValue>(this ConcurrentDictionary<TKey, TValue> dictionary, TKey key, TValue @default) => GetOrDefault(dictionary, key, k => @default);
 
         /// <summary>
         /// Gets a value from the dictionary with given key. Returns default value if can not find.
@@ -233,9 +209,6 @@ namespace System.Collections.Generic
         /// <typeparam name="TKey">Type of the key</typeparam>
         /// <typeparam name="TValue">Type of the value</typeparam>
         /// <returns>Value if found, default if can not found.</returns>
-        public static TValue GetOrAdd<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, Func<TValue> factory)
-        {
-            return dictionary.GetOrAdd(key, k => factory());
-        }
+        public static TValue GetOrAdd<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, Func<TValue> factory) => dictionary.GetOrAdd(key, k => factory());
     }
 }

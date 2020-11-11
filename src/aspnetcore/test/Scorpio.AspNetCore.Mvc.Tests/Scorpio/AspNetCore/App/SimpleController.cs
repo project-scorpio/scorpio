@@ -5,22 +5,15 @@ namespace Scorpio.AspNetCore.App
 {
     public class SimpleController : Controller
     {
-        public IActionResult Index()
-        {
-            return Content("Index-Result");
-        }
+        public IActionResult Index() => Content("Index-Result");
 
-        public ActionResult About()
-        {
+        public ActionResult About() =>
             // ReSharper disable once Mvc.ViewNotResolved
-            return View();
-        }
+            View();
 
-        public ActionResult ExceptionOnRazor()
-        {
+        public ActionResult ExceptionOnRazor() =>
             // ReSharper disable once Mvc.ViewNotResolved
             throw new ScorpioException();
-        }
 
     }
 }

@@ -36,10 +36,7 @@ namespace Scorpio.DynamicProxy
             typeList.ForEach(t =>
             {
                 context.Services.TryAddTransient(t);
-                context.Services.ConfigureDynamicProxy(c =>
-                {
-                    c.Interceptors.AddServiced(t, m => !m.AttributeExists<NonAspectAttribute>() && predicate(m.DeclaringType));
-                });
+                _ = context.Services.ConfigureDynamicProxy(c => c.Interceptors.AddServiced(t, m => !m.AttributeExists<NonAspectAttribute>() && predicate(m.DeclaringType)));
             });
         }
     }

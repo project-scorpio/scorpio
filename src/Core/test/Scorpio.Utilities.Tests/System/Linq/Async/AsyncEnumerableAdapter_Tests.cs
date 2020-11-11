@@ -61,22 +61,13 @@ namespace System.Linq.Async
 
     }
 
-    class TestEnumerable<T> : IEnumerable<T>
+    internal class TestEnumerable<T> : IEnumerable<T>
     {
         private readonly IEnumerable<T> _source;
 
-        public TestEnumerable(IEnumerable<T> source)
-        {
-            _source = source;
-        }
-        public IEnumerator<T> GetEnumerator()
-        {
-            return _source.GetEnumerator();
-        }
+        public TestEnumerable(IEnumerable<T> source) => _source = source;
+        public IEnumerator<T> GetEnumerator() => _source.GetEnumerator();
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return _source.GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => _source.GetEnumerator();
     }
 }

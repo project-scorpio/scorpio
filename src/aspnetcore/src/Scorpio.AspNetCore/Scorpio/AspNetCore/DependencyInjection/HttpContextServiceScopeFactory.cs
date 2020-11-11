@@ -33,15 +33,12 @@ namespace Scorpio.AspNetCore.DependencyInjection
             return new ServiceScope(context.RequestServices);
         }
 
-        class ServiceScope : IServiceScope
+        private class ServiceScope : IServiceScope
         {
 
             public IServiceProvider ServiceProvider { get; }
 
-            public ServiceScope(IServiceProvider serviceProvider)
-            {
-                ServiceProvider = serviceProvider;
-            }
+            public ServiceScope(IServiceProvider serviceProvider) => ServiceProvider = serviceProvider;
 
             protected virtual void Dispose(bool disposing)
             {

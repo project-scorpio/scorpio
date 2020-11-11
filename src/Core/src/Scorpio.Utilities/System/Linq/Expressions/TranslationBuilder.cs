@@ -13,10 +13,7 @@
         /// <typeparam name="TResult"></typeparam>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public static IExpressionTranslation<TSource, TResult> Translate<TSource, TResult>(this Expression<Func<TSource, TResult>> predicate)
-        {
-            return new ExpressionTranslation<TSource, TResult>(predicate);
-        }
+        public static IExpressionTranslation<TSource, TResult> Translate<TSource, TResult>(this Expression<Func<TSource, TResult>> predicate) => new ExpressionTranslation<TSource, TResult>(predicate);
 
         /// <summary>
         /// 
@@ -26,10 +23,7 @@
         /// <typeparam name="TResult"></typeparam>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public static IExpressionTranslation<T1, T2, TResult> Translate<T1, T2, TResult>(this Expression<Func<T1, T2, TResult>> predicate)
-        {
-            return new ExpressionTranslation<T1, T2, TResult>(predicate);
-        }
+        public static IExpressionTranslation<T1, T2, TResult> Translate<T1, T2, TResult>(this Expression<Func<T1, T2, TResult>> predicate) => new ExpressionTranslation<T1, T2, TResult>(predicate);
 
         /// <summary>
         /// 
@@ -40,10 +34,7 @@
         /// <typeparam name="TResult"></typeparam>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public static IExpressionTranslation<T1, T2, T3, TResult> Translate<T1, T2, T3, TResult>(this Expression<Func<T1, T2, T3, TResult>> predicate)
-        {
-            return new ExpressionTranslation<T1, T2, T3, TResult>(predicate);
-        }
+        public static IExpressionTranslation<T1, T2, T3, TResult> Translate<T1, T2, T3, TResult>(this Expression<Func<T1, T2, T3, TResult>> predicate) => new ExpressionTranslation<T1, T2, T3, TResult>(predicate);
 
         /// <summary>
         /// 
@@ -55,20 +46,14 @@
         /// <typeparam name="TResult"></typeparam>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public static IExpressionTranslation<T1, T2, T3, T4, TResult> Translate<T1, T2, T3, T4, TResult>(this Expression<Func<T1, T2, T3, T4, TResult>> predicate)
-        {
-            return new ExpressionTranslation<T1, T2, T3, T4, TResult>(predicate);
-        }
+        public static IExpressionTranslation<T1, T2, T3, T4, TResult> Translate<T1, T2, T3, T4, TResult>(this Expression<Func<T1, T2, T3, T4, TResult>> predicate) => new ExpressionTranslation<T1, T2, T3, T4, TResult>(predicate);
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="TSource"></typeparam>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public static MemberInitTranslation<TSource> Translate<TSource>(this Expression<Func<TSource, TSource>> predicate)
-        {
-            return new MemberInitTranslation<TSource>(predicate);
-        }
+        public static MemberInitTranslation<TSource> Translate<TSource>(this Expression<Func<TSource, TSource>> predicate) => new MemberInitTranslation<TSource>(predicate);
 
     }
 }

@@ -21,10 +21,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Card
         [Fact]
         public void Title()
         {
-            this.Test<CardBodyTagHelper>(t =>
-            {
-                t.Title = "TestTitle";
-            }, (c, o) =>
+            this.Test<CardBodyTagHelper>(t => t.Title = "TestTitle", (c, o) =>
             {
                 o.TagName.ShouldBe("div");
                 o.ShouldJustHasClasses("card-body");
@@ -34,10 +31,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Card
         [Fact]
         public void SUbTitle()
         {
-            this.Test<CardBodyTagHelper>(t =>
-            {
-                t.SubTilte = "TestSubTitle";
-            }, (c, o) =>
+            this.Test<CardBodyTagHelper>(t => t.SubTilte = "TestSubTitle", (c, o) =>
             {
                 o.TagName.ShouldBe("div");
                 o.ShouldJustHasClasses("card-body");

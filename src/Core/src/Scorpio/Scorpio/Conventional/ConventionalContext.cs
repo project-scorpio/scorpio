@@ -25,15 +25,9 @@ namespace Scorpio.Conventional
             _types = types;
         }
 
-        public void AddPredicateExpression(Expression<Func<Type, bool>> expression)
-        {
-            TypePredicate = TypePredicate == null ? expression : TypePredicate.AndAlso(expression);
-        }
+        public void AddPredicateExpression(Expression<Func<Type, bool>> expression) => TypePredicate = TypePredicate == null ? expression : TypePredicate.AndAlso(expression);
 
-        public void AddPredicate(Predicate<Type> predicate)
-        {
-            AddPredicateExpression(t => predicate(t));
-        }
+        public void AddPredicate(Predicate<Type> predicate) => AddPredicateExpression(t => predicate(t));
 
         public T GetItem<T>(string key)
         {
@@ -44,10 +38,7 @@ namespace Scorpio.Conventional
             return (T)value;
         }
 
-        public void SetItem<T>(string key, T item)
-        {
-            _items[key] = item;
-        }
+        public void SetItem<T>(string key, T item) => _items[key] = item;
     }
 
     internal class ConventionalContext<TAction> : ConventionalContext, IConventionalContext<TAction>

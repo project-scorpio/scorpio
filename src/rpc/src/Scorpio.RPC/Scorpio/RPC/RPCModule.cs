@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
+﻿
 using Scorpio.Modularity;
 
 namespace Scorpio.Rpc
@@ -9,6 +8,6 @@ namespace Scorpio.Rpc
     /// </summary>
     public class RpcModule : ScorpioModule
     {
-       
+
     }
 }

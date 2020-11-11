@@ -40,9 +40,6 @@ namespace Scorpio.Entities
         }
 
         [Fact]
-        public void CreateEqualityExpressionForId()
-        {
-            EntityHelper.CreateEqualityExpressionForId<Entity<int>, int>(12).Compile()(Substitute.For<Entity<int>>(12)).ShouldBeTrue();
-        }
+        public void CreateEqualityExpressionForId() => EntityHelper.CreateEqualityExpressionForId<Entity<int>, int>(12).Compile()(Substitute.For<Entity<int>>(12)).ShouldBeTrue();
     }
 }

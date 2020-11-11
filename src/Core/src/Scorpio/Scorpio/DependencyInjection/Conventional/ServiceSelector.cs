@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Scorpio.DependencyInjection.Conventional
 {
-    class DefaultInterfaceSelector : IRegisterAssemblyServiceSelector
+    internal class DefaultInterfaceSelector : IRegisterAssemblyServiceSelector
     {
         public DefaultInterfaceSelector()
         {
@@ -19,7 +19,7 @@ namespace Scorpio.DependencyInjection.Conventional
         }
     }
 
-    class AllInterfaceSelector : IRegisterAssemblyServiceSelector
+    internal class AllInterfaceSelector : IRegisterAssemblyServiceSelector
     {
         public AllInterfaceSelector()
         {
@@ -33,23 +33,17 @@ namespace Scorpio.DependencyInjection.Conventional
         }
     }
 
-
-    class SelfSelector : IRegisterAssemblyServiceSelector
+    internal class SelfSelector : IRegisterAssemblyServiceSelector
     {
-        public IEnumerable<Type> Select(Type componentType)
-        {
-            return new Type[] { componentType };
-        }
+        public IEnumerable<Type> Select(Type componentType) => new Type[] { componentType };
     }
 
-    class TypeSelector<T> : IRegisterAssemblyServiceSelector
+    internal class TypeSelector<T> : IRegisterAssemblyServiceSelector
     {
-        public IEnumerable<Type> Select(Type componentType)
-        {
-            return new Type[] { typeof(T) };
-        }
+        public IEnumerable<Type> Select(Type componentType) => new Type[] { typeof(T) };
     }
-    class ExposeServicesSelector : IRegisterAssemblyServiceSelector
+
+    internal class ExposeServicesSelector : IRegisterAssemblyServiceSelector
     {
         public IEnumerable<Type> Select(Type componentType)
         {

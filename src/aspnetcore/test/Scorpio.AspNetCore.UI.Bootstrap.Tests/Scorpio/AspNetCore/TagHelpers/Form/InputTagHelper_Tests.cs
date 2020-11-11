@@ -54,10 +54,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
         [Fact]
         public void Horizontal()
         {
-            this.Test<InputTagHelper>(t =>
-            {
-                t.Orientation = Orientation.Horizontal;
-            }, c => { }, o =>
+            this.Test<InputTagHelper>(t => t.Orientation = Orientation.Horizontal, c => { }, o =>
             {
                 o.AddAttribute("id", "id");
                 o.AddAttribute("type", "text");
@@ -95,10 +92,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
         [Fact]
         public void Title()
         {
-            this.Test<InputTagHelper>(t =>
-            {
-                t.Title = "Title";
-            }, c => { }, o =>
+            this.Test<InputTagHelper>(t => t.Title = "Title", c => { }, o =>
             {
                 o.AddAttribute("id", "id");
                 o.AddAttribute("type", "text");
@@ -115,10 +109,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
         [Fact]
         public void Large()
         {
-            this.Test<InputTagHelper>(t =>
-            {
-                t.Size = TagHelpers.Size.Large;
-            }, c => { }, o =>
+            this.Test<InputTagHelper>(t => t.Size = TagHelpers.Size.Large, c => { }, o =>
             {
                 o.AddAttribute("id", "id");
                 o.AddAttribute("type", "text");
@@ -135,10 +126,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Form
         [Fact]
         public void Small()
         {
-            this.Test<InputTagHelper>(t =>
-            {
-                t.Size = Size.Small;
-            }, c => { }, o =>
+            this.Test<InputTagHelper>(t => t.Size = Size.Small, c => { }, o =>
             {
                 o.AddAttribute("id", "id");
                 o.AddAttribute("type", "text");

@@ -16,10 +16,7 @@ namespace Scorpio.AspNetCore
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseAuditing();
-            app.Use(async (ctx, t) =>
-            {
-                await ctx.Response.WriteAsync("test");
-            });
+            app.Use(async (ctx, t) => await ctx.Response.WriteAsync("test"));
         }
     }
 }

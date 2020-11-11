@@ -17,20 +17,14 @@ namespace Scorpio.BackgroundJobs
         /// 
         /// </summary>
         /// <param name="name"></param>
-        public BackgroundJobNameAttribute(string name)
-        {
-            Name = Check.NotNullOrWhiteSpace(name, nameof(name));
-        }
+        public BackgroundJobNameAttribute(string name) => Name = Check.NotNullOrWhiteSpace(name, nameof(name));
 
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="TJobArgs"></typeparam>
         /// <returns></returns>
-        public static string GetName<TJobArgs>()
-        {
-            return GetName(typeof(TJobArgs));
-        }
+        public static string GetName<TJobArgs>() => GetName(typeof(TJobArgs));
 
         /// <summary>
         /// 

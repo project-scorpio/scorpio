@@ -1,6 +1,8 @@
 using NSubstitute;
-using Xunit;
+
 using Shouldly;
+
+using Xunit;
 namespace Scorpio.BackgroundWorkers
 {
     public class BackgroundWorkerManager_Tests

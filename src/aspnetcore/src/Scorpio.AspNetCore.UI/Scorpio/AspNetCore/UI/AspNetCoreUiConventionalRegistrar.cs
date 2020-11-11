@@ -9,12 +9,6 @@ namespace Scorpio.AspNetCore.UI
 {
     internal class AspNetCoreUiConventionalRegistrar : IConventionalRegistrar
     {
-        public void Register(IConventionalRegistrationContext context)
-        {
-            context.RegisterConventionalDependencyInject(config =>
-           {
-               config.Where(t => t.IsStandardType() && t.IsAssignableTo<TagHelpers.ITagHelperService>()).AsSelf().Lifetime(ServiceLifetime.Transient);
-           });
-        }
+        public void Register(IConventionalRegistrationContext context) => context.RegisterConventionalDependencyInject(config => config.Where(t => t.IsStandardType() && t.IsAssignableTo<TagHelpers.ITagHelperService>()).AsSelf().Lifetime(ServiceLifetime.Transient));
     }
 }

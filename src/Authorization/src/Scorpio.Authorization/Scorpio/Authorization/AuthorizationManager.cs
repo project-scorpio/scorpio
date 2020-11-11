@@ -7,14 +7,11 @@ using Scorpio.DependencyInjection;
 
 namespace Scorpio.Authorization
 {
-    class AuthorizationManager : IAuthorizationManager, ISingletonDependency
+    internal class AuthorizationManager : IAuthorizationManager, ISingletonDependency
     {
         private readonly IServiceProvider _serviceProvider;
 
-        public AuthorizationManager(IServiceProvider serviceProvider)
-        {
-            _serviceProvider = serviceProvider;
-        }
+        public AuthorizationManager(IServiceProvider serviceProvider) => _serviceProvider = serviceProvider;
 
 
         public async Task AuthorizeAsync(bool requireAllPermissions, params string[] permissions)

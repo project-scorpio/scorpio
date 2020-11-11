@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Scorpio.BackgroundWorkers
+﻿namespace Scorpio.BackgroundWorkers
 {
     /// <summary>
     /// Options for configuring various behaviors of the default <see cref="IBackgroundWorkerManager"/>  implementation.

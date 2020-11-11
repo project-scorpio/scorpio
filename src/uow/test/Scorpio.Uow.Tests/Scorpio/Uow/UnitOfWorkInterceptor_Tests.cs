@@ -13,10 +13,7 @@ namespace Scorpio.Uow
 {
     public class UnitOfWorkInterceptor_Tests : IntegratedTest<TestModule>
     {
-        protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options)
-        {
-            options.UseAspectCore();
-        }
+        protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options) => options.UseAspectCore();
 
         [Fact]
         public void Method1()
@@ -53,21 +50,12 @@ namespace Scorpio.Uow
     {
         private readonly IUnitOfWorkManager _unitOfWorkManager;
 
-        public UnitOfWorkTestInterface(IUnitOfWorkManager unitOfWorkManager)
-        {
-            _unitOfWorkManager = unitOfWorkManager;
-        }
+        public UnitOfWorkTestInterface(IUnitOfWorkManager unitOfWorkManager) => _unitOfWorkManager = unitOfWorkManager;
 
         [DisableUnitOfWork]
-        public void DisableMethod()
-        {
-            _unitOfWorkManager.Current.ShouldBeOfType<NullUnitOfWork>().Options.Scope.ShouldBe(System.Transactions.TransactionScopeOption.Suppress);
-        }
+        public void DisableMethod() => _unitOfWorkManager.Current.ShouldBeOfType<NullUnitOfWork>().Options.Scope.ShouldBe(System.Transactions.TransactionScopeOption.Suppress);
 
-        public void Method1()
-        {
-            _unitOfWorkManager.Current.ShouldBeOfType<NullUnitOfWork>().Options.Scope.ShouldBe(System.Transactions.TransactionScopeOption.Required);
-        }
+        public void Method1() => _unitOfWorkManager.Current.ShouldBeOfType<NullUnitOfWork>().Options.Scope.ShouldBe(System.Transactions.TransactionScopeOption.Required);
 
         public Task Method1Async()
         {

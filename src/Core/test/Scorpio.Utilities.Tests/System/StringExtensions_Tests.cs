@@ -162,10 +162,7 @@ namespace System
         [InlineData(" Scorpio", " Scorpio")]
         [InlineData("S", "s")]
         [InlineData("", "")]
-        public void ToCamelCase(string value, string expected)
-        {
-            value.ToCamelCase().ShouldBe(expected);
-        }
+        public void ToCamelCase(string value, string expected) => value.ToCamelCase().ShouldBe(expected);
 
         [Theory]
         [InlineData("RemoveEmptyEntries", "Remove empty entries")]
@@ -190,10 +187,7 @@ namespace System
         }
 
         [Fact]
-        public void ToMd5()
-        {
-            "Scorpio".ToMd5().ShouldBe("7c70e2cb2b4a13c4590f6b15c30385fd");
-        }
+        public void ToMd5() => "Scorpio".ToMd5().ShouldBe("7c70e2cb2b4a13c4590f6b15c30385fd");
 
         [Theory]
         [InlineData("scorpio", "Scorpio")]
@@ -202,27 +196,18 @@ namespace System
         [InlineData(" Scorpio", " Scorpio")]
         [InlineData("s", "S")]
         [InlineData("", "")]
-        public void ToPascalCase(string value, string expected)
-        {
-            value.ToPascalCase().ShouldBe(expected);
-        }
+        public void ToPascalCase(string value, string expected) => value.ToPascalCase().ShouldBe(expected);
 
         [Theory]
         [InlineData("Scorpio", 2, "Sc")]
         [InlineData("Scorpio", 10, "Scorpio")]
         [InlineData(null, 10, null)]
-        public void Truncate(string value, int length, string expected)
-        {
-            value.Truncate(length).ShouldBe(expected);
-        }
+        public void Truncate(string value, int length, string expected) => value.Truncate(length).ShouldBe(expected);
         [Theory]
         [InlineData("Scorpio", 2, "io")]
         [InlineData("Scorpio", 10, "Scorpio")]
         [InlineData(null, 10, null)]
-        public void TruncateFromBeginning(string value, int length, string expected)
-        {
-            value.TruncateFromBeginning(length).ShouldBe(expected);
-        }
+        public void TruncateFromBeginning(string value, int length, string expected) => value.TruncateFromBeginning(length).ShouldBe(expected);
 
         [Theory]
         [InlineData("Scorpio", 1, "..", ".")]
@@ -232,20 +217,14 @@ namespace System
         [InlineData(null, 10, "..", null)]
         [InlineData("", 10, "..", "")]
         [InlineData("Scorpio", 0, "..", "")]
-        public void TruncateWithPostfix(string value, int length, string postfix, string expected)
-        {
-            value.TruncateWithPostfix(length, postfix).ShouldBe(expected);
-        }
+        public void TruncateWithPostfix(string value, int length, string postfix, string expected) => value.TruncateWithPostfix(length, postfix).ShouldBe(expected);
 
         [Theory]
         [InlineData("Scorpio", 4, "S...")]
         [InlineData("Scorpio", 7, "Scorpio")]
         [InlineData("Scorpio", 12, "Scorpio")]
         [InlineData(null, 10, null)]
-        public void TruncateWithPostfixDef(string value, int length, string expected)
-        {
-            value.TruncateWithPostfix(length).ShouldBe(expected);
-        }
+        public void TruncateWithPostfixDef(string value, int length, string expected) => value.TruncateWithPostfix(length).ShouldBe(expected);
 
         [Fact]
         public void GetBytes()

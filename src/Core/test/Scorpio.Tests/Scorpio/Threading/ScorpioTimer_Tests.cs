@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 
 using Microsoft.Extensions.DependencyInjection;
-
-using NSubstitute;
-using NSubstitute.Extensions;
 
 using Scorpio.Modularity;
 
@@ -24,9 +18,9 @@ namespace Scorpio.Threading
         {
             using (var timer = ServiceProvider.GetService<ScorpioTimer>())
             {
-                var act=0;
+                var act = 0;
                 timer.Period = 10;
-                timer.Elapsed += (o,e)=>{act++;Thread.Sleep(100); };
+                timer.Elapsed += (o, e) => { act++; Thread.Sleep(100); };
                 timer.RunOnStart = true;
                 timer.Start();
                 await Task.Delay(1000);

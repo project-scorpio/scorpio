@@ -21,10 +21,7 @@ namespace Scorpio.Uow
     {
         private readonly IRepository<TestTable, int> _repository;
 
-        public TestTableService(IRepository<TestTable, int> repository)
-        {
-            _repository = repository;
-        }
+        public TestTableService(IRepository<TestTable, int> repository) => _repository = repository;
 
         public TestTable Add(TestTable testTable)
         {

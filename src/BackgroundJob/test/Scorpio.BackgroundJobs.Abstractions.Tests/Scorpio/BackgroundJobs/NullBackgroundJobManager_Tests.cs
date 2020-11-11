@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging.Abstractions;
 
@@ -11,14 +8,14 @@ using Xunit;
 
 namespace Scorpio.BackgroundJobs
 {
-    public class NullBackgroundJobManager_Tests:BackgroundJobsAbstractionsTestBase
+    public class NullBackgroundJobManager_Tests : BackgroundJobsAbstractionsTestBase
     {
         [Fact]
         public void Test()
         {
-            var manager=ServiceProvider.GetService<IBackgroundJobManager>().ShouldBeOfType<NullBackgroundJobManager>();
+            var manager = ServiceProvider.GetService<IBackgroundJobManager>().ShouldBeOfType<NullBackgroundJobManager>();
             manager.Logger.ShouldBeOfType<NullLogger<NullBackgroundJobManager>>();
-            Should.Throw<ScorpioException>(()=>manager.EnqueueAsync("Test"));
+            Should.Throw<ScorpioException>(() => manager.EnqueueAsync("Test"));
         }
     }
 }

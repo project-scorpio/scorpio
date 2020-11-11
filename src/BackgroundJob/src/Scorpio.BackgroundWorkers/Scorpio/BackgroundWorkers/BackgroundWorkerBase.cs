@@ -21,10 +21,7 @@ namespace Scorpio.BackgroundWorkers
         /// <summary>
         /// Initializes a new instance of the <see cref="BackgroundWorkerBase"/> class.
         /// </summary>
-        protected BackgroundWorkerBase()
-        {
-            Logger = NullLogger<BackgroundWorkerBase>.Instance;
-        }
+        protected BackgroundWorkerBase() => Logger = NullLogger<BackgroundWorkerBase>.Instance;
 
         /// <summary>
         /// Start the current background worker asynchronously.
@@ -52,9 +49,6 @@ namespace Scorpio.BackgroundWorkers
         /// Returns a string that represents the current object.
         /// </summary>
         /// <returns> A string that represents the current object.</returns>
-        public override string ToString()
-        {
-            return GetType().FullName;
-        }
+        public override string ToString() => GetType().FullName;
     }
 }

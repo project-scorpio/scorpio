@@ -18,14 +18,8 @@
         /// 
         /// </summary>
         /// <param name="handler"></param>
-        public SingleInstanceHandlerFactory(IEventHandler handler)
-        {
-            HandlerInstance = handler;
-        }
+        public SingleInstanceHandlerFactory(IEventHandler handler) => HandlerInstance = handler;
 
-        public IEventHandlerDisposeWrapper GetHandler()
-        {
-            return new EventHandlerDisposeWrapper(HandlerInstance);
-        }
+        public IEventHandlerDisposeWrapper GetHandler() => new EventHandlerDisposeWrapper(HandlerInstance);
     }
 }

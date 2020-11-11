@@ -19,18 +19,14 @@ using Xunit;
 
 namespace Scorpio.EventBus
 {
-    public class EventBus_Tests : IntegratedTest<ServicedEventHandlerModule>
+    public class EventBus_Tests : EventBusTestBase
     {
-        private readonly IEventBus _eventBus;
 
-        public EventBus_Tests()
-        {
-            _eventBus = ServiceProvider.GetService<IEventBus>();
-        }
 
         [Fact]
         public void Subscribe_Action()
         {
+            var _eventBus = GetRequiredService<IEventBus>();
             var subscriber = _eventBus.Subscribe<string>(s => Task.Run(() => Console.WriteLine(s)));
             _eventBus.ShouldBeOfType<LocalEventBus>().HandlerFactories.ShouldContainKey(typeof(string));
             _eventBus.ShouldBeOfType<LocalEventBus>()
@@ -47,6 +43,7 @@ namespace Scorpio.EventBus
         [Fact]
         public void Subscribe_S()
         {
+            var _eventBus = GetRequiredService<IEventBus>();
             var mock = new Mock<IEventHandler<string>>();
             var subscriber = _eventBus.Subscribe(mock.Object);
             _eventBus.ShouldBeOfType<LocalEventBus>().HandlerFactories.ShouldContainKey(typeof(string));
@@ -65,6 +62,7 @@ namespace Scorpio.EventBus
         [Fact]
         public void Subscribe_T()
         {
+            var _eventBus = GetRequiredService<IEventBus>();
             var subscriber = _eventBus.Subscribe<string, EmptyEventHandler>();
             _eventBus.ShouldBeOfType<LocalEventBus>().HandlerFactories.ShouldContainKey(typeof(string));
             _eventBus.ShouldBeOfType<LocalEventBus>()
@@ -79,6 +77,7 @@ namespace Scorpio.EventBus
         [Fact]
         public void Subscribe_TT()
         {
+            var _eventBus = GetRequiredService<IEventBus>();
             _eventBus.ShouldBeOfType<LocalEventBus>().HandlerFactories.ShouldContainKey(typeof(TestEventData));
             _eventBus.ShouldBeOfType<LocalEventBus>()
                 .HandlerFactories[typeof(TestEventData)].ShouldHaveSingleItem()
@@ -94,6 +93,7 @@ namespace Scorpio.EventBus
         [Fact]
         public void Subscribe_F()
         {
+            var _eventBus = GetRequiredService<IEventBus>();
             var mock = new Mock<IEventHandlerFactory>();
             var subscriber = _eventBus.Subscribe<string>(mock.Object);
             _eventBus.ShouldBeOfType<LocalEventBus>().HandlerFactories.ShouldContainKey(typeof(string));
@@ -108,7 +108,9 @@ namespace Scorpio.EventBus
         [Fact]
         public void Unsubscribe_A()
         {
+            var _eventBus = GetRequiredService<IEventBus>();
             Task action(string s) => Task.Run(() => Console.WriteLine(s));
+
             _eventBus.ShouldBeOfType<LocalEventBus>().HandlerFactories.Clear();
             _eventBus.Subscribe((Func<string, Task>)action);
             _eventBus.ShouldBeOfType<LocalEventBus>().HandlerFactories.ShouldContainKey(typeof(string));
@@ -124,6 +126,7 @@ namespace Scorpio.EventBus
         [Fact]
         public void Unsubscribe()
         {
+            var _eventBus = GetRequiredService<IEventBus>();
             var mock = new Mock<IEventHandler<string>>();
             _eventBus.Subscribe(mock.Object);
             _eventBus.ShouldBeOfType<LocalEventBus>().HandlerFactories.ShouldContainKey(typeof(string));
@@ -138,6 +141,7 @@ namespace Scorpio.EventBus
         [Fact]
         public void Unsubscribe_F()
         {
+            var _eventBus = GetRequiredService<IEventBus>();
             var mock = new Mock<IEventHandlerFactory>();
             _eventBus.Subscribe<string>(mock.Object);
             _eventBus.ShouldBeOfType<LocalEventBus>().HandlerFactories.ShouldContainKey(typeof(string));
@@ -152,6 +156,7 @@ namespace Scorpio.EventBus
         [Fact]
         public void UnsubscribeAll()
         {
+            var _eventBus = GetRequiredService<IEventBus>();
             _eventBus.UnsubscribeAll<string>();
             _eventBus.ShouldBeOfType<LocalEventBus>()
                 .HandlerFactories[typeof(string)].ShouldBeEmpty();
@@ -161,6 +166,7 @@ namespace Scorpio.EventBus
         [Fact]
         public void Publish()
         {
+            var _eventBus = GetRequiredService<IEventBus>();
             var action = Substitute.For<Func<GenericEventData<string>, Task>>();
             action.Invoke(default).ReturnsForAnyArgs(Task.Delay(100).ContinueWith(t => Task.Delay(100)));
             var action2 = Substitute.For<Func<GenericEventData<object>, Task>>();
@@ -182,6 +188,7 @@ namespace Scorpio.EventBus
         [Fact]
         public void Publish_E()
         {
+            var _eventBus = GetRequiredService<IEventBus>();
             var action = Substitute.For<Func<GenericEventData<string>, Task>>();
             action.Invoke(default).ThrowsForAnyArgs<NotSupportedException>();
             var action2 = Substitute.For<Func<GenericEventData<object>, Task>>();

@@ -13,13 +13,6 @@ namespace Scorpio.AspNetCore.UI
             // Method intentionally left empty.
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            app.UseAuditing();
-            app.Use(async (ctx, t) =>
-            {
-                await ctx.Response.WriteAsync("test");
-            });
-        }
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env) => app.UseAuditing().Use(async (ctx, t) => await ctx.Response.WriteAsync("test"));
     }
 }

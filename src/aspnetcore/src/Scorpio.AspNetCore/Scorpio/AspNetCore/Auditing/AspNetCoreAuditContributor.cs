@@ -21,10 +21,7 @@ namespace Scorpio.AspNetCore.Auditing
         public ILogger<AspNetCoreAuditContributor> Logger { get; set; }
 
 
-        public AspNetCoreAuditContributor(IServiceProvider serviceProvider)
-        {
-            Logger = serviceProvider.GetService<ILoggerFactory>(() => NullLoggerFactory.Instance).CreateLogger<AspNetCoreAuditContributor>();
-        }
+        public AspNetCoreAuditContributor() => Logger =NullLogger<AspNetCoreAuditContributor>.Instance;
         public void PreContribute(AuditContributionContext context)
         {
             var httpContext = context.ServiceProvider.GetRequiredService<IHttpContextAccessor>().HttpContext;
@@ -60,10 +57,7 @@ namespace Scorpio.AspNetCore.Auditing
             }
         }
 
-        protected virtual string GetBrowserInfo(HttpContext httpContext)
-        {
-            return httpContext?.Request?.Headers?["User-Agent"];
-        }
+        protected virtual string GetBrowserInfo(HttpContext httpContext) => httpContext?.Request?.Headers?["User-Agent"];
 
 
         protected virtual string GetClientIpAddress(HttpContext httpContext)

@@ -12,15 +12,9 @@ namespace Scorpio.EntityFrameworkCore.DependencyInjection
     {
         private readonly ScorpioDbContextOptionsBuilder<TDbContext> _optionsBuilder;
 
-        public EfCoreRepositoryRegistrar(ScorpioDbContextOptionsBuilder<TDbContext> optionsBuilder)
-        {
-            _optionsBuilder = optionsBuilder;
-        }
+        public EfCoreRepositoryRegistrar(ScorpioDbContextOptionsBuilder<TDbContext> optionsBuilder) => _optionsBuilder = optionsBuilder;
 
-        public void RegisterRepositories()
-        {
-            typeof(TDbContext).GetEntityTypes().ForEach(RegisterForEntity);
-        }
+        public void RegisterRepositories() => typeof(TDbContext).GetEntityTypes().ForEach(RegisterForEntity);
 
         private void RegisterForEntity(Type entityType)
         {

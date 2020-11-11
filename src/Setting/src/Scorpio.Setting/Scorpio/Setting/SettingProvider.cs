@@ -23,10 +23,7 @@ namespace Scorpio.Setting
         /// 
         /// </summary>
         /// <param name="settingStore"></param>
-        protected SettingProvider(ISettingStore settingStore)
-        {
-            _settingStore = settingStore;
-        }
+        protected SettingProvider(ISettingStore settingStore) => _settingStore = settingStore;
 
         /// <summary>
         /// 

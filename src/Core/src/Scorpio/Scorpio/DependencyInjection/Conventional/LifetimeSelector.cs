@@ -9,14 +9,8 @@ namespace Scorpio.DependencyInjection.Conventional
     {
         private readonly ServiceLifetime _lifetime;
 
-        public LifetimeSelector(ServiceLifetime lifetime)
-        {
-            _lifetime = lifetime;
-        }
-        public ServiceLifetime Select(Type componentType)
-        {
-            return _lifetime;
-        }
+        public LifetimeSelector(ServiceLifetime lifetime) => _lifetime = lifetime;
+        public ServiceLifetime Select(Type componentType) => _lifetime;
     }
 
     internal class ExposeLifetimeSelector : IRegisterAssemblyLifetimeSelector

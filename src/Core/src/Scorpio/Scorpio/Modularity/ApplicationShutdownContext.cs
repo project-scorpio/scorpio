@@ -12,9 +12,6 @@ namespace Scorpio.Modularity
         /// </summary>
         public IServiceProvider ServiceProvider { get; }
 
-        internal ApplicationShutdownContext(IServiceProvider serviceProvider)
-        {
-            ServiceProvider = serviceProvider;
-        }
+        internal ApplicationShutdownContext(IServiceProvider serviceProvider) => ServiceProvider = serviceProvider;
     }
 }

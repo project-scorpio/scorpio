@@ -8,10 +8,7 @@ namespace Scorpio.Setting
     public class SettingManager_Tests : TestBase.IntegratedTest<SettingTestModule>
     {
         private readonly ISettingManager _settingManager;
-        public SettingManager_Tests()
-        {
-            _settingManager = ServiceProvider.GetService<ISettingManager>();
-        }
+        public SettingManager_Tests() => _settingManager = ServiceProvider.GetService<ISettingManager>();
 
         [Fact]
         public void GetValue()

@@ -215,29 +215,37 @@ namespace System.Linq
             };
 
             static MethodInfo GetSumOrAverageWithoutSelector<T>(List<MethodInfo> queryableMethods, string methodName)
-                => queryableMethods.Single(
-                    mi => mi.Name == methodName
-                        && mi.GetParameters().Length == 1
-                        && mi.GetParameters()[0].ParameterType.GetGenericArguments()[0] == typeof(T));
+            {
+                return queryableMethods.Single(
+                                   mi => mi.Name == methodName
+                                       && mi.GetParameters().Length == 1
+                                       && mi.GetParameters()[0].ParameterType.GetGenericArguments()[0] == typeof(T));
+            }
 
             static MethodInfo GetSumOrAverageWithSelector<T>(List<MethodInfo> queryableMethods, string methodName)
-                => queryableMethods.Single(
-                    mi => mi.Name == methodName
-                        && mi.GetParameters().Length == 2
-                        && IsSelector<T>(mi.GetParameters()[1].ParameterType));
+            {
+                return queryableMethods.Single(
+                                   mi => mi.Name == methodName
+                                       && mi.GetParameters().Length == 2
+                                       && IsSelector<T>(mi.GetParameters()[1].ParameterType));
+            }
 
             static bool IsExpressionOfFunc(Type type, int funcGenericArgs = 2)
-                => type.IsGenericType
-                    && type.GetGenericTypeDefinition() == typeof(Expression<>)
-                    && type.GetGenericArguments()[0].IsGenericType
-                    && type.GetGenericArguments()[0].GetGenericArguments().Length == funcGenericArgs;
+            {
+                return type.IsGenericType
+                                   && type.GetGenericTypeDefinition() == typeof(Expression<>)
+                                   && type.GetGenericArguments()[0].IsGenericType
+                                   && type.GetGenericArguments()[0].GetGenericArguments().Length == funcGenericArgs;
+            }
 
             static bool IsSelector<T>(Type type)
-                => type.IsGenericType
-                    && type.GetGenericTypeDefinition() == typeof(Expression<>)
-                    && type.GetGenericArguments()[0].IsGenericType
-                    && type.GetGenericArguments()[0].GetGenericArguments().Length == 2
-                    && type.GetGenericArguments()[0].GetGenericArguments()[1] == typeof(T);
+            {
+                return type.IsGenericType
+                                   && type.GetGenericTypeDefinition() == typeof(Expression<>)
+                                   && type.GetGenericArguments()[0].IsGenericType
+                                   && type.GetGenericArguments()[0].GetGenericArguments().Length == 2
+                                   && type.GetGenericArguments()[0].GetGenericArguments()[1] == typeof(T);
+            }
         }
     }
 }
