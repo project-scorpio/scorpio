@@ -39,8 +39,7 @@ namespace Scorpio.Auditing
             _auditingStore = auditingStore;
             _serviceProvider = serviceProvider;
             _options = options.Value;
-            Logger = serviceProvider.GetService<ILoggerFactory>()?.CreateLogger<AuditingManager>()
-                ?? NullLogger<AuditingManager>.Instance;
+            Logger = NullLogger<AuditingManager>.Instance;
         }
 
         public IAuditSaveHandle BeginScope()

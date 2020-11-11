@@ -26,8 +26,6 @@ namespace Scorpio.Application
 
     internal class TestAppService : ApplicationService, ITestAppService, ITransientDependency
     {
-        public TestAppService(IServiceProvider serviceProvider) : base(serviceProvider)
-        {
-        }
+       
     }
 }

@@ -6,6 +6,7 @@ namespace Scorpio.Uow
 {
     internal class AsyncLocalCurrentUnitOfWorkProvider : ICurrentUnitOfWorkProvider, ISingletonDependency
     {
+        [NotAutowired]
         public IUnitOfWork Current { get => GetCurrentUnitOfWork(); set => SetCurrentUnitOfWork(value); }
 
         private readonly AsyncLocal<IUnitOfWork> _currentUow;

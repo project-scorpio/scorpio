@@ -31,18 +31,18 @@ namespace Scorpio.EventBus
         /// <summary>
         /// 
         /// </summary>
-        protected IServiceProvider ServiceProvider { get; }
+        protected IServiceProvider ServiceProvider { get;}
 
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="options"></param>
         /// <param name="serviceProvider"></param>
-        protected EventBusBase(IOptions<EventBusOptions> options, IServiceProvider serviceProvider)
+        /// <param name="options"></param>
+        protected EventBusBase(IServiceProvider serviceProvider, IOptions<EventBusOptions> options)
         {
-            Options = options.Value;
             ServiceProvider = serviceProvider;
+            Options = options.Value;
             HandlerFactories = new ConcurrentDictionary<Type, List<IEventHandlerFactory>>();
             Init();
         }

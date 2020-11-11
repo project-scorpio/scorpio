@@ -26,9 +26,8 @@ namespace Scorpio.Application.Services
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
         /// <param name="repository"></param>
-        protected CrudApplicationService(IServiceProvider serviceProvider, IRepository<TEntity, TKey> repository) : base(serviceProvider, repository)
+        protected CrudApplicationService(IRepository<TEntity, TKey> repository) : base(repository)
         {
         }
     }
@@ -51,9 +50,8 @@ namespace Scorpio.Application.Services
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
         /// <param name="repository"></param>
-        protected CrudApplicationService(IServiceProvider serviceProvider, IRepository<TEntity, TKey> repository) : base(serviceProvider, repository)
+        protected CrudApplicationService(IRepository<TEntity, TKey> repository) : base(repository)
         {
         }
     }
@@ -77,9 +75,8 @@ namespace Scorpio.Application.Services
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
         /// <param name="repository"></param>
-        protected CrudApplicationService(IServiceProvider serviceProvider, IRepository<TEntity, TKey> repository) : base(serviceProvider, repository)
+        protected CrudApplicationService(IRepository<TEntity, TKey> repository) : base(repository)
         {
         }
     }
@@ -105,9 +102,8 @@ namespace Scorpio.Application.Services
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
         /// <param name="repository"></param>
-        protected CrudApplicationService(IServiceProvider serviceProvider, IRepository<TEntity, TKey> repository) : base(serviceProvider, repository)
+        protected CrudApplicationService(IRepository<TEntity, TKey> repository) : base(repository)
         {
         }
 

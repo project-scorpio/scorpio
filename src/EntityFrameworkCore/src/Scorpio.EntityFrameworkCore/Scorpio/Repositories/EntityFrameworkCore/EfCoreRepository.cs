@@ -49,12 +49,9 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
         /// <param name="contextProvider"></param>
         public EfCoreRepository(
-            IServiceProvider serviceProvider,
             IDbContextProvider<TDbContext> contextProvider)
-            : base(serviceProvider)
         {
             _dbContext = new Lazy<TDbContext>(() => _contextProvider.GetDbContext(), LazyThreadSafetyMode.ExecutionAndPublication);
             _contextProvider = contextProvider;
@@ -347,12 +344,10 @@ namespace Scorpio.Repositories.EntityFrameworkCore
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
         /// <param name="contextProvider"></param>
         public EfCoreRepository(
-            IServiceProvider serviceProvider,
             IDbContextProvider<TDbContext> contextProvider)
-            : base(serviceProvider, contextProvider)
+            : base( contextProvider)
         {
         }
 

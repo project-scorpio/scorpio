@@ -29,9 +29,8 @@ namespace Scorpio.Application.Services
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
         /// <param name="repository"></param>
-        protected CrudApplicationServiceBase(IServiceProvider serviceProvider, IRepository<TEntity, TKey> repository) : base(serviceProvider)
+        protected CrudApplicationServiceBase( IRepository<TEntity, TKey> repository)
         {
             Repository = repository;
             Configuration = new MapperConfiguration(ConfigMapper);

@@ -10,7 +10,6 @@ namespace Scorpio.AspNetCore.Mvc
 {
     public class SimpleController_Tests : AspNetCoreMvcTestBase
     {
-        protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options) => options.UseAspectCore();
 
         [Fact]
         public async Task ActionResult_ContentResult()

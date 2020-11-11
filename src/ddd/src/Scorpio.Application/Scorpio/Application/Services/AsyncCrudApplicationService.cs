@@ -29,9 +29,8 @@ namespace Scorpio.Application.Services
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
         /// <param name="repository"></param>
-        protected AsyncCrudApplicationService(IServiceProvider serviceProvider, IRepository<TEntity, TKey> repository) : base(serviceProvider, repository)
+        protected AsyncCrudApplicationService( IRepository<TEntity, TKey> repository) : base( repository)
         {
         }
     }
@@ -54,9 +53,8 @@ namespace Scorpio.Application.Services
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
         /// <param name="repository"></param>
-        protected AsyncCrudApplicationService(IServiceProvider serviceProvider, IRepository<TEntity, TKey> repository) : base(serviceProvider, repository)
+        protected AsyncCrudApplicationService( IRepository<TEntity, TKey> repository) : base( repository)
         {
         }
     }
@@ -80,9 +78,8 @@ namespace Scorpio.Application.Services
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
         /// <param name="repository"></param>
-        protected AsyncCrudApplicationService(IServiceProvider serviceProvider, IRepository<TEntity, TKey> repository) : base(serviceProvider, repository)
+        protected AsyncCrudApplicationService(IRepository<TEntity, TKey> repository) : base( repository)
         {
         }
     }
@@ -106,14 +103,15 @@ namespace Scorpio.Application.Services
         /// <summary>
         /// 
         /// </summary>
-        public IAsyncQueryableExecuter AsyncQueryableExecuter { get; }
+        public IAsyncQueryableExecuter AsyncQueryableExecuter { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
         /// <param name="repository"></param>
-        protected AsyncCrudApplicationService(IServiceProvider serviceProvider, IRepository<TEntity, TKey> repository) : base(serviceProvider, repository) => AsyncQueryableExecuter = ServiceProvider.GetService<IAsyncQueryableExecuter>();
+        protected AsyncCrudApplicationService( IRepository<TEntity, TKey> repository) : base( repository)
+        {
+        }
 
         /// <summary>
         /// 

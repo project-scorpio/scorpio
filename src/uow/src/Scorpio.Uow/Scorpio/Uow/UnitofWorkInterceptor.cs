@@ -40,7 +40,7 @@ namespace Scorpio.Uow
             }
             using (var uow = _unitOfWorkManager.Begin(options))
             {
-                await next(context);
+             await   context.Invoke(next);
                 if (context.IsAsync())
                 {
                     await uow.CompleteAsync();

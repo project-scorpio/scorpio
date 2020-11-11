@@ -28,10 +28,9 @@ namespace Scorpio.Uow
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
         /// <param name="transactionStrategy"></param>
         /// <param name="options"></param>
-        public EfUnitOfWork(IServiceProvider serviceProvider, IEfTransactionStrategy transactionStrategy, IOptions<UnitOfWorkDefaultOptions> options) : base(serviceProvider, options) => _transactionStrategy = transactionStrategy;
+        public EfUnitOfWork(IEfTransactionStrategy transactionStrategy, IOptions<UnitOfWorkDefaultOptions> options) : base(options) => _transactionStrategy = transactionStrategy;
 
         /// <summary>
         /// 

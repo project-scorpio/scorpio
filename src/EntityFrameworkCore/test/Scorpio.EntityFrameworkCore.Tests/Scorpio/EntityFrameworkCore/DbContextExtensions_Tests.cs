@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Scorpio.EntityFrameworkCore
 {
-    public class DbContextExtensions_Tests : TestBase.IntegratedTest<TestModule>
+    public class DbContextExtensions_Tests : EntityFrameworkCoreTestBase
     {
         [Fact]
         public void HasRelationalTransactionManager()

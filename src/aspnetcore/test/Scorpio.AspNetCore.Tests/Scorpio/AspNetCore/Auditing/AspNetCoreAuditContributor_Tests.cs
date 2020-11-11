@@ -23,7 +23,7 @@ namespace Scorpio.AspNetCore.Auditing
             accessor.HttpContext.Returns((HttpContext)null);
             serviceProvider.Configure().GetService(typeof(IHttpContextAccessor)).Returns(accessor);
             var context = new AuditContributionContext(serviceProvider, new AuditInfo());
-            var contributor = new AspNetCoreAuditContributor(serviceProvider);
+            var contributor = new AspNetCoreAuditContributor();
             Should.NotThrow(() => contributor.PreContribute(context));
         }
 
@@ -35,7 +35,7 @@ namespace Scorpio.AspNetCore.Auditing
             accessor.HttpContext.Returns(new DefaultHttpContext());
             serviceProvider.Configure().GetService(typeof(IHttpContextAccessor)).Returns(accessor);
             var context = new AuditContributionContext(serviceProvider, new AuditInfo());
-            var contributor = new AspNetCoreAuditContributor(serviceProvider);
+            var contributor = new AspNetCoreAuditContributor();
             Should.NotThrow(() => contributor.PreContribute(context));
         }
 

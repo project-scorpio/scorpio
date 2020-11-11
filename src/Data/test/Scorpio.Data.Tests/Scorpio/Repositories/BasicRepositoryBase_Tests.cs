@@ -14,7 +14,7 @@ namespace Scorpio.Repositories
         {
 
             var list = new List<User> { };
-            var repo = new TestRepository(list, new ServiceCollection().BuildServiceProvider());
+            var repo = new TestRepository(list);
             return (repo, list);
         }
 
@@ -22,7 +22,7 @@ namespace Scorpio.Repositories
         {
             private readonly List<User> _sources;
 
-            public TestRepository(List<User> sources, IServiceProvider serviceProvider) : base(serviceProvider) => _sources = sources;
+            public TestRepository(List<User> sources) => _sources = sources;
 
             public override void Delete(User entity, bool autoSave = true) => _sources.Remove(entity);
 

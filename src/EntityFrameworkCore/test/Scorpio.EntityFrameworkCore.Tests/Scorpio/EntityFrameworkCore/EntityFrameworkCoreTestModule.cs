@@ -11,7 +11,7 @@ using Z.EntityFramework.Extensions;
 namespace Scorpio.EntityFrameworkCore
 {
     [DependsOn(typeof(EntityFrameworkCoreModule))]
-    public sealed class TestModule : ScorpioModule
+    public sealed class EntityFrameworkCoreTestModule : ScorpioModule
     {
         public override void ConfigureServices(ConfigureServicesContext context)
         {

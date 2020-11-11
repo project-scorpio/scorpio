@@ -28,7 +28,7 @@ namespace Scorpio.AspNetCore
         /// <param name="context"></param>
         public override void ConfigureServices(ConfigureServicesContext context)
         {
-            context.Services.Options<AuditingOptions>().Configure<IServiceProvider>((options, serviceProvider) => options.Contributors.Add(new AspNetCoreAuditContributor(serviceProvider)));
+            context.Services.Options<AuditingOptions>().Configure<IServiceProvider>((options, serviceProvider) => options.Contributors.Add(new AspNetCoreAuditContributor()));
             context.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             context.Services.AddAuthorization();
 

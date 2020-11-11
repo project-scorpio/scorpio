@@ -8,7 +8,7 @@ namespace Scorpio.Uow
 {
     internal sealed class NullUnitOfWork : UnitOfWorkBase
     {
-        public NullUnitOfWork(IServiceProvider serviceProvider, IOptions<UnitOfWorkDefaultOptions> options) : base(serviceProvider, options)
+        public NullUnitOfWork( IOptions<UnitOfWorkDefaultOptions> options) : base( options)
         {
         }
 

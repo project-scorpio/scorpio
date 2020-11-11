@@ -12,9 +12,7 @@ namespace Scorpio.Uow
 {
     internal class TestDbContext : ScorpioDbContext<TestDbContext>
     {
-        public TestDbContext(IServiceProvider serviceProvider,
-            DbContextOptions<TestDbContext> contextOptions,
-            IOptions<DataFilterOptions> filterOptions) : base(serviceProvider, contextOptions, filterOptions)
+        public TestDbContext(DbContextOptions<TestDbContext> contextOptions) : base(contextOptions)
         {
         }
 

@@ -21,7 +21,7 @@ namespace Scorpio.AspNetCore.Auditing
         public ILogger<AspNetCoreAuditContributor> Logger { get; set; }
 
 
-        public AspNetCoreAuditContributor(IServiceProvider serviceProvider) => Logger = serviceProvider.GetService<ILoggerFactory>(() => NullLoggerFactory.Instance).CreateLogger<AspNetCoreAuditContributor>();
+        public AspNetCoreAuditContributor() => Logger =NullLogger<AspNetCoreAuditContributor>.Instance;
         public void PreContribute(AuditContributionContext context)
         {
             var httpContext = context.ServiceProvider.GetRequiredService<IHttpContextAccessor>().HttpContext;

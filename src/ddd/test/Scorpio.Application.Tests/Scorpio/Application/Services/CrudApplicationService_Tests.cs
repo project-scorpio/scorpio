@@ -20,8 +20,7 @@ namespace Scorpio.Application.Services
         public void Create()
         {
             var repo = Substitute.For<IRepository<Entity, int>>();
-            var serviceProvider = Substitute.For<IServiceProvider>();
-            var service = Substitute.ForPartsOf<CrudApplicationService<Entity, Dto, int>>(serviceProvider, repo);
+            var service = Substitute.ForPartsOf<CrudApplicationService<Entity, Dto, int>>( repo);
             repo.Insert(default).ReturnsForAnyArgs(c => c.Arg<Entity>());
             Should.NotThrow(() => service.Create(new Dto { Id = 10, Name = "Tom" })).ShouldNotBeNull();
             repo.ReceivedWithAnyArgs(1).Insert(default);
@@ -31,8 +30,7 @@ namespace Scorpio.Application.Services
         public void Update()
         {
             var repo = Substitute.For<IRepository<Entity, int>>();
-            var serviceProvider = Substitute.For<IServiceProvider>();
-            var service = Substitute.ForPartsOf<CrudApplicationService<Entity, Dto, int>>(serviceProvider, repo);
+            var service = Substitute.ForPartsOf<CrudApplicationService<Entity, Dto, int>>( repo);
             repo.Update(default).ReturnsForAnyArgs(c => c.Arg<Entity>());
             repo.Get(default).ReturnsForAnyArgs(new Entity());
             Should.NotThrow(() => service.Update(10, new Dto { Id = 10, Name = "Tom" })).ShouldNotBeNull();
@@ -43,8 +41,7 @@ namespace Scorpio.Application.Services
         public void Get()
         {
             var repo = Substitute.For<IRepository<Entity, int>>();
-            var serviceProvider = Substitute.For<IServiceProvider>();
-            var service = Substitute.ForPartsOf<CrudApplicationService<Entity, Dto, int>>(serviceProvider, repo);
+            var service = Substitute.ForPartsOf<CrudApplicationService<Entity, Dto, int>>( repo);
             repo.Get(default).ReturnsForAnyArgs(new Entity { Id = 10, Name = "Tom" });
             Should.NotThrow(() => service.Get(10))
                   .Action(d => d.ShouldNotBeNull())
@@ -57,8 +54,7 @@ namespace Scorpio.Application.Services
         public void Delete()
         {
             var repo = Substitute.For<IRepository<Entity, int>>();
-            var serviceProvider = Substitute.For<IServiceProvider>();
-            var service = Substitute.ForPartsOf<CrudApplicationService<Entity, Dto, int>>(serviceProvider, repo);
+            var service = Substitute.ForPartsOf<CrudApplicationService<Entity, Dto, int>>( repo);
             Should.NotThrow(() => service.Delete(10));
             repo.ReceivedWithAnyArgs(1).Delete(1);
         }
@@ -89,10 +85,9 @@ namespace Scorpio.Application.Services
                 new Entity{Id=10,Name="Tom10"},
             }.AsQueryable();
             var repo = Substitute.For<IRepository<Entity, int>>();
-            var serviceProvider = Substitute.For<IServiceProvider>();
             repo.Expression.Returns(list.Expression);
             repo.Provider.Returns(list.Provider);
-            var service = Substitute.ForPartsOf<CrudApplicationService<Entity, Dto, int>>(serviceProvider, repo);
+            var service = Substitute.ForPartsOf<CrudApplicationService<Entity, Dto, int>>( repo);
             Should.NotThrow(() => service.GetList(new ListRequest<Dto>(1, 2)))
                   .Action(r => r.Count.ShouldBe(2))
                   .Action(r => r.TotalCount.ShouldBe(10));

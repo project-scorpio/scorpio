@@ -20,8 +20,7 @@ namespace Scorpio.Repositories
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
-        protected RepositoryBase(IServiceProvider serviceProvider) : base(serviceProvider)
+        protected RepositoryBase()
         {
         }
 
@@ -138,8 +137,7 @@ namespace Scorpio.Repositories
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
-        protected RepositoryBase(IServiceProvider serviceProvider) : base(serviceProvider)
+        protected RepositoryBase()
         {
         }
 

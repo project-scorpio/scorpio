@@ -48,7 +48,7 @@ namespace Scorpio.Application.Dtos
             repo.Expression.Returns(list.Expression);
             repo.Provider.Returns(list.Provider);
             repo.ElementType.Returns(list.ElementType);
-            var service = Substitute.ForPartsOf<CrudApplicationService<Entity, Dto, int>>(serviceProvider, repo);
+            var service = Substitute.ForPartsOf<CrudApplicationService<Entity, Dto, int>>( repo);
             return service;
         }
 

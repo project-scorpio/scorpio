@@ -21,7 +21,7 @@ namespace Scorpio.EventBus
         public ILogger<LocalEventBus> Logger { get; set; }
 
 
-        public LocalEventBus(IOptions<EventBusOptions> options, IServiceProvider serviceProvider) : base(options, serviceProvider) => Logger = (serviceProvider.GetService<ILoggerFactory>() ?? NullLoggerFactory.Instance).CreateLogger<LocalEventBus>();
+        public LocalEventBus(IServiceProvider serviceProvider, IOptions<EventBusOptions> options) : base(serviceProvider, options) => Logger = NullLogger<LocalEventBus>.Instance;
 
 
         public override async Task PublishAsync(Type eventType, object eventData) => await TriggerHandlersAsync(eventType, eventData);

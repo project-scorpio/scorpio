@@ -11,7 +11,7 @@ using Xunit;
 
 namespace Scorpio.EntityFrameworkCore
 {
-    public class ScorpioDbContext_Tests : IntegratedTest<TestModule>
+    public class ScorpioDbContext_Tests : EntityFrameworkCoreTestBase
     {
 
         public ScorpioDbContext_Tests()

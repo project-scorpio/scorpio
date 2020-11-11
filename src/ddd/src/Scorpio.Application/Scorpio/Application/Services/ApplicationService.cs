@@ -17,12 +17,13 @@ namespace Scorpio.Application.Services
         /// <summary>
         /// 
         /// </summary>
-        protected IServiceProvider ServiceProvider { get; }
+        protected IServiceProvider ServiceProvider { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
-        protected ApplicationService(IServiceProvider serviceProvider) => ServiceProvider = serviceProvider;
+        protected ApplicationService()
+        {
+        }
     }
 }

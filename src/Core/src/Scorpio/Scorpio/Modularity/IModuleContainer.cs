@@ -5,7 +5,7 @@ namespace Scorpio.Modularity
     /// <summary>
     /// 
     /// </summary>
-    internal interface IModuleContainer
+    public interface IModuleContainer
     {
         /// <summary>
         /// 

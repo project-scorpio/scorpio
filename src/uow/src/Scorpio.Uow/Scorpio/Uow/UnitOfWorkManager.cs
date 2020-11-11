@@ -55,7 +55,7 @@ namespace Scorpio.Uow
 
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
 
-                unitOfWork.Outer = outerUow;
+                unitOfWork.SetOuter(outerUow);
 
                 _currentUnitOfWorkProvider.Current = unitOfWork;
 

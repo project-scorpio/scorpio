@@ -19,12 +19,17 @@ namespace Scorpio.AspNetCore.TestBase
         where TStartup : class
 
     {
+
+        protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options)
+        {
+            options.UseAspectCore();
+        }
         protected override IBootstrapper Bootstrapper => ServiceProvider.GetService<IBootstrapper>();
         protected TestServer Server { get; }
 
         protected HttpClient Client { get; }
 
-        public override IServiceProvider ServiceProvider { get; }
+        public override IServiceProvider ServiceProvider { get;}
 
         private readonly IHost _host;
 
@@ -43,12 +48,12 @@ namespace Scorpio.AspNetCore.TestBase
 
         protected virtual IHostBuilder CreateHostBuilder()
         {
-            return Host.CreateDefaultBuilder().AddScorpio<TStartupModule>(SetBootstrapperCreationOptions)
+            return Host.CreateDefaultBuilder()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<TStartup>();
                     webBuilder.UseTestServer();
-                });
+                }).AddScorpio<TStartupModule>(SetBootstrapperCreationOptions);
         }
 
         protected override void DisposeInternal(bool disposing)

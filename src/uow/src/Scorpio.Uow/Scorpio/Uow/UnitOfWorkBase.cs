@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 
 using Microsoft.Extensions.Options;
 
+using Scorpio.DependencyInjection;
+
 namespace Scorpio.Uow
 {
     /// <summary>
@@ -25,7 +27,7 @@ namespace Scorpio.Uow
         /// <summary>
         /// 
         /// </summary>
-        public IUnitOfWork Outer { get; set; }
+        public IUnitOfWork Outer { get; private set; }
 
         /// <summary>
         /// 
@@ -40,7 +42,7 @@ namespace Scorpio.Uow
         /// <summary>
         /// 
         /// </summary>
-        public IServiceProvider ServiceProvider { get; }
+        public IServiceProvider ServiceProvider { get; set; }
 
         /// <summary>
         /// 
@@ -61,12 +63,10 @@ namespace Scorpio.Uow
         /// 
         /// </summary>
         protected UnitOfWorkBase(
-            IServiceProvider serviceProvider,
              IOptions<UnitOfWorkDefaultOptions> options
             )
         {
             _defaultOptions = options.Value;
-            ServiceProvider = serviceProvider;
         }
         /// <summary>
         /// 
@@ -120,7 +120,14 @@ namespace Scorpio.Uow
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="outer"></param>
+        public virtual void SetOuter(IUnitOfWork outer)
+        {
+            Outer = outer;
+        }
 
         /// <summary>
         /// 

@@ -9,7 +9,7 @@ using Xunit;
 
 namespace Scorpio.EntityFrameworkCore
 {
-    public class DefaultDbContextProvider_Tests : IntegratedTest<TestModule>
+    public class DefaultDbContextProvider_Tests : IntegratedTest<EntityFrameworkCoreTestModule>
     {
         [Fact]
         public void GetDbContext()

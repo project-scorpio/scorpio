@@ -23,12 +23,12 @@ namespace Scorpio.Repositories
         /// <summary>
         /// 
         /// </summary>
-        protected IServiceProvider ServiceProvider { get; }
+        protected IServiceProvider ServiceProvider { get;set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public ICancellationTokenProvider CancellationTokenProvider { get; }
+        public ICancellationTokenProvider CancellationTokenProvider { get; set;}
 
         private protected Task Invoke(Action action, CancellationToken cancellationToken) => Task.Run(action, CancellationTokenProvider.FallbackToProvider(cancellationToken));
         private protected Task<TResult> Invoke<TResult>(Func<TResult> action, CancellationToken cancellationToken) => Task.Run(action, GetCancellationToken(cancellationToken));
@@ -36,11 +36,7 @@ namespace Scorpio.Repositories
         /// <summary>
         /// 
         /// </summary>
-        protected BasicRepositoryBase(IServiceProvider serviceProvider)
-        {
-            ServiceProvider = serviceProvider;
-            CancellationTokenProvider = ServiceProvider.GetService<ICancellationTokenProvider>() ?? NoneCancellationTokenProvider.Instance;
-        }
+        protected BasicRepositoryBase() => CancellationTokenProvider = NoneCancellationTokenProvider.Instance;
 
         /// <summary>
         /// 
@@ -154,8 +150,7 @@ namespace Scorpio.Repositories
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="serviceProvider"></param>
-        protected BasicRepositoryBase(IServiceProvider serviceProvider) : base(serviceProvider)
+        protected BasicRepositoryBase()
         {
         }
 
