@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Scorpio.DependencyInjection
 {
-    public class PropertyInjector_Tests : AspectIntegratedTest<AspectTestModule>
+    public class PropertyInjector_Tests : AspectIntegratedTest
     {
         protected override Bootstrapper CreateBootstrapper(IServiceCollection services)
         {

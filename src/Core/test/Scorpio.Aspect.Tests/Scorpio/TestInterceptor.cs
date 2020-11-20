@@ -1,27 +1,29 @@
 ﻿using System.Threading.Tasks;
 
-using AspectCore.DynamicProxy;
+using Scorpio.DynamicProxy;
+
 namespace Scorpio
 {
-    internal class TestInterceptor : AbstractInterceptor
+    internal class TestInterceptor : IInterceptor
     {
-        public string ServiceMethodName { get; private set; }
-        public override async Task Invoke(AspectContext context, AspectDelegate next)
-        {
 
-            ServiceMethodName = context.ServiceMethod.Name;
-            if (context.ServiceMethod.Name == "Test")
+        public string ServiceMethodName { get; private set; }
+
+        public Task InterceptAsync(IMethodInvocation invocation)
+        {
+            ServiceMethodName = invocation.Method.Name;
+            if (ServiceMethodName == "Test")
             {
-                if (context.Implementation is InterceptorTestService service)
+                if (invocation.TargetObject is InterceptorTestService service)
                 {
                     service.InterceptorInvoked = true;
                 }
-                if (context.Implementation is NonInterceptorTestService service2)
+                if (invocation.TargetObject is NonInterceptorTestService service2)
                 {
                     service2.InterceptorInvoked = true;
                 }
             }
-            await next(context);
+            return invocation.ProceedAsync();
         }
     }
 }

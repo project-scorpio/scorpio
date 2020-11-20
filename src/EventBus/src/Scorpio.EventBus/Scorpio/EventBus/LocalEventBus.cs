@@ -40,12 +40,12 @@ namespace Scorpio.EventBus
                           .Locking(factories => factories.RemoveAll(
                                   factory =>
                                   {
-                                      if (!(factory is SingleInstanceHandlerFactory singleInstanceFactory))
+                                      if (factory is not SingleInstanceHandlerFactory singleInstanceFactory)
                                       {
                                           return false;
                                       }
 
-                                      if (!(singleInstanceFactory.HandlerInstance is ActionEventHandler<TEvent> actionHandler))
+                                      if (singleInstanceFactory.HandlerInstance is not ActionEventHandler<TEvent> actionHandler)
                                       {
                                           return false;
                                       }

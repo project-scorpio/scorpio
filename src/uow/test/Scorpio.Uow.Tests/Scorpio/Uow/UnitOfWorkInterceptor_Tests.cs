@@ -3,7 +3,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
 using Scorpio.DependencyInjection;
-using Scorpio.TestBase;
 
 using Shouldly;
 
@@ -11,9 +10,8 @@ using Xunit;
 
 namespace Scorpio.Uow
 {
-    public class UnitOfWorkInterceptor_Tests : IntegratedTest<TestModule>
+    public class UnitOfWorkInterceptor_Tests : UnitOfWorkTestBase
     {
-        protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options) => options.UseAspectCore();
 
         [Fact]
         public void Method1()
@@ -37,6 +35,7 @@ namespace Scorpio.Uow
         }
     }
 
+    [UnitOfWork]
     public interface IUnitOfWorkTestInterface
     {
         void Method1();
@@ -53,11 +52,11 @@ namespace Scorpio.Uow
         public UnitOfWorkTestInterface(IUnitOfWorkManager unitOfWorkManager) => _unitOfWorkManager = unitOfWorkManager;
 
         [DisableUnitOfWork]
-        public void DisableMethod() => _unitOfWorkManager.Current.ShouldBeOfType<NullUnitOfWork>().Options.Scope.ShouldBe(System.Transactions.TransactionScopeOption.Suppress);
+        public  virtual void DisableMethod() => _unitOfWorkManager.Current.ShouldBeOfType<NullUnitOfWork>().Options.Scope.ShouldBe(System.Transactions.TransactionScopeOption.Suppress);
 
-        public void Method1() => _unitOfWorkManager.Current.ShouldBeOfType<NullUnitOfWork>().Options.Scope.ShouldBe(System.Transactions.TransactionScopeOption.Required);
+        public virtual void Method1() => _unitOfWorkManager.Current.ShouldBeOfType<NullUnitOfWork>().Options.Scope.ShouldBe(System.Transactions.TransactionScopeOption.Required);
 
-        public Task Method1Async()
+        public virtual Task Method1Async()
         {
             _unitOfWorkManager.Current.ShouldBeOfType<NullUnitOfWork>();
             return Task.CompletedTask;

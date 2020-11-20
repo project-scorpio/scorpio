@@ -31,6 +31,7 @@ namespace Scorpio.Uow
                     new TestTable { Id = 6, StringValue = "Row6" }
                     );
         }
+
     }
 
     public class TestTable : Entity<int>, ISoftDelete, IHasExtraProperties

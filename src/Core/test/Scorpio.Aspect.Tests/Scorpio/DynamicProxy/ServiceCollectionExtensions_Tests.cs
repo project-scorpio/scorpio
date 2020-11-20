@@ -4,7 +4,7 @@ using Shouldly;
 using Xunit;
 namespace Scorpio.DynamicProxy
 {
-    public class ServiceCollectionExtensions_Tests : AspectIntegratedTest<AspectTestModule>
+    public class ServiceCollectionExtensions_Tests : AspectIntegratedTest
     {
         [Fact]
         public void ConventionalRegistrar()

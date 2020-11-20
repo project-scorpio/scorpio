@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Scorpio.Aspects
 {
-    public class CrossCuttingConcerns_Tests : AspectIntegratedTest<AspectTestModule>
+    public class CrossCuttingConcerns_Tests : AspectIntegratedTest
     {
         [Fact]
         public void Applying()

@@ -170,15 +170,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{D98E38DF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{3E955A4E-DA9E-4FF3-B0B3-81829D43FBF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Application.Tests", "ddd\test\Scorpio.Application.Tests\Scorpio.Application.Tests.csproj", "{7258E10B-4A9E-4FFA-B2C3-C683A7707925}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Application.Tests", "ddd\test\Scorpio.Application.Tests\Scorpio.Application.Tests.csproj", "{7258E10B-4A9E-4FFA-B2C3-C683A7707925}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Domain.Tests", "ddd\test\Scorpio.Domain.Tests\Scorpio.Domain.Tests.csproj", "{50ACFC45-4D38-4641-BBA8-C2945A60C8D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Domain.Tests", "ddd\test\Scorpio.Domain.Tests\Scorpio.Domain.Tests.csproj", "{50ACFC45-4D38-4641-BBA8-C2945A60C8D2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D5DF0C3C-154E-41A1-83F3-70DFAC9631A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Uow.EntityFrameworkCore.Tests", "uow\test\Scorpio.Uow.EntityFrameworkCore.Tests\Scorpio.Uow.EntityFrameworkCore.Tests.csproj", "{8ECF4412-215E-483A-BBD6-220FD132260B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Uow.EntityFrameworkCore.Tests", "uow\test\Scorpio.Uow.EntityFrameworkCore.Tests\Scorpio.Uow.EntityFrameworkCore.Tests.csproj", "{8ECF4412-215E-483A-BBD6-220FD132260B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.Uow.Tests", "uow\test\Scorpio.Uow.Tests\Scorpio.Uow.Tests.csproj", "{72A14F95-FE89-4CF9-8D9F-63697FF48C26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Uow.Tests", "uow\test\Scorpio.Uow.Tests\Scorpio.Uow.Tests.csproj", "{72A14F95-FE89-4CF9-8D9F-63697FF48C26}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{44E643CE-25E4-46EE-BEA0-A07C10A96CFD}"
 EndProject
@@ -196,19 +196,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BackgroundJob", "Background
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{12C963F1-72AA-4E96-B5C4-A5F90EF110E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.BackgroundJobs", "BackgroundJob\src\Scorpio.BackgroundJobs\Scorpio.BackgroundJobs.csproj", "{D140AB47-F15F-4288-BE6A-91E390B9B818}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.BackgroundJobs", "BackgroundJob\src\Scorpio.BackgroundJobs\Scorpio.BackgroundJobs.csproj", "{D140AB47-F15F-4288-BE6A-91E390B9B818}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.BackgroundJobs.Abstractions", "BackgroundJob\src\Scorpio.BackgroundJobs.Abstractions\Scorpio.BackgroundJobs.Abstractions.csproj", "{DC326130-9D73-4911-99AE-BA71F8509413}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.BackgroundJobs.Abstractions", "BackgroundJob\src\Scorpio.BackgroundJobs.Abstractions\Scorpio.BackgroundJobs.Abstractions.csproj", "{DC326130-9D73-4911-99AE-BA71F8509413}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.BackgroundWorkers", "BackgroundJob\src\Scorpio.BackgroundWorkers\Scorpio.BackgroundWorkers.csproj", "{B20E1D6E-22DE-49D2-916F-E893D409CE24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.BackgroundWorkers", "BackgroundJob\src\Scorpio.BackgroundWorkers\Scorpio.BackgroundWorkers.csproj", "{B20E1D6E-22DE-49D2-916F-E893D409CE24}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{868CCAFC-EC43-4523-914D-60E4F68529C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.BackgroundJobs.Abstractions.Tests", "BackgroundJob\test\Scorpio.BackgroundJobs.Abstractions.Tests\Scorpio.BackgroundJobs.Abstractions.Tests.csproj", "{F64770E9-A94C-4530-803A-D299DC03362B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.BackgroundJobs.Abstractions.Tests", "BackgroundJob\test\Scorpio.BackgroundJobs.Abstractions.Tests\Scorpio.BackgroundJobs.Abstractions.Tests.csproj", "{F64770E9-A94C-4530-803A-D299DC03362B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.BackgroundJobs.Tests", "BackgroundJob\test\Scorpio.BackgroundJobs.Tests\Scorpio.BackgroundJobs.Tests.csproj", "{134D9E5D-5440-407B-9376-D8192E508718}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.BackgroundJobs.Tests", "BackgroundJob\test\Scorpio.BackgroundJobs.Tests\Scorpio.BackgroundJobs.Tests.csproj", "{134D9E5D-5440-407B-9376-D8192E508718}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.BackgroundWorkers.Tests", "BackgroundJob\test\Scorpio.BackgroundWorkers.Tests\Scorpio.BackgroundWorkers.Tests.csproj", "{7D81E3F3-7C03-4A55-96CF-10792395BE58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.BackgroundWorkers.Tests", "BackgroundJob\test\Scorpio.BackgroundWorkers.Tests\Scorpio.BackgroundWorkers.Tests.csproj", "{7D81E3F3-7C03-4A55-96CF-10792395BE58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

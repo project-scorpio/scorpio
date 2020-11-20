@@ -4,15 +4,13 @@ using Microsoft.Extensions.DependencyInjection;
 
 using NSubstitute;
 
-using Scorpio.TestBase;
-
 using Shouldly;
 
 using Xunit;
 
 namespace Scorpio.Uow
 {
-    public class UnitOfWork_Tests : IntegratedTest<TestModule>
+    public class UnitOfWork_Tests : UnitOfWorkTestBase
     {
         [Fact]
         public void Complete()
