@@ -6,15 +6,16 @@
     <RootNamespace />
     <PackageTags>Scorpio;Aspect;dependencyinjection;Modularity</PackageTags>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
-    <CodeAnalysisRuleSet>..\..\..\..\.sonarlint\project-scorpio_scorpiocsharp.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\..\..\.sonarlint\project-scorpio_scorpiocsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\..\.sonarlint\project-scorpio_scorpio\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+  </ItemGroup>
 
 
  
 
-  <ItemGroup>
-    <AdditionalFiles Include="..\..\..\..\.sonarlint\project-scorpio_scorpio\CSharp\SonarLint.xml" Link="SonarLint.xml" />
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AspectCore.Extensions.DependencyInjection" Version="2.0.0" />
   </ItemGroup>

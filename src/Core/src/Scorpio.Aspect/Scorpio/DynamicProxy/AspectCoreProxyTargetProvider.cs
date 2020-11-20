@@ -7,6 +7,7 @@ namespace Scorpio.DynamicProxy
 {
     internal class AspectCoreProxyTargetProvider : IProxyTargetProvider
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S3011:Reflection should not be used to increase accessibility of classes, methods, or fields", Justification = " <挂起>")]
         public object GetTarget(object proxy)
         {
             if (!proxy.IsProxy())

@@ -5,13 +5,12 @@
 		<AssemblyTitle>Scorpio aspnet core library</AssemblyTitle>
 		<RootNamespace />
 		<OutputType>Library</OutputType>
-		<CodeAnalysisRuleSet>Scorpio.AspNetCore.ruleset</CodeAnalysisRuleSet>
+		<CodeAnalysisRuleSet>..\..\..\.sonarlint\project-scorpio_scorpiocsharp.ruleset</CodeAnalysisRuleSet>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<AdditionalFiles Include="..\..\..\..\.sonarlint\project-scorpio_scorpio\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+	  <AdditionalFiles Include="..\..\..\.sonarlint\project-scorpio_scorpio\CSharp\SonarLint.xml" Link="SonarLint.xml" />
 	</ItemGroup>
-
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\Auditing\src\Scorpio.Auditing\Scorpio.Auditing.csproj" />

@@ -5,23 +5,14 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyTitle>Scorpio entity framework core library</AssemblyTitle>
     <RootNamespace />
-
-  </PropertyGroup>
-
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <CodeAnalysisRuleSet>Scorpio.EntityFrameworkCore.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <CodeAnalysisRuleSet>Scorpio.EntityFrameworkCore.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\..\..\.sonarlint\project-scorpio_scorpiocsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
 
   <ItemGroup>
-    <AdditionalFiles Include="..\..\..\..\.sonarlint\project-scorpio_scorpio\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+    <AdditionalFiles Include="..\..\..\.sonarlint\project-scorpio_scorpio\CSharp\SonarLint.xml" Link="SonarLint.xml" />
   </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="../../../Data/src/Scorpio.Data/Scorpio.Data.csproj" />
   </ItemGroup>
