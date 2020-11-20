@@ -10,18 +10,16 @@ namespace Scorpio.DynamicProxy
     /// </summary>
     public static class IMethodInvocationRuntimeExtensions
     {
-           private static readonly ConcurrentDictionary<MethodInfo, bool> _isAsyncCache = new ConcurrentDictionary<MethodInfo, bool>();
-     /// <summary>
+        private static readonly ConcurrentDictionary<MethodInfo, bool> _isAsyncCache = new ConcurrentDictionary<MethodInfo, bool>();
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="invocation"></param>
         /// <returns></returns>
-          public static bool IsAsync(this IMethodInvocation  invocation)
+        public static bool IsAsync(this IMethodInvocation invocation)
         {
-            if (invocation == null)
-            {
-                throw new ArgumentNullException(nameof(invocation));
-            }
+
+            Check.NotNull(invocation,nameof(invocation));
 
             var isAsyncFromMetaData = _isAsyncCache.GetOrAdd(invocation.Method, IsAsyncFromMetaData);
             if (isAsyncFromMetaData)
@@ -37,7 +35,7 @@ namespace Scorpio.DynamicProxy
             return false;
         }
 
-          private static bool IsAsyncFromMetaData(MethodInfo method)
+        private static bool IsAsyncFromMetaData(MethodInfo method)
         {
             if (IsAsyncType(method.ReturnType.GetTypeInfo()))
             {
@@ -47,24 +45,24 @@ namespace Scorpio.DynamicProxy
             return false;
         }
 
-           private static bool IsAsyncType(TypeInfo typeInfo)
+        private static bool IsAsyncType(TypeInfo typeInfo)
         {
-            if (typeInfo.AsType()==typeof(Task))
+            if (typeInfo.AsType() == typeof(Task))
             {
                 return true;
             }
 
-            if (typeInfo.AsType()==typeof(Task<>))
+            if (typeInfo.IsGenericType && typeInfo.GetGenericTypeDefinition() == typeof(Task<>))
             {
                 return true;
             }
 
-            if (typeInfo.AsType()==typeof(ValueTask))
+            if (typeInfo.AsType() == typeof(ValueTask))
             {
                 return true;
             }
 
-            if (typeInfo.AsType()==typeof(ValueTask<>))
+            if (typeInfo.IsGenericType && typeInfo.GetGenericTypeDefinition() == typeof(ValueTask<>))
             {
                 return true;
             }
