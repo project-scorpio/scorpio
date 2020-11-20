@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Transactions;
 
-using Scorpio.DependencyInjection;
-
 namespace Scorpio.Uow
 {
     /// <summary>

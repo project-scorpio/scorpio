@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using Scorpio.Threading;
+
 namespace Scorpio.DynamicProxy
 {
     /// <summary>
@@ -22,6 +24,6 @@ namespace Scorpio.DynamicProxy
         /// 
         /// </summary>
         /// <param name="provider"></param>
-        public void Add(IProxyTargetProvider provider) => _providers.Add(provider);
+        public void Add(IProxyTargetProvider provider) => _providers.Locking(p=>p.Add(provider));
     }
 }
