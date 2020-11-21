@@ -5,7 +5,6 @@ using Microsoft.Extensions.Hosting;
 
 namespace Scorpio.AspNetCore.Mvc
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:删除未使用的参数", Justification = "<挂起>")]
     public class Startup
     {
         public void ConfigureServices(IServiceCollection services)

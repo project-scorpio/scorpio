@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
 using Scorpio.Data;
 using Scorpio.Entities;
@@ -11,7 +9,7 @@ namespace Scorpio.EntityFrameworkCore
 {
     internal class TestDbContext : ScorpioDbContext<TestDbContext>
     {
-        public TestDbContext( DbContextOptions<TestDbContext> contextOptions) : base( contextOptions)
+        public TestDbContext(DbContextOptions<TestDbContext> contextOptions) : base(contextOptions)
         {
         }
 

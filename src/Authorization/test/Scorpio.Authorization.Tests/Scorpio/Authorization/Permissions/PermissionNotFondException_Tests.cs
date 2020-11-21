@@ -32,7 +32,6 @@ namespace Scorpio.Authorization.Permissions
         }
 
         [Fact]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Vulnerability", "S5773:Types allowed to be deserialized should be restricted", Justification = "<挂起>")]
         public void Serializable()
         {
             var ex = new PermissionNotFondException("Test", "Message", new ScorpioException("InnerException"));

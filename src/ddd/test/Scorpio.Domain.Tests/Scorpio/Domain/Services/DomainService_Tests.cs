@@ -1,14 +1,6 @@
-﻿using System;
-
-
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
+﻿using Microsoft.Extensions.Logging.Abstractions;
 
 using NSubstitute;
-
-using Scorpio.Timing;
-using Scorpio.Uow;
 
 using Shouldly;
 

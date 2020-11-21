@@ -42,7 +42,7 @@ namespace Scorpio.Aspects
             }
 
 
-            if (!(obj.UnProxy() is IAvoidDuplicateCrossCuttingConcerns crossCuttingEnabledObj))
+            if (obj.UnProxy() is not IAvoidDuplicateCrossCuttingConcerns crossCuttingEnabledObj)
             {
                 return;
             }
@@ -90,7 +90,7 @@ namespace Scorpio.Aspects
         public static string[] GetApplieds(object obj)
         {
             Check.NotNull(obj, nameof(obj));
-            if (!(obj.UnProxy() is IAvoidDuplicateCrossCuttingConcerns crossCuttingEnabledObj))
+            if (obj.UnProxy() is not IAvoidDuplicateCrossCuttingConcerns crossCuttingEnabledObj)
             {
                 return new string[0];
             }

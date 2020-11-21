@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 
 using Microsoft.Extensions.Options;
@@ -8,7 +7,7 @@ namespace Scorpio.Uow
 {
     internal sealed class NullUnitOfWork : UnitOfWorkBase
     {
-        public NullUnitOfWork( IOptions<UnitOfWorkDefaultOptions> options) : base( options)
+        public NullUnitOfWork(IOptions<UnitOfWorkDefaultOptions> options) : base(options)
         {
         }
 

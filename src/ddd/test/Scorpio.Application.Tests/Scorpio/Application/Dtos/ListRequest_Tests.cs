@@ -44,11 +44,10 @@ namespace Scorpio.Application.Dtos
                 new Entity{Id=10,IsDeleted=false,Name="Tom10"},
             }.AsQueryable();
             var repo = Substitute.For<IRepository<Entity, int>>();
-            var serviceProvider = Substitute.For<IServiceProvider>();
             repo.Expression.Returns(list.Expression);
             repo.Provider.Returns(list.Provider);
             repo.ElementType.Returns(list.ElementType);
-            var service = Substitute.ForPartsOf<CrudApplicationService<Entity, Dto, int>>( repo);
+            var service = Substitute.ForPartsOf<CrudApplicationService<Entity, Dto, int>>(repo);
             return service;
         }
 

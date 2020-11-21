@@ -1,15 +1,13 @@
 ﻿
 using Microsoft.Extensions.DependencyInjection;
 
-using Scorpio.TestBase;
-
 using Shouldly;
 
 using Xunit;
 
 namespace Scorpio.Uow
 {
-    public class UnitOfWorkManager_Tests : IntegratedTest<TestModule>
+    public class UnitOfWorkManager_Tests : UnitOfWorkTestBase
     {
         [Fact]
         public void Begin()

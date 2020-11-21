@@ -7,6 +7,7 @@ using Scorpio.Repositories.EntityFrameworkCore;
 
 namespace Scorpio.Uow
 {
+    [UnitOfWork]
     public interface ITestTableService
     {
         public TestTable Get(int id);
@@ -16,7 +17,6 @@ namespace Scorpio.Uow
         public Task<TestTable> AddAsync(TestTable testTable);
     }
 
-    [UnitOfWork]
     public class TestTableService : ITestTableService, ITransientDependency
     {
         private readonly IRepository<TestTable, int> _repository;

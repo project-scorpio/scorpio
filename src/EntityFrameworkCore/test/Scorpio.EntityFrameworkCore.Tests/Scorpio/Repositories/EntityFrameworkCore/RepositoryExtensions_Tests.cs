@@ -6,7 +6,6 @@ using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
 
 using Scorpio.EntityFrameworkCore;
-using Scorpio.TestBase;
 
 using Shouldly;
 

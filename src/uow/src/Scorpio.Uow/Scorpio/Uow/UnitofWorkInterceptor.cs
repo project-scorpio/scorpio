@@ -1,15 +1,17 @@
 ﻿using System.Reflection;
 using System.Threading.Tasks;
 
-using AspectCore.DynamicProxy;
 
 using Microsoft.Extensions.Options;
+
+using Scorpio.DynamicProxy;
+
 namespace Scorpio.Uow
 {
     /// <summary>
     /// 
     /// </summary>
-    public class UnitOfWorkInterceptor : AbstractInterceptor
+    public class UnitOfWorkInterceptor : IInterceptor
     {
         private readonly IUnitOfWorkManager _unitOfWorkManager;
         private readonly UnitOfWorkDefaultOptions _defaultOptions;
@@ -25,25 +27,25 @@ namespace Scorpio.Uow
             _unitOfWorkManager = unitOfWorkManager;
             _defaultOptions = options.Value;
         }
+
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="context"></param>
-        /// <param name="next"></param>
+        /// <param name="invocation"></param>
         /// <returns></returns>
-        public override async Task Invoke(AspectContext context, AspectDelegate next)
+        public async Task InterceptAsync(IMethodInvocation invocation)
         {
             var options = CreateOptions();
-            if (context.ServiceMethod.AttributeExists<DisableUnitOfWorkAttribute>() || context.ImplementationMethod.AttributeExists<DisableUnitOfWorkAttribute>())
+            if (invocation.Method.AttributeExists<DisableUnitOfWorkAttribute>())
             {
                 options.Scope = System.Transactions.TransactionScopeOption.Suppress;
             }
             using (var uow = _unitOfWorkManager.Begin(options))
             {
-             await   context.Invoke(next);
-                if (context.IsAsync())
+                await invocation.ProceedAsync();
+                if (invocation.IsAsync())
                 {
-                    await uow.CompleteAsync();
+                    await uow.CompleteAsync(); 
                 }
                 else
                 {

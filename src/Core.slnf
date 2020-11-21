@@ -8,7 +8,11 @@
       "Core\\test\\Scorpio.Aspect.Tests\\Scorpio.Aspect.Tests.csproj",
       "Core\\test\\Scorpio.TestBase\\Scorpio.TestBase.csproj",
       "Core\\test\\Scorpio.Tests\\Scorpio.Tests.csproj",
-      "Core\\test\\Scorpio.Utilities.Tests\\Scorpio.Utilities.Tests.csproj"
+      "Core\\test\\Scorpio.Utilities.Tests\\Scorpio.Utilities.Tests.csproj",
+      "aspectcore\\src\\AspectCore.Abstractions\\AspectCore.Abstractions.csproj",
+      "aspectcore\\src\\AspectCore.Core\\AspectCore.Core.csproj",
+      "aspectcore\\src\\AspectCore.Extensions.DependencyInjection\\AspectCore.Extensions.DependencyInjection.csproj",
+      "aspectcore\\src\\AspectCore.Extensions.Reflection\\AspectCore.Extensions.Reflection.csproj"
     ]
   }
 }

@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using Microsoft.Extensions.DependencyInjection;
-
 using NSubstitute;
-using NSubstitute.Extensions;
 
 using Scorpio.Application.Dtos;
 using Scorpio.Entities;
@@ -25,7 +22,7 @@ namespace Scorpio.Application.Services
         public void Create()
         {
             var repo = Substitute.For<IRepository<Entity, int>>();
-            var service = Substitute.ForPartsOf<AsyncCrudApplicationService<Entity, Dto, int>>( repo);
+            var service = Substitute.ForPartsOf<AsyncCrudApplicationService<Entity, Dto, int>>(repo);
             repo.InsertAsync(default).ReturnsForAnyArgs(c => Task.FromResult(c.Arg<Entity>()));
             Should.NotThrow(() => service.CreateAsync(new Dto { Id = 10, Name = "Tom" })).ShouldNotBeNull();
             repo.ReceivedWithAnyArgs(1).InsertAsync(default);
@@ -35,7 +32,7 @@ namespace Scorpio.Application.Services
         public void Update()
         {
             var repo = Substitute.For<IRepository<Entity, int>>();
-            var service = Substitute.ForPartsOf<AsyncCrudApplicationService<Entity, Dto, int>>( repo);
+            var service = Substitute.ForPartsOf<AsyncCrudApplicationService<Entity, Dto, int>>(repo);
             repo.UpdateAsync(default).ReturnsForAnyArgs(c => Task.FromResult(c.Arg<Entity>()));
             repo.GetAsync(default).ReturnsForAnyArgs(Task.FromResult(new Entity()));
             Should.NotThrow(() => service.UpdateAsync(10, new Dto { Id = 10, Name = "Tom" })).ShouldNotBeNull();
@@ -47,7 +44,7 @@ namespace Scorpio.Application.Services
         public void Get()
         {
             var repo = Substitute.For<IRepository<Entity, int>>();
-            var service = Substitute.ForPartsOf<AsyncCrudApplicationService<Entity, Dto, int>>( repo);
+            var service = Substitute.ForPartsOf<AsyncCrudApplicationService<Entity, Dto, int>>(repo);
             repo.GetAsync(default).ReturnsForAnyArgs(Task.FromResult(new Entity { Id = 10, Name = "Tom" }));
             Should.NotThrow(() => service.GetAsync(10)).Action(d => d.ShouldNotBeNull()).Action(d => d.Name.ShouldBe("Tom"));
             repo.ReceivedWithAnyArgs(1).GetAsync(default);
@@ -57,7 +54,7 @@ namespace Scorpio.Application.Services
         public void Delete()
         {
             var repo = Substitute.For<IRepository<Entity, int>>();
-            var service = Substitute.ForPartsOf<AsyncCrudApplicationService<Entity, Dto, int>>( repo);
+            var service = Substitute.ForPartsOf<AsyncCrudApplicationService<Entity, Dto, int>>(repo);
             Should.NotThrow(() => service.DeleteAsync(10));
             repo.ReceivedWithAnyArgs(1).DeleteAsync(1);
         }
@@ -84,8 +81,8 @@ namespace Scorpio.Application.Services
             repo.Provider.Returns(list.Provider);
             executer.CountAsync<Entity>(default).ReturnsForAnyArgs(c => Task.FromResult(c.Arg<IQueryable<Entity>>().Count()));
             executer.ToListAsync<Dto>(default).ReturnsForAnyArgs(c => Task.FromResult(c.Arg<IQueryable<Dto>>().ToList()));
-            var service = Substitute.ForPartsOf<AsyncCrudApplicationService<Entity, Dto, int>>( repo);
-            service.AsyncQueryableExecuter=executer;
+            var service = Substitute.ForPartsOf<AsyncCrudApplicationService<Entity, Dto, int>>(repo);
+            service.AsyncQueryableExecuter = executer;
 
             Should.NotThrow(() => service.GetListAsync(new ListRequest<Dto>(1, 2)))
                   .Action(r => r.Count.ShouldBe(2))

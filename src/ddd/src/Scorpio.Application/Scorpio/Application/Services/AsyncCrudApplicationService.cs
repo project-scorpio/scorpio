@@ -1,10 +1,7 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 
 using AutoMapper.QueryableExtensions;
-
-using Microsoft.Extensions.DependencyInjection;
 
 using Scorpio.Application.Dtos;
 using Scorpio.Entities;
@@ -30,7 +27,7 @@ namespace Scorpio.Application.Services
         /// 
         /// </summary>
         /// <param name="repository"></param>
-        protected AsyncCrudApplicationService( IRepository<TEntity, TKey> repository) : base( repository)
+        protected AsyncCrudApplicationService(IRepository<TEntity, TKey> repository) : base(repository)
         {
         }
     }
@@ -54,7 +51,7 @@ namespace Scorpio.Application.Services
         /// 
         /// </summary>
         /// <param name="repository"></param>
-        protected AsyncCrudApplicationService( IRepository<TEntity, TKey> repository) : base( repository)
+        protected AsyncCrudApplicationService(IRepository<TEntity, TKey> repository) : base(repository)
         {
         }
     }
@@ -79,7 +76,7 @@ namespace Scorpio.Application.Services
         /// 
         /// </summary>
         /// <param name="repository"></param>
-        protected AsyncCrudApplicationService(IRepository<TEntity, TKey> repository) : base( repository)
+        protected AsyncCrudApplicationService(IRepository<TEntity, TKey> repository) : base(repository)
         {
         }
     }
@@ -109,7 +106,7 @@ namespace Scorpio.Application.Services
         /// 
         /// </summary>
         /// <param name="repository"></param>
-        protected AsyncCrudApplicationService( IRepository<TEntity, TKey> repository) : base( repository)
+        protected AsyncCrudApplicationService(IRepository<TEntity, TKey> repository) : base(repository)
         {
         }
 

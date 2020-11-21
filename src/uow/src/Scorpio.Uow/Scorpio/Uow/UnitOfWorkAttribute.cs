@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Threading.Tasks;
 using System.Transactions;
-
-using AspectCore.DynamicProxy;
-
-using Microsoft.Extensions.DependencyInjection;
 
 using Scorpio.DependencyInjection;
 
@@ -13,7 +8,7 @@ namespace Scorpio.Uow
     /// <summary>
     /// 
     /// </summary>
-    public sealed class UnitOfWorkAttribute : AbstractInterceptorAttribute
+    public sealed class UnitOfWorkAttribute : Attribute
     {
         /// <summary>
         /// Scope option.
@@ -46,18 +41,7 @@ namespace Scorpio.Uow
         public TransactionScopeAsyncFlowOption? AsyncFlowOption { get; set; }
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="context"></param>
-        /// <param name="next"></param>
-        /// <returns></returns>
-        public override Task Invoke(AspectContext context, AspectDelegate next)
-        {
-            var interceptor = context.ServiceProvider.GetService<UnitOfWorkInterceptor>();
-            interceptor.SetOptions(this);
-            return interceptor.Invoke(context, next);
-        }
+       
 
         internal UnitOfWorkOptions Normalize(UnitOfWorkOptions options)
         {

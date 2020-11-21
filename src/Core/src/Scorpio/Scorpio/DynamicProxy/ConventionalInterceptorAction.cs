@@ -1,11 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
-
-using AspectCore.Configuration;
-using AspectCore.DynamicProxy;
-using AspectCore.Extensions.DependencyInjection;
-
-using Microsoft.Extensions.DependencyInjection.Extensions;
+﻿
+using Microsoft.Extensions.DependencyInjection;
 
 using Scorpio.Conventional;
 
@@ -31,13 +25,14 @@ namespace Scorpio.DynamicProxy
         /// <param name="context"></param>
         protected override void Action(IConventionalContext context)
         {
-            var typeList = context.GetOrDefault(Interceptors, default(ITypeList<IInterceptor>));
-            var predicate = context.TypePredicate.Compile();
-            typeList.ForEach(t =>
+            var action = context.Services.GetSingletonInstanceOrNull<IProxyConventionalAction>();
+            if (action == null)
             {
-                context.Services.TryAddTransient(t);
-                _ = context.Services.ConfigureDynamicProxy(c => c.Interceptors.AddServiced(t, m => !m.AttributeExists<NonAspectAttribute>() && predicate(m.DeclaringType)));
-            });
+                return;
+            }
+            var typeList = context.GetOrDefault(Interceptors, default(ITypeList<IInterceptor>));
+            var ctx=new ProxyConventionalActionContext(context.Services,context.TypePredicate,typeList);
+            action.Action(ctx);
         }
     }
 }

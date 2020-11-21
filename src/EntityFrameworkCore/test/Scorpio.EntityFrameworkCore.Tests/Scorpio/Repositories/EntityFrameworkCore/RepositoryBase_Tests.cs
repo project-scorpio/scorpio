@@ -2,11 +2,10 @@
 using Microsoft.Extensions.DependencyInjection;
 
 using Scorpio.EntityFrameworkCore;
-using Scorpio.TestBase;
 
 namespace Scorpio.Repositories.EntityFrameworkCore
 {
-    public partial class RepositoryBase_Tests :EntityFrameworkCoreTestBase
+    public partial class RepositoryBase_Tests : EntityFrameworkCoreTestBase
     {
         private IRepository<TestTable, int> GetUsers()
         {

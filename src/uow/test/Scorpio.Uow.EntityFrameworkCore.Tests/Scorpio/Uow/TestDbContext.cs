@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
 using Scorpio.Data;
 using Scorpio.Entities;
@@ -33,6 +31,7 @@ namespace Scorpio.Uow
                     new TestTable { Id = 6, StringValue = "Row6" }
                     );
         }
+
     }
 
     public class TestTable : Entity<int>, ISoftDelete, IHasExtraProperties

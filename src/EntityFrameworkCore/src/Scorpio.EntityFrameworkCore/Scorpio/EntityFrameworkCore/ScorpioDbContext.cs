@@ -80,13 +80,12 @@ namespace Scorpio.EntityFrameworkCore
         /// 
         /// </summary>
         /// <param name="contextOptions"></param>
-        /// <param name="filterOptions"></param>
         protected ScorpioDbContext(DbContextOptions contextOptions)
             : base(contextOptions)
         {
             _configureEntityPropertiesMethodInfo = ((Action<ModelBuilder, IMutableEntityType>)ConfigureEntityProperties<object>).Method.GetGenericMethodDefinition();
             _scorpioDbContextOptions = new Lazy<ScorpioDbContextOptions>(() => ServiceProvider.GetService<IOptions<ScorpioDbContextOptions>>().Value);
-            _filterOptions =new Lazy<DataFilterOptions>(()=>ServiceProvider.GetService<IOptions<DataFilterOptions>>().Value);
+            _filterOptions = new Lazy<DataFilterOptions>(() => ServiceProvider.GetService<IOptions<DataFilterOptions>>().Value);
             Logger = NullLoggerFactory.Instance.CreateLogger(GetType());
         }
 

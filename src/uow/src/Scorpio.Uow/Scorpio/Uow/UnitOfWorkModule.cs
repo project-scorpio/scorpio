@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
+using Scorpio.Application;
 using Scorpio.Modularity;
 namespace Scorpio.Uow
 {
@@ -9,7 +10,11 @@ namespace Scorpio.Uow
     /// </summary>
     public sealed class UnitOfWorkModule : ScorpioModule
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
+        public override void PreConfigureServices(ConfigureServicesContext context) => context.AddConventionalRegistrar<ConventionalRegistrar>();
         /// <summary>
         /// 
         /// </summary>

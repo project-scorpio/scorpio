@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Scorpio.Uow.EntityFrameworkCore\Scorpio.Uow.EntityFrameworkCore.csproj" />
-  </ItemGroup>
+      <ProjectReference Include="..\..\..\Core\src\Scorpio.Aspect\Scorpio.Aspect.csproj" />
+</ItemGroup>
 
 </Project>

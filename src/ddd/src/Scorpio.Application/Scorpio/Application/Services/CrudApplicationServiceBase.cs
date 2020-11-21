@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Linq.Dynamic.Core;
 
 using AutoMapper;
@@ -30,7 +29,7 @@ namespace Scorpio.Application.Services
         /// 
         /// </summary>
         /// <param name="repository"></param>
-        protected CrudApplicationServiceBase( IRepository<TEntity, TKey> repository)
+        protected CrudApplicationServiceBase(IRepository<TEntity, TKey> repository)
         {
             Repository = repository;
             Configuration = new MapperConfiguration(ConfigMapper);

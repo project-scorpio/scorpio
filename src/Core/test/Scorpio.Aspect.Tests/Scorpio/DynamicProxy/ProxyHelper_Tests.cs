@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Scorpio.DynamicProxy
 {
-    public class ProxyHelper_Tests : AspectIntegratedTest<AspectTestModule>
+    public class ProxyHelper_Tests : AspectIntegratedTest
     {
         [Fact]
         public void UnProxy()
