@@ -1,5 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<RuleSet Name="SonarQube - scorpio Sonar way" ToolsVersion="16.0">
-  <Include Path="..\..\..\.sonarlint\project-scorpio_scorpiocsharp.ruleset" Action="Default" />
-  <Include Path="..\..\..\.sonarlint\project-scorpio_scorpiocsharp.ruleset" Action="Default" />
-</RuleSet>

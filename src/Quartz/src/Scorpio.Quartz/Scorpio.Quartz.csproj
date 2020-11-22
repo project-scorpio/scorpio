@@ -12,6 +12,7 @@
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<RootNamespace />
     <SonarQubeExclude>true</SonarQubeExclude>
+    <CodeAnalysisRuleSet>..\..\..\.sonarlint\project-scorpio_scorpiocsharp.ruleset</CodeAnalysisRuleSet>
 
   </PropertyGroup>
 

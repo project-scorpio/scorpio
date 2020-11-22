@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<RuleSet Name="New Rule Set" Description=" " ToolsVersion="16.0">
-  <Include Path="..\..\..\..\.sonarlint\project-scorpio_scorpiocsharp.ruleset" Action="Default" />
-  <Rules AnalyzerId="Microsoft.EntityFrameworkCore.Analyzers" RuleNamespace="Microsoft.EntityFrameworkCore.Analyzers">
-    <Rule Id="EF1001" Action="Error" />
-  </Rules>
-</RuleSet>
