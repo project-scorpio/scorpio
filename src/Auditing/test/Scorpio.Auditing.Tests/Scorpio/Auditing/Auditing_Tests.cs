@@ -11,7 +11,7 @@ using Shouldly;
 using Xunit;
 namespace Scorpio.Auditing
 {
-    public class Auditing_Tests : IntegratedTest<AuditingTestModule>
+    public class Auditing_Tests : AuditingTestBase
     {
         private readonly IAuditingManager _auditingManager;
 
@@ -82,12 +82,10 @@ namespace Scorpio.Auditing
             store.Info.ShouldBeNull();
         }
 
-        protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options) => options.UseAspectCore();
-
     }
 
-    [Audited]
-    public interface IAttributedAuditingInterface
+     [Audited]
+   public interface IAttributedAuditingInterface
     {
         void Test(string value, int num);
 
@@ -98,6 +96,7 @@ namespace Scorpio.Auditing
 
     }
 
+    [Audited]
     internal class AttributedAuditingInterface : IAttributedAuditingInterface, DependencyInjection.ITransientDependency
     {
         public void Test(string value, int num)
@@ -105,7 +104,8 @@ namespace Scorpio.Auditing
             // Method intentionally left empty.
         }
 
-        public void Test2(string value, int num)
+           [DisableAuditing]
+     public void Test2(string value, int num)
         {
             // Method intentionally left empty.
         }

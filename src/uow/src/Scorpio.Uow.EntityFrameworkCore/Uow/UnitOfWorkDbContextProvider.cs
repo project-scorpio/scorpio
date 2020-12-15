@@ -19,7 +19,7 @@ namespace Scorpio.Uow
         }
         public TDbContext GetDbContext()
         {
-            if (_unitOfWorkManager.Current is not EfUnitOfWork uow)
+            if (!(_unitOfWorkManager.Current is  EfUnitOfWork uow))
             {
                 throw new NotSupportedException($"UnitOfWork is not type of {typeof(EfUnitOfWork).FullName}.");
             }
