@@ -31,7 +31,7 @@ namespace Scorpio.DynamicProxy
                 return;
             }
             var typeList = context.GetOrDefault(Interceptors, default(ITypeList<IInterceptor>));
-            var ctx=new ProxyConventionalActionContext(context.Services,context.TypePredicate,typeList);
+            var ctx=new ProxyConventionalActionContext(context.Services,context.Types,context.TypePredicate,typeList);
             action.Action(ctx);
         }
     }

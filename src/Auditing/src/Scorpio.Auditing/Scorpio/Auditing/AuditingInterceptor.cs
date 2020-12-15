@@ -3,11 +3,10 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Threading.Tasks;
 
-using AspectCore.DynamicProxy;
-
 using Microsoft.Extensions.Options;
 
 using Scorpio.Aspects;
+using Scorpio.DynamicProxy;
 using Scorpio.Security;
 
 namespace Scorpio.Auditing
@@ -15,7 +14,7 @@ namespace Scorpio.Auditing
     /// <summary>
     /// 
     /// </summary>
-    public class AuditingInterceptor : AbstractInterceptor
+    public class AuditingInterceptor : IInterceptor
     {
         /// <summary>
         /// 
@@ -45,24 +44,21 @@ namespace Scorpio.Auditing
             _options = options.Value;
         }
 
-
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="context"></param>
-        /// <param name="next"></param>
+        /// <param name="invocation"></param>
         /// <returns></returns>
-        public override async Task Invoke(AspectContext context, AspectDelegate next)
-        {
-            if (!ShouldIntercept(context, out var audit, out var auditAction))
+        public async Task InterceptAsync(IMethodInvocation invocation){
+             if (!ShouldIntercept(invocation, out var audit, out var auditAction))
             {
-                await next(context);
+                await invocation.ProceedAsync();
                 return;
             }
             var stopwatch = Stopwatch.StartNew();
             try
             {
-                await next(context);
+                await invocation.ProceedAsync();
             }
             catch (Exception ex)
             {
@@ -84,7 +80,7 @@ namespace Scorpio.Auditing
         /// <param name="audit"></param>
         /// <param name="auditAction"></param>
         /// <returns></returns>
-        protected virtual bool ShouldIntercept(AspectContext context, out AuditInfo audit, out AuditActionInfo auditAction)
+        protected virtual bool ShouldIntercept(IMethodInvocation context, out AuditInfo audit, out AuditActionInfo auditAction)
         {
             audit = null;
             auditAction = null;
@@ -96,12 +92,15 @@ namespace Scorpio.Auditing
             {
                 return false;
             }
-            if (CrossCuttingConcerns.IsApplied(context.Implementation, Concerns))
+            if (CrossCuttingConcerns.IsApplied(context.TargetObject, Concerns))
             {
                 return false;
             }
-
-            if (context.ServiceMethod.AttributeExists<DisableAuditingAttribute>() || context.ImplementationMethod.AttributeExists<DisableAuditingAttribute>())
+            if (context.Method.AttributeExists<AuditedAttribute>())
+            {
+                return true;
+            }
+            if (context.Method.AttributeExists<DisableAuditingAttribute>())
             {
                 return false;
             }
@@ -112,14 +111,14 @@ namespace Scorpio.Auditing
                 return false;
             }
 
-            if (!_auditingHelper.ShouldSaveAudit(context.ImplementationMethod, true) && !_auditingHelper.ShouldSaveAudit(context.ServiceMethod, true))
+            if (!_auditingHelper.ShouldSaveAudit(context.Method, true))
             {
                 return false;
             }
 
             audit = auditScope.Info;
             auditAction = _auditingHelper.CreateAuditAction(
-                context.Implementation.GetType(), context.ImplementationMethod, context.Parameters
+                context.TargetObject.GetType(), context.Method, context.Arguments
             );
 
             return true;

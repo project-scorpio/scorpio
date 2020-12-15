@@ -1,16 +1,20 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Threading.Tasks;
 
-using AspectCore.DynamicProxy;
 
 using Microsoft.Extensions.DependencyInjection;
+
+using Scorpio.DynamicProxy;
+
 namespace Scorpio.Authorization
 {
     /// <summary>
     /// Authorization interceptor.
     /// </summary>
-    internal class AuthorizationInterceptor : AbstractInterceptor
+    internal class AuthorizationInterceptor : IInterceptor
     {
+
         /// <summary>
         /// 
         /// </summary>
@@ -26,32 +30,39 @@ namespace Scorpio.Authorization
         internal string[] Permissions { get; private set; }
 
         internal bool RequireAllPermissions { get; private set; }
-        /// <summary>
-        /// Invoke the specified context and next.
-        /// </summary>
-        /// <returns>The invoke.</returns>
-        /// <param name="context">Context.</param>
-        /// <param name="next">Next.</param>
-        public override async Task Invoke(AspectContext context, AspectDelegate next)
+
+
+        public IServiceProvider ServiceProvider { get; }
+
+        public AuthorizationInterceptor(IServiceProvider serviceProvider)
         {
-            if (Aspects.CrossCuttingConcerns.IsApplied(context.Implementation, Concern))
+            ServiceProvider = serviceProvider;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="invocation"></param>
+        /// <returns></returns>
+        public async Task InterceptAsync(IMethodInvocation invocation)
+        {
+            if (Aspects.CrossCuttingConcerns.IsApplied(invocation.TargetObject, Concern))
             {
-                await next(context);
+                await invocation.ProceedAsync();
                 return;
             }
-            GetPermission(context);
-            var service = context.ServiceProvider.GetRequiredService<IAuthorizationService>();
-            var authorizationContext = new InvocationAuthorizationContext(Permissions, RequireAllPermissions, context.ServiceMethod);
+            GetPermission(invocation);
+            var service = ServiceProvider.GetRequiredService<IAuthorizationService>();
+            var authorizationContext = new InvocationAuthorizationContext(Permissions, RequireAllPermissions, invocation.Method);
             await service.CheckAsync(authorizationContext);
-            await next(context);
+            await invocation.ProceedAsync();
         }
 
-        internal void GetPermission(AspectContext context)
+
+
+        internal void GetPermission(IMethodInvocation context)
         {
-            var attribute = context.ImplementationMethod.GetAttribute<AuthorizeAttribute>() ??
-                 context.ServiceMethod.GetAttribute<AuthorizeAttribute>() ??
-                 context.Implementation.GetAttribute<AuthorizeAttribute>() ??
-                 context.ServiceMethod.DeclaringType.GetAttribute<AuthorizeAttribute>();
+            var attribute = context.Method.GetAttribute<AuthorizeAttribute>() ??
+                 context.TargetObject.GetAttribute<AuthorizeAttribute>();
             Permissions = attribute?.Permissions;
             RequireAllPermissions = attribute?.RequireAllPermissions ?? false;
         }

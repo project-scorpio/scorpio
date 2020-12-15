@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-using AspectCore.DynamicProxy;
 
 using Microsoft.Extensions.DependencyInjection;
 namespace Scorpio.Authorization
@@ -10,7 +9,7 @@ namespace Scorpio.Authorization
     /// 
     /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.Method, AllowMultiple = false)]
-    public class AuthorizeAttribute : AbstractInterceptorAttribute
+    public class AuthorizeAttribute : Attribute
     {
 
         /// <summary>
@@ -28,16 +27,6 @@ namespace Scorpio.Authorization
         /// </summary>
         public bool RequireAllPermissions { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="context"></param>
-        /// <param name="next"></param>
-        /// <returns></returns>
-        public override async Task Invoke(AspectContext context, AspectDelegate next)
-        {
-            var interceptor = context.ServiceProvider.GetService<AuthorizationInterceptor>();
-            await interceptor.Invoke(context, next);
-        }
+       
     }
 }

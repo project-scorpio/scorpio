@@ -3,7 +3,7 @@
     <AdditionalFiles Include="..\..\..\.sonarlint\project-scorpio_scorpio\CSharp\SonarLint.xml" Link="SonarLint.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="../../../Core/src\Scorpio.Aspect\Scorpio.Aspect.csproj" />
+    <ProjectReference Include="../../../Core/src\Scorpio\Scorpio.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

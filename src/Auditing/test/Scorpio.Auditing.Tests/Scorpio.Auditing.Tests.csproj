@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Scorpio.Auditing\Scorpio.Auditing.csproj" />
+    <ProjectReference Include="..\..\..\aspect\src\Scorpio.AspectCore\Scorpio.AspectCore.csproj" />
   </ItemGroup>
 
 </Project>

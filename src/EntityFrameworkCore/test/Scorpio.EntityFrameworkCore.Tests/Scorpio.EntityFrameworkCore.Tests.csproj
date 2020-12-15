@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\Core\src\Scorpio.Aspect\Scorpio.Aspect.csproj" />
+    <ProjectReference Include="..\..\..\aspect\src\Scorpio.AspectCore\Scorpio.AspectCore.csproj" />
         <ProjectReference Include="..\..\src\Scorpio.EntityFrameworkCore\Scorpio.EntityFrameworkCore.csproj" />
     </ItemGroup>
     <ItemGroup>

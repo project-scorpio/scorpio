@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Scorpio.EventBus\Scorpio.EventBus.csproj" />
+    <ProjectReference Include="..\..\..\aspect\src\Scorpio.AspectCore\Scorpio.AspectCore.csproj" />
   </ItemGroup>
 
 </Project>

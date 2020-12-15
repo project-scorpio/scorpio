@@ -16,7 +16,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="../../../Core/src/Scorpio/Scorpio.csproj" />
-    <ProjectReference Include="../../../Core/src/Scorpio.Aspect/Scorpio.Aspect.csproj" />
   </ItemGroup>
 
 </Project>
