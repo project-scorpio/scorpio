@@ -9,6 +9,6 @@
         /// 
         /// </summary>
         /// <param name="context"></param>
-        void Action(ProxyConventionalActionContext context);
+        void Action(IProxyConventionalActionContext context);
     }
 }

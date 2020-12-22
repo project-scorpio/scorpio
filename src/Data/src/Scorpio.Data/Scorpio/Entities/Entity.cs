@@ -90,7 +90,7 @@ namespace Scorpio.Entities
         /// <returns></returns>
         public override bool Equals(object obj)
         {
-            if (obj is not Entity<TPrimaryKey> other)
+            if (!(obj is Entity<TPrimaryKey> other))
             {
                 return false;
             }

@@ -1,4 +1,7 @@
 ﻿
+using System.Linq;
+using System.Reflection;
+
 using Microsoft.Extensions.DependencyInjection;
 
 using Scorpio.Conventional;
@@ -31,7 +34,7 @@ namespace Scorpio.DynamicProxy
                 return;
             }
             var typeList = context.GetOrDefault(Interceptors, default(ITypeList<IInterceptor>));
-            var ctx=new ProxyConventionalActionContext(context.Services,context.TypePredicate,typeList);
+            var ctx=new ProxyConventionalActionContext(context.Services,context.Types.Where(t=>t.IsStandardType()),context.TypePredicate,typeList);
             action.Action(ctx);
         }
     }

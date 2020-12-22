@@ -4,14 +4,12 @@ using AspectCore.DynamicProxy;
 
 using Microsoft.Extensions.DependencyInjection;
 
-using Scorpio.TestBase;
-
 using Shouldly;
 
 using Xunit;
 namespace Scorpio.Auditing
 {
-    public class Auditing_Tests : IntegratedTest<AuditingTestModule>
+    public class Auditing_Tests : AuditingTestBase
     {
         private readonly IAuditingManager _auditingManager;
 
@@ -82,29 +80,27 @@ namespace Scorpio.Auditing
             store.Info.ShouldBeNull();
         }
 
-        protected override void SetBootstrapperCreationOptions(BootstrapperCreationOptions options) => options.UseAspectCore();
-
     }
 
-    [Audited]
-    public interface IAttributedAuditingInterface
+  public interface IAttributedAuditingInterface
     {
         void Test(string value, int num);
 
-        [DisableAuditing]
         void Test2(string value, int num);
 
         void TestEx(string value, int num);
 
     }
 
-    internal class AttributedAuditingInterface : IAttributedAuditingInterface, DependencyInjection.ITransientDependency
+    [Audited]
+    public class AttributedAuditingInterface : IAttributedAuditingInterface, DependencyInjection.ITransientDependency
     {
         public void Test(string value, int num)
         {
             // Method intentionally left empty.
         }
 
+        [DisableAuditing]
         public void Test2(string value, int num)
         {
             // Method intentionally left empty.

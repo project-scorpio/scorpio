@@ -26,7 +26,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Badge
         {
             var badgeType = TagHelper.BadgeType;
 
-            if (badgeType is not BadgeType.Default and not BadgeType._)
+            if (badgeType != BadgeType.Default && badgeType != BadgeType._)
             {
                 output.AddClass(badgeType.ToClassName("badge-{0}"));
             }

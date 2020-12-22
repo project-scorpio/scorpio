@@ -1,25 +1,12 @@
-﻿using System.Threading.Tasks;
-
-using AspectCore.DynamicProxy;
-
-using Microsoft.Extensions.DependencyInjection;
+﻿using System;
 namespace Scorpio.Auditing
 {
     /// <summary>
     /// 
     /// </summary>
-    public class AuditedAttribute : AbstractInterceptorAttribute
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.Method, AllowMultiple = false)]
+    public class AuditedAttribute : Attribute
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="context"></param>
-        /// <param name="next"></param>
-        /// <returns></returns>
-        public override async Task Invoke(AspectContext context, AspectDelegate next)
-        {
-            var interceptor = context.ServiceProvider.GetService<AuditingInterceptor>();
-            await interceptor.Invoke(context, next);
-        }
+
     }
 }

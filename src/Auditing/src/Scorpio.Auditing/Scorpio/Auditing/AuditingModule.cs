@@ -17,7 +17,7 @@ namespace Scorpio.Auditing
         public override void PreConfigureServices(ConfigureServicesContext context)
         {
             context.Services.AddOptions<AuditingOptions>();
-            base.PreConfigureServices(context);
+            context.AddConventionalRegistrar<ConventionalRegistrar>();
         }
 
         /// <summary>

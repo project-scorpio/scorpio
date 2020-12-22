@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Scorpio.Authorization\Scorpio.Authorization.csproj" />
+    <ProjectReference Include="..\..\..\aspect\src\Scorpio.AspectCore\Scorpio.AspectCore.csproj" />
   </ItemGroup>
 
 </Project>

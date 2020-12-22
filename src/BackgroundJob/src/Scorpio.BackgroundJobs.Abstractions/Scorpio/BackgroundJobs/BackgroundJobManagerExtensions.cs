@@ -12,6 +12,6 @@ namespace Scorpio.BackgroundJobs
         /// </summary>
         /// <param name="backgroundJobManager"></param>
         /// <returns></returns>
-        public static bool IsAvailable(this IBackgroundJobManager backgroundJobManager) => backgroundJobManager is not NullBackgroundJobManager;
+        public static bool IsAvailable(this IBackgroundJobManager backgroundJobManager) => !(backgroundJobManager is NullBackgroundJobManager);
     }
 }

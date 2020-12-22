@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../../../Core/src/Scorpio.Aspect/Scorpio.Aspect.csproj" />
+    <ProjectReference Include="../../../Core/src/Scorpio/Scorpio.csproj" />
   </ItemGroup>
 
 </Project>

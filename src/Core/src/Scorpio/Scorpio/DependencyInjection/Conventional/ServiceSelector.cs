@@ -7,6 +7,7 @@ namespace Scorpio.DependencyInjection.Conventional
 {
     internal class DefaultInterfaceSelector : IRegisterAssemblyServiceSelector
     {
+        public static DefaultInterfaceSelector Instance { get; } = new DefaultInterfaceSelector();
         public DefaultInterfaceSelector()
         {
         }
@@ -21,6 +22,7 @@ namespace Scorpio.DependencyInjection.Conventional
 
     internal class AllInterfaceSelector : IRegisterAssemblyServiceSelector
     {
+        public static AllInterfaceSelector Instance { get; } = new AllInterfaceSelector();
         public AllInterfaceSelector()
         {
         }
@@ -35,6 +37,7 @@ namespace Scorpio.DependencyInjection.Conventional
 
     internal class SelfSelector : IRegisterAssemblyServiceSelector
     {
+        public static SelfSelector Instance { get; } = new SelfSelector();
         public IEnumerable<Type> Select(Type componentType) => new Type[] { componentType };
     }
 
@@ -45,6 +48,7 @@ namespace Scorpio.DependencyInjection.Conventional
 
     internal class ExposeServicesSelector : IRegisterAssemblyServiceSelector
     {
+        public static ExposeServicesSelector Instance { get; } = new ExposeServicesSelector();
         public IEnumerable<Type> Select(Type componentType)
         {
             var attr = componentType.GetAttribute<ExposeServicesAttribute>(true);

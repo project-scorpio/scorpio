@@ -12,5 +12,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\src\Scorpio.AspNetCore\Scorpio.AspNetCore.csproj" />
 		<ProjectReference Include="..\..\..\Hosting\src\Scorpio.Hosting\Scorpio.Hosting.csproj" />
+    <ProjectReference Include="..\..\..\aspect\src\Scorpio.AspectCore\Scorpio.AspectCore.csproj" />
 	</ItemGroup>
 </Project>

@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\aspect\src\Scorpio.AspectCore\Scorpio.AspectCore.csproj" />
     <ProjectReference Include="..\..\src\Scorpio.Uow.EntityFrameworkCore\Scorpio.Uow.EntityFrameworkCore.csproj" />
-      <ProjectReference Include="..\..\..\Core\src\Scorpio.Aspect\Scorpio.Aspect.csproj" />
 </ItemGroup>
 
 </Project>

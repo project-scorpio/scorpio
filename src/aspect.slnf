@@ -1,0 +1,16 @@
+{
+  "solution": {
+    "path": "scorpio.sln",
+    "projects": [
+      "Core\\src\\Scorpio.Utilities\\Scorpio.Utilities.csproj",
+      "Core\\src\\Scorpio\\Scorpio.csproj",
+      "aspect\\src\\Scorpio.AspectCore\\Scorpio.AspectCore.csproj",
+      "aspect\\src\\Scorpio.Autofac\\Scorpio.Autofac.csproj",
+      "aspect\\src\\Scorpio.Castle.Core\\Scorpio.Castle.Core.csproj",
+      "aspect\\test\\Scorpio.Aspect.TestBase\\Scorpio.Aspect.TestBase.csproj",
+      "aspect\\test\\Scorpio.AspectCore.Tests\\Scorpio.AspectCore.Tests.csproj",
+      "aspect\\test\\Scorpio.Autofac.Tests\\Scorpio.Autofac.Tests.csproj",
+      "aspect\\test\\Scorpio.Castle.Core.Tests\\Scorpio.Castle.Core.Tests.csproj"
+    ]
+  }
+}

@@ -177,11 +177,10 @@ namespace System.Reflection
         /// <summary>
         ///  Searches for the public members with the specified name.
         /// </summary>
-        /// <param name="object"></param>
+        /// <param name="_"></param>
         /// <param name="propertyExpression"></param>
         /// <returns></returns>
-        [Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:删除未使用的参数", Justification = "<挂起>")]
-        public static MemberInfo Member<TModel, TProperty>(this TModel @object, Expression<Func<TModel, TProperty>> propertyExpression)
+        public static MemberInfo Member<TModel, TProperty>(this TModel _, Expression<Func<TModel, TProperty>> propertyExpression)
         {
             var member = ((MemberExpression)propertyExpression.Body).Member;
             return member;

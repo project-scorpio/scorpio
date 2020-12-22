@@ -18,7 +18,7 @@ namespace Scorpio.DependencyInjection.Conventional
         /// <returns></returns>
         public static IConventionalContext<ConventionalDependencyAction> Lifetime(this IConventionalContext<ConventionalDependencyAction> context, ServiceLifetime serviceLifetime)
         {
-            context.Set("Lifetime", new LifetimeSelector(serviceLifetime));
+            context.Set("Lifetime", LifetimeSelector.GetSelector(serviceLifetime));
             return context;
         }
 
@@ -64,7 +64,7 @@ namespace Scorpio.DependencyInjection.Conventional
         /// <returns></returns>
         public static IConventionalContext<ConventionalDependencyAction> AsDefault(this IConventionalContext<ConventionalDependencyAction> context)
         {
-            context.As(new DefaultInterfaceSelector());
+            context.As(DefaultInterfaceSelector.Instance);
             return context;
         }
 
@@ -75,7 +75,7 @@ namespace Scorpio.DependencyInjection.Conventional
         /// <returns></returns>
         public static IConventionalContext<ConventionalDependencyAction> AsAll(this IConventionalContext<ConventionalDependencyAction> context)
         {
-            context.As(new AllInterfaceSelector());
+            context.As(AllInterfaceSelector.Instance);
             return context;
         }
 
@@ -86,7 +86,7 @@ namespace Scorpio.DependencyInjection.Conventional
         /// <returns></returns>
         public static IConventionalContext<ConventionalDependencyAction> AsSelf(this IConventionalContext<ConventionalDependencyAction> context)
         {
-            context.As(new SelfSelector());
+            context.As(SelfSelector.Instance);
             return context;
         }
 
@@ -97,7 +97,7 @@ namespace Scorpio.DependencyInjection.Conventional
         /// <returns></returns>
         public static IConventionalContext<ConventionalDependencyAction> AsExposeService(this IConventionalContext<ConventionalDependencyAction> context)
         {
-            context.As(new ExposeServicesSelector()).Lifetime(new ExposeLifetimeSelector());
+            context.As(ExposeServicesSelector.Instance).Lifetime(ExposeLifetimeSelector.Instance);
             return context;
         }
     }

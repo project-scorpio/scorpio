@@ -1,4 +1,6 @@
-﻿using Scorpio;
+﻿using System.Collections.Generic;
+
+using Scorpio;
 
 namespace System.Reflection
 {
@@ -90,6 +92,40 @@ namespace System.Reflection
             return IsAssignableToGenericType(givenTypeInfo.BaseType, genericType);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="this"></param>
+        /// <param name="genericType"></param>
+        /// <returns></returns>
+        public static IEnumerable<Type> GetAssignableToGenericTypes(this Type @this, Type genericType)
+        {
+            Check.NotNull(@this, nameof(@this));
+            Check.NotNull(genericType, nameof(genericType));
+            var givenTypeInfo = @this.GetTypeInfo();
+
+            if (givenTypeInfo.IsGenericType && @this.GetGenericTypeDefinition() == genericType)
+            {
+                yield return @this;
+            }
+
+            foreach (var interfaceType in givenTypeInfo.GetInterfaces())
+            {
+                if (interfaceType.GetTypeInfo().IsGenericType && interfaceType.GetGenericTypeDefinition() == genericType)
+                {
+                    yield return interfaceType;
+                }
+            }
+
+            if (givenTypeInfo.BaseType == null)
+            {
+                yield break;
+            }
+            foreach (var item in GetAssignableToGenericTypes(givenTypeInfo.BaseType, genericType))
+            {
+                yield return item;
+            }
+        }
         /// <summary>
         /// Determines whether this type is a standard type.
         /// </summary>

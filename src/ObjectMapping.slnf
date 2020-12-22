@@ -1,0 +1,13 @@
+{
+  "solution": {
+    "path": "scorpio.sln",
+    "projects": [
+      "Core\\src\\Scorpio.Utilities\\Scorpio.Utilities.csproj",
+      "Core\\src\\Scorpio\\Scorpio.csproj",
+      "ObjectMapping\\src\\Scorpio.AutoMapper\\Scorpio.AutoMapper.csproj",
+      "ObjectMapping\\src\\Scorpio.ObjectMapping\\Scorpio.ObjectMapping.csproj",
+      "ObjectMapping\\test\\Scorpio.AutoMapper.Tests\\Scorpio.AutoMapper.Tests.csproj",
+      "ObjectMapping\\test\\Scorpio.ObjectMapping.Tests\\Scorpio.ObjectMapping.Tests.csproj"
+    ]
+  }
+}
