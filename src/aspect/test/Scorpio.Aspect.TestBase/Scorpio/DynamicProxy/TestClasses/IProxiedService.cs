@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Scorpio.DynamicProxy.TestClasses
+﻿namespace Scorpio.DynamicProxy.TestClasses
 {
     public interface IProxiedService
     {

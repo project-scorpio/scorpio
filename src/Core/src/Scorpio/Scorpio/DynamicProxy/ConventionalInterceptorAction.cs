@@ -1,11 +1,10 @@
 ﻿
 using System.Linq;
+using System.Reflection;
 
 using Microsoft.Extensions.DependencyInjection;
 
 using Scorpio.Conventional;
-using Scorpio;
-using System.Reflection;
 
 namespace Scorpio.DynamicProxy
 {

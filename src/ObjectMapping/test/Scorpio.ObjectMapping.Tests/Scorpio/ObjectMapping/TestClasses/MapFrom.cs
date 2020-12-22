@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Scorpio.ObjectMapping.TestClasses
+﻿namespace Scorpio.ObjectMapping.TestClasses
 {
     public class MapFromSource
     {
@@ -10,12 +6,10 @@ namespace Scorpio.ObjectMapping.TestClasses
 
     public class MapFromDest : IMapFrom<MapFromSource>
     {
-        private readonly MapFromSource _source;
+        public MapFromDest(MapFromSource source) => Source = source;
 
-        public MapFromDest(MapFromSource source)
-        {
-            _source = source;
-        }
+        public MapFromSource Source { get; }
+
         public void MapFrom(MapFromSource source)
         {
             // Method intentionally left empty.

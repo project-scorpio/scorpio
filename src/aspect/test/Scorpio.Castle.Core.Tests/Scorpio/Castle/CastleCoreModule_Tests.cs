@@ -1,20 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Microsoft.Extensions.DependencyInjection;
 
 using NSubstitute;
+using NSubstitute.ClearExtensions;
 using NSubstitute.Extensions;
 
-using Scorpio.DynamicProxy;
 using Scorpio.Castle.DynamicProxy;
-using Shouldly;
-using Xunit;
-using System.Linq;
-using NSubstitute.ClearExtensions;
+using Scorpio.DynamicProxy;
 using Scorpio.DynamicProxy.TestClasses;
+
+using Shouldly;
+
+using Xunit;
 
 namespace Scorpio.Castle
 {

@@ -36,6 +36,7 @@ namespace Autofac.Extensions.DependencyInjection
     internal class AutofacServiceScope : IServiceScope
     {
         private readonly ILifetimeScope _lifetimeScope;
+        private bool _disposedValue;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AutofacServiceScope"/> class.
@@ -60,6 +61,29 @@ namespace Autofac.Extensions.DependencyInjection
         /// <summary>
         /// Disposes of the lifetime scope and resolved disposable services.
         /// </summary>
-        public void Dispose() => _lifetimeScope.Dispose();
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposedValue)
+            {
+                if (disposing)
+                {
+                    _lifetimeScope.Dispose();
+                }
+
+                _disposedValue = true;
+            }
+        }
+
+
+
+        /// <summary>
+        /// Disposes of the lifetime scope and resolved disposable services.
+        /// </summary>
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
     }
 }

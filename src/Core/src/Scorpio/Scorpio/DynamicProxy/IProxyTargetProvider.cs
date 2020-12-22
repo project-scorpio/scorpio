@@ -15,7 +15,6 @@
         /// <summary>
         /// 
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="proxy"></param>
         /// <returns></returns>
         bool IsProxy(object proxy);

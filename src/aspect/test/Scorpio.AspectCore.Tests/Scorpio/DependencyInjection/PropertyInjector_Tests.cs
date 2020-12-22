@@ -1,11 +1,8 @@
 ﻿
 using System;
-using System.Linq.Expressions;
 using System.Reflection;
 
 using AspectCore.Extensions.Reflection;
-
-using Microsoft.Extensions.DependencyInjection;
 
 using NSubstitute;
 using NSubstitute.Extensions;

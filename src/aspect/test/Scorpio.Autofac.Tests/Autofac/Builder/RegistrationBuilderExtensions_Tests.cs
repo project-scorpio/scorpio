@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Autofac.Core;
-using Autofac.Extras.DynamicProxy;
 
 using NSubstitute;
 using NSubstitute.Extensions;

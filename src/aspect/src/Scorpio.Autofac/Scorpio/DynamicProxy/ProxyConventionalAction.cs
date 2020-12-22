@@ -12,10 +12,7 @@ namespace Scorpio.DynamicProxy
             var predicate = context.TypePredicate.Compile();
             var interceptors = context.Services.GetSingletonInstanceOrAdd(s => new ServiceInterceptorList());
             context.Interceptors.ForEach(t=>context.Services.AddTransient(t));
-            context.Types.Where(predicate).ForEach(t =>
-            {
-                interceptors.Add(t, context.Interceptors);
-            });
+            context.Types.Where(predicate).ForEach(t => interceptors.Add(t, context.Interceptors));
 
         }
     }

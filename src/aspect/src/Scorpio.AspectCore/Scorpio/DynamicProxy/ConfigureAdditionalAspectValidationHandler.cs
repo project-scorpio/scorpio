@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 using AspectCore.Configuration;
 using AspectCore.DynamicProxy;
@@ -12,10 +10,7 @@ namespace Scorpio.DynamicProxy
     {
         private readonly IAspectConfiguration _aspectConfiguration;
 
-        public ConfigureAdditionalAspectValidationHandler(IAspectConfiguration aspectConfiguration)
-        {
-            _aspectConfiguration = aspectConfiguration ?? throw new ArgumentNullException(nameof(aspectConfiguration));
-        }
+        public ConfigureAdditionalAspectValidationHandler(IAspectConfiguration aspectConfiguration) => _aspectConfiguration = aspectConfiguration ?? throw new ArgumentNullException(nameof(aspectConfiguration));
 
         public int Order { get; } = 11;
 

@@ -32,10 +32,7 @@ namespace Scorpio.AutoMapper
         /// 
         /// </summary>
         /// <param name="mapperAccessor"></param>
-        public AutoMapperAutoObjectMappingProvider(IMapperAccessor mapperAccessor)
-        {
-            MapperAccessor = mapperAccessor;
-        }
+        public AutoMapperAutoObjectMappingProvider(IMapperAccessor mapperAccessor) => MapperAccessor = mapperAccessor;
 
         /// <summary>
         /// 
@@ -44,10 +41,7 @@ namespace Scorpio.AutoMapper
         /// <typeparam name="TDestination"></typeparam>
         /// <param name="source"></param>
         /// <returns></returns>
-        public virtual TDestination Map<TSource, TDestination>(object source)
-        {
-            return MapperAccessor.Mapper.Map<TDestination>(source);
-        }
+        public virtual TDestination Map<TSource, TDestination>(object source) => MapperAccessor.Mapper.Map<TDestination>(source);
 
         /// <summary>
         /// 
@@ -57,9 +51,6 @@ namespace Scorpio.AutoMapper
         /// <param name="source"></param>
         /// <param name="destination"></param>
         /// <returns></returns>
-        public virtual TDestination Map<TSource, TDestination>(TSource source, TDestination destination)
-        {
-            return MapperAccessor.Mapper.Map(source, destination);
-        }
+        public virtual TDestination Map<TSource, TDestination>(TSource source, TDestination destination) => MapperAccessor.Mapper.Map(source, destination);
     }
 }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 using AspectCore.DynamicProxy;
@@ -30,12 +28,9 @@ namespace Scorpio.DynamicProxy
             _ = interceptor.Configure()
                 .InterceptAsync(Arg.Any<IMethodInvocation>())
                 .Returns(Task.CompletedTask)
-                .AndDoes(c =>
-                {
-                    c.Arg<IMethodInvocation>()
+                .AndDoes(c => c.Arg<IMethodInvocation>()
                      .ShouldBeOfType<AspectCoreMethodInvocation>()
-                     .ShouldNotBeNull();
-                });
+                     .ShouldNotBeNull());
             var context=Substitute.ForPartsOf<AspectContext>();
             var func=Substitute.For<AspectDelegate>();
             var adapter = Should.NotThrow(() => new AspectCoreInterceptorAdapter<IInterceptor>(interceptor));

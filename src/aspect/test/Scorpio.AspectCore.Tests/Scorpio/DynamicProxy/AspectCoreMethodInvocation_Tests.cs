@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 using AspectCore.DependencyInjection;
 using AspectCore.DynamicProxy;
-
-using Microsoft.Extensions.DependencyInjection;
 
 using NSubstitute;
 using NSubstitute.Extensions;

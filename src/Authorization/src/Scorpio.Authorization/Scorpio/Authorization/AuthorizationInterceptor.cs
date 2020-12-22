@@ -20,12 +20,7 @@ namespace Scorpio.Authorization
         /// </summary>
         public static readonly string Concern = "Scorpio.Authorization";
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="T:Scorpio.Authorization.AuthorizationInterceptor"/> class.
-        /// </summary>
-        public AuthorizationInterceptor()
-        {
-        }
+      
 
         internal string[] Permissions { get; private set; }
 
@@ -34,10 +29,7 @@ namespace Scorpio.Authorization
 
         public IServiceProvider ServiceProvider { get; }
 
-        public AuthorizationInterceptor(IServiceProvider serviceProvider)
-        {
-            ServiceProvider = serviceProvider;
-        }
+        public AuthorizationInterceptor(IServiceProvider serviceProvider) => ServiceProvider = serviceProvider;
         /// <summary>
         /// 
         /// </summary>

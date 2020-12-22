@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 using AspectCore.DependencyInjection;
 
@@ -59,10 +58,7 @@ namespace Scorpio.DependencyInjection
 
         [Theory]
         [MemberData(nameof(GetDatas))]
-        public void GetImplementationType(ServiceDefinition definition, Type type)
-        {
-            definition.GetImplementationType().ShouldBe(type);
-        }
+        public void GetImplementationType(ServiceDefinition definition, Type type) => definition.GetImplementationType().ShouldBe(type);
 
         public static IEnumerable<object[]> GetDatas()
         {

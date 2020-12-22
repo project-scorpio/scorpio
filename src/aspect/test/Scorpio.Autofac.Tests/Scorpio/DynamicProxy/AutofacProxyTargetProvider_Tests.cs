@@ -2,8 +2,6 @@
 
 using Castle.DynamicProxy;
 
-using Microsoft.Extensions.DependencyInjection;
-
 using NSubstitute;
 
 using Scorpio.DependencyInjection.TestClasses;

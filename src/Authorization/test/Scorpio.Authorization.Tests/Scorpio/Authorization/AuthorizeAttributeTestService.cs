@@ -5,7 +5,7 @@ using Scorpio.Aspects;
 
 namespace Scorpio.Authorization
 {
-  [Authorize("Permission_Test_1.Permission_Test_2")]
+    [Authorize("Permission_Test_1.Permission_Test_2")]
   internal class AuthorizeAttributeTestService : IAuthorizeAttributeTestService, IAvoidDuplicateCrossCuttingConcerns
     {
         public virtual List<string> AppliedCrossCuttingConcerns { get; } = new List<string>();

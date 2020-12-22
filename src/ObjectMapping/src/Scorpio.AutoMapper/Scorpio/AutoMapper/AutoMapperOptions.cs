@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using AutoMapper;
 
 namespace Scorpio.AutoMapper
@@ -38,10 +39,7 @@ namespace Scorpio.AutoMapper
         {
             var assembly = typeof(TModule).Assembly;
 
-            Configurators.Add(context =>
-            {
-                context.MapperConfiguration.AddMaps(assembly);
-            });
+            Configurators.Add(context => context.MapperConfiguration.AddMaps(assembly));
 
             if (validate)
             {
@@ -64,10 +62,7 @@ namespace Scorpio.AutoMapper
         public void AddProfile<TProfile>(bool validate = false)
             where TProfile : Profile, new()
         {
-            Configurators.Add(context =>
-            {
-                context.MapperConfiguration.AddProfile<TProfile>();
-            });
+            Configurators.Add(context => context.MapperConfiguration.AddProfile<TProfile>());
 
             if (validate)
             {
@@ -81,10 +76,7 @@ namespace Scorpio.AutoMapper
         /// <typeparam name="TProfile"></typeparam>
         /// <param name="validate"></param>
         public void ValidateProfile<TProfile>(bool validate = true)
-            where TProfile : Profile
-        {
-            ValidateProfile(typeof(TProfile), validate);
-        }
+            where TProfile : Profile => ValidateProfile(typeof(TProfile), validate);
 
         /// <summary>
         /// 

@@ -4,8 +4,6 @@ using AspectCore.DynamicProxy;
 
 using Microsoft.Extensions.DependencyInjection;
 
-using Scorpio.TestBase;
-
 using Shouldly;
 
 using Xunit;

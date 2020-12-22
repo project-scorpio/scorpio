@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Reflection;
 
 using Scorpio.Conventional;
 using Scorpio.DynamicProxy;
@@ -27,10 +26,8 @@ namespace Scorpio.Auditing
             return false;
         }
 
-        //TODO: Move to a better place
         public static bool? ShouldAuditTypeByDefaultOrNull(Type type)
         {
-            //TODO: In an inheritance chain, it would be better to check the attributes on the top class first.
 
             if (type.IsDefined(typeof(AuditedAttribute), true))
             {

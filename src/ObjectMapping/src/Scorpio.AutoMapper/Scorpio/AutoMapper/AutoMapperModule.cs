@@ -35,11 +35,9 @@ namespace Scorpio.AutoMapper
         /// 
         /// </summary>
         /// <param name="context"></param>
-        public override void Initialize(ApplicationInitializationContext context)
-        {
-            CreateMappings(context.ServiceProvider);
-        }
+        public override void Initialize(ApplicationInitializationContext context) => CreateMappings(context.ServiceProvider);
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S1854:Unused assignments should be removed", Justification = "<Pending>")]
         private void CreateMappings(IServiceProvider serviceProvider)
         {
             using (var scope = serviceProvider.CreateScope())
@@ -62,10 +60,7 @@ namespace Scorpio.AutoMapper
                     }
                 }
 
-                var mapperConfiguration = new MapperConfiguration(mapperConfigurationExpression =>
-                {
-                    ConfigureAll(new AutoMapperConfigurationContext(mapperConfigurationExpression, scope.ServiceProvider));
-                });
+                var mapperConfiguration = new MapperConfiguration(mapperConfigurationExpression => ConfigureAll(new AutoMapperConfigurationContext(mapperConfigurationExpression, scope.ServiceProvider)));
 
                 ValidateAll(mapperConfiguration);
 

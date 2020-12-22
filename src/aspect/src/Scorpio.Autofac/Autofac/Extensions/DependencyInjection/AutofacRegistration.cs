@@ -138,7 +138,6 @@ namespace Autofac.Extensions.DependencyInjection
                     })
                     .ConfigureLifecycle(service.Lifetime)
                     .CreateRegistration();
-                    //TODO: ConfigureAbpConventions ?
 
                     builder.RegisterComponent(registration);
                 }

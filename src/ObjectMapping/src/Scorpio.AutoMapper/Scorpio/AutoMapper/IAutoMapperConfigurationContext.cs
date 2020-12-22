@@ -1,4 +1,5 @@
 ﻿using System;
+
 using AutoMapper;
 
 namespace Scorpio.AutoMapper

@@ -9,7 +9,6 @@ using Autofac.Extras.DynamicProxy;
 using Scorpio;
 using Scorpio.Castle.DynamicProxy;
 using Scorpio.DependencyInjection;
-using Scorpio.DynamicProxy;
 using Scorpio.Modularity;
 namespace Autofac.Builder
 {
