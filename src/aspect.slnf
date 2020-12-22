@@ -2,6 +2,7 @@
   "solution": {
     "path": "scorpio.sln",
     "projects": [
+      "Core\\src\\Scorpio.Utilities\\Scorpio.Utilities.csproj",
       "Core\\src\\Scorpio\\Scorpio.csproj",
       "aspect\\src\\Scorpio.AspectCore\\Scorpio.AspectCore.csproj",
       "aspect\\src\\Scorpio.Autofac\\Scorpio.Autofac.csproj",

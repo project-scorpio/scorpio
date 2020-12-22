@@ -84,12 +84,10 @@ namespace Scorpio.Auditing
 
     }
 
-     [Audited]
-   public interface IAttributedAuditingInterface
+  public interface IAttributedAuditingInterface
     {
         void Test(string value, int num);
 
-        [DisableAuditing]
         void Test2(string value, int num);
 
         void TestEx(string value, int num);
@@ -97,15 +95,15 @@ namespace Scorpio.Auditing
     }
 
     [Audited]
-    internal class AttributedAuditingInterface : IAttributedAuditingInterface, DependencyInjection.ITransientDependency
+    public class AttributedAuditingInterface : IAttributedAuditingInterface, DependencyInjection.ITransientDependency
     {
         public void Test(string value, int num)
         {
             // Method intentionally left empty.
         }
 
-           [DisableAuditing]
-     public void Test2(string value, int num)
+        [DisableAuditing]
+        public void Test2(string value, int num)
         {
             // Method intentionally left empty.
         }

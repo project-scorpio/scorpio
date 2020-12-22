@@ -74,11 +74,11 @@ namespace Scorpio.Application.Services
         /// <returns></returns>
         protected virtual IQueryable<TEntity> ApplyPaging(IQueryable<TEntity> query, TGetListInput input)
         {
-            if (input is IPagingRequest paging && paging.MaxResultCount > 0)
+            return input switch
             {
-                return query.Skip(paging.SkipCount).Take(paging.MaxResultCount);
-            }
-            return query;
+                IPagingRequest paging when paging.MaxResultCount > 0 => query.Skip(paging.SkipCount).Take(paging.MaxResultCount),
+                _ => query
+            };
         }
 
         /// <summary>

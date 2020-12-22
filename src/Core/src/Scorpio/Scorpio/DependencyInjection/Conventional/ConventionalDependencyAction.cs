@@ -35,7 +35,7 @@ namespace Scorpio.DependencyInjection.Conventional
                     s => context.Services.ReplaceOrAdd(
                         ServiceDescriptor.Describe(s, t,
                         context.GetOrAdd<IRegisterAssemblyLifetimeSelector>("Lifetime",
-                        new LifetimeSelector(ServiceLifetime.Transient)).Select(t)),
+                       t => LifetimeSelector.Transient).Select(t)),
                         t.GetAttribute<ReplaceServiceAttribute>()?.ReplaceService ?? false
                         ))));
         }

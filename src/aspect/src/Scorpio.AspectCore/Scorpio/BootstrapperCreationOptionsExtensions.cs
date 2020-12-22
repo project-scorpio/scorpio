@@ -1,5 +1,7 @@
 ﻿
 using AspectCore.DependencyInjection;
+using AspectCore.DynamicProxy;
+using AspectCore.Extensions.DependencyInjection;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -22,7 +24,9 @@ namespace Scorpio
             options.PreConfigureServices(context =>
             {
                 ProxyTargetProvider.Default.Add(new AspectCoreProxyTargetProvider());
-                context.Services.AddSingleton<IProxyConventionalAction>(new ProxyConventionalAction());
+                context.Services.AddSingleton<IProxyConventionalAction>(new ProxyConventionalAction())
+                            .AddSingleton<IAdditionalInterceptorSelector,ConfigureAdditionalInterceptorSelector>()
+                            .ConfigureDynamicProxy(c=>c.ValidationHandlers.Add(new ConfigureAdditionalAspectValidationHandler(c)));
             });
             options.ConfigureServices(context => context.Services.ReplaceSingleton<IPropertyInjectorFactory, DependencyInjection.PropertyInjectorFactory>()
             .AddScoped<IServiceResolveCallback, DependencyInjection.PropertyInjectorCallback>().AddTransient(typeof(AspectCoreInterceptorAdapter<>)));
