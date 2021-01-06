@@ -1,11 +1,13 @@
 ﻿using System;
 
+using Scorpio.DependencyInjection;
+
 namespace Scorpio.Modularity
 {
     /// <summary>
     /// 
     /// </summary>
-    public class ApplicationShutdownContext
+    public class ApplicationShutdownContext:IServiceProviderAccessor
     {
         /// <summary>
         /// 
