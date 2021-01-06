@@ -1,0 +1,33 @@
+- title: 快速开始
+  url: /docs/getting-started/console
+  collection: getting-started
+  links:
+    - title: "控制台应用"
+      url: "/docs/getting-started/console"
+    - title: "通用主机应用"
+      url: "/docs/getting-started/generic-host"
+- title: 基础知识
+  url: /docs/fundamentals/
+  collection: fundamentals
+  links:
+    - title: "引导程序"
+      url: "/docs/fundamentals/bootstrapper"
+    - title: "模块化"
+      url: "/docs/fundamentals/modularity"
+    - title: "常规性操作"
+      url: "/docs/fundamentals/conventional"
+    - title: "依赖注入"
+      url: "/docs/fundamentals/dependency-injection"
+    - title: "选项"
+      url: "/docs/fundamentals/options"
+    - title: "授权"
+      url: "/docs/fundamentals/authorization"
+    - title: "审计"
+      url: "/docs/fundamentals/auditing"
+- title: 教程
+  url: /docs/tutorials/example-page
+  collection: tutorials
+  links:
+    - title: "Getting Started"
+      url: "/docs/tutorials/example-page"
+    
