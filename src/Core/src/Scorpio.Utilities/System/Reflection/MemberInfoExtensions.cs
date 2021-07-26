@@ -79,6 +79,18 @@ namespace System.Reflection
             return @object.GetType().GetDisplayName(inherit);
         }
 
+        /// <summary>
+        ///  获取枚举类型元数据的 <see cref="DisplayNameAttribute"/> 特性描述信息
+        /// </summary>
+        /// <param name="object">类型元数据对象</param>
+        /// <param name="inherit">是否搜索成员的继承链以查找描述特性</param>
+        /// <returns>返回 <see cref="DisplayNameAttribute"/> 特性描述信息，如不存在则返回成员的名称</returns>
+        public static string GetDisplayName<TEnum>(this TEnum @object, bool inherit = false) where TEnum : Enum
+        {
+            var type = @object.GetType();//先获取这个枚举的类型
+            var field = type.GetField(@object.ToString());//通过这个类型获取到值
+            return field.GetDisplayName(inherit);
+        }
 
         /// <summary>
         ///  获取成员元数据的 <see cref="DisplayNameAttribute.DisplayName"/> 特性描述信息
