@@ -87,6 +87,50 @@ namespace System
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="condition"></param>
+        /// <param name="trueAction"></param>
+        /// <param name="falseAction"></param>
+        /// <returns></returns>
+        public static T Action<T>(this T obj, bool condition, Action<T> trueAction, Action<T> falseAction)
+        {
+            if (condition)
+            {
+                trueAction(obj);
+            }
+            else
+            {
+                falseAction(obj);
+            }
+            return obj;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="condition"></param>
+        /// <param name="trueAction"></param>
+        /// <param name="falseAction"></param>
+        /// <returns></returns>
+        public static async ValueTask<T> Action<T>(this T obj, bool condition, Func<T, ValueTask> trueAction, Func<T, ValueTask> falseAction)
+        {
+            if (condition)
+            {
+                await trueAction(obj);
+            }
+            else
+            {
+                await falseAction(obj);
+            }
+            return obj;
+        }
+
+
+        /// <summary>
         /// Invoke <see cref="IDisposable.Dispose"/> method if obj is <see cref="IDisposable"/>,otherwise do nothing.
         /// </summary>
         /// <param name="obj"></param>
