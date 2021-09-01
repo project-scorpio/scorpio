@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyTitle>Scorpio ObjectExtending library</AssemblyTitle>
+    <RootNamespace />
+    <PackageTags>Scorpio;Aspect;dependencyinjection;Modularity</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\src\Scorpio\Scorpio.csproj" />
+  </ItemGroup>
+
+</Project>

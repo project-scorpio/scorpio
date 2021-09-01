@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 
 using Scorpio.DependencyInjection.Conventional;
+using Scorpio.Initialization;
 using Scorpio.Modularity;
 using Scorpio.Runtime;
 using Scorpio.Threading;
@@ -29,6 +30,15 @@ namespace Scorpio
         {
             context.Services.TryAddSingleton(typeof(IAmbientScopeProvider<>), typeof(AmbientDataContextAmbientScopeProvider<>));
             context.Services.TryAddSingleton<ICancellationTokenProvider>(NoneCancellationTokenProvider.Instance);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
+        public override void Initialize(ApplicationInitializationContext context)
+        {
+            context.ServiceProvider.GetService<IInitializationManager>()?.Initialize();
         }
     }
 }

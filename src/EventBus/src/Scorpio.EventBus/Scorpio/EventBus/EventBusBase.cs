@@ -11,13 +11,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
 using Scorpio.DependencyInjection;
+using Scorpio.Initialization;
 
 namespace Scorpio.EventBus
 {
     /// <summary>
     /// Implements EventBus as Singleton pattern.
     /// </summary>
-    public abstract class EventBusBase : IEventBus
+    public abstract class EventBusBase : IEventBus,IInitializable
     {
         /// <summary>
         /// 
@@ -33,36 +34,72 @@ namespace Scorpio.EventBus
         /// </summary>
         protected IServiceProvider ServiceProvider { get;}
 
+        /// <summary>
+        /// 
+        /// </summary>
+        protected IEventErrorHandler ErrorHandler { get; }
+
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="serviceProvider"></param>
+        /// <param name="errorHandler"></param>
         /// <param name="options"></param>
-        protected EventBusBase(IServiceProvider serviceProvider, IOptions<EventBusOptions> options)
+        protected EventBusBase(IServiceProvider serviceProvider, IEventErrorHandler errorHandler, IOptions<EventBusOptions> options)
         {
             ServiceProvider = serviceProvider;
+            ErrorHandler = errorHandler;
             Options = options.Value;
             HandlerFactories = new ConcurrentDictionary<Type, List<IEventHandlerFactory>>();
-            Init();
         }
 
-        private void Init() => SubscribeHandlers(Options.Handlers);
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual void Initialize() => SubscribeHandlers(Options.Handlers);
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TEvent"></typeparam>
+        /// <param name="action"></param>
+        /// <returns></returns>
         public virtual IDisposable Subscribe<TEvent>(Func<TEvent, Task> action) where TEvent : class => Subscribe(typeof(TEvent), new ActionEventHandler<TEvent>(action));
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TEvent"></typeparam>
+        /// <typeparam name="THandler"></typeparam>
+        /// <returns></returns>
         public virtual IDisposable Subscribe<TEvent, THandler>()
             where TEvent : class
             where THandler : IEventHandler, new() => Subscribe(typeof(TEvent), new TransientEventHandlerFactory<THandler>(ServiceProvider.GetRequiredService<IHybridServiceScopeFactory>()));
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="eventType"></param>
+        /// <param name="handler"></param>
+        /// <returns></returns>
         public virtual IDisposable Subscribe(Type eventType, IEventHandler handler) => Subscribe(eventType, new SingleInstanceHandlerFactory(handler));
-        /// <inheritdoc/>
+       
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TEvent"></typeparam>
+        /// <param name="handler"></param>
+        /// <returns></returns>
         public virtual IDisposable Subscribe<TEvent>(IEventHandler<TEvent> handler) => Subscribe(typeof(TEvent), new SingleInstanceHandlerFactory(handler));
 
-        /// <inheritdoc/>
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TEvent"></typeparam>
+        /// <param name="factory"></param>
+        /// <returns></returns>
         public virtual IDisposable Subscribe<TEvent>(IEventHandlerFactory factory) where TEvent : class => Subscribe(typeof(TEvent), factory);
 
         /// <summary>
@@ -135,6 +172,26 @@ namespace Scorpio.EventBus
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="eventType"></param>
+        /// <param name="eventData"></param>
+        /// <param name="onErrorAction"></param>
+        /// <returns></returns>
+        public virtual async Task TriggerHandlersAsync(Type eventType, object eventData, Action<EventExecutionErrorContext> onErrorAction = null)
+        {
+            var exceptions = new List<Exception>();
+
+            await TriggerHandlersAsync(eventType, eventData, exceptions);
+
+            if (exceptions.Any())
+            {
+                var context = new EventExecutionErrorContext(exceptions, eventType, this);
+                onErrorAction?.Invoke(context);
+                await ErrorHandler.HandleAsync(context);
+            }
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -244,6 +301,7 @@ namespace Scorpio.EventBus
                 }
             }
         }
+
 
         /// <summary>
         /// 

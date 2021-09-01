@@ -9,6 +9,17 @@ namespace System.Reflection
     /// </summary>
     public static class TypeExtensions
     {
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static string GetFullNameWithAssemblyName(this Type type)
+        {
+            return type.FullName + ", " + type.Assembly.GetName().Name;
+        }
+
         /// <summary>
         /// Returns true if this type is in the <paramref name="namespace"/> namespace
         /// or one of its sub-namespaces.

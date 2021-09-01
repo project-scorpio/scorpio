@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Scorpio.EventBus\Scorpio.EventBus.csproj" />
+    <ProjectReference Include="..\..\..\RabbitMQ\src\Scorpio.RabbitMQ\Scorpio.RabbitMQ.csproj" />
+  </ItemGroup>
+
+</Project>

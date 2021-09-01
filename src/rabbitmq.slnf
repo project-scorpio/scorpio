@@ -1,0 +1,14 @@
+{
+  "solution": {
+    "path": "scorpio.sln",
+    "projects": [
+      "Core\\src\\Scorpio.Utilities\\Scorpio.Utilities.csproj",
+      "Core\\src\\Scorpio\\Scorpio.csproj",
+      "Core\\test\\Scorpio.TestBase\\Scorpio.TestBase.csproj",
+      "Core\\test\\Scorpio.Tests\\Scorpio.Tests.csproj",
+      "Core\\test\\Scorpio.Utilities.Tests\\Scorpio.Utilities.Tests.csproj",
+      "RabbitMQ\\src\\Scorpio.RabbitMQ\\Scorpio.RabbitMQ.csproj",
+      "RabbitMQ\\test\\Scorpio.RabbitMQ.Tests\\Scorpio.RabbitMQ.Tests.csproj"
+    ]
+  }
+}
