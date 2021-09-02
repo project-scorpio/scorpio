@@ -51,7 +51,7 @@ namespace Scorpio.DependencyInjection.Conventional
         public static ExposeServicesSelector Instance { get; } = new ExposeServicesSelector();
         public IEnumerable<Type> Select(Type componentType)
         {
-            var attr = componentType.GetAttribute<ExposeServicesAttribute>(true);
+            var attr = componentType.GetAttribute<ExposeServicesAttribute>(inherit:true);
             return attr.GetExposedServiceTypes(componentType);
         }
     }

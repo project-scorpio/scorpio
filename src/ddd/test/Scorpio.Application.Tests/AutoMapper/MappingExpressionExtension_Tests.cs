@@ -43,7 +43,7 @@ namespace AutoMapper
         {
 
             public string Name { get; set; }
-            public IDictionary<string, object> ExtraProperties { get; } = new Dictionary<string, object>();
+            public ExtraPropertyDictionary ExtraProperties { get; } = new ExtraPropertyDictionary();
         }
 
         public class TestClassDto

@@ -24,7 +24,8 @@ namespace Scorpio.EventBus
         /// <param name="context"></param>
         public override void ConfigureServices(ConfigureServicesContext context)
         {
-            context.Services.TryAddSingleton<IEventBus, LocalEventBus>();
+            context.Services.TryAddSingleton<LocalEventBus>();
+            context.Services.TryAddSingleton<IEventBus>(sp=>sp.GetService<LocalEventBus>());
             context.Services.TryAddSingleton<IEventErrorHandler, LocalEventErrorHandler>();
         }
     }

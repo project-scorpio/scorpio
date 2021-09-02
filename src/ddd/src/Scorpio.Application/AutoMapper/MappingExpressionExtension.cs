@@ -52,14 +52,14 @@ namespace AutoMapper
             return mapping;
         }
 
-        private static Expression<Func<TSource, Dictionary<string, object>>> GenerateInitExpression<TSource>(
+        private static Expression<Func<TSource, ExtraPropertyDictionary>> GenerateInitExpression<TSource>(
             IEnumerable<LambdaExpression> expressions)
         {
-            var type = typeof(Dictionary<string, object>);
+            var type = typeof(ExtraPropertyDictionary);
             var method = type.GetMethod("Add");
             var parameter = Expression.Parameter(typeof(TSource), "s");
             var initexpression = Expression.ListInit(Expression.New(type), GenerateElements(method, parameter, expressions));
-            var expression = Expression.Lambda<Func<TSource, Dictionary<string, object>>>(initexpression, parameter);
+            var expression = Expression.Lambda<Func<TSource, ExtraPropertyDictionary>>(initexpression, parameter);
             return expression;
         }
 

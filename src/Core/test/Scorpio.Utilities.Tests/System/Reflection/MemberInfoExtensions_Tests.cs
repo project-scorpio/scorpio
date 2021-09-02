@@ -21,6 +21,8 @@ namespace System.Reflection
             new AttributeTestClassWithDisplayAttirbute().GetDisplayName(o => o.DisplayName).ShouldBe("Display UserName");
             Should.Throw<ArgumentNullException>(() => (null as Type).GetDisplayName());
             Should.Throw<ArgumentNullException>(() => (null as object).GetDisplayName());
+            TestEnum.Normal.GetDisplayName().ShouldBe("Normal");
+            TestEnum.CustomDisplay.GetDisplayName().ShouldBe("Display Enum");
         }
 
         [Fact]
@@ -36,6 +38,8 @@ namespace System.Reflection
             Should.Throw<ArgumentNullException>(() => (null as Type).GetDescription());
             Should.Throw<ArgumentNullException>(() => (null as object).GetDescription());
             Should.Throw<ArgumentNullException>(() => new AttributeTestClassWithDisplayAttirbute().GetDescription((Linq.Expressions.Expression<Func<AttributeTestClassWithDisplayAttirbute, string>>)null));
+            TestEnum.Normal.GetDescription().ShouldBe("Normal");
+            TestEnum.CustomDisplay.GetDescription().ShouldBe("enum's display description");
 
         }
         [Fact]
@@ -47,7 +51,13 @@ namespace System.Reflection
             new AttributeTestClass().GetAttribute<DisplayNameAttribute>().ShouldBeNull();
             Should.Throw<ArgumentNullException>(() => (null as Type).GetAttribute<DisplayNameAttribute>());
             Should.Throw<ArgumentNullException>(() => (null as object).GetAttribute<DisplayNameAttribute>());
+        }
+
+        [Fact]
+        public void Member()
+        {
             new AttributeTestClassWithDisplayAttirbute().Member(m => m.Name).GetAttribute<DisplayNameAttribute>().ShouldNotBeNull();
+
         }
 
         [Fact]
@@ -61,6 +71,27 @@ namespace System.Reflection
             Should.Throw<ArgumentNullException>(() => (null as Type).GetAttributes<DisplayNameAttribute>());
             Should.Throw<ArgumentNullException>(() => (null as object).GetAttributes<DisplayNameAttribute>());
         }
+
+        [Fact]
+        public void GetAttributesOfMemberOrDeclaringType()
+        {
+            Should.Throw<ArgumentNullException>(() => (null as MemberInfo).GetAttributesOfMemberOrDeclaringType<DisplayNameAttribute>());
+            new AttributeTestClassWithDisplayAttirbute().Member(m => m.Name).GetAttributesOfMemberOrDeclaringType<DisplayNameAttribute>().ShouldNotBeEmpty();
+            new AttributeTestClassWithDisplayAttirbute().Member(m => m.Name).GetAttributesOfMemberOrDeclaringType<SerializableAttribute>().ShouldNotBeEmpty();
+            new AttributeTestClassWithDisplayAttirbute().Member(m => m.Name).GetAttributesOfMemberOrDeclaringType<DisplayAttribute>().ShouldBeEmpty();
+            new AttributeTestClassWithDisplayAttirbute().Member(m => m.Name).GetAttributesOfMemberOrDeclaringType<BindableAttribute>().ShouldBeEmpty();
+        }
+
+        [Fact]
+        public void GetAttributeOfMemberOrDeclaringType()
+        {
+            Should.Throw<ArgumentNullException>(() => (null as MemberInfo).GetAttributeOfMemberOrDeclaringType<DisplayNameAttribute>());
+            new AttributeTestClassWithDisplayAttirbute().Member(m => m.Name).GetAttributeOfMemberOrDeclaringType<DisplayNameAttribute>().ShouldNotBeNull();
+            new AttributeTestClassWithDisplayAttirbute().Member(m => m.Name).GetAttributeOfMemberOrDeclaringType<SerializableAttribute>().ShouldNotBeNull();
+            new AttributeTestClassWithDisplayAttirbute().Member(m => m.Name).GetAttributeOfMemberOrDeclaringType<DisplayAttribute>().ShouldBeNull();
+            new AttributeTestClassWithDisplayAttirbute().Member(m => m.Name).GetAttributeOfMemberOrDeclaringType<BindableAttribute>().ShouldBeNull();
+        }
+
         [Fact]
         public void AttributeExistsTest()
         {
@@ -80,6 +111,7 @@ namespace System.Reflection
 
     }
 
+    [Serializable]
     internal class AttributeTestClassWithDisplayAttirbute
     {
         [DisplayName("UserName")]
@@ -100,5 +132,12 @@ namespace System.Reflection
     internal class AttributeTestClass2
     {
 
+    }
+
+    internal enum TestEnum
+    {
+        Normal,
+        [Display(Name ="Display Enum",Description ="enum's display description")]
+        CustomDisplay
     }
 }

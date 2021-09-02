@@ -23,7 +23,7 @@ namespace Scorpio.Data
             {
                 context.ModelBuilder.Entity<TEntity>(e => e.Property(x => ((IHasExtraProperties)x).ExtraProperties).HasConversion(
                         d => JsonConvert.SerializeObject(d, Formatting.None),
-                        s => JsonConvert.DeserializeObject<Dictionary<string, object>>(s)
+                        s => JsonConvert.DeserializeObject<ExtraPropertyDictionary>(s)
                         ).HasColumnName(nameof(IHasExtraProperties.ExtraProperties)));
 
             }

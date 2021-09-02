@@ -177,6 +177,20 @@ namespace System
             value.ToSentenceCase(true).ShouldBe(expected);
         }
 
+        [Theory]
+        [InlineData("RemoveEmptyEntries", "remove-empty-entries")]
+        [InlineData("removeEmptyEntries", "remove-empty-entries")]
+        [InlineData("Remove EmptyEntries", "remove empty-entries")]
+        [InlineData("Remove emptyEntries", "remove empty-entries")]
+        [InlineData("ThisIsSampleSentence", "this-is-sample-sentence")]
+        [InlineData("  ", "  ")]
+        public void ToHyphen(string value, string expected)
+        {
+            value.ToHyphen().ShouldBe(expected);
+            value.ToHyphen(true).ShouldBe(expected);
+        }
+
+
         [Fact]
         public void ToEnum()
         {

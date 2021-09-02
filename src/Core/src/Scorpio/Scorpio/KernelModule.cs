@@ -20,6 +20,7 @@ namespace Scorpio
         {
             context.Services.ReplaceOrAdd(ServiceDescriptor.Transient(typeof(IOptionsFactory<>), typeof(Options.OptionsFactory<>)), true);
             context.AddConventionalRegistrar(new BasicConventionalRegistrar());
+            context.AddConventionalRegistrar<InitializationConventionalRegistrar>();
         }
 
         /// <summary>

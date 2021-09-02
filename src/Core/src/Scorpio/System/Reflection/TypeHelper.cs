@@ -147,7 +147,7 @@ namespace System.Reflection
                 return false;
             }
 
-            var enumerableTypes = ReflectionHelper.GetImplementedGenericTypes(type, typeof(IEnumerable<>));
+            var enumerableTypes = type.GetAssignableToGenericTypes(typeof(IEnumerable<>));
             if (enumerableTypes.Count == 1)
             {
                 itemType = enumerableTypes[0].GenericTypeArguments[0];
@@ -173,11 +173,7 @@ namespace System.Reflection
         /// <returns></returns>
         public static bool IsDictionary(Type type, out Type keyType, out Type valueType)
         {
-            var dictionaryTypes = ReflectionHelper
-                .GetImplementedGenericTypes(
-                    type,
-                    typeof(IDictionary<,>)
-                );
+            var dictionaryTypes = type.GetAssignableToGenericTypes(typeof(IDictionary<,>));
 
             if (dictionaryTypes.Count == 1)
             {

@@ -52,5 +52,23 @@ namespace System.Collections.Generic
             _keyValuePairs.GetOrAdd("Key1", () => "value").ShouldBe("Value1");
             _keyValuePairs.GetOrAdd("Key1", key => $"{key}value").ShouldBe("Value1");
         }
+
+        [Fact]
+        public void AddOrUpdate()
+        {
+            var dic = new Dictionary<string, object> {
+                {"Key1","Value1" },
+                {"Key2","Value2" },
+                {"Key3","Value3" },
+                {"Key4","Value4" },
+            };
+            dic.Count.ShouldBe(4);
+            dic.AddOrUpdate("Key1", () => "New Value");
+            dic.Count.ShouldBe(4);
+            dic.GetValueOrDefault("Key1").ShouldBe("New Value");
+            dic.AddOrUpdate("Key5", () => "New Value");
+            dic.Count.ShouldBe(5);
+            dic.GetValueOrDefault("Key5").ShouldBe("New Value");
+        }
     }
 }

@@ -33,6 +33,16 @@ namespace Scorpio.Initialization
             Initializables.GetOrAdd(order, i => new TypeList<IInitializable>()).Add<T>();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="order"></param>
+        public void AddInitializable(Type type, int order) 
+        {
+            _ = Check.AssignableTo<IInitializable>(type, nameof(type));
+            Initializables.GetOrAdd(order, i => new TypeList<IInitializable>()).Add(type);
+        }
 
     }
 }

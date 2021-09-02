@@ -26,7 +26,7 @@ namespace Scorpio.EntityFrameworkCore
         public string StringValue { get; set; }
         public bool IsDeleted { get; set; }
 
-        public IDictionary<string, object> ExtraProperties { get; set; }
+        public ExtraPropertyDictionary ExtraProperties { get; set; }
 
         public virtual ICollection<TestTableDetail> Details { get; set; }
     }
