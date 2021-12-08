@@ -9,11 +9,12 @@ using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
 
 using Scorpio.Data;
+using Scorpio.Initialization;
 using Scorpio.Threading;
 
 namespace Scorpio.EventBus
 {
-    internal class LocalEventBus : EventBusBase
+    internal class LocalEventBus : EventBusBase, IInitializable
     {
 
         /// <summary>
@@ -28,6 +29,11 @@ namespace Scorpio.EventBus
         }
 
         public override async Task PublishAsync(Type eventType, object eventData) => await PublishAsync(new LocalEventMessage(Guid.NewGuid(), eventData, eventType));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual void Initialize() => SubscribeHandlers(Options.Handlers);
 
         public virtual async Task PublishAsync(LocalEventMessage localEventMessage)
         {

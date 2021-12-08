@@ -20,11 +20,12 @@ using Newtonsoft.Json;
 using RabbitMQ.Client;
 
 using Scorpio.Data;
+using Scorpio.Initialization;
 using Scorpio.Threading;
 
 namespace Scorpio.EventBus
 {
-    internal class RabbitEventBus : EventBusBase
+    internal class RabbitEventBus : EventBusBase, IInitializable
     {
         private readonly IBus _bus;
         private readonly RabbitMQEventBusOptions _options;
@@ -46,15 +47,15 @@ namespace Scorpio.EventBus
             _options = options.Value;
             EventTypes = new ConcurrentDictionary<string, Type>();
         }
-        public override void Initialize()
+        public virtual void Initialize()
         {
             _exchange = _bus.Advanced.ExchangeDeclare(_options.ExchangeName, c => c.AsDurable(true).WithType("direct"));
             _queue = _bus.Advanced.QueueDeclare(_options.ClientName, c => c.AsDurable(true).AsExclusive(false).AsAutoDelete(false));
             _bus.Advanced.Consume(_queue, ProcessEventAsync);
-            base.Initialize();
+            SubscribeHandlers(Options.Handlers);
         }
 
-        private async Task<AckStrategy> ProcessEventAsync(byte[] buffer,MessageProperties  messageProperties,MessageReceivedInfo messageReceivedInfo)
+        private async Task<AckStrategy> ProcessEventAsync(byte[] buffer, MessageProperties messageProperties, MessageReceivedInfo messageReceivedInfo)
         {
             var eventName = messageReceivedInfo.RoutingKey;
             var eventType = EventTypes.GetOrDefault(eventName);
@@ -88,7 +89,7 @@ namespace Scorpio.EventBus
             var eventName = EventNameAttribute.GetNameOrDefault(eventType);
             var body = Serializer.Serialize(eventData);
             if (properties == null)
-{
+            {
                 properties = new MessageProperties
                 {
                     DeliveryMode = 2,

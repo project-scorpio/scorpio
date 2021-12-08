@@ -18,7 +18,7 @@ namespace Scorpio.EventBus
     /// <summary>
     /// Implements EventBus as Singleton pattern.
     /// </summary>
-    public abstract class EventBusBase : IEventBus,IInitializable
+    public abstract class EventBusBase : IEventBus
     {
         /// <summary>
         /// 
@@ -54,10 +54,6 @@ namespace Scorpio.EventBus
             HandlerFactories = new ConcurrentDictionary<Type, List<IEventHandlerFactory>>();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual void Initialize() => SubscribeHandlers(Options.Handlers);
 
         /// <summary>
         /// 
