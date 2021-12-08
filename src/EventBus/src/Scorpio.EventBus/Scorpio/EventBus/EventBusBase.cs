@@ -119,7 +119,7 @@ namespace Scorpio.EventBus
                           .Locking(factories => factories.Where(
                                   factory => factory is SingleInstanceHandlerFactory singleInstanceFactory
                                              && singleInstanceFactory.HandlerInstance is ActionEventHandler<TEvent> actionHandler
-                                             && actionHandler.Action == action).ForEach(f => Unsubscribe<TEvent>(f)));
+                                             && actionHandler.Action == action).ToList().ForEach(f => Unsubscribe<TEvent>(f)));
         }
 
         /// <inheritdoc/>
@@ -137,7 +137,7 @@ namespace Scorpio.EventBus
                         factory =>
                             factory is SingleInstanceHandlerFactory &&
                             (factory as SingleInstanceHandlerFactory).HandlerInstance == handler
-                    ).ForEach(f=>Unsubscribe(eventType,f)));
+                    ).ToList().ForEach(f=>Unsubscribe(eventType,f)));
         }
 
         /// <inheritdoc/>
