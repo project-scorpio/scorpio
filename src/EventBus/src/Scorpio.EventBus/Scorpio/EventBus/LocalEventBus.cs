@@ -50,8 +50,6 @@ namespace Scorpio.EventBus
 
             return new DisposeAction(() => Unsubscribe(eventType, factory));
         }
-
-
         public override void Unsubscribe(Type eventType, IEventHandlerFactory factory) => GetOrCreateHandlerFactories(eventType).Locking(factories => factories.Remove(factory));
 
         public override void UnsubscribeAll(Type eventType) => GetOrCreateHandlerFactories(eventType).Locking(factories => factories.Clear());

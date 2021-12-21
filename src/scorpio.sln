@@ -252,6 +252,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AE66E3C6-81D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorpio.ObjectExtending", "ObjectExtending\src\Scorpio.ObjectExtending\Scorpio.ObjectExtending.csproj", "{9377B384-32BE-45BB-9CA6-42952F6A2526}"
 EndProject
+
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1094,6 +1095,7 @@ Global
 		{13945823-F376-44F8-A204-480EEEB7356B} = {E056D25C-C4E5-46CB-8353-E7AF71C14EC6}
 		{AE66E3C6-81D1-4339-9AD0-F75306A6A20B} = {FB3065E9-8554-46DC-8DB5-2AA903672A9D}
 		{9377B384-32BE-45BB-9CA6-42952F6A2526} = {AE66E3C6-81D1-4339-9AD0-F75306A6A20B}
+
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE3E4B96-D77C-46B9-ABEF-CEAB697E68DC}
