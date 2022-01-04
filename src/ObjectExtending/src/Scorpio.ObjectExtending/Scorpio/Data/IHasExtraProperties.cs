@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace Scorpio.Data
+﻿namespace Scorpio.Data
 {
+    //TODO: Move to Scorpio.Data.ObjectExtending namespace at 4.0?
+
     /// <summary>
     /// 
     /// </summary>
@@ -10,6 +10,6 @@ namespace Scorpio.Data
         /// <summary>
         /// 
         /// </summary>
-        IDictionary<string, object> ExtraProperties { get; }
+        ExtraPropertyDictionary ExtraProperties { get; }
     }
 }

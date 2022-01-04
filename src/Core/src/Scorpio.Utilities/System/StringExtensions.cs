@@ -137,7 +137,7 @@ namespace System
             var count = 0;
             for (var i = 0; i < str.Length; i++)
             {
-                if (!(str[i].ToString().Equals(c.ToString(), comparisonType)))
+                if (!str[i].ToString().Equals(c.ToString(), comparisonType))
                 {
                     continue;
                 }
@@ -289,7 +289,7 @@ namespace System
 
         /// <summary>
         /// Converts given PascalCase/camelCase string to sentence (by splitting words by space).
-        /// Example: "ThisIsSampleSentence" is converted to "This is a sample sentence".
+        /// Example: "ThisIsASampleSentence" is converted to "This is a sample sentence".
         /// </summary>
         /// <param name="str">String to convert.</param>
         /// <param name="useCurrentCulture">set true to use current culture. Otherwise, invariant culture will be used.</param>
@@ -306,11 +306,11 @@ namespace System
         }
 
         /// <summary>
-        /// 
+        /// Converts given PascalCase/camelCase string to hyphen (by splitting words by hyphen-character).
+        /// Example: "ThisIsASampleHyphen" is converted to "this-is-a-sample-hyphen".
         /// </summary>
-        /// <param name="str"></param>
-        /// <param name="useCurrentCulture"></param>
-        /// <returns></returns>
+        /// <param name="str">String to convert.</param>
+        /// <param name="useCurrentCulture">set true to use current culture. Otherwise, invariant culture will be used.</param>
         public static string ToHyphen(this string str, bool useCurrentCulture = false)
         {
             if (string.IsNullOrWhiteSpace(str))

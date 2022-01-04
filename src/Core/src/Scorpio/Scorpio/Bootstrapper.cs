@@ -5,6 +5,8 @@ using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+using Scorpio.DependencyInjection;
+using Scorpio.Localization;
 using Scorpio.Modularity;
 
 namespace Scorpio
@@ -12,7 +14,7 @@ namespace Scorpio
     /// <summary>
     /// 
     /// </summary>
-    public abstract class Bootstrapper : IBootstrapper, IModuleContainer
+    public abstract class Bootstrapper : IBootstrapper, IModuleContainer, IServiceProviderAccessor
     {
         private bool _isShutdown = false;
         private readonly Lazy<IServiceFactoryAdapter> _serviceFactory;
@@ -153,7 +155,7 @@ namespace Scorpio
             {
                 scope.ServiceProvider
                     .GetRequiredService<IModuleManager>()
-                    .InitializeModules(new ApplicationInitializationContext(scope.ServiceProvider, ServiceProvider, initializeParams));
+                    .InitializeModules(new ApplicationInitializationContext(scope.ServiceProvider, initializeParams));
             }
         }
 

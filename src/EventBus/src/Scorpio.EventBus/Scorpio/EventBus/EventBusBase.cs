@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
 using Scorpio.DependencyInjection;
+using Scorpio.Initialization;
+using Scorpio.Threading;
 
 namespace Scorpio.EventBus
 {
@@ -31,38 +33,70 @@ namespace Scorpio.EventBus
         /// <summary>
         /// 
         /// </summary>
-        protected IServiceProvider ServiceProvider { get;}
+        protected IServiceProvider ServiceProvider { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected IEventErrorHandler ErrorHandler { get; }
 
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="serviceProvider"></param>
+        /// <param name="errorHandler"></param>
         /// <param name="options"></param>
-        protected EventBusBase(IServiceProvider serviceProvider, IOptions<EventBusOptions> options)
+        protected EventBusBase(IServiceProvider serviceProvider, IEventErrorHandler errorHandler, IOptions<EventBusOptions> options)
         {
             ServiceProvider = serviceProvider;
+            ErrorHandler = errorHandler;
             Options = options.Value;
             HandlerFactories = new ConcurrentDictionary<Type, List<IEventHandlerFactory>>();
-            Init();
         }
 
-        private void Init() => SubscribeHandlers(Options.Handlers);
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TEvent"></typeparam>
+        /// <param name="action"></param>
+        /// <returns></returns>
         public virtual IDisposable Subscribe<TEvent>(Func<TEvent, Task> action) where TEvent : class => Subscribe(typeof(TEvent), new ActionEventHandler<TEvent>(action));
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TEvent"></typeparam>
+        /// <typeparam name="THandler"></typeparam>
+        /// <returns></returns>
         public virtual IDisposable Subscribe<TEvent, THandler>()
             where TEvent : class
             where THandler : IEventHandler, new() => Subscribe(typeof(TEvent), new TransientEventHandlerFactory<THandler>(ServiceProvider.GetRequiredService<IHybridServiceScopeFactory>()));
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="eventType"></param>
+        /// <param name="handler"></param>
+        /// <returns></returns>
         public virtual IDisposable Subscribe(Type eventType, IEventHandler handler) => Subscribe(eventType, new SingleInstanceHandlerFactory(handler));
-        /// <inheritdoc/>
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TEvent"></typeparam>
+        /// <param name="handler"></param>
+        /// <returns></returns>
         public virtual IDisposable Subscribe<TEvent>(IEventHandler<TEvent> handler) => Subscribe(typeof(TEvent), new SingleInstanceHandlerFactory(handler));
 
-        /// <inheritdoc/>
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TEvent"></typeparam>
+        /// <param name="factory"></param>
+        /// <returns></returns>
         public virtual IDisposable Subscribe<TEvent>(IEventHandlerFactory factory) where TEvent : class => Subscribe(typeof(TEvent), factory);
 
         /// <summary>
@@ -78,7 +112,15 @@ namespace Scorpio.EventBus
         /// </summary>
         /// <typeparam name="TEvent"></typeparam>
         /// <param name="action"></param>
-        public abstract void Unsubscribe<TEvent>(Func<TEvent, Task> action) where TEvent : class;
+        public virtual void Unsubscribe<TEvent>(Func<TEvent, Task> action)
+            where TEvent : class
+        {
+            GetOrCreateHandlerFactories(typeof(TEvent))
+                          .Locking(factories => factories.Where(
+                                  factory => factory is SingleInstanceHandlerFactory singleInstanceFactory
+                                             && singleInstanceFactory.HandlerInstance is ActionEventHandler<TEvent> actionHandler
+                                             && actionHandler.Action == action).ToList().ForEach(f => Unsubscribe<TEvent>(f)));
+        }
 
         /// <inheritdoc/>
         public virtual void Unsubscribe<TEvent>(IEventHandler<TEvent> handler) where TEvent : class => Unsubscribe(typeof(TEvent), handler);
@@ -88,7 +130,15 @@ namespace Scorpio.EventBus
         /// </summary>
         /// <param name="eventType"></param>
         /// <param name="handler"></param>
-        public abstract void Unsubscribe(Type eventType, IEventHandler handler);
+        public virtual void Unsubscribe(Type eventType, IEventHandler handler)
+        {
+            GetOrCreateHandlerFactories(eventType)
+                .Locking(factories => factories.Where(
+                        factory =>
+                            factory is SingleInstanceHandlerFactory &&
+                            (factory as SingleInstanceHandlerFactory).HandlerInstance == handler
+                    ).ToList().ForEach(f=>Unsubscribe(eventType,f)));
+        }
 
         /// <inheritdoc/>
         public virtual void Unsubscribe<TEvent>(IEventHandlerFactory factory) where TEvent : class => Unsubscribe(typeof(TEvent), factory);
@@ -140,6 +190,26 @@ namespace Scorpio.EventBus
         /// </summary>
         /// <param name="eventType"></param>
         /// <param name="eventData"></param>
+        /// <param name="onErrorAction"></param>
+        /// <returns></returns>
+        public virtual async Task TriggerHandlersAsync(Type eventType, object eventData, Action<EventExecutionErrorContext> onErrorAction = null)
+        {
+            var exceptions = new List<Exception>();
+
+            await TriggerHandlersAsync(eventType, eventData, exceptions);
+
+            if (exceptions.Any())
+            {
+                var context = new EventExecutionErrorContext(exceptions, eventType, this);
+                onErrorAction?.Invoke(context);
+                await ErrorHandler.HandleAsync(context);
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="eventType"></param>
+        /// <param name="eventData"></param>
         /// <param name="exceptions"></param>
         /// <returns></returns>
         protected virtual async Task TriggerHandlersAsync(Type eventType, object eventData, List<Exception> exceptions)
@@ -173,9 +243,16 @@ namespace Scorpio.EventBus
 
         /// <summary>
         /// 
+        /// </summary>       
+        protected virtual void SubscribeHandlers()
+        {
+            SubscribeHandlers(Options.GetEventHandlers());
+        }
+        /// <summary>
+        /// 
         /// </summary>
         /// <param name="handlers"></param>
-        protected virtual void SubscribeHandlers(ICollection<EventHandlerDescriptor> handlers)
+        protected virtual void SubscribeHandlers(IReadOnlyCollection<EventHandlerDescriptor> handlers)
         {
             foreach (var handler in handlers)
             {
@@ -201,7 +278,17 @@ namespace Scorpio.EventBus
         /// </summary>
         /// <param name="eventType"></param>
         /// <returns></returns>
-        protected abstract IEnumerable<EventTypeWithEventHandlerFactories> GetHandlerFactories(Type eventType);
+        protected virtual IEnumerable<EventTypeWithEventHandlerFactories> GetHandlerFactories(Type eventType)
+        {
+            var handlerFactoryList = new List<EventTypeWithEventHandlerFactories>();
+
+            foreach (var handlerFactory in HandlerFactories.Where(hf => ShouldTriggerEventForHandler(eventType, hf.Key)))
+            {
+                handlerFactoryList.Add(new EventTypeWithEventHandlerFactories(handlerFactory.Key, handlerFactory.Value));
+            }
+
+            return handlerFactoryList.ToArray();
+        }
 
         /// <summary>
         /// 
@@ -245,6 +332,16 @@ namespace Scorpio.EventBus
             }
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="eventType"></param>
+        /// <returns></returns>
+        protected List<IEventHandlerFactory> GetOrCreateHandlerFactories(Type eventType) => HandlerFactories.GetOrAdd(eventType, (type) => new List<IEventHandlerFactory>());
+
+        private bool ShouldTriggerEventForHandler(Type eventType, Type handlerType) => handlerType == eventType || handlerType.IsAssignableFrom(eventType);
         /// <summary>
         /// 
         /// </summary>

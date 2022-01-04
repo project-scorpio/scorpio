@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace Scorpio
 {
@@ -93,6 +94,26 @@ namespace Scorpio
             }
 
             return value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TBaseType"></typeparam>
+        /// <param name="type"></param>
+        /// <param name="parameterName"></param>
+        public static Type AssignableTo<TBaseType>(
+                    Type type,
+                    string parameterName)
+        {
+            NotNull(type, parameterName);
+
+            if (!type.IsAssignableTo<TBaseType>())
+            {
+                throw new ArgumentException($"{parameterName} (type of {type.AssemblyQualifiedName}) should be assignable to the {typeof(TBaseType).GetFullNameWithAssemblyName()}!");
+            }
+
+            return type;
         }
     }
 }

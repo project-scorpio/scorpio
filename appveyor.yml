@@ -3,8 +3,10 @@ configuration: Release
 image: Visual Studio 2019
 pull_requests:
   do_not_increment_build_number: true
-  
+
 build_script:
+- set JAVA_HOME=C:\Program Files\Java\jdk11
+- set PATH=%JAVA_HOME%\bin;%PATH%
 - ps: .\build.ps1
 
 test: off

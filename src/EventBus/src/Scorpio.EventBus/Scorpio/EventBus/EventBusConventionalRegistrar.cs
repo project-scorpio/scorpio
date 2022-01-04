@@ -14,11 +14,11 @@ namespace Scorpio.EventBus
         {
             context.RegisterConventionalDependencyInject(config =>
             {
-                config.Where(t => t.IsAssignableTo<IEventHandler>() && t.IsAssignableTo<ISingletonDependency>()).AsSelf().Lifetime(ServiceLifetime.Singleton);
-                config.Where(t => t.IsAssignableTo<IEventHandler>() && t.IsAssignableTo<ITransientDependency>()).AsSelf().Lifetime(ServiceLifetime.Transient);
-                config.Where(t => t.IsAssignableTo<IEventHandler>() && t.IsAssignableTo<IScopedDependency>()).AsSelf().Lifetime(ServiceLifetime.Scoped);
+                config.Where(t => t.IsStandardType()).Where(t => t.IsAssignableTo<IEventHandler>() && t.IsAssignableTo<ISingletonDependency>()).AsSelf().Lifetime(ServiceLifetime.Singleton);
+                config.Where(t => t.IsStandardType()).Where(t => t.IsAssignableTo<IEventHandler>() && t.IsAssignableTo<ITransientDependency>()).AsSelf().Lifetime(ServiceLifetime.Transient);
+                config.Where(t => t.IsStandardType()).Where(t => t.IsAssignableTo<IEventHandler>() && t.IsAssignableTo<IScopedDependency>()).AsSelf().Lifetime(ServiceLifetime.Scoped);
             });
-            context.RegisterEventHandler(c => c.Where(t => t.IsAssignableTo<IEventHandler>()).AutoActivation());
+            context.RegisterEventHandler(c => c.Where(t=>t.IsStandardType()).Where(t => t.IsAssignableTo<IEventHandler>()).AutoActivation());
         }
     }
 }

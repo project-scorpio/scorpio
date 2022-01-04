@@ -64,5 +64,25 @@ namespace System.Reflection
             Should.NotThrow(() => typeof(TypeList).IsStandardType()).ShouldBeTrue();
             Should.NotThrow(() => typeof(string).IsStandardType()).ShouldBeTrue();
         }
+
+        [Fact]
+        public void GetAssignableToGenericTypes()
+        {
+            Should.Throw<ArgumentNullException>(() => typeof(List<>).GetAssignableToGenericTypes(null)).ParamName.ShouldBe("genericType");
+            Should.Throw<ArgumentNullException>(() => default(Type).GetAssignableToGenericTypes(null)).ParamName.ShouldBe("this");
+            Should.Throw<ArgumentNullException>(() => default(Type).GetAssignableToGenericTypes(typeof(IEqualityComparer<>))).ParamName.ShouldBe("this");
+            Should.NotThrow(() => typeof(TestPipelineBuilder).GetAssignableToGenericTypes(typeof(PipelineBuilder<>))).ShouldNotBeEmpty();
+            Should.NotThrow(() => typeof(TestPipelineBuilder).GetAssignableToGenericTypes(typeof(IPipelineBuilder<>))).ShouldNotBeEmpty();
+            Should.NotThrow(() => typeof(TestPipelineBuilder).GetAssignableToGenericTypes(typeof(IServiceProviderFactory<>))).ShouldBeEmpty();
+
+        }
+
+        [Fact]
+        public void GetFullNameWithAssemblyName()
+        {
+            Should.Throw<ArgumentNullException>(() => default(Type).GetFullNameWithAssemblyName()).ParamName.ShouldBe("type");
+            Should.NotThrow(() => typeof(TypeList).GetFullNameWithAssemblyName()).ShouldBe("Scorpio.TypeList, Scorpio.Utilities");
+
+        }
     }
 }

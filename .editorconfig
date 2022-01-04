@@ -83,8 +83,8 @@ csharp_style_expression_bodied_properties = when_on_single_line:suggestion
 csharp_style_pattern_matching_over_as_with_null_check = true:error
 csharp_style_pattern_matching_over_is_with_cast_check = true:error
 csharp_style_prefer_switch_expression = true:suggestion
-csharp_style_prefer_pattern_matching = true:suggestion
-csharp_style_prefer_not_pattern = true:suggestion
+csharp_style_prefer_pattern_matching = false:suggestion
+csharp_style_prefer_not_pattern = false:suggestion
 
 
 # Null 检查首选项
@@ -240,3 +240,6 @@ dotnet_diagnostic.IDE1006.severity = error
 
 # CS1591: 缺少对公共可见类型或成员的 XML 注释
 dotnet_diagnostic.CS1591.severity = error
+
+# IDE0079: Remove unnecessary suppression
+dotnet_diagnostic.IDE0079.severity = none

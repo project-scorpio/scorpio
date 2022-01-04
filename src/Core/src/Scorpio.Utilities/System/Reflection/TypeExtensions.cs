@@ -9,6 +9,18 @@ namespace System.Reflection
     /// </summary>
     public static class TypeExtensions
     {
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static string GetFullNameWithAssemblyName(this Type type)
+        {
+            Check.NotNull(type, nameof(type));
+            return type.FullName + ", " + type.Assembly.GetName().Name;
+        }
+
         /// <summary>
         /// Returns true if this type is in the <paramref name="namespace"/> namespace
         /// or one of its sub-namespaces.
@@ -98,33 +110,42 @@ namespace System.Reflection
         /// <param name="this"></param>
         /// <param name="genericType"></param>
         /// <returns></returns>
-        public static IEnumerable<Type> GetAssignableToGenericTypes(this Type @this, Type genericType)
+
+        public static List<Type> GetAssignableToGenericTypes(this Type @this, Type genericType)
         {
             Check.NotNull(@this, nameof(@this));
             Check.NotNull(genericType, nameof(genericType));
-            var givenTypeInfo = @this.GetTypeInfo();
+            var result = new List<Type>();
+            AddImplementedGenericTypes(result, @this, genericType);
+            return result;
+        }
 
-            if (givenTypeInfo.IsGenericType && @this.GetGenericTypeDefinition() == genericType)
+        private static void AddImplementedGenericTypes(List<Type> result, Type givenType, Type genericType)
+        {
+            var givenTypeInfo = givenType.GetTypeInfo();
+
+            if (givenTypeInfo.IsGenericType && givenType.GetGenericTypeDefinition() == genericType)
             {
-                yield return @this;
+                result.AddIfNotContains(givenType);
+
             }
 
             foreach (var interfaceType in givenTypeInfo.GetInterfaces())
             {
                 if (interfaceType.GetTypeInfo().IsGenericType && interfaceType.GetGenericTypeDefinition() == genericType)
                 {
-                    yield return interfaceType;
+
+                    result.AddIfNotContains(interfaceType);
+
                 }
             }
 
             if (givenTypeInfo.BaseType == null)
             {
-                yield break;
+                return;
             }
-            foreach (var item in GetAssignableToGenericTypes(givenTypeInfo.BaseType, genericType))
-            {
-                yield return item;
-            }
+
+            AddImplementedGenericTypes(result, givenTypeInfo.BaseType, genericType);
         }
         /// <summary>
         /// Determines whether this type is a standard type.

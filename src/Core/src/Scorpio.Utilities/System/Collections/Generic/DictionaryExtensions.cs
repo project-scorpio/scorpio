@@ -210,5 +210,55 @@ namespace System.Collections.Generic
         /// <typeparam name="TValue">Type of the value</typeparam>
         /// <returns>Value if found, default if can not found.</returns>
         public static TValue GetOrAdd<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, Func<TValue> factory) => dictionary.GetOrAdd(key, k => factory());
+
+        /// <summary>
+        /// Adds a key/value pair to the <see cref="IDictionary{TKey, TValue}"/> if the key does not already exist, or updates a key/value pair in the <see cref="IDictionary{TKey, TValue}"/> by using the specified function if the key already exists.
+        /// </summary>
+        /// <param name="dictionary">Dictionary to check and get</param>
+        /// <param name="key"> The key to be added or whose value should be updated</param>
+        /// <param name="addFactory">The function used to generate a value to be added for an absent key.</param>
+        /// <param name="updateFactory">The function used to generate a value to be updated for an present key.</param>
+        /// <typeparam name="TKey">Type of the key</typeparam>
+        /// <typeparam name="TValue">Type of the value</typeparam>
+        /// <returns>The new value for the key. This will be either be the result of factory.</returns>
+        public static TValue AddOrUpdate<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, Func<TKey, TValue> addFactory, Func<TKey,TValue, TValue> updateFactory)
+        {
+            if (dictionary.ContainsKey(key))
+            {
+                dictionary[key] = updateFactory(key,dictionary[key]);
+            }
+            else
+            {
+                dictionary.Add(key, addFactory(key));
+            }
+            return dictionary[key];
+        }
+
+
+        /// <summary>
+        /// Adds a key/value pair to the <see cref="IDictionary{TKey, TValue}"/> if the key does not already exist, or updates a key/value pair in the <see cref="IDictionary{TKey, TValue}"/> by using the specified function if the key already exists.
+        /// </summary>
+        /// <param name="dictionary">Dictionary to check and get</param>
+        /// <param name="key"> The key to be added or whose value should be updated</param>
+        /// <param name="factory">The function used to generate a value to be added for an absent key or updated for an present key.</param>
+        /// <typeparam name="TKey">Type of the key</typeparam>
+        /// <typeparam name="TValue">Type of the value</typeparam>
+        /// <returns>The new value for the key. This will be either be the result of factory.</returns>
+        public static TValue AddOrUpdate<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, Func<TKey, TValue> factory)
+        {
+            return dictionary[key] = factory(key);
+        }
+
+        /// <summary>
+        /// Adds a key/value pair to the <see cref="IDictionary{TKey, TValue}"/> if the key does not already exist, or updates a key/value pair in the <see cref="IDictionary{TKey, TValue}"/> by using the specified function if the key already exists.
+        /// </summary>
+        /// <param name="dictionary">Dictionary to check and get</param>
+        /// <param name="key"> The key to be added or whose value should be updated</param>
+        /// <param name="factory">The function used to generate a value to be added for an absent key or updated for an present key.</param>
+        /// <typeparam name="TKey">Type of the key</typeparam>
+        /// <typeparam name="TValue">Type of the value</typeparam>
+        /// <returns>The new value for the key. This will be either be the result of factory.</returns>
+        public static TValue AddOrUpdate<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, Func<TValue> factory) => dictionary.AddOrUpdate(key, k => factory());
+
     }
 }

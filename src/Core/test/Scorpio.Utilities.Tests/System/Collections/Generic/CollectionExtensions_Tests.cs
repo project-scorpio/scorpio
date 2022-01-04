@@ -80,14 +80,14 @@ namespace System.Collections.Generic
         [Fact]
         public void RemoveAll()
         {
-            ICollection<int> collection = new Collection<int> { 3, 4, 4, 5, 5, 5, 6, 6, 7, 8, 8, 8, 9 };
-            collection.Count.ShouldBe(13);
-            collection.RemoveAll(i => i == 4).Count.ShouldBe(2);
-            collection.Count.ShouldBe(11);
+            ICollection<int> collection = new HashSet<int> { 3, 4, 4, 5, 5, 5, 6, 6, 7, 8, 8, 8, 9 };
+            collection.Count.ShouldBe(7);
+            collection.RemoveAll(i => i == 4).Count.ShouldBe(1);
+            collection.Count.ShouldBe(6);
             collection.RemoveAll(i => i == 2).Count.ShouldBe(0);
-            collection.Count.ShouldBe(11);
-            collection.RemoveAll(i => i == 5).Count.ShouldBe(3);
-            collection.Count.ShouldBe(8);
+            collection.Count.ShouldBe(6);
+            collection.RemoveAll(i => i == 5).Count.ShouldBe(1);
+            collection.Count.ShouldBe(5);
         }
 
         [Fact]
