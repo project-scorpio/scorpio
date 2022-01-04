@@ -49,5 +49,11 @@ namespace Scorpio.EventBus
         /// <param name="handlerDescriptor"></param>
         public void AddHandler(EventHandlerDescriptor handlerDescriptor) => Handlers.Add(handlerDescriptor);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public IReadOnlyCollection<EventHandlerDescriptor> GetEventHandlers()=>Handlers;
+
     }
 }
