@@ -15,10 +15,6 @@ namespace Scorpio.EventBus
         /// <summary>
         /// 
         /// </summary>
-        private IEventHandlerFactory _factory;
-        /// <summary>
-        /// 
-        /// </summary>
         /// <param name="activationType"></param>
         /// <param name="handlerType"></param>
         private EventHandlerDescriptor(Type handlerType, EventHandlerActivationType activationType)
