@@ -52,7 +52,7 @@ namespace Scorpio.EventBus
             _exchange = _bus.Advanced.ExchangeDeclare(_options.ExchangeName, c => c.AsDurable(true).WithType("direct"));
             _queue = _bus.Advanced.QueueDeclare(_options.ClientName, c => c.AsDurable(true).AsExclusive(false).AsAutoDelete(false));
             _bus.Advanced.Consume(_queue, ProcessEventAsync);
-            SubscribeHandlers(Options.Handlers);
+            SubscribeHandlers(Options.GetEventHandlers());
         }
 
         private async Task<AckStrategy> ProcessEventAsync(byte[] buffer, MessageProperties messageProperties, MessageReceivedInfo messageReceivedInfo)

@@ -8,11 +8,12 @@ namespace Scorpio.EventBus
     /// </summary>
     public class EventBusOptions
     {
+        private readonly HashSet<EventHandlerDescriptor> _handlers;
+
         /// <summary>
         /// 
         /// </summary>
-        internal ICollection<EventHandlerDescriptor> Handlers { get; }
-
+        internal ICollection<EventHandlerDescriptor> Handlers => _handlers;
         /// <summary>
         /// 
         /// </summary>
@@ -41,19 +42,19 @@ namespace Scorpio.EventBus
         /// <summary>
         /// 
         /// </summary>
-        public EventBusOptions() => Handlers = new HashSet<EventHandlerDescriptor>();
+        public EventBusOptions() => _handlers = new HashSet<EventHandlerDescriptor>();
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="handlerDescriptor"></param>
-        public void AddHandler(EventHandlerDescriptor handlerDescriptor) => Handlers.Add(handlerDescriptor);
+        public void AddHandler(EventHandlerDescriptor handlerDescriptor) => _handlers.Add(handlerDescriptor);
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public IReadOnlyCollection<EventHandlerDescriptor> GetEventHandlers()=>Handlers;
+        public IReadOnlyCollection<EventHandlerDescriptor> GetEventHandlers() => _handlers;
 
     }
 }

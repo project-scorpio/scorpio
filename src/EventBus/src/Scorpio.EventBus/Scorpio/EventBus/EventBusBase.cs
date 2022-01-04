@@ -252,7 +252,7 @@ namespace Scorpio.EventBus
         /// 
         /// </summary>
         /// <param name="handlers"></param>
-        protected virtual void SubscribeHandlers(ICollection<EventHandlerDescriptor> handlers)
+        protected virtual void SubscribeHandlers(IReadOnlyCollection<EventHandlerDescriptor> handlers)
         {
             foreach (var handler in handlers)
             {
