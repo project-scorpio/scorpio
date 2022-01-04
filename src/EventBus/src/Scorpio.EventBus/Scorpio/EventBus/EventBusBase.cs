@@ -243,6 +243,13 @@ namespace Scorpio.EventBus
 
         /// <summary>
         /// 
+        /// </summary>       
+        protected virtual void SubscribeHandlers()
+        {
+            SubscribeHandlers(Options.GetEventHandlers());
+        }
+        /// <summary>
+        /// 
         /// </summary>
         /// <param name="handlers"></param>
         protected virtual void SubscribeHandlers(ICollection<EventHandlerDescriptor> handlers)

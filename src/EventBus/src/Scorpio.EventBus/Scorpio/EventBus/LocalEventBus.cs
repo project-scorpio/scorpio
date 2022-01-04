@@ -33,7 +33,7 @@ namespace Scorpio.EventBus
         /// <summary>
         /// 
         /// </summary>
-        public virtual void Initialize() => SubscribeHandlers(Options.GetEventHandlers());
+        public virtual void Initialize() => SubscribeHandlers();
 
         public virtual async Task PublishAsync(LocalEventMessage localEventMessage)
         {
