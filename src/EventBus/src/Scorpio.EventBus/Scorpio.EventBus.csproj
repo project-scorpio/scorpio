@@ -5,6 +5,7 @@
   <ItemGroup>
     <ProjectReference Include="../../../Core/src\Scorpio\Scorpio.csproj" />
     <ProjectReference Include="..\..\..\ObjectExtending\src\Scorpio.ObjectExtending\Scorpio.ObjectExtending.csproj" />
+
   </ItemGroup>
 
   <PropertyGroup>
