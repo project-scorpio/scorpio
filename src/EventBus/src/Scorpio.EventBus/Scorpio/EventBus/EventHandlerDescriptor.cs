@@ -15,10 +15,6 @@ namespace Scorpio.EventBus
         /// <summary>
         /// 
         /// </summary>
-        private IEventHandlerFactory _factory;
-        /// <summary>
-        /// 
-        /// </summary>
         /// <param name="activationType"></param>
         /// <param name="handlerType"></param>
         private EventHandlerDescriptor(Type handlerType, EventHandlerActivationType activationType)
@@ -86,7 +82,7 @@ namespace Scorpio.EventBus
         /// </summary>
         /// <param name="serviceProvider"></param>
         /// <returns></returns>
-        public IEventHandlerFactory GetEventHandlerFactory(IServiceProvider serviceProvider) => _factory ??= CreateFactory(serviceProvider);
+        public IEventHandlerFactory GetEventHandlerFactory(IServiceProvider serviceProvider) => CreateFactory(serviceProvider);
 
         private IEventHandlerFactory CreateFactory(IServiceProvider serviceProvider)
         {
