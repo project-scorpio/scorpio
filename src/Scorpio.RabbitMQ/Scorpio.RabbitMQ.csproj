@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    
+    <AssemblyTitle>Scorpio RabbitMQ library</AssemblyTitle>
+    
+    <PackageTags>Scorpio;Aspect;dependencyinjection;Modularity</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EasyNetQ.DI.Microsoft" Version="6.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(SourceRoot)\src\Scorpio\Scorpio.csproj" />
+  </ItemGroup>
+
+</Project>

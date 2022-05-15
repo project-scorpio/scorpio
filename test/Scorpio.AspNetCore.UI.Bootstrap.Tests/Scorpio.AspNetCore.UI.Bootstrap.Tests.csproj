@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    
+	  
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(SourceRoot)\src\Scorpio.AspNetCore.UI.Bootstrap\Scorpio.AspNetCore.UI.Bootstrap.csproj" />
+    <ProjectReference Include="..\Scorpio.AspNetCore.UI.Tests\Scorpio.AspNetCore.UI.Tests.csproj" />
+  </ItemGroup>
+
+</Project>

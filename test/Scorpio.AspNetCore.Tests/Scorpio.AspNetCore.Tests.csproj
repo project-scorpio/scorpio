@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    
+	  
+	  <SonarQubeTestProject>true</SonarQubeTestProject>
+	  <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+	  <ProjectReference Include="..\Scorpio.AspNetCore.TestBase\Scorpio.AspNetCore.TestBase.csproj" />
+  </ItemGroup>
+
+</Project>

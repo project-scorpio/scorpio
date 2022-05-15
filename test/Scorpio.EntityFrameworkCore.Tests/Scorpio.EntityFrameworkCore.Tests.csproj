@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        
+		
+    </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.5" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(SourceRoot)\src\Scorpio.AspectCore\Scorpio.AspectCore.csproj" />
+        <ProjectReference Include="$(SourceRoot)\src\Scorpio.EntityFrameworkCore\Scorpio.EntityFrameworkCore.csproj" />
+    </ItemGroup>
+ 
+</Project>
