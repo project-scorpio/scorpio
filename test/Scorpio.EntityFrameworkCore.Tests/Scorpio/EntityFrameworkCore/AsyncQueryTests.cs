@@ -13,7 +13,6 @@ namespace Scorpio.EntityFrameworkCore
     public class AsyncQueryTests : EntityFrameworkCoreTestBase
     {
 
-
         [Fact]
         public async Task AnyAsync()
         {
