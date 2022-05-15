@@ -20,11 +20,12 @@ using Newtonsoft.Json;
 using RabbitMQ.Client;
 
 using Scorpio.Data;
+using Scorpio.Initialization;
 using Scorpio.Threading;
 
 namespace Scorpio.EventBus
 {
-    internal class RabbitEventBus : EventBusBase
+    internal class RabbitEventBus : EventBusBase, IInitializable
     {
         private readonly IBus _bus;
         private readonly RabbitMQEventBusOptions _options;
@@ -46,15 +47,15 @@ namespace Scorpio.EventBus
             _options = options.Value;
             EventTypes = new ConcurrentDictionary<string, Type>();
         }
-        public override void Initialize()
+        public virtual void Initialize()
         {
             _exchange = _bus.Advanced.ExchangeDeclare(_options.ExchangeName, c => c.AsDurable(true).WithType("direct"));
             _queue = _bus.Advanced.QueueDeclare(_options.ClientName, c => c.AsDurable(true).AsExclusive(false).AsAutoDelete(false));
             _bus.Advanced.Consume(_queue, ProcessEventAsync);
-            base.Initialize();
+            SubscribeHandlers(Options.GetEventHandlers());
         }
 
-        private async Task<AckStrategy> ProcessEventAsync(byte[] buffer,MessageProperties  messageProperties,MessageReceivedInfo messageReceivedInfo)
+        private async Task<AckStrategy> ProcessEventAsync(byte[] buffer, MessageProperties messageProperties, MessageReceivedInfo messageReceivedInfo)
         {
             var eventName = messageReceivedInfo.RoutingKey;
             var eventType = EventTypes.GetOrDefault(eventName);
@@ -88,7 +89,7 @@ namespace Scorpio.EventBus
             var eventName = EventNameAttribute.GetNameOrDefault(eventType);
             var body = Serializer.Serialize(eventData);
             if (properties == null)
-{
+            {
                 properties = new MessageProperties
                 {
                     DeliveryMode = 2,
@@ -122,7 +123,7 @@ namespace Scorpio.EventBus
                                factories.Add(factory);
                                if (factories.Count == 1)
                                {
-                                   _bus.Advanced.Bind(_exchange, _queue, EventNameAttribute.GetNameOrDefault(eventType));
+                                   factories.Binding = _bus.Advanced.Bind(_exchange, _queue, EventNameAttribute.GetNameOrDefault(eventType));
                                }
                                return factories;
                            });
@@ -131,74 +132,26 @@ namespace Scorpio.EventBus
         }
 
 
-        public override void Unsubscribe<TEvent>(Func<TEvent, Task> action)
-        {
-            GetOrCreateHandlerFactories(typeof(TEvent))
-                          .Locking(factories => factories.RemoveAll(
-                                  factory =>
-                                  {
-                                      if (!(factory is SingleInstanceHandlerFactory singleInstanceFactory))
-                                      {
-                                          return false;
-                                      }
+        public override void Unsubscribe(Type eventType, IEventHandlerFactory factory) =>
+            GetOrCreateHandlerFactories(eventType).Locking(factories => factories.Action(f => f.Remove(factory)))
+                                                  .Action(f => !f.Any(), f => _bus.Advanced.Unbind(f.Binding));
 
-                                      if (!(singleInstanceFactory.HandlerInstance is ActionEventHandler<TEvent> actionHandler))
-                                      {
-                                          return false;
-                                      }
-                                      return actionHandler.Action == action;
-                                  }));
-        }
+        public override void UnsubscribeAll(Type eventType) => GetOrCreateHandlerFactories(eventType).Locking(factories => factories.Action(f => f.Clear()).Action(f => _bus.Advanced.Unbind(f.Binding)));
 
-        public override void Unsubscribe(Type eventType, IEventHandler handler)
-        {
-            GetOrCreateHandlerFactories(eventType)
-                .Locking(factories => factories.RemoveAll(
-                        factory =>
-                            factory is SingleInstanceHandlerFactory &&
-                            (factory as SingleInstanceHandlerFactory).HandlerInstance == handler
-                    ));
-        }
 
-        public override void Unsubscribe(Type eventType, IEventHandlerFactory factory) => GetOrCreateHandlerFactories(eventType).Locking(factories => factories.Remove(factory));
-
-        public override void UnsubscribeAll(Type eventType) => GetOrCreateHandlerFactories(eventType).Locking(factories => factories.Clear());
-
-        protected override IEnumerable<EventTypeWithEventHandlerFactories> GetHandlerFactories(Type eventType)
-        {
-            var handlerFactoryList = new List<EventTypeWithEventHandlerFactories>();
-
-            foreach (var handlerFactory in HandlerFactories.Where(hf => ShouldTriggerEventForHandler(eventType, hf.Key)))
-            {
-                handlerFactoryList.Add(new EventTypeWithEventHandlerFactories(handlerFactory.Key, handlerFactory.Value));
-            }
-
-            return handlerFactoryList.ToArray();
-        }
-
-        private bool ShouldTriggerEventForHandler(Type eventType, Type handlerType)
-        {
-            if (handlerType == eventType)
-            {
-                return true;
-            }
-            //Should trigger for inherited types
-            if (handlerType.IsAssignableFrom(eventType))
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        private List<IEventHandlerFactory> GetOrCreateHandlerFactories(Type eventType)
+        private new EventHandlerFactoryList GetOrCreateHandlerFactories(Type eventType)
         {
             return HandlerFactories.GetOrAdd(eventType, (type) =>
             {
                 var eventName = EventNameAttribute.GetNameOrDefault(type);
                 EventTypes[eventName] = type;
-                return new List<IEventHandlerFactory>();
-            });
+                return new EventHandlerFactoryList();
+            }) as EventHandlerFactoryList;
+        }
+
+        private class EventHandlerFactoryList : List<IEventHandlerFactory>
+        {
+            public IBinding Binding { get; set; }
         }
     }
 }

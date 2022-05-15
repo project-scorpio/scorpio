@@ -47,6 +47,11 @@ namespace System
             action.Received(0);
             "test".Action(true, action);
             action.Received(1);
+            action.ClearSubstitute();
+            "test".Action(s => s != "test", action);
+            action.Received(0);
+            "test".Action(s => s == "test", action);
+            action.Received(1);
         }
         [Fact]
         public async Task ActionAsync()
@@ -58,6 +63,11 @@ namespace System
             await "test".Action(false, action);
             action.Received(0);
             await "test".Action(true, action);
+            action.Received(1);
+            action.ClearSubstitute();
+            await "test".Action(s => s != "test", action);
+            action.Received(0);
+            await "test".Action(s => s == "test", action);
             action.Received(1);
         }
 
@@ -74,6 +84,16 @@ namespace System
             "test".Action(false, actionTrue, actionFalse);
             actionTrue.Received(0);
             actionFalse.Received(1);
+            actionTrue.ClearSubstitute();
+            actionFalse.ClearSubstitute();
+            "test".Action(s => s == "test", actionTrue, actionFalse);
+            actionTrue.Received(1);
+            actionFalse.Received(0);
+            actionTrue.ClearSubstitute();
+            actionFalse.ClearSubstitute();
+            "test".Action(s => s != "test", actionTrue, actionFalse);
+            actionTrue.Received(0);
+            actionFalse.Received(1);
 
         }
 
@@ -88,6 +108,16 @@ namespace System
             actionTrue.ClearSubstitute();
             actionFalse.ClearSubstitute();
             await "test".Action(false, actionTrue, actionFalse);
+            actionTrue.Received(0);
+            actionFalse.Received(1);
+            actionTrue.ClearSubstitute();
+            actionFalse.ClearSubstitute();
+            await "test".Action(s => s == "test", actionTrue, actionFalse);
+            actionTrue.Received(1);
+            actionFalse.Received(0);
+            actionTrue.ClearSubstitute();
+            actionFalse.ClearSubstitute();
+            await "test".Action(s => s != "test", actionTrue, actionFalse);
             actionTrue.Received(0);
             actionFalse.Received(1);
 

@@ -112,6 +112,7 @@ namespace System.Reflection
         /// <param name="this"></param>
         /// <param name="genericType"></param>
         /// <returns></returns>
+
         public static List<Type> GetAssignableToGenericTypes(this Type @this, Type genericType)
         {
             Check.NotNull(@this, nameof(@this));
@@ -128,13 +129,16 @@ namespace System.Reflection
             if (givenTypeInfo.IsGenericType && givenType.GetGenericTypeDefinition() == genericType)
             {
                 result.AddIfNotContains(givenType);
+
             }
 
             foreach (var interfaceType in givenTypeInfo.GetInterfaces())
             {
                 if (interfaceType.GetTypeInfo().IsGenericType && interfaceType.GetGenericTypeDefinition() == genericType)
                 {
+
                     result.AddIfNotContains(interfaceType);
+
                 }
             }
 

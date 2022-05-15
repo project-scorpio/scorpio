@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Threading.Tasks;
 
-namespace Scorpio
+namespace System
 {
     /// <summary>
     /// 
@@ -24,5 +25,23 @@ namespace Scorpio
         {
             // Method intentionally left empty.
         }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public sealed class NullAsyncDispose : IAsyncDisposable
+    {
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static readonly NullAsyncDispose Instance = new NullAsyncDispose();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public ValueTask DisposeAsync() => new ValueTask();
     }
 }

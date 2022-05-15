@@ -70,5 +70,18 @@ namespace System.Collections.Generic
             dic.Count.ShouldBe(5);
             dic.GetValueOrDefault("Key5").ShouldBe("New Value");
         }
+        [Fact]
+        public void AddOrUpdateFact()
+        {
+            var dic = new Dictionary<string, int>
+            {
+                {"key1",1 }
+            };
+
+            dic.AddOrUpdate("key", k => 1, (k, v) => v + 1).ShouldBe(1);
+            dic.AddOrUpdate("key", k => 1, (k, v) => v + 1).ShouldBe(2);
+            dic.AddOrUpdate("key1", k => 1, (k, v) => v + 1).ShouldBe(2);
+            dic.AddOrUpdate("key", k => 1, (k, v) => v + 1).ShouldBe(3);
+        }
     }
 }
