@@ -9,7 +9,7 @@ public class BuildVersion
     public BuildVersion(BuildContext context)
 	{
         _context = context;
-		var versionFile = context.Context.File("./build/versions.props");
+		var versionFile = context.Context.File("./versions.props");
 		var content = System.IO.File.ReadAllText(versionFile.Path.FullPath);
 		XmlDocument doc = new XmlDocument();
 		doc.LoadXml(content);
