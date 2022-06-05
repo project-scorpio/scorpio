@@ -9,21 +9,4 @@
     <ProjectReference Include="$(SourceRoot)\src\Scorpio.AspNetCore.Mvc\Scorpio.AspNetCore.Mvc.csproj" />
     <ProjectReference Include="..\Scorpio.AspNetCore.Tests\Scorpio.AspNetCore.Tests.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="Scorpio\AspNetCore\App\Views\Simple\About.cshtml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="Scorpio\AspNetCore\App\Views\Simple\ExceptionOnRazor.cshtml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="Scorpio\AspNetCore\App\Views\_ViewImports.cshtml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Pages\" />
-  </ItemGroup>
-
 </Project>

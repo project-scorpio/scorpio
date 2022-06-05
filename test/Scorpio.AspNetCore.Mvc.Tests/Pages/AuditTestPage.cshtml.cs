@@ -1,7 +1,10 @@
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Scorpio.AspNetCore.Mvc.Auditing
+using Scorpio;
+
+namespace Scorpio.AspNetCore.Auditing.Pages
 {
     public class AuditTestPageModel : PageModel
     {
@@ -16,4 +19,5 @@ namespace Scorpio.AspNetCore.Mvc.Auditing
 
         public ObjectResult OnGetAuditFailForGetRequestsReturningObject() => throw new ScorpioException("Exception occurred!");
     }
+
 }

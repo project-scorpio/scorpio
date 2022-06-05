@@ -1,13 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
-		<SonarQubeTestProject>true</SonarQubeTestProject>
+		<SonarQubeTestProject>false</SonarQubeTestProject>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="$(SourceRoot)\src\Scorpio\Scorpio.csproj" />
     <ProjectReference Remove="$(TestRoot)Scorpio.TestBase\Scorpio.TestBase.csproj" />
     <PackageReference Remove="xunit.runner.visualstudio"/>
+    <PackageReference Remove="xunit"/>
     <PackageReference Remove="coverlet.collector"/>
     <PackageReference Remove="Microsoft.NET.Test.Sdk"/>
   </ItemGroup>

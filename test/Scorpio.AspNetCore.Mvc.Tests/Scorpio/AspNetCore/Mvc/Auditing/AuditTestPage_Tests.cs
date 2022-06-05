@@ -36,7 +36,7 @@ namespace Scorpio.AspNetCore.Mvc.Auditing
         [Fact]
         public async Task Should_Trigger_Middleware_And_AuditLog_Success_For_GetRequests()
         {
-            await GetResponseAsync("/Auditing/AuditTestPage?handler=AuditSuccessForGetRequests");
+            await GetResponseAsync("/AuditTestPage?handler=AuditSuccessForGetRequests");
             await _auditingStore.Received().SaveAsync(Arg.Any<AuditInfo>());
         }
 
@@ -44,7 +44,7 @@ namespace Scorpio.AspNetCore.Mvc.Auditing
         public async Task Should_Trigger_Middleware_And_AuditLog_Success_For_GetRequests_Disable()
         {
             _options.IsEnabled = false;
-            await GetResponseAsync("/Auditing/AuditTestPage?handler=AuditSuccessForGetRequests");
+            await GetResponseAsync("/AuditTestPage?handler=AuditSuccessForGetRequests");
             await _auditingStore.Received(0).SaveAsync(Arg.Any<AuditInfo>());
         }
 
@@ -52,7 +52,7 @@ namespace Scorpio.AspNetCore.Mvc.Auditing
         public async Task Should_Trigger_Middleware_And_AuditLog_Success_For_GetRequests_DisablePage()
         {
             _options.DisableAuditingPage();
-            await GetResponseAsync("/Auditing/AuditTestPage?handler=AuditSuccessForGetRequests");
+            await GetResponseAsync("/AuditTestPage?handler=AuditSuccessForGetRequests");
             await _auditingStore.Received(0).SaveAsync(Arg.Any<AuditInfo>());
         }
 
@@ -61,7 +61,7 @@ namespace Scorpio.AspNetCore.Mvc.Auditing
         {
             _options.IsEnabled = true;
 
-            await GetResponseAsync("/Auditing/AuditTestPage?handler=AuditFailForGetRequests", System.Net.HttpStatusCode.NotFound);
+            await GetResponseAsync("/AuditTestPage?handler=AuditFailForGetRequests", System.Net.HttpStatusCode.NotFound);
             await _auditingStore.Received().SaveAsync(Arg.Any<AuditInfo>());
 
         }
@@ -71,7 +71,7 @@ namespace Scorpio.AspNetCore.Mvc.Auditing
         {
             _options.IsEnabled = true;
 
-            await GetResponseAsync("/Auditing/AuditTestPage?handler=AuditFailForGetRequestsReturningObject", System.Net.HttpStatusCode.NotFound);
+            await GetResponseAsync("/AuditTestPage?handler=AuditFailForGetRequestsReturningObject", System.Net.HttpStatusCode.NotFound);
 
             await _auditingStore.Received().SaveAsync(Arg.Any<AuditInfo>());
         }

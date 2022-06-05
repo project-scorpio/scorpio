@@ -21,8 +21,8 @@ namespace Scorpio.AspNetCore.Mvc
                 opt.IsEnabled = true;
                 opt.IsEnabledForAnonymousUsers = true;
             });
-            context.Services.Configure<RazorPagesOptions>(options => options.RootDirectory = "/Scorpio/AspNetCore/Mvc");
-            context.Services.Configure<RazorViewEngineOptions>(options => options.ViewLocationFormats.Add("/Scorpio/AspNetCore/App/Views/{1}/{0}.cshtml"));
+            //context.Services.Configure<RazorPagesOptions>(options => options.RootDirectory = "/Scorpio/AspNetCore/Mvc");
+            //context.Services.Configure<RazorViewEngineOptions>(options => options.ViewLocationFormats.Add("/Scorpio/AspNetCore/App/Views/{1}/{0}.cshtml"));
         }
 
 
