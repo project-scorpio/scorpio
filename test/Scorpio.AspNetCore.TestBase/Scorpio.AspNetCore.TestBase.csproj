@@ -7,7 +7,7 @@
 	  <OutputType>Library</OutputType>
   </PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.TestHost" Version="6.0.5" />
+		<PackageReference Include="Microsoft.AspNetCore.TestHost" Version="3.1.25" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="$(SourceRoot)\src\Scorpio.AspNetCore\Scorpio.AspNetCore.csproj" />

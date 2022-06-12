@@ -13,7 +13,7 @@ namespace Scorpio.AspNetCore.Mvc
             services.AddControllersWithViews();
             services.Configure<ExceptionHandlerOptions>(opts =>
             {
-                opts.AllowStatusCode404Response = true;
+                //opts.= true;
             });
         }
 
@@ -29,7 +29,7 @@ namespace Scorpio.AspNetCore.Mvc
             {
                 app.UseExceptionHandler(new ExceptionHandlerOptions
                 {
-                    AllowStatusCode404Response = true,
+                    //AllowStatusCode404Response = true,
                     ExceptionHandlingPath = "/Err"
                 });
                 app.UseHsts();

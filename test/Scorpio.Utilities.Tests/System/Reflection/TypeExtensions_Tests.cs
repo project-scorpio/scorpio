@@ -31,10 +31,10 @@ namespace System.Reflection
         [Fact]
         public void IsAssignableTo()
         {
-            //Should.Throw<ArgumentNullException>(() => default(Type).IsAssignableTo(null));
-            //Should.Throw<ArgumentNullException>(() => default(Type).IsAssignableTo(typeof(IServiceCollection)));
-            //Should.Throw<ArgumentNullException>(() => typeof(IServiceCollection).IsAssignableTo(null));
-            Should.Throw<NullReferenceException>(() => default(Type).IsAssignableTo<string>());
+            Should.Throw<ArgumentNullException>(() => default(Type).IsAssignableTo(null));
+            Should.Throw<ArgumentNullException>(() => default(Type).IsAssignableTo(typeof(IServiceCollection)));
+            Should.Throw<ArgumentNullException>(() => typeof(IServiceCollection).IsAssignableTo(null));
+            Should.Throw<ArgumentNullException>(() => default(Type).IsAssignableTo<string>());
             Should.NotThrow(() => typeof(ServiceCollection).IsAssignableTo<IServiceCollection>()).ShouldBeTrue();
             Should.NotThrow(() => typeof(ServiceCollection).IsAssignableTo(typeof(IServiceCollection))).ShouldBeTrue();
             Should.NotThrow(() => typeof(ServiceCollection).IsAssignableTo<IServiceProvider>()).ShouldBeFalse();

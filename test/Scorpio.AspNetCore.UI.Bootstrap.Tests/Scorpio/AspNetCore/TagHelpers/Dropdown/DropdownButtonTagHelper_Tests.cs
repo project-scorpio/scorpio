@@ -30,7 +30,7 @@ namespace Scorpio.AspNetCore.TagHelpers.Dropdown
             {
                 o.TagName.ShouldBe(a.Tag);
                 o.ShouldNotContainsClasses("dropdown-toggle");
-                o.PostElement.GetContent().ShouldBe($"<{a.Tag} class=\"dropdown-toggle dropdown-toggle-split\" data-toggle=\"dropdown\" title=\"title\"></{a.Tag}>");
+                o.PostElement.GetContent().ShouldBe($"<{a.Tag} class=\"dropdown-toggle-split dropdown-toggle\" data-toggle=\"dropdown\" title=\"title\"></{a.Tag}>");
             });
         }
     }
