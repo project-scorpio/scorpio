@@ -2,7 +2,8 @@
   items:
     - Scorpio
     - Scorpio.Utilities
-    - Scorpio.Aspect
+    - Scorpio.AspectCore
+    - Scorpio.Autofac
 - title: 扩展库下载包
   items:
     - Scorpio.Data
