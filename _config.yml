@@ -56,7 +56,7 @@ kramdown:
   syntax_highlighter: rouge
 
 lastupdate: 2020-05-04
-currently: 0.1.0
+currently: 0.1.1
 # If you add tags to pages, you can link them to some external search
 # If you want to disable this, comment the URL.
 tag_search_endpoint: https://ask.cyberinfrastructure.org/search?q=
