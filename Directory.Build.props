@@ -1,5 +1,4 @@
 ﻿<Project>
-  <Import Project="$([MSBuild]::GetPathOfFileAbove(Directory.Build.props, $(MSBuildThisFileDirectory)../))" Condition=" '$([MSBuild]::GetPathOfFileAbove(Directory.Build.props, $(MSBuildThisFileDirectory)../))' != '' "/>
   <Import Project="versions.props" />
   <Import Project="common.props"/>
   <PropertyGroup >

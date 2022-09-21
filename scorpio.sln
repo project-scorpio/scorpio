@@ -133,31 +133,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorpio.Uow.EntityFramework
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{153039F8-72D8-49F0-90CA-0F7880A09313}"
 	ProjectSection(SolutionItems) = preProject
-		..\.editorconfig = ..\.editorconfig
-		..\.gitattributes = ..\.gitattributes
-		..\.gitignore = ..\.gitignore
-		..\appveyor.yml = ..\appveyor.yml
-		..\build.cake = ..\build.cake
-		..\build.cmd = ..\build.cmd
-		..\build.config = ..\build.config
-		..\build.ps1 = ..\build.ps1
-		..\build.sh = ..\build.sh
+		.editorconfig = .editorconfig
 		common.props = common.props
 		Directory.Build.props = Directory.Build.props
-		..\LICENSE = ..\LICENSE
-		..\nuget.config = ..\nuget.config
-		..\README.md = ..\README.md
 		versions.props = versions.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{D98E38DF-4824-4ABC-9FF1-824A7C341BB4}"
-	ProjectSection(SolutionItems) = preProject
-		..\build\build.cake = ..\build\build.cake
-		..\build\buildcontext.cake = ..\build\buildcontext.cake
-		..\build\index.cake = ..\build\index.cake
-		..\build\util.cake = ..\build\util.cake
-		..\build\version.cake = ..\build\version.cake
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{3E955A4E-DA9E-4FF3-B0B3-81829D43FBF3}"
 EndProject

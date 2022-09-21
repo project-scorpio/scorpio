@@ -28,6 +28,7 @@ namespace System.Reflection
             Should.NotThrow(() => typeof(string).IsInNamespaceOf<IServiceCollection>()).ShouldBeFalse();
 
         }
+#if NETCOREAPP3_1
         [Fact]
         public void IsAssignableTo()
         {
@@ -40,6 +41,7 @@ namespace System.Reflection
             Should.NotThrow(() => typeof(ServiceCollection).IsAssignableTo<IServiceProvider>()).ShouldBeFalse();
             Should.NotThrow(() => typeof(ServiceCollection).IsAssignableTo(typeof(IServiceProvider))).ShouldBeFalse();
         }
+#endif      
 
         [Fact]
         public void IsAssignableToGenericType()

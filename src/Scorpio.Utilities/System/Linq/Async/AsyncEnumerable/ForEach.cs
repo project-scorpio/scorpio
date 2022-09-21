@@ -20,7 +20,6 @@ namespace System.Linq.Async
         {
             Check.NotNull(enumerable, nameof(enumerable));
             Check.NotNull(action, nameof(action));
-
             await Core(enumerable, action, cancellationToken);
             static async ValueTask Core(IAsyncEnumerable<T> enumerable, Action<T> action, CancellationToken cancellationToken)
             {
@@ -87,12 +86,12 @@ namespace System.Linq.Async
         /// <param name="action"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public static async ValueTask ForEachAsync<T>(this IAsyncEnumerable<T> enumerable, Func<T, CancellationToken, Task> action, CancellationToken cancellationToken = default)
+        public static ValueTask ForEachAsync<T>(this IAsyncEnumerable<T> enumerable, Func<T, CancellationToken, Task> action, CancellationToken cancellationToken = default)
         {
             Check.NotNull(enumerable, nameof(enumerable));
             Check.NotNull(action, nameof(action));
-
-            await Core(enumerable, action, cancellationToken);
+            
+            return Core(enumerable, action, cancellationToken);
             static async ValueTask Core(IAsyncEnumerable<T> enumerable, Func<T, CancellationToken, Task> action, CancellationToken cancellationToken)
             {
                 await foreach (var item in enumerable.WithCancellation(cancellationToken).ConfigureAwait(false))
@@ -110,12 +109,12 @@ namespace System.Linq.Async
         /// <param name="action"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public static async ValueTask ForEachAsync<T>(this IAsyncEnumerable<T> enumerable, Func<T, int, CancellationToken, Task> action, CancellationToken cancellationToken = default)
+        public static  ValueTask ForEachAsync<T>(this IAsyncEnumerable<T> enumerable, Func<T, int, CancellationToken, Task> action, CancellationToken cancellationToken = default)
         {
             Check.NotNull(enumerable, nameof(enumerable));
             Check.NotNull(action, nameof(action));
 
-            await Core(enumerable, action, cancellationToken);
+            return Core(enumerable, action, cancellationToken);
             static async ValueTask Core(IAsyncEnumerable<T> enumerable, Func<T, int, CancellationToken, Task> action, CancellationToken cancellationToken)
             {
                 var index = 0;

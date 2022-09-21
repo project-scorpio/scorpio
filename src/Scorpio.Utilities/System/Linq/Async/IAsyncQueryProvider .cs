@@ -15,4 +15,5 @@ namespace System.Linq.Async
         /// </summary>
         TResult ExecuteAsync<TResult>(Expression expression, CancellationToken cancellationToken = default);
     }
+
 }
