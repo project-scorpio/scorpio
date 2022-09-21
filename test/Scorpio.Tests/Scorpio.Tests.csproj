@@ -4,7 +4,4 @@
     
     <IsPackable>false</IsPackable>
   </PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Scorpio.TestBase\Scorpio.TestBase.csproj" />
-  </ItemGroup>
 </Project>

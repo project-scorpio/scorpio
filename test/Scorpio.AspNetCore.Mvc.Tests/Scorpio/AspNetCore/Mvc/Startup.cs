@@ -11,10 +11,10 @@ namespace Scorpio.AspNetCore.Mvc
         {
             services.AddRazorPages();
             services.AddControllersWithViews();
-            services.Configure<ExceptionHandlerOptions>(opts =>
-            {
-                //opts.= true;
-            });
+            //services.Configure<ExceptionHandlerOptions>(opts =>
+            //{
+            //    opts.AllowStatusCode404Response = true;
+            //});
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

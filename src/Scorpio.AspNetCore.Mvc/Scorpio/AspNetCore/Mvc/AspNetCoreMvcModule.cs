@@ -36,13 +36,13 @@ namespace Scorpio.AspNetCore.Mvc
         {
             context.Services.Options<MvcOptions>().PreConfigure<IServiceProvider>(
                 (options, serviceProvider) => options.AddScorpio());
-            context.Services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-            context.Services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();
+            //context.Services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();
             //Use DI to create controllers
-            context.Services.Replace(ServiceDescriptor.Transient<IControllerActivator, ServiceBasedControllerActivator>());
-            context.Services.Replace(ServiceDescriptor.Transient<IPageModelActivatorProvider, ServiceBasedPageModelActivatorProvider>());
-            //Use DI to create view components
-            context.Services.Replace(ServiceDescriptor.Singleton<IViewComponentActivator, ServiceBasedViewComponentActivator>());
+            //context.Services.Replace(ServiceDescriptor.Transient<IControllerActivator, ServiceBasedControllerActivator>());
+            //context.Services.Replace(ServiceDescriptor.Transient<IPageModelActivatorProvider, ServiceBasedPageModelActivatorProvider>());
+            ////Use DI to create view components
+            //context.Services.Replace(ServiceDescriptor.Singleton<IViewComponentActivator, ServiceBasedViewComponentActivator>());
+            //context.Services.AddControllersWithViews();
 
         }
     }

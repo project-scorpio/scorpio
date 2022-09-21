@@ -13,7 +13,6 @@ namespace Scorpio.AspNetCore.Mvc
     {
         public override void ConfigureServices(ConfigureServicesContext context)
         {
-            context.RegisterAssemblyByConvention();
             context.Services.Configure<AuditingOptions>(opt =>
             {
                 opt.EnableAuditingController();
