@@ -28,11 +28,12 @@ namespace Scorpio.EventBus
             }
 
             var messageId = context.GetProperty<Guid>(nameof(LocalEventMessage.MessageId));
+            var sender = context.GetProperty<object>(nameof(LocalEventMessage.Sender));
 
             context.TryGetRetryAttempt(out var retryAttempt);
             RetryTracking[messageId] = ++retryAttempt;
 
-            await context.EventBus.As<LocalEventBus>().PublishAsync(new LocalEventMessage(messageId, context.EventData, context.EventType));
+            await context.EventBus.As<LocalEventBus>().PublishAsync(new LocalEventMessage(sender, messageId, context.EventData, context.EventType));
 
             RetryTracking.Remove(messageId);
         }

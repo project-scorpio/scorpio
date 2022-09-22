@@ -12,18 +12,20 @@ namespace Scorpio.EventBus
         /// Triggers an event.
         /// </summary>
         /// <typeparam name="TEvent">Event type</typeparam>
+        /// <param name="sender"></param>
         /// <param name="eventData">Related data for the event</param>
         /// <returns>The task to handle async operation</returns>
-        Task PublishAsync<TEvent>(TEvent eventData)
+        Task PublishAsync<TEvent>(object sender, TEvent eventData)
             where TEvent : class;
 
         /// <summary>
         /// Triggers an event.
         /// </summary>
+        /// <param name="sender"></param>
         /// <param name="eventType">Event type</param>
         /// <param name="eventData">Related data for the event</param>
         /// <returns>The task to handle async operation</returns>
-        Task PublishAsync(Type eventType, object eventData);
+        Task PublishAsync(object sender,Type eventType, object eventData);
 
         /// <summary>
         /// Registers to an event.
@@ -31,7 +33,7 @@ namespace Scorpio.EventBus
         /// </summary>
         /// <param name="action">Action to handle events</param>
         /// <typeparam name="TEvent">Event type</typeparam>
-        IDisposable Subscribe<TEvent>(Func<TEvent, Task> action)
+        IDisposable Subscribe<TEvent>(Func<object,TEvent, Task> action)
             where TEvent : class;
 
         /// <summary>
@@ -81,7 +83,7 @@ namespace Scorpio.EventBus
         /// </summary>
         /// <typeparam name="TEvent">Event type</typeparam>
         /// <param name="action"></param>
-        void Unsubscribe<TEvent>(Func<TEvent, Task> action)
+        void Unsubscribe<TEvent>(Func<object,TEvent, Task> action)
             where TEvent : class;
 
         /// <summary>

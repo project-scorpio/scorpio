@@ -10,15 +10,22 @@ namespace Scorpio.EventBus
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="sender"></param>
         /// <param name="messageId"></param>
         /// <param name="eventData"></param>
         /// <param name="eventType"></param>
-        public LocalEventMessage(Guid messageId, object eventData, Type eventType)
+        public LocalEventMessage(object sender, Guid messageId, object eventData, Type eventType)
         {
+            Sender = sender;
             MessageId = messageId;
             EventData = eventData;
             EventType = eventType;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public object Sender { get; }
 
         /// <summary>
         /// 

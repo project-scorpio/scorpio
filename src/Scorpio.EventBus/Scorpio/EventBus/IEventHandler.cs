@@ -20,7 +20,8 @@ namespace Scorpio.EventBus
         /// <summary>
         /// Handler handles the event by implementing this method.
         /// </summary>
+        /// <param name="sender"></param>
         /// <param name="eventData">Event data</param>
-        Task HandleEventAsync(TEvent eventData);
+        Task HandleEventAsync(object sender, TEvent eventData);
     }
 }

@@ -16,18 +16,19 @@ namespace Scorpio.EventBus
         /// <summary>
         /// Function to handle the event.
         /// </summary>
-        public Func<TEvent, Task> Action { get; }
+        public Func<object,TEvent, Task> Action { get; }
 
         /// <summary>
         /// Creates a new instance of <see cref="ActionEventHandler{TEvent}"/>.
         /// </summary>
         /// <param name="handler">Action to handle the event</param>
-        public ActionEventHandler(Func<TEvent, Task> handler) => Action = handler;
+        public ActionEventHandler(Func<object,TEvent, Task> handler) => Action = handler;
 
         /// <summary>
         /// Handles the event.
         /// </summary>
+        /// <param name="sender"></param>
         /// <param name="eventData"></param>
-        public async Task HandleEventAsync(TEvent eventData) => await Action(eventData);
+        public async Task HandleEventAsync(object sender,TEvent eventData) => await Action(sender,eventData);
     }
 }

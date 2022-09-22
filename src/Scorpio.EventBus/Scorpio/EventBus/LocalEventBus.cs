@@ -28,7 +28,7 @@ namespace Scorpio.EventBus
             Logger = serviceProvider.GetService<ILogger<LocalEventBus>>();
         }
 
-        public override async Task PublishAsync(Type eventType, object eventData) => await PublishAsync(new LocalEventMessage(Guid.NewGuid(), eventData, eventType));
+        public override async Task PublishAsync(object sender, Type eventType, object eventData) => await PublishAsync(new LocalEventMessage(sender, Guid.NewGuid(), eventData, eventType));
 
         /// <summary>
         /// 
@@ -37,10 +37,11 @@ namespace Scorpio.EventBus
 
         public virtual async Task PublishAsync(LocalEventMessage localEventMessage)
         {
-            await TriggerHandlersAsync(localEventMessage.EventType, localEventMessage.EventData, errorContext =>
+            await TriggerHandlersAsync(localEventMessage.EventType, localEventMessage.Sender, localEventMessage.EventData, errorContext =>
             {
                 errorContext.EventData = localEventMessage.EventData;
                 errorContext.SetProperty(nameof(LocalEventMessage.MessageId), localEventMessage.MessageId);
+                errorContext.SetProperty(nameof(LocalEventMessage.Sender), localEventMessage.Sender);
             });
         }
         public override IDisposable Subscribe(Type eventType, IEventHandlerFactory factory)
@@ -53,9 +54,6 @@ namespace Scorpio.EventBus
         public override void Unsubscribe(Type eventType, IEventHandlerFactory factory) => GetOrCreateHandlerFactories(eventType).Locking(factories => factories.Remove(factory));
 
         public override void UnsubscribeAll(Type eventType) => GetOrCreateHandlerFactories(eventType).Locking(factories => factories.Clear());
-
-
-      
 
     }
 }

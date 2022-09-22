@@ -24,7 +24,7 @@ namespace Scorpio.EventBus
         public void Subscribe_Action()
         {
             var _eventBus = GetRequiredService<IEventBus>();
-            var subscriber = _eventBus.Subscribe<string>(s => Task.Run(() => Console.WriteLine(s)));
+            var subscriber = _eventBus.Subscribe<string>((o,s) => Task.Run(() => Console.WriteLine(s)));
             _eventBus.ShouldBeOfType<LocalEventBus>().HandlerFactories.ShouldContainKey(typeof(string));
             _eventBus.ShouldBeOfType<LocalEventBus>()
                 .HandlerFactories[typeof(string)].OfType<SingleInstanceHandlerFactory>().ShouldHaveSingleItem()
@@ -106,16 +106,16 @@ namespace Scorpio.EventBus
         public void Unsubscribe_A()
         {
             var _eventBus = GetRequiredService<IEventBus>();
-            Task action(string s) => Task.Run(() => Console.WriteLine(s));
+            Task action(object sender,string s) => Task.Run(() => Console.WriteLine(s));
 
             _eventBus.ShouldBeOfType<LocalEventBus>().HandlerFactories.Clear();
-            _eventBus.Subscribe((Func<string, Task>)action);
+            _eventBus.Subscribe((Func<object,string, Task>)action);
             _eventBus.ShouldBeOfType<LocalEventBus>().HandlerFactories.ShouldContainKey(typeof(string));
             _eventBus.ShouldBeOfType<LocalEventBus>()
                 .HandlerFactories[typeof(string)].ShouldHaveSingleItem()
                 .ShouldBeOfType<SingleInstanceHandlerFactory>().HandlerInstance
                 .ShouldBeOfType<ActionEventHandler<string>>();
-            _eventBus.Unsubscribe((Func<string, Task>)action);
+            _eventBus.Unsubscribe((Func<object,string, Task>)action);
             _eventBus.ShouldBeOfType<LocalEventBus>()
                 .HandlerFactories[typeof(string)].ShouldBeEmpty();
         }
@@ -164,19 +164,19 @@ namespace Scorpio.EventBus
         public void Publish()
         {
             var _eventBus = GetRequiredService<IEventBus>();
-            var action = Substitute.For<Func<GenericEventData<string>, Task>>();
-            action.Invoke(default).ReturnsForAnyArgs(Task.Delay(100).ContinueWith(t => Task.Delay(100)));
-            var action2 = Substitute.For<Func<GenericEventData<object>, Task>>();
-            action2.Invoke(default).ReturnsForAnyArgs(Task.CompletedTask);
+            var action = Substitute.For<Func<object, GenericEventData<string>, Task>>();
+            action.Invoke(this,default).ReturnsForAnyArgs(Task.Delay(100).ContinueWith(t => Task.Delay(100)));
+            var action2 = Substitute.For<Func<object,GenericEventData<object>, Task>>();
+            action2.Invoke(this,default).ReturnsForAnyArgs(Task.CompletedTask);
             using (_eventBus.Subscribe<GenericEventData<string>, EmptyEventHandler<GenericEventData<string>>>())
             {
                 using (_eventBus.Subscribe(action2))
                 {
                     using (_eventBus.Subscribe(action))
                     {
-                        Should.NotThrow(() => _eventBus.PublishAsync(new GenericEventData<string>("test")));
-                        action.ReceivedWithAnyArgs(1).Invoke(default);
-                        action2.ReceivedWithAnyArgs(1).Invoke(default);
+                        Should.NotThrow(() => _eventBus.PublishAsync(this,new GenericEventData<string>("test")));
+                        action.ReceivedWithAnyArgs(1).Invoke(this, default);
+                        action2.ReceivedWithAnyArgs(1).Invoke(this, default);
                     }
                 }
 
@@ -186,25 +186,25 @@ namespace Scorpio.EventBus
         public void Publish_E()
         {
             var _eventBus = GetRequiredService<IEventBus>();
-            var action = Substitute.For<Func<GenericEventData<string>, Task>>();
-            action.Invoke(default).ThrowsForAnyArgs<NotSupportedException>();
-            var action2 = Substitute.For<Func<GenericEventData<object>, Task>>();
-            action2.Invoke(default).ThrowsForAnyArgs(c => new TargetInvocationException(new ScorpioException()));
+            var action = Substitute.For<Func<object,GenericEventData<string>, Task>>();
+            action.Invoke(this, default).ThrowsForAnyArgs<NotSupportedException>();
+            var action2 = Substitute.For<Func<object, GenericEventData<object>, Task>>();
+            action2.Invoke(this, default).ThrowsForAnyArgs(c => new TargetInvocationException(new ScorpioException()));
             using (_eventBus.Subscribe(action))
             {
-                Should.Throw<NotSupportedException>(() => _eventBus.PublishAsync(new GenericEventData<string>("test")));
+                Should.Throw<NotSupportedException>(() => _eventBus.PublishAsync(this,new GenericEventData<string>("test")));
             }
 
             using (_eventBus.Subscribe(action2))
             {
-                Should.Throw<ScorpioException>(() => _eventBus.PublishAsync(new GenericEventData<string>("test")));
+                Should.Throw<ScorpioException>(() => _eventBus.PublishAsync(this,new GenericEventData<string>("test")));
             }
 
             using (_eventBus.Subscribe(action2))
             {
                 using (_eventBus.Subscribe(action))
                 {
-                    Should.Throw<AggregateException>(() => _eventBus.PublishAsync(new GenericEventData<string>("test")));
+                    Should.Throw<AggregateException>(() => _eventBus.PublishAsync(this,new GenericEventData<string>("test")));
                 }
 
             }

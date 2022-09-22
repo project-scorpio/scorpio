@@ -64,7 +64,7 @@ namespace Scorpio.EventBus
                 return AckStrategies.Ack;
             }
             var eventData = Serializer.Deserialize(buffer, eventType);
-            await TriggerHandlersAsync(eventType, eventData, errorContext =>
+            await TriggerHandlersAsync(eventType,null, eventData, errorContext =>
             {
                 var retryAttempt = 0;
                 if (messageProperties.Headers != null &&
@@ -79,12 +79,9 @@ namespace Scorpio.EventBus
             return AckStrategies.Ack;
         }
 
-        public override async Task PublishAsync(Type eventType, object eventData)
-        {
-            await PublishAsync(eventType, eventData, null);
-        }
+        public override Task PublishAsync(object sender, Type eventType, object eventData) =>  PublishAsync(eventType, eventData, null);
 
-        public async Task PublishAsync(Type eventType, object eventData, MessageProperties properties, Dictionary<string, object> headersArguments = null)
+        public Task PublishAsync(Type eventType, object eventData, MessageProperties properties, Dictionary<string, object> headersArguments = null)
         {
             var eventName = EventNameAttribute.GetNameOrDefault(eventType);
             var body = Serializer.Serialize(eventData);
@@ -97,7 +94,7 @@ namespace Scorpio.EventBus
                 };
             }
             SetEventMessageHeaders(properties, headersArguments);
-            await _bus.Advanced.PublishAsync(_exchange, eventName, true, properties, body);
+            return _bus.Advanced.PublishAsync(_exchange, eventName, true, properties, body);
         }
 
         private void SetEventMessageHeaders(MessageProperties properties, Dictionary<string, object> headersArguments)

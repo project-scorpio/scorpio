@@ -62,7 +62,7 @@ namespace Scorpio.EventBus
         /// <typeparam name="TEvent"></typeparam>
         /// <param name="action"></param>
         /// <returns></returns>
-        public virtual IDisposable Subscribe<TEvent>(Func<TEvent, Task> action) where TEvent : class => Subscribe(typeof(TEvent), new ActionEventHandler<TEvent>(action));
+        public virtual IDisposable Subscribe<TEvent>(Func<object,TEvent, Task> action) where TEvent : class => Subscribe(typeof(TEvent), new ActionEventHandler<TEvent>(action));
 
         /// <summary>
         /// 
@@ -112,7 +112,7 @@ namespace Scorpio.EventBus
         /// </summary>
         /// <typeparam name="TEvent"></typeparam>
         /// <param name="action"></param>
-        public virtual void Unsubscribe<TEvent>(Func<TEvent, Task> action)
+        public virtual void Unsubscribe<TEvent>(Func<object,TEvent, Task> action)
             where TEvent : class
         {
             GetOrCreateHandlerFactories(typeof(TEvent))
@@ -157,22 +157,23 @@ namespace Scorpio.EventBus
         public abstract void UnsubscribeAll(Type eventType);
 
         /// <inheritdoc/>
-        public virtual Task PublishAsync<TEvent>(TEvent eventData) where TEvent : class => PublishAsync(typeof(TEvent), eventData);
+        public virtual Task PublishAsync<TEvent>(object sender, TEvent eventData) where TEvent : class => PublishAsync(typeof(TEvent), eventData);
 
         /// <inheritdoc/>
-        public abstract Task PublishAsync(Type eventType, object eventData);
+        public abstract Task PublishAsync(object sender, Type eventType, object eventData);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="eventType"></param>
+        /// <param name="sender"></param>
         /// <param name="eventData"></param>
         /// <returns></returns>
-        public virtual async Task TriggerHandlersAsync(Type eventType, object eventData)
+        public virtual async Task TriggerHandlersAsync(Type eventType,object sender, object eventData)
         {
             var exceptions = new List<Exception>();
 
-            await TriggerHandlersAsync(eventType, eventData, exceptions);
+            await TriggerHandlersAsync(eventType,sender, eventData, exceptions);
 
             if (exceptions.Any())
             {
@@ -189,14 +190,15 @@ namespace Scorpio.EventBus
         /// 
         /// </summary>
         /// <param name="eventType"></param>
+        /// <param name="sender"></param>
         /// <param name="eventData"></param>
         /// <param name="onErrorAction"></param>
         /// <returns></returns>
-        public virtual async Task TriggerHandlersAsync(Type eventType, object eventData, Action<EventExecutionErrorContext> onErrorAction = null)
+        public virtual async Task TriggerHandlersAsync(Type eventType,object sender, object eventData, Action<EventExecutionErrorContext> onErrorAction = null)
         {
             var exceptions = new List<Exception>();
 
-            await TriggerHandlersAsync(eventType, eventData, exceptions);
+            await TriggerHandlersAsync(eventType,sender, eventData, exceptions);
 
             if (exceptions.Any())
             {
@@ -209,10 +211,11 @@ namespace Scorpio.EventBus
         /// 
         /// </summary>
         /// <param name="eventType"></param>
+        /// <param name="sender"></param>
         /// <param name="eventData"></param>
         /// <param name="exceptions"></param>
         /// <returns></returns>
-        protected virtual async Task TriggerHandlersAsync(Type eventType, object eventData, List<Exception> exceptions)
+        protected virtual async Task TriggerHandlersAsync(Type eventType,object sender, object eventData, List<Exception> exceptions)
         {
             await new SynchronizationContextRemover();
 
@@ -220,7 +223,7 @@ namespace Scorpio.EventBus
             {
                 foreach (var handlerFactory in handlerFactories.EventHandlerFactories.ToArray())
                 {
-                    await TriggerHandlerAsync(handlerFactory, handlerFactories.EventType, eventData, exceptions);
+                    await TriggerHandlerAsync(handlerFactory, handlerFactories.EventType,sender, eventData, exceptions);
                 }
             }
 
@@ -236,7 +239,7 @@ namespace Scorpio.EventBus
                     var baseEventType = eventType.GetGenericTypeDefinition().MakeGenericType(baseArg);
                     var constructorArgs = ((IEventDataWithInheritableGenericArgument)eventData).GetConstructorArgs();
                     var baseEventData = Activator.CreateInstance(baseEventType, constructorArgs);
-                    await TriggerHandlersAsync(baseEventType, baseEventData, exceptions);
+                    await TriggerHandlersAsync(baseEventType,sender, baseEventData, exceptions);
                 }
             }
         }
@@ -244,10 +247,7 @@ namespace Scorpio.EventBus
         /// <summary>
         /// 
         /// </summary>       
-        protected virtual void SubscribeHandlers()
-        {
-            SubscribeHandlers(Options.GetEventHandlers());
-        }
+        protected virtual void SubscribeHandlers() => SubscribeHandlers(Options.GetEventHandlers());
         /// <summary>
         /// 
         /// </summary>
@@ -295,10 +295,11 @@ namespace Scorpio.EventBus
         /// </summary>
         /// <param name="asyncHandlerFactory"></param>
         /// <param name="eventType"></param>
+        /// <param name="sender"></param>
         /// <param name="eventData"></param>
         /// <param name="exceptions"></param>
         /// <returns></returns>
-        protected virtual async Task TriggerHandlerAsync(IEventHandlerFactory asyncHandlerFactory, Type eventType, object eventData, List<Exception> exceptions)
+        protected virtual async Task TriggerHandlerAsync(IEventHandlerFactory asyncHandlerFactory, Type eventType,object sender, object eventData, List<Exception> exceptions)
         {
             using (var eventHandlerWrapper = asyncHandlerFactory.GetHandler())
             {
@@ -314,7 +315,7 @@ namespace Scorpio.EventBus
                                 new[] { eventType }
                             );
 
-                        await (Task)method.Invoke(eventHandlerWrapper.EventHandler, new[] { eventData });
+                        await (Task)method.Invoke(eventHandlerWrapper.EventHandler, new[] {sender, eventData });
                     }
                     else
                     {
