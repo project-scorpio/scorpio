@@ -28,14 +28,14 @@ namespace Scorpio.Repositories
             return (entity, repo, loading);
         }
 
-        [Fact]
-        public void EnsureCollectionLoaded()
-        {
-            var (entity, repo, loading) = GetClasses();
-            repo.EnsureCollectionLoaded(entity, e => e.Users);
-            loading.Received(1).EnsureCollectionLoadedAsync(Arg.Any<RoleEntity>(),
-                Arg.Any<Expression<Func<RoleEntity, IEnumerable<UserEntity>>>>(), Arg.Any<CancellationToken>());
-        }
+        //[Fact]
+        //public void EnsureCollectionLoaded()
+        //{
+        //    var (entity, repo, loading) = GetClasses();
+        //    repo.EnsureCollectionLoaded(entity, e => e.Users);
+        //    loading.Received(1).EnsureCollectionLoadedAsync(Arg.Any<RoleEntity>(),
+        //        Arg.Any<Expression<Func<RoleEntity, IEnumerable<UserEntity>>>>(), Arg.Any<CancellationToken>());
+        //}
 
         [Fact]
         public void EnsurePropertyLoaded()
