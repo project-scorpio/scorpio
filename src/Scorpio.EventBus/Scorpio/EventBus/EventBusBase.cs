@@ -312,7 +312,7 @@ namespace Scorpio.EventBus
                             .MakeGenericType(eventType)
                             .GetMethod(
                                 nameof(IEventHandler<object>.HandleEventAsync),
-                                new[] { eventType }
+                                new[] {typeof(object), eventType }
                             );
 
                         await (Task)method.Invoke(eventHandlerWrapper.EventHandler, new[] {sender, eventData });
