@@ -157,7 +157,7 @@ namespace Scorpio.EventBus
         public abstract void UnsubscribeAll(Type eventType);
 
         /// <inheritdoc/>
-        public virtual Task PublishAsync<TEvent>(object sender, TEvent eventData) where TEvent : class => PublishAsync(typeof(TEvent), eventData);
+        public virtual Task PublishAsync<TEvent>(object sender, TEvent eventData) where TEvent : class => PublishAsync(sender, typeof(TEvent), eventData);
 
         /// <inheritdoc/>
         public abstract Task PublishAsync(object sender, Type eventType, object eventData);
