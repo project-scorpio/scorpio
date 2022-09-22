@@ -55,29 +55,29 @@ namespace Scorpio.AspNetCore.Mvc.Auditing
             await _auditingStore.Received(0).SaveAsync(Arg.Any<AuditInfo>());
         }
 
-        [Fact]
-        public async Task Should_Trigger_Middleware_And_AuditLog_Exception_Always()
-        {
-            _options.IsEnabled = true;
+        //[Fact]
+        //public async Task Should_Trigger_Middleware_And_AuditLog_Exception_Always()
+        //{
+        //    _options.IsEnabled = true;
 
-            try
-            {
-                await GetResponseAsync("api/audit-test/audit-fail", System.Net.HttpStatusCode.NotFound);
-            }
-            finally
-            {
-                await _auditingStore.Received().SaveAsync(Arg.Any<AuditInfo>());
-            }
-        }
+        //    try
+        //    {
+        //        await GetResponseAsync("api/audit-test/audit-fail", System.Net.HttpStatusCode.NotFound);
+        //    }
+        //    finally
+        //    {
+        //        await _auditingStore.Received().SaveAsync(Arg.Any<AuditInfo>());
+        //    }
+        //}
 
-        [Fact]
-        public async Task Should_Trigger_Middleware_And_AuditLog_Exception_When_Returns_Object()
-        {
-            _options.IsEnabled = true;
+        //[Fact]
+        //public async Task Should_Trigger_Middleware_And_AuditLog_Exception_When_Returns_Object()
+        //{
+        //    _options.IsEnabled = true;
 
-            await GetResponseAsync("api/audit-test/audit-fail-object", System.Net.HttpStatusCode.NotFound);
+        //    await GetResponseAsync("api/audit-test/audit-fail-object", System.Net.HttpStatusCode.NotFound);
 
-            await _auditingStore.Received().SaveAsync(Arg.Any<AuditInfo>());
-        }
+        //    await _auditingStore.Received().SaveAsync(Arg.Any<AuditInfo>());
+        //}
     }
 }

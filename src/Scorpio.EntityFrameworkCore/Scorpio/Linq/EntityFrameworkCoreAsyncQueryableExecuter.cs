@@ -12,7 +12,10 @@ namespace Scorpio.Linq
     {
         public static EntityFrameworkCoreAsyncQueryableExecuter Instance { get; } = new EntityFrameworkCoreAsyncQueryableExecuter();
 
-        public Task<int> CountAsync<T>(IQueryable<T> queryable, CancellationToken cancellationToken = default) => queryable.CountAsync(cancellationToken);
+        public Task<int> CountAsync<T>(IQueryable<T> queryable, CancellationToken cancellationToken = default)
+        {
+            return queryable.CountAsync(cancellationToken);
+        }
 
         public Task<List<T>> ToListAsync<T>(IQueryable<T> queryable, CancellationToken cancellationToken = default) => queryable.ToListAsync(cancellationToken);
 

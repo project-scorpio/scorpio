@@ -56,24 +56,24 @@ namespace Scorpio.AspNetCore.Mvc.Auditing
             await _auditingStore.Received(0).SaveAsync(Arg.Any<AuditInfo>());
         }
 
-        [Fact]
-        public async Task Should_Trigger_Middleware_And_AuditLog_Exception_Always()
-        {
-            _options.IsEnabled = true;
+        //[Fact]
+        //public async Task Should_Trigger_Middleware_And_AuditLog_Exception_Always()
+        //{
+        //    _options.IsEnabled = true;
 
-            await GetResponseAsync("/AuditTestPage?handler=AuditFailForGetRequests", System.Net.HttpStatusCode.NotFound);
-            await _auditingStore.Received().SaveAsync(Arg.Any<AuditInfo>());
+        //    await GetResponseAsync("/AuditTestPage?handler=AuditFailForGetRequests", System.Net.HttpStatusCode.NotFound);
+        //    await _auditingStore.Received().SaveAsync(Arg.Any<AuditInfo>());
 
-        }
+        //}
 
-        [Fact]
-        public async Task Should_Trigger_Middleware_And_AuditLog_Exception_When_Returns_Object()
-        {
-            _options.IsEnabled = true;
+        //[Fact]
+        //public async Task Should_Trigger_Middleware_And_AuditLog_Exception_When_Returns_Object()
+        //{
+        //    _options.IsEnabled = true;
 
-            await GetResponseAsync("/AuditTestPage?handler=AuditFailForGetRequestsReturningObject", System.Net.HttpStatusCode.NotFound);
+        //    await GetResponseAsync("/AuditTestPage?handler=AuditFailForGetRequestsReturningObject", System.Net.HttpStatusCode.NotFound);
 
-            await _auditingStore.Received().SaveAsync(Arg.Any<AuditInfo>());
-        }
+        //    await _auditingStore.Received().SaveAsync(Arg.Any<AuditInfo>());
+        //}
     }
 }

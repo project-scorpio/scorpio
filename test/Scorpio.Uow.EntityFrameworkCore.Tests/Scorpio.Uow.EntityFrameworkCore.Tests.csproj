@@ -5,11 +5,15 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
-  <ItemGroup>
-	  <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.25" />
-
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.5" />
   </ItemGroup>
-
+  <ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.17" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.25" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(SourceRoot)\src\Scorpio.AspectCore\Scorpio.AspectCore.csproj" />
     <ProjectReference Include="$(SourceRoot)\src\Scorpio.Uow.EntityFrameworkCore\Scorpio.Uow.EntityFrameworkCore.csproj" />

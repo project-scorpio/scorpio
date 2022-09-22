@@ -1,4 +1,6 @@
 ﻿
+using System.Linq;
+
 using Microsoft.Extensions.DependencyInjection;
 
 using Scorpio.EntityFrameworkCore;
@@ -7,7 +9,7 @@ using Scorpio.Repositories;
 using Shouldly;
 
 using Xunit;
-
+using System.Linq.Async;
 namespace Scorpio.Linq
 {
     public class EntityFrameworkCoreAsyncQueryableExecuter_Tests : EntityFrameworkCoreTestBase
@@ -31,6 +33,7 @@ namespace Scorpio.Linq
             Should.NotThrow(() => executor.ToListAsync(repo)).ShouldBeEmpty();
             repo.Insert(new TestTable { Id = 1, StringValue = "Jhon" });
             Should.NotThrow(() => executor.ToListAsync(repo)).ShouldHaveSingleItem();
+            Should.NotThrow(() => repo.ToListAsync()).ShouldHaveSingleItem();
         }
 
         [Fact]

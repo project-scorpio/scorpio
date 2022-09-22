@@ -16,8 +16,4 @@
     <AdditionalFiles Include="$(SourceRoot)\src\.sonarlint\project-scorpio_scorpio\CSharp\SonarLint.xml" Link="SonarLint.xml" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Scorpio.AspNetCore.UI\Scorpio.AspNetCore.UI.csproj" />
-  </ItemGroup>
-
 </Project>
