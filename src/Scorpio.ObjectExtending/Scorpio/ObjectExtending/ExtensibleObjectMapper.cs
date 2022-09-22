@@ -109,18 +109,16 @@ namespace Scorpio.ObjectExtending
 
             var sourceObjectExtension = ObjectExtensionManager.Instance.GetOrNull(sourceType);
             var destinationObjectExtension = ObjectExtensionManager.Instance.GetOrNull(destinationType);
-
-            foreach (var keyValue in sourceDictionary)
+            foreach (var keyValue in from keyValue in sourceDictionary
+                                     where CanMapProperty(
+                                keyValue.Key,
+                                sourceObjectExtension,
+                                destinationObjectExtension,
+                                definitionChecks,
+                                ignoredProperties)
+                                     select keyValue)
             {
-                if (CanMapProperty(
-                    keyValue.Key,
-                    sourceObjectExtension,
-                    destinationObjectExtension,
-                    definitionChecks,
-                    ignoredProperties))
-                {
-                    destinationDictionary[keyValue.Key] = keyValue.Value;
-                }
+                destinationDictionary[keyValue.Key] = keyValue.Value;
             }
         }
 
