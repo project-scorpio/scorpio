@@ -20,7 +20,7 @@ namespace Scorpio.ObjectMapping
             Should.NotThrow(() => mapper.Map<SpecificObjectMapperSource, SpecificObjectMapperDest>(new SpecificObjectMapperSource())).ShouldNotBeNull();
             Should.NotThrow(() => mapper.Map<MapToSource, MapToDest>(new MapToSource())).ShouldNotBeNull();
             Should.NotThrow(() => mapper.Map<MapFromSource, MapFromDest>(new MapFromSource())).ShouldNotBeNull();
-            Should.Throw<NotImplementedException>(() => mapper.Map<MapFromSource, MapFromDestException>(new MapFromSource())).ShouldNotBeNull();
+            Should.NotThrow(() => mapper.Map<MapFromSource, MapFromDestException>(new MapFromSource())).ShouldNotBeNull();
             Should.Throw<NotImplementedException>(() => mapper.Map<MapSource, MapDest>(new MapSource())).ShouldNotBeNull();
         }
 

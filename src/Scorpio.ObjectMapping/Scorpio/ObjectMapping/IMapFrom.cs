@@ -10,6 +10,6 @@
         /// 
         /// </summary>
         /// <param name="source"></param>
-        void MapFrom(TSource source);
+       void MapFrom(TSource source);
     }
 }

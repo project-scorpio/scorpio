@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,10 +19,10 @@ namespace Scorpio.ObjectMapping
         /// <param name="serviceProvider"></param>
         /// <param name="autoObjectMappingProvider"></param>
         public DefaultObjectMapper(
-            IServiceProvider serviceProvider, 
+            IServiceProvider serviceProvider,
             IAutoObjectMappingProvider<TContext> autoObjectMappingProvider
             ) : base(
-                serviceProvider, 
+                serviceProvider,
                 autoObjectMappingProvider)
         {
 
@@ -55,7 +56,7 @@ namespace Scorpio.ObjectMapping
             AutoObjectMappingProvider = autoObjectMappingProvider;
             ServiceProvider = serviceProvider;
         }
-        
+
 
         /// <summary>
         /// 
@@ -89,7 +90,15 @@ namespace Scorpio.ObjectMapping
             {
                 try
                 {
-                    return (TDestination) Activator.CreateInstance(typeof(TDestination), source);
+                    var decType = typeof(TDestination);
+                    if (decType.GetConstructors().Select(c => c.GetParameters()).Where(c => c.Length == 1 && c.SingleOrDefault().ParameterType.IsAssignableFrom(typeof(TSource))).Count() == 1)
+                    {
+                        return (TDestination)Activator.CreateInstance(typeof(TDestination), source);
+                    }
+                    else
+                    {
+                        return ((TDestination)Activator.CreateInstance(typeof(TDestination))).Action(d=>(d as IMapFrom<TSource>).MapFrom(source));
+                    }
                 }
                 catch
                 {
