@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -14,6 +15,38 @@ namespace Scorpio.Middleware.Pipeline
     public static class PipelineBuilder
     {
         private static readonly MethodInfo _getServiceInfo = ((Func<IServiceProvider, Type, object>)PipelineBuilder.GetService).Method!;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TPipelineContext"></typeparam>
+        /// <param name="app"></param>
+        /// <param name="middleware"></param>
+        /// <returns></returns>
+        public static IPipelineBuilder<TPipelineContext> Use<TPipelineContext>(this IPipelineBuilder<TPipelineContext> app, Func<TPipelineContext, Func<Task>, Task> middleware)
+        {
+            return app.Use(next =>
+            {
+                return context =>
+                {
+                    Func<Task> simpleNext = () => next(context);
+                    return middleware(context, simpleNext);
+                };
+            });
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TPipelineContext"></typeparam>
+        /// <param name="app"></param>
+        /// <param name="middleware"></param>
+        /// <returns></returns>
+        public static IPipelineBuilder<TPipelineContext> Use<TPipelineContext>(this IPipelineBuilder<TPipelineContext> app, Func<TPipelineContext, PipelineRequestDelegate<TPipelineContext>, Task> middleware)
+        {
+            return app.Use(next => context => middleware(context, next));
+        }
+
 
         /// <summary>
         /// 
