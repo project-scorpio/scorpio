@@ -17863,7 +17863,8 @@ a.text-dark:focus {
 .td-content .highlight {
     margin: 2rem 0;
     padding: 1rem;
-    background-color: #f8f9fa
+    background-color: #f8f9fa;
+    position: relative;
 }
 
 .td-content .highlight pre,
@@ -18606,14 +18607,22 @@ footer {
     }
 }
 
-.highlight > pre > div{
-    display: flex;
-    flex-direction: row-reverse;
-  }
+
   .btn-copy{
+    position: absolute;
+    right: 1.2rem;
+    top: 1.2rem;
+    opacity: 0;
     padding: 5px 10px;
     cursor: pointer;
+    border: none;
   }
-  .btn-copy:hover{
-    background-color: rgba(235, 58, 58, 0.774);
+
+  .btn-copy:active,.btn-copy:hover,.btn-copy:focus{
+    opacity: 1;
   }
+
+  .highlight:active .btn-copy,.highlight:hover .btn-copy,.highlight:focus .btn-copy{
+    opacity: 1;
+  }
+  
