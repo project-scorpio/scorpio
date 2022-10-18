@@ -858,7 +858,8 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
     border-radius: 4px;
-    -ms-overflow-style: -ms-autohiding-scrollbar
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    position: relative;
 }
 
 @media (min-width:576px) {
@@ -869,7 +870,8 @@
 
 .bd-content .highlight {
     margin-right: -15px;
-    margin-left: -15px
+    margin-left: -15px;
+    overflow: visible;
 }
 
 @media (min-width:576px) {

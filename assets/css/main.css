@@ -18610,8 +18610,8 @@ footer {
 
   .btn-copy{
     position: absolute;
-    right: 1.2rem;
-    top: 1.2rem;
+    right: -1rem;
+    top: -1rem;
     opacity: 0;
     padding: 5px 10px;
     cursor: pointer;
