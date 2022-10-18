@@ -3,8 +3,6 @@ exclude_in_search: true
 layout: null
 ---
 
-const { ClipboardJS } = require("./clipboard.min");
-
 (function($) {
     'use strict';
     $(function() {
