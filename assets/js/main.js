@@ -51,7 +51,7 @@ layout: null
              
           //trigger
           var clipButton = '<button class="btn-copy" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
-             $(this).after(clipButton);
+             $(this).before(clipButton);
           });
          
           new ClipboardJS('.btn-copy');    
