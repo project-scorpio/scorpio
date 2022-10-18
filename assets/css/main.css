@@ -18624,4 +18624,6 @@ footer {
     opacity: 1;
     border: 1px solid #d5d5d5 ;
 }
-  
+button.btn-copy:focus {
+    outline: 1px dotted;
+ }
