@@ -40,7 +40,7 @@ layout: null
         });
     });
     $(function(){
-        var allCodeBlocksElements = $( 'language-csharp .highlight > pre > code' );
+        var allCodeBlocksElements = $( '.highlight > pre > code' );
 
         allCodeBlocksElements.each(function(i) {
              // add different id for each code block
