@@ -41,7 +41,7 @@ layout: null
         });
     });
     $(function(){
-        var allCodeBlocksElements = $( "pre.highlight" );
+        var allCodeBlocksElements = $( '.highlight > pre > code' );
 
         allCodeBlocksElements.each(function(i) {
              // add different id for each code block
@@ -51,11 +51,11 @@ layout: null
           $(this).attr('id', currentId);
              
           //trigger
-          var clipButton = '<button class="btn" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
+          var clipButton = '<button class="btn-copy" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
              $(this).after(clipButton);
           });
          
-          new ClipboardJS('.btn');    
+          new ClipboardJS('.btn-copy');    
     });
 }(jQuery));
 (function($) {
