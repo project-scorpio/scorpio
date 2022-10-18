@@ -18619,11 +18619,8 @@ footer {
     border: 1px solid #d5d5d5 ;
   }
 
-  .btn-copy:active,.btn-copy:hover,.btn-copy:focus{
-    opacity: 1;
-  }
-
-  .highlight:active .btn-copy,.highlight:hover .btn-copy,.highlight:focus .btn-copy{
+  .btn-copy:active,.btn-copy:hover
+  .highlight:active .btn-copy,.highlight:hover .btn-copy{
     opacity: 1;
   }
   
