@@ -50,7 +50,7 @@ layout: null
           $(this).attr('id', currentId);
              
           //trigger
-          var clipButton = '<button class="btn-copy" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
+          var clipButton = '<button class="btn-copy" type="button" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
              $(this).before(clipButton);
           });
          
