@@ -1,3 +1,5 @@
+const { ClipboardJS } = require("./clipboard.min");
+
 ---
 exclude_in_search: true
 layout: null
@@ -53,7 +55,7 @@ layout: null
              $(this).after(clipButton);
           });
          
-          new Clipboard('.btn');    
+          new ClipboardJS('.btn');    
     });
 }(jQuery));
 (function($) {
