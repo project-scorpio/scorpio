@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Scorpio.EventBus\Scorpio.EventBus.csproj" />
-    <ProjectReference Include="$(SourceRoot)\src\Scorpio.RabbitMQ\Scorpio.RabbitMQ.csproj" />
+    <ProjectReference Include="..\Scorpio.RabbitMQ\Scorpio.RabbitMQ.csproj" />
   </ItemGroup>
 
 </Project>

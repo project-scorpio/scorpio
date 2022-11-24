@@ -52,7 +52,7 @@ namespace Scorpio.Modularity.Plugins
 
         internal IEnumerable<Assembly> GetAssemblies()
         {
-            var matcher = new Matcher(StringComparison.InvariantCultureIgnoreCase);
+            var matcher = new Matcher(StringComparison.OrdinalIgnoreCase);
             matcher.AddInclude("./**/*.dll").AddInclude("./**/*.exe");
             var assemblyFiles = _plugInSourceLists.FileProvider.GetDirectoryContents(_path)
                 .Where(f => matcher.Match(f.PhysicalPath).HasMatches);

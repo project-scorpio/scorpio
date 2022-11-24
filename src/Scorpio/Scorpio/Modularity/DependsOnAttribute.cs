@@ -28,4 +28,25 @@ namespace Scorpio.Modularity
         public virtual Type[] GetDependedTypes() => DependedTypes;
     }
 
+#if NET7_0_OR_GREATER
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="TModule"></typeparam>
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+    public sealed class DependsOnAttribute<TModule> : DependsOnAttribute
+        where TModule:IScorpioModule
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public DependsOnAttribute():base(typeof(TModule))
+        {
+
+        }
+    }
+
+#endif
+
 }

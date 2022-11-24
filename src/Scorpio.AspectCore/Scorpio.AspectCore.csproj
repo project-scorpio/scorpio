@@ -17,7 +17,7 @@
  
 
   <ItemGroup>
-    <PackageReference Include="AspectCore.Extensions.DependencyInjection" Version="2.2.0" />
+    <PackageReference Include="AspectCore.Extensions.DependencyInjection" />
   </ItemGroup>
 
   <ItemGroup>

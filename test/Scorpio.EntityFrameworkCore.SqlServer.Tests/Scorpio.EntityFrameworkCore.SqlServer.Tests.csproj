@@ -1,13 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    
-	  
     <IsPackable>false</IsPackable>
   </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="$(SourceRoot)\src\Scorpio.EntityFrameworkCore.SqlServer\Scorpio.EntityFrameworkCore.SqlServer.csproj" />
   </ItemGroup>
-
 </Project>

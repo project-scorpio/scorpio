@@ -14,25 +14,18 @@
  
   
   <ItemGroup>
-    <PackageReference Include="Nito.AsyncEx.Context" Version="5.1.2" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' != 'netstandard2.0'">
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="6.0.5" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.29" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.29" />
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="3.1.29" />
-    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="3.1.29" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.29" />
-    <PackageReference Include="Microsoft.Bcl.HashCode" Version="1.1.1" />
-    <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
+    <PackageReference Include="Nito.AsyncEx.Context"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration"/>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection"/>
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Physical"/>
+    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions"/>
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions"/>
   </ItemGroup>
 
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="Microsoft.Bcl.HashCode"/>
+    <PackageReference Include="System.Runtime.Loader"/>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Scorpio.Utilities\Scorpio.Utilities.csproj" />
   </ItemGroup>

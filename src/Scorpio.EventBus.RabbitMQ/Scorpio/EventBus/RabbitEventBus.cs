@@ -15,8 +15,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
 
-using Newtonsoft.Json;
-
 using RabbitMQ.Client;
 
 using Scorpio.Data;
@@ -29,8 +27,14 @@ namespace Scorpio.EventBus
     {
         private readonly IBus _bus;
         private readonly RabbitMQEventBusOptions _options;
+#if NET5_0_OR_GREATER
+        private Exchange _exchange;
+        private Queue _queue;
+#else
         private IExchange _exchange;
         private IQueue _queue;
+
+#endif      
         protected ConcurrentDictionary<string, Type> EventTypes { get; }
         /// <summary>
         /// Reference to the Logger.
@@ -55,7 +59,11 @@ namespace Scorpio.EventBus
             SubscribeHandlers(Options.GetEventHandlers());
         }
 
+#if NET5_0_OR_GREATER
+        private async Task<AckStrategy> ProcessEventAsync(ReadOnlyMemory<byte> buffer, MessageProperties messageProperties, MessageReceivedInfo messageReceivedInfo)
+#else
         private async Task<AckStrategy> ProcessEventAsync(byte[] buffer, MessageProperties messageProperties, MessageReceivedInfo messageReceivedInfo)
+#endif
         {
             var eventName = messageReceivedInfo.RoutingKey;
             var eventType = EventTypes.GetOrDefault(eventName);
@@ -64,7 +72,7 @@ namespace Scorpio.EventBus
                 return AckStrategies.Ack;
             }
             var eventData = Serializer.Deserialize(buffer, eventType);
-            await TriggerHandlersAsync(eventType,null, eventData, errorContext =>
+            await TriggerHandlersAsync(eventType, null, eventData, errorContext =>
             {
                 var retryAttempt = 0;
                 if (messageProperties.Headers != null &&
@@ -79,7 +87,7 @@ namespace Scorpio.EventBus
             return AckStrategies.Ack;
         }
 
-        public override Task PublishAsync(object sender, Type eventType, object eventData) =>  PublishAsync(eventType, eventData, null);
+        public override Task PublishAsync(object sender, Type eventType, object eventData) => PublishAsync(eventType, eventData, null);
 
         public Task PublishAsync(Type eventType, object eventData, MessageProperties properties, Dictionary<string, object> headersArguments = null)
         {
@@ -148,7 +156,12 @@ namespace Scorpio.EventBus
 
         private class EventHandlerFactoryList : List<IEventHandlerFactory>
         {
+#if NET5_0_OR_GREATER
+            public Binding<Queue> Binding { get; set; }
+#else
             public IBinding Binding { get; set; }
+
+#endif   
         }
     }
 }

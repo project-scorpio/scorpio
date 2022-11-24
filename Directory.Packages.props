@@ -1,0 +1,111 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="Nito.AsyncEx.Context" Version="5.1.2" />
+    <PackageVersion Include="AspectCore.Extensions.DependencyInjection" Version="2.2.0" />
+    <PackageVersion Include="Autofac.Extras.DynamicProxy" Version="6.0.1" />
+    <PackageVersion Include="Autofac" Version="6.5.0" />
+    <PackageVersion Include="Castle.Core" Version="5.0.0" />
+    <PackageVersion Include="Castle.Core.AsyncInterceptor" Version="2.1.0" />
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageVersion Include="System.Linq.Dynamic.Core" Version="1.2.18" />
+    <PackageVersion Include="Quartz.Extensions.DependencyInjection" Version="3.4.0" />
+    <PackageVersion Include="Quartz.Plugins.TimeZoneConverter" Version="3.4.0" />
+
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)'!= 'netstandard2.0'">
+    <PackageVersion Include="EasyNetQ.DI.Microsoft" Version="7.3.2" />
+    <PackageVersion Include="AutoMapper" Version="12.0.0" />
+
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageVersion Include="EasyNetQ.DI.Microsoft" Version="6.5.2" />
+    <PackageVersion Include="AutoMapper" Version="10.1.1" />
+
+  </ItemGroup>
+  <!--EntityFramework 包引用版本-->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.0" />
+    <PackageVersion Include="Z.EntityFramework.Plus.EFCore" Version="7.17.1" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Proxies" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="6.0.11" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.11" />
+    <PackageVersion Include="Z.EntityFramework.Plus.EFCore" Version="6.13.19" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Proxies" Version="6.0.11" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.11" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.17" />
+    <PackageVersion Include="Z.EntityFramework.Plus.EFCore" Version="5.13.19" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.17" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.17" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="3.1.31" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.31" />
+    <PackageVersion Include="Z.EntityFramework.Plus.EFCore" Version="3.13.19" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.31" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.31" />
+  </ItemGroup>
+
+  <!--扩展框架 包引用版本-->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
+    <PackageVersion Include="Microsoft.Extensions.Logging" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="7.0.0"/>
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="7.0.0"/>
+    <PackageVersion Include="Microsoft.Extensions.FileProviders.Physical" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Localization.Abstractions" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+    <PackageVersion Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0"/>
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="6.0.0"/>
+    <PackageVersion Include="Microsoft.Extensions.FileProviders.Physical" Version="6.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Localization.Abstractions" Version="6.0.5" />
+    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
+    <PackageVersion Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0"/>
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="5.0.0"/>
+    <PackageVersion Include="Microsoft.Extensions.FileProviders.Physical" Version="5.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Localization.Abstractions" Version="5.0.17" />
+    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="5.0.0" />
+    <PackageVersion Include="Microsoft.Bcl.HashCode" Version="1.1.1" />
+    <PackageVersion Include="System.Runtime.Loader" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageVersion Include="Microsoft.Extensions.Logging" Version="3.1.31" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="3.1.31" />
+    <PackageVersion Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.1" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration" Version="3.1.31" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="3.1.31" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="3.1.31"/>
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="3.1.31"/>
+    <PackageVersion Include="Microsoft.Extensions.FileProviders.Physical" Version="3.1.31" />
+    <PackageVersion Include="Microsoft.Extensions.Localization.Abstractions" Version="3.1.31" />
+    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.31" />
+    <PackageVersion Include="Microsoft.Bcl.HashCode" Version="1.1.1" />
+    <PackageVersion Include="System.Runtime.Loader" Version="4.3.0" />
+  </ItemGroup>
+
+</Project>

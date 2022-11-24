@@ -60,7 +60,7 @@ namespace System.Linq.Async
                         goto case AsyncIteratorState.Iterating;
 
                     case AsyncIteratorState.Iterating:
-                        if (_enumerator!.MoveNext())
+                        if (await Task.Run(_enumerator.MoveNext))
                         {
                             _current = _enumerator.Current;
                             return true;
