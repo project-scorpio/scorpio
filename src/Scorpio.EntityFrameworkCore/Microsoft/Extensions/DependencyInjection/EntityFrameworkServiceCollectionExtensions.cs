@@ -31,7 +31,7 @@ namespace Microsoft.Extensions.DependencyInjection
             Action<IScorpioDbContextOptionsBuilder<TDbContext>> builderAction)
             where TDbContext : ScorpioDbContext<TDbContext>
         {
-            services.AddMemoryCache().AddLogging();
+            //services.AddMemoryCache().AddLogging();
             var options = new ScorpioDbContextOptionsBuilder<TDbContext>(services);
             builderAction?.Invoke(options);
             services.TryAddTransient(serviceProvider => DbContextOptionsFactory.Create(serviceProvider, options));

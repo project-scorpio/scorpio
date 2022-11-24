@@ -105,7 +105,7 @@ namespace Scorpio
 
         private void ConfigureCoreService(IServiceCollection services)
         {
-            services.AddLogging();
+            //services.AddLogging();
             services.AddSingleton<IBootstrapper>(this);
             services.AddSingleton<IModuleContainer>(this);
             services.AddSingleton(ModuleLoader);
