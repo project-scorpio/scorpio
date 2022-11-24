@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    
+    
+    <CodeAnalysisRuleSet>$(SourceRoot)\src\.sonarlint\project-scorpio_scorpiocsharp.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="$(SourceRoot)\src\.sonarlint\project-scorpio_scorpio\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extras.DynamicProxy"/>
+    <PackageReference Include="Autofac"/>
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(SourceRoot)\src\Scorpio\Scorpio.csproj" />
+    <ProjectReference Include="..\Scorpio.Castle.Core\Scorpio.Castle.Core.csproj" />
+  </ItemGroup>
+
+</Project>

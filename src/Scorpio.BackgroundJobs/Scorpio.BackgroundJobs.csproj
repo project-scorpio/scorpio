@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    
+    <AssemblyTitle>Scorpio background library</AssemblyTitle>
+    
+    <CodeAnalysisRuleSet>$(SourceRoot)\src\.sonarlint\project-scorpio_scorpiocsharp.ruleset</CodeAnalysisRuleSet>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="$(SourceRoot)\src\.sonarlint\project-scorpio_scorpio\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Scorpio.BackgroundJobs.Abstractions\Scorpio.BackgroundJobs.Abstractions.csproj" />
+    <ProjectReference Include="..\Scorpio.BackgroundWorkers\Scorpio.BackgroundWorkers.csproj" />
+  </ItemGroup>
+
+</Project>

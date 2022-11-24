@@ -1,0 +1,21 @@
+﻿<Project>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove(Directory.Build.props, $(MSBuildThisFileDirectory)../))" Condition=" '$([MSBuild]::GetPathOfFileAbove(Directory.Build.props, $(MSBuildThisFileDirectory)../))' != '' "/>
+  <PropertyGroup >
+    <SrcRoot>$(MSBuildThisFileDirectory)</SrcRoot>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworks>$(StandardTargetFrameworks)</TargetFrameworks>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SourceLinkCreate>true</SourceLinkCreate>
+    <SourceLinkOriginUrl>https://github.com/project-scorpio/Scorpio</SourceLinkOriginUrl>
+  </PropertyGroup>
+
+</Project>

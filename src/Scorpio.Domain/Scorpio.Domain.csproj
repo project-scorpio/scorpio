@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    
+    <AssemblyTitle>Scorpio domain library</AssemblyTitle>
+    
+    <CodeAnalysisRuleSet>$(SourceRoot)\src\.sonarlint\project-scorpio_scorpiocsharp.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="$(SourceRoot)\src\.sonarlint\project-scorpio_scorpio\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(SourceRoot)/src/Scorpio/Scorpio.csproj" />
+    <ProjectReference Include="$(SourceRoot)/src/Scorpio.Uow/Scorpio.Uow.csproj" />
+    <ProjectReference Include="$(SourceRoot)/src/Scorpio.Data/Scorpio.Data.csproj" />
+  </ItemGroup>
+
+</Project>

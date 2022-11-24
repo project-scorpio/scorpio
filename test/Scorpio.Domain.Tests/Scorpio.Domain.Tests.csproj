@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    
+    
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(SourceRoot)\src\Scorpio.Domain\Scorpio.Domain.csproj" />
+    <ProjectReference Include="$(SourceRoot)\src\Scorpio.AspectCore\Scorpio.AspectCore.csproj" />
+  </ItemGroup>
+
+</Project>

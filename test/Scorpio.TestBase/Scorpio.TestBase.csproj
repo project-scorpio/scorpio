@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<SonarQubeTestProject>false</SonarQubeTestProject>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="$(SourceRoot)\src\Scorpio\Scorpio.csproj" />
+    <ProjectReference Remove="$(TestRoot)Scorpio.TestBase\Scorpio.TestBase.csproj" />
+  </ItemGroup>
+	<ItemGroup>
+
+		<PackageReference Include="Shouldly" />
+		<PackageReference Include="Moq" />
+		<PackageReference Include="NSubstitute" />
+	</ItemGroup>
+</Project>

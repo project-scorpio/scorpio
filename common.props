@@ -1,0 +1,20 @@
+﻿<Project>
+  <PropertyGroup>
+    <Authors>Zidan.Wang</Authors>
+    <Company>Pluto Studio</Company>
+    <Copyright>Copyright © Pluto Studio 2015-2022</Copyright>
+    <Product>Scorpio</Product>
+    <Description>Scorpio is a modular-based cross-platform framework for the .NET Core and .NET frameworks, with project include AOP, modularity, plug-ins, dependency injection, and some common extension methods.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://project-scorpio.github.io/Scorpio/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/project-scorpio/Scorpio</RepositoryUrl>
+    <PackageIconUrl>https://wzd24.github.io/Scorpio/scorpio.png</PackageIconUrl>
+    <RepositoryType>git</RepositoryType>
+    <StandardTargetFrameworks>netstandard2.0;net5.0;net6.0;net7.0</StandardTargetFrameworks>
+    <MultiTargetFrameworks>netcoreapp3.1;net5.0;net6.0;net7.0</MultiTargetFrameworks> 
+  </PropertyGroup>
+  <PropertyGroup >
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  
+</Project>
