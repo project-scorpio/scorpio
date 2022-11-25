@@ -341,3 +341,4 @@ publish.cmd
 .sonarqube/
 coverage.opencover.xml
 .coverreports/
+*.xml
