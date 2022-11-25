@@ -1,7 +1,7 @@
-#tool "nuget:?package=xunit.runner.console&version=2.3.1"
-#addin "nuget:?package=Cake.Sonar&version=1.1.25"
+#tool "nuget:?package=xunit.runner.console&version=2.4.2"
+#addin "nuget:?package=Cake.Sonar&version=1.1.31"
 #tool "nuget:?package=MSBuild.SonarQube.Runner.Tool&version=4.8.0"
-#addin nuget:?package=Cake.Coverlet&version=2.4.2
+#addin nuget:?package=Cake.Coverlet&version=3.0.2
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 ///////////////////////////////////////////////////////////////////////////////
@@ -28,7 +28,7 @@ Task("Test")
 	service.Test();
 	CleanDirectories("./.coverreports/");
 	ReportGenerator(
-		"./src/**/coverage.opencover.xml",
+		(GlobPattern)"./test/**/coverage.*.opencover.xml",
 		"./.coverreports",
 		new ReportGeneratorSettings{
 			ReportTypes=new List<ReportGeneratorReportType>{ReportGeneratorReportType.Html},

@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Scorpio.Modularity
 {
@@ -7,6 +8,7 @@ namespace Scorpio.Modularity
     /// Used to define dependencies of a type.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+    [ExcludeFromCodeCoverage]
     public class DependsOnAttribute : Attribute, IDependedTypesProvider
     {
         /// <summary>
@@ -35,6 +37,7 @@ namespace Scorpio.Modularity
     /// </summary>
     /// <typeparam name="TModule"></typeparam>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+    [ExcludeFromCodeCoverage]
     public sealed class DependsOnAttribute<TModule> : DependsOnAttribute
         where TModule:IScorpioModule
     {

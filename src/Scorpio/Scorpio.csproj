@@ -11,20 +11,18 @@
     <AdditionalFiles Include="$(SourceRoot)\src\.sonarlint\project-scorpio_scorpio\CSharp\SonarLint.xml" Link="SonarLint.xml" />
   </ItemGroup>
 
- 
-  
   <ItemGroup>
-    <PackageReference Include="Nito.AsyncEx.Context"/>
-    <PackageReference Include="Microsoft.Extensions.Configuration"/>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection"/>
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Physical"/>
-    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions"/>
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions"/>
+    <PackageReference Include="Nito.AsyncEx.Context" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" />
+    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="Microsoft.Bcl.HashCode"/>
-    <PackageReference Include="System.Runtime.Loader"/>
+    <PackageReference Include="Microsoft.Bcl.HashCode" />
+    <PackageReference Include="System.Runtime.Loader" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Scorpio.Utilities\Scorpio.Utilities.csproj" />

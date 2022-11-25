@@ -1,7 +1,6 @@
 #load "./index.cake"
-#addin "nuget:?package=Cake.Sonar&version=1.1.25"
-#addin nuget:?package=Cake.Coverlet&version=2.4.2
-
+#addin "nuget:?package=Cake.Sonar&version=1.1.31"
+#addin nuget:?package=Cake.Coverlet&version=3.0.2
 public class BuildService
 {
     private readonly ICakeContext _cakeContext;
@@ -12,7 +11,7 @@ public class BuildService
     private readonly string _nugetPushUrl;
 
     private readonly string _symbolsPushUrl;
-    private readonly DotNetCoreMSBuildSettings _msbuildSettings;
+    private readonly DotNetMSBuildSettings _msbuildSettings;
 
     internal BuildContext Context => _context;
 
@@ -25,7 +24,7 @@ public class BuildService
         _nugetQueryUrl= _cakeContext.EnvironmentVariable("NugetQueryUrl","https://www.myget.org/F/project-scorpio/api/v3/index.json");
         _nugetPushUrl = _cakeContext.EnvironmentVariable("NugetPushUrl");
         _symbolsPushUrl = _cakeContext.EnvironmentVariable("SymbolsPushUrl");
-        _msbuildSettings=new DotNetCoreMSBuildSettings()
+        _msbuildSettings=new DotNetMSBuildSettings()
 										.SetFileVersion(_context.Version.GetFileVersion())
 										.SetConfiguration(_context.Environment.Configuration)
 										.SetVersion(_context.Version.GetVersion())
@@ -45,22 +44,22 @@ public class BuildService
     public void Restore(){
         foreach (var item in _context.Soluations)
         {
-            var settings=new DotNetCoreRestoreSettings{
+            var settings=new DotNetRestoreSettings{
                 Sources=new[]{"https://api.nuget.org/v3/index.json",_nugetQueryUrl}
 
             };
-            _cakeContext.DotNetCoreRestore(item.FullPath,new DotNetCoreRestoreSettings{});
+            _cakeContext.DotNetRestore(item.FullPath,new DotNetRestoreSettings{});
         }
     }
 
     public void Build(){
-        var buildSettings=new DotNetCoreBuildSettings{
+        var buildSettings=new DotNetBuildSettings{
                 Configuration=_context.Environment.Configuration,
                 MSBuildSettings=_msbuildSettings
             };
         foreach (var item in _context.Soluations)
         {
-            _cakeContext.DotNetCoreBuild(item.FullPath,buildSettings);
+            _cakeContext.DotNetBuild(item.FullPath,buildSettings);
         }
     }
 
@@ -93,7 +92,7 @@ public class BuildService
 
     public void Test()
     {
-        var testSettings=new DotNetCoreTestSettings{ 
+        var testSettings=new DotNetTestSettings{ 
             Configuration=_context.Environment.Configuration,
             NoBuild= true,
 
@@ -105,12 +104,12 @@ public class BuildService
         };
         foreach (var item in _context.Soluations)
         {
-            _cakeContext.DotNetCoreTest(item.FullPath,testSettings,coverletSettings);
+            _cakeContext.DotNetTest(item.FullPath,testSettings);
         }
     }
 
     public void Package(){
-        var settings=new DotNetCorePackSettings
+        var settings=new DotNetPackSettings
 						{
 						   Configuration = _context.Environment.Configuration,
 						   OutputDirectory = _context.ArtifactsPath,
@@ -120,13 +119,13 @@ public class BuildService
 						};
         foreach (var item in _context.Soluations)
         {
-            _cakeContext.DotNetCorePack(item.FullPath,settings);
+            _cakeContext.DotNetPack(item.FullPath,settings);
         }
     }
 
     public void Publish(){
         var packages=_cakeContext.GetFiles(_nugetRegex,new GlobberSettings{FilePredicate=f=>f.Path.FullPath.IndexOf(".symbols.")<0});
-        var settings = new DotNetCoreNuGetPushSettings
+        var settings = new DotNetNuGetPushSettings
                          {
 						   Source = _nugetPushUrl,
 						   ApiKey = _nugetApiKey,
@@ -136,7 +135,7 @@ public class BuildService
                          };
         foreach (var item in packages)
         {
-            _cakeContext.DotNetCoreNuGetPush(item.FullPath,settings);
+            _cakeContext.DotNetNuGetPush(item.FullPath,settings);
         }
     }
     

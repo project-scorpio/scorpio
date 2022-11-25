@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<SonarQubeTestProject>false</SonarQubeTestProject>
+    <CollectCoverage>false</CollectCoverage>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="$(SourceRoot)\src\Scorpio\Scorpio.csproj" />

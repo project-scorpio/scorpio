@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Text;
 
@@ -9,6 +10,7 @@ namespace Scorpio.Initialization
     /// 
     /// </summary>
     [AttributeUsage(AttributeTargets.Class,AllowMultiple =false,Inherited =true)]
+    [ExcludeFromCodeCoverage]
     public sealed class InitializationOrderAttribute : Attribute
     {
         /// <summary>

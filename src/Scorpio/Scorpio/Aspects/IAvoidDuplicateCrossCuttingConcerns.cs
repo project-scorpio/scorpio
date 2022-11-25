@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Scorpio.Aspects
 {
@@ -10,6 +11,7 @@ namespace Scorpio.Aspects
         /// <summary>
         /// 
         /// </summary>
+        [ExcludeFromCodeCoverage]
         List<string> AppliedCrossCuttingConcerns { get; }
     }
 }

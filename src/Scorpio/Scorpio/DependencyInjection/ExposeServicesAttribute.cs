@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -8,6 +9,7 @@ namespace Scorpio.DependencyInjection
     /// 
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
+    [ExcludeFromCodeCoverage]
     public class ExposeServicesAttribute : Attribute, IExposedServiceTypesProvider
     {
         /// <summary>

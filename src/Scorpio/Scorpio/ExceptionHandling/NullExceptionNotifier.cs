@@ -1,10 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
 
 namespace Scorpio.ExceptionHandling
 {
     /// <summary>
     /// 
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class NullExceptionNotifier : IExceptionNotifier
     {
         /// <summary>

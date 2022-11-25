@@ -66,7 +66,10 @@ namespace Scorpio.Aspects
             {
                 throw new ArgumentNullException(nameof(concern));
             }
-
+            if (concern.IsNullOrWhiteSpace())
+            {
+                throw new ArgumentException($"{nameof(concern)} can not  be empty!", nameof(concern));
+            }
             return (obj.UnProxy() as IAvoidDuplicateCrossCuttingConcerns)?.AppliedCrossCuttingConcerns.Contains(concern) ?? false;
         }
 

@@ -122,6 +122,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{153039F8-72D8-49F0-90CA-0F7880A09313}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		.gitignore = .gitignore
 		common.props = common.props
 		Directory.Build.props = Directory.Build.props
 		Directory.Packages.props = Directory.Packages.props

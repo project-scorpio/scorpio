@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace Scorpio
 {
@@ -16,17 +17,21 @@ namespace Scorpio
         /// 
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="value"></param>
+        /// <param name="argument"></param>
         /// <param name="parameterName"></param>
         /// <returns></returns>
-        public static T NotNull<T>(T value, string parameterName)
+#if NET5_0_OR_GREATER
+        public static T NotNull<T>(T argument, [CallerArgumentExpression("argument")] string parameterName = null)
+#else
+        public static T NotNull<T>(T argument, string parameterName = null)
+#endif
         {
-            if (value == null)
+            if (argument == null)
             {
                 throw new ArgumentNullException(parameterName);
             }
 
-            return value;
+            return argument;
         }
 
         /// <summary>

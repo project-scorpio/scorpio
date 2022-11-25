@@ -330,8 +330,6 @@ namespace Microsoft.Extensions.DependencyInjection
                 Debug.Assert(typeArguments.Length == 2);
                 return typeArguments[1];
             }
-
-            Debug.Assert(false, "ImplementationType, ImplementationInstance or ImplementationFactory must be non null");
             return null;
         }
 

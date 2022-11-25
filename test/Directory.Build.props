@@ -6,6 +6,11 @@
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
     <ServerGarbageCollection>true</ServerGarbageCollection>
   </PropertyGroup>
+  <PropertyGroup>
+    <CollectCoverage>true</CollectCoverage>
+    <ExcludeByAttribute>GeneratedCodeAttribute</ExcludeByAttribute>
+    <CoverletOutputFormat>opencover</CoverletOutputFormat>
+  </PropertyGroup>
   <PropertyGroup >
     <TestRoot>$(MSBuildThisFileDirectory)</TestRoot>
   </PropertyGroup>
@@ -15,7 +20,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="xunit" />
-    <PackageReference Update="coverlet.msbuild">
+    <PackageReference Include="coverlet.msbuild">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

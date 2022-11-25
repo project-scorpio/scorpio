@@ -339,6 +339,6 @@ publish.cmd
 .dotnet/
 .vscode/
 .sonarqube/
+coverage.*.opencover.xml
 coverage.opencover.xml
 .coverreports/
-*.xml
