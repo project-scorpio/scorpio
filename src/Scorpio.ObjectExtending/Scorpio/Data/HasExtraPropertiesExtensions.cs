@@ -59,7 +59,7 @@ namespace Scorpio.Data
                 var conversionType = typeof(TProperty);
                 if (TypeHelper.IsNullable(conversionType))
                 {
-                    conversionType = conversionType.GetFirstGenericArgumentIfNullable();
+                    conversionType = conversionType.UnWrapNullable();
                 }
 
                 if (conversionType == typeof(Guid))

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 using Scorpio.Conventional;
 using Scorpio.DynamicProxy;
@@ -9,6 +10,7 @@ namespace Microsoft.Extensions.DependencyInjection
     /// <summary>
     /// 
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public static class DynamicProxyServiceCollectionExtensions
     {
 
