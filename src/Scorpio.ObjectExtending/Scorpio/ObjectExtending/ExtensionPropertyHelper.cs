@@ -14,7 +14,7 @@ namespace Scorpio.ObjectExtending
                 yield return new RequiredAttribute();
             }
 
-            if (type.IsEnum)
+            if (type.UnWrapNullable().IsEnum)
             {
                 yield return new EnumDataTypeAttribute(type);
             }
@@ -22,16 +22,16 @@ namespace Scorpio.ObjectExtending
 
         public static object GetDefaultValue(
             Type propertyType,
-            Func<object> defaultValueFactory, 
-            object defaultValue)
+            Func<object> defaultValueFactory = null,
+            object defaultValue = null)
         {
             if (defaultValueFactory != null)
             {
-                return defaultValueFactory();
+                return Convert.ChangeType( defaultValueFactory(),propertyType);
             }
 
-            return defaultValue ??
-                   TypeHelper.GetDefaultValue(propertyType);
+            return Convert.ChangeType(defaultValue ??
+                   TypeHelper.GetDefaultValue(propertyType),propertyType);
         }
     }
 }

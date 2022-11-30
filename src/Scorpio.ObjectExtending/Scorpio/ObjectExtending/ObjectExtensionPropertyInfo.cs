@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 namespace Scorpio.ObjectExtending
@@ -7,6 +8,7 @@ namespace Scorpio.ObjectExtending
     /// <summary>
     /// 
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class ObjectExtensionPropertyInfo : IBasicObjectExtensionPropertyInfo
     {
         /// <summary>
@@ -52,7 +54,7 @@ namespace Scorpio.ObjectExtending
         /// <summary>
         /// Uses as the default value if <see cref="DefaultValueFactory"/> was not set.
         /// </summary>
-        
+
         public object DefaultValue { get; set; }
 
         /// <summary>

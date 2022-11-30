@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Scorpio.Data
 {
@@ -7,6 +8,7 @@ namespace Scorpio.Data
     /// 
     /// </summary>
     [Serializable]
+    [ExcludeFromCodeCoverage]
     public class ExtraPropertyDictionary : Dictionary<string, object>
     {
         /// <summary>
