@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 using EasyNetQ;
@@ -16,6 +17,7 @@ namespace Scorpio.RabbitMQ
     /// <summary>
     /// 
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class RabbitMQModule:ScorpioModule
     {
         /// <summary>

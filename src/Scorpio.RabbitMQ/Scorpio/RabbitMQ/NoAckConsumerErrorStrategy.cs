@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using RabbitMQ.Client;
 
 namespace Scorpio.RabbitMQ
 {
+    [ExcludeFromCodeCoverage]
     internal class NoAckConsumerErrorStrategy : DefaultConsumerErrorStrategy
     {
 
