@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
 namespace Scorpio.Entities
@@ -7,6 +8,7 @@ namespace Scorpio.Entities
     /// This exception is thrown if an entity excepted to be found but not found.
     /// </summary>
     [Serializable]
+    [ExcludeFromCodeCoverage]
     public class EntityNotFoundException : ScorpioException
     {
         /// <summary>

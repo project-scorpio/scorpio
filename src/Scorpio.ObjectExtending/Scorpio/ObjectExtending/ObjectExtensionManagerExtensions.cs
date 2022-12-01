@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Diagnostics.CodeAnalysis;
+
 using Scorpio.Data;
 
 namespace Scorpio.ObjectExtending

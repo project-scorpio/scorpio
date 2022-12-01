@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Scorpio.Data;
 
@@ -13,20 +14,23 @@ namespace Scorpio.ObjectExtending
     /// </summary>
     public class ObjectExtensionInfo
     {
-        
+
         /// <summary>
         /// 
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public Type Type { get; }
 
         /// <summary>
         /// 
         /// </summary>
-        protected ConcurrentDictionary<string, ObjectExtensionPropertyInfo> Properties { get; }
+        [ExcludeFromCodeCoverage]
+        protected internal ConcurrentDictionary<string, ObjectExtensionPropertyInfo> Properties { get; }
 
         /// <summary>
         /// 
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public ConcurrentDictionary<object, object> Configuration { get; }
 
 
@@ -34,6 +38,7 @@ namespace Scorpio.ObjectExtending
         /// 
         /// </summary>
         /// <param name="type"></param>
+        [ExcludeFromCodeCoverage]
         public ObjectExtensionInfo(Type type)
         {
             Type = Check.NotNull(type, nameof(type));
@@ -46,6 +51,7 @@ namespace Scorpio.ObjectExtending
         /// </summary>
         /// <param name="propertyName"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         public virtual bool HasProperty(string propertyName)
         {
             return Properties.ContainsKey(propertyName);
@@ -110,6 +116,7 @@ namespace Scorpio.ObjectExtending
         /// </summary>
         /// <param name="propertyName"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         public virtual ObjectExtensionPropertyInfo GetPropertyOrNull(
             string propertyName)
         {

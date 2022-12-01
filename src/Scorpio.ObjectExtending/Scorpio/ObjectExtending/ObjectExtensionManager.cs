@@ -2,6 +2,8 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Diagnostics.CodeAnalysis;
+
 using Scorpio.Data;
 
 namespace Scorpio.ObjectExtending
@@ -14,21 +16,25 @@ namespace Scorpio.ObjectExtending
         /// <summary>
         /// 
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public static ObjectExtensionManager Instance { get; protected set; } = new ObjectExtensionManager();
 
         /// <summary>
         /// 
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public ConcurrentDictionary<object, object> Configuration { get; }
 
         /// <summary>
         /// 
         /// </summary>
-        protected ConcurrentDictionary<Type, ObjectExtensionInfo> ObjectsExtensions { get; }
+        [ExcludeFromCodeCoverage]
+        protected internal ConcurrentDictionary<Type, ObjectExtensionInfo> ObjectsExtensions { get; }
 
         /// <summary>
         /// 
         /// </summary>
+        [ExcludeFromCodeCoverage]
         protected internal ObjectExtensionManager()
         {
             ObjectsExtensions = new ConcurrentDictionary<Type, ObjectExtensionInfo>();
@@ -92,6 +98,7 @@ namespace Scorpio.ObjectExtending
         /// </summary>
         /// <typeparam name="TObject"></typeparam>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         public virtual ObjectExtensionInfo GetOrNull<TObject>()
         {
             return GetOrNull(typeof(TObject));
@@ -102,6 +109,7 @@ namespace Scorpio.ObjectExtending
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         public virtual ObjectExtensionInfo GetOrNull(Type type)
         {
             return ObjectsExtensions.GetOrDefault(type);
@@ -111,6 +119,7 @@ namespace Scorpio.ObjectExtending
         /// 
         /// </summary>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         public virtual ImmutableList<ObjectExtensionInfo> GetExtendedObjects()
         {
             return ObjectsExtensions.Values.ToImmutableList();

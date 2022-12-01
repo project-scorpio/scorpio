@@ -1,121 +1,69 @@
-﻿//using System;
-//using System.Collections.Concurrent;
-//using System.Collections.Generic;
-//using System.Collections.Immutable;
-//using System.Linq;
-//using Scorpio.Data;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Linq;
 
-//namespace Scorpio.ObjectExtending
-//{
+using Scorpio.Data;
 
-//    /// <summary>
-//    /// 
-//    /// </summary>
-//    public class ObjectExtensionInfo
-//    {
-        
-//        /// <summary>
-//        /// 
-//        /// </summary>
-//        public Type Type { get; }
+using Shouldly;
 
-//        /// <summary>
-//        /// 
-//        /// </summary>
-//        protected ConcurrentDictionary<string, ObjectExtensionPropertyInfo> Properties { get; }
+using Xunit;
 
-//        /// <summary>
-//        /// 
-//        /// </summary>
-//        public ConcurrentDictionary<object, object> Configuration { get; }
+namespace Scorpio.ObjectExtending
+{
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public class ObjectExtensionInfo_Tests
+    {
 
 
-//        /// <summary>
-//        /// 
-//        /// </summary>
-//        /// <param name="type"></param>
-//        public ObjectExtensionInfo(Type type)
-//        {
-//            Type = Check.NotNull(type, nameof(type));
-//            Properties = new ConcurrentDictionary<string, ObjectExtensionPropertyInfo>();
-//            Configuration = new ConcurrentDictionary<object, object>();
-//        }
+        private class ExtensibleObjectMapperTest : IHasExtraProperties
+        {
+            public ExtraPropertyDictionary ExtraProperties { get; } = new ExtraPropertyDictionary();
+        }
 
-//        /// <summary>
-//        /// 
-//        /// </summary>
-//        /// <param name="propertyName"></param>
-//        /// <returns></returns>
-//        public virtual bool HasProperty(string propertyName)
-//        {
-//            return Properties.ContainsKey(propertyName);
-//        }
+        [Fact]
+        public void AddOrUpdateProperty_T()
+        {
+            var info = new ObjectExtensionInfo(typeof(ExtensibleObjectMapperTest));
+            info.HasProperty("name").ShouldBeFalse();
+            info.AddOrUpdateProperty<string>("name");
+            info.HasProperty("name").ShouldBeTrue();
+            info.Properties.ShouldHaveSingleItem().Value.Name.ShouldBe("name");
+            info.Properties.ShouldHaveSingleItem().Value.CheckPairDefinitionOnMapping.ShouldBeNull();
+            info.AddOrUpdateProperty<string>("name", i => i.CheckPairDefinitionOnMapping = true);
+            info.Properties.ShouldHaveSingleItem().Value.Name.ShouldBe("name");
+            info.Properties.ShouldHaveSingleItem().Value.CheckPairDefinitionOnMapping.ShouldBe(true);
+        }
 
-//        /// <summary>
-//        /// 
-//        /// </summary>
-//        /// <typeparam name="TProperty"></typeparam>
-//        /// <param name="propertyName"></param>
-//        /// <param name="configureAction"></param>
-//        /// <returns></returns>
-//        public virtual ObjectExtensionInfo AddOrUpdateProperty<TProperty>(
-//            string propertyName,
-//            Action<ObjectExtensionPropertyInfo> configureAction = null)
-//        {
-//            return AddOrUpdateProperty(
-//                typeof(TProperty),
-//                propertyName,
-//                configureAction
-//            );
-//        }
+        [Fact]
+        public void AddOrUpdateProperty()
+        {
+            var info = new ObjectExtensionInfo(typeof(ExtensibleObjectMapperTest));
+            info.HasProperty("name").ShouldBeFalse();
+            info.AddOrUpdateProperty(typeof(string), "name");
+            info.HasProperty("name").ShouldBeTrue();
+            info.Properties.ShouldHaveSingleItem().Value.Name.ShouldBe("name");
+            info.Properties.ShouldHaveSingleItem().Value.CheckPairDefinitionOnMapping.ShouldBeNull();
+            info.AddOrUpdateProperty(typeof(string), "name", i => i.CheckPairDefinitionOnMapping = true);
+            info.Properties.ShouldHaveSingleItem().Value.Name.ShouldBe("name");
+            info.Properties.ShouldHaveSingleItem().Value.CheckPairDefinitionOnMapping.ShouldBe(true);
 
-//        /// <summary>
-//        /// 
-//        /// </summary>
-//        /// <param name="propertyType"></param>
-//        /// <param name="propertyName"></param>
-//        /// <param name="configureAction"></param>
-//        /// <returns></returns>
-//        public virtual ObjectExtensionInfo AddOrUpdateProperty(
-//            Type propertyType,
-//            string propertyName,
-//            Action<ObjectExtensionPropertyInfo> configureAction = null)
-//        {
-//            Check.NotNull(propertyType, nameof(propertyType));
-//            Check.NotNull(propertyName, nameof(propertyName));
+        }
 
-//            var propertyInfo = Properties.GetOrAdd(
-//                propertyName,
-//                _ => new ObjectExtensionPropertyInfo(this, propertyType, propertyName)
-//            );
+        [Fact]
+        public void GetProperties()
+        {
+            var info = new ObjectExtensionInfo(typeof(ExtensibleObjectMapperTest));
+            info.AddOrUpdateProperty<string>("name");
+            info.AddOrUpdateProperty<int>("age");
+            info.AddOrUpdateProperty<string>("location");
+            info.GetProperties().Select(i => i.Name).ShouldBeInOrder();
 
-//            configureAction?.Invoke(propertyInfo);
+        }
 
-//            return this;
-//        }
-
-//        /// <summary>
-//        /// 
-//        /// </summary>
-//        /// <returns></returns>
-//        public virtual ImmutableList<ObjectExtensionPropertyInfo> GetProperties()
-//        {
-//            return Properties.OrderBy(t=>t.Key)
-//                            .Select(t=>t.Value)
-//                            .ToImmutableList();
-//        }
-
-//        /// <summary>
-//        /// 
-//        /// </summary>
-//        /// <param name="propertyName"></param>
-//        /// <returns></returns>
-//        public virtual ObjectExtensionPropertyInfo GetPropertyOrNull(
-//            string propertyName)
-//        {
-//            Check.NotNullOrEmpty(propertyName, nameof(propertyName));
-
-//            return Properties.GetOrDefault(propertyName);
-//        }
-//    }
-//}
+    }
+}

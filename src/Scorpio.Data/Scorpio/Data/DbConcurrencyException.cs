@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
 namespace Scorpio.Data
@@ -7,6 +8,7 @@ namespace Scorpio.Data
     /// 
     /// </summary>
     [Serializable]
+    [ExcludeFromCodeCoverage]
     public class DbConcurrencyException : ScorpioException
     {
         /// <summary>

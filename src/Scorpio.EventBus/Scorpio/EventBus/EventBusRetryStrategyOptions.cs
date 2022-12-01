@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace Scorpio.EventBus
@@ -8,6 +9,7 @@ namespace Scorpio.EventBus
     /// <summary>
     /// 
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class EventBusRetryStrategyOptions
     {
         /// <summary>
