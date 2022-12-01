@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 using EasyNetQ;
@@ -8,6 +9,7 @@ using Scorpio.DependencyInjection;
 
 namespace Scorpio.EventBus
 {
+    [ExcludeFromCodeCoverage]
     internal class Utf8JsonRabbitMqEventDataSerializer : IRabbitMqEventDataSerializer, ISingletonDependency
     {
         private readonly ISerializer _serializer;
