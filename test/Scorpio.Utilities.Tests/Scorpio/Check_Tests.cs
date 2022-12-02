@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 using Shouldly;
 
@@ -47,6 +48,14 @@ namespace Scorpio
             Should.Throw<ArgumentException>(() => Check.NotNullOrEmpty<string>(null, "para")).ParamName.ShouldBe("para");
             Should.Throw<ArgumentException>(() => Check.NotNullOrEmpty(new List<string>(), "para")).ParamName.ShouldBe("para");
             Should.NotThrow(() => Check.NotNullOrEmpty(new List<string> { "value" }, "para")).ShouldHaveSingleItem().ShouldBe("value");
+        }
+
+        [Fact]
+        public void AssignableTo()
+        {
+            Should.Throw<ArgumentException>(() => Check.AssignableTo<ICollection<string>>(typeof(Collection<int>),"para")).ParamName.ShouldBe("para");
+            Should.NotThrow(() => Check.AssignableTo<ICollection<string>>(typeof(Collection<string>), "para"));
+
         }
     }
 }

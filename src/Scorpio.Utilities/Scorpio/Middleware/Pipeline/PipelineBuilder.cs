@@ -20,12 +20,14 @@ namespace Scorpio.Middleware.Pipeline
         /// 
         /// </summary>
         /// <typeparam name="TPipelineContext"></typeparam>
-        /// <param name="app"></param>
+        /// <param name="builder"></param>
         /// <param name="middleware"></param>
         /// <returns></returns>
-        public static IPipelineBuilder<TPipelineContext> Use<TPipelineContext>(this IPipelineBuilder<TPipelineContext> app, Func<TPipelineContext, Func<Task>, Task> middleware)
+        public static IPipelineBuilder<TPipelineContext> Use<TPipelineContext>(this IPipelineBuilder<TPipelineContext> builder, Func<TPipelineContext, Func<Task>, Task> middleware)
         {
-            return app.Use(next =>
+            Check.NotNull(builder, nameof(builder));
+            Check.NotNull(middleware, nameof(middleware));
+            return builder.Use(next =>
             {
                 return context =>
                 {
@@ -39,12 +41,14 @@ namespace Scorpio.Middleware.Pipeline
         /// 
         /// </summary>
         /// <typeparam name="TPipelineContext"></typeparam>
-        /// <param name="app"></param>
+        /// <param name="builder"></param>
         /// <param name="middleware"></param>
         /// <returns></returns>
-        public static IPipelineBuilder<TPipelineContext> Use<TPipelineContext>(this IPipelineBuilder<TPipelineContext> app, Func<TPipelineContext, PipelineRequestDelegate<TPipelineContext>, Task> middleware)
+        public static IPipelineBuilder<TPipelineContext> Use<TPipelineContext>(this IPipelineBuilder<TPipelineContext> builder, Func<TPipelineContext, PipelineRequestDelegate<TPipelineContext>, Task> middleware)
         {
-            return app.Use(next => context => middleware(context, next));
+            Check.NotNull(builder, nameof(builder));
+            Check.NotNull(middleware, nameof(middleware));
+            return builder.Use(next => context => middleware(context, next));
         }
 
 

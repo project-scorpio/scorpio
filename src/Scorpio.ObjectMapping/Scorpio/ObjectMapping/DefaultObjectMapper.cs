@@ -91,14 +91,11 @@ namespace Scorpio.ObjectMapping
                 try
                 {
                     var decType = typeof(TDestination);
-                    if (decType.GetConstructors().Select(c => c.GetParameters()).Where(c => c.Length == 1 && (c.SingleOrDefault()?.ParameterType?.IsAssignableFrom(typeof(TSource)) ?? false)).Count() == 1)
+                    return decType.GetConstructors().Select(c => c.GetParameters()).Count(c => c.Length == 1 && (c.SingleOrDefault()?.ParameterType?.IsAssignableFrom(typeof(TSource)) ?? false)) switch
                     {
-                        return (TDestination)Activator.CreateInstance(typeof(TDestination), source);
-                    }
-                    else
-                    {
-                        return ((TDestination)Activator.CreateInstance(typeof(TDestination))).Action(d => (d as IMapFrom<TSource>).MapFrom(source));
-                    }
+                        1 => (TDestination)Activator.CreateInstance(typeof(TDestination), source),
+                        _ => ((TDestination)Activator.CreateInstance(typeof(TDestination))).Action(d => (d as IMapFrom<TSource>).MapFrom(source))
+                    };
                 }
                 catch
                 {

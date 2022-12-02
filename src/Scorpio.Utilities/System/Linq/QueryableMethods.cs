@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -218,22 +221,22 @@ namespace System.Linq
         public static MethodInfo LongCountWithPredicate { get; }
 
         /// <summary>
-        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.Max{TSource,TResult}(IQueryable{TSource},Expression{Func{TSource,TResult}})" />
+        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.Max{TSource}(IQueryable{TSource})" />
         /// </summary>
         public static MethodInfo MaxWithoutSelector { get; }
 
         /// <summary>
-        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.Max{TSource}(IQueryable{TSource})" />
+        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.Max{TSource,TResult}(IQueryable{TSource},Expression{Func{TSource,TResult}})" />
         /// </summary>
         public static MethodInfo MaxWithSelector { get; }
 
         /// <summary>
-        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.Min{TSource,TResult}(IQueryable{TSource},Expression{Func{TSource,TResult}})" />
+        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.Min{TSource}(IQueryable{TSource})" />
         /// </summary>
         public static MethodInfo MinWithoutSelector { get; }
 
         /// <summary>
-        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.Min{TSource}(IQueryable{TSource})" />
+        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.Min{TSource,TResult}(IQueryable{TSource},Expression{Func{TSource,TResult}})" />
         /// </summary>
         public static MethodInfo MinWithSelector { get; }
 
@@ -292,7 +295,7 @@ namespace System.Linq
         //public static MethodInfo SequenceEqualWithComparer { get; }
 
         /// <summary>
-        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.Single{TSource}(IQueryable{TSource},Expression{Func{TSource,bool}})" />
+        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.Single{TSource}(IQueryable{TSource})" />
         /// </summary>
         public static MethodInfo SingleWithoutPredicate { get; }
 
@@ -302,7 +305,7 @@ namespace System.Linq
         public static MethodInfo SingleWithPredicate { get; }
 
         /// <summary>
-        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.SingleOrDefault{TSource}(IQueryable{TSource},Expression{Func{TSource,bool}})" />
+        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.SingleOrDefault{TSource}(IQueryable{TSource})" />
         /// </summary>
         public static MethodInfo SingleOrDefaultWithoutPredicate { get; }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,6 +11,36 @@ namespace Scorpio.Middleware.Pipeline
 {
     public class PipelineBuilder_Tests
     {
+        [Fact]
+        public void Use()
+        {
+            var descriptors = new ServiceCollection();
+            var serviceProvider = descriptors.BuildServiceProvider();
+            var builder = new TestPipelineBuilder(serviceProvider);
+            builder.ApplicationServices.ShouldBe(serviceProvider);
+            Should.Throw<ArgumentNullException>(() => builder.Use((Func<TestPipelineContext, PipelineRequestDelegate<TestPipelineContext>,Task>)null));
+            Should.NotThrow(() => builder.Use((context,next) => { context.PipelineInvoked = true; return next(context); }));
+            var context = new TestPipelineContext();
+            context.PipelineInvoked.ShouldBeFalse();
+            Should.NotThrow(() => builder.Build()(context));
+            context.PipelineInvoked.ShouldBeTrue();
+        }
+        [Fact]
+        public void Use_S()
+        {
+            var descriptors = new ServiceCollection();
+            var serviceProvider = descriptors.BuildServiceProvider();
+            var builder = new TestPipelineBuilder(serviceProvider);
+            builder.ApplicationServices.ShouldBe(serviceProvider);
+            Should.Throw<ArgumentNullException>(() => builder.Use((Func<TestPipelineContext, Func<Task>, Task>)null));
+            Should.NotThrow(() => builder.Use((TestPipelineContext context, Func<Task> next) => { context.PipelineInvoked = true; return next(); }));
+            var context = new TestPipelineContext();
+            context.PipelineInvoked.ShouldBeFalse();
+            Should.NotThrow(() => builder.Build()(context));
+            context.PipelineInvoked.ShouldBeTrue();
+        }
+
+
         [Fact]
         public void UseMiddleware()
         {

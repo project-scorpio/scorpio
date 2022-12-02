@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 
+using Scorpio;
+
 namespace System
 {
     /// <summary>
@@ -14,7 +16,7 @@ namespace System
         /// 
         /// </summary>
         /// <param name="action"></param>
-        public DisposeAction(Action action) => _action = action ?? throw new ArgumentNullException(nameof(action));
+        public DisposeAction(Action action) => _action = Check.NotNull( action,nameof(action));
 
         #region IDisposable Support
         private bool _disposedValue = false; // To detect redundant calls
@@ -49,7 +51,7 @@ namespace System
         /// 
         /// </summary>
         /// <param name="action"></param>
-        public AsyncDisposeAction(Func<ValueTask> action) => _action = action ?? throw new ArgumentNullException(nameof(action));
+        public AsyncDisposeAction(Func<ValueTask> action) => _action = Check.NotNull(action, nameof(action));
 
         #region IDisposable Support
         private bool _disposedValue = false; // To detect redundant calls
