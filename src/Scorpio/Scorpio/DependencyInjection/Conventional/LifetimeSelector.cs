@@ -16,7 +16,6 @@ namespace Scorpio.DependencyInjection.Conventional
             ServiceLifetime.Singleton => Singleton,
             ServiceLifetime.Scoped => Scoped,
             ServiceLifetime.Transient => Transient,
-            _ => throw new NotImplementedException(),
         };
 
         private readonly ServiceLifetime _lifetime;

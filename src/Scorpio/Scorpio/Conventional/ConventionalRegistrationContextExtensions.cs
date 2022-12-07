@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,6 +11,7 @@ namespace Scorpio.Conventional
     /// <summary>
     /// 
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public static class ConventionalRegistrationContextExtensions
     {
         /// <summary>

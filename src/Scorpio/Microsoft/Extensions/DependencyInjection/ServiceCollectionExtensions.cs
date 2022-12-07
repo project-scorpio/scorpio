@@ -324,15 +324,12 @@ namespace Microsoft.Extensions.DependencyInjection
             {
                 return serviceDescriptor.ImplementationInstance.GetType();
             }
-            else if (serviceDescriptor.ImplementationFactory != null)
+            else
             {
                 var typeArguments = serviceDescriptor.ImplementationFactory.GetType().GenericTypeArguments;
                 Debug.Assert(typeArguments.Length == 2);
                 return typeArguments[1];
             }
-            return null;
         }
-
-
     }
 }

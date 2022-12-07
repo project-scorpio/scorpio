@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Scorpio.Conventional
 {
@@ -21,9 +22,8 @@ namespace Scorpio.Conventional
         /// </summary>
         /// <param name="configuration"></param>
         /// <returns></returns>
-        public static IConventionalContext<TAction> CreateContext<TAction>(this IConventionalConfiguration<TAction> configuration)
+        internal static IConventionalContext<TAction> CreateContext<TAction>(this IConventionalConfiguration<TAction> configuration)
         {
-
             var context = (configuration as ConventionalConfiguration<TAction>).GetInternalContext();
             return context;
         }

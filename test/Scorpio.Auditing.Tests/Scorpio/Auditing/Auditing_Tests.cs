@@ -72,6 +72,7 @@ namespace Scorpio.Auditing
         {
             using (_auditingManager.BeginScope())
             {
+                
                 var service = ServiceProvider.GetService<IAttributedAuditingInterface>();
                 service.Test2("test", 19);
                 _auditingManager.Current.Info.ShouldNotBeNull();

@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Diagnostics.CodeAnalysis;
+
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Scorpio.DependencyInjection
 {
@@ -6,6 +8,7 @@ namespace Scorpio.DependencyInjection
         typeof(IHybridServiceScopeFactory),
         typeof(DefaultServiceScopeFactory)
         )]
+    [ExcludeFromCodeCoverage]
     internal class DefaultServiceScopeFactory : IHybridServiceScopeFactory
     {
         protected IServiceScopeFactory Factory { get; }

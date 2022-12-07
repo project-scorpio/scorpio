@@ -8,6 +8,7 @@ namespace Scorpio.Conventional
     /// <summary>
     /// 
     /// </summary>
+    
     internal abstract class ConventionalConfiguration : IConventionalConfiguration
     {
         protected ConventionalConfiguration(IServiceCollection services, IEnumerable<Type> types)
@@ -23,7 +24,7 @@ namespace Scorpio.Conventional
         /// <summary>
         /// 
         /// </summary>
-        internal ICollection<ConventionalContext> Contexts { get; } = new List<ConventionalContext>();
+        internal ICollection<IConventionalContext> Contexts { get; } = new List<IConventionalContext>();
 
         internal abstract IConventionalContext GetContext();
     }
