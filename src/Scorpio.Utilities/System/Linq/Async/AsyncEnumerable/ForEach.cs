@@ -23,6 +23,7 @@ namespace System.Linq.Async
             await Core(enumerable, action, cancellationToken);
             static async ValueTask Core(IAsyncEnumerable<T> enumerable, Action<T> action, CancellationToken cancellationToken)
             {
+
                 await foreach (var item in enumerable.WithCancellation(cancellationToken).ConfigureAwait(false))
                 {
                     action(item);

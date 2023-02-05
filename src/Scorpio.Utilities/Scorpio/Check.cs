@@ -20,11 +20,7 @@ namespace Scorpio
         /// <param name="argument"></param>
         /// <param name="parameterName"></param>
         /// <returns></returns>
-#if NET5_0_OR_GREATER
-        public static T NotNull<T>(T argument, [CallerArgumentExpression("argument")] string parameterName = null)
-#else
         public static T NotNull<T>(T argument, string parameterName = null)
-#endif
         {
             if (argument == null)
             {

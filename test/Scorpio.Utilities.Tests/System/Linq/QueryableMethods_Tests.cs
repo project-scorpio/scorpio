@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -699,71 +700,108 @@ namespace System.Linq
 
         public static IEnumerable<object[]> TypeExcepts()
         {
-            yield return new object[] { typeof(int), true };
-            yield return new object[] { typeof(int?), true };
-            yield return new object[] { typeof(long), true };
-            yield return new object[] { typeof(long?), true };
-            yield return new object[] { typeof(float), true };
-            yield return new object[] { typeof(float?), true };
-            yield return new object[] { typeof(double), true };
-            yield return new object[] { typeof(double?), true };
-            yield return new object[] { typeof(decimal), true };
-            yield return new object[] { typeof(decimal?), true };
+            foreach (var item in Types())
+            {
+                yield return new object[] {item};
+            }
+        }
+        public static IEnumerable<Type> Types()
+        {
+            yield return typeof(int);
+            yield return typeof(int?);
+            yield return typeof(long);
+            yield return typeof(long?);
+            yield return typeof(float);
+            yield return typeof(float?);
+            yield return typeof(double);
+            yield return typeof(double?);
+            yield return typeof(decimal);
+            yield return typeof(decimal?);
+        }
+        public static IEnumerable<object[]> IsAverageWithoutSelectorDatas()
+        {
+            foreach (var item in Types())
+            {
+                yield return new object[] {GetMethod(
+                    nameof(Queryable.Average), 0, types => new[] { typeof(IQueryable<>).MakeGenericType(item) }),true};
+            }
+            yield return new object[] { ((Func<IEnumerable, IQueryable>)Queryable.AsQueryable).Method, false };
         }
 
         [Theory]
-        [MemberData(nameof(TypeExcepts))]
-        public void IsAverageWithoutSelector(Type type, bool except)
+        [MemberData(nameof(IsAverageWithoutSelectorDatas))]
+        public void IsAverageWithoutSelector(MethodInfo method, bool except)
         {
-            var method = GetMethod(
-                    nameof(Queryable.Average), 0, types => new[] { typeof(IQueryable<>).MakeGenericType(type) });
             QueryableMethods.IsAverageWithoutSelector(method).ShouldBe(except);
         }
 
-
-        [Theory]
-        [MemberData(nameof(TypeExcepts))]
-        public void IsAverageWithSelector(Type type, bool except)
+        public static IEnumerable<object[]> IsAverageWithSelectorDatas()
         {
-            var method = GetMethod(
+            foreach (var item in Types())
+            {
+                yield return new object[] {GetMethod(
                     nameof(Queryable.Average), 1,
                     types => new[]
                     {
                     typeof(IQueryable<>).MakeGenericType(types[0]),
-                    typeof(Expression<>).MakeGenericType(typeof(Func<,>).MakeGenericType(types[0], type))
-                    });
+                    typeof(Expression<>).MakeGenericType(typeof(Func<,>).MakeGenericType(types[0], item))
+                    }),true};
+            }
+            yield return new object[] { ((Func<IEnumerable, IQueryable>)Queryable.AsQueryable).Method, false };
+        }
+
+        [Theory]
+        [MemberData(nameof(IsAverageWithSelectorDatas))]
+        public void IsAverageWithSelector(MethodInfo method, bool except)
+        {
             QueryableMethods.IsAverageWithSelector(method).ShouldBe(except);
 
         }
 
-        [Theory]
-        [MemberData(nameof(TypeExcepts))]
-        public void IsSumWithoutSelector(Type type, bool except)
+        public static IEnumerable<object[]> IsSumWithoutSelectorDatas()
         {
-            var method = GetMethod(
-                    nameof(Queryable.Sum), 0, types => new[] { typeof(IQueryable<>).MakeGenericType(type) });
+            foreach (var type in Types())
+            {
+                yield return new object[] {GetMethod(
+                    nameof(Queryable.Sum), 0, types => new[] { typeof(IQueryable<>).MakeGenericType(type) }),true};
+            }
+            yield return new object[] { ((Func<IEnumerable, IQueryable>)Queryable.AsQueryable).Method, false };
+        }
+
+        [Theory]
+        [MemberData(nameof(IsSumWithoutSelectorDatas))]
+        public void IsSumWithoutSelector(MethodInfo method, bool except)
+        {
             QueryableMethods.IsSumWithoutSelector(method).ShouldBe(except);
 
         }
 
-        [Theory]
-        [MemberData(nameof(TypeExcepts))]
-        public void IsSumWithSelector(Type type, bool except)
+        public static IEnumerable<object[]> IsSumWithSelectorDatas()
         {
-            var method = GetMethod(
+            foreach (var type in Types())
+            {
+                yield return new object[] {GetMethod(
                     nameof(Queryable.Sum), 1,
                     types => new[]
                     {
                     typeof(IQueryable<>).MakeGenericType(types[0]),
                     typeof(Expression<>).MakeGenericType(typeof(Func<,>).MakeGenericType(types[0], type))
-                    });
+                    }),true};
+            }
+            yield return new object[] { ((Func<IEnumerable, IQueryable>)Queryable.AsQueryable).Method, false };
+        }
+
+        [Theory]
+        [MemberData(nameof(IsSumWithSelectorDatas))]
+        public void IsSumWithSelector(MethodInfo method, bool except)
+        {
             QueryableMethods.IsSumWithSelector(method).ShouldBe(except);
 
         }
 
         [Theory]
         [MemberData(nameof(TypeExcepts))]
-        public void GetAverageWithoutSelector(Type type, bool except)
+        public void GetAverageWithoutSelector(Type type)
         {
             var method = GetMethod(nameof(Queryable.Average), 0, types => new[] { typeof(IQueryable<>).MakeGenericType(type) });
             QueryableMethods.GetAverageWithoutSelector(type).ShouldBe(method);
@@ -772,7 +810,7 @@ namespace System.Linq
 
         [Theory]
         [MemberData(nameof(TypeExcepts))]
-        public void GetAverageWithSelector(Type type, bool except)
+        public void GetAverageWithSelector(Type type)
         {
             var method = GetMethod(
                 nameof(Queryable.Average), 1,
@@ -788,7 +826,7 @@ namespace System.Linq
 
         [Theory]
         [MemberData(nameof(TypeExcepts))]
-        public void GetSumWithoutSelector(Type type, bool except)
+        public void GetSumWithoutSelector(Type type)
         {
             var method = GetMethod(nameof(Queryable.Sum), 0, types => new[] { typeof(IQueryable<>).MakeGenericType(type) });
             QueryableMethods.GetSumWithoutSelector(type).ShouldBe(method);
@@ -797,7 +835,7 @@ namespace System.Linq
 
         [Theory]
         [MemberData(nameof(TypeExcepts))]
-        public void GetSumWithSelector(Type type, bool except)
+        public void GetSumWithSelector(Type type)
         {
             var method = GetMethod(
                 nameof(Queryable.Sum), 1,
