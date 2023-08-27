@@ -13,6 +13,8 @@
     <PackageVersion Include="System.Linq.Dynamic.Core" Version="1.2.18" />
     <PackageVersion Include="Quartz.Extensions.DependencyInjection" Version="3.4.0" />
     <PackageVersion Include="Quartz.Plugins.TimeZoneConverter" Version="3.4.0" />
+    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="1.1.1"/>
+
 
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)'!= 'netstandard2.0'">

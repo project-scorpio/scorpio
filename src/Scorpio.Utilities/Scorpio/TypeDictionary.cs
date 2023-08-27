@@ -194,4 +194,113 @@ namespace Scorpio
             }
         }
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="TBaseValueType"></typeparam>
+    public class TypeDictionary< TBaseValueType> : ITypeDictionary< TBaseValueType>
+    {
+        private readonly Dictionary<string, Type> _pairs;
+
+        ///<inheritdoc/>
+        public TypeDictionary() => _pairs = new Dictionary<string, Type>();
+        ///<inheritdoc/>
+        public Type this[string key]
+        {
+            get => _pairs[key];
+            set
+            {
+                CheckValueType(value);
+                _pairs[key] = value;
+            }
+        }
+
+
+
+        ///<inheritdoc/>
+        public ICollection<string> Keys => _pairs.Keys;
+
+        ///<inheritdoc/>
+        public ICollection<Type> Values => _pairs.Values;
+
+        ///<inheritdoc/>
+        public int Count => _pairs.Count;
+
+        ///<inheritdoc/>
+        public bool IsReadOnly => false;
+
+        ///<inheritdoc/>
+        public void Add<TValueType>(string key)
+            where TValueType : TBaseValueType => Add(key, typeof(TValueType));
+
+        ///<inheritdoc/>
+        public void Add(string key, Type value)
+        {
+            CheckValueType(value);
+            _pairs.Add(key, value);
+        }
+
+        ///<inheritdoc/>
+        public void Add(KeyValuePair<string, Type> item) => Add(item.Key, item.Value);
+
+        ///<inheritdoc/>
+        public void Clear() => _pairs.Clear();
+
+        ///<inheritdoc/>
+        public bool Contains(string key)  => ContainsKey(key);
+
+        ///<inheritdoc/>
+        bool ICollection<KeyValuePair<string, Type>>.Contains(KeyValuePair<string, Type> item) => (_pairs as ICollection<KeyValuePair<string, Type>>).Contains(item);
+
+        ///<inheritdoc/>
+        public bool ContainsKey(string key) => _pairs.ContainsKey(key);
+
+        ///<inheritdoc/>
+        void ICollection<KeyValuePair<string, Type>>.CopyTo(KeyValuePair<string, Type>[] array, int arrayIndex) => (_pairs as ICollection<KeyValuePair<string, Type>>).CopyTo(array, arrayIndex);
+
+        IEnumerator<KeyValuePair<string, Type>> IEnumerable<KeyValuePair<string, Type>>.GetEnumerator() => _pairs.GetEnumerator();
+
+        ///<inheritdoc/>
+        public Type GetOrDefault(string key) => _pairs.GetOrDefault(key);
+
+        ///<inheritdoc/>
+        public bool Remove(string key)
+        {
+            return _pairs.Remove(key);
+        }
+
+        ///<inheritdoc/>
+        bool ICollection<KeyValuePair<string, Type>>.Remove(KeyValuePair<string, Type> item) => (_pairs as ICollection<KeyValuePair<string, Type>>).Remove(item);
+
+        ///<inheritdoc/>
+        public bool TryAdd<TValueType>(string key)
+            where TValueType : TBaseValueType
+        {
+            if (_pairs.ContainsKey(key))
+            {
+                return false;
+            }
+            Add<TValueType>(key);
+            return true;
+        }
+
+        ///<inheritdoc/>
+        public bool TryGetValue(string key, out Type value) => _pairs.TryGetValue(key, out value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator IEnumerable.GetEnumerator() => _pairs.GetEnumerator();
+
+        private void CheckValueType(Type value)
+        {
+            if (!typeof(TBaseValueType).GetTypeInfo().IsAssignableFrom(value))
+            {
+                throw new ArgumentException($"Given type ({value.AssemblyQualifiedName}) should be instance of {typeof(TBaseValueType).AssemblyQualifiedName} ", nameof(value));
+            }
+        }
+    }
+
 }
