@@ -190,6 +190,18 @@ namespace System
             value.ToHyphen(true).ShouldBe(expected);
         }
 
+        [Theory]
+        [InlineData("RemoveEmptyEntries", "remove_empty_entries")]
+        [InlineData("removeEmptyEntries", "remove_empty_entries")]
+        [InlineData("Remove EmptyEntries", "remove empty_entries")]
+        [InlineData("Remove emptyEntries", "remove empty_entries")]
+        [InlineData("ThisIsSampleSentence", "this_is_sample_sentence")]
+        [InlineData("  ", "  ")]
+        public void ToSnakeCase(string value, string expected)
+        {
+            value.ToSnakeCase().ShouldBe(expected);
+            value.ToSnakeCase(true).ShouldBe(expected);
+        }
 
         [Fact]
         public void ToEnum()

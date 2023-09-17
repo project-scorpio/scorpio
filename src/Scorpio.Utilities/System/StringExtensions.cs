@@ -31,7 +31,7 @@ namespace System
 
 
         /// <summary>
-        /// Adds a char to end of given string if it does not ends with the char.
+        /// Adds a string to end of given string if it does not ends with the string.
         /// </summary>
         public static string EnsureEndsWith(this string str, string c, StringComparison comparisonType = StringComparison.Ordinal)
         {
@@ -321,6 +321,25 @@ namespace System
             return useCurrentCulture
                 ? Regex.Replace(str, "[a-z][A-Z]", m => m.Value[0] + "-" + char.ToLower(m.Value[1])).ToLower()
                 : Regex.Replace(str, "[a-z][A-Z]", m => m.Value[0] + "-" + char.ToLowerInvariant(m.Value[1])).ToLowerInvariant();
+        }
+
+        /// <summary>
+        /// Converts given PascalCase/camelCase string to snake case.
+        /// Example: "ThisIsSampleSentence" is converted to "this_is_a_sample_sentence".
+        /// </summary>
+        /// <param name="str">String to convert.</param>
+        /// <param name="useCurrentCulture">set true to use current culture. Otherwise, invariant culture will be used.</param>
+        /// <returns></returns>
+        public static string ToSnakeCase(this string str, bool useCurrentCulture = false)
+        {
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                return str;
+            }
+
+            return useCurrentCulture
+                ? Regex.Replace(str, "[a-z][A-Z]", m => m.Value[0] + "_" + char.ToLower(m.Value[1])).ToLower()
+                : Regex.Replace(str, "[a-z][A-Z]", m => m.Value[0] + "_" + char.ToLowerInvariant(m.Value[1])).ToLowerInvariant();
         }
 
         /// <summary>
