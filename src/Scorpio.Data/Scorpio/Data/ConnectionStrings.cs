@@ -22,7 +22,8 @@ namespace Scorpio.Data
         {
 
         }
-        /// <summary>
+#if !NET8_0_OR_GREATER
+       /// <summary>
         /// 
         /// </summary>
         /// <param name="info"></param>
@@ -30,6 +31,7 @@ namespace Scorpio.Data
         protected ConnectionStrings(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
+#endif
 
         /// <summary>
         /// 

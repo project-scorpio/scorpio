@@ -44,6 +44,7 @@ namespace Scorpio.BackgroundJobs
         {
 
         }
+#if !NET8_0_OR_GREATER
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BackgroundJobExecutionException"/> class with serialized data. 
@@ -55,7 +56,6 @@ namespace Scorpio.BackgroundJobs
         protected BackgroundJobExecutionException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
-
-
+#endif   
     }
 }

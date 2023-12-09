@@ -23,6 +23,7 @@ namespace Scorpio.Authorization
         /// Creates a new <see cref="AuthorizationException"/> object.
         /// </summary>
         public AuthorizationException() => LogLevel = LogLevel.Warning;
+#if !NET8_0_OR_GREATER
 
         /// <summary>
         /// Creates a new <see cref="AuthorizationException"/> object.
@@ -32,6 +33,7 @@ namespace Scorpio.Authorization
         {
 
         }
+#endif   
 
         /// <summary>
         /// Creates a new <see cref="AuthorizationException"/> object.

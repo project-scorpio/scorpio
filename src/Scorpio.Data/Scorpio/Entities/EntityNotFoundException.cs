@@ -77,6 +77,7 @@ namespace Scorpio.Entities
         {
 
         }
+#if !NET8_0_OR_GREATER
 
         /// <summary>
         /// 
@@ -86,5 +87,6 @@ namespace Scorpio.Entities
         protected EntityNotFoundException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
+#endif
     }
 }

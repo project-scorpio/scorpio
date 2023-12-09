@@ -94,6 +94,10 @@ namespace Scorpio.Middleware.Pipeline
                {
                    throw new InvalidOperationException();
                }
+               if (builder.ApplicationServices == null)
+               {
+                   throw new InvalidOperationException();
+               }
 
                var ctorArgs = new object[args.Length + 1];
                ctorArgs[0] = next;

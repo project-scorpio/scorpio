@@ -23,11 +23,7 @@ namespace Scorpio.DynamicProxy
                 {
                     return false;
                 }
-                if (_aspectConfiguration.Interceptors.Where(x => x.Predicates.Length != 0).Any(x => x.CanCreated(method)))
-                {
-                    return true;
-                }
-                if (_aspectConfiguration.Interceptors.Where(x => x.Predicates.Length == 0).Any(x => x.CanCreated(method)))
+                if (_aspectConfiguration.Interceptors.Any(x => x.CanCreated(method)))
                 {
                     return true;
                 }

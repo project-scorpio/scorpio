@@ -12,11 +12,9 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Extensions.Logging
 {
-    public class LoggerExtensions_Tests
+    public class LoggerExtensions_Tests(ITestOutputHelper output)
     {
-        private readonly ITestOutputHelper _output;
-
-        public LoggerExtensions_Tests(ITestOutputHelper output) => _output = output;
+        private readonly ITestOutputHelper _output = output;
 
         [Fact]
         public void LogKnownProperties()
@@ -49,12 +47,12 @@ namespace Microsoft.Extensions.Logging
         public void LogSelfLogging()
         {
             var logger = _output.BuildLoggerFor<ListExtensions_Tests>();
-            var ex = new AggregateException("message", new SelfLoggingException("selfloggin"));
+            var ex = new AggregateException("message", new SelfLoggingException("self login"));
             logger.LogException(ex);
             logger.Count.ShouldBe(2);
             logger.Entries.First().Exception.ShouldBeOfType<AggregateException>().InnerException.ShouldNotBeNull();
-            logger.Last.Exception.ShouldBeOfType<SelfLoggingException>().Message.ShouldBe("selfloggin");
-            logger.Last.Message.ShouldContain("selfloggin");
+            logger.Last.Exception.ShouldBeOfType<SelfLoggingException>().Message.ShouldBe("self login");
+            logger.Last.Message.ShouldContain("self login");
             logger.Last.LogLevel.ShouldBe(LogLevel.Error);
         }
 
@@ -68,10 +66,11 @@ namespace Microsoft.Extensions.Logging
             }
             public LogKnownException(string message) : base(message) { }
             public LogKnownException(string message, Exception inner) : base(message, inner) { }
+#if !NET8_0_OR_GREATER
             protected LogKnownException(
               System.Runtime.Serialization.SerializationInfo info,
               System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
-
+#endif
             public string Details { get; }
 
             public string Code { get; }
@@ -84,10 +83,11 @@ namespace Microsoft.Extensions.Logging
             public SelfLoggingException() { }
             public SelfLoggingException(string message) : base(message) { }
             public SelfLoggingException(string message, Exception inner) : base(message, inner) { }
+#if !NET8_0_OR_GREATER
             protected SelfLoggingException(
               System.Runtime.Serialization.SerializationInfo info,
               System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
-
+#endif
             public void Log(ILogger logger) => logger.LogError(this, $"SelfLogging:{Message}");
         }
 

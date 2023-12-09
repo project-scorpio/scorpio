@@ -183,7 +183,8 @@ namespace System.Linq.Async
         {
             private readonly ICollection<T> _source;
 
-            public AsyncICollectionEnumerableAdapter(ICollection<T> source) : base(source) => _source = source;
+            public AsyncICollectionEnumerableAdapter(ICollection<T> source) : base(source) => _source = source; 
+
 
             public override AsyncIteratorBase<T> Clone() => new AsyncICollectionEnumerableAdapter<T>(_source);
         }

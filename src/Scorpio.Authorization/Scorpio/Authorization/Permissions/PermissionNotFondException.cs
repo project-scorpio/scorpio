@@ -30,6 +30,8 @@ namespace Scorpio.Authorization.Permissions
         /// <param name="innerException"></param>
         public PermissionNotFondException(string permissionName, string message, Exception innerException) : base(message, innerException) => PermissionName = permissionName;
 
+#if !NET8_0_OR_GREATER
+
         /// <summary>
         /// 
         /// </summary>
@@ -38,6 +40,7 @@ namespace Scorpio.Authorization.Permissions
         protected PermissionNotFondException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
+#endif   
 
         /// <summary>
         /// 

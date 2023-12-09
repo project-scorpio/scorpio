@@ -29,7 +29,7 @@ namespace Scorpio.Quartz
         {
             _ = context.Services.AddQuartz(q =>
               {
-                  q.UseMicrosoftDependencyInjectionScopedJobFactory(c => c.AllowDefaultConstructor = true);
+                  q.UseMicrosoftDependencyInjectionJobFactory();
                   q.UseSimpleTypeLoader();
                   q.UseInMemoryStore();
                   q.UseDefaultThreadPool(c => c.MaxConcurrency = 10);

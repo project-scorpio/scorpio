@@ -40,7 +40,8 @@ namespace Scorpio.Data
 
         }
 
-        /// <summary>
+ #if !NET8_0_OR_GREATER
+       /// <summary>
         /// 
         /// </summary>
         /// <param name="info"></param>
@@ -48,5 +49,6 @@ namespace Scorpio.Data
         protected DbConcurrencyException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
+#endif
     }
 }

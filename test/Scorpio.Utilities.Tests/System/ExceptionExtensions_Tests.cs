@@ -53,9 +53,11 @@ namespace System
 
         public LogLevelException(string message, Exception innerException, LogLevel logLevel) : base(message, innerException) => LogLevel = logLevel;
 
+#if !NET8_0_OR_GREATER
         protected LogLevelException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
+#endif   
 
         public LogLevel LogLevel { get; set; }
     }

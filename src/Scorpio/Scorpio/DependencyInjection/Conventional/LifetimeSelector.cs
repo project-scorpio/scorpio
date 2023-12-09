@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Scorpio.DependencyInjection.Conventional
 {
-    internal class LifetimeSelector : IRegisterAssemblyLifetimeSelector
+    internal class LifetimeSelector(ServiceLifetime lifetime) : IRegisterAssemblyLifetimeSelector
     {
         public static LifetimeSelector Transient { get; } = new LifetimeSelector(ServiceLifetime.Transient);
         public static LifetimeSelector Scoped { get; } = new LifetimeSelector(ServiceLifetime.Scoped);
@@ -16,11 +16,11 @@ namespace Scorpio.DependencyInjection.Conventional
             ServiceLifetime.Singleton => Singleton,
             ServiceLifetime.Scoped => Scoped,
             ServiceLifetime.Transient => Transient,
+            _ => throw new NotImplementedException(),
         };
 
-        private readonly ServiceLifetime _lifetime;
+        private readonly ServiceLifetime _lifetime = lifetime;
 
-        public LifetimeSelector(ServiceLifetime lifetime) => _lifetime = lifetime;
         public ServiceLifetime Select(Type componentType) => _lifetime;
 
 
